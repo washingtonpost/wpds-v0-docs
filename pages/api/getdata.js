@@ -17,6 +17,7 @@ export default async (req, res) => {
         res.status(500).json({ data: null, success: false });
       }
     } catch (error) {
+      console.log(error);
       res.status(500).json({ data: null, success: false });
     }
   } else {

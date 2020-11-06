@@ -23,7 +23,9 @@ export default function Standard(props) {
                         <SecondaryNav alignment="left" className=" w-100" />
                         <div className="mt-md mt-lg-ns">
                             <div className="font--subhead hide-for-print kicker mb-xs " data-qa="kicker">
-                                <a href="https://www.washingtonpost.com/retropolis/" className="font-bold link blue">Retropolis</a>
+                                <a href="#" className="font-bold link blue">
+                                    {info.label.basic.text} <span className="font-light gray-dark"> • </span> 
+                                    <span className="b b-dotted bw-thin bc-gray gray-dark font-light bb"> {info.label.transparency.text != 'News' ? info.label.transparency.text : ''}</span></a>
                             </div>
                         </div>
                         <h1 className="font--headline gray-darkest pb-sm">{info.headlines.basic}</h1>
@@ -35,10 +37,10 @@ export default function Standard(props) {
                         
                         {/* Lede Art */}
                         <figure className="center mb-md ml-neg-gutter mr-neg-gutter ml-auto-ns mr-auto-ns  overflow-hidden relative hide-for-print">
-                            <img src={info.content_elements[0].url} alt={info.content_elements[0].caption}
+                            <img src={`${info.additional_properties.lead_art.additional_properties.originalUrl}`} alt={""}
                                 className="w-100 mw-100 h-auto" width="600" height="461" />
                             <figcaption className="left ml-gutter mr-gutter mr-auto-ns ml-auto-ns gray-dark font--subhead font-xxxs mt-xs mb-sm" aria-hidden="true">
-                                {info.content_elements[0].caption_display}
+                                {info.additional_properties.lead_art.subtitle}
                             </figcaption>
                         </figure>
                         {/* End of Lede Art */}
