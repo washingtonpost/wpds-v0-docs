@@ -24,7 +24,7 @@ export default function Standard(props) {
                         <div className="mt-md mt-lg-ns">
                             <div className="font--subhead hide-for-print kicker mb-xs " data-qa="kicker">
                                 <a href="#" className="font-bold link blue">
-                                    {info.label.basic.text} <span className="font-light gray-dark"> • </span> 
+                                    {info.label.basic.text} <span className="font-light gray-dark"> {info.label.transparency.text != 'News'?'•':''} </span> 
                                     <span className="b b-dotted bw-thin bc-gray gray-dark font-light bb"> {info.label.transparency.text != 'News' ? info.label.transparency.text : ''}</span></a>
                             </div>
                         </div>
