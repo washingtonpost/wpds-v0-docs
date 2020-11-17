@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import ArticleLayout from "../Layouts/standard";
+import ArticleLayout from "../Layouts/CenterLayout";
 import DefaultPage from "../components/defaultPage";
 import CSS from "@washingtonpost/site-components/css/index.css";
 
