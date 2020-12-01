@@ -6,7 +6,7 @@ export default async (req, res) => {
     const url = "https://prism.ext.nile.works/api/v1/content/get?url=";
     const apiKey = `&key=${process.env.API_KEY}`;
     const newURl = url + req.query.website_url+apiKey;
-    // https://prism.ext.nile.works/api/v1/content/get?url=/elections/2020/10/05/trump-biden-live-updates/&key=QxMyc8WBvd3U9xIlrGFLovHQ6ffFXN
+    // 
     try {
       const prismRes = await fetch(`${newURl}`);
       const json = await prismRes.json();
