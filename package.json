@@ -1,20 +1,22 @@
 {
-  "name": "design-playground",
+  "name": "arturo-design-playground",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npx next dev",
+    "build": "npx next build",
+    "start": "npx next start",
     "newlayout": "cp layouts/standard.jsx layouts/newfile.jsx"
   },
   "dependencies": {
-    "@washingtonpost/site-components": "4.6.1",
+    "@washingtonpost/site-components": "^4.6.1",
     "next": "10.0.0",
     "node-fetch": "^2.6.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-html-parser": "^2.0.2",
     "tailwindcss": "^1.9.6"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
