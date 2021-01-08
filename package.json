@@ -9,7 +9,7 @@
     "newlayout": "cp layouts/standard.jsx layouts/newfile.jsx"
   },
   "dependencies": {
-    "@washingtonpost/site-components": "^3.12.1",
+    "@washingtonpost/site-components": "4.6.1",
     "next": "10.0.0",
     "node-fetch": "^2.6.1",
     "react": "17.0.1",
