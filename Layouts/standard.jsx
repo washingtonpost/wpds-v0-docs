@@ -36,13 +36,13 @@ export default function Standard(props) {
                     <article className="grid-item grid-item--cols-sm-12 grid-item--cols-md-12 b-l br-l mb-xxl-ns mt-xxs mt-md-l grid-item--cols-lg-8 pr-lg-lg">
                         
                         {/* Lede Art */}
-                        <figure className="center mb-md ml-neg-gutter mr-neg-gutter ml-auto-ns mr-auto-ns  overflow-hidden relative hide-for-print">
+                        <div className="center mb-md ml-neg-gutter mr-neg-gutter ml-auto-ns mr-auto-ns  overflow-hidden relative hide-for-print">
                             <img src={`${info.additional_properties.lead_art.additional_properties.originalUrl}`} alt={""}
                                 className="w-100 mw-100 h-auto" width="600" height="461" />
                             <figcaption className="left ml-gutter mr-gutter mr-auto-ns ml-auto-ns gray-dark font--subhead font-xxxs mt-xs mb-sm" aria-hidden="true">
                                 {info.additional_properties.lead_art.subtitle}
                             </figcaption>
-                        </figure>
+                        </div>
                         {/* End of Lede Art */}
 
                         {/* Byline + Timestamp + Add to list */}
@@ -70,7 +70,7 @@ export default function Standard(props) {
                                 {info.content_elements.map((element,i)=>{
                                     if(i>1){
                                         return(
-                                        <p className="font--body font-copy gray-darkest ma-0 pb-md">
+                                        <p key={i} className="font--body font-copy gray-darkest ma-0 pb-md">
                                             {parser(element.content)}
                                         </p>)
                                     }
@@ -80,9 +80,9 @@ export default function Standard(props) {
                         </div>
                         {/* End of Article Body */}
                         {/* Comment Button */}
-                        <div class="pb-lgmod" data-qa="comments-btn" data-sc-v="3.12.1" data-sc-c="commentcountbutton">
-                            <div class="comments btn btn-white db hide-for-print" data-sc-v="3.12.1" data-sc-c="commentcountbutton">
-                                <a href="#comments-wrapper" data-qa="comments-btn-link" class="gray-darkest hover-inherit db" data-sc-v="3.12.1" data-sc-c="commentcountbutton">
+                        <div className="pb-lgmod" >
+                            <div className="comments btn btn-white db hide-for-print" >
+                                <a href="#comments-wrapper"  className="gray-darkest hover-inherit db" >
                                     <Icon className="content-box fill-gray-darkest mr-xs va-m" name="comment-solid" />131 Comments
                                 </a>
                             </div>

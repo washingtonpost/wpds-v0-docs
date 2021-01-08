@@ -3,7 +3,7 @@
 export default async (req, res) => {
   if (req.query.website_url) {
     console.log(req.query.website_url);
-    const url = "https://prism.ext.nile.works/api/v1/content/get?url=";
+    const url = "https://prism.ext.nile.works/api/v1/content/get?url=/";
     const apiKey = `&key=${process.env.API_KEY}`;
     const newURl = url + req.query.website_url+apiKey;
     // 
