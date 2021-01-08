@@ -2,26 +2,34 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import ArticleLayout from "../Layouts/standard";
 import DefaultPage from "../components/defaultPage";
+import DataHelper from '../Functions/DataHelpers';
 import CSS from "@washingtonpost/site-components/css/index.css";
 
 export default function Home() {
   const [prismData, setprismData] = useState(null);
   const [Retrieved, setRetrieved] = useState(false);
+  const [ErrorMessage, setErrorMessage] = useState("")
   useEffect(() => {
     //fetch Article Data
     async function getData() {
-      const url = await window.location.href.split("3000/?url=");
-      if (url.length > 1) {
-        const canonicalUrl = (await url.length) > 1 ? url[1] : "";
-        const res = await fetch(`/api/getdata?website_url=${canonicalUrl}`);
-        const json = await res.json();
-        if (json.data) {
-          console.log(json.data.items[0]);
+      const url = new URL(window.location.href);
+      const dataPath = url.searchParams.get("data");
+
+      try {
+        const json = await DataHelper.fetchData(dataPath);
+        if (json.success==true) {
+          console.log("Working")
           setprismData(json.data.items[0]);
           setRetrieved(true);
         }else{
-          console.log("Please Check URL and make sure it is correct with a /")
+          setErrorMessage(`Sorry no data was retrieved double check the data url be sure not to include the first /.
+          Should be ?data=politics not ?data=/politics `);
         }
+      } catch (error) {
+        console.log(error);
+        setErrorMessage(
+          "Sorry no data was retrieved please look at console for error"
+        );
       }
     }
     getData();
@@ -33,10 +41,11 @@ export default function Home() {
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
       </Head>
       {Retrieved ? (
-        <ArticleLayout data={prismData} />
+        <ArticleLayout data={prismData}  ErrorMessage={ErrorMessage}/>
       ) : (
         <>
           <DefaultPage />
+          <p className="red center w-full">{ErrorMessage}</p>
         </>
       )}
     </>
