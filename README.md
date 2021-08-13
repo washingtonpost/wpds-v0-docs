@@ -1,5 +1,7 @@
 # WPDS-Doc
 
-Under-construction
+install all packages and `yarn start` 
+
+requires node 12+ 
 
 
