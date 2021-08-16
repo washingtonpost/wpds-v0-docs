@@ -13,12 +13,17 @@ module.exports = {
   organizationName: 'WP-Media', // Usually your GitHub org/user name.
   projectName: 'WPDS-Docs', // Usually your repo name.
   themeConfig: {
+    colorMode:{
+      defaultMode:'light',
+      disableSwitch:true
+    },
     navbar: {
-      title: 'WPDS',
+      title: 'Design System',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/wp-mark.svg',
       },
+      
       items: [
         {
           type: 'doc',
@@ -34,16 +39,16 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: 'components/button',
+          docId: 'components/uncategorized/button',
           position: 'right',
           label: 'Components',
         },
-        {
-          type: 'doc',
-          docId: 'content/voice',
-          position: 'right',
-          label: 'Content',
-        },
+        // {
+        //   type: 'doc',
+        //   docId: 'content/voice',
+        //   position: 'right',
+        //   label: 'Content',
+        // },
         // {
         //   type: 'doc',
         //   docId: 'patterns/pattern',
@@ -63,54 +68,58 @@ module.exports = {
           label: 'Release Notes',
         },
         {
+          type: 'search',
+          position: 'right',
+        },
+        {
           type:'docsVersionDropdown'
         }
       ],
     },
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      style: 'light',
+      // links: [
+      //   {
+      //     title: 'Docs',
+      //     items: [
+      //       {
+      //         label: 'Tutorial',
+      //         to: '/docs/intro',
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: 'Community',
+      //     items: [
+      //       {
+      //         label: 'Stack Overflow',
+      //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+      //       },
+      //       {
+      //         label: 'Discord',
+      //         href: 'https://discordapp.com/invite/docusaurus',
+      //       },
+      //       {
+      //         label: 'Twitter',
+      //         href: 'https://twitter.com/docusaurus',
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: 'More',
+      //     items: [
+      //       {
+      //         label: 'Blog',
+      //         to: '/blog',
+      //       },
+      //       {
+      //         label: 'GitHub',
+      //         href: 'https://github.com/facebook/docusaurus',
+      //       },
+      //     ],
+      //   },
+      // ],
+      copyright: `Copyright © ${new Date().getFullYear()} The Washington Post`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -128,13 +137,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/WPMedia/WPDS-Docs/tree/main/wpds-docs/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/WPMedia/WPDS-Docs/tree/main/wpds-docs/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

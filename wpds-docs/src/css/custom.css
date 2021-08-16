@@ -22,6 +22,7 @@
   --ifm-navbar-link-active-color:var(--white);
   --ifm-link-color:var(--white);
 
+ --ifm-footer-background-color:var(--white);
 }
 .navbar__link{
   font-weight: var(--font-weight-light);
@@ -41,7 +42,9 @@
 .navbar__link--active:hover {
   color:var(--color-ui-white);
 }
-
+.navbar__title{
+  font-weight: var(--font-weight-light);
+}
 /* side bar container */
 aside.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage-styles-module{
   background-color:var(--offwhite) ;
@@ -55,12 +58,12 @@ nav.menu{
 }
 /* sidebar active link */
 nav.menu .active{
-  font-weight: 700;
+  font-weight: var(--font-weight-heavy);
   color:var(--subs-blue);
 }
 /* Side bar category label */
 .menu__link.menuLinkText_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebarItem-styles-module {
-  font-weight: bold;
+  font-weight: var(--font-weight-heavy);
   color:var(--offblack)
   
 }
@@ -78,5 +81,10 @@ li ul.menu__list li a{
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+.footer{
+  padding: 8px 0px;
 }
 
