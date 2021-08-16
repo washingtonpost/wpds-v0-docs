@@ -17,3 +17,6 @@ All pages are written in html while the docs & blogs are written in Markdown.
 To build the site run `yarn build` and when it has successfully build check to see if all things are working run `yarn serve` it will test the local build of the static site. If all is good and no links are broken run `yarn move` 
 open a PR
 
+
+## Site is available to view only for Github users in WP-Media organization
+https://didactic-meme-9c9cdb23.pages.github.io/
