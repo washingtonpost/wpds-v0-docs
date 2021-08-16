@@ -4,18 +4,70 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+ @import "@washingtonpost/site-components/css/index.css";
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 95%;
+  --ifm-color-primary: #666666;
+  --ifm-color-primary-dark: #666666;
+  --ifm-color-primary-darker: #333333;
+  --ifm-color-primary-darkest: #2A2A2A;
+  --ifm-color-primary-light: #5193FF;
+  --ifm-color-primary-lighter: #EFF5FF;
+  --ifm-color-primary-lightest: #E9E9E9;
+  --ifm-code-font-size: 80%;
+  --ifm-padding-top:24px;
+
+  --ifm-navbar-background-color:var(--subs-blue);
+  --ifm-navbar-link-color:var(--white);
+  --ifm-navbar-link-active-color:var(--white);
+  --ifm-link-color:var(--white);
+
 }
+.navbar__link{
+  font-weight: var(--font-weight-light);
+  color:var(--color-ui-white);
+  font-size: var(--font-size-xsmall);
+}
+.navbar__link:hover{
+  color:var(--white-alpha-50);
+  font-size: var(--font-size-xsmall);
+}
+/* navbar active */
+.navbar__link--active{
+  font-weight: var(--font-weight-medium);
+  color:var(--color-ui-white);
+  font-size: var(--font-size-xsmall);
+}
+.navbar__link--active:hover {
+  color:var(--color-ui-white);
+}
+
+/* side bar container */
+aside.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage-styles-module{
+  background-color:var(--offwhite) ;
+  border-right: none;
+}
+/* side bar menu */
+nav.menu{
+  padding-top:var(--md);
+  font-weight: var(--font-weight-light);
+  color:var(--gray-darkest);
+}
+/* sidebar active link */
+nav.menu .active{
+  font-weight: 700;
+  color:var(--subs-blue);
+}
+/* Side bar category label */
+.menu__link.menuLinkText_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebarItem-styles-module {
+  font-weight: bold;
+  color:var(--offblack)
+  
+}
+li ul.menu__list li a{
+  padding-left: var(--xxs);
+}
+
 
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
@@ -27,3 +79,4 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+

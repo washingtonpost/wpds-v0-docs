@@ -22,16 +22,45 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'intro',
-          position: 'left',
-          label: 'Tutorial',
-        },
-
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          docId: 'getting-started/getting-started',
           position: 'right',
+          label: 'Getting Started',
+        },
+        {
+          type: 'doc',
+          docId: 'tokens/introduction/what-are-tokens',
+          position: 'right',
+          label: 'Tokens',
+        },
+        {
+          type: 'doc',
+          docId: 'components/button',
+          position: 'right',
+          label: 'Components',
+        },
+        {
+          type: 'doc',
+          docId: 'content/voice',
+          position: 'right',
+          label: 'Content',
+        },
+        // {
+        //   type: 'doc',
+        //   docId: 'patterns/pattern',
+        //   position: 'right',
+        //   label: 'Pattern',
+        // },
+        {
+          type: 'doc',
+          docId: 'resources/intro',
+          position: 'right',
+          label: 'Resources',
+        },
+        {
+          type: 'doc',
+          docId: 'release-notes/notes',
+          position: 'right',
+          label: 'Release Notes',
         },
         {
           type:'docsVersionDropdown'
