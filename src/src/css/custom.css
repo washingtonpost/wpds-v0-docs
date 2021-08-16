@@ -62,7 +62,7 @@ nav.menu .active{
   color:var(--subs-blue);
 }
 /* Side bar category label */
-.menu__link.menuLinkText_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocSidebarItem-styles-module {
+a:not([href]).menu__link  {
   font-weight: var(--font-weight-heavy);
   color:var(--offblack)
   
