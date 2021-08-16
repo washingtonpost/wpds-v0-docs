@@ -1,4 +1,16 @@
-# WPDS-Doc
+# WPDS Documentation site
 
-under construction
+## Getting started
+There are two main folders the docs is the static folder that houses the actual site that is generated from the src folder. All changes and contribution should happen on the src folder. 
+
+To start `cd src` into the src folder `nvm use` and `yarn install` to get the project set up locally. You can now run the local build `yarn start` This will spin up the server with all of the site content. 
+
+
+The site content is controlled via the folder structure. There are pages as main pages and then are two folders `Docs` and `blog` that generate the entire site. To read more about folder structure please refer to the (docusaurus docs)[https://docusaurus.io/docs/docs-introduction]
+
+
+All pages are written in html while the docs & blogs are written in Markdown. 
+
+
+
 
