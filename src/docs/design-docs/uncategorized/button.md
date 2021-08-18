@@ -30,7 +30,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentu
 </Container>
 
 <!-- Tabs between design & implementation -->
-<Tabs isDesignDoc={true} relatedUrl="../../dev-docs/uncategorized/button"/>
+<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/button"/>
 
 <!-- Anatomy section -->
 ## <Section borderOff={true}>Anatomy</Section>

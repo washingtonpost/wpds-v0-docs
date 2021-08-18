@@ -32,7 +32,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentu
 </Container>
 
 <!-- Tabs between design & implementation -->
-<Tabs isDesignDoc={false} relatedUrl="../../design-docs/uncategorized/button"/>
+<Tabs isDesignDoc={false} relatedUrl="design-docs/uncategorized/button"/>
 
 
 
