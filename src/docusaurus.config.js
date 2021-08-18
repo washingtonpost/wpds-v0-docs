@@ -39,7 +39,7 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: 'components/uncategorized/button',
+          docId: 'design-docs/uncategorized/button',
           position: 'right',
           label: 'Components',
         },

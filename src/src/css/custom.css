@@ -65,7 +65,10 @@ nav.menu .active{
 a:not([href]).menu__link  {
   font-weight: var(--font-weight-heavy);
   color:var(--offblack)
-  
+}
+a:hover{
+  text-decoration: none;
+  color:inherit;
 }
 li ul.menu__list li a{
   padding-left: var(--xxs);
@@ -88,3 +91,14 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   padding: 8px 0px;
 }
 
+
+/* anchors */
+.hash-link{
+  display: none;
+}
+h4.legend-title{
+  margin-bottom:var(--xs);
+}
+ol.legend, ul{
+  padding-left:var(--md);
+}
