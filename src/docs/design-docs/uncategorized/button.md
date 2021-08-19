@@ -1,13 +1,15 @@
 --- 
 title: Buttons 
 ---
-import { Button } from "@washingtonpost/site-components/core/button";
+import Image from '@theme/IdealImage';
 
+import { Button } from "@washingtonpost/site-components/core/button";
+import Root from "../../../documentation-kit/helper/origin";
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Section from "../../../documentation-kit/section";
 import Container from "../../../documentation-kit/sampleContainer";
-
+import AnatomyImg from "/img/design/button/anatomy.png";
 
 # <Header>Title Goes here</Header>
 
@@ -35,8 +37,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentu
 <!-- Anatomy section -->
 ## <Section borderOff={true}>Anatomy</Section>
 <Container>
-  <img width="60%" height="auto" src="../../../img/design/button/anatomy.png"/>
+  <img width="60%" height="auto" src='/img/design/button/anatomy.png'/>
 </Container>
+
 <h4 className="legend-title">Legend</h4>
 <ol className="legend">
   <li> Button text </li>

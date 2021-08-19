@@ -12,6 +12,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'WP-Media', // Usually your GitHub org/user name.
   projectName: 'WPDS-Docs', // Usually your repo name.
+  plugins: ['@docusaurus/plugin-ideal-image'],
   themeConfig: {
     colorMode:{
       defaultMode:'light',
