@@ -91,6 +91,22 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   padding: 8px 0px;
 }
 
+.grid-split{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 32px;
+  align-items: center;
+
+}
+
+.title-text h5{
+  font-weight: var(--font-weight-heavy);
+  font-size: var(--sm);
+  margin-bottom: var(--xs);
+}
+.title-text p{
+  color:var(--gray-dark)
+}
 
 /* anchors */
 .hash-link{
@@ -101,4 +117,7 @@ h4.legend-title{
 }
 ol.legend, ul{
   padding-left:var(--md);
+}
+ol.legend, ul li{
+  line-height:1.1;
 }

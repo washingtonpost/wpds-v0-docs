@@ -138,13 +138,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/WPMedia/WPDS-Docs/tree/main/wpds-docs/',
+            'https://github.com/WPMedia/WPDS-Docs/tree/main/src/wpds-docs/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/WPMedia/WPDS-Docs/tree/main/wpds-docs/blog/',
+            'https://github.com/WPMedia/WPDS-Docs/tree/main/src/wpds-docs/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
