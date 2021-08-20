@@ -5,7 +5,6 @@ import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Section from "../../../documentation-kit/section";
 import Container from "../../../documentation-kit/sampleContainer";
-import AnatomyImg from "/img/design/button/anatomy.png";
 
 # <Header>Title Goes here</Header>
 
@@ -36,7 +35,7 @@ import { Button } from "@washingtonpost/site-components/core/button";
 <!-- Anatomy section export image from Figma and import into here -->
 ## <Section borderOff={true}>Anatomy</Section>
 <Container>
-  <img width="25%" height="auto" src='/img/design/button/anatomy.png'/>
+  <img width="25%" height="auto" src='/img/design/button/skeleton.png'/>
 </Container>
 
 <h4 className="legend-title">Legend</h4>
