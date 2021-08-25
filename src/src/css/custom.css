@@ -5,6 +5,32 @@
  * work well for content-centric websites.
  */
  @import "@washingtonpost/site-components/css/index.css";
+ @font-face {
+  font-family: Postoni;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/PostoniWide-Bold.woff2);
+}
+@font-face {
+  font-family: Postoni;
+  font-weight: 300;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/PostoniWide-Regular.woff2);
+}
+
+@font-face {
+  font-family: Franklin;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/ITC_Franklin-Bold.woff2);
+}
+@font-face {
+  font-family: Franklin;
+  font-weight: 300;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/ITC_Franklin-Light.woff2);
+}
+ 
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #666666;
@@ -14,16 +40,27 @@
   --ifm-color-primary-light: #5193FF;
   --ifm-color-primary-lighter: #EFF5FF;
   --ifm-color-primary-lightest: #E9E9E9;
+  --ifm-color-secondary-dark: #d4d5d8;
+  --ifm-color-secondary-darker: #c8c9cc;
+  --ifm-color-secondary-darkest: #a4a6a8;
+  --ifm-color-secondary-light: #eef0f2;
+  --ifm-color-secondary-lighter: #f1f2f5;
+  --ifm-color-secondary-lightest: #f5f6f8;
   --ifm-code-font-size: 80%;
   --ifm-padding-top:24px;
-
   --ifm-navbar-background-color:var(--subs-blue);
   --ifm-navbar-link-color:var(--white);
   --ifm-navbar-link-active-color:var(--white);
   --ifm-link-color:var(--white);
-
  --ifm-footer-background-color:var(--white);
+ --font-headline: Postoni, garamond, serif;
+ --font-sans-serif:Franklin, arial, sans-serif;
 }
+
+h2{
+  font-size:var(--md);
+}
+/* NAV BAR CLASSES */
 .navbar__link{
   font-weight: var(--font-weight-light);
   color:var(--color-ui-white);
@@ -39,17 +76,46 @@
   color:var(--color-ui-white);
   font-size: var(--font-size-xsmall);
 }
+.navbar__item.navbar__link.navbar__link--active.navbar__link--active{
+  color:var(--color-ui-white);
+}
 .navbar__link--active:hover {
   color:var(--color-ui-white);
 }
 .navbar__title{
   font-weight: var(--font-weight-light);
 }
-/* side bar container */
+
+.navbar__toggle{
+  color:var(--white);
+}
+
+
+
+
+
+/* SIDE BAR CONTAINER */
 aside.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage-styles-module{
   background-color:var(--offwhite) ;
   border-right: none;
 }
+.navbar-sidebar__items{
+  background-color:var(--offwhite) ;
+  border-right: none;
+}
+.navbar-sidebar__item.navbar-sidebar__item--secondary.menu{
+  background-color:var(--offwhite) ;
+  border-right: none;
+}
+.navbar__link--active{
+  font-weight: var(--font-weight-heavy);
+  color:var(--subs-blue);
+}
+.navbar__link--active:hover{
+  font-weight: var(--font-weight-heavy);
+  color:var(--subs-blue);
+}
+
 /* side bar menu */
 nav.menu{
   padding-top:var(--md);
@@ -60,21 +126,40 @@ nav.menu{
 nav.menu .active{
   font-weight: var(--font-weight-heavy);
   color:var(--subs-blue);
+  padding-left: var(--xs);
 }
+.menu__link--active:not(.menu__link--sublist){
+  font-weight: var(--font-weight-heavy);
+  color:var(--subs-blue);
+  padding-left: var(--xs);
+}
+
+
+
 /* Side bar category label */
 a:not([href]).menu__link  {
   font-weight: var(--font-weight-heavy);
   color:var(--offblack)
+}
+.menu__link:hover{
+  text-decoration: none;
+  
+}
+a:not([href]).menu__link:hover{
+  user-select: none;
+  background:none;
 }
 a:hover{
   text-decoration: none;
   color:inherit;
 }
 li ul.menu__list li a{
-  padding-left: var(--xxs);
+  padding-left: 0px;
+  font-size:16px;
 }
 
 
+/* CODE */
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
@@ -86,38 +171,82 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* Footer */
+/* FOOTER */
 .footer{
   padding: 8px 0px;
 }
 
+
+
+/* MARKDOWN */
+
+/* Headers */
+div.markdown header h1{
+  font-family:var(--font-headline);
+  margin-bottom: var(--xs);
+}
+div.markdown h2{
+  font-family:var(--font-headline);
+  margin-bottom: var(--sm);
+  margin-top: var(--xs);
+}
+div.markdown h3{
+  font-family:var(--font-headline);
+  margin-bottom: var(--xs);
+  margin-top: var(--xs);
+}
+
+div.markdown h4, div.markdown h5, div.markdown h6{
+  font-weight: var(--font-weight-heavy);
+  margin-bottom: var(--xs);
+  margin-top: var(--xs);
+}
+
+/* Dividers */
+div.markdown hr{
+  margin-bottom:4px;
+  border-color:var(--offblack);
+}
+
+/* Paragraph */
+div.markdown p{
+  color:var(--gray-dark);
+  line-height: var(--line-height-medium);
+}
+div.markdown p a{
+  color: var(--subs-blue-dark);
+  text-decoration: underline;
+}
+
+/* Lists */
+div.markdown ol{
+  padding-left: var(--md);
+}
+div.markdown ol li{
+ line-height:var(--md);
+}
+
+/* Anchors */
+.hash-link{
+  display: none;
+}
+
+
+
+
+
+
+/* Utility classes */
 .grid-split{
   display: grid;
   grid-template-columns: 50% 50%;
   column-gap: 32px;
   align-items: center;
-
 }
 
-.title-text h5{
-  font-weight: var(--font-weight-heavy);
-  font-size: var(--sm);
-  margin-bottom: var(--xs);
-}
-.title-text p{
-  color:var(--gray-dark)
-}
 
-/* anchors */
-.hash-link{
-  display: none;
-}
-h4.legend-title{
-  margin-bottom:var(--xs);
-}
-ol.legend, ul{
-  padding-left:var(--md);
-}
-ol.legend, ul li{
-  line-height:1.1;
-}
+
+
+
+
+
