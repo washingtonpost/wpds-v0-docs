@@ -96,7 +96,7 @@
 		  "<!-- Anatomy section export image from Figma and import into here -->",
 		  "## Anatomy",
 		  "<Container>",
-		  "  <img width=\"80%\" style={{maxWidth:'250px'}} height=\"auto\" src='/img/design/button/skeleton.png'/>",
+		  "  <img width=\"80%\" style={{maxWidth:'250px'}} height=\"auto\" src='/img/design/button/anatomy.svg'/>",
 		  "</Container>",
 		  "",
 		  "",
