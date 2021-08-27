@@ -1,5 +1,6 @@
 --- 
-title: Buttons 
+title: Button 
+sidebar_position: 4
 ---
 import { Button } from "@washingtonpost/site-components/core/button";
 import { ArrowLeft16 } from "@washingtonpost/site-components/core/icon/arrow-left/16";
@@ -11,7 +12,7 @@ import Section from "../../../documentation-kit/section";
 import Container from "../../../documentation-kit/sampleContainer";
 
 
-# <Header>Title Goes here</Header>
+# <Header>Button</Header>
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">

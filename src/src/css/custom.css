@@ -89,6 +89,9 @@ h2{
 .navbar__toggle{
   color:var(--white);
 }
+.navbar__brand:hover{
+  color:var(--white);
+}
 
 
 
@@ -179,11 +182,16 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 
 
 /* MARKDOWN */
-
+.docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module article *:first-child, .docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module header + *{
+  margin-top: 64px;
+}
 /* Headers */
 div.markdown header h1{
   font-family:var(--font-headline);
   margin-bottom: var(--xs);
+}
+div.markdown header h1 span{
+  margin-top: var(--xs);
 }
 div.markdown h2{
   font-family:var(--font-headline);
@@ -244,8 +252,19 @@ div.markdown ol li{
   align-items: center;
 }
 
+.row-gap{
+  row-gap: var(--sm);
+}
 
-
+.annotation-border{
+  border:1px dashed #94538C ;
+}
+@media screen and (max-width: 966px) {
+.flex_center_sm{
+  align-items: center;
+  justify-content: center;
+}
+}
 
 
 

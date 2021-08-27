@@ -1,0 +1,140 @@
+{
+	"checklist": {
+		"prefix": "component checklist",
+		"body": [
+		  "***",
+		  "## Component Checklist",
+		  "",
+		  "<Checklist",
+		  "accessiblity={true} ",
+		  "states={true}",
+		  "specs={true} ",
+		  "themes={true}",
+		  "options={true}",
+		  "behavior={true}",
+		  "uiComponent={true}",
+		  "screenSize={true}",
+		  "homePage={true}",
+		  "apps={true}",
+		  "keyboard={true}",
+		  "tokens={true}",
+		  "webVitals={true}",
+		  "/>",
+		  ""
+		],
+		"description": "checklist"
+	  },
+	  "Guide": {
+		"prefix": "Guide-Block",
+		"body": [
+		  "<!-- Start of a guide -->",
+		  "<Guide guidance=\"do\">",
+		  "  //Add example to here",
+		  "</Guide>",
+		  "",
+		  "#### Title of Guide ",
+		  "Markdown paragraph.",
+		  "<br/>"
+		],
+		"description": "Guide"
+	  },
+	  "Split-Grid": {
+		"prefix": "Split",
+		"body": [
+		  "<Grid>",
+		  "  <Container className=\"flex-column\">",
+		  "     //Content goes in here",
+		  "  </Container>",
+		  "<div>",
+		  "",
+		  "##### Title",
+		  "Markdown paragraph",
+		  "",
+		  "</div>",
+		  "</Grid>"
+		],
+		"description": "Split-Grid"
+	  },
+	  "Single": {
+		"prefix": "single",
+		"body": [
+		  "  <Container className=\"flex-column pa-sm\">",
+		  "     //Content goes in here",
+		  "  </Container>",
+		  "<div className=\"mt-sm mb-xl\">",
+		  "",
+		  "##### Title",
+		  "Markdown paragraph",
+		  "",
+		  "</div>"
+		],
+		"description": "Single image and text"
+	  },
+	  "documentation-import": {
+		"prefix": "import-kit",
+		"body": [
+		  "import Header from \"../../../documentation-kit/docHead\";",
+		  "import Tabs from \"../../../documentation-kit/tabs\";",
+		  "import Grid from \"../../../documentation-kit/splitGrid\";",
+		  "import Container from \"../../../documentation-kit/sampleContainer\";",
+		  "import Guide from \"../../../documentation-kit/guide\";",
+		  "import Checklist from \"../../../documentation-kit/checklist\";",
+		  ""
+		],
+		"description": "documentation-import"
+	  },
+	  "tab-nav": {
+		"prefix": "tab",
+		"body": [
+		  "<Tabs isDesignDoc={true} relatedUrl=\"dev-docs/uncategorized/button\"/>"
+		],
+		"description": "tab-nav"
+	  },
+	  "anatomy": {
+		"prefix": "anatomy",
+		"body": [
+		  "<!-- Anatomy section export image from Figma and import into here -->",
+		  "## Anatomy",
+		  "<Container>",
+		  "  <img width=\"80%\" style={{maxWidth:'250px'}} height=\"auto\" src='/img/design/button/skeleton.png'/>",
+		  "</Container>",
+		  "",
+		  "",
+		  "#### Legend",
+		  "",
+		  "1. Button text ",
+		  "2. Button theme ",
+		  "3. Icon",
+		  ""
+		],
+		"description": "anatomy"
+	  },
+	  "intro": {
+		"prefix": "intro",
+		"body": [
+		  "--- ",
+		  "title: Title ",
+		  "---",
+		  "import Header from \"../../../documentation-kit/docHead\";",
+		  "import Tabs from \"../../../documentation-kit/tabs\";",
+		  "import Grid from \"../../../documentation-kit/splitGrid\";",
+		  "import Container from \"../../../documentation-kit/sampleContainer\";",
+		  "import Guide from \"../../../documentation-kit/guide\";",
+		  "",
+		  "# <Header>Title</Header>",
+		  "",
+		  "<!-- Description of component -->",
+		  "<p className=\"font-xs font-light font--subhead\">",
+		  "Description will go here",
+		  "</p>",
+		  "",
+		  "",
+		  "<!-- Live Example of component import live component above-->",
+		  "",
+		  "<Container className=\"pa-sm\">",
+		  "//Example of live component",
+		  "</Container>"
+		],
+		"description": "intro"
+	  }
+}

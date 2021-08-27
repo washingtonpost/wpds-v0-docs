@@ -5,21 +5,45 @@
  * and scoped locally.
  */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.grid_landing{
+  display: grid;
+  grid-template-columns: 32px 1fr 1fr 32px;
+  grid-template-areas: '. area_1 area_2 .';
+  max-width: 1440px;
+  margin:0 auto;
+}
+.grid_cards{
+  display: grid;
+  grid-template-columns: 32px 1fr 32px 1fr 32px;
+  grid-template-areas: '. area_1 . area_2 .';
+  max-width: 1440px;
+  margin:0 auto;
+}
+
+.area_1{
+  grid-area: area_1;
+}
+.area_2{
+  grid-area: area_2;
 }
 
 @media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
+  .grid_landing{
+    display: grid;
+    grid-template-columns: 32px 1fr 1fr 32px;
+    grid-template-areas: '. area_1 area_1 .' '. area_2 area_2 .';
+    max-width: 1440px;
+    margin:0 auto;
   }
+  .grid_cards{
+    display: grid;
+    grid-template-columns: 32px 1fr 16px 1fr 32px;
+    grid-template-areas: '. area_1 area_1 area_1 .' '. area_2 area_2 area_2 .';
+    max-width: 1440px;
+    row-gap: 32px;
+    margin:0 auto;
+  }
+
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+

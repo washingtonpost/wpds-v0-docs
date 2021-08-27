@@ -1,11 +1,13 @@
 --- 
-title: Buttons 
+title: Button
+sidebar_position: 4
 ---
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
 
 import { ArrowLeft16 } from "@washingtonpost/site-components/core/icon/arrow-left/16";
 import { ArrowRight16 } from "@washingtonpost/site-components/core/icon/arrow-right/16";
@@ -20,7 +22,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentu
 import { Button } from "@washingtonpost/site-components/core/button";
 import { Input } from "@washingtonpost/site-components/core/input";
 
-<Container>
+<Container className="flex-wrap">
   <Button className="mr-sm"  color="white" >
     Button White
   </Button>
@@ -39,7 +41,7 @@ import { Input } from "@washingtonpost/site-components/core/input";
 <!-- Anatomy section export image from Figma and import into here -->
 ## Anatomy
 <Container>
-  <img width="25%" height="auto" src='/img/design/button/skeleton.png'/>
+  <img width="80%" style={{maxWidth:'250px'}} height="auto" src='/img/design/button/skeleton.png'/>
 </Container>
 
 
@@ -56,7 +58,7 @@ import { Input } from "@washingtonpost/site-components/core/input";
 <!-- Icon placement option -->
 <Grid>
   <Container className="flex-column">
-    <Button className="mb-sm" renderIcon={ArrowLeft16} color="white" iconPlacement="left">
+    <Button renderIcon={ArrowLeft16} color="white" iconPlacement="left">
     Icon can be left
     </Button>
     <Button renderIcon={ArrowRight16} color="white" iconPlacement="right">
@@ -74,13 +76,13 @@ Icon can be used on either left or right to the button text.
 <!-- Button color options -->
 <Grid>
   <Container className="flex-column">
-    <Button className="mb-sm mr-sm" color="white">
+    <Button className="mr-sm" color="white">
     White button
     </Button>
-    <Button className="mb-sm mr-sm" color="offblack">
+    <Button className="mr-sm" color="offblack">
     Offblack button
     </Button>
-    <Button className="mb-sm mr-sm" color="subs-blue">
+    <Button className="mr-sm" color="subs-blue">
     Subs blue
     </Button>
   </Container>
@@ -99,13 +101,13 @@ Note: to see all color themes please see our [storybook](https://react.wpds.prev
 <!-- Button Size options -->
 <Grid>
   <Container className="flex-column">
-    <Button secondLine="w/ Second line" size="large" className="mb-sm mr-sm" color="subs-blue">
+    <Button secondLine="w/ Second line" size="large" className="mr-sm" color="subs-blue">
     Large Button
     </Button>
-    <Button  className="mb-sm mr-sm" color="subs-blue">
+    <Button  className="mr-sm" color="subs-blue">
     Medium button
     </Button>
-    <Button size="small" className="mb-sm mr-sm" color="subs-blue">
+    <Button size="small" className="mr-sm" color="subs-blue">
     Small Button
     </Button>
   </Container>
@@ -120,19 +122,69 @@ Note: Large button should only be used on subscription pages or when there two l
 </div>
 </Grid>
 
+<!-- Button Fullwidth -->
+<Grid>
+  <Container className="flex-column">
+  <div style={{width:'250px'}} className="annotation-border">
+      <Button className="" color="subs-blue">
+    Size defined by text
+    </Button>
+  </div>
+    <div style={{width:'250px'}} className="annotation-border">
+      <Button fullWidth={true} className="" color="subs-blue">
+    Size defined by container
+    </Button>
+  </div>
+  </Container>
+<div>
+
+##### Full Width
+By default the button size is always defined by the text length and the internal padding, but when `fullWidth` toggled to true the size of the button is defined by the size of its container.
+<br/>
+
+Note: Full width is typically used on mobile or where alignment of stacking buttons width is needed. 
+
+</div>
+</Grid>
+
+<!-- Button Logos -->
+import { OlympicsDarkLogo } from "@washingtonpost/site-components/core/logo/olympics-dark"
+import { OlympicsLogo } from "@washingtonpost/site-components/core/logo/olympics"
+import { ElectionsLogo } from "@washingtonpost/site-components/core/logo/elections"
+
+<Grid>
+  <Container className="flex-column">
+    <Button renderLogo={OlympicsDarkLogo} className="" color="offblack">
+      Olympics
+    </Button>  
+    <Button renderLogo={OlympicsLogo}  className="" color="white">
+      Olympics
+    </Button>
+    <Button renderLogo={ElectionsLogo}  className="" color="white">
+      Election
+    </Button>
+  </Container>
+<div>
+
+##### Logos
+Logos are available to be used instead of icons and only be used in the context of the branding of that logo
+ 
+
+</div>
+</Grid>
 
 ***
 ## Behaviors
 <!-- Button color options -->
 <Grid>
   <Container Caption="Hover to see hover state" className="flex-column">
-    <Button className="mb-sm mr-sm" color="white">
+    <Button className="mr-sm" color="white">
     White button
     </Button>
-    <Button className="mb-sm mr-sm" color="offblack">
+    <Button className="mr-sm" color="offblack">
     Offblack button
     </Button>
-    <Button className="mb-sm mr-sm" color="subs-blue">
+    <Button className="mr-sm" color="subs-blue">
     Subs blue
     </Button>
   </Container>
@@ -147,13 +199,13 @@ Button is consistent with our [hover color themes](https://react.wpds.preview.no
 <!-- Button color options -->
 <Grid>
   <Container Caption="Click/Tap to see active state"  className="flex-column">
-    <Button className="mb-sm mr-sm" color="white">
+    <Button className="mr-sm" color="white">
     White button
     </Button>
-    <Button className="mb-sm mr-sm" color="offblack">
+    <Button className="mr-sm" color="offblack">
     Offblack button
     </Button>
-    <Button className="mb-sm mr-sm" color="subs-blue">
+    <Button className="mr-sm" color="subs-blue">
     Subs blue
     </Button>
   </Container>
@@ -168,13 +220,13 @@ Button is consistent with our [active color themes](https://react.wpds.preview.n
 <!-- Button color options -->
 <Grid>
   <Container className="flex-column">
-    <Button className="mb-sm mr-sm" color="disabled">
+    <Button className="mr-sm" color="disabled">
     White button
     </Button>
-    <Button className="mb-sm mr-sm" color="disabled">
+    <Button className="mr-sm" color="disabled">
     Offblack button
     </Button>
-    <Button className="mb-sm mr-sm" color="disabled">
+    <Button className="mr-sm" color="disabled">
     Subs blue
     </Button>
   </Container>
@@ -233,6 +285,22 @@ Always pair the small button when pairing with a smaller ui element that is inli
 Always pair the small button when pairing with a smaller ui element that is inline.
 <br/>
 
+<!-- Start of a guide -->
+<Guide guidance="do">
+  <div className="flex flex-column mr-sm">
+    <Button className="mb-xs" color="offblack">Button Text</Button>
+    <Button className="" color="white">Button Text</Button>
+  </div> 
+  <div className="flex flex-column ">
+    <Button className="mb-xs" size="small" color="offblack">Button Text</Button>
+    <Button size="small" color="white">Button Text</Button>
+  </div> 
+</Guide>
+
+#### Stacking Buttons 
+When stacking buttons use `4px (-xs)` spacing for both medium and small. 
+<br/>
+
 ***
 ## Specs
 
@@ -261,6 +329,27 @@ Button width is dependent on either the fixed padding with the button text or if
 Button width is dependent on either the fixed padding with the button text or if the button is set to the `fullWidth` of the contianer 
 </div>
 </Grid>
+
+
+***
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={true}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>
+
 
 
 <!--stackedit_data:

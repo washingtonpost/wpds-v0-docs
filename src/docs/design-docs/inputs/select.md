@@ -1,5 +1,5 @@
 --- 
-title: Text 
+title: Select 
 ---
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
@@ -7,7 +7,7 @@ import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
 
-# <Header>Text input</Header>
+# <Header>Select input</Header>
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
