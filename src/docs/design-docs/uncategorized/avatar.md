@@ -11,7 +11,7 @@ import Guide from "../../../documentation-kit/guide";
 
 
 
-# <Header>Avatar</Header>
+# Avatar
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">

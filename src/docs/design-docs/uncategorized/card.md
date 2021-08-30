@@ -9,7 +9,7 @@ import Guide from "../../../documentation-kit/guide";
 
 import { Card } from "@washingtonpost/site-components/core/card";
 
-# <Header>Card</Header>
+# Card
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
@@ -22,3 +22,4 @@ Cards are surfaces that display content and actions on a single topic. They shou
 <Container className="pa-sm">
     <Card className="bg-white pa-sm h-60">This is a card</Card>
 </Container>
+

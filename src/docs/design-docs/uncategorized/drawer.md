@@ -19,7 +19,7 @@ import { Button } from "@washingtonpost/site-components/core/button";
 import {useState} from "React";
 
 
-# <Header>Drawer</Header>
+# Drawer
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
@@ -78,7 +78,7 @@ Description will go here
   </Container>
 <div className="mt-sm mb-xl">
 
-##### Title
-Markdown paragraph
+##### Optional close Button icon
+The Drawer can close
 
 </div>

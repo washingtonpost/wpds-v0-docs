@@ -7,7 +7,7 @@ import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
 
-# <Header>Option Pill</Header>
+# Option Pill
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">

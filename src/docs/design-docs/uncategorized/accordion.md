@@ -11,7 +11,7 @@ import Checklist from "../../../documentation-kit/checklist";
 
 import { Accordion } from "@washingtonpost/site-components/core/accordion";
 
-# <Header>Accordion</Header>
+# Accordion
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">

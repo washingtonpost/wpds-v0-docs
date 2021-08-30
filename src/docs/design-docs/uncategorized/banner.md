@@ -13,7 +13,7 @@ import Checklist from "../../../documentation-kit/checklist";
 import { Banner } from "@washingtonpost/site-components/core/banner";
 
 
-# <Header>Banner</Header>
+# Banner
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
