@@ -11,15 +11,21 @@ import Checklist from "../../../documentation-kit/checklist";
 
 
 import { Banner } from "@washingtonpost/site-components/core/banner";
+import {Alert16} from "@washingtonpost/site-components/core/icon/alert/16";
+
 
 
 # Banner
+
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
 A banner is a horizontal rectangle that serves to inform the user with 
 important and relvant information. 
 </p>
+
+
+
 
 
 <!-- Live Example of component import live component above-->
@@ -89,6 +95,22 @@ The dismiss button can be toggled on or off.
 
 </div>
 
+<Container className="flex-column pa-sm">
+    <Banner  color="red" className="w-100">
+    <div className="flex white">
+       <Alert16 className="fill-white mr-xs"/> 
+       <p><span className="white">Breaking news</span></p >    
+      </div>
+     </Banner>
+
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Icons
+Icons can be used to help supplment the message of the banner. 
+
+</div>
+
 ***
 ## Behavior
  
@@ -129,6 +151,7 @@ The active and hover state is only applicable to the [Button icon](../uncategori
 #### Text must meet Accessibility contrast ratio
 When the banner background is changed the color of the text is not automatically changed. So it is the user responsiblity to ensure that contrast requirements meet WCAG 2.0 level AA.
 <br/>
+
 
 ***
 ## Specs

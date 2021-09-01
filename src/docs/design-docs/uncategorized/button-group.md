@@ -13,16 +13,9 @@ import Guide from "../../../documentation-kit/guide";
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentum auctor. Proin viverra, velit mollis commodo semper, nisi nibh placerat nisl, ut blandit erat arcu ac metus. Pellentesque ac dapibus massa, in consequat elit. Praesent mattis risus ipsum, ac suscipit enim bibendum sed. Donec mattis odio sed ultrices tempus. 
+
+New component coming soon. To see our current button group visit our [storybook](https://react.wpds.preview.now.washingtonpost.com/?path=/story/buttongroup--default)
 </p>
 
 
-<!-- Live Example of component import live component above-->
 
-<Container>
-
-</Container>
-
-
-<!-- Tabs between design & implementation change path if -->
-<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/banner"/>

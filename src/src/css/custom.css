@@ -248,7 +248,7 @@ div.markdown ol li{
 .grid-split{
   display: grid;
   grid-template-columns: 50% 50%;
-  column-gap: 32px;
+  column-gap: 16px;
   align-items: center;
 }
 
@@ -263,6 +263,13 @@ div.markdown ol li{
 .flex_center_sm{
   align-items: center;
   justify-content: center;
+}
+.grid-split{
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: 0px;
+  row-gap: 16px;
+  align-items: center;
 }
 }
 

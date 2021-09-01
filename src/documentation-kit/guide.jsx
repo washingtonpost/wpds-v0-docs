@@ -40,6 +40,9 @@ export default function Guide(props) {
                 }
             </div>
                 {props.children}
+            <div className="absolute italic gray-dark center bottom-0">
+                {props.Caption}
+            </div>
         </div>
     )
 }

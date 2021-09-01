@@ -22,7 +22,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentu
 import { Button } from "@washingtonpost/site-components/core/button";
 import { Input } from "@washingtonpost/site-components/core/input";
 
-<Container className="flex-wrap">
+<Container className="flex-wrap pa-xxs">
   <Button className="mr-sm"  color="white" >
     Button White
   </Button>
@@ -92,7 +92,7 @@ Icon can be used on either left or right to the button text.
 Button have various themes that can be used. Each theme have hover, active, and focus states predefined. The most common themes used are Offblack, White, and Subs-Blue
 <br/>
 
-Note: to see all color themes please see our [storybook](https://react.wpds.preview.now.washingtonpost.com/?path=/story/docs-introduction--page)
+Note: to see all color themes please see our [color tokens](../../tokens/our-tokens/color)
 
 </div>
 </Grid>
@@ -191,7 +191,10 @@ Logos are available to be used instead of icons and only be used in the context 
 <div>
 
 ##### Hover
-Button is consistent with our [hover color themes](https://react.wpds.preview.now.washingtonpost.com/?path=/story/tachyons-hover-background-colors--page)
+Button is consistent with our color themes.
+<br/>
+
+Note: to see all color themes please see our [color tokens](../../tokens/our-tokens/color)
 
 </div>
 </Grid>
@@ -212,7 +215,10 @@ Button is consistent with our [hover color themes](https://react.wpds.preview.no
 <div>
 
 ##### Active
-Button is consistent with our [active color themes](https://react.wpds.preview.now.washingtonpost.com/?path=/story/tachyons-hover-background-colors--page)
+Button is consistent with our color themes
+<br/>
+
+Note: to see all color themes please see our [color tokens](../../tokens/our-tokens/color)
 
 </div>
 </Grid>
