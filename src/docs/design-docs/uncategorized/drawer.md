@@ -16,7 +16,6 @@ import {
   DrawerContent
 } from "@washingtonpost/site-components/core/drawer";
 import { Button } from "@washingtonpost/site-components/core/button";
-import {useState} from "React";
 
 
 # Drawer

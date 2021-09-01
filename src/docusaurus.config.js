@@ -40,7 +40,7 @@ module.exports = {
         },
         {
           type: 'doc',
-          docId: 'design-docs/uncategorized/avatar',
+          docId: 'design-docs/uncategorized/accordion',
           position: 'right',
           label: 'Components',
         },
