@@ -12,10 +12,12 @@ import Guide from "../../../documentation-kit/guide";
 # Button Group
 
 <!-- Description of component -->
-<p className="font-xs font-light font--subhead">
+
+<div className="font-xs font-light font--subhead">
 
 New component coming soon. To see our current button group visit our [storybook](https://react.wpds.preview.now.washingtonpost.com/?path=/story/buttongroup--default)
-</p>
+
+</div>
 
 
 

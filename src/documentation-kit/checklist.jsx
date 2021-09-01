@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckItem from './components/checklistItem'
+import Styles from './checklist.module.css'
 export default function checklist(props) {
     const { accessiblity, states, specs, themes, options, behavior, uiComponent, screenSize, homePage, apps, keyboard, tokens, webVitals } = props;
     const CheckListData = {
@@ -60,7 +61,7 @@ export default function checklist(props) {
 
     }
     return (
-        <div className="grid-checklist">
+        <div className={Styles.grid_checklist}>
             <div className="flex flex-column row-gap mr-sm">
                 <CheckItem isDone={accessiblity} title={CheckListData.Accessibility.title} description={CheckListData.Accessibility.description} />
                 <CheckItem isDone={states} title={CheckListData.States.title} description={CheckListData.States.description} />
@@ -78,20 +79,6 @@ export default function checklist(props) {
                 <CheckItem isDone={tokens} title={CheckListData.DesignToken.title} description={CheckListData.DesignToken.description} />
                 <CheckItem isDone={webVitals} title={CheckListData.WebVitals.title} description={CheckListData.WebVitals.description} />
             </div>
-            <style jsx>{`
-            .grid-checklist{
-                display:grid;
-                grid-template-columns:repeat(auto-fit,minmax(300px, 1fr));
-                column-gap:32px;
-            }
-            @media screen and (max-width: 966px) {
-                .grid-checklist{
-                    display:grid;
-                    grid-template-columns:1fr;
-                    column-gap:32px;
-                } 
-            }
-            `}</style>
         </div>
     )
 }

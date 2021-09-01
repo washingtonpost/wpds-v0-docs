@@ -43,6 +43,7 @@ A drawer is a panel that is typically overlaid on top of a page and slides in fr
     </DrawerRoot>
 </Container>
 
+<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/drawer"/>
 
 <!-- Anatomy section export image from Figma and import into here -->
 ## Anatomy
