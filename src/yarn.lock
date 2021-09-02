@@ -2445,10 +2445,10 @@
   resolved "https://registry.yarnpkg.com/@washingtonpost/icon-tokens/-/icon-tokens-0.5.0.tgz#49046c5504e7a7d2a122ead1049d75009934b8b8"
   integrity sha512-I2TathW45vARKKD2p2D6xuOpKeoMxhCyOAXg/HuNH5tMdeB/Cu3t1sPUf+9Drf4G7xEPE4WBDH2SL2ggo/pJpg==
 
-"@washingtonpost/logo-tokens@^1.5.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@washingtonpost/logo-tokens/-/logo-tokens-1.6.0.tgz#dff4e9db79575e0031d2cbb056c240e3ceeeff17"
-  integrity sha512-4qUS0gbeHo3vl88oTDGD4CIhq7qTk340OHRXwUdKTfg87qi97Y12L7YHAC00nTuvpv8IeyBjXfgk18Drj34mcA==
+"@washingtonpost/logo-tokens@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@washingtonpost/logo-tokens/-/logo-tokens-1.4.1.tgz#9da92f61686ec4f8f109bbaa536825534d0804af"
+  integrity sha512-1x1fqyFQMmKopfqDPN7RKtiRULH9jGWkjhNQFQpj7+HbZBk8lWdoe0xaUanmQKFTmbyZR6AFVVl4qYbAd4mJpg==
 
 "@washingtonpost/motion-tokens@^0.2.0":
   version "0.2.0"
@@ -2460,10 +2460,10 @@
   resolved "https://registry.yarnpkg.com/@washingtonpost/shadow-tokens/-/shadow-tokens-0.3.0.tgz#a1cea1110934a835cf35347b64ba7f23a39137e9"
   integrity sha512-biItk+cZ2GjUlWNG7XsDXO5YRFIfLX6RGJ6zLcY9IH1w/G32s0QiUGgvBKqmw9RsLVdFrrduedHte/g7OEw8DA==
 
-"@washingtonpost/site-components@^4.44.0":
-  version "4.44.0"
-  resolved "https://registry.yarnpkg.com/@washingtonpost/site-components/-/site-components-4.44.0.tgz#357566587475bfaf20f98e1d61c22c91d89417fb"
-  integrity sha512-+UlygPoHISZoW7++llTa1gH/3A/ArwSBeDEcQO7nDaoShsjHeTMwAZlPvu1MQG7Rm2FNgB6CCd5jqqJ46CGiBg==
+"@washingtonpost/site-components@^4.40.0":
+  version "4.40.0"
+  resolved "https://registry.yarnpkg.com/@washingtonpost/site-components/-/site-components-4.40.0.tgz#c8cb5cc2484502c1108029057dc386231a06decb"
+  integrity sha512-s/v9S1gqCwLtFbkdCZpEMnFq6uKOyrxWRN+XHuK43IZ/GUQzk3tpT0ELjlYoI7V+nGDD0F8yh/6hsJFaP+7cww==
   dependencies:
     "@accessible/accordion" "^2.0.0"
     "@popperjs/core" "^2.4.4"
@@ -2480,7 +2480,7 @@
     "@types/luxon" "^1.25.0"
     "@washingtonpost/color-tokens" "^0.2.0"
     "@washingtonpost/icon-tokens" "^0.5.0"
-    "@washingtonpost/logo-tokens" "^1.5.0"
+    "@washingtonpost/logo-tokens" "^1.4.1"
     "@washingtonpost/motion-tokens" "^0.2.0"
     "@washingtonpost/shadow-tokens" "^0.3.0"
     "@washingtonpost/spacing-tokens" "^0.2.0"

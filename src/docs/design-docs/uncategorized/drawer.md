@@ -13,8 +13,7 @@ import {
   DrawerTrigger,
   DrawerScrim,
   DrawerClose,
-  DrawerContent,
-  CustomDrawerTrigger
+  DrawerContent
 } from "@washingtonpost/site-components/core/drawer";
 import { Button } from "@washingtonpost/site-components/core/button";
 import {Tooltip} from "@washingtonpost/site-components/core/tooltip";
@@ -265,100 +264,24 @@ Content will overflow in drawer by default both verically and horitzonally.
 ## Usage guidelines
 
 <!-- Start of a guide -->
-<Grid>
-<Guide Caption="Resize screen to see behavior" guidance="do">
+<Guide guidance="do">
 <Tooltip
-        className="dn-m dn-s select-none"
         id="tooltip"
         placement="bottom"
         asPopOver={true}
         content={
-          <div style={{overflowY:'scroll', width:200, height:250}} className="pa-sm">
-             <div className="pa-xs">Item 1</div>
-             <div className="pa-xs">Item 2</div>
-             <div className="pa-xs">Item 3</div>
-             <div className="pa-xs">Item 4</div>
-             <div className="pa-xs">Item 5</div>
-             <div className="pa-xs">Item 6</div>
-             <div className="pa-xs">Item 7</div>
-             <div className="pa-xs">Item 8</div>
-             <div className="pa-xs">Item 9</div>
-             <div className="pa-xs">Item 10</div>
+          <div className="pa-sm">
+             Tooltip content
         </div>
         }
       >
         <a>
-          Popover Menu
+          Popover trigger
         </a>
 </Tooltip>
-    <DrawerRoot>
-        <CustomDrawerTrigger>
-          <a className="select-none dn-l ">Popover Menu</a>
-        </CustomDrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent height={350} className="bg-white relative w-100 offblack">
-       <DrawerClose />
-       <div className="flex flex-column items-center justify-center">
-             <div className="pa-xs">Item 1</div>
-             <div className="pa-xs">Item 2</div>
-             <div className="pa-xs">Item 3</div>
-             <div className="pa-xs">Item 4</div>
-             <div className="pa-xs">Item 5</div>
-             <div className="pa-xs">Item 6</div>
-             <div className="pa-xs">Item 7</div>
-             <div className="pa-xs">Item 8</div>
-             <div className="pa-xs">Item 9</div>
-             <div className="pa-xs">Item 10</div>
-        </div>
-      </DrawerContent>
-    </DrawerRoot>
-</Guide>
-<div>
-
-#### Popover to bottom drawer
-A drawer can be used as a alternative to a [popover](./tooltip) on small screens. This is best when the content can be to overwhelming in a popover.
-<br/>
-</div>
-</Grid>
-
-
-<!-- Start of a guide -->
-<Grid>
-<Guide guidance="don't">
-    <DrawerRoot>
-      <DrawerTrigger>See bad example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-offblack relative w-100 offblack">
-       <DrawerClose />
-       <p><span className="gray-dark">Text should be accessible</span></p>
-      </DrawerContent>
-    </DrawerRoot>
-</Guide>
-<div>
-
-#### Content should be accessible
-Do not combine colors of the drawer where text is not accessbile to the user. Read more about [WCAG accessbile contrast requirements](https://webaim.org/articles/contrast/).
-<br/>
-</div>
-</Grid>
-
-<Grid>
-<Guide guidance="caution">
-    <DrawerRoot>
-    <DrawerTrigger className="mr-sm">See left example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack"  height={900}  position="bottom">
-        <DrawerClose border={false} className="mt-xxl" />
-        <div className="pt-xxl mt-xxl">
-            This drawer is set to 200px height.
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
+  
 </Guide>
 
-#### Avoid using full screen
-Markdown paragraph.
+#### Title of Guide 
+Use a drawer on mobile when instead of a [popover](./tooltip).
 <br/>
-</Grid>
-
-
