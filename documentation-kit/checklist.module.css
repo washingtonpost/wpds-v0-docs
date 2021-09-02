@@ -1,0 +1,12 @@
+.grid_checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 32px;
+}
+@media screen and (max-width: 966px) {
+  .grid_checklist {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 32px;
+  }
+}
