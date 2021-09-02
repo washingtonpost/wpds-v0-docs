@@ -1,0 +1,46 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.grid_landing {
+  display: grid;
+  grid-template-columns: 32px 1fr 1fr 32px;
+  grid-template-areas: ". area_1 area_2 .";
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.grid_cards {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px 1fr 32px;
+  grid-template-areas: ". area_1 . area_2 .";
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.area_1 {
+  grid-area: area_1;
+}
+.area_2 {
+  grid-area: area_2;
+}
+
+@media screen and (max-width: 966px) {
+  .grid_landing {
+    display: grid;
+    grid-template-columns: 32px 1fr 1fr 32px;
+    grid-template-areas: ". area_1 area_1 ." ". area_2 area_2 .";
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .grid_cards {
+    display: grid;
+    grid-template-columns: 32px 1fr 16px 1fr 32px;
+    grid-template-areas: ". area_1 area_1 area_1 ." ". area_2 area_2 area_2 .";
+    max-width: 1440px;
+    row-gap: 32px;
+    margin: 0 auto;
+  }
+}
