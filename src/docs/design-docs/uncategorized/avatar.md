@@ -8,7 +8,7 @@ import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
 
-
+import { Avatar } from "@washingtonpost/site-components/core/avatar"
 
 
 # Avatar
@@ -25,7 +25,12 @@ At The Washington Post we present avatars as  circular photographs which represe
 <!-- Live Example of component import live component above-->
 
 <Container>
-    //Cannot import Avatar component throws error of process not defined
+    
+<Avatar
+  color=""
+  imgUrl="/img/design/avatar/profile.png"
+  size="medium"
+/>
 </Container>
 
 

@@ -271,6 +271,13 @@ div.markdown ol li{
   row-gap: 16px;
   align-items: center;
 }
+.dn-s{
+  display: none;
+}
+}
+
+@media screen and (max-width: 375px) {
+
 }
 
 
