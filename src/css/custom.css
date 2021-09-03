@@ -57,6 +57,15 @@
   --font-sans-serif: Franklin, arial, sans-serif;
 }
 
+[class*="docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"]
+  article
+  *:first-child,
+[class*="docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"]
+  header
+  + * {
+  margin-top: 0px !important;
+}
+
 h2 {
   font-size: var(--md);
 }

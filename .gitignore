@@ -100,3 +100,6 @@ packages/**/.next
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+docs/assets
+docs/*.html
