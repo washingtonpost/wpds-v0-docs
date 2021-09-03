@@ -211,11 +211,13 @@ div.markdown h2 {
   font-family: var(--font-headline);
   margin-bottom: var(--sm);
   margin-top: var(--xs);
+  font-size: var(--lg);
 }
 div.markdown h3 {
   font-family: var(--font-headline);
   margin-bottom: var(--xs);
   margin-top: var(--xs);
+  font-size: var(--md);
 }
 
 div.markdown h4,

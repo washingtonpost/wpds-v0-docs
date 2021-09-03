@@ -6,17 +6,171 @@ import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+
+import {
+  OptionPill,
+  OptionPills
+} from "@washingtonpost/site-components/core/option-pill";
 
 # Option Pill
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
-Description will go here
+An Option Pill can represent an input, attribute, or action. An Option Pill 
+allows users to trigger actions, like links to points of interest. While 
+buttons are expected to appear consistently and with familiar calls to action, 
+Option Pills can appear dynamically, either individually or as a group.
 </p>
 
 
 <!-- Live Example of component import live component above-->
 
 <Container className="pa-sm">
-//Example of live component
+    <OptionPills as="div">
+        <OptionPill href="#politics">Politics</OptionPill>
+        <OptionPill href="#technology">Technology</OptionPill>
+        <OptionPill href="#business">Business</OptionPill>
+    </OptionPills>
 </Container>
+
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/option-pill"/>
+
+<!-- Anatomy section export image from Figma and import into here -->
+## Anatomy
+<Container>
+  <img width="80%" style={{maxWidth:'250px'}} height="auto" src='/img/design/option-pill/anatomy.png'/>
+</Container>
+
+
+#### Legend
+
+1. Background 
+2. Border
+3. Text
+
+***
+## Behaviors
+
+<Grid>
+  <Container Caption="Click or tap" className="flex-column">
+       <OptionPill href="#business">Business</OptionPill>
+  </Container>
+<div>
+
+##### Active
+When a option pill is selected it is active until unselected.
+
+</div>
+</Grid>
+
+
+***
+## Usage guidelines
+
+<!-- Start of a guide -->
+<Guide guidance="don't">
+      <OptionPills as="div">
+        <OptionPill href="#signup">Sign up</OptionPill>
+        <OptionPill href="#subscribe">Subscribe</OptionPill>
+        <OptionPill href="#login">Login</OptionPill>
+    </OptionPills>
+</Guide>
+
+#### Option pills are not buttons 
+Option pills should only be used to present a set of options. In the example all
+pills are in fact user options they represent user actions that are not related. The actions 
+should be related such as a links to stories, categories, or filters.
+<br/>
+
+<!-- Start of a guide -->
+<Guide className="pa-sm" guidance="do">
+<OptionPills as="ul" className="pl-0 ma-0">
+  <li>
+    <OptionPill href="#boop1">Option pill</OptionPill>
+  </li>
+  <li>
+    <OptionPill href="#boop2">Option pill</OptionPill>
+  </li>
+    <li>
+    <OptionPill href="#boop1">Option pill</OptionPill>
+  </li>
+  <li>
+    <OptionPill href="#boop2">Option pill</OptionPill>
+  </li>
+    <li>
+    <OptionPill href="#boop1">Option pill</OptionPill>
+  </li>
+  <li>
+    <OptionPill href="#boop2">Option pill</OptionPill>
+  </li>
+    <li>
+    <OptionPill href="#boop1">Option pill</OptionPill>
+  </li>
+  <li>
+    <OptionPill href="#boop2">Option pill</OptionPill>
+  </li>
+  <li>
+    <OptionPill href="#boop1">Option pill</OptionPill>
+  </li>
+  <li>
+    <OptionPill href="#boop2">Option pill</OptionPill>
+  </li>
+    <li>
+    <OptionPill href="#boop1">Option pill</OptionPill>
+  </li>
+</OptionPills>
+</Guide>
+
+#### Wrap when needed
+By default option pills do not wrap when grouped. When approriate and all options need to be 
+in view have the option pills wrap. 
+<br/>
+
+***
+## Specs
+
+<Grid>
+  <Container Caption="images not to scale" className="flex-column">
+    <img width="50%" src="/img/design/option-pill/size.png"/>
+  </Container>
+<div>
+
+##### Size
+Pill will take the width of the text content and not wrap the text. The height
+is a fixed height of `34px`.
+
+</div>
+</Grid>
+
+<Grid>
+  <Container Caption="images not to scale" className="flex-column">
+     <img width="50%" src="/img/design/option-pill/spacing.png"/>
+  </Container>
+<div>
+
+##### Spacing
+Text within the option pill is vertically aligned with `24px` left and right.
+
+</div>
+</Grid>
+
+***
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={true}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>

@@ -6,6 +6,9 @@ import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+
 
 import { Card } from "@washingtonpost/site-components/core/card";
 
@@ -23,7 +26,7 @@ Cards are surfaces that display content and actions on a single topic. They shou
     <Card className="bg-white pa-sm h-60">This is a card</Card>
 </Container>
 
-<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/card"/>
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/card"/>
 
 <!-- Anatomy section export image from Figma and import into here -->
 ## Anatomy
@@ -36,5 +39,71 @@ Cards are surfaces that display content and actions on a single topic. They shou
 
 1. Card container 
 2. Card border
-3. [Card shadow](../../tokens/our-tokens/shadow)
+3. [Card shadow](../../tokens/our-tokens/shadows)
 
+***
+## Usage guidelines
+<div className="flex w-100 mb-0">
+  <Guide className="w-100 b br bc-gray-light" guidance="don't">
+    <Container className="flex-column pa-sm">
+      <div>
+        <Card style={{width:200}} className="bg-white pa-xs overflow-hidden">
+          <img src="https://picsum.photos/200/150"/>
+          <h6 className="pb-0 font--headline font-md">Card Title</h6>
+          <p className="pt-0">Simple paragraph about this picture.</p>
+        </Card>
+      </div>
+    </Container>
+  </Guide>
+  <Guide className="w-100" guidance="do">
+    <Container className="flex-column pa-sm">
+      <div>
+        <Card style={{width:200}} className="bg-white overflow-hidden">
+          <img src="https://picsum.photos/200/150"/>
+          <h6 className="pb-0 pl-xs pr-xs font--headline font-md">Card Title</h6>
+          <p className="pb-sm pl-xs pr-xs">Simple paragraph about this picture.</p>
+        </Card>
+      </div>
+    </Container>
+  </Guide>
+</div>
+<div className="mt-sm mb-xl">
+
+##### Use padding for text content
+When using the card component text content should have padding and the image should 
+be full bleed to the container. 
+
+</div>
+
+***
+## Specs
+  <Container className="flex-column pa-sm">
+     <img src="/img/design/card/size.svg"/>
+  </Container>
+<div className="mt-sm mb-xl">
+
+##### Size
+Card will take up the content width and height or can be set to take on the container
+full width and height. 
+
+</div>
+
+
+***
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={true}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>
