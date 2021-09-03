@@ -1,0 +1,77 @@
+--- 
+title: Drawer 
+---
+import Header from "../../../documentation-kit/docHead";
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+
+import {
+  DrawerRoot,
+  DrawerTrigger,
+  DrawerScrim,
+  DrawerClose,
+  DrawerContent,
+  CustomDrawerTrigger
+} from "@washingtonpost/site-components/core/drawer";
+import { Button } from "@washingtonpost/site-components/core/button";
+import {Tooltip} from "@washingtonpost/site-components/core/tooltip";
+
+# Drawer
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+A drawer is a panel that is typically overlaid on top of a page and slides in from off-canvas (tied to a side of screen). It contains a set of information or actions. Since the user can interact with the Drawer without leaving the current page, tasks can be achieved more efficiently within the same context
+</p>
+
+
+<!-- Live Example of component import live component above-->
+
+<Container className="pa-sm">
+    <DrawerRoot
+      onOpenChange={open => {
+        console.log(open, "onOpenChange");
+      }}
+    >
+      <DrawerTrigger>Open The Drawer</DrawerTrigger>
+      <DrawerScrim />
+      <DrawerContent className="bg-white offblack">
+        <DrawerClose />
+        Your Drawer Content
+      </DrawerContent>
+    </DrawerRoot>
+</Container>
+
+<Tabs isDesignDoc={false} relatedUrl="design/uncategorized/drawer"/>
+
+
+## Code Example
+
+```jsx
+import {
+  DrawerRoot,
+  DrawerTrigger,
+  DrawerScrim,
+  DrawerClose,
+  DrawerContent
+} from "@washingtonpost/site-components/core/drawer";
+
+function MyLandingPage() {
+  return (
+    <DrawerRoot
+      onOpenChange={open => {
+        console.log(open, "onOpenChange");
+      }}
+    >
+      <DrawerTrigger>Open The Drawer</DrawerTrigger>
+      <DrawerScrim />
+      <DrawerContent className="bg-white offblack">
+        <DrawerClose />
+        Your Drawer Content
+      </DrawerContent>
+    </DrawerRoot>
+  );
+}
+```

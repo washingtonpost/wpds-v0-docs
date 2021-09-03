@@ -43,15 +43,33 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentu
 <!-- Tabs between design & implementation change path if -->
 <Tabs relatedUrl="design/uncategorized/accordion"/>
 
-## Description
-
-An accordion allows users to toggle the display of sections of content. Our accordion accepts an array of objects.
+<Container className="pa-sm">
+  <div className="bg-white">
+      <Accordion
+      className="w-100"
+      data={[
+        {
+          heading: "Which states are re-opening?",
+          children: (
+            <div>
+              The virus continues to accelerate in pockets of more rural areas,
+              and public health officials fear new surges as states loosen
+              restrictions after ges as states loosen restrictions after weeks
+              of near-total sheltering in place.
+            </div>
+          )
+        }
+      ]}
+    />
+    </div>
+</Container>
 
 ```jsx
 import { Accordion } from "@washingtonpost/site-components/core/accordion";
 
 export default function MyLandingPage() {
   return (
+    <div className="bg-white">
     <Accordion
       data={[
         {
@@ -67,5 +85,6 @@ export default function MyLandingPage() {
         }
       ]}
     />
+    </div>
   );
 ```

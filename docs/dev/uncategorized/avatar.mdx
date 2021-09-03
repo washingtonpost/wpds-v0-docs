@@ -1,5 +1,5 @@
---- 
-title: Avatar 
+---
+title: Avatar
 sidebar_position: 2
 ---
 import Header from "../../../documentation-kit/docHead";
@@ -7,22 +7,176 @@ import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner"
 
+import { Avatar, AvatarGroup } from "@washingtonpost/site-components/core/avatar"
 
-# <Header>Avatar</Header>
+# Avatar
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentum auctor. Proin viverra, velit mollis commodo semper, nisi nibh placerat nisl, ut blandit erat arcu ac metus. Pellentesque ac dapibus massa, in consequat elit. Praesent mattis risus ipsum, ac suscipit enim bibendum sed. Donec mattis odio sed ultrices tempus. 
+An avatar is a image which represents a person. At The Washington Post we 
+present avatars as  circular photographs which represent individual contributors 
+such as reporters and columnists.
 </p>
-
 
 <!-- Live Example of component import live component above-->
 
-<Container>
-
+<Container Caption="Image of sully">
+   <Avatar imgUrl="/img/design/avatar/profile.png"/>
 </Container>
 
-
 <!-- Tabs between design & implementation change path if -->
-<Tabs relatedUrl="design/uncategorized/avatar"/>
+<Tabs isDesignDoc={false} relatedUrl="design/uncategorized/avatar"/>
+
+## Options
+
+### Sizes
+<Container className="flex-wrap pa-sm">
+    <Avatar size="small" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="medium" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="large" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+</Container>
+
+```jsx
+
+import { Avatar } from "@washingtonpost/site-components/core/avatar"
+
+export const YourComponent = () => {
+    return (
+    <Avatar size="small" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="medium" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="large" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+  );
+}
+```
+### Avatar Groups
+To represent multiple individuals, Medium, Small, and Extra Small avatars can be shown in groupings.
+
+#### Sizes
+- Medium, Article page bylines
+- small, Homepage bylines, nav bar
+
+<Container>
+    <AvatarGroup size="medium">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+
+```jsx
+
+import { Avatar } from "@washingtonpost/site-components/core/avatar"
+
+export const YourComponent = () => {
+    return (
+    <AvatarGroup size="medium">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+  );
+}
+```
+
+### Show all
+<Container>
+    <AvatarGroup showAll={true} size="medium">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+
+```jsx
+
+import { Avatar } from "@washingtonpost/site-components/core/avatar"
+
+export const YourComponent = () => {
+    return (
+    <AvatarGroup showAll={true} size="medium">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+  );
+}
+```
+
+### Small group
+<Container>
+    <AvatarGroup size="small">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+
+```jsx
+
+import { Avatar } from "@washingtonpost/site-components/core/avatar"
+
+export const YourComponent = () => {
+    return (
+    <AvatarGroup size="small">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+  );
+}
+```
+
+
+### Medium group
+<Container>
+    <AvatarGroup size="medium">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+
+```jsx
+
+import { Avatar } from "@washingtonpost/site-components/core/avatar"
+
+export const YourComponent = () => {
+    return (
+    <AvatarGroup size="medium">
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+  );
+}
+```
+
+
+
