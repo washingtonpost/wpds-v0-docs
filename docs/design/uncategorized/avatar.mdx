@@ -2,28 +2,204 @@
 title: Avatar
 sidebar_position: 2
 ---
-
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner"
+
+import { Avatar, AvatarGroup } from "@washingtonpost/site-components/core/avatar"
 
 # Avatar
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
-An avatar is a image which represents a person. 
-<br/>
-<br/>
-At The Washington Post we present avatars as  circular photographs which represent individual contributors such as reporters and columnists.
+An avatar is a image which represents a person. At The Washington Post we 
+present avatars as  circular photographs which represent individual contributors 
+such as reporters and columnists.
 </p>
 
 <!-- Live Example of component import live component above-->
 
-<Container>
-    //Cannot import Avatar component throws error of process not defined
+<Container Caption="Image of sully">
+   <Avatar imgUrl="/img/design/avatar/profile.png"/>
 </Container>
 
 <!-- Tabs between design & implementation change path if -->
 <Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/avatar"/>
+
+<!-- Anatomy section export image from Figma and import into here -->
+## Anatomy
+<Container>
+  <img width="100%" style={{maxWidth:'60px'}} height="auto" src='/img/design/avatar/anatomy.svg'/>
+</Container>
+
+
+#### Legend
+
+1. Image container
+
+***
+## Options
+
+<Grid>
+<Container className="flex-wrap pa-sm">
+    <Avatar size="small" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="medium" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="large" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Sizes
+There are three sizes available for the avatar `small` `medium` & `large`.
+
+</div>
+</Grid>
+<Grid>
+<Container className="flex-column pa-sm">
+    <AvatarGroup size="medium">
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+    <AvatarGroup size="small">
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Group sizing
+`medium` & `small` avatars may be grouped. When the number of avatars exceeds three, the remaining ones may be truncated and hidden from view. 
+The truncated avatars are represented by a plus sign followed by the quantity. 
+
+</div>
+</Grid>
+
+<Container className="flex-column pa-sm">
+    <AvatarGroup showAll={false} size="medium">
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+    <AvatarGroup showAll={true} className="flex-wrap" size="medium">
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Show All
+When avatars are in a group the option to show all can be toggled to reveal all avatars in group.
+
+</div>
+
+<!-- ***
+## Behavior
+
+<Grid>
+  <Container className="flex-column pa-sm">
+      <AlertBanner type="warning">Skeleton Behavior in the works</AlertBanner>
+
+  </Container>
+<div>
+
+##### Title
+Markdown paragraph
+
+</div>
+</Grid> -->
+
+***
+## Usage guidelines
+
+<!-- Start of a guide -->
+<Grid>
+<Guide guidance="don't">
+  <Avatar size="large" imgUrl="/img/design/avatar/badprofile.png"/>
+</Guide>
+<div>
+
+#### Improper aspect ratio
+The image in the avatar needs a 1:1 aspect ratio to properly round out.When using the wrong 
+aspect ratio the avatar shape comes out wrong.
+<br/>
+</div>
+</Grid>
+
+<Grid>
+<Guide guidance="don't">
+  <Avatar size="large" imgUrl="/img/design/avatar/squarebad.png"/>
+</Guide>
+<div>
+
+#### Must be a single profile
+The avatar should not be used to display a photo that has more than one subject. 
+<br/>
+</div>
+</Grid>
+
+
+***
+## Specs
+
+<Container Caption="measured in pixel" className="flex-column pa-sm">
+     <img src="/img/design/avatar/specs.svg"/>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Size
+1. Extra Large - 180px
+2. Large - 92px
+3. Medium - 56px
+4. Small - 32px
+
+</div>
+
+<Container Caption="measured in pixel" className="flex-column pa-sm">
+     <img src="/img/design/avatar/spacing.svg"/>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Size
+Spacing between group avatars depends on the size of the group. 
+`Medium avatars: 8px` & `Small avatars: 4px`
+
+</div>
+
+
+***
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={true}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>
+

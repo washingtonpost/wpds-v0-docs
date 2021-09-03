@@ -163,6 +163,16 @@ li ul.menu__list li a {
   font-size: 16px;
 }
 
+.navbar-sidebar{
+  background-color: var(--offwhite);
+}
+.navbar-sidebar__brand{
+  background-color: var(--subs-blue);
+}
+.navbar-sidebar__brand button svg{
+  fill:var(--gray-light);
+}
+
 /* CODE */
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
@@ -260,10 +270,16 @@ div.markdown ol li {
 .annotation-border {
   border: 1px dashed #94538c;
 }
+.dn-sm{
+  display: inherit;
+}
 @media screen and (max-width: 966px) {
   .flex_center_sm {
     align-items: center;
     justify-content: center;
+  }
+  .dn-sm{
+    display: none;
   }
   .grid-split {
     display: grid;

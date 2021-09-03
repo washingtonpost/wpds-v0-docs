@@ -3,24 +3,29 @@ title: Button
 sidebar_position: 4
 ---
 
-import { Button } from "@washingtonpost/site-components/core/button";
+import Header from "../../../documentation-kit/docHead";
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+
 import { ArrowLeft16 } from "@washingtonpost/site-components/core/icon/arrow-left/16";
 import { ArrowRight16 } from "@washingtonpost/site-components/core/icon/arrow-right/16";
 
-import Header from "../../../documentation-kit/docHead";
-import Tabs from "../../../documentation-kit/tabs";
-import Section from "../../../documentation-kit/section";
-import Container from "../../../documentation-kit/sampleContainer";
-
-# <Header>Button</Header>
+# Buttons
 
 <!-- Description of component -->
-<p className="font-xs font-light font--subhead">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentum auctor. Proin viverra, velit mollis commodo semper, nisi nibh placerat nisl, ut blandit erat arcu ac metus. Pellentesque ac dapibus massa, in consequat elit. Praesent mattis risus ipsum, ac suscipit enim bibendum sed. Donec mattis odio sed ultrices tempus. 
-</p>
 
-<!-- Live Example of component -->
-<Container>
+Buttons allow users to perform an action with a single tap. 
+Buttons also serve as way for a call to action. 
+
+<!-- Live Example of component import live component above-->
+
+import { Button } from "@washingtonpost/site-components/core/button";
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<Container className="flex-wrap pa-xxs">
   <Button className="mr-sm"  color="white" >
     Button White
   </Button>

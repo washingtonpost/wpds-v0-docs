@@ -79,6 +79,7 @@
       "import Container from \"../../../documentation-kit/sampleContainer\";",
       "import Guide from \"../../../documentation-kit/guide\";",
       "import Checklist from \"../../../documentation-kit/checklist\";",
+      "import AlertBanner from \"../../../documentation-kit/alertBanner\";",
       ""
     ],
     "description": "documentation-import"
