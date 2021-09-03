@@ -1,12 +1,12 @@
---- 
-title: Drawer 
 ---
+title: Drawer
+---
+
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
-
 
 import {
   DrawerRoot,
@@ -16,41 +16,50 @@ import {
   DrawerContent
 } from "@washingtonpost/site-components/core/drawer";
 import { Button } from "@washingtonpost/site-components/core/button";
-import {Tooltip} from "@washingtonpost/site-components/core/tooltip";
+import { Tooltip } from "@washingtonpost/site-components/core/tooltip";
 
 # Drawer
 
 <!-- Description of component -->
-<p className="font-xs font-light font--subhead">
-A drawer is a panel that is typically overlaid on top of a page and slides in from off-canvas (tied to a side of screen). It contains a set of information or actions. Since the user can interact with the Drawer without leaving the current page, tasks can be achieved more efficiently within the same context
-</p>
 
+<p className="font-xs font-light font--subhead">
+  A drawer is a panel that is typically overlaid on top of a page and slides in
+  from off-canvas (tied to a side of screen). It contains a set of information
+  or actions. Since the user can interact with the Drawer without leaving the
+  current page, tasks can be achieved more efficiently within the same context
+</p>
 
 <!-- Live Example of component import live component above-->
 
 <Container className="pa-sm">
-    <DrawerRoot
-      onOpenChange={open => {
-        console.log(open, "onOpenChange");
-      }}
-    >
-      <DrawerTrigger>Open The Drawer</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack">
-        <DrawerClose />
-        Your Drawer Content
-      </DrawerContent>
-    </DrawerRoot>
+  <DrawerRoot
+    onOpenChange={open => {
+      console.log(open, "onOpenChange");
+    }}
+  >
+    <DrawerTrigger>Open The Drawer</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack">
+      <DrawerClose />
+      Your Drawer Content
+    </DrawerContent>
+  </DrawerRoot>
 </Container>
 
-<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/drawer"/>
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/drawer" />
 
 <!-- Anatomy section export image from Figma and import into here -->
-## Anatomy
-<Container>
-  <img width="80%" style={{maxWidth:'5000px'}} height="auto" src='/img/design/drawer/anatomy.svg'/>
-</Container>
 
+## Anatomy
+
+<Container>
+  <img
+    width="80%"
+    style={{ maxWidth: "5000px" }}
+    height="auto"
+    src="/img/design/drawer/anatomy.svg"
+  />
+</Container>
 
 #### Legend
 
@@ -58,7 +67,8 @@ A drawer is a panel that is typically overlaid on top of a page and slides in fr
 2. [Button icon](../uncategorized/button-icon)
 3. Scrim
 
-***
+---
+
 ## Options
 
 <Grid>
@@ -104,7 +114,9 @@ A drawer is a panel that is typically overlaid on top of a page and slides in fr
 <div className="mt-sm mb-xl">
 
 ##### Positions
-The scrim color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color) 
+
+The scrim color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color)
+
 </div>
 </Grid>
 
@@ -121,6 +133,7 @@ The scrim color can be changed by defining the color using one of our background
 <div className="mt-sm mb-xl">
 
 ##### Optional Close
+
 The drawer close button icon can be optional.
 
 </div>
@@ -139,6 +152,7 @@ The drawer close button icon can be optional.
 <div className="mt-sm mb-xl">
 
 ##### Optional Scrim
+
 The scrim is optional when using the drawer. Should note that without a scrim it is reccomended to have a close button to ensure users can close the drawer if that is desired.
 
 </div>
@@ -158,7 +172,9 @@ The scrim is optional when using the drawer. Should note that without a scrim it
 <div className="mt-sm mb-xl">
 
 ##### Optional Scrim color
-The scrim color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color) 
+
+The scrim color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color)
+
 </div>
 </Grid>
 
@@ -180,11 +196,14 @@ The scrim color can be changed by defining the color using one of our background
 <div className="mt-sm mb-xl">
 
 ##### Drawer color
-The drawer color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color). 
+
+The drawer color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color).
+
 </div>
 </Grid>
 
 <!-- Size -->
+
 <Grid>
   <Container className="flex-column">
   <DrawerRoot>
@@ -209,12 +228,14 @@ The drawer color can be changed by defining the color using one of our backgroun
 <div>
 
 ##### Height and Width
+
 Drawer width and height can be defined. Height can be defined if the position is `top` or `bottom` and width can be defined if the position is `right` or `left`.
 
 </div>
 </Grid>
 
-***
+---
+
 ## Behavior
 
 <Grid>
@@ -231,10 +252,12 @@ Drawer width and height can be defined. Height can be defined if the position is
 <div>
 
 ##### Closing
-When the close button icon is rendered the drawer can be closed by either clicking the scrim or the close button. 
-<br/>
 
-Note: The drawer can be set to open and will remain open even if the scrim is clicked on. 
+When the close button icon is rendered the drawer can be closed by either clicking the scrim or the close button.
+
+<br />
+
+Note: The drawer can be set to open and will remain open even if the scrim is clicked on.
 
 </div>
 </Grid>
@@ -255,33 +278,31 @@ Note: The drawer can be set to open and will remain open even if the scrim is cl
 <div>
 
 ##### Content overflow
-Content will overflow in drawer by default both verically and horitzonally. 
+
+Content will overflow in drawer by default both verically and horitzonally.
 
 </div>
 </Grid>
 
-***
+---
+
 ## Usage guidelines
 
 <!-- Start of a guide -->
+
 <Guide guidance="do">
-<Tooltip
-        id="tooltip"
-        placement="bottom"
-        asPopOver={true}
-        content={
-          <div className="pa-sm">
-             Tooltip content
-        </div>
-        }
-      >
-        <a>
-          Popover trigger
-        </a>
-</Tooltip>
-  
+  <Tooltip
+    id="tooltip"
+    placement="bottom"
+    asPopOver={true}
+    content={<div className="pa-sm">Tooltip content</div>}
+  >
+    <a>Popover trigger</a>
+  </Tooltip>
 </Guide>
 
-#### Title of Guide 
+#### Title of Guide
+
 Use a drawer on mobile when instead of a [popover](./tooltip).
-<br/>
+
+<br />

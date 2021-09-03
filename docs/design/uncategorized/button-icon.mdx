@@ -1,14 +1,14 @@
---- 
+---
 title: Button Icon
 sidebar_position: 5
 ---
+
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
 import Checklist from "../../../documentation-kit/checklist";
-
 
 import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
 import { Button } from "@washingtonpost/site-components/core/button";
@@ -19,14 +19,12 @@ import { Play16 } from "@washingtonpost/site-components/core/icon/play/16";
 import { Add24 } from "@washingtonpost/site-components/core/icon/add/24";
 import { ExternalLink16 } from "@washingtonpost/site-components/core/icon/external-link/16";
 
-
 # Button Icon
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
 A button icon is a circular button that contains only an icon. The interaction with a button icon is defined by its icon and its surrounding context, not within button text. The color system for a button icon is the same as the button component with a few exceptions. 
 </p>
-
 
 <!-- Live Example of component import live component above-->
 
@@ -47,16 +45,16 @@ A button icon is a circular button that contains only an icon. The interaction w
 />
 </Container>
 
-
 <!-- Tabs between design & implementation change path if -->
-<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/banner"/>
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/banner"/>
 
 <!-- Anatomy section export image from Figma and import into here -->
+
 ## Anatomy
+
 <Container>
   <img width="60%" style={{maxWidth:'200px'}} height="auto" src='/img/design/button-icon/anatomy.svg'/>
 </Container>
-
 
 #### Legend
 
@@ -64,7 +62,8 @@ A button icon is a circular button that contains only an icon. The interaction w
 2. Background fill
 3. [Icon](../../tokens/our-tokens/icons)
 
-***
+---
+
 ## Options
 
 <Grid>
@@ -88,6 +87,7 @@ A button icon is a circular button that contains only an icon. The interaction w
 <div>
 
 ##### Sizing
+
 Button icons come in two sizes: `small` and `default`.
 
 </div>
@@ -123,7 +123,9 @@ Button icons come in two sizes: `small` and `default`.
 <div>
 
 ##### Icon size
-All [icon sizes](../../tokens/our-tokens/icons) supported in the button icon.  
+
+All [icon sizes](../../tokens/our-tokens/icons) supported in the button icon.
+
 </div>
 </Grid>
 
@@ -149,6 +151,7 @@ All [icon sizes](../../tokens/our-tokens/icons) supported in the button icon.
 <div>
 
 ##### Border
+
 Button borders can be toggled on or off.
 
 </div>
@@ -202,6 +205,7 @@ Button borders can be toggled on or off.
 <div className="mt-sm mb-xl">
 
 ##### Color
+
 Button icons follow the same color schemes as our [buttons](./button). To see all color themes see our [color tokens](../../tokens/our-tokens/color).
 
 </div>
@@ -236,13 +240,16 @@ Button icons follow the same color schemes as our [buttons](./button). To see al
 <div className="mt-sm mb-xl">
 
 ##### Icon
+
 Any icon supported in our [Icon tokens](../../tokens/our-tokens/icons) can be used.
 
 </div>
 </Grid>
 
-***
+---
+
 ## Behaviors
+
 <!-- Hover & active -->
 <Grid>
 <Container className="pa-sm flex-wrap">
@@ -291,6 +298,7 @@ Any icon supported in our [Icon tokens](../../tokens/our-tokens/icons) can be us
 <div className="mt-sm mb-xl">
 
 ##### Hover Active & Default
+
 Button icons follow the same color theme logic as our as our [buttons](./button).
 <br/>
 
@@ -347,12 +355,14 @@ Note: to see all color themes please see our [color tokens](../../tokens/our-tok
 <div className="mt-sm mb-xl">
 
 ##### Tab behavior
-Button icons can be tab through using the keyboard. 
+
+Button icons can be tab through using the keyboard.
 
 </div>
 </Grid>
 
-***
+---
+
 ## Usage guidelines
 
 <!-- Start of a guide -->
@@ -380,6 +390,7 @@ Button icons can be tab through using the keyboard.
 </Grid>
 
 #### Avoid pairing large icon in small button icon
+
 While the button icon accepts supported icon sizes large icons do not work with button icons
 <br/>
 
@@ -405,6 +416,7 @@ While the button icon accepts supported icon sizes large icons do not work with 
 </Grid>
 
 #### Ambiguous icons
+
 Do not use icons in buttno icons that leave the user unsure of its action. The button icon should be clear and actionable otherwise a standard [button](./button) should be used.+
 <br/>
 
@@ -414,12 +426,13 @@ Do not use icons in buttno icons that leave the user unsure of its action. The b
 </Guide>
 
 #### Spacing for a group of button icons
+
 When a group button icons are needed spacing between should use 8px spacing.
 <br/>
 
-***
-## Specs
+---
 
+## Specs
 
   <Container className="flex-column">
      <img width="60%" src="/img/design/button-icon/specs.svg"/>
@@ -427,11 +440,13 @@ When a group button icons are needed spacing between should use 8px spacing.
 <div className="mt-sm mb-xl">
 
 ##### Size
+
 Size of `small` button icon is 32px to meet the minimal tap target. The `medium` is 40px. Icon is aligned vertically and horizontally center.
+
 </div>
 
+---
 
-***
 ## Component Checklist
 
 <Checklist

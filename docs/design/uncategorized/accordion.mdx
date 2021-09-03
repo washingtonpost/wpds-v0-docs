@@ -1,7 +1,8 @@
---- 
-title: Accordion 
+---
+title: Accordion
 sidebar_position: 1
 ---
+
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
@@ -17,7 +18,6 @@ import { Accordion } from "@washingtonpost/site-components/core/accordion";
 <p className="font-xs font-light font--subhead">
 An accordion is a container that contains a header and a body that is revealed/hidden when toggled. When more than one accordion is used it stacks vertically with no spacing between.
 </p>
-
 
 <!-- Live Example of component import live component above-->
 
@@ -41,28 +41,26 @@ An accordion is a container that contains a header and a body that is revealed/h
     </div>
 </Container>
 
-
 <!-- Tabs between design & implementation change path if -->
-<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/accordion"/>
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/accordion"/>
 
 <!-- Anatomy section export image from Figma and import into here -->
+
 ## Anatomy
+
 <Container Caption="Note: Accordion has no background color">
   <img width="80%" style={{maxWidth:'500px'}} height="auto" src='/img/design/accordion/anatomy.svg'/>
 </Container>
 
-
 #### Legend
 
-
-1. Border 
+1. Border
 2. Accordion heading
 3. Accordion body
 4. Chevron Icon
 
+---
 
-
-***
 ## Options
 
 <!-- Default open -->
@@ -102,10 +100,13 @@ An accordion is a container that contains a header and a body that is revealed/h
 <div className="mb-xl">
 
 ##### Default Open
+
 The accordion can be open by default.
+
 </div>
 
-***
+---
+
 ## Behavior
 
 <!-- One can be open at a time -->
@@ -144,9 +145,10 @@ The accordion can be open by default.
 <div className="mb-lg">
 
 ##### Opening
-The accordion can only have one item open at a time.
-</div>
 
+The accordion can only have one item open at a time.
+
+</div>
 
 <!-- Keyboard -->
   <Container className="flex-column pa-sm mb-sm">
@@ -184,11 +186,13 @@ The accordion can only have one item open at a time.
 <div className="mb-lg">
 
 ##### Keyboard Interactions
+
 The accordion can be tabbed through and use return/enter to open or close the accordion.
+
 </div>
 
+---
 
-***
 ## Usage Guidelines
 
 <!-- Start of a guide -->
@@ -209,7 +213,8 @@ The accordion can be tabbed through and use return/enter to open or close the ac
     </div>
 </Guide>
 
-#### Avoid splitting content 
+#### Avoid splitting content
+
 The header of the accordion should be a complete sentence or statement. It should never continue inside of the body of the accordion.
 <br/>
 
@@ -231,11 +236,13 @@ The header of the accordion should be a complete sentence or statement. It shoul
     </div>
 </Guide>
 
-####  Container should be bigger than headline
+#### Container should be bigger than headline
+
 When possible the container of the headline should be bigger to avoid it getting to close to the chevron. This can be avoided with enough container space or really short and concise headlines.
 <br/>
 
-***
+---
+
 ## Specs
 
 <!-- Specs -->
@@ -245,6 +252,7 @@ When possible the container of the headline should be bigger to avoid it getting
 <div className="mt-sm">
 
 ##### Size
+
 The accordion will take up the width of the container and the height of the content with the header.
 
 </div>
@@ -256,10 +264,13 @@ The accordion will take up the width of the container and the height of the cont
 <div className="mt-sm">
 
 ##### Spacing
-The accordion has no left or right spacing but has fixed spacing between header, and the body. The body also has a `16px` bottom padding. 
+
+The accordion has no left or right spacing but has fixed spacing between header, and the body. The body also has a `16px` bottom padding.
+
 </div>
 
-***
+---
+
 ## Component Checklist
 
 <Checklist

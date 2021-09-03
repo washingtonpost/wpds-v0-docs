@@ -5,7 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 module.exports = {
   title: "WPDS",
   tagline: "Dinosaurs are cool",
-  url: "https://didactic-meme-9c9cdb23.pages.github.io",
+  url: "https://wpds-docs.preview.now.washingtonpost.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -28,7 +28,7 @@ module.exports = {
       items: [
         {
           type: "doc",
-          docId: "getting-started/getting-started",
+          docId: "getting-started",
           position: "right",
           label: "Getting Started"
         },
@@ -40,7 +40,7 @@ module.exports = {
         },
         {
           type: "doc",
-          docId: "design-docs/uncategorized/accordion",
+          docId: "design/uncategorized/accordion",
           position: "right",
           label: "Components"
         },
@@ -64,16 +64,20 @@ module.exports = {
         },
         {
           type: "doc",
-          docId: "release-notes/notes",
+          docId: "release-notes",
           position: "right",
           label: "Release Notes"
         },
+        { to: "blog", label: "Blog", position: "right" },
         {
           type: "search",
           position: "right"
         },
         {
-          type: "docsVersionDropdown"
+          type: "docsVersionDropdown",
+          position: "left",
+          dropdownItemsAfter: [{ to: "/versions", label: "All versions" }],
+          dropdownActiveClassDisabled: true
         }
       ]
     },
@@ -137,6 +141,7 @@ module.exports = {
           ]
         },
         docs: {
+          routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:

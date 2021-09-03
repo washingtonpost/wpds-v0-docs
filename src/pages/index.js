@@ -29,10 +29,7 @@ export default function Home() {
               reading experience across all our products. Build faster, build
               better, and build more with WPDS.
             </p>
-            <CTA
-              className="flex_center_sm"
-              url="/docs/getting-started/getting-started"
-            >
+            <CTA className="flex_center_sm" url="/getting-started/design">
               Getting started
             </CTA>
           </div>
@@ -56,7 +53,7 @@ export default function Home() {
               <p className="lh-md">
                 Each component has been design to be as reusable as possible
               </p>
-              <CTA url="/docs/design-docs/uncategorized/accordion" Color="Dark">
+              <CTA url="/design/uncategorized/accordion" Color="Dark">
                 Explore our components
               </CTA>
             </Card>
@@ -114,7 +111,7 @@ export default function Home() {
             </p>
             <CTA
               className="flex_center_sm"
-              url="/docs/tokens/introduction/what-are-tokens"
+              url="/tokens/introduction/what-are-tokens"
             >
               Explore and learn more
             </CTA>

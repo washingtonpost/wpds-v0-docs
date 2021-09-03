@@ -1,7 +1,8 @@
---- 
+---
 title: Button
 sidebar_position: 4
 ---
+
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
@@ -15,10 +16,11 @@ import { ArrowRight16 } from "@washingtonpost/site-components/core/icon/arrow-ri
 # Buttons
 
 <!-- Description of component -->
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentum auctor. Proin viverra, velit mollis commodo semper, nisi nibh placerat nisl, ut blandit erat arcu ac metus. Pellentesque ac dapibus massa, in consequat elit. Praesent mattis risus ipsum, ac suscipit enim bibendum sed. Donec mattis odio sed ultrices tempus. 
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi congue condimentum auctor. Proin viverra, velit mollis commodo semper, nisi nibh placerat nisl, ut blandit erat arcu ac metus. Pellentesque ac dapibus massa, in consequat elit. Praesent mattis risus ipsum, ac suscipit enim bibendum sed. Donec mattis odio sed ultrices tempus.
 
 <!-- Live Example of component import live component above-->
+
 import { Button } from "@washingtonpost/site-components/core/button";
 import { Input } from "@washingtonpost/site-components/core/input";
 
@@ -34,25 +36,25 @@ import { Input } from "@washingtonpost/site-components/core/input";
   </Button>
 </Container>
 
-
 <!-- Tabs between design & implementation change path if -->
-<Tabs isDesignDoc={true} relatedUrl="dev-docs/uncategorized/button"/>
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/button"/>
 
 <!-- Anatomy section export image from Figma and import into here -->
+
 ## Anatomy
+
 <Container>
   <img width="80%" style={{maxWidth:'250px'}} height="auto" src='/img/design/button/skeleton.png'/>
 </Container>
 
-
 #### Legend
 
-1. Button text 
-2. Button theme 
+1. Button text
+2. Button theme
 3. Icon
 
+---
 
-***
 ## Options
 
 <!-- Icon placement option -->
@@ -68,8 +70,9 @@ import { Input } from "@washingtonpost/site-components/core/input";
 <div>
 
 ##### Icon
+
 Icon can be used on either left or right to the button text.
-  
+
 </div>
 </Grid>
 
@@ -89,6 +92,7 @@ Icon can be used on either left or right to the button text.
 <div>
 
 ##### Color Themes
+
 Button have various themes that can be used. Each theme have hover, active, and focus states predefined. The most common themes used are Offblack, White, and Subs-Blue
 <br/>
 
@@ -96,7 +100,6 @@ Note: to see all color themes please see our [color tokens](../../tokens/our-tok
 
 </div>
 </Grid>
-
 
 <!-- Button Size options -->
 <Grid>
@@ -114,10 +117,11 @@ Note: to see all color themes please see our [color tokens](../../tokens/our-tok
 <div>
 
 ##### Button Sizes
+
 Button has three sizes `large`, `medium `and `small`.
 <br/>
 
-Note: Large button should only be used on subscription pages or when there two lines of text 
+Note: Large button should only be used on subscription pages or when there two lines of text
 
 </div>
 </Grid>
@@ -139,15 +143,17 @@ Note: Large button should only be used on subscription pages or when there two l
 <div>
 
 ##### Full Width
+
 By default the button size is always defined by the text length and the internal padding, but when `fullWidth` toggled to true the size of the button is defined by the size of its container.
 <br/>
 
-Note: Full width is typically used on mobile or where alignment of stacking buttons width is needed. 
+Note: Full width is typically used on mobile or where alignment of stacking buttons width is needed.
 
 </div>
 </Grid>
 
 <!-- Button Logos -->
+
 import { OlympicsDarkLogo } from "@washingtonpost/site-components/core/logo/olympics-dark"
 import { OlympicsLogo } from "@washingtonpost/site-components/core/logo/olympics"
 import { ElectionsLogo } from "@washingtonpost/site-components/core/logo/elections"
@@ -167,14 +173,16 @@ import { ElectionsLogo } from "@washingtonpost/site-components/core/logo/electio
 <div>
 
 ##### Logos
+
 Logos are available to be used instead of icons and only be used in the context of the branding of that logo
- 
 
 </div>
 </Grid>
 
-***
+---
+
 ## Behaviors
+
 <!-- Button color options -->
 <Grid>
   <Container Caption="Hover to see hover state" className="flex-column">
@@ -191,6 +199,7 @@ Logos are available to be used instead of icons and only be used in the context 
 <div>
 
 ##### Hover
+
 Button is consistent with our color themes.
 <br/>
 
@@ -215,6 +224,7 @@ Note: to see all color themes please see our [color tokens](../../tokens/our-tok
 <div>
 
 ##### Active
+
 Button is consistent with our color themes
 <br/>
 
@@ -239,13 +249,16 @@ Note: to see all color themes please see our [color tokens](../../tokens/our-tok
 <div>
 
 ##### Disabled
+
 All buttons share the same disabled state.
 
 </div>
 </Grid>
 
 <!-- GUIDANCE -->
-***
+
+---
+
 ## Usage guidelines
 
 <!-- Start of a guide -->
@@ -256,7 +269,8 @@ All buttons share the same disabled state.
 </Guide>
 
 #### Avoid multiple lines for same sentence
-Multiline button support is reserved for subscription focus CTA, but never should the multiline be the continuation of the same sentence. 
+
+Multiline button support is reserved for subscription focus CTA, but never should the multiline be the continuation of the same sentence.
 <br/>
 
 <!-- Start of a guide -->
@@ -269,7 +283,8 @@ Multiline button support is reserved for subscription focus CTA, but never shoul
     </Button>
 </Guide>
 
-#### Do not stack buttons of different widths. 
+#### Do not stack buttons of different widths.
+
 Buttons should take on the fullwidth of the longest button to avoid weird stacking widths.
 <br/>
 
@@ -278,7 +293,8 @@ Buttons should take on the fullwidth of the longest button to avoid weird stacki
 <img src="/img/design/button/input-pair.svg" width="auto" height="60%"/>
 </Guide>
 
-#### Pair the appropriate sized button 
+#### Pair the appropriate sized button
+
 Always pair the small button when pairing with a smaller ui element that is inline.
 <br/>
 
@@ -287,7 +303,8 @@ Always pair the small button when pairing with a smaller ui element that is inli
  <Button className="mr-sm ml-sm" color="white" fullWidth={true}>Sign Up</Button>
 </Guide>
 
-#### Pair the appropriate sized button 
+#### Pair the appropriate sized button
+
 Always pair the small button when pairing with a smaller ui element that is inline.
 <br/>
 
@@ -303,11 +320,13 @@ Always pair the small button when pairing with a smaller ui element that is inli
   </div> 
 </Guide>
 
-#### Stacking Buttons 
-When stacking buttons use `4px (-xs)` spacing for both medium and small. 
+#### Stacking Buttons
+
+When stacking buttons use `4px (-xs)` spacing for both medium and small.
 <br/>
 
-***
+---
+
 ## Specs
 
 <Grid>
@@ -319,7 +338,9 @@ When stacking buttons use `4px (-xs)` spacing for both medium and small.
 <div>
 
 ##### Size Default
-Button width is dependent on either the fixed padding with the button text or if the button is set to the `fullWidth` of the contianer 
+
+Button width is dependent on either the fixed padding with the button text or if the button is set to the `fullWidth` of the contianer
+
 </div>
 </Grid>
 
@@ -332,12 +353,14 @@ Button width is dependent on either the fixed padding with the button text or if
 <div>
 
 ##### Size Small
-Button width is dependent on either the fixed padding with the button text or if the button is set to the `fullWidth` of the contianer 
+
+Button width is dependent on either the fixed padding with the button text or if the button is set to the `fullWidth` of the contianer
+
 </div>
 </Grid>
 
+---
 
-***
 ## Component Checklist
 
 <Checklist
@@ -355,8 +378,6 @@ keyboard={true}
 tokens={true}
 webVitals={true}
 />
-
-
 
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTE2NTkxMjIwMjhdfQ==
