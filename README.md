@@ -11,9 +11,8 @@ Docs in particular are structured in such a way where there is developer docs an
 Prerequisite you will need code editor of your choice we use [VScode](https://code.visualstudio.com/download) as well install [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable) & node v14.17.5 you should install this using [Node version manager](https://formulae.brew.sh/formula/nvm#default).
 
 1. Type `nvm use` if you need install `nvm install`
-2. Open `src` folder in your terminal `cd src`
-3. Install modules `yarn install`
-4. When it is done `yarn start` will launch docusarus.
+1. Install modules `yarn install`
+1. When it is done `yarn start` will launch docusarus.
 
 ## Contributing
 
