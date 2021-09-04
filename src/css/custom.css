@@ -214,10 +214,10 @@ div.markdown h2 {
   font-size: var(--lg);
 }
 div.markdown h3 {
-  font-family: var(--font-headline);
+  font-family: var(--font-meta);
   margin-bottom: var(--xs);
   margin-top: var(--xs);
-  font-size: var(--md);
+  font-size: var(--sm);
 }
 
 div.markdown h4,
