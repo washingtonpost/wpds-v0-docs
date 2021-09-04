@@ -6,7 +6,7 @@ export default function checklist(props) {
     const CheckListData = {
         Accessibility: {
             title: 'Accessibility',
-            description: 'Visual information required to identify components and states (except inactive components) has a contrast ratio to meet WCAG 2.0 level AA '
+            description: 'Visual information required to identify components and states (except inactive components) has a contrast ratio to meet WCAG 2.0 level AA. This exclude text contrast requirements. Unless disabled text should always be accessbile.'
         },
         States: {
             title: 'States are defined',
@@ -30,7 +30,7 @@ export default function checklist(props) {
         },
         UiComponent: {
             title: 'Design component created',
-            description: 'A equivalent design component as been created matching  as best as possible to properties found in the coded component. Documentation link has been added to component including notes, guidelines and keywords.'
+            description: 'A equivalent design component as been created matching  as best as possible to properties found in the coded component.'
         },
         ScreenSize: {
             title: 'All web screen sizes',

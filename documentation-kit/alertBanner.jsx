@@ -26,7 +26,7 @@ export default function alertBanner(props) {
              break;
      }
     return (
-        <Banner renderCloseButton={false} className={`${styles.background} brad-4 shadow-1 mt-xl mb-xl w-100`}>
+        <Banner renderCloseButton={props.dismissable} className={`${styles.background} brad-4  ${props.className} w-100`}>
             <p className="flex"> 
                 {type=='informative'&&<Info16 className={`fill-${styles.fill} mr-xs`} />}
                 {type=='warning'&&<Alert16 className={`fill-${styles.fill} mr-xs`} />}
