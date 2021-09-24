@@ -101,6 +101,12 @@ h2 {
 .navbar__brand:hover {
   color: var(--white);
 }
+.dropdown__menu .dropdown__link a.dropdown__link--active{
+  color:black;
+}
+.dropdown__link--active, .dropdown__link--active:hover {
+  --ifm-dropdown-link-color: black;;
+}
 
 /* SIDE BAR CONTAINER */
 aside.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage-styles-module {
