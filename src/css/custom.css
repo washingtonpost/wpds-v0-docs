@@ -55,6 +55,7 @@
   --ifm-footer-background-color: var(--white);
   --font-headline: Postoni, garamond, serif;
   --font-sans-serif: Franklin, arial, sans-serif;
+  --ifm-list-item-margin:0px;
 }
 
 [class*="docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"]
