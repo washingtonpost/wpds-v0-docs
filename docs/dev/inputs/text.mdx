@@ -1,5 +1,471 @@
+--- 
+title: Text 
 ---
-Title: Text input
----
+import Header from "../../../documentation-kit/docHead";
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
 
-# Text input
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+An accordion is a container that contains a header and a body that is 
+revealed/hidden when toggled. When more than one accordion is used it stacks 
+vertically with no spacing between.
+</p>
+
+<Container className="pa-md">
+<Input
+  handleInput={function noRefCheck(){}}
+  helperMessage="Helper text displays here."
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+/>
+</Container>
+
+<Tabs isDesignDoc={false} relatedUrl="design/inputs/text"/>
+
+<!-- Anatomy section export image from Figma and import into here -->
+## Anatomy
+<Container>
+  <img width="80%"  height="auto" src='/img/design/input/text/anatomy.svg'/>
+</Container>
+
+
+#### Legend
+
+1. Label
+2. Error text
+3. Helper text
+3. Border
+
+---
+## Options
+
+
+<Container className="flex-column pa-md mb-sm">
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="text"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="small"
+    type="text"
+    />
+  </Container>
+<div className="mb-lg">
+
+##### Size
+Input has two available sizes `default` and `small`.
+</div>
+
+<Container className="flex-column pa-md mb-sm">
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="text"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage=""
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="text"
+    />
+  </Container>
+<div className="mb-lg">
+
+##### Optional helper text
+Optional helper text can be added.
+</div>
+
+---
+## Behavior
+
+<Container Caption="Click to see behavior" className="flex-column pa-md mb-sm">
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="text"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="small"
+    type="text"
+    />
+  </Container>
+<div className="mb-lg">
+
+##### Label
+When the input is `small` the label text does not transition but remains in place.
+</div>
+
+
+<Container Caption="Click to see behavior" className="flex-column pa-md mb-sm">
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="text"
+    value="Text input"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="url"
+    value="www.thewashingtonpost.com"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="tel"
+    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    value="202-371-1330"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="email"
+    value="JohnDoe@email.com"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="password"
+    value="password"
+    />
+  </Container>
+<div className="mb-lg">
+
+##### Input types
+Text input supports the following text inputs:
+[text](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text) 
+[search](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search) 
+[url](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url) 
+[tel](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel) 
+[email](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email) and 
+[password](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password).
+
+</div>
+
+<Container Caption="Click to see behavior" className="flex-column pa-md mb-sm">
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="default"
+    type="text"
+    />
+    <Input
+    handleInput={function noRefCheck(){}}
+    helperMessage="Helper text displays here."
+    labelText="Label text"
+    name="label-text"
+    onBlur={function noRefCheck(){}}
+    onFocus={function noRefCheck(){}}
+    size="small"
+    type="text"
+    />
+  </Container>
+<div className="mb-lg">
+
+##### Focus
+When in focus the input will transition the border to blue-bright and 
+when using the `default` option the label will transition to small.
+</div>
+
+
+<Container className="flex-column pa-md mb-sm">
+<Input
+  errorMessage={<p><span className="red">Email not valid.{' '}</span></p>}
+  helperMessage={null}
+  isValid={false}
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  value="John@email.com"
+/>
+
+<Input
+  errorMessage={<p><span className="red">Email not valid.{' '}</span></p>}
+  helperMessage={null}
+  isValid={false}
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="small"
+  type="text"
+  value="John@email.com"
+/>
+  </Container>
+<div className="mb-lg">
+
+##### Error
+When in error state the input will transition the border to red and 
+when using the `default` option the label will transition to red.
+</div>
+
+<Container className="flex-column pa-md mb-sm">
+<Input
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  value="John@email.com"
+/>
+
+<Input
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="small"
+  type="text"
+  value="John@email.com"
+/>
+</Container>
+<div className="mb-lg">
+
+##### Filled state
+When the input is filled with a value and not in any other state the broder will transition back to default color.
+</div>
+
+<Container className="flex-column pa-md mb-sm">
+<Input
+  isValid={true}
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  value="John@email.com"
+/>
+
+<Input
+  isValid={true}
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="small"
+  type="text"
+  value="John@email.com"
+/>
+</Container>
+<div className="mb-lg">
+
+##### Success state
+When the input is filled with a value and not in any other state the broder will transition back to default color.
+</div>
+
+<Container className="flex-column pa-md mb-sm">
+<Input
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  disabled={true}
+/>
+
+<Input
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="small"
+  type="text"
+  disabled={true}
+/>
+</Container>
+<div className="mb-lg">
+
+##### Disabled state
+Disabled inputs will be gray in color.
+</div>
+
+<Container className="flex-column pa-md mb-sm">
+<div style={{width:200}}>
+<Input
+  labelText="Long song title"
+  name="Name"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  value="“It’s the End of the World as We Know It (And I feel Fine)”—R.E.M."
+/>
+</div>
+
+</Container>
+<div className="mb-lg">
+
+##### Overflow
+Input text does not overflow regardless of the size of the container.
+</div>
+
+---
+## Usage guidance
+<!-- Start of a guide -->
+<Guide guidance="caution">
+  <div style={{width:100}}>
+<Input
+  labelText="State"
+  name="State"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  value="MD"
+/>
+</div>
+
+</Guide>
+
+#### Avoid small widths
+If a small width text input is required be sure the expected input will be short.  
+<br/>
+
+
+<Guide guidance="don't">
+      <div className="mr-sm" style={{width:150}}>
+<Input
+  labelText="City"
+  name="City"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="small"
+  type="text"
+/>
+</div>
+  <div style={{width:100}}>
+<Input
+  labelText="State"
+  name="State"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+  value="MD"
+/>
+</div>
+
+</Guide>
+
+#### Vary input heights
+If more than one input is being used all inputs must be the same size variant.   
+<br/>
+
+---
+## Specs
+
+<Container className="flex-column">
+    <img width="80%"  height="auto" src='/img/design/input/text/specs.svg'/>
+</Container>
+<div className="mt-sm mb-lg">
+
+##### Size
+Input have fixed height for each size and takes 100% of the parent container width.
+
+</div>
+
+<Container className="flex-column">
+    <img width="80%"  height="auto" src='/img/design/input/text/spacing.svg'/>
+</Container>
+<div className="mt-sm">
+
+##### Spacing
+Spacing for the both input sizes are fixed 16px left and right padding with 8px padding top and bottom.
+</div>
+
+---
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={true}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>
