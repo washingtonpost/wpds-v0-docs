@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import {Button} from '@washingtonpost/site-components/core/button'
-import {Tooltip} from "@washingtonpost/site-components/core/Tooltip/"
+import {Tooltip} from "@washingtonpost/site-components/core/tooltip/"
 function GridSet() {
     const [Popover, setPopover] = useState(false)
     return (
