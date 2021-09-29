@@ -13,6 +13,9 @@ import AlertBanner from "../../../documentation-kit/alertBanner";
 
 import {Tooltip} from "@washingtonpost/site-components/core/tooltip"
 import {GridSet} from "../../../example-components/tooltipGrid";
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/bookmark-outline/16";
+
 
 # Tooltip
 
@@ -123,3 +126,179 @@ the user to click instead of over to reveal the content bubble.
 ##### Themes
 Three available themes for the tooltip & popover. They include light, dark and a subscription theme.
 </div>
+
+---
+## Behavior
+
+<Container>
+    <div className="mr-sm">
+        <Tooltip  placement="top" theme="light" content={<div className="pa-xs">This sentence is super long and I did not put any constraints on the content container so it can keep spanning as long as I want it to but is limited to the width of the parent container..</div>}>
+            <p>Hover or tap to see behavior</p>
+        </Tooltip>
+    </div>
+    
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Overflow
+Tooltips and popover have no inherit fixed size. The content inside will span the width of its parent container unless otherwise specified.
+
+</div>
+
+<Container>
+    <div className="mr-sm">
+        <Tooltip  placement="top" theme="light" content={<div className="pa-xs">Hello there</div>}>
+            <p>Hover or tap to see behavior</p>
+        </Tooltip>
+    </div>
+    
+</Container>
+<div className="mt-sm mb-xl">
+
+##### On Hover
+Tooltips will be triggered on hover (tap for mobile) and will disappear if the user is no longer
+hovering over the element or the tooltip itself.
+
+</div>
+
+<Container>
+    <div className="mr-sm">
+        <Tooltip  asPopOver placement="top" theme="light" content={<div className="pa-xs">Pop! Hello there</div>}>
+            <p>Click or tap to see behavior</p>
+        </Tooltip>
+    </div>
+    
+</Container>
+<div className="mt-sm mb-xl">
+
+##### On Click
+When used as a Popover the trigger will be on click (tap for mobile) and will only disappear if the user
+clicks outside of the content bubble.
+
+</div>
+
+
+<Container>
+    <div className="mr-sm">
+        <Tooltip  asPopOver placement="bottom" theme="light" content={<div className="pa-xs">Pop! Watch me flip by scrolling me off screen</div>}>
+            <p>Click or tap to see behavior</p>
+        </Tooltip>
+    </div>
+    
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Flip to fit
+The tooltip/popover will flip from its orginal placement if there is not enough space for it to remain
+on screen. If the user scrolls beyond the trigger element the tooltip/popover will no longer attempt to
+stay in view.
+
+</div>
+
+---
+## Usage guidelines
+
+<!-- Start of a guide -->
+<Guide guidance="caution">
+    <div className="mr-sm">
+        <Tooltip  asPopOver placement="top" theme="light" 
+        content={<Tooltip className="pa-sm"  asPopOver placement="top" theme="light" 
+        content={<Tooltip  className="pa-sm"  asPopOver placement="top" theme="light" content={<div className="pa-xs">Woah you found me..this is awkward</div>}>
+            <p>Click or tap to see behavior</p>
+        </Tooltip>}>
+            <p>Click or tap to see behavior</p>
+        </Tooltip>}>
+            <p>Click or tap to see behavior</p>
+        </Tooltip>
+    </div>
+</Guide>
+
+#### Nesting popovers
+Nesting popoversmay seem helpful as a trick to get content on the screen, but it is very hard for the 
+user to navigate content this way.
+<br/>
+
+<Guide guidance="don't">
+    <div className="mr-sm">
+        <Tooltip  placement="top" theme="light" 
+        content={<Tooltip className="pa-xs"  asPopOver placement="top" theme="light" 
+        content={<Tooltip  className="pa-xs"  placement="left" theme="light" content={<div className="pa-xs">A bit of nightmare</div>}>
+            <p>Hover</p>
+        </Tooltip>}>
+            <p>Click</p>
+        </Tooltip>}>
+            <p>Hover</p>
+        </Tooltip>
+    </div>
+</Guide>
+
+#### Mixing patterns
+Tooltips should never nest a popover. Since the tooltip shows/hides on hover the precision required for the 
+user to navigate the content becomes increasingly harder as patterns mix. 
+<br/>
+
+
+<Guide guidance="don't">
+    <div className="flex">
+    <div className="mr-lg">
+        <Tooltip offset={[0,0]}  placement="top" theme="light" 
+        content={<p>I need some space...</p>}>
+            <p>Hover</p>
+        </Tooltip>
+    </div>
+        <div className="mr-sm">
+        <Tooltip offset={[0,64]}  placement="top" theme="light" 
+        content={<p>Wait too much space...</p>}>
+            <p>Hover</p>
+        </Tooltip>
+    </div>
+    </div>
+</Guide>
+
+#### Abusing offset
+Avoid setting the offset to close or to far from the trigger. 
+<br/>
+
+
+<Guide Caption="Hover to see example" guidance="do">
+    <div className="flex">
+    <div className="mr-lg">
+        <Tooltip  placement="top" theme="light" 
+        content={<p className="pa-xs">Save article</p>}>
+           <ButtonIcon color="white" renderIcon={BookmarkOutline16}/>
+        </Tooltip>
+    </div>
+    </div>
+</Guide>
+
+---
+## Specs
+  <Container className="flex pa-sm">
+     <img width="80%" style={{maxWidth:'250px'}} height="auto" src='/img/design/tooltip/size-tip.svg'/>
+    <img width="80%" style={{maxWidth:'250px'}} className="ml-sm" height="auto" src='/img/design/tooltip/size-pop.svg'/>
+  </Container>
+<div className="mt-sm mb-xl">
+
+##### Size
+Tooltip takes up the full width of its parent container and full height of the content inside its bubble.
+
+</div>
+
+***
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={false}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>

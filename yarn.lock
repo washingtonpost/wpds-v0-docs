@@ -2568,10 +2568,10 @@
   resolved "https://registry.yarnpkg.com/@washingtonpost/icon-tokens/-/icon-tokens-0.5.0.tgz#49046c5504e7a7d2a122ead1049d75009934b8b8"
   integrity sha512-I2TathW45vARKKD2p2D6xuOpKeoMxhCyOAXg/HuNH5tMdeB/Cu3t1sPUf+9Drf4G7xEPE4WBDH2SL2ggo/pJpg==
 
-"@washingtonpost/logo-tokens@^1.5.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@washingtonpost/logo-tokens/-/logo-tokens-1.6.0.tgz#dff4e9db79575e0031d2cbb056c240e3ceeeff17"
-  integrity sha512-4qUS0gbeHo3vl88oTDGD4CIhq7qTk340OHRXwUdKTfg87qi97Y12L7YHAC00nTuvpv8IeyBjXfgk18Drj34mcA==
+"@washingtonpost/logo-tokens@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@washingtonpost/logo-tokens/-/logo-tokens-1.7.0.tgz#4e7393773b9f91cf31efbdd4ec8d85808021db26"
+  integrity sha512-F+I4zCR/Kp/wQwwSh/eK6SCEDP6CsFuVLZb5RpS7tw3Ypm0JiB3OIpAus7AsKJKhYLRRzYycjD/Cq7s6EFnCWw==
 
 "@washingtonpost/motion-tokens@^0.2.0":
   version "0.2.0"
@@ -2583,10 +2583,10 @@
   resolved "https://registry.yarnpkg.com/@washingtonpost/shadow-tokens/-/shadow-tokens-0.3.0.tgz#a1cea1110934a835cf35347b64ba7f23a39137e9"
   integrity sha512-biItk+cZ2GjUlWNG7XsDXO5YRFIfLX6RGJ6zLcY9IH1w/G32s0QiUGgvBKqmw9RsLVdFrrduedHte/g7OEw8DA==
 
-"@washingtonpost/site-components@^4.44.0":
-  version "4.44.0"
-  resolved "https://registry.yarnpkg.com/@washingtonpost/site-components/-/site-components-4.44.0.tgz#357566587475bfaf20f98e1d61c22c91d89417fb"
-  integrity sha512-+UlygPoHISZoW7++llTa1gH/3A/ArwSBeDEcQO7nDaoShsjHeTMwAZlPvu1MQG7Rm2FNgB6CCd5jqqJ46CGiBg==
+"@washingtonpost/site-components@^4.50.1":
+  version "4.50.1"
+  resolved "https://registry.yarnpkg.com/@washingtonpost/site-components/-/site-components-4.50.1.tgz#0c6f8a678ccb21c293d8037ba69882d591c457fa"
+  integrity sha512-2MziMJmUv4062gwk1YeZXAJoKpTJvDqVSeCqAJJsfGavTIxwWo3QdilZMDnUyawQGEM0KYs9sZr2/n7k+gTzNQ==
   dependencies:
     "@accessible/accordion" "^2.0.0"
     "@popperjs/core" "^2.4.4"
@@ -2600,10 +2600,11 @@
     "@react-hook/window-scroll" "^1.3.0"
     "@react-stately/collections" "^3.3.0"
     "@react-stately/select" "^3.1.1"
+    "@react-stately/toggle" "^3.2.3"
     "@types/luxon" "^1.25.0"
     "@washingtonpost/color-tokens" "^0.2.0"
     "@washingtonpost/icon-tokens" "^0.5.0"
-    "@washingtonpost/logo-tokens" "^1.5.0"
+    "@washingtonpost/logo-tokens" "^1.7.0"
     "@washingtonpost/motion-tokens" "^0.2.0"
     "@washingtonpost/shadow-tokens" "^0.3.0"
     "@washingtonpost/spacing-tokens" "^0.2.0"
@@ -2615,11 +2616,10 @@
     luxon "^1.25.0"
     prop-types "^15.7.2"
     react-content-loader "^6.0.3"
+    react-peekaboo "^0.4.1"
     react-popper "^2.2.4"
     react-transition-group "^4.4.1"
     scriptjs "2.5.9"
-    twp-login-component "1.1.14"
-    use-resize-observer "^7.0.0"
 
 "@washingtonpost/spacing-tokens@^0.2.0":
   version "0.2.0"
@@ -8484,11 +8484,6 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
-
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -9499,11 +9494,6 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-twp-login-component@1.1.14:
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/twp-login-component/-/twp-login-component-1.1.14.tgz#a28235adf8c13cd74850074380df96991b3687af"
-  integrity sha512-zqHYYXi51sbH1z3JWff1WumDugY8ciujec4+9+8QoIhYXmAS9Bzhy5H0He5jQR/+oei5SE3v8yj0jA1tGGzeCA==
-
 type-fest@^0.20.2:
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
@@ -9788,13 +9778,6 @@ use-latest@^1.0.0:
   integrity sha512-d2TEuG6nSLKQLAfW3By8mKr8HurOlTkul0sOpxbClIv4SQ4iOd7BYr7VIzdbktUCnv7dua/60xzd8igMU6jmyw==
   dependencies:
     use-isomorphic-layout-effect "^1.0.0"
-
-use-resize-observer@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/use-resize-observer/-/use-resize-observer-7.0.1.tgz#82b13d462e7fb5e3ec953bde48d6e02b9aae660d"
-  integrity sha512-tJESENDoVXfzkv1Cl9dJ13ySgENcKjvEKSU7QwjckjxjXg/MV2zW1CjEUtLpmXY084womIxJROUR3L1SuqlvOw==
-  dependencies:
-    resize-observer-polyfill "^1.5.1"
 
 use@^3.1.0:
   version "3.1.1"
