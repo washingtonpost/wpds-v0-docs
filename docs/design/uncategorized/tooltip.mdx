@@ -1,22 +1,125 @@
 --- 
 title: Tooltip 
 ---
+
 import Header from "../../../documentation-kit/docHead";
 import Tabs from "../../../documentation-kit/tabs";
 import Grid from "../../../documentation-kit/splitGrid";
 import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+
+
+import {Tooltip} from "@washingtonpost/site-components/core/Tooltip/"
+import {GridSet} from "../../../example-components/tooltipGrid";
 
 # Tooltip
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
-Description will go here
+Non-actionable ui element that only contain text and does 
+not require the user to take an action but serves only to 
+inform the user before taking an action, contextualizing an action or label/icon, but when 
+used as a Popover the element takes on a more presistent appearance and allows the user to take
+action on the content inside of the popover.
 </p>
 
 
 <!-- Live Example of component import live component above-->
 
 <Container className="pa-sm">
-//Example of live component
+    <Tooltip id="tooltip" content={<div className='pa-sm'>A simple tooltip</div>}>
+      <div>
+        Hover over me
+      </div>
+    </Tooltip>
 </Container>
+
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/tooltip"/>
+
+<!-- Anatomy section export image from Figma and import into here -->
+## Anatomy
+<Container>
+  <img width="80%" style={{maxWidth:'150px'}} height="auto" src='/img/design/tooltip/anatomy.svg'/>
+</Container>
+
+
+#### Legend
+
+1. Content bubble 
+2. Beak
+
+---
+## Options
+
+<Container>
+    <GridSet/>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Placement
+There are a total of 12 placement options that can be used for both Popover and tooltips.
+</div>
+
+<Container>
+    <div className="mr-sm">
+    <Tooltip  placement="top" content={<div className="pa-xs">Default offset</div>}>
+        <p>Without Offset</p>
+    </Tooltip>
+    </div>
+    <Tooltip offset={[0,16]} asPopOver={false} placement="top" content={<div className="pa-xs">Offset set as [0,16]</div>}>
+        <p>With Offset</p>
+    </Tooltip>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Offset
+Both tooltips and popovers have optional offsets. The offset is defined by a set of 2
+numbers [0,16]. The first number indicating the x offset and the 2nd indicating the y offset. 
+Default offset is [0,8].
+
+</div>
+
+
+<Container>
+    <div className="mr-sm">
+    <Tooltip asPopOver={true}  placement="top" content={<div className="pa-xs">Popover</div>}>
+        <p>Tooltip as popover</p>
+    </Tooltip>
+    </div>
+    <Tooltip asPopOver={false} placement="top" content={<div className="pa-xs">Just a tooltip</div>}>
+        <p>Tooltip</p>
+    </Tooltip>
+</Container>
+<div className="mt-sm mb-xl">
+
+##### asPopOver
+When set as popover the beak will be hidden, shadow applied, and trigger will require
+the user to click instead of over to reveal the content bubble.
+
+</div>
+
+<Container>
+    <div className="mr-sm">
+        <Tooltip  placement="top" theme="light" content={<div className="pa-xs">Light Theme</div>}>
+            <p>Light theme</p>
+        </Tooltip>
+    </div>
+    <div className="mr-sm">
+        <Tooltip  placement="top" theme="dark" content={<div className="pa-xs">Dark Theme</div>}>
+            <p>Dark theme</p>
+        </Tooltip>
+    </div>
+    <div className="mr-sm">
+        <Tooltip  placement="top" theme="subs" content={<div className="pa-xs">Subs Theme</div>}>
+            <p>Subs theme</p>
+        </Tooltip>
+    </div>
+    
+</Container>
+<div className="mt-sm mb-xl">
+
+##### Themes
+Three available themes for the tooltip & popover. They include light, dark and a subscription theme.
+</div>
