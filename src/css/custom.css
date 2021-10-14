@@ -288,6 +288,14 @@ div.markdown ol li {
 .dn-sm{
   display: inherit;
 }
+
+.api-table{
+  width:100%;
+}
+.api-table tr{
+  font-size: var(--sm);
+  font-weight: var(--font-weight-medium);
+}
 @media screen and (max-width: 966px) {
   .flex_center_sm {
     align-items: center;

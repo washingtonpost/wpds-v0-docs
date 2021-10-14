@@ -80,6 +80,7 @@
       "import Guide from \"../../../documentation-kit/guide\";",
       "import Checklist from \"../../../documentation-kit/checklist\";",
       "import AlertBanner from \"../../../documentation-kit/alertBanner\";",
+      "import ApiTable from \"../../../documentation-kit/apiTable\";",
       ""
     ],
     "description": "documentation-import"

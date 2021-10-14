@@ -32,7 +32,7 @@
     "@react-stately/collections": "^3.3.4",
     "@react-stately/select": "^3.1.3",
     "@svgr/webpack": "^5.5.0",
-    "@washingtonpost/site-components": "^4.50.1",
+    "@washingtonpost/site-components": "^4.52.0",
     "clsx": "^1.1.1",
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
@@ -40,6 +40,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-lazy-load": "^3.1.13",
+    "turndown": "^7.1.1",
     "url-loader": "^4.1.1"
   },
   "browserslist": {

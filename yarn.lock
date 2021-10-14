@@ -2563,10 +2563,10 @@
   resolved "https://registry.yarnpkg.com/@washingtonpost/color-tokens/-/color-tokens-0.2.0.tgz#d6f7021e57aab8684e66cb5a94ca45225511b8b0"
   integrity sha512-Xm7MHWUpo7USmswQVrOA04xMxvvgo+TuPBeDxttS2xtaX85QVjblbIAHmHNBCz7F8Ul5jpNwpPacCX3GxKRW8A==
 
-"@washingtonpost/icon-tokens@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@washingtonpost/icon-tokens/-/icon-tokens-0.5.0.tgz#49046c5504e7a7d2a122ead1049d75009934b8b8"
-  integrity sha512-I2TathW45vARKKD2p2D6xuOpKeoMxhCyOAXg/HuNH5tMdeB/Cu3t1sPUf+9Drf4G7xEPE4WBDH2SL2ggo/pJpg==
+"@washingtonpost/icon-tokens@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@washingtonpost/icon-tokens/-/icon-tokens-0.6.0.tgz#69d1d9300e5d017ace3f3e61a2421c758d93808f"
+  integrity sha512-oMfo3zl4BhdtKHSdvqNqVqrYO8FDk5k6YXR5RLsTLXuomfbJBZdOoW6qoFmpc23UJTtnLqhrhDESj9Gyum/Wng==
 
 "@washingtonpost/logo-tokens@^1.7.0":
   version "1.7.0"
@@ -2583,10 +2583,10 @@
   resolved "https://registry.yarnpkg.com/@washingtonpost/shadow-tokens/-/shadow-tokens-0.3.0.tgz#a1cea1110934a835cf35347b64ba7f23a39137e9"
   integrity sha512-biItk+cZ2GjUlWNG7XsDXO5YRFIfLX6RGJ6zLcY9IH1w/G32s0QiUGgvBKqmw9RsLVdFrrduedHte/g7OEw8DA==
 
-"@washingtonpost/site-components@^4.50.1":
-  version "4.50.1"
-  resolved "https://registry.yarnpkg.com/@washingtonpost/site-components/-/site-components-4.50.1.tgz#0c6f8a678ccb21c293d8037ba69882d591c457fa"
-  integrity sha512-2MziMJmUv4062gwk1YeZXAJoKpTJvDqVSeCqAJJsfGavTIxwWo3QdilZMDnUyawQGEM0KYs9sZr2/n7k+gTzNQ==
+"@washingtonpost/site-components@^4.52.0":
+  version "4.52.0"
+  resolved "https://registry.yarnpkg.com/@washingtonpost/site-components/-/site-components-4.52.0.tgz#66f3a172156f8ee7593007788ea81bb67a9b535b"
+  integrity sha512-eqPJhr5JrtHMBHjhjq0RSdUBUNT1lBt1xZFnrds73v53dQu25JjTlHoyqGrw9FejrtDZVlTzQ96KUgON4SRpHg==
   dependencies:
     "@accessible/accordion" "^2.0.0"
     "@popperjs/core" "^2.4.4"
@@ -2603,7 +2603,7 @@
     "@react-stately/toggle" "^3.2.3"
     "@types/luxon" "^1.25.0"
     "@washingtonpost/color-tokens" "^0.2.0"
-    "@washingtonpost/icon-tokens" "^0.5.0"
+    "@washingtonpost/icon-tokens" "^0.6.0"
     "@washingtonpost/logo-tokens" "^1.7.0"
     "@washingtonpost/motion-tokens" "^0.2.0"
     "@washingtonpost/shadow-tokens" "^0.3.0"
@@ -4379,6 +4379,11 @@ domhandler@^4.0.0, domhandler@^4.2.0:
   integrity sha512-zk7sgt970kzPks2Bf+dwT/PLzghLnsivb9CcxkvR8Mzr66Olr0Ofd8neSbglHJHaHa2MadfoSdNlKYAaafmWfA==
   dependencies:
     domelementtype "^2.2.0"
+
+domino@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/domino/-/domino-2.1.6.tgz#fe4ace4310526e5e7b9d12c7de01b7f485a57ffe"
+  integrity sha512-3VdM/SXBZX2omc9JF9nOPCtDaYQ67BGp5CoLpIQlO2KCAPETs8TcDHacF26jXadGbvUteZzRTeos2fhID5+ucQ==
 
 domutils@1.5.1:
   version "1.5.1"
@@ -9493,6 +9498,13 @@ tunnel-agent@^0.6.0:
   integrity sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=
   dependencies:
     safe-buffer "^5.0.1"
+
+turndown@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/turndown/-/turndown-7.1.1.tgz#96992f2d9b40a1a03d3ea61ad31b5a5c751ef77f"
+  integrity sha512-BEkXaWH7Wh7e9bd2QumhfAXk5g34+6QUmmWx+0q6ThaVOLuLUqsnkq35HQ5SBHSaxjSfSM7US5o4lhJNH7B9MA==
+  dependencies:
+    domino "^2.1.6"
 
 type-fest@^0.20.2:
   version "0.20.2"
