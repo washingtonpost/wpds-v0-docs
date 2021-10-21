@@ -8,9 +8,13 @@ import Container from "../../../documentation-kit/sampleContainer";
 import Guide from "../../../documentation-kit/guide";
 import Checklist from "../../../documentation-kit/checklist";
 import AlertBanner from "../../../documentation-kit/alertBanner";
+import ApiTable from "../../../documentation-kit/apiTable"
 
 import {PinkThings,MonthExample,SelectExample,ErrorExample,DisabledExample} from  '../../../example-components/select_example'
-
+import {
+    Select,
+    SelectOption
+} from "@washingtonpost/site-components/core/select";
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
@@ -25,149 +29,88 @@ vertically with no spacing between.
 
 <Tabs isDesignDoc={false} relatedUrl="design/inputs/select"/>
 
-<!-- Anatomy section export image from Figma and import into here -->
-## Anatomy
-<Container>
-  <img width="70%"  height="auto" src='/img/design/input/select/anatomy.svg'/>
-</Container>
+## Requirements
+We built Select using react-aria library https://react-spectrum.adobe.com/react-aria/useSelect.html
 
+React Aria requires applications to be wrapped in their SSRProvider. This ensures that auto generated ids are consistent between client and server. https://react-spectrum.adobe.com/react-aria/SSRProvider.html. Here's an example of it. You can read more about their server side rendering implementation here. https://react-spectrum.adobe.com/react-aria/ssr.html
 
-#### Legend
+```
+import {SSRProvider} from '@react-aria/ssr';
 
-1. Border
-2. Icon (Chevron)
-3. Label 
-4. Error text
-5. Divider
-6. Options
+<SSRProvider>
+ <YourApp />
+</SSRProvider>
+```
 
+The following peer deps should be installed:
 
----
-## Options
+- [@react-stately/select](https://react-spectrum.adobe.com/react-stately/useSelectState.html)
+- [@react-aria/select](https://react-spectrum.adobe.com/react-aria/useSelect.html)
+- [@react-aria/listbox](https://react-spectrum.adobe.com/react-aria/useListBox.html)
+- [@react-aria/utils](https://react-spectrum.adobe.com/react-aria/mergeProps.html)
+- [@react-aria/button](https://react-spectrum.adobe.com/react-aria/useButton.html)
+- [@react-aria/interactions](https://react-spectrum.adobe.com/react-aria/useFocus.html)
+- [@react-aria/focus](https://react-spectrum.adobe.com/react-aria/FocusRing.html)
+- [@react-aria/overlays](https://react-spectrum.adobe.com/react-aria/DismissButton.html)
+- [@react-stately/collections](https://react-spectrum.adobe.com/react-aria/useListBox.html)
 
+```sh
+npm i @react-stately/select @react-aria/select @react-aria/listbox @react-aria/utils @react-aria/button @react-aria/interactions @react-aria/focus @react-aria/overlays @react-stately/collections
+```
+
+## Coded Example
 
 <Container className="flex-column pa-sm">
     <SelectExample/>
 </Container>
-<div className="mt-sm">
 
-##### No options
-The select input currently supports only one size and variant.
+``` jsx
 
-</div>
-
---- 
-## Behavior
-<Container Caption="Click / Tap to see focus state" className="flex-column pa-sm">
-    <div style={{zIndex:5}} className="w-100"><SelectExample/></div>
-</Container>
-<div className="mt-sm mb-lg">
-
-##### Focus State
-When in focus the border will transition to blue-bright and the chevron will flip revealing the options.
-
-</div>
+<Select label="Label text">
+    <SelectOption>Sample Option #1</SelectOption>
+    <SelectOption>Sample Option #2</SelectOption>
+    <SelectOption>Sample Option #3</SelectOption>
+    <SelectOption>Sample Option #4</SelectOption>
+    <SelectOption>Sample Option #5</SelectOption>
+    <SelectOption>Sample Option #6</SelectOption>
+</Select>
+```
+---
+## Error State
 
 <Container className="flex-column pa-sm">
-    <div style={{zIndex:5}} className="w-100"><ErrorExample/></div>
+    <ErrorExample/>
 </Container>
-<div className="mt-sm mb-lg">
 
-##### Error State
-When in error state the border will transition to red with a error message, and the options will collapse.
+``` jsx
 
-</div>
+<Select errorMessage="Please select a country" isValid={false} label="Label text">
+    <SelectOption>Sample Option #1</SelectOption>
+    <SelectOption>Sample Option #2</SelectOption>
+    <SelectOption>Sample Option #3</SelectOption>
+    <SelectOption>Sample Option #4</SelectOption>
+    <SelectOption>Sample Option #5</SelectOption>
+    <SelectOption>Sample Option #6</SelectOption>
+</Select>
+```
+---
+## Disabled State
 
 <Container className="flex-column pa-sm">
-    <div style={{zIndex:5}} className="w-100"><DisabledExample/></div>
+    <DisabledExample/>
 </Container>
-<div className="mt-sm mb-lg">
 
-##### Disabled State
-When in disabled state the input will not be interactive and revert to standard disabled state.
-</div>
-
-
-<Container className="flex-column pa-sm">
-    <div style={{zIndex:5, width:'150px'}}><SelectExample/></div>
-</Container>
-<div className="mt-sm mb-lg">
-
-##### Text Overflow
-Text will overflow but the input will not height will not expand.
-</div>
+``` jsx
+<Select isDisabled={true} label="Label text">
+    <SelectOption>Sample Option #1</SelectOption>
+    <SelectOption>Sample Option #2</SelectOption>
+    <SelectOption>Sample Option #3</SelectOption>
+    <SelectOption>Sample Option #4</SelectOption>
+    <SelectOption>Sample Option #5</SelectOption>
+    <SelectOption>Sample Option #6</SelectOption>
+</Select>
+```
 
 ---
-## Usage guidelines 
-<!-- Start of a guide -->
-<Guide guidance="don't">
-   <div style={{zIndex:5, width:'150px'}}><SelectExample/></div>
-</Guide>
-
-#### Overflow Text
-Size the select input according to the data you will be taking on. Since the input currently does not change in height 
-input data will need to be designed around to avoid ugly overflow.
-<br/>
-
-<!-- Start of a guide -->
-<Guide guidance="do">
-   <div style={{zIndex:5, width:'250px'}}><MonthExample/></div>
-</Guide>
-
-#### Grouping 
-Use for grouping items to save space.
-<br/>
-
-<!-- Start of a guide -->
-<Guide guidance="do">
-   <div style={{zIndex:5, width:'250px'}}><PinkThings/></div>
-</Guide>
-
-#### Grouping 
-Labels in select inputs are very important as the options may 
-read as different from each other without a label.
-<br/>
-
-
----
-## Specs
-
-
-<Container>
-  <img width="60%"  height="auto" src='/img/design/input/select/specs.svg'/>
-</Container>
-<div className="mt-sm mb-lg">
-
-##### Size
-Select input has a fixed height of 48px and the width takes 100% of its 
-parent container. The height when options are revealed is 100% of the total amount of options.
-</div>
-
-<Container>
-  <img width="50%"  height="auto" src='/img/design/input/select/spacing.svg'/>
-</Container>
-<div className="mt-sm mb-lg">
-
-##### Spacing
-Spacing of the select input is 8px padding top and bottom, 8px left, 16px right and 4px between the input and the 
-error message.
-</div>
-
-***
-## Component Checklist
-
-<Checklist
-accessiblity={true} 
-states={true}
-specs={true} 
-themes={true}
-options={true}
-behavior={true}
-uiComponent={true}
-screenSize={true}
-homePage={true}
-apps={true}
-keyboard={true}
-tokens={true}
-webVitals={true}
-/>
+## Component Api
+<ApiTable componentName="select"/>

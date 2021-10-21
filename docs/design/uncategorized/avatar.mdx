@@ -44,20 +44,26 @@ such as reporters and columnists.
 ***
 ## Options
 
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Sizes
+There are three sizes available for the avatar `small` `medium` & `large`.
+
+</div>
 <Container className="flex-wrap pa-sm">
     <Avatar size="small" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
     <Avatar size="medium" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
     <Avatar size="large" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Sizes
-There are three sizes available for the avatar `small` `medium` & `large`.
+
+<div className="mt-lg mb-sm">
+
+### Group sizing
+`medium` & `small` avatars may be grouped. When the number of avatars exceeds three, the remaining ones may be truncated and hidden from view. 
+The truncated avatars are represented by a plus sign followed by the quantity. 
 
 </div>
-</Grid>
-<Grid>
 <Container className="flex-column pa-sm">
     <AvatarGroup size="medium">
         <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
@@ -76,15 +82,14 @@ There are three sizes available for the avatar `small` `medium` & `large`.
         <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
     </AvatarGroup>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Group sizing
-`medium` & `small` avatars may be grouped. When the number of avatars exceeds three, the remaining ones may be truncated and hidden from view. 
-The truncated avatars are represented by a plus sign followed by the quantity. 
+
+<div className="mt-lg mb-sm">
+
+### Show All
+When avatars are in a group the option to show all can be toggled to reveal all avatars in group.
 
 </div>
-</Grid>
-
 <Container className="flex-column pa-sm">
     <AvatarGroup showAll={false} size="medium">
         <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
@@ -103,12 +108,7 @@ The truncated avatars are represented by a plus sign followed by the quantity.
         <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
     </AvatarGroup>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Show All
-When avatars are in a group the option to show all can be toggled to reveal all avatars in group.
-
-</div>
 
 <!-- ***
 ## Behavior
@@ -130,58 +130,60 @@ Markdown paragraph
 ## Usage guidelines
 
 <!-- Start of a guide -->
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Improper aspect ratio
+The image in the avatar needs a 1:1 aspect ratio to properly round out.When using the wrong 
+aspect ratio the avatar shape comes out wrong.
+
+</div>
 <Guide guidance="don't">
   <Avatar size="large" imgUrl="/img/design/avatar/badprofile.png"/>
 </Guide>
-<div>
 
-#### Improper aspect ratio
-The image in the avatar needs a 1:1 aspect ratio to properly round out.When using the wrong 
-aspect ratio the avatar shape comes out wrong.
-<br/>
+
+
+<div className="mt-lg mb-sm">
+
+### Must be a single profile
+The avatar should not be used to display a photo that has more than one subject. 
+
 </div>
-</Grid>
-
-<Grid>
 <Guide guidance="don't">
   <Avatar size="large" imgUrl="/img/design/avatar/squarebad.png"/>
 </Guide>
-<div>
 
-#### Must be a single profile
-The avatar should not be used to display a photo that has more than one subject. 
-<br/>
-</div>
-</Grid>
+
 
 
 ***
 ## Specs
 
-<Container Caption="measured in pixel" className="flex-column pa-sm">
-     <img src="/img/design/avatar/specs.svg"/>
-</Container>
-<div className="mt-sm mb-xl">
+<div className="mt-lg mb-sm">
 
-##### Size
+### Size
 1. Extra Large - 180px
 2. Large - 92px
 3. Medium - 56px
 4. Small - 32px
 
 </div>
-
 <Container Caption="measured in pixel" className="flex-column pa-sm">
-     <img src="/img/design/avatar/spacing.svg"/>
+     <img src="/img/design/avatar/specs.svg"/>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Size
+
+<div className="mt-lg mb-sm">
+
+### Size
 Spacing between group avatars depends on the size of the group. 
 `Medium avatars: 8px` & `Small avatars: 4px`
 
 </div>
+<Container Caption="measured in pixel" className="flex-column pa-sm">
+     <img src="/img/design/avatar/spacing.svg"/>
+</Container>
+
 
 
 ***

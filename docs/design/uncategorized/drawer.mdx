@@ -62,210 +62,202 @@ A drawer is a panel that is typically overlaid on top of a page and slides in fr
 ***
 ## Options
 
-<Grid>
-  <Container className="flex pa-sm flex-wrap row-gap" Caption="Click button to see option">
-  <DrawerRoot>
-    <DrawerTrigger className="mr-sm">Top</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack" height={400}  position="top">
-        <div className="pt-xxl mt-xxl">
-          Your Drawer Content. Click scrim to close
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
-  <DrawerRoot>
-    <DrawerTrigger className="mr-sm">Right</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack" height={400}  position="right">
-        <div className="pt-xxl mt-xxl">
-          Your Drawer Content. Click scrim to close
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
-  <DrawerRoot>
-    <DrawerTrigger className="mr-sm">Bottom</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack" height={400}  position="bottom">
-        <div className=" mt-xxl">
-          Your Drawer Content. Click scrim to close
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
-  <DrawerRoot>
-    <DrawerTrigger>Left</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack" height={400}  position="left">
-        <div className="pt-xxl mt-xxl">
-          Your Drawer Content. Click scrim to close
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
+<div className="mt-lg mb-sm">
 
-  </Container>
-<div className="mt-sm mb-xl">
-
-##### Positions
+### Positions
 The scrim color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color) 
 </div>
-</Grid>
+<Container className="flex pa-sm flex-wrap row-gap" Caption="Click button to see option">
+<DrawerRoot>
+  <DrawerTrigger className="mr-sm">Top</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack" height={400}  position="top">
+      <div className="pt-xxl mt-xxl">
+        Your Drawer Content. Click scrim to close
+      </div>
+    </DrawerContent>
+</DrawerRoot>
+<DrawerRoot>
+  <DrawerTrigger className="mr-sm">Right</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack" height={400}  position="right">
+      <div className="pt-xxl mt-xxl">
+        Your Drawer Content. Click scrim to close
+      </div>
+    </DrawerContent>
+</DrawerRoot>
+<DrawerRoot>
+  <DrawerTrigger className="mr-sm">Bottom</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack" height={400}  position="bottom">
+      <div className=" mt-xxl">
+        Your Drawer Content. Click scrim to close
+      </div>
+    </DrawerContent>
+</DrawerRoot>
+<DrawerRoot>
+  <DrawerTrigger>Left</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack" height={400}  position="left">
+      <div className="pt-xxl mt-xxl">
+        Your Drawer Content. Click scrim to close
+      </div>
+    </DrawerContent>
+</DrawerRoot>
+</Container>
 
-<Grid>
-  <Container Caption="Click button to see option" className="flex-column pa-sm">
-    <DrawerRoot>
-      <DrawerTrigger>See example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white relative w-100 offblack">
-       <p>Close is optional click outside the drawer to close click the scrim to close the drawer</p>
-      </DrawerContent>
-    </DrawerRoot>
-  </Container>
-<div className="mt-sm mb-xl">
 
-##### Optional Close
+<div className="mt-lg mb-sm">
+
+### Optional Close
 The drawer close button icon can be optional.
 
 </div>
-</Grid>
+<Container Caption="Click button to see option" className="flex-column pa-sm">
+  <DrawerRoot>
+    <DrawerTrigger>See example</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white relative w-100 offblack">
+      <p>Close is optional click outside the drawer to close click the scrim to close the drawer</p>
+    </DrawerContent>
+  </DrawerRoot>
+</Container>
 
-<Grid>
-  <Container Caption="Click button to see option" className="flex-column pa-sm">
-    <DrawerRoot>
-      <DrawerTrigger>See example</DrawerTrigger>
-      <DrawerContent className="bg-white relative w-100 offblack">
-       <DrawerClose />
-       <p>Scrim is optional</p>
-      </DrawerContent>
-    </DrawerRoot>
-  </Container>
-<div className="mt-sm mb-xl">
+<div className="mt-lg mb-sm">
 
-##### Optional Scrim
+### Optional Scrim
 The scrim is optional when using the drawer. Should note that without a scrim it is reccomended to have a close button to ensure users can close the drawer if that is desired.
 
 </div>
-</Grid>
+<Container Caption="Click button to see option" className="flex-column pa-sm">
+  <DrawerRoot>
+    <DrawerTrigger>See example</DrawerTrigger>
+    <DrawerContent className="bg-white relative w-100 offblack">
+      <DrawerClose />
+      <p>Scrim is optional</p>
+    </DrawerContent>
+  </DrawerRoot>
+</Container>
 
-<Grid>
-  <Container Caption="Click button to see option" className="flex-column pa-sm">
-    <DrawerRoot>
-      <DrawerTrigger>See example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white relative w-100 offblack">
-       <DrawerClose />
-       <p>This uses bg-red-pale as the scrim background</p>
-      </DrawerContent>
-    </DrawerRoot>
-  </Container>
-<div className="mt-sm mb-xl">
 
-##### Optional Scrim color
+
+<div className="mt-lg mb-sm">
+
+### Optional Scrim color
 The scrim color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color) 
 </div>
-</Grid>
+<Container Caption="Click button to see option" className="flex-column pa-sm">
+  <DrawerRoot>
+    <DrawerTrigger>See example</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white relative w-100 offblack">
+      <DrawerClose />
+      <p>This uses bg-red-pale as the scrim background</p>
+    </DrawerContent>
+  </DrawerRoot>
+</Container>
 
-<Grid>
-  <Container Caption="Click button to see option" className="flex-column pa-sm">
-         <DrawerRoot
-      onOpenChange={open => {
-        console.log(open, "onOpenChange");
-      }}
-    >
-      <DrawerTrigger>See example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-offblack relative w-100 offblack">
-       <DrawerClose />
-       <p><span className="white">A dark drawer</span></p>
-      </DrawerContent>
-    </DrawerRoot>
-  </Container>
-<div className="mt-sm mb-xl">
 
-##### Drawer color
+
+<div className="mt-lg mb-sm">
+
+### Drawer color
 The drawer color can be changed by defining the color using one of our background [colors from our tokens](../../tokens/our-tokens/color). 
 </div>
-</Grid>
+<Container Caption="Click button to see option" className="flex-column pa-sm">
+        <DrawerRoot
+    onOpenChange={open => {
+      console.log(open, "onOpenChange");
+    }}
+  >
+    <DrawerTrigger>See example</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-offblack relative w-100 offblack">
+      <DrawerClose />
+      <p><span className="white">A dark drawer</span></p>
+    </DrawerContent>
+  </DrawerRoot>
+</Container>
 
 <!-- Size -->
-<Grid>
-  <Container className="flex-column">
-  <DrawerRoot>
-    <DrawerTrigger className="mr-sm">See bottom example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack"  height={200}  position="bottom">
-        <div className=" mt-xxl">
-            This drawer is set to 200px height.
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
-    <DrawerRoot>
-    <DrawerTrigger className="mr-sm">See left example</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white offblack"  width={200}  position="left">
-        <div className="pt-xxl mt-xxl">
-            This drawer is set to 200px height.
-        </div>
-      </DrawerContent>
-  </DrawerRoot>
-  </Container>
-<div>
+<div className="mt-lg mb-sm">
 
-##### Height and Width
+### Height and Width
 Drawer width and height can be defined. Height can be defined if the position is `top` or `bottom` and width can be defined if the position is `right` or `left`.
 
 </div>
-</Grid>
+<Container className="flex-column">
+<DrawerRoot>
+  <DrawerTrigger className="mr-sm">See bottom example</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack"  height={200}  position="bottom">
+      <div className=" mt-xxl">
+          This drawer is set to 200px height.
+      </div>
+    </DrawerContent>
+</DrawerRoot>
+  <DrawerRoot>
+  <DrawerTrigger className="mr-sm">See left example</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white offblack"  width={200}  position="left">
+      <div className="pt-xxl mt-xxl">
+          This drawer is set to 200px height.
+      </div>
+    </DrawerContent>
+</DrawerRoot>
+</Container>
 
 ***
 ## Behavior
 
-<Grid>
-  <Container className="flex-column">
-    <DrawerRoot>
-      <DrawerTrigger>Scrim/Button to close</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white relative w-100 offblack">
-       <DrawerClose />
-       <p>Click scrim to close</p>
-      </DrawerContent>
-    </DrawerRoot>
-  </Container>
-<div>
+<div className="mt-lg mb0-">
 
-##### Closing
+### Closing
 When the close button icon is rendered the drawer can be closed by either clicking the scrim or the close button. 
-<br/>
-
 Note: The drawer can be set to open and will remain open even if the scrim is clicked on. 
 
 </div>
-</Grid>
+<Container className="flex-column">
+  <DrawerRoot>
+    <DrawerTrigger>Scrim/Button to close</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white relative w-100 offblack">
+      <DrawerClose />
+      <p>Click scrim to close</p>
+    </DrawerContent>
+  </DrawerRoot>
+</Container>
 
-<Grid>
-  <Container className="flex-column">
-    <DrawerRoot>
-      <DrawerTrigger>See drawer with overflow</DrawerTrigger>
-      <DrawerScrim />
-      <DrawerContent className="bg-white relative w-100 offblack">
-       <DrawerClose />
-       <div style={{width:'800',height:'800px'}} className="flex items-center justify-center">
-       <p>Overflow by scrolling</p>
-        </div>
-      </DrawerContent>
-    </DrawerRoot>
-  </Container>
-<div>
 
-##### Content overflow
+
+<div className="mt-lg mb-sm">
+
+### Content overflow
 Content will overflow in drawer by default both verically and horitzonally. 
 
 </div>
-</Grid>
+<Container className="flex-column">
+  <DrawerRoot>
+    <DrawerTrigger>See drawer with overflow</DrawerTrigger>
+    <DrawerScrim />
+    <DrawerContent className="bg-white relative w-100 offblack">
+      <DrawerClose />
+      <div style={{width:'800',height:'800px'}} className="flex items-center justify-center">
+      <p>Overflow by scrolling</p>
+      </div>
+    </DrawerContent>
+  </DrawerRoot>
+</Container>
 
 ***
 ## Usage guidelines
 
 <!-- Start of a guide -->
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Popover to bottom drawer
+A drawer can be used as a alternative to a [popover](./tooltip) on small screens. This is best when the content can be to overwhelming in a popover.
+</div>
 <Guide Caption="Resize screen to see behavior" guidance="do">
 <Tooltip
         className="dn-m dn-sm select-none"
@@ -313,17 +305,15 @@ Content will overflow in drawer by default both verically and horitzonally.
       </DrawerContent>
     </DrawerRoot>
 </Guide>
-<div>
-
-#### Popover to bottom drawer
-A drawer can be used as a alternative to a [popover](./tooltip) on small screens. This is best when the content can be to overwhelming in a popover.
-<br/>
-</div>
-</Grid>
 
 
 <!-- Start of a guide -->
-<Grid>
+<div className="mb-sm mt-lg">
+
+### Content should be accessible
+Do not combine colors of the drawer where text is not accessbile to the user. Read more about [WCAG accessbile contrast requirements](https://webaim.org/articles/contrast/).
+
+</div>
 <Guide guidance="don't">
     <DrawerRoot>
       <DrawerTrigger>See bad example</DrawerTrigger>
@@ -334,15 +324,15 @@ A drawer can be used as a alternative to a [popover](./tooltip) on small screens
       </DrawerContent>
     </DrawerRoot>
 </Guide>
-<div>
 
-#### Content should be accessible
-Do not combine colors of the drawer where text is not accessbile to the user. Read more about [WCAG accessbile contrast requirements](https://webaim.org/articles/contrast/).
-<br/>
+
+<div className="mt-lg mb-sm">
+
+### Avoid full screen
+A drawer should never take the fullscreen of the viewer window. 
+The drawer should always leave at least 1/3 of the screen available
+
 </div>
-</Grid>
-
-<Grid>
 <Guide guidance="caution">
     <DrawerRoot>
     <DrawerTrigger className="mr-sm">See left example</DrawerTrigger>
@@ -355,41 +345,34 @@ Do not combine colors of the drawer where text is not accessbile to the user. Re
       </DrawerContent>
   </DrawerRoot>
 </Guide>
-<div>
 
-#### Avoid full screen
-A drawer should never take the fullscreen of the viewer window. 
-The drawer should always leave at least 1/3 of the screen available
-
-<br/>
-</div>
-</Grid>
 
 ***
 ## Specs
 
-  <Container className="flex-column pa-sm">
-     <img src="/img/design/drawer/bottom.svg"/>
-  </Container>
-<div className="mt-sm mb-xl">
+<div className="mt-lg mb-sm">
 
-##### Top or Bottom
+### Top or Bottom
 When the drawer is positioned top or bottom it will have a default 
 height of 500px unless it is defined by the user and width will be 100% of screen.
 
 </div>
+<Container className="flex-column pa-sm">
+    <img src="/img/design/drawer/bottom.svg"/>
+</Container>
 
 
-  <Container className="flex-column pa-sm">
-     <img src="/img/design/drawer/left.svg"/>
-  </Container>
-<div className="mt-sm mb-xl">
+<div className="mt-lg mb-sm">
 
-##### Left or Right
+### Left or Right
 When the drawer is positioned left or right it will have a default 
 width of 400px unless it is defined by the user and height will be 100% of screen.
 
 </div>
+<Container className="flex-column pa-sm">
+    <img src="/img/design/drawer/left.svg"/>
+</Container>
+
 
 ***
 ## Component Checklist

@@ -56,15 +56,23 @@ action on the content inside of the popover.
 ---
 ## Options
 
+<div className="mt-lg mb-lg">
+
+### Placement
+There are a total of 12 placement options that can be used for both Popover and tooltips.
+</div>
 <Container>
     <GridSet/>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Placement
-There are a total of 12 placement options that can be used for both Popover and tooltips.
+<div className="mt-lg mb-sm">
+
+### Offset
+Both tooltips and popovers have optional offsets. The offset is defined by a set of 2
+numbers [0,16]. The first number indicating the x offset and the 2nd indicating the y offset. 
+Default offset is [0,8].
+
 </div>
-
 <Container>
     <div className="mr-sm">
     <Tooltip  placement="top" content={<div className="pa-xs">Default offset</div>}>
@@ -75,16 +83,15 @@ There are a total of 12 placement options that can be used for both Popover and 
         <p>With Offset</p>
     </Tooltip>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Offset
-Both tooltips and popovers have optional offsets. The offset is defined by a set of 2
-numbers [0,16]. The first number indicating the x offset and the 2nd indicating the y offset. 
-Default offset is [0,8].
+
+<div className="mt-lg mb-sm">
+
+### asPopOver
+When set as popover the beak will be hidden, shadow applied, and trigger will require
+the user to click instead of over to reveal the content bubble.
 
 </div>
-
-
 <Container>
     <div className="mr-sm">
     <Tooltip asPopOver={true}  placement="top" content={<div className="pa-xs">Popover</div>}>
@@ -95,14 +102,12 @@ Default offset is [0,8].
         <p>Tooltip</p>
     </Tooltip>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### asPopOver
-When set as popover the beak will be hidden, shadow applied, and trigger will require
-the user to click instead of over to reveal the content bubble.
+<div className="mt-lg mb-sm">
 
+### Themes
+Three available themes for the tooltip & popover. They include light, dark and a subscription theme.
 </div>
-
 <Container>
     <div className="mr-sm">
         <Tooltip  placement="top" theme="light" content={<div className="pa-xs">Light Theme</div>}>
@@ -121,15 +126,17 @@ the user to click instead of over to reveal the content bubble.
     </div>
     
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Themes
-Three available themes for the tooltip & popover. They include light, dark and a subscription theme.
-</div>
 
 ---
 ## Behavior
 
+<div className="mt-lg mb-sm">
+
+### Overflow
+Tooltips and popover have no inherit fixed size. The content inside will span the width of its parent container unless otherwise specified.
+
+</div>
 <Container>
     <div className="mr-sm">
         <Tooltip  placement="top" theme="light" content={<div className="pa-xs">This sentence is super long and I did not put any constraints on the content container so it can keep spanning as long as I want it to but is limited to the width of the parent container..</div>}>
@@ -138,67 +145,64 @@ Three available themes for the tooltip & popover. They include light, dark and a
     </div>
     
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Overflow
-Tooltips and popover have no inherit fixed size. The content inside will span the width of its parent container unless otherwise specified.
+<div className="mt-lg mb-sm">
+
+### On Hover
+Tooltips will be triggered on hover (tap for mobile) and will disappear if the user is no longer
+hovering over the element or the tooltip itself.
 
 </div>
-
 <Container>
     <div className="mr-sm">
         <Tooltip  placement="top" theme="light" content={<div className="pa-xs">Hello there</div>}>
             <p>Hover or tap to see behavior</p>
         </Tooltip>
     </div>
-    
 </Container>
-<div className="mt-sm mb-xl">
 
-##### On Hover
-Tooltips will be triggered on hover (tap for mobile) and will disappear if the user is no longer
-hovering over the element or the tooltip itself.
+<div className="mt-lg mb-sm">
+
+### On Click
+When used as a Popover the trigger will be on click (tap for mobile) and will only disappear if the user
+clicks outside of the content bubble.
 
 </div>
-
 <Container>
     <div className="mr-sm">
         <Tooltip  asPopOver placement="top" theme="light" content={<div className="pa-xs">Pop! Hello there</div>}>
             <p>Click or tap to see behavior</p>
         </Tooltip>
     </div>
-    
 </Container>
-<div className="mt-sm mb-xl">
 
-##### On Click
-When used as a Popover the trigger will be on click (tap for mobile) and will only disappear if the user
-clicks outside of the content bubble.
+
+<div className="mt-lg mb-sm">
+
+### Flip to fit
+The tooltip/popover will flip from its orginal placement if there is not enough space for it to remain
+on screen. If the user scrolls beyond the trigger element the tooltip/popover will no longer attempt to
+stay in view.
 
 </div>
-
-
 <Container>
     <div className="mr-sm">
         <Tooltip  asPopOver placement="bottom" theme="light" content={<div className="pa-xs">Pop! Watch me flip by scrolling me off screen</div>}>
             <p>Click or tap to see behavior</p>
         </Tooltip>
     </div>
-    
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Flip to fit
-The tooltip/popover will flip from its orginal placement if there is not enough space for it to remain
-on screen. If the user scrolls beyond the trigger element the tooltip/popover will no longer attempt to
-stay in view.
-
-</div>
 
 ---
 ## Usage guidelines
+<br/>
 
 <!-- Start of a guide -->
+### Nesting popovers
+Nesting popoversmay seem helpful as a trick to get content on the screen, but it is very hard for the 
+user to navigate content this way.
+
 <Guide guidance="caution">
     <div className="mr-sm">
         <Tooltip  asPopOver placement="top" theme="light" 
@@ -213,10 +217,11 @@ stay in view.
     </div>
 </Guide>
 
-#### Nesting popovers
-Nesting popoversmay seem helpful as a trick to get content on the screen, but it is very hard for the 
-user to navigate content this way.
 <br/>
+
+### Mixing patterns
+Tooltips should never nest a popover. Since the tooltip shows/hides on hover the precision required for the 
+user to navigate the content becomes increasingly harder as patterns mix. 
 
 <Guide guidance="don't">
     <div className="mr-sm">
@@ -232,11 +237,10 @@ user to navigate content this way.
     </div>
 </Guide>
 
-#### Mixing patterns
-Tooltips should never nest a popover. Since the tooltip shows/hides on hover the precision required for the 
-user to navigate the content becomes increasingly harder as patterns mix. 
 <br/>
 
+### Abusing offset
+Avoid setting the offset to close or to far from the trigger. 
 
 <Guide guidance="don't">
     <div className="flex">
@@ -255,10 +259,10 @@ user to navigate the content becomes increasingly harder as patterns mix.
     </div>
 </Guide>
 
-#### Abusing offset
-Avoid setting the offset to close or to far from the trigger. 
 <br/>
 
+### Pair with Button Icons
+Giving user context with tooltips can be helpful way to inform of the Button Icon function. 
 
 <Guide Caption="Hover to see example" guidance="do">
     <div className="flex">
@@ -279,7 +283,7 @@ Avoid setting the offset to close or to far from the trigger.
   </Container>
 <div className="mt-sm mb-xl">
 
-##### Size
+### Size
 Tooltip takes up the full width of its parent container and full height of the content inside its bubble.
 
 </div>

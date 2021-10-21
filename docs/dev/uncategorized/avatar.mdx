@@ -31,9 +31,8 @@ such as reporters and columnists.
 <!-- Tabs between design & implementation change path if -->
 <Tabs isDesignDoc={false} relatedUrl="design/uncategorized/avatar"/>
 
-## Options
 
-### Sizes
+## Sizes
 <Container className="flex-wrap pa-sm">
     <Avatar size="small" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
     <Avatar size="medium" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
@@ -52,13 +51,15 @@ export const YourComponent = () => {
   );
 }
 ```
-### Avatar Groups
+
+---
+## Avatar Groups
 To represent multiple individuals, Medium, Small, and Extra Small avatars can be shown in groupings.
+Example of uses are:
+- `Medium` - used on Article page bylines
+- `Small` - used on Homepage bylines, nav bar
 
-#### Sizes
-- Medium, Article page bylines
-- small, Homepage bylines, nav bar
-
+### Medium
 <Container>
     <AvatarGroup size="medium">
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
@@ -71,7 +72,6 @@ To represent multiple individuals, Medium, Small, and Extra Small avatars can be
 </Container>
 
 ```jsx
-
 import { Avatar } from "@washingtonpost/site-components/core/avatar"
 
 export const YourComponent = () => {
@@ -87,36 +87,7 @@ export const YourComponent = () => {
   );
 }
 ```
-
-### Show all
-<Container>
-    <AvatarGroup showAll={true} size="medium">
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-    </AvatarGroup>
-</Container>
-
-```jsx
-
-import { Avatar } from "@washingtonpost/site-components/core/avatar"
-
-export const YourComponent = () => {
-    return (
-    <AvatarGroup showAll={true} size="medium">
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-        <Avatar imgUrl="/img/design/avatar/profile.png"/>
-    </AvatarGroup>
-  );
-}
-```
+<br/>
 
 ### Small group
 <Container>
@@ -148,10 +119,10 @@ export const YourComponent = () => {
 }
 ```
 
-
-### Medium group
+---
+## Show all
 <Container>
-    <AvatarGroup size="medium">
+    <AvatarGroup showAll={true} size="medium">
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
@@ -167,7 +138,7 @@ import { Avatar } from "@washingtonpost/site-components/core/avatar"
 
 export const YourComponent = () => {
     return (
-    <AvatarGroup size="medium">
+    <AvatarGroup showAll={true} size="medium">
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
         <Avatar imgUrl="/img/design/avatar/profile.png"/>
@@ -178,6 +149,7 @@ export const YourComponent = () => {
   );
 }
 ```
+<br/>
 
 ---
 ## Component Api

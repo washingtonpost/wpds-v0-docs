@@ -66,34 +66,38 @@ A button icon is a circular button that contains only an icon. The interaction w
 
 ## Options
 
-<Grid>
-  <Container>
-    <ButtonIcon
-  ariaLabel="Add to your reading list"
-  border={false}
-  className="mr-sm"
-  color="white"
-  renderIcon={BookmarkOutline16}
-    />
-    <ButtonIcon
-  ariaLabel="Add to your reading list"
-  border={false}
-  className="mr-sm"
-  color="white"
-  size="small"
-  renderIcon={BookmarkOutline16}
-/>
-  </Container>
-<div>
+<div className="mt-lg mb-sm">
 
-##### Sizing
-
+### Sizing
 Button icons come in two sizes: `small` and `default`.
 
 </div>
-</Grid>
+<Container>
+  <ButtonIcon
+ariaLabel="Add to your reading list"
+border={false}
+className="mr-sm"
+color="white"
+renderIcon={BookmarkOutline16}
+  />
+  <ButtonIcon
+ariaLabel="Add to your reading list"
+border={false}
+className="mr-sm"
+color="white"
+size="small"
+renderIcon={BookmarkOutline16}
+/>
+</Container>
 
-<Grid>
+
+<div className="mt-lg mb-sm">
+
+### Icon size
+All [icon sizes](../../tokens/our-tokens/icons) supported in the button icon.
+
+</div>
+
   <Container>
     <ButtonIcon
   ariaLabel="Add to your reading list"
@@ -120,17 +124,15 @@ Button icons come in two sizes: `small` and `default`.
   renderIcon={BookmarkOutline16}
 />
   </Container>
-<div>
 
-##### Icon size
 
-All [icon sizes](../../tokens/our-tokens/icons) supported in the button icon.
+<div className="mt-lg mb-sm">
+
+### Border
+Button borders can be toggled on or off.
 
 </div>
-</Grid>
-
-<Grid>
-  <Container>
+<Container>
     <ButtonIcon
   ariaLabel="Add to your reading list"
   border={false}
@@ -147,18 +149,17 @@ All [icon sizes](../../tokens/our-tokens/icons) supported in the button icon.
   size="medium"
   renderIcon={BookmarkOutline24}
 />
-  </Container>
-<div>
+</Container>
 
-##### Border
 
-Button borders can be toggled on or off.
-
-</div>
-</Grid>
 
 <!-- Colors -->
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Color
+Button icons follow the same color schemes as our [buttons](./button). To see all color themes see our [color tokens](../../tokens/our-tokens/color).
+
+</div>
 <Container className="pa-sm flex-wrap">
     <ButtonIcon
   ariaLabel="Plus sign"
@@ -200,17 +201,15 @@ Button borders can be toggled on or off.
   size="medium"
   renderIcon={Add24}
 /></div>
-
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Color
 
-Button icons follow the same color schemes as our [buttons](./button). To see all color themes see our [color tokens](../../tokens/our-tokens/color).
+<div className="mt-lg mb-sm">
+
+### Icon
+Any icon supported in our [Icon tokens](../../tokens/our-tokens/icons) can be used.
 
 </div>
-</Grid>
-<Grid>
 <Container className="pa-sm">
   <ButtonIcon
   ariaLabel="Plus sign"
@@ -237,21 +236,21 @@ Button icons follow the same color schemes as our [buttons](./button). To see al
   renderIcon={Play16}
 />
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Icon
 
-Any icon supported in our [Icon tokens](../../tokens/our-tokens/icons) can be used.
-
-</div>
-</Grid>
 
 ---
 
 ## Behaviors
 
 <!-- Hover & active -->
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Hover Active & Default
+Button icons follow the same color theme logic as our as our [buttons](./button).
+Note: To see all color themes please see our [color tokens](../../tokens/our-tokens/color)
+
+</div>
 <Container className="pa-sm flex-wrap">
     <ButtonIcon
   ariaLabel="Plus sign"
@@ -295,20 +294,16 @@ Any icon supported in our [Icon tokens](../../tokens/our-tokens/icons) can be us
 /></div>
 
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Hover Active & Default
 
-Button icons follow the same color theme logic as our as our [buttons](./button).
-<br/>
-
-Note: to see all color themes please see our [color tokens](../../tokens/our-tokens/color)
-
-</div>
-</Grid>
 
 <!-- Keyboard -->
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Tab behavior
+Button icons can be tab through using the keyboard.
+
+</div>
 <Container Caption="Tab your keyboard to see behavior" className="pa-sm flex-wrap">
   <ButtonIcon
   ariaLabel="Plus sign"
@@ -352,20 +347,18 @@ Note: to see all color themes please see our [color tokens](../../tokens/our-tok
 /></div>
 
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Tab behavior
 
-Button icons can be tab through using the keyboard.
-
-</div>
-</Grid>
 
 ---
 
 ## Usage guidelines
 
+<br/>
+
 <!-- Start of a guide -->
+#### Avoid pairing large icon in small button icon
+While the button icon accepts supported icon sizes large icons do not work with button icons
 <Grid className="mb-0">
 <Guide guidance="don't">
     <ButtonIcon
@@ -389,12 +382,13 @@ Button icons can be tab through using the keyboard.
 </Guide>
 </Grid>
 
-#### Avoid pairing large icon in small button icon
 
-While the button icon accepts supported icon sizes large icons do not work with button icons
 <br/>
 
 <!-- Start of a guide -->
+### Ambiguous icons
+Do not use icons in button icons that leave the user unsure of its action. The button icon should be clear and actionable otherwise a standard [button](./button) should be used.+
+
 <Grid className="mb-0">
 <Guide guidance="don't">
   <ButtonIcon
@@ -415,35 +409,34 @@ While the button icon accepts supported icon sizes large icons do not work with 
 </Guide>
 </Grid>
 
-#### Ambiguous icons
 
-Do not use icons in buttno icons that leave the user unsure of its action. The button icon should be clear and actionable otherwise a standard [button](./button) should be used.+
-<br/>
 
 <!-- Start of a guide -->
+<br/>
+
+### Group Spacing
+When a group button icons are needed spacing between should use 8px spacing.
+
 <Guide Caption="Image not to scale" guidance="do">
   <img width="30%" src="/img/design/button-icon/example.svg"/>
 </Guide>
 
-#### Spacing for a group of button icons
 
-When a group button icons are needed spacing between should use 8px spacing.
-<br/>
 
 ---
 
 ## Specs
 
-  <Container className="flex-column">
-     <img width="60%" src="/img/design/button-icon/specs.svg"/>
-  </Container>
-<div className="mt-sm mb-xl">
+<div className="mt-lg mb-sm">
 
-##### Size
-
+### Size
 Size of `small` button icon is 32px to meet the minimal tap target. The `medium` is 40px. Icon is aligned vertically and horizontally center.
 
 </div>
+<Container className="flex-column">
+    <img width="60%" src="/img/design/button-icon/specs.svg"/>
+</Container>
+
 
 ---
 

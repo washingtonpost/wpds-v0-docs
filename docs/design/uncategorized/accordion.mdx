@@ -64,6 +64,13 @@ An accordion is a container that contains a header and a body that is revealed/h
 ## Options
 
 <!-- Default open -->
+<div className="mb-sm mt-lg">
+
+### Default Open
+
+The accordion can be open by default.
+
+</div>
   <Container className="flex-column pa-sm mb-sm">
   <div className="bg-white  w-100 ">
     <Accordion
@@ -97,19 +104,20 @@ An accordion is a container that contains a header and a body that is revealed/h
     />
     </div>
   </Container>
-<div className="mb-xl">
 
-##### Default Open
-
-The accordion can be open by default.
-
-</div>
 
 ---
 
 ## Behavior
 
 <!-- One can be open at a time -->
+<div className="mb-sm mt-lg">
+
+### Opening
+
+The accordion can only have one item open at a time.
+
+</div>
   <Container className="flex-column pa-sm mb-sm">
   <div className="bg-white  w-100 ">
     <Accordion
@@ -142,15 +150,16 @@ The accordion can be open by default.
     />
     </div>
   </Container>
-<div className="mb-lg">
 
-##### Opening
-
-The accordion can only have one item open at a time.
-
-</div>
 
 <!-- Keyboard -->
+<div className="mb-sm mt-lg">
+
+### Keyboard Interactions
+
+The accordion can be tabbed through and use return/enter to open or close the accordion.
+
+</div>
   <Container className="flex-column pa-sm mb-sm">
   <div className="bg-white  w-100 ">
     <Accordion
@@ -183,19 +192,16 @@ The accordion can only have one item open at a time.
     />
     </div>
   </Container>
-<div className="mb-lg">
 
-##### Keyboard Interactions
-
-The accordion can be tabbed through and use return/enter to open or close the accordion.
-
-</div>
 
 ---
 
 ## Usage Guidelines
 
 <!-- Start of a guide -->
+### Avoid splitting content
+The header of the accordion should be a complete sentence or statement. It should never continue inside of the body of the accordion.
+
 <Guide guidance="don't">
 <div className="bg-white shadow-3">
    <Accordion
@@ -213,12 +219,12 @@ The accordion can be tabbed through and use return/enter to open or close the ac
     </div>
 </Guide>
 
-#### Avoid splitting content
-
-The header of the accordion should be a complete sentence or statement. It should never continue inside of the body of the accordion.
 <br/>
 
 <!-- Start of a guide -->
+### Container width vs headline width
+When possible the container of the headline should be bigger to avoid it getting to close to the chevron. This can be avoided with enough container space or really short and concise headlines.
+
 <Guide guidance="caution">
 <div className="bg-white shadow-3">
    <Accordion
@@ -236,9 +242,6 @@ The header of the accordion should be a complete sentence or statement. It shoul
     </div>
 </Guide>
 
-#### Container should be bigger than headline
-
-When possible the container of the headline should be bigger to avoid it getting to close to the chevron. This can be avoided with enough container space or really short and concise headlines.
 <br/>
 
 ---
@@ -246,28 +249,29 @@ When possible the container of the headline should be bigger to avoid it getting
 ## Specs
 
 <!-- Specs -->
-<Container className="flex-column pa-sm">
-    <img src="/img/design/accordion/size.svg"/>
-  </Container>
-<div className="mt-sm">
 
-##### Size
+<div className="mt-lg mb-sm">
 
+### Size
 The accordion will take up the width of the container and the height of the content with the header.
 
 </div>
+<Container className="flex-column pa-sm">
+    <img src="/img/design/accordion/size.svg"/>
+  </Container>
+
 
 <!-- Spacing -->
-<Container Caption="measured in pixels" className="flex-column pa-sm">
-    <img src="/img/design/accordion/spacing.svg"/>
-  </Container>
-<div className="mt-sm">
+<div className="mb-sm mt-lg">
 
-##### Spacing
-
+### Spacing
 The accordion has no left or right spacing but has fixed spacing between header, and the body. The body also has a `16px` bottom padding.
 
 </div>
+<Container Caption="measured in pixels" className="flex-column pa-sm">
+    <img src="/img/design/accordion/spacing.svg"/>
+  </Container>
+
 
 ---
 

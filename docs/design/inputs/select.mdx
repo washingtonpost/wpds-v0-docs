@@ -45,113 +45,107 @@ vertically with no spacing between.
 ---
 ## Options
 
+<div className="mt-lg mb-sm">
 
-<Container className="flex-column pa-sm">
-    <SelectExample/>
-</Container>
-<div className="mt-sm">
-
-##### No options
+### No options
 The select input currently supports only one size and variant.
 
 </div>
+<Container className="flex-column pa-sm">
+    <SelectExample/>
+</Container>
+
 
 --- 
 ## Behavior
-<Container Caption="Click / Tap to see focus state" className="flex-column pa-sm">
-    <div style={{zIndex:5}} className="w-100"><SelectExample/></div>
-</Container>
-<div className="mt-sm mb-lg">
+<div className="mt-lg mb-sm">
 
-##### Focus State
+### Focus State
 When in focus the border will transition to blue-bright and the chevron will flip revealing the options.
 
 </div>
-
-<Container className="flex-column pa-sm">
-    <div style={{zIndex:5}} className="w-100"><ErrorExample/></div>
+<Container Caption="Click / Tap to see focus state" className="flex-column pa-sm">
+    <div style={{zIndex:5}} className="w-100"><SelectExample/></div>
 </Container>
-<div className="mt-sm mb-lg">
 
-##### Error State
+<div className="mt-lg mb-sm">
+
+### Error State
 When in error state the border will transition to red with a error message, and the options will collapse.
 
 </div>
+<Container className="flex-column pa-sm">
+    <div style={{zIndex:5}} className="w-100"><ErrorExample/></div>
+</Container>
 
+<div className="mt-lg mb-sm">
+
+### Disabled State
+When in disabled state the input will not be interactive and revert to standard disabled state.
+</div>
 <Container className="flex-column pa-sm">
     <div style={{zIndex:5}} className="w-100"><DisabledExample/></div>
 </Container>
-<div className="mt-sm mb-lg">
-
-##### Disabled State
-When in disabled state the input will not be interactive and revert to standard disabled state.
-</div>
 
 
-<Container className="flex-column pa-sm">
-    <div style={{zIndex:5, width:'150px'}}><SelectExample/></div>
-</Container>
-<div className="mt-sm mb-lg">
+<div className="mt-lg mb-sm">
 
-##### Text Overflow
+### Text Overflow
 Text will overflow but the input will not height will not expand.
 </div>
+<Container className="flex-column mb-lg pa-sm">
+    <div style={{zIndex:5, width:'150px'}}><SelectExample/></div>
+</Container>
+
 
 ---
 ## Usage guidelines 
 <!-- Start of a guide -->
+### Overflow Text
+Size the select input according to the data you will be taking on. Since the input currently does not change in height 
+input data will need to be designed around to avoid ugly overflow.
+
 <Guide guidance="don't">
    <div style={{zIndex:5, width:'150px'}}><SelectExample/></div>
 </Guide>
 
-#### Overflow Text
-Size the select input according to the data you will be taking on. Since the input currently does not change in height 
-input data will need to be designed around to avoid ugly overflow.
-<br/>
+<br/> 
+
 
 <!-- Start of a guide -->
-<Guide guidance="do">
-   <div style={{zIndex:5, width:'250px'}}><MonthExample/></div>
-</Guide>
-
-#### Grouping 
-Use for grouping items to save space.
-<br/>
-
-<!-- Start of a guide -->
+### Clear Labels 
+Labels in select inputs are very important as the options may 
+read as different from each other without a label.
 <Guide guidance="do">
    <div style={{zIndex:5, width:'250px'}}><PinkThings/></div>
 </Guide>
 
-#### Grouping 
-Labels in select inputs are very important as the options may 
-read as different from each other without a label.
-<br/>
+
 
 
 ---
 ## Specs
 
+<div className="mt-lg mb-sm">
 
-<Container>
-  <img width="60%"  height="auto" src='/img/design/input/select/specs.svg'/>
-</Container>
-<div className="mt-sm mb-lg">
-
-##### Size
+### Size
 Select input has a fixed height of 48px and the width takes 100% of its 
 parent container. The height when options are revealed is 100% of the total amount of options.
 </div>
-
 <Container>
-  <img width="50%"  height="auto" src='/img/design/input/select/spacing.svg'/>
+  <img width="60%"  height="auto" src='/img/design/input/select/specs.svg'/>
 </Container>
-<div className="mt-sm mb-lg">
 
-##### Spacing
+<div className="mt-lg mb-sm">
+
+### Spacing
 Spacing of the select input is 8px padding top and bottom, 8px left, 16px right and 4px between the input and the 
 error message.
 </div>
+<Container>
+  <img width="50%"  height="auto" src='/img/design/input/select/spacing.svg'/>
+</Container>
+
 
 ***
 ## Component Checklist

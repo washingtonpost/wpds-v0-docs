@@ -33,26 +33,94 @@ important and relvant information.
 <Tabs relatedUrl="design/uncategorized/banner"/>
 
 
-Disclaimer to use subs related colors add `subs-theme` class to className like so
-
-```jsx
-<Banner className="subs-theme" color="blue">
-```
-
-<Canvas>
-  <Story id="banner--default"></Story>
-</Canvas>
-
-## Code Example
+## Colors
+<Container className="pa-sm flex-column">
+    <Banner color="blue" className="w-100">
+        Blue
+    </Banner>
+      <Banner color="red" className="w-100">
+        Red
+    </Banner>
+    <Banner color="offblack" className="w-100">
+        Off Black
+    </Banner>
+    <Banner color="green" className="w-100">
+        Green
+    </Banner>
+    <Banner color="blue" className="w-100 subs-theme">
+        Subs Theme Blue
+    </Banner>
+      <Banner color="green" className="w-100 subs-theme">
+        Subs Theme Green
+    </Banner>
+</Container>
 
 ```jsx
 import { Banner } from "@washingtonpost/site-components/core/banner";
 
 export default function MyLandingPage() {
-  return <Banner />;
+  return (
+  <Banner color="blue" />
+  <Banner color="red" />
+  <Banner color="offblack" />
+
+  //Note to use subscription colors you must add the class subs-theme*
+  <Banner className="subs-theme" color="blue" /> 
+  <Banner className="subs-theme" color="green" />
+  );
+}
+```
+---
+## Dismissable
+<Container className="pa-sm flex-column">
+    <Banner color="offblack" className="w-100">
+        Dismissable banner
+    </Banner>
+    <Banner color="offblack" renderCloseButton={false} className="w-100">
+        Non-Dismissable banner
+    </Banner>
+</Container>
+
+```jsx
+import { Banner } from "@washingtonpost/site-components/core/banner";
+
+export default function MyLandingPage() {
+  return (    
+  <Banner color="offblack" className="w-100">
+      Dismissable banner
+  </Banner>
+  <Banner color="offblack" renderCloseButton={false} className="w-100">
+      Non-Dismissable banner
+  </Banner>
+  );
 }
 ```
 
+---
+## Alignment
+<Container className="pa-sm flex-column">
+    <Banner color="offblack" alignment="left" className="w-100">
+        Alignment Left
+    </Banner>
+    <Banner color="offblack" alignment="center" renderCloseButton={false} className="w-100">
+        Alignment Center
+    </Banner>
+</Container>
+
+```jsx
+import { Banner } from "@washingtonpost/site-components/core/banner";
+
+export default function MyLandingPage() {
+  return (    
+  <Banner color="offblack" className="w-100">
+      Alignment Left
+  </Banner>
+  <Banner color="offblack" renderCloseButton={false} className="w-100">
+      Alignment Center
+  </Banner>
+  );
+}
+```
 ---
 ## Component Api
 

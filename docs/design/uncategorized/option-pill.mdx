@@ -53,23 +53,28 @@ Option Pills can appear dynamically, either individually or as a group.
 ***
 ## Behaviors
 
-<Grid>
-  <Container Caption="Click or tap" className="flex-column">
-       <OptionPill href="#business">Business</OptionPill>
-  </Container>
-<div>
+<div className="mt-lg mb-sm">
 
-##### Active
+### Active
 When a option pill is selected it is active until unselected.
 
 </div>
-</Grid>
+<Container Caption="Click or tap" className="flex-column">
+      <OptionPill href="#business">Business</OptionPill>
+</Container>
+
 
 
 ***
 ## Usage guidelines
+<br/>
 
 <!-- Start of a guide -->
+### Pill vs buttons
+Option pills should only be used to present a set of options. In the example all
+pills are in fact user options they represent user actions that are not related. The actions 
+should be related such as a links to stories, categories, or filters.
+
 <Guide guidance="don't">
       <OptionPills as="div">
         <OptionPill href="#signup">Sign up</OptionPill>
@@ -78,15 +83,16 @@ When a option pill is selected it is active until unselected.
     </OptionPills>
 </Guide>
 
-#### Option pills are not buttons 
-Option pills should only be used to present a set of options. In the example all
-pills are in fact user options they represent user actions that are not related. The actions 
-should be related such as a links to stories, categories, or filters.
+
 <br/>
 
 <!-- Start of a guide -->
+### Wrap when needed
+By default option pills do not wrap when grouped. When approriate and all options need to be 
+in view have the option pills wrap. 
+
 <Guide className="pa-sm" guidance="do">
-<OptionPills as="ul" className="pl-0 ma-0">
+<OptionPills as="ul" className="pl-0 ma-sm">
   <li>
     <OptionPill href="#boop1">Option pill</OptionPill>
   </li>
@@ -123,38 +129,33 @@ should be related such as a links to stories, categories, or filters.
 </OptionPills>
 </Guide>
 
-#### Wrap when needed
-By default option pills do not wrap when grouped. When approriate and all options need to be 
-in view have the option pills wrap. 
-<br/>
+
 
 ***
 ## Specs
 
-<Grid>
-  <Container Caption="images not to scale" className="flex-column">
-    <img width="50%" src="/img/design/option-pill/size.png"/>
-  </Container>
-<div>
+<div className="mt-lg mb-sm">
 
-##### Size
+### Size
 Pill will take the width of the text content and not wrap the text. The height
 is a fixed height of `34px`.
 
 </div>
-</Grid>
+<Container Caption="images not to scale" className="flex-column">
+  <img width="35%" src="/img/design/option-pill/size.png"/>
+</Container>
 
-<Grid>
-  <Container Caption="images not to scale" className="flex-column">
-     <img width="50%" src="/img/design/option-pill/spacing.png"/>
-  </Container>
-<div>
 
-##### Spacing
+<div className="mt-lg mb-sm">
+
+### Spacing
 Text within the option pill is vertically aligned with `24px` left and right.
 
 </div>
-</Grid>
+<Container Caption="images not to scale" className="flex-column">
+    <img width="35%" src="/img/design/option-pill/spacing.png"/>
+</Container>
+
 
 ***
 ## Component Checklist

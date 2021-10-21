@@ -17,7 +17,6 @@ import { ChevronRight16 } from "@washingtonpost/site-components/core/icon/chevro
 import {DefaultExample, CardExample,LessThan4Example,LessThan5Example} from "../../../example-components/pagination_example"
 import { Card } from "@washingtonpost/site-components/core/card";
 
-# Pagination Dots
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
@@ -38,6 +37,8 @@ is darker and larger than the others, with steps further away decreasing in size
     />
 </Container>
 
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/pagination-dots"/>
+
 <!-- Anatomy section export image from Figma and import into here -->
 ## Anatomy
 <Container>
@@ -54,18 +55,20 @@ is darker and larger than the others, with steps further away decreasing in size
 ## Options
 <!-- Start of a guide -->
 
-<Grid>
+<div className="mt-lg mb-sm">
+
+### Active Item 
+A pagination dot can be set to active by setting the current index to the current index of the dot.
+</div>
 <Container>
 <DefaultExample/>
 </Container>
-<div>
 
-#### Active Item 
-A pagination dot can be set to active by setting the current index to the current index of the dot.
+<div className="mt-sm mb-lg">
+
+### Total
+The total can be set from any range from 1 to any number. 
 </div>
-</Grid>
-
-<Grid>
 <Container className="flex flex-column">
     <PaginationDots
     className="mt-sm ml-lg mr-lg"
@@ -82,65 +85,61 @@ A pagination dot can be set to active by setting the current index to the curren
     unitName="step"
     />
 </Container>
-<div>
-
-#### Total
-The total can be set from any range from 1 to any number. 
-</div>
-</Grid>
 
 ---
 ## Behavior
 <!-- Start of a guide -->
 
-<Grid>
-<Container>
-<DefaultExample/>
-</Container>
-<div>
+<div className="mt-lg mb-sm">
 
-#### Dot transition 
+### Dot transition 
 When the current index changes the active dot will transition to the new index. 
 The closer dots will transition to small dots while futher dots will transition to the smallest dots. 
 The container will transition to the direction of the active dot.
 </div>
-</Grid>
+<Container>
+<DefaultExample/>
+</Container>
 
-<Grid>
+
+<div className="mt-lg mb-sm">
+
+### When total is < 5 
+When there is less than 5 but more than 3 one dot will be the smallest
+</div>
 <Container>
 <LessThan5Example/>
 </Container>
-<div>
 
-#### When total is < 5 
-When there is less than 5 but more than 3 one dot will be the smallest
+
+<div className="mt-lg mb-sm">
+
+### When total is < 4 
+When there is less than 4 all inactive dots will be the same size.
 </div>
-</Grid>
-
-<Grid>
 <Container>
 <LessThan4Example/>
 </Container>
-<div>
 
-#### When total is < 4 
-When there is less than 4 all inactive dots will be the same size.
-</div>
-</Grid>
 
 ---
 ## Usage guidelines
+<br/>
+
 <!-- Start of a guide -->
+### Use to show hidden items
+Pagination dots are great indicators when items are part of a larger group that is hidden.
+
 <Guide guidance="do" className="h-auto">
     <CardExample/>
 </Guide>
 
-#### Use to show hidden items
-Pagination dots are great indicators when items are part of a larger group that is hidden.
 <br/>
 
-
 <!-- Start of a guide -->
+### Do not use on dark backgrounds 
+Currently pagination dots have one color theme and cannot be used on dark backgrounds.
+
 <Guide guidance="don't">
     <div className="pa-lg bg-offblack brad-8">
         <PaginationDots
@@ -153,32 +152,32 @@ Pagination dots are great indicators when items are part of a larger group that 
     </div>
 </Guide>
 
-#### Do not use on dark backgrounds 
-Currently pagination dots have one color theme and cannot be used on dark backgrounds.
-<br/>
+
 
 ---
 ## Specs
 
-<Container className="flex-column pa-sm">
-   <img width="80%" style={{maxWidth:250}} src="/img/design/pagination-dots/size.svg"/>
-</Container>
-<div className="mt-sm mb-xl">
+<div className="mt-lg mb-sm">
 
-##### Size
+### Size
 The size of each pagingation dot is dependent in its relation of either being active or how close 
 it is to the active dot.
 
 </div>
+<Container className="flex-column pa-sm">
+   <img width="80%" style={{maxWidth:250}} src="/img/design/pagination-dots/size.svg"/>
+</Container>
 
+
+<div className="mt-lg mb-sm">
+
+### Spacing
+All spacing between dots are 4px from each other.
+</div>
 <Container className="flex-column pa-sm">
    <img width="80%" style={{maxWidth:150}} src="/img/design/pagination-dots/spacing.svg"/>
 </Container>
-<div className="mt-sm mb-xl">
 
-##### Size
-All spacing between dots are 4px from each other.
-</div>
 
 
 
