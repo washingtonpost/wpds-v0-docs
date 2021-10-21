@@ -1,0 +1,222 @@
+---
+title: Button Icon
+sidebar_position: 5
+---
+
+import Header from "../../../documentation-kit/docHead";
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import ApiTable from "../../../documentation-kit/apiTable";
+
+import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/bookmark-outline/16"
+import { BookmarkOutline24 } from "@washingtonpost/site-components/core/icon/bookmark-outline/24"
+
+
+# Buttons
+
+<!-- Description of component -->
+
+Buttons allow users to perform an action with a single tap. 
+Buttons also serve as way for a call to action. 
+
+<!-- Live Example of component import live component above-->
+
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+
+<Container className="flex-wrap pa-xxs">
+<ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  renderIcon={BookmarkOutline16}
+/>
+</Container>
+
+<!-- Tabs between design & implementation -->
+<Tabs isDesignDoc={false} relatedUrl="design/uncategorized/button"/>
+
+## Example
+
+<Container className="flex-wrap pa-xxs">
+<ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  renderIcon={BookmarkOutline16}
+/>
+</Container>
+
+```jsx
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/bookmark-outline/16";
+
+<ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  renderIcon={BookmarkOutline16}
+/>;
+```
+---
+## Colors
+The available colors are listed in the Component API table below. Button icon color system matches the button color system with the addition of a gray-lighter background color. Borders are removed by default but can be added with the border prop.
+
+
+<Container className="flex-wrap pa-xxs">
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="white"
+    renderIcon={BookmarkOutline16}
+  />
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="offblack"
+    renderIcon={BookmarkOutline16}
+  />
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={true}
+    className="mr-xxs"
+    color="ghost-light"
+    renderIcon={BookmarkOutline16}
+  />
+</Container>
+
+```jsx
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/bookmark-outline/16";
+
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="white"
+    renderIcon={BookmarkOutline16}
+  />
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="offblack"
+    renderIcon={BookmarkOutline16}
+  />
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={true}
+    className="mr-xxs"
+    color="ghost-light"
+    renderIcon={BookmarkOutline16}
+  />
+```
+---
+## Size
+<Container className="flex-wrap pa-xxs">
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="white"
+    size="medium"
+    renderIcon={BookmarkOutline16}
+  />
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="white"
+    size="small"
+    renderIcon={BookmarkOutline16}
+  />
+    <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="white"
+    size="medium"
+    renderIcon={BookmarkOutline24}
+  />
+  <ButtonIcon
+    ariaLabel="Add to your reading list"
+    border={false}
+    className="mr-xxs"
+    color="white"
+    size="small"
+    renderIcon={BookmarkOutline24}
+  />
+</Container>
+
+```jsx
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/bookmark-outline/16";
+
+<ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  size="medium"
+  renderIcon={BookmarkOutline16}
+/>
+<ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  size="small"
+  renderIcon={BookmarkOutline16}
+/>
+  <ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  size="medium"
+  renderIcon={BookmarkOutline24}
+/>
+<ButtonIcon
+  ariaLabel="Add to your reading list"
+  border={false}
+  className="mr-xxs"
+  color="white"
+  size="small"
+  renderIcon={BookmarkOutline24}
+/>
+```
+---
+## Accessibility
+
+### Writing an ARIA label
+
+Because the `ButtonIcon` has no visible text, an ARIA label is that much more important to help users who user screen readers to understand the action of the button. Be sure to pass a sting via the `ariaLabel` prop that describes the resulting action of the button.
+
+**Examples of button aria labels:**
+
+- "Add to your reading list"
+- "Copy story link to clipboard"
+- "Close"
+- "Play audio story"
+
+**Learn more:**
+
+- [Creating Accessible Icon Buttons](https://www.sarasoueidan.com/blog/accessible-icon-buttons/)
+- [W3G: Using aria-label to provide an invisible label where a visible label cannot be used](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html)
+- [Make Your ARIA Labels Sing on Key](https://knowbility.org/blog/2019/ARIA-labels/)
+
+### Adding role="button" when rendering as a link
+
+It is possible to render the `ButtonIcon` as a link or an `a` element, as some buttons in designs are actually links. If you chose to pass the `as` prop with `"a"` then you should also add the `role="button"` to the `ButtonIcon`.
+
+---
+## Component Api
+
+<ApiTable componentName="buttonicon"/>
