@@ -296,6 +296,25 @@ div.markdown ol li {
   font-size: var(--sm);
   font-weight: var(--font-weight-medium);
 }
+.color-grid{
+  display:grid;
+  margin:0, auto;
+
+  grid-template-columns:repeat(4,1fr);
+  grid-gap:32px;
+}
+@media screen and (max-width: 600px) {
+  .color-grid{
+      grid-template-columns:repeat(3,1fr);
+      grid-gap:16px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .color-grid{
+      grid-template-columns:repeat(2,1fr);
+      grid-gap:16px;
+  }
+}
 @media screen and (max-width: 966px) {
   .flex_center_sm {
     align-items: center;
