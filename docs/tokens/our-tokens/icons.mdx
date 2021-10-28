@@ -2,10 +2,57 @@
 title: Icons
 ---
 
+import IconTable from '../../../documentation-kit/tokens/iconTable'
 import IconCard from '../../../documentation-kit/tokens/icon-card'
 
-## Tokens
-Our design system color palette is controlled by these color tokens. 
-All components are built on these colors. Our system is focus on being intentional 
-with color and utilizes a monochromatic approach to most ui elements. 
-When color is used its primarly used to convey important messaging.
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+import ApiTable from "../../../documentation-kit/apiTable";
+
+All of our icons are defined by a single svg path and are constrained to icon sizes `16px` `24px` `32px`
+Our icons communicate messages at a glance, afford interactivity, and draw attention to important information. We
+categorize some our icons Wayfinding, Media controls and Social that have a guidance around their use. 
+
+### Sizing
+
+<Container Caption="Supported Icon sizes">
+<img width={250} src="/img/tokens/icons/sizing.svg"/>
+</Container>
+
+---
+## Types
+
+### Wayfinding 
+Wayfinding icons are used to act as an afforance to the users action on a link, or button. 
+<IconTable 
+group={[
+    "chevron-right","chevron-left","chevron-up","chevron-down",
+    "arrow-right","arrow-left","arrow-down","arrow-up"]} 
+size={32} color="#000000"/>
+
+
+---
+### Media Controls
+Icons that are used to represent actions a user can take on media elements.
+<IconTable group={["fullscreen-outline","play","pause","back-15","forward-15"]} size={32} color="#000000"/>
+
+---
+### Social
+Social media icons.
+<IconTable group={["facebook","twitter","twitch","youtube","linkedin","pinterest"]} size={32} color="#000000"/>
+
+
+
+---
+### All
+<IconTable
+group={["chevron-right","chevron-left","chevron-up","chevron-down",
+    "arrow-right","arrow-left","arrow-down","arrow-up",
+    "fullscreen-outline","play","pause","back-15","forward-15",
+    "facebook","twitter","twitch","youtube","linkedin","pinterest"]} 
+all={true}
+size={32} color="#000000"/>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Swatch from './colorSwatch';
 import Data from '@washingtonpost/color-tokens/dist/json-flat/tokens.json'
-
+import {Accordion} from '@washingtonpost/site-components/core/accordion/index'
 export default function ColorTable(props) {
     const { groupName, filter } = props;
     const [Swatches, setSwatches] = useState([]);
@@ -36,7 +36,7 @@ export default function ColorTable(props) {
             <div className="mb-sm w-100 flex items-center">
 
             </div>
-            <div className="color-grid">
+            <div className="token-grid">
                 {Swatches.map((token, i) => {
                     return <Swatch key={i} value={token.value} token={token.key} />
                 })}
