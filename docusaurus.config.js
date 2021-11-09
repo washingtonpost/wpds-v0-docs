@@ -34,9 +34,9 @@ module.exports = {
         },
         {
           type: "doc",
-          docId: "tokens/introduction/what-are-tokens",
+          docId: "foundations/introduction/what-are-tokens",
           position: "right",
-          label: "Tokens"
+          label: "Foundations"
         },
         {
           type: "doc",

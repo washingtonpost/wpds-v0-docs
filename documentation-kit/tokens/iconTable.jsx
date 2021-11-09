@@ -2,9 +2,12 @@ import React, { useState,useEffect } from 'react'
 import IconCard from './icon-card';
 import Data from '@washingtonpost/icon-tokens/dist/tokens.json';
 
+const path="@washingtonpost/logo-tokens/";
 export default function IconTable(props) {
     const { group, size, color, filter, all } = props;
     const [AllIcons, setAllIcons] = useState([])
+
+    
     useEffect(() => {
         if(all){
             getIcons();
@@ -25,7 +28,7 @@ export default function IconTable(props) {
     return (
         <>
             <div className="mb-sm w-100 flex items-center">
-
+            
             </div>
             {all ?
                 <div className="token-grid">

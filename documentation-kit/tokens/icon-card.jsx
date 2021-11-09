@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import { ReactSVG } from 'react-svg';
 import { motion } from 'framer-motion';
 import Data from '@washingtonpost/icon-tokens/dist/tokens.json';
-
 // Must have the exact spelling of the token or throws an error. :/ 
 export default function IconCard(props) {
     const { iconName, size, className } = props;

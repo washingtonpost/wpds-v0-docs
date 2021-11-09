@@ -2417,6 +2417,19 @@
   dependencies:
     "@babel/types" "^7.12.6"
 
+"@svgr/parcel-plugin-svgr@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@svgr/parcel-plugin-svgr/-/parcel-plugin-svgr-5.5.0.tgz#24e3e0d3707d7fd6d8d250c3f4ab606b10a5228e"
+  integrity sha512-zUX/HG+/p+qweMcTQl5UAE9reAql9uLcl5hoe/jusz+gKQYAjdC0oN6FE7nhcL6+qY9+RGHxytmJ0/I/jynHSg==
+  dependencies:
+    "@babel/core" "^7.12.3"
+    "@babel/plugin-transform-react-constant-elements" "^7.12.1"
+    "@babel/preset-env" "^7.12.1"
+    "@babel/preset-react" "^7.12.5"
+    "@svgr/core" "^5.5.0"
+    "@svgr/plugin-jsx" "^5.5.0"
+    "@svgr/plugin-svgo" "^5.5.0"
+
 "@svgr/plugin-jsx@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@svgr/plugin-jsx/-/plugin-jsx-5.5.0.tgz#1aa8cd798a1db7173ac043466d7b52236b369000"

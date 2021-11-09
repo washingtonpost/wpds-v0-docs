@@ -111,7 +111,7 @@ export default function Home() {
             </p>
             <CTA
               className="flex_center_sm"
-              url="/tokens/introduction/what-are-tokens"
+              url="/foundations/introduction/what-are-tokens"
             >
               Explore and learn more
             </CTA>

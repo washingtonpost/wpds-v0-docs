@@ -70,6 +70,13 @@
 h2 {
   font-size: var(--md);
 }
+
+.minimize svg{
+  height:150px;
+}
+.square svg{
+  width: 100%;
+}
 /* NAV BAR CLASSES */
 .navbar__link {
   font-weight: var(--font-weight-light);
