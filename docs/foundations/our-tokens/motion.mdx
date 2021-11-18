@@ -1,0 +1,87 @@
+---
+title: "Motion"
+---
+
+Motion is currently being explored in live experiences (live all, elections, apps). Things to capture here are animation duration, ease, distance, properties (position, opacity), etc. 
+
+## Motion Principles
+Motion design should derive from our core design principles. Inspiration for motion design is rooted in the design of the printing press — the machine that brings our paper to life.
+
+ 
+
+The printing press has a sequence of motions that build upon each other to deliver the final product to the reader. Likewise, motion in our products should serve a purpose. Motion builds on the user experience through intelligent feedback and brings our products to life. Motion helps guide our users through their experience.
+
+### Direction, Weight & Force
+The various parts of the printing press— gears, knobs, and levers—  each have distinct direction* and weight*. They move along a fixed axis and connect to the overall machine which produces the paper. When designing for motion, think of the UI elements as physical objects, each with its own force* applied to it.
+
+### Weighted Ui Types
+The printing press's parts vary widely in size and shape. Some are small and move fast, while others are big and require great force to drive them. Some parts have a massive influence despite being quite small— these include elements like levers and switches. Parts are weighted by their importance and as a result act similar to heavier objects.
+
+
+- Direction - is defined as input from a user (drag, swipe, scroll) 
+
+- Weight - is defined size or influence of Ui element.
+
+- Force - The relationship of weight and direction resulting in a motion.The example below shows the three typical types we commonly find in our products. Notice the differences in easing & speed. 
+
+<img src="/token/motion/motion.gif" width="100%" height="auto"/>
+
+## Timing & Delay
+When adding timing to your animations, always use multiples of 200. The shortest duration is 200ms. To increase duration, multiply 200 by a "modifier". A modifier is a whole number— also known as an "integer."  Read on to learn more about timing.
+
+
+
+Timing in animation comes down to feel. Sometimes a short amount of time is desirable because it increases the visual speed. Sometimes a bit more time is better because it provides a more subtle transition. Whenever choosing the duration of timing and delays, always consider the following: 
+
+
+
+### Delta size
+Delta means "change." Ask yourself: how big is the change? How significantly is your object rotating, scaling, or moving from its original state? The larger the delta, the more time is likely needed to avoid a rough transition.
+### Quantity of elements
+How many elements are going to be moving at the same time? How many different directions will they be traveling in? If you have lots of elements moving at the same time, consider a longer duration. This helps to avoid visual overload and confusion.
+### Sequence
+If an element is a part of a sequence of motions, carefully consider whether more or less time is needed. Objects should move in a logical order and not move at a pace that overwhelms the user.
+
+
+## Principles applied
+
+### Light and fast
+
+<img src="/token/motion/lightfast.gif" width="50%" height="auto"/>
+
+#### Description
+Most ui elements will fall in this category. 
+Responds immediately to the direction applied to it.
+#### Use Type
+Should use for instant visual feedback. (example - Clicking a button and changing to active state.) 
+#### Easing & Timing
+1. Ease-Out the Ui element is coming into frame, rotating or scaling
+2. Ease-In when the Ui element is coming out of frame at double the time it took to come into frame
+3. Timing - Timing should be relatively short minimal time span 200ms.  
+
+
+### Steady and Heavy
+
+<img src="/token/motion/steadyheavy.gif" width="50%" height="auto"/>
+
+#### Description
+These Ui elements are larger items and move a lot slow to avoid disorienting the user
+The response of these Ui elements accelerate slowly to meet max velocity
+#### Use Type
+When items are moving together in sync, or a state transition of a page 
+#### Easing & Timing
+1. Ease-In-Out  the element is coming into or out of frame
+2. Timing - The timing should be determined by travel distance and the force applied 
+
+### Weighed by influence
+
+<img src="/token/motion/weightedinfluence.gif" width="50%" height="auto"/>
+
+#### Description
+These Ui elements are typically tied to other elements and when interacted with it effects other elements
+The response of these Ui elements accelerate slowly to meet max velocity
+#### Use Type
+Can be things such as carousels, adding or removing to a list 
+#### Easing & Timing
+1. Ease-In-Out the element is coming in our out of frame
+2. Timing - Depends on how many objects, and the force applied
