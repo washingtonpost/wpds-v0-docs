@@ -21,10 +21,10 @@ import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/boo
 
 <!-- Description of component -->
 <p className="font-xs font-light font--subhead">
-Non-actionable ui element that only contain text and does 
-not require the user to take an action but serves only to 
-inform the user before taking an action, contextualizing an action or label/icon, but when 
-used as a Popover the element takes on a more presistent appearance and allows the user to take
+Non-actionable UI element that only contains text and does 
+not require the user to take action but serves only to 
+inform the user before taking action, contextualizing an action or label/icon, but when 
+used as a Popover, the element takes on a more persistent appearance and allows the user to take
 action on the content inside of the popover.
 </p>
 
@@ -88,7 +88,7 @@ Default offset is [0,8].
 <div className="mt-lg mb-sm">
 
 ### asPopOver
-When set as popover the beak will be hidden, shadow applied, and trigger will require
+When set as a popover, the beak will be hidden, shadow applied, and the trigger will require
 the user to click instead of over to reveal the content bubble.
 
 </div>
@@ -134,7 +134,9 @@ Three available themes for the tooltip & popover. They include light, dark and a
 <div className="mt-lg mb-sm">
 
 ### Overflow
-Tooltips and popover have no inherit fixed size. The content inside will span the width of its parent container unless otherwise specified.
+Tooltips and popover have no inherent fixed size. The content inside will span the width of its parent container unless otherwise specified.
+
+
 
 </div>
 <Container>
@@ -164,7 +166,7 @@ hovering over the element or the tooltip itself.
 <div className="mt-lg mb-sm">
 
 ### On Click
-When used as a Popover the trigger will be on click (tap for mobile) and will only disappear if the user
+When used as a Popover, the trigger will be on click (tap for mobile) and will only disappear if the user
 clicks outside of the content bubble.
 
 </div>
@@ -180,9 +182,10 @@ clicks outside of the content bubble.
 <div className="mt-lg mb-sm">
 
 ### Flip to fit
-The tooltip/popover will flip from its orginal placement if there is not enough space for it to remain
-on screen. If the user scrolls beyond the trigger element the tooltip/popover will no longer attempt to
-stay in view.
+The tooltip/popover will flip from its original placement if there is not enough space to remain
+on screen. The tooltip/popover will no longer attempt to
+stay in view if the user scrolls beyond the trigger element.
+
 
 </div>
 <Container>
@@ -200,7 +203,7 @@ stay in view.
 
 <!-- Start of a guide -->
 ### Nesting popovers
-Nesting popoversmay seem helpful as a trick to get content on the screen, but it is very hard for the 
+Nesting popovers may seem helpful as a trick to get content on the screen, but it is very hard for the 
 user to navigate content this way.
 
 <Guide guidance="caution">
