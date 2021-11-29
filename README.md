@@ -29,5 +29,10 @@ To contribute to the doc site you must be familiar with primarly with markdown H
 Reach out if you need any help at all.
 
 ## Site is available to view only for Github users in WP-Media organization
+
 Updates
 [https://wpds-docs.preview.now.washingtonpost.com/](https://wpds-docs.preview.now.washingtonpost.com/)
+
+## New next.js mdx set up
+
+brian read more here: https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote
