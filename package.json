@@ -13,5 +13,8 @@
     "next-remote-watch": "1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "glob": "^7.2.0"
   }
 }
