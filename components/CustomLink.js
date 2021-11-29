@@ -1,16 +1,19 @@
 import Link from "next/link";
+import * as React from "react";
+import { styled, globalStyles } from "@washingtonpost/ui-theme";
 
 export default function CustomLink({ as, href, ...otherProps }) {
+  const A = styled("a", {
+    padding: "30px",
+    color: "$",
+    fontSize: "$",
+    cursor: "pointer"
+  });
   return (
     <>
       <Link as={as} href={href}>
-        <a {...otherProps} />
+        <A {...otherProps} />
       </Link>
-      <style jsx>{`
-        a {
-          color: tomato;
-        }
-      `}</style>
     </>
   );
 }

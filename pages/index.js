@@ -3,9 +3,18 @@ import matter from "gray-matter";
 import Link from "next/link";
 import path from "path";
 import Layout from "../components/Layout";
-import { postFilePaths, POSTS_PATH } from "../utils/mdxUtils";
+import {
+  docsFilePaths,
+  DOCS_PATH,
+  foundationFilePaths,
+  FOUNDATION_PATH,
+  postFilePaths,
+  POSTS_PATH,
+  release_notesFilePaths,
+  RELEASE_NOTES_PATH
+} from "../utils/mdxUtils";
 
-export default function Index({ posts }) {
+export default function Index({ posts, docs, foundations, release_notes }) {
   return (
     <Layout>
       <h1>Home Page</h1>
@@ -17,10 +26,49 @@ export default function Index({ posts }) {
         {posts.map(post => (
           <li key={post.filePath}>
             <Link
-              as={`/posts/${post.filePath.replace(/\.mdx?$/, "")}`}
-              href={`/posts/[slug]`}
+              as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/blog/[slug]`}
             >
               <a>{post.data.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <h3>Component Docs</h3>
+      <ul>
+        {docs.map(doc => (
+          <li key={doc.filePath}>
+            <Link
+              as={`/components/${doc.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/components/[slug]`}
+            >
+              <a>{doc.data.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <h3>Foundations</h3>
+      <ul>
+        {foundations.map(foundation => (
+          <li key={foundation.filePath}>
+            <Link
+              as={`/foundations/${foundation.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/foundations/[slug]`}
+            >
+              <a>{foundation.data.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <h3>Release Notes</h3>
+      <ul>
+        {release_notes.map(note => (
+          <li key={note.filePath}>
+            <Link
+              as={`/release-notes/${note.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/release-notes/[slug]`}
+            >
+              <a>{note.data.title}</a>
             </Link>
           </li>
         ))}
@@ -41,5 +89,35 @@ export function getStaticProps() {
     };
   });
 
-  return { props: { posts } };
+  const docs = docsFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(DOCS_PATH, filePath));
+    const { content, data } = matter(source);
+    return {
+      content,
+      data,
+      filePath
+    };
+  });
+
+  const foundations = foundationFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(FOUNDATION_PATH, filePath));
+    const { content, data } = matter(source);
+    return {
+      content,
+      data,
+      filePath
+    };
+  });
+
+  const release_notes = release_notesFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(RELEASE_NOTES_PATH, filePath));
+    const { content, data } = matter(source);
+    return {
+      content,
+      data,
+      filePath
+    };
+  });
+
+  return { props: { posts, docs, foundations, release_notes } };
 }
