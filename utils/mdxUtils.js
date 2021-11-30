@@ -1,6 +1,5 @@
-import fs from "fs";
+const fs = require("fs");
 import path from "path";
-import glob from "glob";
 
 // POST_PATH used to get a specific file postFilePaths gets all mdx in POST_PATH directory
 export const POSTS_PATH = path.join(process.cwd(), "mdx_blog");

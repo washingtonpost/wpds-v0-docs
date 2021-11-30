@@ -3,12 +3,20 @@ import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import path from "path";
+import Header from "../../components/Typography/Headers";
 import CustomLink from "../../components/CustomLink";
-import Layout from "../../components/Layout";
-import { foundationFilePaths, FOUNDATION_PATH } from "../../utils/mdxUtils";
+import Layout from "../../components/Layout/WithSidebar";
+import Sidebar from "../../components/Layout/Sidebar";
+import Content from "../../components/Layout/Content";
+import {
+  foundationFilePaths,
+  FOUNDATION_PATH,
+  docsFilePaths,
+  DOCS_PATH
+} from "../../utils/mdxUtils";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -16,52 +24,53 @@ import { foundationFilePaths, FOUNDATION_PATH } from "../../utils/mdxUtils";
 // here.
 const components = {
   a: CustomLink,
+  h1: Header,
+  h2: Header,
+  h3: Header,
+  h4: Header,
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
-  TestComponent: dynamic(() => import("../../components/TestComponent")),
+  CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
   Head
 };
 
-export default function PostPage({ source, frontMatter }) {
+export default function Page({
+  current,
+  docs,
+  foundations,
+  source,
+  frontMatter
+}) {
+  const [toggleSideBar, setToggleSideBar] = useState(false);
   return (
     <Layout>
-      <header>
-        <nav>
-          <Link href="/">
-            <a>👈 Go back home</a>
-          </Link>
-        </nav>
-      </header>
-      <div className="post-header">
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && (
-          <p className="description">{frontMatter.description}</p>
-        )}
-      </div>
-      <main>
+      <Sidebar
+        showSidebar={toggleSideBar}
+        foundations={foundations}
+        docs={docs}
+        current={current}
+        id="sidebar"
+      />
+      <Content id="content">
+        <div className="post-header">
+          <h1>{frontMatter.title}</h1>
+          {frontMatter.description && (
+            <p className="description">{frontMatter.description}</p>
+          )}
+          <button onClick={() => setToggleSideBar(!toggleSideBar)}>
+            Toggle Panel
+          </button>
+        </div>
         <MDXRemote {...source} components={components} />
-      </main>
-
-      <style jsx>{`
-        .post-header h1 {
-          margin-bottom: 0;
-        }
-
-        .post-header {
-          margin-bottom: 2rem;
-        }
-        .description {
-          opacity: 0.6;
-        }
-      `}</style>
+      </Content>
     </Layout>
   );
 }
 
 export const getStaticProps = async ({ params }) => {
-  const foundationFilePath = path.join(FOUNDATION_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(foundationFilePath);
+  const docFilePath = path.join(FOUNDATION_PATH, `${params.slug}.mdx`);
+  const source = fs.readFileSync(docFilePath);
 
   const { content, data } = matter(source);
 
@@ -74,8 +83,32 @@ export const getStaticProps = async ({ params }) => {
     scope: data
   });
 
+  //fetches all component docs
+  const docs = docsFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(DOCS_PATH, filePath));
+    const { content, data } = matter(source);
+    return {
+      content,
+      data,
+      filePath
+    };
+  });
+  //fetches all foundation docs
+  const foundations = foundationFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(FOUNDATION_PATH, filePath));
+    const { content, data } = matter(source);
+    return {
+      content,
+      data,
+      filePath
+    };
+  });
+
   return {
     props: {
+      current: params.slug,
+      docs: docs,
+      foundations: foundations,
       source: mdxSource,
       frontMatter: data
     }

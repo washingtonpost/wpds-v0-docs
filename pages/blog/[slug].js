@@ -4,10 +4,11 @@ import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import Link from "next/link";
 import path from "path";
+import Header from "../../components/Typography/Headers";
 import CustomLink from "../../components/CustomLink";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/WithSidebar";
+import Content from "../../components/Layout/Content";
 import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils";
 
 // Custom components/renderers to pass to MDX.
@@ -16,52 +17,37 @@ import { postFilePaths, POSTS_PATH } from "../../utils/mdxUtils";
 // here.
 const components = {
   a: CustomLink,
+  h1: Header,
+  h2: Header,
+  h3: Header,
+  h4: Header,
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.
-  TestComponent: dynamic(() => import("../../components/TestComponent")),
+  CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
   Head
 };
 
-export default function PostPage({ source, frontMatter }) {
+export default function Page({ foundations, source, frontMatter }) {
   return (
     <Layout>
-      <header>
-        <nav>
-          <Link href="/">
-            <a>👈 Go back home</a>
-          </Link>
-        </nav>
-      </header>
       <div className="post-header">
         <h1>{frontMatter.title}</h1>
         {frontMatter.description && (
           <p className="description">{frontMatter.description}</p>
         )}
+        <button onClick={() => setToggleSideBar(!toggleSideBar)}>
+          Toggle Panel
+        </button>
       </div>
-      <main>
-        <MDXRemote {...source} components={components} />
-      </main>
-
-      <style jsx>{`
-        .post-header h1 {
-          margin-bottom: 0;
-        }
-
-        .post-header {
-          margin-bottom: 2rem;
-        }
-        .description {
-          opacity: 0.6;
-        }
-      `}</style>
+      <MDXRemote {...source} components={components} />
     </Layout>
   );
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(postFilePath);
+  const docFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`);
+  const source = fs.readFileSync(docFilePath);
 
   const { content, data } = matter(source);
 

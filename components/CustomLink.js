@@ -5,7 +5,7 @@ import { styled, globalStyles } from "@washingtonpost/ui-theme";
 export default function CustomLink({ as, href, ...otherProps }) {
   const A = styled("a", {
     padding: "30px",
-    color: "$",
+    color: "$cta",
     fontSize: "$",
     cursor: "pointer"
   });

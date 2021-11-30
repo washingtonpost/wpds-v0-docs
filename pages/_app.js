@@ -4,18 +4,11 @@ import { globalStyles, styled, theme } from "@washingtonpost/ui-theme";
 
 const Container = styled("section", {
   position: "relative",
-  minHeight: "calc(100vh - $400)",
-  marginLeft: "$400",
-  marginRight: "$400",
-
-  "@sm": {
-    margin: "$200"
-  }
+  minHeight: "calc(100vh - $400)"
 });
 
 const Layout = styled("div", {
-  display: "flex",
-  flexDirection: "column"
+  width: "100%"
 });
 
 // This default export is required in a new `pages/_app.js` file.
