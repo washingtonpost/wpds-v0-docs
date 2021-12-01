@@ -9,7 +9,7 @@ export default function Content({ children }) {
     }
   });
   const Main = styled("main", {
-    maxWidth: "1440px",
+    maxWidth: "1024px",
     margin: "$200 auto"
   });
   return (
