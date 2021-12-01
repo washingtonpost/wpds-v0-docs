@@ -53,8 +53,6 @@ export default function Page({
           {frontMatter.description && (
             <p className="description">{frontMatter.description}</p>
           )}
-
-          {console.log(source)}
           <TableofContents current={current} />
         </div>
         <MDXRemote {...source} components={components} />

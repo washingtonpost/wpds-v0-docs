@@ -9,10 +9,10 @@ const Header = styled("h1", {
         marginBottom: "$050"
       },
       h3: {
-        fontSize: "$125",
+        fontSize: "$100",
         fontFamily: "$subhead",
         fontWeight: "$bold",
-        marginBottom: "$050"
+        marginBottom: "$025"
       },
       h4: {
         fontSize: "$100",

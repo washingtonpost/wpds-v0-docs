@@ -1,6 +1,11 @@
 import Head from "next/head";
 import React from "react";
-import { globalStyles, styled, theme } from "@washingtonpost/ui-theme";
+import {
+  globalStyles,
+  styled,
+  theme,
+  darkTheme
+} from "@washingtonpost/ui-theme";
 
 const Container = styled("section", {
   position: "relative",
