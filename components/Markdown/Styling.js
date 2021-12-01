@@ -2,7 +2,7 @@
  * FOR STYLING. AS WELL COMMONLY USED COMPONENTS. FOR UNIQUE COMPONENTS
  * NEEDED IMPORT THEM VIA THE COMPONENTS PASSED ON THE SPECIFIC [SLUG].JS FILE
  */
-import Header from "./Components/Headers";
+import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled } from "@washingtonpost/ui-theme";
 // import TableOfContents from "./Components/tableofcontents";
