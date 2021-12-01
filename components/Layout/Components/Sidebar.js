@@ -13,13 +13,12 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     to: { transform: "translateX(-100%)" }
   });
   //Sidebar Container
-  const Panel = styled("aside", {
-    position: "relative",
+  const Panel = styled("div", {
     width: "300px",
     height: "100%",
     minHeight: "100vh",
     backgroundColor: "$gray500",
-    padding: "$200",
+    padding: "$200 0 $200 0",
     "@sm": {
       position: "absolute"
     },
@@ -45,16 +44,29 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
   });
   //Container
   const Container = styled("div", {
-    position: "fixed"
+    width: "100%"
   });
   //List in sidebars
   const SideBarList = styled("ul", {
     listStyle: "none",
     paddingLeft: "0",
-    marginLeft: "0"
+    marginLeft: "0",
+    height: "auto"
   });
   const ListItem = styled("li", {
-    marginBottom: "$050"
+    color: "$primary",
+    padding: "$050 $050 $050 $200",
+    cursor: "pointer",
+    variants: {
+      isCurrent: {
+        active: {
+          color: "$primary",
+          borderLeft: "4px solid",
+          borderColor: "$primary",
+          backgroundColor: "$subtle"
+        }
+      }
+    }
   });
   //Links in sidebar
   const ListText = styled("a", {
@@ -62,10 +74,19 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     fontSize: "$100",
     color: "$accessible",
     textDecoration: "none",
-    cursor: "pointer",
+    width: "100%",
+    borderLeft: "0 solid",
+    "&:focus": {
+      outlineColor: "$signal",
+      outlineStyle: "solid",
+      outlineOffset: "4px",
+      outlineWidth: "2px"
+    },
     variants: {
       isCurrent: {
-        active: { fontWeight: "$bold", color: "$primary" }
+        active: {
+          color: "$primary"
+        }
       }
     }
   });
@@ -73,16 +94,24 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
   return (
     <Panel toggle={showSidebar ? "show" : "hide"}>
       <Container>
-        <Header as="h3">Foundations</Header>
+        <Header css={{ paddingLeft: "$200" }} as="h3">
+          Foundations
+        </Header>
         <SideBarList>
           {foundations.map(foundation => (
-            <ListItem key={foundation.filePath}>
+            <ListItem
+              isCurrent={`${
+                foundation.filePath.includes(current) ? "active" : ""
+              }`}
+              key={foundation.filePath}
+            >
               <Link
                 as={`/foundations/${foundation.filePath.replace(
                   /\.mdx?$/,
                   ""
                 )}`}
                 href={`/foundations/[slug]`}
+                passHref
               >
                 <ListText
                   isCurrent={`${
@@ -95,15 +124,20 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
             </ListItem>
           ))}
         </SideBarList>
-        <Header css={{ marginTop: "$200" }} as="h3">
+
+        <Header css={{ marginTop: "$200", paddingLeft: "$200" }} as="h3">
           Components
         </Header>
         <SideBarList>
           {docs.map(doc => (
-            <ListItem key={doc.filePath}>
+            <ListItem
+              isCurrent={`${doc.filePath.includes(current) ? "active" : ""}`}
+              key={doc.filePath}
+            >
               <Link
                 as={`/components/${doc.filePath.replace(/\.mdx?$/, "")}`}
                 href={`/components/[slug]`}
+                passHref
               >
                 <ListText
                   isCurrent={`${

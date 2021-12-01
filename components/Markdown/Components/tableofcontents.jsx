@@ -19,24 +19,30 @@ export default function tableofcontents({ current }) {
     const LinkText = styled("a", {
         color: "$gray0",
         textDecoration: "underline",
+        "&:focus": {
+            outlineColor: "$signal",
+            outlineStyle: "solid",
+            outlineOffset: "2px",
+            outlineWidth: "2px"
+        }
     })
     return (
         <Container>
             <Header css={{ margin: "0 $025" }} as="h2">Table of Contents</Header>
             <List>
-                <ListItem><Link as={`/components/${current}#Anatomy`}
+                <ListItem><Link passHref as={`/components/${current}#Anatomy`}
                     href={`/components/[slug]#anatomy`}><LinkText>Anatomy</LinkText></Link></ListItem>
-                <ListItem><Link as={`/components/${current}#Options`}
+                <ListItem><Link passHref as={`/components/${current}#Options`}
                     href={`/components/[slug]#options`}><LinkText>Options</LinkText></Link></ListItem>
-                <ListItem><Link as={`/components/${current}#Behavior`}
+                <ListItem><Link passHref as={`/components/${current}#Behavior`}
                     href={`/components/[slug]#behavior`}><LinkText>Behavior</LinkText></Link></ListItem>
-                <ListItem><Link as={`/components/${current}#Specs`}
+                <ListItem><Link passHref as={`/components/${current}#Specs`}
                     href={`/components/[slug]#specs`}><LinkText>Specs</LinkText></Link></ListItem>
-                <ListItem><Link as={`/components/${current}#Accessbility`}
+                <ListItem><Link passHref as={`/components/${current}#Accessbility`}
                     href={`/components/[slug]#accessbility`}><LinkText>Accessiblity</LinkText></Link></ListItem>
                 <ListItem><Link as={`/components/${current}#Implementation`}
                     href={`/components/[slug]#implementation`}><LinkText>Implementation</LinkText></Link></ListItem>
-                <ListItem><Link as={`/components/${current}#Checklist`}
+                <ListItem><Link passHref as={`/components/${current}#Checklist`}
                     href={`/components/[slug]#checklist`}><LinkText>Checklist</LinkText></Link></ListItem>
             </List>
         </Container>

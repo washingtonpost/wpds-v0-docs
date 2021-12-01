@@ -2,7 +2,7 @@
  * FOR STYLING. AS WELL COMMONLY USED COMPONENTS. FOR UNIQUE COMPONENTS
  * NEEDED IMPORT THEM VIA THE COMPONENTS PASSED ON THE SPECIFIC [SLUG].JS FILE
  */
-import Header from "../Typography/Headers";
+import Header from "./Components/Headers";
 import CustomLink from "./Components/link";
 import { styled } from "@washingtonpost/ui-theme";
 // import TableOfContents from "./Components/tableofcontents";
@@ -16,10 +16,15 @@ const HR = styled("hr", {
 });
 const P = styled("p", {
   fontSize: "$100",
-  paddingBottom: "$050"
+  paddingBottom: "$050",
+  color: "$accessible"
 });
 const components = {
-  a: CustomLink,
+  a: ({ children, href }) => (
+    <CustomLink href={href} useSignal>
+      {children}
+    </CustomLink>
+  ),
   p: P,
   h1: ({ children }) => <Header as="h1">{children}</Header>,
   h2: ({ children }) => (

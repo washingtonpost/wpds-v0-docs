@@ -2,6 +2,7 @@ import { styled } from "@washingtonpost/ui-theme";
 const Header = styled("h1", {
   fontSize: "$300",
   fontFamily: "$headline",
+  color: "$primary",
   variants: {
     as: {
       h2: {
