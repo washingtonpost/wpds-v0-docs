@@ -50,6 +50,7 @@ export default function Index({ posts, docs, foundations, release_notes }) {
       <ul>
         {foundations.map(foundation => (
           <li key={foundation.filePath}>
+            {console.log(foundation.filePath)}
             <Link
               as={`/foundations/${foundation.filePath.replace(/\.mdx?$/, "")}`}
               href={`/foundations/[slug]`}

@@ -5,10 +5,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import path from "path";
-import Header from "../../components/Typography/Headers";
-import CustomLink from "../../components/CustomLink";
+import MDXStyling from "../../components/Markdown/Styling";
 import Layout from "../../components/Layout/WithSidebar";
-import Content from "../../components/Layout/Content";
 import {
   release_notesFilePaths,
   RELEASE_NOTES_PATH
@@ -19,14 +17,8 @@ import {
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  a: CustomLink,
-  h1: Header,
-  h2: Header,
-  h3: Header,
-  h4: Header,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
+  ...MDXStyling,
+  // Custom components go here
   CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
   Head
 };

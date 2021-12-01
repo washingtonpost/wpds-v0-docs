@@ -6,31 +6,26 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import Head from "next/head";
 import path from "path";
-import Header from "../../components/Typography/Headers";
-import CustomLink from "../../components/CustomLink";
+import MDXStyling from "../../components/Markdown/Styling";
 import Layout from "../../components/Layout/WithSidebar";
-import Sidebar from "../../components/Layout/Sidebar";
-import Content from "../../components/Layout/Content";
+import Sidebar from "../../components/Layout/Components/Sidebar";
+import Content from "../../components/Layout/Components/Content";
 import {
   foundationFilePaths,
   FOUNDATION_PATH,
   docsFilePaths,
   DOCS_PATH
 } from "../../utils/mdxUtils";
+import Header from "../../components/Typography/Headers";
+import TableofContents from "../../components/Markdown/Components/tableofcontents";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  a: CustomLink,
-  h1: Header,
-  h2: Header,
-  h3: Header,
-  h4: Header,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
+  ...MDXStyling,
+  // Custom components go here
   CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
   Head
 };
@@ -54,13 +49,13 @@ export default function Page({
       />
       <Content id="content">
         <div className="post-header">
-          <h1>{frontMatter.title}</h1>
+          <Header>{frontMatter.title}</Header>
           {frontMatter.description && (
             <p className="description">{frontMatter.description}</p>
           )}
-          <button onClick={() => setToggleSideBar(!toggleSideBar)}>
-            Toggle Panel
-          </button>
+
+          {console.log(source)}
+          <TableofContents current={current} />
         </div>
         <MDXRemote {...source} components={components} />
       </Content>

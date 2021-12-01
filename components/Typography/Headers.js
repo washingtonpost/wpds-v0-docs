@@ -1,16 +1,17 @@
 import { styled } from "@washingtonpost/ui-theme";
-const Headline = styled("h1", {
+const Header = styled("h1", {
   fontSize: "$300",
   fontFamily: "$headline",
   variants: {
     as: {
       h2: {
-        fontSize: "$200",
-        marginBottom: "$100"
+        fontSize: "$150",
+        marginBottom: "$050"
       },
       h3: {
-        fontSize: "$150",
+        fontSize: "$125",
         fontFamily: "$subhead",
+        fontWeight: "$bold",
         marginBottom: "$050"
       },
       h4: {
@@ -22,4 +23,4 @@ const Headline = styled("h1", {
   }
 });
 
-export default Headline;
+export default Header;

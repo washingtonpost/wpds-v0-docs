@@ -1,6 +1,5 @@
 import React from "react";
 import { styled } from "@washingtonpost/ui-theme";
-import { Children } from "react";
 export default function Content({ children }) {
   const Container = styled("div", {
     padding: "0 $200",
@@ -10,7 +9,7 @@ export default function Content({ children }) {
     }
   });
   const Main = styled("main", {
-    maxWidth: 1440,
+    maxWidth: "1440px",
     margin: "$200 auto"
   });
   return (
