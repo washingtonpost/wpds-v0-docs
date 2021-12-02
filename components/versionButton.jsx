@@ -75,11 +75,11 @@ export default function VersionButton({ setState }) {
     return (
         <Wrapper>
             <Button>v1</Button>
-            <PopOver>
+            {/* <PopOver>
                 <List>
                     <ListItem><Link href="/" passHref><A>v01</A></Link></ListItem>
                 </List>
-            </PopOver>
+            </PopOver> */}
         </Wrapper>
     )
 }
