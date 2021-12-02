@@ -1,6 +1,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText } from "@washingtonpost/ui-theme";
+import { getCssText, styled } from "@washingtonpost/ui-theme";
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
@@ -8,7 +8,11 @@ export default class Document extends NextDocument {
     return { ...initialProps };
   }
 
+
   render() {
+    const Body = styled("body", {
+      backgroundColor: "$gray600"
+    })
     return (
       <Html lang="en">
         <Head>
@@ -84,10 +88,10 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <body>
+        <Body>
           <Main />
           <NextScript />
-        </body>
+        </Body>
       </Html>
     );
   }

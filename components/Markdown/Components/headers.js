@@ -1,7 +1,7 @@
 import { styled } from "@washingtonpost/ui-theme";
 import React from "react";
 import Link from "./link";
-export default function headers({ children, as }) {
+export default function headers({ css, children, as }) {
   const Header = styled("h1", {
     fontSize: "$300",
     fontFamily: "$headline",
@@ -28,7 +28,9 @@ export default function headers({ children, as }) {
   });
   return (
     <Link id={`${children}`} href={`#${children}`}>
-      <Header as={as}>{children}</Header>
+      <Header css={css} as={as}>
+        {children}
+      </Header>
     </Link>
   );
 }

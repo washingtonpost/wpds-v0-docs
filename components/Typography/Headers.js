@@ -18,7 +18,8 @@ const Header = styled("h1", {
       h4: {
         fontSize: "$100",
         fontWeight: "$bold",
-        fontFamily: "$meta"
+        fontFamily: "$meta",
+        color: "$accessible"
       }
     }
   }

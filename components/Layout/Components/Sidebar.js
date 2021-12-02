@@ -47,8 +47,8 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
   });
   //Container
   const Container = styled("div", {
-    width: "100%",
-    position: "absolute"
+    width: "300px",
+    position: "fixed"
   });
   //List in sidebars
   const SideBarList = styled("ul", {

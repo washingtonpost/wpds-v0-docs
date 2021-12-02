@@ -17,7 +17,7 @@ const HR = styled("hr", {
 const P = styled("p", {
   fontSize: "$100",
   paddingBottom: "$050",
-  color: "$accessible",
+  color: "$accessible"
 });
 const components = {
   a: ({ children, href }) => (
@@ -33,7 +33,7 @@ const components = {
     </Header>
   ),
   h3: ({ children }) => (
-    <Header id={children} as="h3">
+    <Header css={{ color: "$gray60" }} id={children} as="h3">
       {children}
     </Header>
   ),
