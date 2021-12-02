@@ -17,7 +17,7 @@ const HR = styled("hr", {
 const P = styled("p", {
   fontSize: "$100",
   paddingBottom: "$050",
-  color: "$accessible"
+  color: "$accessible",
 });
 const components = {
   a: ({ children, href }) => (
