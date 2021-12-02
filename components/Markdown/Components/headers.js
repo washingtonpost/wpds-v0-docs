@@ -1,6 +1,6 @@
 import { styled } from "@washingtonpost/ui-theme";
 import React from "react";
-import CustomLink from "./link";
+import Link from "./link";
 export default function headers({ children, as }) {
   const Header = styled("h1", {
     fontSize: "$300",
@@ -26,8 +26,8 @@ export default function headers({ children, as }) {
     }
   });
   return (
-    <CustomLink href={`#${children}`}>
+    <Link id={`${children}`} href={`#${children}`}>
       <Header as={as}>{children}</Header>
-    </CustomLink>
+    </Link>
   );
 }

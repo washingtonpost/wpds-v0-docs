@@ -2,14 +2,7 @@ import Link from "next/link";
 import * as React from "react";
 import { styled, globalStyles } from "@washingtonpost/ui-theme";
 
-export default function CustomLink({
-  children,
-  useSignal,
-  as,
-  href,
-  id,
-  ...otherProps
-}) {
+export default function CustomLink({ useSignal, as, href, ...otherProps }) {
   const A = styled("a", {
     cursor: "pointer",
     textDecoration: "none",
@@ -35,9 +28,7 @@ export default function CustomLink({
   return (
     <>
       <Link as={as} href={href} passHref>
-        <A id={id} signal={useSignal ? "showColor" : ""} {...otherProps}>
-          {children}
-        </A>
+        <A signal={useSignal ? "showColor" : ""} {...otherProps} />
       </Link>
     </>
   );

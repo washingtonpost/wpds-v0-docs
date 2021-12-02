@@ -37,7 +37,6 @@ packages/site-components/css/docs/**/data.js
 packages/site-components/css/build/data.js
 .storybook/backgrounds.js
 
-/public
 .now
 lerna-debug.log
 storybook-static

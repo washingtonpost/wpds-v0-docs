@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { styled, keyframes } from "@washingtonpost/ui-theme";
 import Header from "../../Typography/Headers";
-
+import Logo from "../../logo";
+import VersionButton from "../../versionButton";
 /**Sidebar takes in @param foundations, @param docs and @param current and displays alls in the side
  * bar as links. The current will match the
  */
@@ -14,8 +15,10 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
   });
   //Sidebar Container
   const Panel = styled("div", {
+    position: "relative",
     width: "300px",
     height: "100%",
+    overflow: "hidden",
     minHeight: "100vh",
     backgroundColor: "$gray500",
     padding: "$200 0 $200 0",
@@ -44,7 +47,8 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
   });
   //Container
   const Container = styled("div", {
-    width: "100%"
+    width: "100%",
+    position: "absolute"
   });
   //List in sidebars
   const SideBarList = styled("ul", {
@@ -53,10 +57,17 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     marginLeft: "0",
     height: "auto"
   });
+
   const ListItem = styled("li", {
     color: "$primary",
     padding: "$050 $050 $050 $200",
     cursor: "pointer",
+    "&:focus": {
+      outlineColor: "$signal",
+      outlineStyle: "solid",
+      outlineOffset: "2px",
+      outlineWidth: "2px"
+    },
     variants: {
       isCurrent: {
         active: {
@@ -69,8 +80,9 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     }
   });
   //Links in sidebar
-  const ListText = styled("a", {
+  const CustomLink = styled("a", {
     fontFamily: "$meta",
+    display: "block",
     fontSize: "$100",
     color: "$accessible",
     textDecoration: "none",
@@ -79,7 +91,7 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     "&:focus": {
       outlineColor: "$signal",
       outlineStyle: "solid",
-      outlineOffset: "4px",
+      outlineOffset: "2px",
       outlineWidth: "2px"
     },
     variants: {
@@ -91,37 +103,44 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     }
   });
 
+  const LogoWrapper = styled("div", {
+    display: "flex",
+    alignItems: "center"
+  });
+
   return (
     <Panel toggle={showSidebar ? "show" : "hide"}>
       <Container>
+        <LogoWrapper css={{ paddingLeft: "$200", marginBottom: "$150" }}>
+          <Logo />
+          <VersionButton />
+        </LogoWrapper>
         <Header css={{ paddingLeft: "$200" }} as="h3">
           Foundations
         </Header>
         <SideBarList>
-          {foundations.map(foundation => (
-            <ListItem
-              isCurrent={`${
-                foundation.filePath.includes(current) ? "active" : ""
-              }`}
+          {foundations.map((foundation, i) => (
+            <Link
               key={foundation.filePath}
+              as={`/foundations/${foundation.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/foundations/[slug]`}
+              passHref
             >
-              <Link
-                as={`/foundations/${foundation.filePath.replace(
-                  /\.mdx?$/,
-                  ""
-                )}`}
-                href={`/foundations/[slug]`}
-                passHref
+              <ListItem
+                tabIndex={0}
+                isCurrent={`${
+                  foundation.filePath.includes(current) ? "active" : ""
+                }`}
               >
-                <ListText
+                <CustomLink
                   isCurrent={`${
                     foundation.filePath.includes(current) ? "active" : ""
                   }`}
                 >
                   {foundation.data.title}
-                </ListText>
-              </Link>
-            </ListItem>
+                </CustomLink>
+              </ListItem>
+            </Link>
           ))}
         </SideBarList>
 
@@ -130,24 +149,25 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
         </Header>
         <SideBarList>
           {docs.map(doc => (
-            <ListItem
-              isCurrent={`${doc.filePath.includes(current) ? "active" : ""}`}
+            <Link
               key={doc.filePath}
+              as={`/components/${doc.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/components/[slug]`}
+              passHref
             >
-              <Link
-                as={`/components/${doc.filePath.replace(/\.mdx?$/, "")}`}
-                href={`/components/[slug]`}
-                passHref
+              <ListItem
+                tabIndex={0}
+                isCurrent={`${doc.filePath.includes(current) ? "active" : ""}`}
               >
-                <ListText
+                <CustomLink
                   isCurrent={`${
                     doc.filePath.includes(current) ? "active" : ""
                   }`}
                 >
                   {doc.data.title}
-                </ListText>
-              </Link>
-            </ListItem>
+                </CustomLink>
+              </ListItem>
+            </Link>
           ))}
         </SideBarList>
       </Container>
