@@ -17,6 +17,8 @@ import {
   DOCS_PATH
 } from "../../utils/mdxUtils";
 import Header from "../../components/Typography/Headers";
+import { ThemeToggle } from "../../components/ThemeToggle";
+import { NavigationBar } from "../../components/NavigationBar";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -47,6 +49,9 @@ export default function Page({
         id="sidebar"
       />
       <Content id="content">
+        <NavigationBar>
+          <ThemeToggle />
+        </NavigationBar>
         <div className="post-header">
           <Header>{frontMatter.title}</Header>
           {frontMatter.description && (
