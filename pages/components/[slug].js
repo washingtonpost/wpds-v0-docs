@@ -10,6 +10,7 @@ import MDXStyling from "../../components/Markdown/Styling";
 import Layout from "../../components/Layout/WithSidebar";
 import Sidebar from "../../components/Layout/Components/Sidebar";
 import Content from "../../components/Layout/Components/Content";
+import { styled } from "@washingtonpost/ui-theme";
 import {
   foundationFilePaths,
   FOUNDATION_PATH,
@@ -29,7 +30,9 @@ const components = {
   CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
   Head
 };
-
+const P = styled("p", {
+  color: "$accessible"
+});
 export default function Page({
   current,
   docs,
@@ -51,7 +54,7 @@ export default function Page({
         <div className="post-header">
           <Header>{frontMatter.title}</Header>
           {frontMatter.description && (
-            <p className="description">{frontMatter.description}</p>
+            <P className="description">{frontMatter.description}</P>
           )}
           <TableofContents current={current} />
         </div>

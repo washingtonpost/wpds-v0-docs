@@ -65,7 +65,6 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     "&:focus": {
       outlineColor: "$signal",
       outlineStyle: "solid",
-      outlineOffset: "2px",
       outlineWidth: "2px"
     },
     variants: {
@@ -97,7 +96,8 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
     variants: {
       isCurrent: {
         active: {
-          color: "$primary"
+          color: "$primary",
+          margin: "-$025"
         }
       }
     }

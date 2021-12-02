@@ -5,6 +5,7 @@ export default function headers({ children, as }) {
   const Header = styled("h1", {
     fontSize: "$300",
     fontFamily: "$headline",
+    color: "$primary",
     variants: {
       as: {
         h2: {

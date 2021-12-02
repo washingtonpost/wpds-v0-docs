@@ -10,14 +10,16 @@ export default function tableofcontents({ current }) {
     const List = styled("ul", {
         listStyle: "",
         marginTop: "0",
-        padding: "0 $125"
+        paddingLeft: "$050"
     })
     const ListItem = styled("li", {
         cursor: "pointer",
-        padding: "$025 0"
+        padding: "$025 0",
+
+        listStyle: "none"
     })
     const LinkText = styled("a", {
-        color: "$gray0",
+        color: "$accessible",
         textDecoration: "underline",
         "&:focus": {
             outlineColor: "$signal",

@@ -7,6 +7,7 @@ import { useState } from "react";
 import Head from "next/head";
 import path from "path";
 import MDXStyling from "../../components/Markdown/Styling";
+import { styled } from "@washingtonpost/ui-theme";
 import Layout from "../../components/Layout/WithSidebar";
 import Sidebar from "../../components/Layout/Components/Sidebar";
 import Content from "../../components/Layout/Components/Content";
@@ -18,7 +19,6 @@ import {
 } from "../../utils/mdxUtils";
 import Header from "../../components/Typography/Headers";
 
-
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
@@ -29,6 +29,9 @@ const components = {
   CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
   Head
 };
+const P = styled("p", {
+  color: "$accessible"
+});
 
 export default function Page({
   current,
@@ -48,11 +51,10 @@ export default function Page({
         id="sidebar"
       />
       <Content id="content">
-        
         <div className="post-header">
           <Header>{frontMatter.title}</Header>
           {frontMatter.description && (
-            <p className="description">{frontMatter.description}</p>
+            <P className="description">{frontMatter.description}</P>
           )}
         </div>
         <MDXRemote {...source} components={components} />
