@@ -1,5 +1,9 @@
 import React from "react";
+
 import { styled } from "@washingtonpost/ui-theme";
+import { ThemeToggle } from "../../../components/ThemeToggle";
+import { NavigationBar } from "../../../components/NavigationBar";
+
 export default function Content({ children }) {
   const Container = styled("div", {
     padding: "0 $200",
@@ -14,6 +18,9 @@ export default function Content({ children }) {
   });
   return (
     <Container>
+      <NavigationBar>
+        <ThemeToggle />
+      </NavigationBar>
       <Main>{children}</Main>
     </Container>
   );

@@ -3,7 +3,9 @@ import { styled, theme } from "@washingtonpost/ui-theme";
 const Bar = styled("nav", {
   display: "flex",
   flexDirection: "row",
-  justifyContent: "flex-end"
+  justifyContent: "flex-end",
+  marginTop: "$100",
+  alignItems: "center"
 });
 
 const List = styled("ul", {
@@ -11,7 +13,8 @@ const List = styled("ul", {
   flexDirection: "row",
   listStyle: "none",
   margin: 0,
-  padding: 0
+  padding: 0,
+  alignItems: "center"
 });
 
 const ListItem = styled("li", {
@@ -25,7 +28,7 @@ const Anchor = styled("a", {
   fontWeight: "bold",
   textDecoration: "none",
   "&:hover": {
-    outline: "1px solid $primary"
+    opacity: "0.75"
   }
 });
 
