@@ -5,6 +5,7 @@
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled } from "@washingtonpost/ui-theme";
+import { Box } from "@washingtonpost/ui-box";
 // import TableOfContents from "./Components/tableofcontents";
 import dynamic from "next/dynamic";
 const HR = styled("hr", {
@@ -44,7 +45,8 @@ const components = {
   ),
   hr: HR,
   TableOfContents: dynamic(() => import("./Components/tableofcontents")),
-  Container: dynamic(() => import("./Components/container"))
+  Container: dynamic(() => import("./Components/container")),
+  Box: Box
 };
 
 export default components;

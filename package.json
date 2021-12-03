@@ -1,8 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
-    "dev:watch": "next-remote-watch ./docs",
+    "dev": "next-remote-watch ./mdx*",
     "build": "next build",
     "start": "next start"
   },
