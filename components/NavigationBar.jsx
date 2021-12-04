@@ -1,4 +1,5 @@
-import { styled, theme } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/ui-theme";
+import Link from "next/link";
 
 const Bar = styled("nav", {
   display: "flex",
@@ -36,10 +37,14 @@ export const NavigationBar = ({ children }) => (
   <Bar>
     <List>
       <ListItem>
-        <Anchor href="/blog">Blog</Anchor>
+        <Link href="/blog" passHref>
+          <Anchor>Blog</Anchor>
+        </Link>
       </ListItem>
       <ListItem>
-        <Anchor href="/about">Release Notes</Anchor>
+        <Link href="/release-notes" passHref>
+          <Anchor>Release Notes</Anchor>
+        </Link>
       </ListItem>
     </List>
     {children}

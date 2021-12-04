@@ -1,23 +1,18 @@
-import fs from "fs";
-import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import Head from "next/head";
-import path from "path";
-import MDXStyling from "../../components/Markdown/Styling";
 import { styled } from "@washingtonpost/ui-theme";
-import Layout from "../../components/Layout/WithSidebar";
-import Sidebar from "../../components/Layout/Components/Sidebar";
-import Content from "../../components/Layout/Components/Content";
+import MDXStyling from "~/components/Markdown/Styling";
+import Layout from "~/components/Layout/WithSidebar";
+import Sidebar from "~/components/Layout/Components/Sidebar";
+import Content from "~/components/Layout/Components/Content";
+import Header from "~/components/Typography/Headers";
 import {
-  foundationFilePaths,
-  FOUNDATION_PATH,
-  docsFilePaths,
-  DOCS_PATH
-} from "../../utils/mdxUtils";
-import Header from "../../components/Typography/Headers";
+  getAllPathsBySection,
+  getDocByPathName,
+  getDocsListBySection
+} from "~/services";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -26,20 +21,14 @@ import Header from "../../components/Typography/Headers";
 const components = {
   ...MDXStyling,
   // Custom components go here
-  CustomComponent: dynamic(() => import("../../components/Typography/Headers")),
+  CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
   Head
 };
 const P = styled("p", {
   color: "$accessible"
 });
 
-export default function Page({
-  current,
-  docs,
-  foundations,
-  source,
-  frontMatter
-}) {
+export default function Page({ current, docs, foundations, source }) {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   return (
     <Layout>
@@ -52,9 +41,9 @@ export default function Page({
       />
       <Content id="content">
         <div className="post-header">
-          <Header>{frontMatter.title}</Header>
-          {frontMatter.description && (
-            <P className="description">{frontMatter.description}</P>
+          <Header>{source.scope.title}</Header>
+          {source.scope.description && (
+            <P className="description">{source.scope.description}</P>
           )}
         </div>
         <MDXRemote {...source} components={components} />
@@ -63,59 +52,27 @@ export default function Page({
   );
 }
 
+const thisSection = "foundations";
+
 export const getStaticProps = async ({ params }) => {
-  const docFilePath = path.join(FOUNDATION_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(docFilePath);
+  const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
-  const { content, data } = matter(source);
-
-  const mdxSource = await serialize(content, {
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: []
-    },
-    scope: data
-  });
-
-  //fetches all component docs
-  const docs = docsFilePaths.map(filePath => {
-    const source = fs.readFileSync(path.join(DOCS_PATH, filePath));
-    const { content, data } = matter(source);
-    return {
-      content,
-      data,
-      filePath
-    };
-  });
-  //fetches all foundation docs
-  const foundations = foundationFilePaths.map(filePath => {
-    const source = fs.readFileSync(path.join(FOUNDATION_PATH, filePath));
-    const { content, data } = matter(source);
-    return {
-      content,
-      data,
-      filePath
-    };
-  });
+  const [docs, foundations] = ["components", thisSection].map(section =>
+    getDocsListBySection(section)
+  );
 
   return {
     props: {
       current: params.slug,
-      docs: docs,
-      foundations: foundations,
-      source: mdxSource,
-      frontMatter: data
+      docs,
+      foundations,
+      source
     }
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = foundationFilePaths
-    // Remove file extensions for page paths
-    .map(path => path.replace(/\.mdx?$/, ""))
-    // Map the path into the static paths object required by Next.js
-    .map(slug => ({ params: { slug } }));
+  const paths = await getAllPathsBySection(thisSection);
 
   return {
     paths,

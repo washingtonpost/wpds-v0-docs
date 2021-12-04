@@ -1,14 +1,10 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
 import MDXStyling from "~/components/Markdown/Styling";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 import { styled } from "@washingtonpost/ui-theme";
-import { RELEASE_NOTES_PATH, release_notesFilePaths } from "~/utils/mdxUtils";
 import Header from "~/components/Typography/Headers";
+import { getDocByPathName, getAllPathsBySection } from "~/services";
 
 const CategoryHeader = styled("h4", {
   borderRadius: "$025",
@@ -33,7 +29,7 @@ const Description = styled("h2", {
   marginBottom: "$100"
 });
 
-export default function Page({ source, frontMatter }) {
+export default function Page({ source }) {
   return (
     <Layout>
       <div id="sidebar"></div>
@@ -44,9 +40,9 @@ export default function Page({ source, frontMatter }) {
               marginBottom: "$100"
             }}
           >
-            {frontMatter.title}
+            {source.scope.title}
           </Header>
-          <Description as="h2">{frontMatter.description}</Description>
+          <Description as="h2">{source.scope.description}</Description>
         </div>
         <div>
           <MDXRemote {...source} components={components} />
@@ -57,30 +53,17 @@ export default function Page({ source, frontMatter }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const slug = path.join(RELEASE_NOTES_PATH, `${params.slug}.mdx`);
-  const source = fs.readFileSync(slug);
-
-  const { content, data } = matter(source);
-
-  const mdxSource = await serialize(content, {
-    scope: data
-  });
+  const source = await getDocByPathName(`release-notes/${params.slug}`);
 
   return {
     props: {
-      current: params.slug,
-      source: mdxSource,
-      frontMatter: data
+      source
     }
   };
 };
 
 export const getStaticPaths = async () => {
-  const paths = release_notesFilePaths
-    // Remove file extensions for page paths
-    .map(path => path.replace(/\.mdx?$/, ""))
-    // Map the path into the static paths object required by Next.js
-    .map(slug => ({ params: { slug } }));
+  const paths = await getAllPathsBySection("release-notes");
 
   return {
     paths,
