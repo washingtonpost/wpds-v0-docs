@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 import { getDocsListBySection } from "~/services";
 
