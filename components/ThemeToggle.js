@@ -30,6 +30,20 @@ export const ThemeToggle = () => {
     fontSize: "$200"
   });
 
+  const showOnDarkTheme = css({
+    display: "none",
+    "@dark": {
+      display: "block"
+    }
+  });
+
+  const showOnLightTheme = css({
+    display: "none",
+    "@light": {
+      display: "block"
+    }
+  });
+
   return (
     <button
       onClick={toggleTheme}
@@ -37,7 +51,18 @@ export const ThemeToggle = () => {
       className={button()}
     >
       <Icon label="Theme Toggle" size="16">
-        {mounted ? resolvedTheme === "light" ? <>🌛</> : <>🌒</> : <>🥮</>}
+        {mounted ? (
+          resolvedTheme === "light" ? (
+            <>🌞</>
+          ) : (
+            <>🌕</>
+          )
+        ) : (
+          <>
+            <span className={showOnDarkTheme()}>🌕</span>
+            <span className={showOnLightTheme()}>🌞</span>
+          </>
+        )}
       </Icon>
     </button>
   );
