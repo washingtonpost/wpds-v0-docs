@@ -37,6 +37,21 @@ export const NavigationBar = ({ children }) => (
   <Bar>
     <List>
       <ListItem>
+        <Link href="/" passHref>
+          <Anchor>Home</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="/foundations" passHref>
+          <Anchor>Foundations</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="/components" passHref>
+          <Anchor>Components</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
         <Link href="/blog" passHref>
           <Anchor>Blog</Anchor>
         </Link>

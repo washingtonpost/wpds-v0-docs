@@ -11,8 +11,7 @@ export const getDocsListBySection = input => {
     .filter(path => /\.mdx?$/.test(path))
     .map(filePath => {
       const source = fs.readFileSync(path.join(folder, filePath));
-      const slug = `${input}/${filePath.replace(/\.mdx?$/, "")}`;
-      console.log(slug);
+      const slug = `/${input}/${filePath.replace(/\.mdx?$/, "")}`;
       const { content, data } = matter(source);
       return {
         content,

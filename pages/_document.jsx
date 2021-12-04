@@ -8,11 +8,10 @@ export default class Document extends NextDocument {
     return { ...initialProps };
   }
 
-
   render() {
     const Body = styled("body", {
       backgroundColor: "$gray600"
-    })
+    });
     return (
       <Html lang="en">
         <Head>

@@ -2,7 +2,7 @@ import React from "react";
 
 import { styled } from "@washingtonpost/ui-theme";
 import { ThemeToggle } from "../../../components/ThemeToggle";
-import { NavigationBar } from "../../../components/NavigationBar";
+import { NavigationBar } from "~/components/NavigationBar";
 
 export default function Content({ children }) {
   const Container = styled("div", {
