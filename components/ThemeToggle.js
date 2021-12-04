@@ -11,8 +11,6 @@ export const ThemeToggle = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
-
   const toggleTheme = () => {
     const targetTheme = resolvedTheme === "light" ? "dark" : "light";
 
@@ -20,6 +18,9 @@ export const ThemeToggle = () => {
   };
 
   const button = css({
+    position: "absolute",
+    top: "$50",
+    right: "$100",
     appearance: "none",
     background: "none",
     cursor: "pointer",
@@ -36,7 +37,7 @@ export const ThemeToggle = () => {
       className={button()}
     >
       <Icon label="Theme Toggle" size="16">
-        {resolvedTheme === "light" ? <>🌛</> : <>🌒</>}
+        {mounted ? resolvedTheme === "light" ? <>🌛</> : <>🌒</> : <>🥮</>}
       </Icon>
     </button>
   );
