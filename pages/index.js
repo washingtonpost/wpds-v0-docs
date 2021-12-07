@@ -46,6 +46,11 @@ export default function Index({ posts, docs, foundations, release_notes }) {
           </li>
         ))}
       </ul>
+      <Link href="/quick-links" forceHref>
+        <a>
+          <h3>Quick Links</h3>
+        </a>
+      </Link>
     </Content>
   );
 }
