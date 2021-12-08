@@ -9,14 +9,14 @@ export default function headers({ css, children, as }) {
     variants: {
       as: {
         h2: {
-          fontSize: "$150",
-          marginBottom: "$050"
+          fontSize: "$150"
         },
         h3: {
-          fontSize: "$100",
+          fontSize: "$125",
           fontFamily: "$subhead",
           fontWeight: "$bold",
-          marginBottom: "$025"
+          marginBottom: "$025",
+          marginTop: "$100"
         },
         h4: {
           fontSize: "$100",

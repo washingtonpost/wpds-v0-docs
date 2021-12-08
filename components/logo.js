@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@washingtonpost/ui-theme";
+import Link from "./Typography/link";
 export default function Logo({ css }) {
   const Container = styled("div", {
     display: "flex",
@@ -10,12 +11,15 @@ export default function Logo({ css }) {
   });
   const Span = styled("span", {
     marginLeft: "$050",
-    fontSize: "$125"
+    fontSize: "$125",
+    textDecoration: "none"
   });
   return (
-    <Container css={css}>
-      <img src="/logo.svg" />
-      <Span>Design system</Span>
-    </Container>
+    <Link href="/" passHref>
+      <Container css={css}>
+        <img src="/logo.svg" />
+        <Span>Design system</Span>
+      </Container>
+    </Link>
   );
 }

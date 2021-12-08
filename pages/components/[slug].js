@@ -45,7 +45,7 @@ export default function Page({
         current={current}
         id="sidebar"
       />
-      <Content id="content">
+      <Content id="content" useShortVersion>
         <div className="post-header">
           <Header>{source.scope.title}</Header>
           {source.scope.description && (

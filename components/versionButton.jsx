@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { styled, keyframes } from '@washingtonpost/ui-theme';
 import Link from 'next/link';
 
-export default function VersionButton({ setState }) {
+export default function VersionButton({ setState, css }) {
     const [isOpen, setisOpen] = useState(false);
 
     const Wrapper = styled("div", {
@@ -73,7 +73,7 @@ export default function VersionButton({ setState }) {
         }
     });
     return (
-        <Wrapper>
+        <Wrapper css={css}>
             <Button>v1</Button>
             {/* <PopOver>
                 <List>

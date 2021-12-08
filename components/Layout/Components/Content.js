@@ -4,7 +4,7 @@ import { styled } from "@washingtonpost/ui-theme";
 import { ThemeToggle } from "~/components/ThemeToggle";
 import { NavigationBar } from "~/components/NavigationBar";
 
-export default function Content({ children }) {
+export default function Content({ children, useShortVersion }) {
   const Container = styled("div", {
     padding: "0 $200",
     gridColumn: "span 1",
@@ -18,7 +18,7 @@ export default function Content({ children }) {
   });
   return (
     <Container>
-      <NavigationBar>
+      <NavigationBar useShortVersion={useShortVersion}>
         <ThemeToggle />
       </NavigationBar>
       <Main>{children}</Main>

@@ -7,6 +7,9 @@ export default function Layout({ children }) {
     "@notSm": {
       gridTemplateColumns: "300px 1fr"
     },
+    "@md": {
+      gridTemplateColumns: "1fr"
+    },
     "@sm": {
       gridTemplateColumns: "1fr"
     }

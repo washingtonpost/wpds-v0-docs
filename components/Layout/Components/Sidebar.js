@@ -4,52 +4,96 @@ import { styled, keyframes } from "@washingtonpost/ui-theme";
 import Header from "../../Typography/Headers";
 import Logo from "../../logo";
 import VersionButton from "../../versionButton";
+import { NavigationBar } from "~/components/NavigationBar";
+import { ThemeToggle } from "~/components/ThemeToggle";
+
 /**Sidebar takes in @param foundations, @param docs and @param current and displays alls in the side
  * bar as links. The current will match the
  */
-export default function Sidebar({ current, foundations, docs, showSidebar }) {
-  //Handles animation for sidebar drawer
-  const togglePanel = keyframes({
-    from: { transform: "translateX(0%)" },
-    to: { transform: "translateX(-100%)" }
-  });
+export default function Sidebar({ current, foundations, docs }) {
+  const [showMenu, setShowMenu] = useState(false);
+
   //Sidebar Container
   const Panel = styled("div", {
     position: "relative",
     width: "300px",
     height: "100%",
     overflow: "hidden",
+    overflowY: "auto",
     minHeight: "100vh",
     backgroundColor: "$gray500",
     padding: "$200 0 $200 0",
     "@sm": {
-      position: "absolute"
+      width: "100%",
+      minHeight: "unset",
+      overflowY: "hidden"
     },
-    "&.title": {
-      color: "$red100"
+    "@md": {
+      width: "100%",
+      minHeight: "unset",
+      overflowY: "hidden"
     },
     variants: {
       toggle: {
         hide: {
           "@sm": {
-            animation: `${togglePanel} 200ms normal`,
-            animationFillMode: "forwards"
+            height: "80px",
+            backgroundColor: "transparent"
+          },
+          "@md": {
+            height: "80px",
+            backgroundColor: "transparent"
           }
         },
         show: {
           "@sm": {
-            animation: `${togglePanel} 200ms reverse`,
-            animationFillMode: "forwards"
+            height: "auto",
+            backgroundColor: "$gray500"
+          },
+          "@md": {
+            height: "auto",
+            backgroundColor: "$gray500"
           }
         }
       }
     }
   });
+
   //Container
   const Container = styled("div", {
     width: "300px",
-    position: "fixed"
+    position: "sticky",
+    "@sm": {
+      position: "relative",
+      width: "100%"
+    },
+    "@md": {
+      position: "relative",
+      width: "100%",
+      height: "auto"
+    },
+    variants: {
+      toggle: {
+        hide: {
+          "@sm": {
+            display: "none"
+          },
+          "@md": {
+            display: "none"
+          }
+        },
+        show: {
+          "@sm": {
+            display: "block"
+          },
+          "@md": {
+            display: "block"
+          }
+        }
+      }
+    }
   });
+
   //List in sidebars
   const SideBarList = styled("ul", {
     listStyle: "none",
@@ -78,6 +122,7 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
       }
     }
   });
+
   //Links in sidebar
   const CustomLink = styled("a", {
     fontFamily: "$meta",
@@ -102,19 +147,57 @@ export default function Sidebar({ current, foundations, docs, showSidebar }) {
       }
     }
   });
-
+  //For mobile nav
+  const NavBarWrapper = styled("div", {
+    width: "100%",
+    display: "flex",
+    padding: "0 $200"
+  });
   const LogoWrapper = styled("div", {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    width: "100%",
+    "@sm": {
+      justifyContent: "flex-end"
+    },
+    "@md": {
+      justifyContent: "flex-end"
+    }
+  });
+  //Only shows in mobile
+  const MenuButton = styled("button", {
+    height: "$200",
+    width: "$200",
+    display: "flex",
+    backgroundColor: "transparent",
+    borderStyle: "none",
+    "@notSm": {
+      display: "none"
+    },
+    "@md": {
+      alignSelf: "flex-start",
+      display: "block"
+    }
   });
 
   return (
-    <Panel toggle={showSidebar ? "show" : "hide"}>
-      <Container>
-        <LogoWrapper css={{ paddingLeft: "$200", marginBottom: "$150" }}>
-          <Logo />
-          <VersionButton />
-        </LogoWrapper>
+    <Panel toggle={showMenu ? "show" : "hide"}>
+      <Container css={{ zIndex: "$z-offer" }}>
+        <NavBarWrapper>
+          <MenuButton onClick={() => setShowMenu(!showMenu)}>
+            <svg viewBox="0 0 100 80" width="100%" height="100%">
+              <rect fill="#666666" width="100" height="12"></rect>
+              <rect fill="#666666" y="30" width="100" height="12"></rect>
+              <rect fill="#666666" y="60" width="100" height="12"></rect>
+            </svg>
+          </MenuButton>
+          <LogoWrapper css={{ marginBottom: "$150" }}>
+            <Logo />
+            <VersionButton />
+          </LogoWrapper>
+        </NavBarWrapper>
+      </Container>
+      <Container toggle={showMenu ? "show" : "hide"}>
         <Header css={{ paddingLeft: "$200" }} as="h3">
           Foundations
         </Header>

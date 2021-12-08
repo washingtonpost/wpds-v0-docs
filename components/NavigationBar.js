@@ -6,7 +6,13 @@ const Bar = styled("nav", {
   flexDirection: "row",
   justifyContent: "flex-end",
   marginTop: "$100",
-  alignItems: "center"
+  alignItems: "center",
+  variants: {
+    bgColor: {
+      subtle: { backgroundColor: "$gray500" },
+      none: { backgroundColor: "transparent" }
+    }
+  }
 });
 
 const List = styled("ul", {
@@ -33,34 +39,51 @@ const Anchor = styled("a", {
   }
 });
 
-export const NavigationBar = ({ children }) => (
+export const NavigationBar = ({ children, useShortVersion }) => (
   <Bar>
     <List>
-      <ListItem>
-        <Link href="/" passHref>
-          <Anchor>Home</Anchor>
-        </Link>
-      </ListItem>
-      <ListItem>
-        <Link href="/foundations" passHref>
-          <Anchor>Foundations</Anchor>
-        </Link>
-      </ListItem>
-      <ListItem>
-        <Link href="/components" passHref>
-          <Anchor>Components</Anchor>
-        </Link>
-      </ListItem>
-      <ListItem>
-        <Link href="/blog" passHref>
-          <Anchor>Blog</Anchor>
-        </Link>
-      </ListItem>
-      <ListItem>
-        <Link href="/release-notes" passHref>
-          <Anchor>Release Notes</Anchor>
-        </Link>
-      </ListItem>
+      {useShortVersion ? (
+        <>
+          <ListItem>
+            <Link href="/blog" passHref>
+              <Anchor>Blog</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/release-notes" passHref>
+              <Anchor>Release Notes</Anchor>
+            </Link>
+          </ListItem>
+        </>
+      ) : (
+        <>
+          <ListItem>
+            <Link href="/" passHref>
+              <Anchor>Home</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/foundations" passHref>
+              <Anchor>Foundations</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/components" passHref>
+              <Anchor>Components</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/blog" passHref>
+              <Anchor>Blog</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/release-notes" passHref>
+              <Anchor>Release Notes</Anchor>
+            </Link>
+          </ListItem>
+        </>
+      )}
     </List>
     {children}
   </Bar>
