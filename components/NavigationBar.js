@@ -75,7 +75,7 @@ const Anchor = styled("a", {
 });
 
 export const NavigationBar = ({ children, showLogo, disableAnim }) => {
-  const activePosition = disableAnim ? useScrollPosition() : 0;
+  const activePosition = disableAnim ? 0 : useScrollPosition();
   const [ScrollingDown, setDirection] = useState(false);
   const [lastPosition, setLastPosition] = useState(null);
 
@@ -106,7 +106,8 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
           css={{
             padding: "$100 0",
             paddingLeft: "$200",
-            marginRight: "$050"
+            marginRight: "$050",
+            pointerEvent: `${showLogo ? "auto" : "none"}`
           }}
         />
         <ThemeToggle />
