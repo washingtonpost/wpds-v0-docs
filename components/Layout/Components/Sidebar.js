@@ -15,6 +15,7 @@ export default function Sidebar({ current, docs }) {
   //Sidebar Container
   const Panel = styled("div", {
     position: "relative",
+    zIndex: "$z-offer",
     width: "300px",
     height: "100%",
     overflow: "hidden",

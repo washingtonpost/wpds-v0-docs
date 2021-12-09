@@ -4,6 +4,7 @@ export default function Layout({ children }) {
   const Layout = styled("div", {
     display: "grid",
     margin: "0 auto",
+
     "@notSm": {
       gridTemplateColumns: "300px 1fr"
     },

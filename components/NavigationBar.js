@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
-import { styled, keyframes } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/ui-theme";
 import Link from "next/link";
 import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
 
-const Reveal = keyframes({
-  from: { transform: "translateY(-100%)" },
-  to: { transform: "translateY(0%)" }
-});
 const Bar = styled("nav", {
   position: "fixed",
   display: "grid",
   gridTemplateColumns: "300px 1fr",
   right: 0,
   left: 0,
-  zIndex: "$z-shell",
   alignItems: "center",
   transition: "transform .5s",
   "@md": {
@@ -27,16 +22,10 @@ const Bar = styled("nav", {
   variants: {
     NavState: {
       show: {
-        animationName: `${Reveal}`,
-        animationDuration: "500ms",
-        animationDirection: "normal",
-        animationFillMode: "forwards"
+        transform: "translateY(0)"
       },
       hide: {
-        animationName: `${Reveal}`,
-        animationDuration: "500ms",
-        animationDirection: "reverse",
-        animationFillMode: "forwards"
+        transform: "translateY(-100%)"
       }
     }
   }
@@ -75,14 +64,11 @@ const Anchor = styled("a", {
 });
 
 export const NavigationBar = ({ children, showLogo, disableAnim }) => {
-  const activePosition = disableAnim ? 0 : useScrollPosition();
-  const [ScrollingDown, setDirection] = useState(false);
-  const [lastPosition, setLastPosition] = useState(null);
+  const activePosition = disableAnim ? 0 : useScrollPosition(); //Hook to track current scroll position
+  const [ScrollingDown, setDirection] = useState(false); //if the user is scrolling down
+  const [lastPosition, setLastPosition] = useState(null); // store the last postion to calculat the delta
 
-  // handles scroll direction from scroll hook
-  useEffect(() => {
-    setDirection(false);
-  }, []);
+  //Calculates delta for direction when scoll position changes
   useEffect(() => {
     setTimeout(() => {
       setLastPosition(activePosition), 1000;
@@ -95,19 +81,17 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
   }, [activePosition]);
 
   return (
-    <Bar NavState={ScrollingDown ? "hide" : "true"} id="bar">
+    <Bar NavState={ScrollingDown ? "hide" : "show"} id="bar">
       <Container
         css={{
-          display: `${showLogo ? "flex" : "none"}`,
-          pointerEvent: `${showLogo ? "auto" : "none"}`
+          display: `${showLogo ? "flex" : "none"}`
         }}
       >
         <Logo
           css={{
             padding: "$100 0",
             paddingLeft: "$200",
-            marginRight: "$050",
-            pointerEvent: `${showLogo ? "auto" : "none"}`
+            marginRight: "$050"
           }}
         />
         <ThemeToggle />

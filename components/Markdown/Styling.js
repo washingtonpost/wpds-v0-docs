@@ -6,6 +6,11 @@ import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled } from "@washingtonpost/ui-theme";
 import { Box } from "@washingtonpost/ui-box";
+import {
+  List,
+  ListItem,
+  ListText
+} from "~/components/Markdown/Components/list";
 // import TableOfContents from "./Components/tableofcontents";
 import dynamic from "next/dynamic";
 const HR = styled("hr", {
@@ -26,6 +31,8 @@ const components = {
       {children}
     </CustomLink>
   ),
+  ul: List,
+
   p: P,
   h1: ({ children }) => <Header as="h1">{children}</Header>,
   h2: ({ children }) => (
