@@ -18,9 +18,6 @@ export const ThemeToggle = () => {
   };
 
   const button = css({
-    position: "absolute",
-    top: "$50",
-    right: "$100",
     appearance: "none",
     background: "none",
     cursor: "pointer",

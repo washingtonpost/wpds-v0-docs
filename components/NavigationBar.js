@@ -1,16 +1,30 @@
-import { styled } from "@washingtonpost/ui-theme";
+import { styled, keyframes } from "@washingtonpost/ui-theme";
 import Link from "next/link";
 
+const Reveal = keyframes({
+  from: { transform: "translateY(-100%)" },
+  to: { transform: "translateY(0)" }
+});
 const Bar = styled("nav", {
+  position: "fixed",
+  right: 0,
+  backgroundColor: "$gray600",
+  zIndex: "$z-shell",
   display: "flex",
   flexDirection: "row",
   justifyContent: "flex-end",
-  marginTop: "$100",
+  padding: "$150 0",
   alignItems: "center",
   variants: {
-    bgColor: {
-      subtle: { backgroundColor: "$gray500" },
-      none: { backgroundColor: "transparent" }
+    NavState: {
+      show: {
+        animation: `${Reveal} 200ms normal`,
+        animationFillMode: "forwards"
+      },
+      hide: {
+        animation: `${Reveal} 200ms normal`,
+        animationFillMode: "reverse"
+      }
     }
   }
 });
@@ -42,48 +56,31 @@ const Anchor = styled("a", {
 export const NavigationBar = ({ children, useShortVersion }) => (
   <Bar>
     <List>
-      {useShortVersion ? (
-        <>
-          <ListItem>
-            <Link href="/blog" passHref>
-              <Anchor>Blog</Anchor>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/release-notes" passHref>
-              <Anchor>Release Notes</Anchor>
-            </Link>
-          </ListItem>
-        </>
-      ) : (
-        <>
-          <ListItem>
-            <Link href="/" passHref>
-              <Anchor>Home</Anchor>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/foundations" passHref>
-              <Anchor>Foundations</Anchor>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/components" passHref>
-              <Anchor>Components</Anchor>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/blog" passHref>
-              <Anchor>Blog</Anchor>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link href="/release-notes" passHref>
-              <Anchor>Release Notes</Anchor>
-            </Link>
-          </ListItem>
-        </>
-      )}
+      <ListItem>
+        <Link href="/" passHref>
+          <Anchor>Home</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="/foundations" passHref>
+          <Anchor>Foundations</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="/components" passHref>
+          <Anchor>Components</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="/blog" passHref>
+          <Anchor>Blog</Anchor>
+        </Link>
+      </ListItem>
+      <ListItem>
+        <Link href="/release-notes" passHref>
+          <Anchor>Release Notes</Anchor>
+        </Link>
+      </ListItem>
     </List>
     {children}
   </Bar>

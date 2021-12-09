@@ -14,6 +14,7 @@ import {
   getDocByPathName,
   getDocsListBySection
 } from "~/services";
+import { NavigationBar } from "~/components/NavigationBar";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -28,20 +29,14 @@ const components = {
 const P = styled("p", {
   color: "$accessible"
 });
-export default function Page({
-  current,
-  docs,
-  foundations,
-  source,
-  frontMatter
-}) {
+export default function Page({ current, docs, source }) {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   return (
     <Layout>
+      <NavigationBar />
       <Sidebar
         showSidebar={toggleSideBar}
-        foundations={foundations}
-        docs={docs}
+        docs={{ root: thisSection, label: thisSection, files: docs }}
         current={current}
         id="sidebar"
       />
@@ -64,15 +59,13 @@ const thisSection = "components";
 export const getStaticProps = async ({ params }) => {
   const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
-  const [docs, foundations] = [thisSection, "foundations"].map(section =>
-    getDocsListBySection(section)
-  );
+  const [docs] = [thisSection].map(section => getDocsListBySection(section));
 
   return {
     props: {
       current: params.slug,
+      thisSection,
       docs,
-      foundations,
       source
     }
   };

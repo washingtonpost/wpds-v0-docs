@@ -14,13 +14,11 @@ export default function Content({ children, useShortVersion }) {
   });
   const Main = styled("main", {
     maxWidth: "1024px",
+    paddingTop: "$300",
     margin: "$200 auto"
   });
   return (
     <Container>
-      <NavigationBar useShortVersion={useShortVersion}>
-        <ThemeToggle />
-      </NavigationBar>
       <Main>{children}</Main>
     </Container>
   );

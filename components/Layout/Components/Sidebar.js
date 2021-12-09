@@ -4,13 +4,12 @@ import { styled, keyframes } from "@washingtonpost/ui-theme";
 import Header from "../../Typography/Headers";
 import Logo from "../../logo";
 import VersionButton from "../../versionButton";
-import { NavigationBar } from "~/components/NavigationBar";
 import { ThemeToggle } from "~/components/ThemeToggle";
 
 /**Sidebar takes in @param foundations, @param docs and @param current and displays alls in the side
  * bar as links. The current will match the
  */
-export default function Sidebar({ current, foundations, docs }) {
+export default function Sidebar({ current, docs }) {
   const [showMenu, setShowMenu] = useState(false);
 
   //Sidebar Container
@@ -22,7 +21,7 @@ export default function Sidebar({ current, foundations, docs }) {
     overflowY: "auto",
     minHeight: "100vh",
     backgroundColor: "$gray500",
-    padding: "$200 0 $200 0",
+    padding: "$100 0 $200 0",
     "@sm": {
       width: "100%",
       minHeight: "unset",
@@ -62,7 +61,7 @@ export default function Sidebar({ current, foundations, docs }) {
   //Container
   const Container = styled("div", {
     width: "300px",
-    position: "sticky",
+    position: "fixed",
     "@sm": {
       position: "relative",
       width: "100%"
@@ -151,7 +150,13 @@ export default function Sidebar({ current, foundations, docs }) {
   const NavBarWrapper = styled("div", {
     width: "100%",
     display: "flex",
-    padding: "0 $200"
+    padding: "0 0 0 $200 ",
+    "@sm": {
+      paddingRight: "$200"
+    },
+    "@md": {
+      paddingRight: "$200"
+    }
   });
   const LogoWrapper = styled("div", {
     display: "flex",
@@ -182,7 +187,7 @@ export default function Sidebar({ current, foundations, docs }) {
 
   return (
     <Panel toggle={showMenu ? "show" : "hide"}>
-      <Container css={{ zIndex: "$z-offer" }}>
+      <Container>
         <NavBarWrapper>
           <MenuButton onClick={() => setShowMenu(!showMenu)}>
             <svg viewBox="0 0 100 80" width="100%" height="100%">
@@ -193,61 +198,39 @@ export default function Sidebar({ current, foundations, docs }) {
           </MenuButton>
           <LogoWrapper css={{ marginBottom: "$150" }}>
             <Logo />
-            <VersionButton />
+            <VersionButton css={{ marginRight: "$050" }} />
+            <ThemeToggle />
           </LogoWrapper>
         </NavBarWrapper>
       </Container>
-      <Container toggle={showMenu ? "show" : "hide"}>
-        <Header css={{ paddingLeft: "$200" }} as="h3">
-          Foundations
+      <Container
+        css={{ "@notSm": { marginTop: "$400" }, "@md": { marginTop: "0" } }}
+        toggle={showMenu ? "show" : "hide"}
+      >
+        <Header
+          css={{ textTransform: "capitalize", paddingLeft: "$200" }}
+          as="h3"
+        >
+          {docs.label}
         </Header>
         <SideBarList>
-          {foundations.map((foundation, i) => (
+          {docs.files.map((file, i) => (
             <Link
-              key={foundation.filePath}
-              as={`/foundations/${foundation.filePath.replace(/\.mdx?$/, "")}`}
-              href={`/foundations/[slug]`}
+              key={file.filePath}
+              as={`/${docs.root}/${file.filePath.replace(/\.mdx?$/, "")}`}
+              href={`/${docs.root}/[slug]`}
               passHref
             >
               <ListItem
                 tabIndex={0}
-                isCurrent={`${
-                  foundation.filePath.includes(current) ? "active" : ""
-                }`}
+                isCurrent={`${file.filePath.includes(current) ? "active" : ""}`}
               >
                 <CustomLink
                   isCurrent={`${
-                    foundation.filePath.includes(current) ? "active" : ""
+                    file.filePath.includes(current) ? "active" : ""
                   }`}
                 >
-                  {foundation.data.title}
-                </CustomLink>
-              </ListItem>
-            </Link>
-          ))}
-        </SideBarList>
-
-        <Header css={{ marginTop: "$200", paddingLeft: "$200" }} as="h3">
-          Components
-        </Header>
-        <SideBarList>
-          {docs.map(doc => (
-            <Link
-              key={doc.filePath}
-              as={`/components/${doc.filePath.replace(/\.mdx?$/, "")}`}
-              href={`/components/[slug]`}
-              passHref
-            >
-              <ListItem
-                tabIndex={0}
-                isCurrent={`${doc.filePath.includes(current) ? "active" : ""}`}
-              >
-                <CustomLink
-                  isCurrent={`${
-                    doc.filePath.includes(current) ? "active" : ""
-                  }`}
-                >
-                  {doc.data.title}
+                  {file.data.title}
                 </CustomLink>
               </ListItem>
             </Link>

@@ -12,7 +12,8 @@ export default function Logo({ css }) {
   const Span = styled("span", {
     marginLeft: "$050",
     fontSize: "$125",
-    textDecoration: "none"
+    textDecoration: "none",
+    width: "100%"
   });
   return (
     <Link href="/" passHref>
