@@ -33,7 +33,7 @@ export default function Page({ current, docs, source }) {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   return (
     <Layout>
-      <NavigationBar />
+      <NavigationBar showLogo={false} />
       <Sidebar
         showSidebar={toggleSideBar}
         docs={{ root: thisSection, label: thisSection, files: docs }}

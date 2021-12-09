@@ -8,6 +8,7 @@ import Layout from "~/components/Layout/WithSidebar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 import Content from "~/components/Layout/Components/Content";
 import Header from "~/components/Typography/Headers";
+
 import {
   getAllPathsBySection,
   getDocByPathName,

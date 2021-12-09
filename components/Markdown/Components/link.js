@@ -34,7 +34,7 @@ export default function CustomLink({
 
   return (
     <>
-      <Link as={as} href={href} passHref>
+      <Link as={as} href={href}>
         <A id={id} signal={useSignal ? "showColor" : ""} {...otherProps}>
           {children}
         </A>
