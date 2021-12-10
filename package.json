@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@washingtonpost/wpds-assets": "^1.0.7",
     "@washingtonpost/wpds-ui-kit": "^0.1.0-experimental.5",
     "gray-matter": "^4.0.2",
     "next": "latest",

@@ -2,22 +2,7 @@ import Link from "next/link";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 
-const repoLinks = [
-  {
-    href: "https://github.com/WPMedia/wpds-assets-manager",
-    label: "Assets Manager"
-  },
-  {
-    href: "https://github.com/WPMedia/wpds-ui-kit",
-    label: "UI Kit"
-  },
-  {
-    href: "https://github.com/WPMedia/WPDS-Figma-plugins",
-    label: "Figma Plugins"
-  }
-];
-
-export default function Page() {
+export default function Page({ links }) {
   return (
     <Layout>
       <div id="sidebar"></div>
@@ -27,7 +12,7 @@ export default function Page() {
         <h2>Repos</h2>
 
         <ul>
-          {repoLinks.map(link => (
+          {links.map(link => (
             <li key={link.href}>
               <Link href={link.href} forceHref>
                 <a>
@@ -41,3 +26,24 @@ export default function Page() {
     </Layout>
   );
 }
+
+export const getStaticProps = async ({ params }) => {
+  return {
+    props: {
+      links: [
+        {
+          href: "https://github.com/WPMedia/wpds-assets-manager",
+          label: "Assets Manager"
+        },
+        {
+          href: "https://github.com/WPMedia/wpds-ui-kit",
+          label: "UI Kit"
+        },
+        {
+          href: "https://github.com/WPMedia/WPDS-Figma-plugins",
+          label: "Figma Plugins"
+        }
+      ]
+    }
+  };
+};
