@@ -8,9 +8,11 @@ import Add from "@washingtonpost/wpds-assets/asset/add";
 
 const AssetContainer = styled("article", {
   border: "1px solid $subtle",
-  background: "$accessible",
+  background: "$subtle",
   padding: "$100",
-  borderRadius: "$100"
+  margin: "0 auto",
+  borderRadius: "$100",
+  display: "inline-block"
 });
 
 export default function Page() {
@@ -47,7 +49,9 @@ export const MyComponent = () => (
               <h2>{Asset}</h2>
               <pre>{importExample}</pre>
               <AssetContainer>
-                <Component />
+                <Icon label={`Asset for ${Asset}`} size="32">
+                  <Component />
+                </Icon>
               </AssetContainer>
             </section>
           );
