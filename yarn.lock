@@ -1495,10 +1495,10 @@
     "@babel/runtime" "^7.13.10"
     "@washingtonpost/ui-theme" "0.1.0-experimental.4"
 
-"@washingtonpost/wpds-assets@^1.0.7":
-  "integrity" "sha512-rm5+I/1KglCmTW6VM1cqwaLON5HHzeTYFCay9eEZgvrLh0W9dPDyMegqHbg3/XsQ1OvNoYA690tbhrBxA2NrzA=="
-  "resolved" "https://registry.npmjs.org/@washingtonpost/wpds-assets/-/wpds-assets-1.0.7.tgz"
-  "version" "1.0.7"
+"@washingtonpost/wpds-assets@^1.1.1":
+  "integrity" "sha512-5T/ldOwhTHdI/PNaFpUR46/YVVnl3mt6HcwYc4MwIYLJJU1KVVoY8qwFHgzQzD3UmB/D5Ow+m1GdJH87zax8Pg=="
+  "resolved" "https://registry.npmjs.org/@washingtonpost/wpds-assets/-/wpds-assets-1.1.1.tgz"
+  "version" "1.1.1"
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@washingtonpost/ui-theme" "experimental"
