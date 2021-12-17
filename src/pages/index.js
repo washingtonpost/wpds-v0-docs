@@ -13,116 +13,47 @@ export default function Home() {
       title={`${siteConfig.title}`}
       description="Landing page of WDPS Doc site"
     >
-      <main>
-        <section id="hero" className={`${styles.grid_landing} pb-xxl pt-xxl`}>
+      <main className="flex ma-auto">
+        <section
+          style={{ width: "80%" }}
+          id="hero"
+          className={`text-center ma-auto pb-xxl pt-xxl`}
+        >
           <div
-            className={`${styles.area_1} flex left-ns center mb-0-ns mb-xl flex-column justify-center`}
+            style={{ width: "80%" }}
+            className={`${styles.area_1} flex center ma-auto mb-0-ns mb-xl flex-column justify-center`}
           >
-            <h1
-              style={{ width: "90%" }}
-              className="font-lg mb-xs-ns mb-xs font--headline"
-            >
-              Designing tomorrow's news today
+            <h4 className="font-xxs gray-dark mb-sm font-light">
+              <span className="font--headline">⚠️</span> This site is for our
+              old design system.
+            </h4>
+            <h1 className="font-lg mb-xs-ns mb-xs font--headline">
+              v0 Design system
             </h1>
-            <p className="gray-dark lh-lg w-66-ns">
-              The Washington Post design system helps us build for a better
-              reading experience across all our products. Build faster, build
-              better, and build more with WPDS.
+
+            <p className="gray-dark w-66-ns">
+              What does <span className="italic">"old design system"</span>{" "}
+              mean? The old design system is when WPDS and Site components lived
+              together. As a lot of you know our design system has grown so much
+              this past year. In that time we have learned a lot. One of them in
+              particular is how our system scales. As a result, WPDS and Site
+              components are now separate. Our tokens have been re-imagined for
+              both light and dark mode. Our components scale far better for our
+              needs at the post.
             </p>
-            <CTA className="flex_center_sm" url="/getting-started/design">
-              Getting started
-            </CTA>
-          </div>
-          <div className={`${styles.area_2} flex items-center justify-center`}>
-            <img
-              className="mb-0-ns mb-md"
-              height="auto"
-              width="80%"
-              src="/img/landing/design-team.svg"
-            />
-          </div>
-        </section>
-
-        <section className={`pt-xxl pb-xxl subs-theme bg-blue-pale`}>
-          <div className={`${styles.grid_cards}`}>
-            <Card
-              className={`${styles.area_1} mb-0-ns mb-xs `}
-              imgPath="/img/landing/components.svg"
-            >
-              <h3 className="mb-xs">Components</h3>
-              <p className="lh-md">
-                Each component has been design to be as reusable as possible
-              </p>
-              <CTA url="/design/uncategorized/accordion" Color="Dark">
-                Explore our components
-              </CTA>
-            </Card>
-            <Card
-              className={`${styles.area_2} `}
-              imgPath="/img/landing/collab.svg"
-            >
-              <h3 className="mb-xs">Patterns</h3>
-              <p className="lh-md">
-                Resuable combinations of components to create solve common user
-                problems
-              </p>
-              <CTA Color="Dark">Coming Soon</CTA>
-            </Card>
-          </div>
-        </section>
-
-        <section id="purpose" className={`${styles.grid_landing} pb-xl pt-xxl`}>
-          <div
-            className={`${styles.area_1} flex left-ns center mb-0-ns mb-xl flex-column justify-center`}
-          >
-            <h1 className="font-lg-ns font-md mb-0-ns mb-xs font--headline">
-              Purpose & Principles
-            </h1>
-            <p className="gray-dark lh-lg w-66-ns">
-              The Washington Post design system helps us build for a better
-              reading experience across all our products. Build faster, build
-              better, and build more with WPDS.
-            </p>
-            <CTA className="flex_center_sm" url="/">
-              Coming soon
-            </CTA>
-          </div>
-          <div className={`${styles.area_2} flex justify-center items-center`}>
-            <img
-              className="mb-0-ns mb-md"
-              height="auto"
-              width="80%"
-              src="/img/landing/online-doc.svg"
-            />
-          </div>
-        </section>
-
-        <section id="tokens" className={`${styles.grid_landing} pb-xl pt-xxl`}>
-          <div
-            className={`${styles.area_2} ml-sm flex left-ns center mb-0-ns mb-xl flex-column justify-center`}
-          >
-            <h1 className="font-lg-ns font-md mb-0-ns mb-xs font--headline">
-              Design Tokens
-            </h1>
-            <p className="gray-dark lh-lg w-66-ns">
-              Design tokens are all the values needed to construct and maintain
-              a design system — spacing, color, typography, object styles,
-              animation, etc. — represented as data.
+            <p className="gray-dark mt-sm w-66-ns">
+              So who is this site for? Well before creating our new design
+              system we knew that there will be phase where for those still on
+              our legacy system. We wanted to archive our component and token
+              logic for others who still need to review and are still working on
+              with these components.
             </p>
             <CTA
-              className="flex_center_sm"
-              url="/foundations/introduction/what-are-tokens"
+              className="ma-auto"
+              url="https://v1.wpds.docs.preview.now.washingtonpost.com/"
             >
-              Explore and learn more
+              v1 Design system
             </CTA>
-          </div>
-          <div className={`${styles.area_1} flex items-center justify-center`}>
-            <img
-              className="mb-0-ns mb-md"
-              height="auto"
-              width="80%"
-              src="/img/landing/palette.svg"
-            />
           </div>
         </section>
       </main>

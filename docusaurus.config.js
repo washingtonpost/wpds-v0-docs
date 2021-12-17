@@ -4,12 +4,12 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "WPDS",
-  tagline: "Dinosaurs are cool",
+  tagline: "v0 Washington Post Design System",
   url: "https://wpds-docs.preview.now.washingtonpost.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "img/wp-mark.svg",
   organizationName: "WP-Media", // Usually your GitHub org/user name.
   projectName: "WPDS-Docs", // Usually your repo name.
   plugins: ["@docusaurus/plugin-ideal-image"],
@@ -43,7 +43,7 @@ module.exports = {
           docId: "design/uncategorized/accordion",
           position: "right",
           label: "Components"
-        },
+        }
         // {
         //   type: 'doc',
         //   docId: 'content/voice',
@@ -56,29 +56,6 @@ module.exports = {
         //   position: 'right',
         //   label: 'Pattern',
         // },
-        {
-          type: "doc",
-          docId: "resources/intro",
-          position: "right",
-          label: "Resources"
-        },
-        {
-          type: "doc",
-          docId: "release-notes",
-          position: "right",
-          label: "Release Notes"
-        },
-        { to: "blog", label: "Blog", position: "right" },
-        {
-          type: "search",
-          position: "right"
-        },
-        {
-          type: "docsVersionDropdown",
-          position: "left",
-          dropdownItemsAfter: [{ to: "/versions", label: "All versions" }],
-          dropdownActiveClassDisabled: true
-        }
       ]
     },
     footer: {
@@ -144,14 +121,12 @@ module.exports = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/WPMedia/WPDS-Docs/tree/main/"
+          editUrl: "https://github.com/WPMedia/WPDS-Docs/tree/main/"
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/WPMedia/WPDS-Docs/tree/main/"
+          editUrl: "https://github.com/WPMedia/WPDS-Docs/tree/main/"
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")
