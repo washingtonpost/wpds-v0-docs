@@ -23,6 +23,11 @@ export default function Page() {
         <h1>Assets</h1>
         <p>CTRL + F to search.</p>
 
+        <h2>How to install</h2>
+        <p>
+          <code>npm install @washingtonpost/wpds-assets</code>
+        </p>
+
         <h2>example of using theme</h2>
         <Icon label="Add to List" size="16">
           <Add fill={theme.colors.green100} />
@@ -42,14 +47,20 @@ export const MyComponent = () => (
         {Object.keys(AllAssets).map(Asset => {
           const Component = AllAssets[Asset];
           const componentName = paramCase(Asset);
-          const importExample = `import ${Asset} from "@washingtonpost/wpds-assets/asset/${componentName}";`;
+          const importExample = `import ${Asset.replace(
+            "Svg",
+            ""
+          )} from "@washingtonpost/wpds-assets/asset/${componentName.replace(
+            "svg",
+            ""
+          )}";`;
 
           return (
             <section key={Asset}>
-              <h2>{Asset}</h2>
+              <h2>{Asset.replace("Svg", "")}</h2>
               <pre>{importExample}</pre>
               <AssetContainer>
-                <Icon label={`Asset for ${Asset}`} size="32">
+                <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="32">
                   <Component />
                 </Icon>
               </AssetContainer>
