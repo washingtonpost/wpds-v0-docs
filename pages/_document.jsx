@@ -1,6 +1,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, styled } from "@washingtonpost/ui-theme";
+import { getCssText, styled } from "@washingtonpost/wpds-ui-kit";
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
