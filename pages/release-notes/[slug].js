@@ -2,7 +2,7 @@ import { MDXRemote } from "next-mdx-remote";
 import MDXStyling from "~/components/Markdown/Styling";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import { getDocByPathName, getAllPathsBySection } from "~/services";
 

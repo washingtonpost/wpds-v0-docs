@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 export default function Container({ children, caption }) {
   const Div = styled("div", {
     width: "100%",

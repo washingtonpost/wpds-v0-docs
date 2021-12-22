@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 export default function Logo({ css }) {
   const Container = styled("div", {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";

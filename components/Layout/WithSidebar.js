@@ -1,4 +1,4 @@
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 
 export default function Layout({ children }) {
   const Layout = styled("div", {

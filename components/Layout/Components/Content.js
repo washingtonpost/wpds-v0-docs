@@ -1,6 +1,6 @@
 import React from "react";
 
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import { ThemeToggle } from "~/components/ThemeToggle";
 import { NavigationBar } from "~/components/NavigationBar";
 

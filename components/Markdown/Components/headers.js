@@ -1,4 +1,4 @@
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import React from "react";
 import Link from "./link";
 export default function headers({ css, children, as }) {

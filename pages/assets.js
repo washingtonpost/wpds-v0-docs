@@ -1,7 +1,7 @@
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
-import { styled, theme } from "@washingtonpost/ui-theme";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import { Icon } from "@washingtonpost/ui-icon";
 import { paramCase } from "param-case";
 import Add from "@washingtonpost/wpds-assets/asset/add";
@@ -34,7 +34,7 @@ export default function Page() {
         </Icon>
         <code>
           <pre>{`
-import { theme } from "@washingtonpost/ui-theme";
+import { theme } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
 export const MyComponent = () => (

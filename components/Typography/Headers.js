@@ -1,4 +1,4 @@
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 const Header = styled("h1", {
   fontSize: "$300",
   fontFamily: "$headline",

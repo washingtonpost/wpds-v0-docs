@@ -2,7 +2,7 @@ import { MDXRemote } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import Head from "next/head";
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Layout from "~/components/Layout/WithSidebar";
 import Sidebar from "~/components/Layout/Components/Sidebar";

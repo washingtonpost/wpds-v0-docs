@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@washingtonpost/wpds-assets": "^1.1.2",
-    "@washingtonpost/wpds-ui-kit": "^0.1.0-experimental.5",
+    "@washingtonpost/wpds-ui-kit": "^0.1.0-experimental.11",
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-mdx-remote": "^3.0.1",

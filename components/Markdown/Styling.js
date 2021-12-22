@@ -4,7 +4,7 @@
  */
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
-import { styled } from "@washingtonpost/ui-theme";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import { Box } from "@washingtonpost/ui-box";
 import {
   List,

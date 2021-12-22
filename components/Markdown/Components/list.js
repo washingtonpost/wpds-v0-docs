@@ -1,4 +1,4 @@
-const { styled } = require("@washingtonpost/ui-theme");
+const { styled } = require("@washingtonpost/wpds-ui-kit");
 
 const List = styled("ul", {
   listStyle: "none",

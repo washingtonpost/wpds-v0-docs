@@ -6,7 +6,7 @@ import {
   styled,
   darkTheme,
   globalCss
-} from "@washingtonpost/ui-theme";
+} from "@washingtonpost/wpds-ui-kit";
 
 const darkModeStyles = globalCss({
   "@dark": {
