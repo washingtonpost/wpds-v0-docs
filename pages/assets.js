@@ -35,6 +35,7 @@ export default function Page() {
         <code>
           <pre>{`
 import { theme } from "@washingtonpost/ui-theme";
+import Add from "@washingtonpost/wpds-assets/asset/add";
 
 export const MyComponent = () => (
   <Icon label="Add to List" size="16">
