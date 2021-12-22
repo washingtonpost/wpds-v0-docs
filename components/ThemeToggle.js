@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 import * as React from "react";
-import { css } from "@washingtonpost/wpds-ui-kit";
-import { Icon } from "@washingtonpost/ui-icon";
+import { css, Icon } from "@washingtonpost/wpds-ui-kit";
 
 export const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);

@@ -1,8 +1,7 @@
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-import { Icon } from "@washingtonpost/ui-icon";
+import { styled, theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
