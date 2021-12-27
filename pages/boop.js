@@ -1,9 +1,15 @@
 import * as React from "react";
 import { NavigationBar } from "~/components/NavigationBar";
 import { getDocsListBySection } from "~/services";
+import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 
 export default function Boop({ posts, docs, foundations, release_notes }) {
-  return <NavigationBar showLogo />;
+  return (
+    <>
+      <NavigationBar showLogo />
+      <VisuallyHidden>Hi, art</VisuallyHidden>
+    </>
+  );
 }
 
 export function getStaticProps() {
