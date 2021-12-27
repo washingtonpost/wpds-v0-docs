@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 import * as React from "react";
-import { css, Icon } from "@washingtonpost/wpds-ui-kit";
+import { css, Icon, styled } from "@washingtonpost/wpds-ui-kit";
+
+const hasWindow = () => {
+  return typeof window !== "undefined";
+};
 
 export const ThemeToggle = () => {
-  const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
+  const [env, setEnv] = useState("");
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setEnv(hasWindow() ? "browser" : "server");
+  }, []);
 
   const toggleTheme = () => {
     const targetTheme = resolvedTheme === "light" ? "dark" : "light";
@@ -16,7 +22,7 @@ export const ThemeToggle = () => {
     setTheme(targetTheme);
   };
 
-  const button = css({
+  const Button = styled("button", {
     appearance: "none",
     background: "none",
     cursor: "pointer",
@@ -41,25 +47,19 @@ export const ThemeToggle = () => {
   });
 
   return (
-    <button
-      onClick={toggleTheme}
-      aria-label="Switch theme"
-      className={button()}
-    >
+    <Button onClick={toggleTheme} aria-label="Switch theme">
       <Icon label="Theme Toggle" size="16">
-        {mounted ? (
-          resolvedTheme === "light" ? (
-            <>🌞</>
-          ) : (
-            <>🌕</>
-          )
-        ) : (
-          <>
-            <span className={showOnDarkTheme()}>🌕</span>
-            <span className={showOnLightTheme()}>🌞</span>
-          </>
-        )}
+        <>
+          <span className={showOnDarkTheme()}>
+            {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
+            {env === "server" && "🌕"}
+          </span>
+          <span className={showOnLightTheme()}>
+            {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
+            {env === "server" && "🌞"}
+          </span>
+        </>
       </Icon>
-    </button>
+    </Button>
   );
 };
