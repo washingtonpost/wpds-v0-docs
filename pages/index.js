@@ -99,7 +99,7 @@ export default function Index({ posts, docs, foundations, release_notes }) {
   );
 }
 
-export function getStaticProps() {
+export const getStaticProps = async () => {
   const [posts, docs, foundations, release_notes] = [
     "blog",
     "components",
@@ -108,4 +108,4 @@ export function getStaticProps() {
   ].map(section => getDocsListBySection(section));
 
   return { props: { posts, docs, foundations, release_notes } };
-}
+};

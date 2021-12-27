@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";
@@ -81,49 +81,53 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
   }, [activePosition]);
 
   return (
-    <Bar NavState={ScrollingDown ? "hide" : "show"} id="bar">
-      <Container
-        css={{
-          display: `${showLogo ? "flex" : "none"}`
-        }}
-      >
-        <Logo
+    <>
+      <VisuallyHidden>sully is a good dog</VisuallyHidden>
+      <ThemeToggle />
+      <Bar NavState={ScrollingDown ? "hide" : "show"} id="bar">
+        <Container
           css={{
-            padding: "$100 0",
-            paddingLeft: "$200",
-            marginRight: "$050"
+            display: `${showLogo ? "flex" : "none"}`
           }}
-        />
-        <ThemeToggle />
-      </Container>
-      <List>
-        <ListItem>
-          <Link href="/" passHref>
-            <Anchor>Home</Anchor>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link href="/foundations" passHref>
-            <Anchor>Foundations</Anchor>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link href="/components" passHref>
-            <Anchor>Components</Anchor>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link href="/blog" passHref>
-            <Anchor>Blog</Anchor>
-          </Link>
-        </ListItem>
-        <ListItem>
-          <Link href="/release-notes" passHref>
-            <Anchor>Release Notes</Anchor>
-          </Link>
-        </ListItem>
-      </List>
-      {children}
-    </Bar>
+        >
+          <Logo
+            css={{
+              padding: "$100 0",
+              paddingLeft: "$200",
+              marginRight: "$050"
+            }}
+          />
+          <ThemeToggle />
+        </Container>
+        <List>
+          <ListItem>
+            <Link href="/" passHref>
+              <Anchor>Home</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/foundations" passHref>
+              <Anchor>Foundations</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/components" passHref>
+              <Anchor>Components</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/blog" passHref>
+              <Anchor>Blog</Anchor>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link href="/release-notes" passHref>
+              <Anchor>Release Notes</Anchor>
+            </Link>
+          </ListItem>
+        </List>
+        {children}
+      </Bar>
+    </>
   );
 };
