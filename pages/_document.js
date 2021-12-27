@@ -1,17 +1,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, styled, reset } from "@washingtonpost/wpds-ui-kit";
-
-/**
- * Get the css and reset the internal css representation.
- * This is very *IMPORTANT* to do as the server might handle multiple requests
- * and we don't want to have the css accumulated from previous requests
- */
-const getCssAndReset = () => {
-  const css = getCssText();
-  reset();
-  return css;
-};
+import { getCssText } from "@washingtonpost/wpds-ui-kit";
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
@@ -20,15 +9,12 @@ export default class Document extends NextDocument {
   }
 
   render() {
-    const Body = styled("body", {
-      backgroundColor: "$gray600"
-    });
     return (
       <Html lang="en">
         <Head>
           <style
             id="stitches"
-            dangerouslySetInnerHTML={{ __html: getCssAndReset() }}
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
           <link
             rel="preload"
