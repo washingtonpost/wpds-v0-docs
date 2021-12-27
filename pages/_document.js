@@ -84,10 +84,10 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <Body>
+        <body>
           <Main />
           <NextScript />
-        </Body>
+        </body>
       </Html>
     );
   }
