@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Bar = styled("nav", {
+  zIndex: theme.zIndices["z-shell"],
   position: "fixed",
   display: "grid",
   gridTemplateColumns: "300px 1fr",
@@ -82,7 +83,6 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 
   return (
     <>
-      <ThemeToggle />
       <Bar NavState={ScrollingDown ? "hide" : "show"} id="bar">
         <Container
           css={{

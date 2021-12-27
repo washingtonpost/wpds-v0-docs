@@ -25,7 +25,7 @@ export default class Document extends NextDocument {
         <Head>
           <style
             id="stitches"
-            dangerouslySetInnerHTML={{ __html: getCssText() }}
+            dangerouslySetInnerHTML={{ __html: getCssAndReset() }}
           />
           <link
             rel="preload"

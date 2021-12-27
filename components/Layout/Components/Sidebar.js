@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { styled, keyframes } from "@washingtonpost/wpds-ui-kit";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "../../Typography/Headers";
 import Logo from "../../logo";
 import VersionButton from "../../versionButton";

@@ -2,12 +2,10 @@ import Link from "next/link";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 import { getDocsListBySection } from "~/services";
-import { NavigationBar } from "~/components/NavigationBar";
 
 export default function Page({ docs }) {
   return (
     <Layout>
-      <NavigationBar showLogo />
       <div id="sidebar"></div>
       <Content id="content">
         <h1>Foundations</h1>

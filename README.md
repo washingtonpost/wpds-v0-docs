@@ -1,6 +1,8 @@
 # WPDS Documentation site
 
-WIP
+## Set up
+
+1. `npm install`
 
 ## New next.js mdx set up
 
