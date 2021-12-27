@@ -40,14 +40,23 @@ function App({ Component, pageProps }) {
   darkModeStyles();
 
   return (
-    <Layout>
-      <Head>
-        <title>WPDS</title>
-      </Head>
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    </Layout>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      value={{
+        dark: darkTheme.className,
+        light: "light"
+      }}
+    >
+      <Layout>
+        <Head>
+          <title>WPDS</title>
+        </Head>
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </Layout>
+    </ThemeProvider>
   );
 }
 

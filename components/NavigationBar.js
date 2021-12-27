@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { styled, VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";
@@ -82,7 +82,6 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 
   return (
     <>
-      <VisuallyHidden>sully is a good dog</VisuallyHidden>
       <ThemeToggle />
       <Bar NavState={ScrollingDown ? "hide" : "show"} id="bar">
         <Container
