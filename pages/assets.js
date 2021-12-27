@@ -57,7 +57,7 @@ export const MyComponent = () => (
 
           return (
             <section key={Asset}>
-              <h2>{Asset.replace("Svg", "")}</h2>
+              <h3>{Asset.replace("Svg", "")}</h3>
               <pre>{importExample}</pre>
               <AssetContainer>
                 <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="32">

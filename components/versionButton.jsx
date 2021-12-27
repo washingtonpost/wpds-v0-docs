@@ -74,11 +74,6 @@ export default function VersionButton({ setState, css }) {
   return (
     <Wrapper css={css}>
       <Button>v1</Button>
-      {/* <PopOver>
-                <List>
-                    <ListItem><Link href="/" passHref><A>v01</A></Link></ListItem>
-                </List>
-            </PopOver> */}
     </Wrapper>
   );
 }

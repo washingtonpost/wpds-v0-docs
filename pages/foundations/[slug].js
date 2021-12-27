@@ -14,7 +14,6 @@ import {
   getDocByPathName,
   getDocsListBySection
 } from "~/services";
-import { NavigationBar } from "~/components/NavigationBar";
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -34,7 +33,6 @@ export default function Page({ current, docs, source }) {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   return (
     <Layout>
-      <NavigationBar />
       <Sidebar
         showSidebar={toggleSideBar}
         docs={{ root: thisSection, label: thisSection, files: docs }}

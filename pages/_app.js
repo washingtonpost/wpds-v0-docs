@@ -7,6 +7,7 @@ import {
   darkTheme,
   globalCss
 } from "@washingtonpost/wpds-ui-kit";
+import { NavigationBar } from "~/components/NavigationBar";
 
 const darkModeStyles = globalCss({
   "@dark": {
@@ -52,6 +53,7 @@ function App({ Component, pageProps }) {
         <Head>
           <title>WPDS</title>
         </Head>
+        <NavigationBar showLogo />
         <Container>
           <Component {...pageProps} />
         </Container>

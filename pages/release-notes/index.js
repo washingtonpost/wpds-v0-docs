@@ -7,7 +7,6 @@ import { NavigationBar } from "~/components/NavigationBar";
 export default function Page({ docs }) {
   return (
     <Layout>
-      <NavigationBar showLogo />
       <div id="sidebar"></div>
       <Content id="content">
         <h1>Release Notes</h1>

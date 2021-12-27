@@ -3,11 +3,12 @@ import Link from "next/link";
 import Content from "~/components/Layout/Components/Content";
 import { NavigationBar } from "~/components/NavigationBar";
 import { getDocsListBySection } from "~/services";
+import Layout from "~/components/Layout/WithSidebar";
 
 export default function Index({ posts, docs, foundations, release_notes }) {
   return (
-    <>
-      <NavigationBar showLogo />
+    <Layout>
+      <div id="sidebar"></div>
       <Content id="content">
         <h1>Home Page</h1>
 
@@ -61,7 +62,7 @@ export default function Index({ posts, docs, foundations, release_notes }) {
           </a>
         </Link>
       </Content>
-    </>
+    </Layout>
   );
 }
 
