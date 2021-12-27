@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 import * as React from "react";
-import { css, Icon, styled } from "@washingtonpost/wpds-ui-kit";
+import { css, styled, VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 
 const hasWindow = () => {
   return typeof window !== "undefined";
@@ -48,18 +48,17 @@ export const ThemeToggle = () => {
 
   return (
     <Button onClick={toggleTheme} aria-label="Switch theme">
-      <Icon label="Theme Toggle" size="16">
-        <>
-          <span className={showOnDarkTheme()}>
-            {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
-            {env === "server" && "🌕"}
-          </span>
-          <span className={showOnLightTheme()}>
-            {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
-            {env === "server" && "🌞"}
-          </span>
-        </>
-      </Icon>
+      <>
+        <span className={showOnDarkTheme()}>
+          {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
+          {env === "server" && "🌕"}
+        </span>
+        <span className={showOnLightTheme()}>
+          {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
+          {env === "server" && "🌞"}
+        </span>
+      </>
+      <VisuallyHidden>Switch theme</VisuallyHidden>
     </Button>
   );
 };

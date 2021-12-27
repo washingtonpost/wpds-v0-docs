@@ -6,10 +6,10 @@
     "start": "next start"
   },
   "dependencies": {
-    "@washingtonpost/wpds-assets": "^1.1.2",
-    "@washingtonpost/wpds-ui-kit": "^0.1.0-experimental.11",
+    "@washingtonpost/wpds-assets": "^1.1.3",
+    "@washingtonpost/wpds-ui-kit": "^0.1.0-experimental.13",
     "gray-matter": "^4.0.2",
-    "next": "latest",
+    "next": "^12.0.4",
     "next-mdx-remote": "^3.0.1",
     "next-remote-watch": "1.0.0",
     "next-themes": "^0.0.15",
