@@ -53,7 +53,7 @@ export default function Home() {
             </p>
             <hr style={{ opacity: 0.25 }} />
             <h3 className="font-sm mb-xs-ns mb-xs font-bold font--meta">
-              v1 doc site coming soon...
+              v1 design system coming soon...
             </h3>
             <img
               className="shadow-4 ma-auto mt-lg"
