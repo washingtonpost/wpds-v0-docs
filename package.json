@@ -23,7 +23,7 @@
     "glob": "^7.2.0"
   },
   "engines": {
-    "yarn": "yarn NO LONGER USED - use npm instead.",
+    "npm": "yarn NO LONGER USED - use npm instead.",
     "node": "^14"
   }
 }
