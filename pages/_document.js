@@ -1,6 +1,7 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import { getCssText, reset, theme, css } from "@washingtonpost/wpds-ui-kit";
+import { Favicon } from "@washingtonpost/site-components/core/favicon";
 
 /**
  * Get the css and reset the internal css representation.
@@ -27,6 +28,7 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          <Favicon />
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssAndReset() }}

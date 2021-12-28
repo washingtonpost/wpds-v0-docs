@@ -23,6 +23,9 @@ const darkModeStyles = globalCss({
         ...varSet
       };
     }, {})
+  },
+  ":root": {
+    colorScheme: "light dark"
   }
 });
 
