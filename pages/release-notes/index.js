@@ -70,7 +70,7 @@ export default function Page({ docs, latestDocs }) {
 
         {docsList.map(doc => (
           <Card key={doc.slug}>
-            <Kicker>Release</Kicker>
+            <Kicker>{doc.data.kicker}</Kicker>
             <Link href={doc.slug} forceHref>
               <Anchor href={doc.slug}>
                 <Heading as="h2">{doc.data.title}</Heading>
@@ -94,14 +94,15 @@ export default function Page({ docs, latestDocs }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const docs = getDocsListBySection("release-notes");
+  const currentDate = new Date();
+  const docs = getDocsListBySection("release-notes")
+    .sort((a, b) => {
+      return new Date(a.data.publishDate) - new Date(b.data.publishDate);
+    })
+    .filter(doc => {
+      return new Date(doc.data.publishDate) <= currentDate;
+    });
 
-  // sort by publishDate ascending
-  docs.sort((a, b) => {
-    return new Date(a.data.publishDate) - new Date(b.data.publishDate);
-  });
-
-  // create a new array with the latest 8 docs
   const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
   return {
