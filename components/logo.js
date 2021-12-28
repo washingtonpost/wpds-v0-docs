@@ -19,9 +19,9 @@ export default function Logo({ css }) {
     width: "100%"
   });
   return (
-    <Link href="/">
+    <Link href="/" aria-label="The Washington Post Design System's Homepage">
       <Container css={css}>
-        <Icon label="WP Logo" size={32}>
+        <Icon size={32}>
           <WPMark fill={theme.colors.primary} />
         </Icon>
         <Span>Design system</Span>
