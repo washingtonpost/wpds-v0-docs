@@ -1,5 +1,6 @@
 import React from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import WPMark from "@washingtonpost/wpds-assets/asset/wp-mark";
 import Link from "next/link";
 
 export default function Logo({ css }) {
@@ -20,7 +21,9 @@ export default function Logo({ css }) {
   return (
     <Link href="/">
       <Container css={css}>
-        <img src="/logo.svg" />
+        <Icon label="WP Logo" size={32}>
+          <WPMark fill={theme.colors.primary} />
+        </Icon>
         <Span>Design system</Span>
       </Container>
     </Link>

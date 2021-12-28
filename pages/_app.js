@@ -48,6 +48,8 @@ function App({ Component, pageProps }) {
         dark: darkTheme.className,
         light: "light"
       }}
+      disableTransitionOnChange={false}
+      enableColorScheme={false}
     >
       <Layout>
         <Head>

@@ -1,6 +1,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, reset } from "@washingtonpost/wpds-ui-kit";
+import { getCssText, reset, theme, css } from "@washingtonpost/wpds-ui-kit";
 
 /**
  * Get the css and reset the internal css representation.
@@ -12,6 +12,10 @@ const getCssAndReset = () => {
   reset();
   return css;
 };
+
+const BodyStyles = css({
+  background: theme.colors.onPrimary
+});
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
@@ -95,7 +99,7 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <body>
+        <body className={BodyStyles()}>
           <Main />
           <NextScript />
         </body>
