@@ -1,8 +1,5 @@
 import React from "react";
-
 import { styled } from "@washingtonpost/wpds-ui-kit";
-import { ThemeToggle } from "~/components/ThemeToggle";
-import { NavigationBar } from "~/components/NavigationBar";
 
 export default function Content({ children, useShortVersion }) {
   const Container = styled("div", {
