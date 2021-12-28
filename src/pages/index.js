@@ -53,16 +53,8 @@ export default function Home() {
             </p>
             <hr style={{ opacity: 0.25 }} />
             <h3 className="font-sm mb-xs-ns mb-xs font-bold font--meta">
-              New v1 doc site coming soon...
+              v1 doc site coming soon...
             </h3>
-            <p
-              style={{ width: "80%" }}
-              className="ma-auto gray-dark mt-sm w-66-ns"
-            >
-              Soon to be released v1 doc site will be our public facing site and
-              will contain our new system foundational tokens and components.
-              Stay tuned!(Sneak peak below)
-            </p>
             <img
               className="shadow-4 ma-auto mt-lg"
               src="img/comingsoon.png"
