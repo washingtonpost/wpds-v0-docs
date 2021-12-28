@@ -1,6 +1,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, reset, theme, css } from "@washingtonpost/wpds-ui-kit";
+import { getCssText, reset } from "@washingtonpost/wpds-ui-kit";
 import { Favicon } from "@washingtonpost/site-components/core/favicon";
 
 /**
@@ -13,10 +13,6 @@ const getCssAndReset = () => {
   reset();
   return css;
 };
-
-const BodyStyles = css({
-  background: theme.colors.onPrimary
-});
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
@@ -101,7 +97,7 @@ export default class Document extends NextDocument {
             }}
           />
         </Head>
-        <body className={BodyStyles()}>
+        <body>
           <Main />
           <NextScript />
         </body>

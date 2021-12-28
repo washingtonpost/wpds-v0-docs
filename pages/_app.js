@@ -5,7 +5,8 @@ import {
   globalStyles,
   styled,
   darkTheme,
-  globalCss
+  globalCss,
+  theme
 } from "@washingtonpost/wpds-ui-kit";
 import { NavigationBar } from "~/components/NavigationBar";
 
@@ -23,6 +24,9 @@ const darkModeStyles = globalCss({
         ...varSet
       };
     }, {})
+  },
+  body: {
+    background: theme.colors.onPrimary
   }
 });
 
