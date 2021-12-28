@@ -1,4 +1,5 @@
 import Layout from "~/components/Layout/WithSidebar";
+import Head from "next/head";
 import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
 import { styled, theme, Icon } from "@washingtonpost/wpds-ui-kit";
@@ -17,6 +18,9 @@ const AssetContainer = styled("article", {
 export default function Page() {
   return (
     <Layout>
+      <Head>
+        <title>WPDS - Assets</title>
+      </Head>
       <div id="sidebar"></div>
       <Content id="content">
         <h1>Assets</h1>

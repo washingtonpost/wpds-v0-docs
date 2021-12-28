@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote";
+import Head from "next/head";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Layout from "~/components/Layout/WithSidebar";
@@ -35,6 +36,9 @@ export default function Page({ source }) {
   return (
     <Layout>
       <div id="sidebar"></div>
+      <Head>
+        <title>WPDS - {source.scope.title} | Blog</title>
+      </Head>
       <Content id="content">
         <div>
           <Header

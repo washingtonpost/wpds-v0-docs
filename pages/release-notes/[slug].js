@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote";
+import Head from "next/head";
 import MDXStyling from "~/components/Markdown/Styling";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
@@ -32,6 +33,9 @@ const Description = styled("h2", {
 export default function Page({ source }) {
   return (
     <Layout>
+      <Head>
+        <title>WPDS - {source.scope.title} | Release Notes</title>
+      </Head>
       <div id="sidebar"></div>
       <Content id="content">
         <div>

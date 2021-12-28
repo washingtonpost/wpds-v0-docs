@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
@@ -64,6 +65,9 @@ export default function Page({ docs, latestDocs }) {
 
   return (
     <Layout>
+      <Head>
+        <title>WPDS - Release Notes</title>
+      </Head>
       <div id="sidebar"></div>
       <Content id="content">
         <Heading as="h1">Release Notes</Heading>

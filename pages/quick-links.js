@@ -1,12 +1,16 @@
 import Link from "next/link";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
+import Head from "next/head";
 
 export default function Page({ links }) {
   return (
     <Layout>
       <div id="sidebar"></div>
       <Content id="content">
+        <Head>
+          <title>WPDS - Quick Links</title>
+        </Head>
         <h1>Quick Links</h1>
 
         <h2>Repos</h2>
