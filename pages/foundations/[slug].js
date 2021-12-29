@@ -4,6 +4,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
+import TokenTable from "~/components/Markdown/Components/tokenTable";
 import Layout from "~/components/Layout/WithSidebar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 import Content from "~/components/Layout/Components/Content";
@@ -21,6 +22,7 @@ import {
 // here.
 const components = {
   ...MDXStyling,
+  TokenTable: TokenTable,
   // Custom components go here
   CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
   Head

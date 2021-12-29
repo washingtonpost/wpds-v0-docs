@@ -24,6 +24,16 @@ const P = styled("p", {
   paddingBottom: "$050",
   color: "$accessible"
 });
+
+export const BR = styled("div", {
+  paddingBottom: "$125",
+  variants: {
+    size: {
+      xl: { paddingBottom: "$225" }
+    }
+  }
+});
+
 const components = {
   a: ({ children, href }) => (
     <CustomLink href={href} useSignal>
@@ -31,7 +41,7 @@ const components = {
     </CustomLink>
   ),
   ul: List,
-
+  li: ListItem,
   p: P,
   h1: ({ children }) => <Header as="h1">{children}</Header>,
   h2: ({ children }) => (
@@ -40,7 +50,7 @@ const components = {
     </Header>
   ),
   h3: ({ children }) => (
-    <Header css={{ color: "$gray60" }} id={children} as="h3">
+    <Header id={children} as="h3">
       {children}
     </Header>
   ),
@@ -50,6 +60,7 @@ const components = {
     </Header>
   ),
   hr: HR,
+  BR: BR,
   TableOfContents: dynamic(() => import("./Components/tableofcontents")),
   Container: dynamic(() => import("./Components/container")),
   Box: Box
