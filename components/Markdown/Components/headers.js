@@ -9,7 +9,7 @@ export default function headers({ css, children, as }) {
     variants: {
       as: {
         h2: {
-          fontSize: "$150"
+          fontSize: "$175"
         },
         h3: {
           fontSize: "$125",

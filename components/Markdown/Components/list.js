@@ -1,17 +1,19 @@
-const { styled } = require("@washingtonpost/wpds-ui-kit");
+const { styled, theme } = require("@washingtonpost/wpds-ui-kit");
 
-const List = styled("ul", {
+export const List = styled("ul", {
   listStyle: "none",
   marginTop: "0",
-  paddingLeft: "$050"
+  paddingLeft: "0"
 });
-const ListItem = styled("li", {
+export const ListItem = styled("li", {
   cursor: "pointer",
   padding: "$025 0",
-
-  listStyle: "none"
+  "a:nth-child(n)": {
+    color: theme.colors.gray80,
+    textDecoration: "underline"
+  }
 });
-const LinkText = styled("a", {
+export const LinkText = styled("span", {
   color: "$accessible",
   textDecoration: "underline",
   "&:focus": {
@@ -21,5 +23,3 @@ const LinkText = styled("a", {
     outlineWidth: "2px"
   }
 });
-
-export default { List, ListItem, LinkText };

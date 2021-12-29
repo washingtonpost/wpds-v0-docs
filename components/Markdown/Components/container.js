@@ -10,12 +10,15 @@ export default function Container({ children, caption }) {
   const Caption = styled("p", {
     color: "$accessible",
     fontSize: "$087",
-    marginTop: "$050"
+    marginTop: "$050",
+    textAlign: "center"
   });
   return (
     <>
-      <Div>{children}</Div>
-      {caption && <Caption>{caption}</Caption>}
+      <Div>
+        {children}
+        {caption && <Caption>{caption}</Caption>}
+      </Div>
     </>
   );
 }
