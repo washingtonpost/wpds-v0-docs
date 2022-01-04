@@ -4,8 +4,7 @@ import { parse, withCustomConfig } from "react-docgen-typescript";
  * take a component source code and return the doc object
  */
 export const getDocFromComponent = (component) => {
-	/** get source code of file from node_modules/@washingtonpost/ui-${component} */
-	const filePath = `node_modules/@washingtonpost/wpds-ui-kit/node_modules/@washingtonpost/ui-${component}/src/${component}.tsx`;
+	const filePath = `node_modules/@washingtonpost/wpds-ui-kit/node_modules/@washingtonpost/wpds-${component}/src/${component}.tsx`;
 
 	const tsConfigParser = withCustomConfig("./tsconfig.json", {
 		savePropValueAsString: true,

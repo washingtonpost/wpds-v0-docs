@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@washingtonpost/wpds-ui-kit";
-import Tokens from "@washingtonpost/ui-theme/src/wpds.tokens.json";
+import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 export default function tokenTable({ headers, tableData }) {
 	const Table = styled("table", {
 		borderCollapse: "collapse",
