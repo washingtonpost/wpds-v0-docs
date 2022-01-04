@@ -76,7 +76,7 @@ const CopyToClipboard = ({ codeToCopy }) => {
 	return (
 		<div>
 			<CopyButton onClick={copyToClipboard}>
-				{copied ? "Copied!" : "Copy"}
+				{copied ? "Copied!" : "Copy Code"}
 			</CopyButton>
 		</div>
 	);
