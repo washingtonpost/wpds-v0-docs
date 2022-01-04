@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 
-export default function Content({ children, useShortVersion }) {
+export default function Content({ children, css }) {
 	const Container = styled("div", {
 		padding: "0 $200",
 		gridColumn: "span 1",
@@ -16,7 +16,7 @@ export default function Content({ children, useShortVersion }) {
 	});
 	return (
 		<Container>
-			<Main>{children}</Main>
+			<Main css={css}>{children}</Main>
 		</Container>
 	);
 }

@@ -4,21 +4,10 @@ description: Hides an asset from the UI but still renders it for screen readers.
 component: icon
 ---
 
----
-
 ## Anatomy
 
-<Container>
-	<EmbedStory
-		componentName="icon"
-		css={{
-			marginBottom: "$050",
-		}}
-	/>
-	<Box>
-		Icon component shown with a Garlic asset. Inspect the HTML to see the
-		props. Or use a screen reader to read the label.
-	</Box>
+<Container caption="Icon component shown with a Garlic asset. Inspect the HTML to see the props. Or use a screen reader to read the label.">
+	<EmbedStory componentName="icon" />
 </Container>
 
 ---
@@ -34,11 +23,37 @@ component: icon
 	/>
 </Container>
 
-### Default Open
+### Size
 
-The accordion can be opened by default.[google](https://www.google.com)
+The `size` can be 16px, 24px, or 32px. The size sets the width and height of the SVG.
 
-<Container>Example </Container>
+```jsx
+import { theme } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+export const MyComponent = () => (
+	<Icon label="Add to List" size="16">
+		<Add />
+	</Icon>
+);
+```
+
+<Container>Example</Container>
+
+### Label
+
+The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Add to List".
+
+```jsx
+import { theme } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+export const MyComponent = () => (
+	<Icon label="Add to List" size="16">
+		<Add />
+	</Icon>
+);
+```
 
 ---
 

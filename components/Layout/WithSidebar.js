@@ -1,6 +1,6 @@
 import { styled } from "@washingtonpost/wpds-ui-kit";
 
-export default function Layout({ children }) {
+export default function Layout({ children, noSidebar }) {
 	const Layout = styled("div", {
 		display: "grid",
 		margin: "0 auto",
@@ -14,10 +14,22 @@ export default function Layout({ children }) {
 		"@sm": {
 			gridTemplateColumns: "1fr",
 		},
+
+		variants: {
+			noSidebar: {
+				true: {
+					"@notSm": {
+						gridTemplateColumns: "1fr",
+					},
+				},
+			},
+		},
 	});
 	return (
 		<>
-			<Layout className="wrapper">{children}</Layout>
+			<Layout className="wrapper" noSidebar={noSidebar}>
+				{children}
+			</Layout>
 		</>
 	);
 }

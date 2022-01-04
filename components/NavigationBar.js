@@ -115,6 +115,11 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 						</Link>
 					</ListItem>
 					<ListItem>
+						<Link href="/assets" passHref>
+							<Anchor>Assets</Anchor>
+						</Link>
+					</ListItem>
+					<ListItem>
 						<Link href="/blog" passHref>
 							<Anchor>Blog</Anchor>
 						</Link>
