@@ -86,7 +86,7 @@ export default function Page() {
 	return (
 		<Layout noSidebar={true}>
 			<Head>
-				<title>WPDS - Assets</title>
+				<title>WPDS - Assets Manager</title>
 			</Head>
 			<Content
 				id="content"
@@ -94,7 +94,7 @@ export default function Page() {
 					color: "$primary",
 				}}
 			>
-				<h1>Assets</h1>
+				<h1>Assets Manager</h1>
 				<p>CTRL + F to search.</p>
 
 				<h2>How to install</h2>
