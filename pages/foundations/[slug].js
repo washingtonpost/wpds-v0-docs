@@ -11,9 +11,9 @@ import Content from "~/components/Layout/Components/Content";
 import Header from "~/components/Typography/Headers";
 
 import {
-  getAllPathsBySection,
-  getDocByPathName,
-  getDocsListBySection
+	getAllPathsBySection,
+	getDocByPathName,
+	getDocsListBySection,
 } from "~/services";
 
 // Custom components/renderers to pass to MDX.
@@ -21,60 +21,64 @@ import {
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  ...MDXStyling,
-  TokenTable: TokenTable,
-  // Custom components go here
-  CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
-  Head
+	...MDXStyling,
+	TokenTable: TokenTable,
+	// Custom components go here
+	CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
+	Head,
 };
 const P = styled("p", {
-  color: "$accessible"
+	color: "$accessible",
 });
 
 export default function Page({ current, docs, source }) {
-  const [toggleSideBar, setToggleSideBar] = useState(false);
-  return (
-    <Layout>
-      <Sidebar
-        showSidebar={toggleSideBar}
-        docs={{ root: thisSection, label: thisSection, files: docs }}
-        current={current}
-        id="sidebar"
-      />
-      <Content id="content" useShortVersion>
-        <div className="post-header">
-          <Header>{source.scope.title}</Header>
-          {source.scope.description && (
-            <P className="description">{source.scope.description}</P>
-          )}
-        </div>
-        <MDXRemote {...source} components={components} />
-      </Content>
-    </Layout>
-  );
+	const [toggleSideBar, setToggleSideBar] = useState(false);
+	return (
+		<Layout>
+			<Sidebar
+				showSidebar={toggleSideBar}
+				docs={{ root: thisSection, label: thisSection, files: docs }}
+				current={current}
+				id="sidebar"
+			/>
+			<Content id="content" useShortVersion>
+				<div className="post-header">
+					<Header>{source.scope.title}</Header>
+					{source.scope.description && (
+						<P className="description">
+							{source.scope.description}
+						</P>
+					)}
+				</div>
+				<MDXRemote {...source} components={components} />
+			</Content>
+		</Layout>
+	);
 }
 
 const thisSection = "foundations";
 
 export const getStaticProps = async ({ params }) => {
-  const source = await getDocByPathName(`${thisSection}/${params.slug}`);
+	const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
-  const [docs] = [thisSection].map(section => getDocsListBySection(section));
+	const [docs] = [thisSection].map((section) =>
+		getDocsListBySection(section)
+	);
 
-  return {
-    props: {
-      current: params.slug,
-      docs,
-      source
-    }
-  };
+	return {
+		props: {
+			current: params.slug,
+			docs,
+			source,
+		},
+	};
 };
 
 export const getStaticPaths = async () => {
-  const paths = await getAllPathsBySection(thisSection);
+	const paths = await getAllPathsBySection(thisSection);
 
-  return {
-    paths,
-    fallback: false
-  };
+	return {
+		paths,
+		fallback: false,
+	};
 };

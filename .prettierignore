@@ -100,3 +100,13 @@ packages/**/.next
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+build
+coverage
+public
+storybook-static
+dist
+.next
+node_modules
+out
+jest-coverage

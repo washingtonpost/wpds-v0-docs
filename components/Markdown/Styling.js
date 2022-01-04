@@ -6,23 +6,23 @@ import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled, Box } from "@washingtonpost/wpds-ui-kit";
 import {
-  List,
-  ListItem,
-  ListText
+	List,
+	ListItem,
+	ListText,
 } from "~/components/Markdown/Components/list";
 // import TableOfContents from "./Components/tableofcontents";
 import dynamic from "next/dynamic";
 const HR = styled("hr", {
-  borderStyle: "none",
-  backgroundColor: "$subtle",
-  height: "1px",
-  width: "100%",
-  margin: "$100 0"
+	borderStyle: "none",
+	backgroundColor: "$subtle",
+	height: "1px",
+	width: "100%",
+	margin: "$100 0",
 });
 const P = styled("p", {
-  fontSize: "$100",
-  paddingBottom: "$050",
-  color: "$accessible"
+	fontSize: "$100",
+	paddingBottom: "$050",
+	color: "$accessible",
 });
 
 export const BR = styled("div", {
