@@ -26,44 +26,44 @@ const P = styled("p", {
 });
 
 export const BR = styled("div", {
-  paddingBottom: "$125",
-  variants: {
-    size: {
-      xl: { paddingBottom: "$225" }
-    }
-  }
+	paddingBottom: "$125",
+	variants: {
+		size: {
+			xl: { paddingBottom: "$225" },
+		},
+	},
 });
 
 const components = {
-  a: ({ children, href }) => (
-    <CustomLink href={href} useSignal>
-      {children}
-    </CustomLink>
-  ),
-  ul: List,
-  li: ListItem,
-  p: P,
-  h1: ({ children }) => <Header as="h1">{children}</Header>,
-  h2: ({ children }) => (
-    <Header id={children} css={{ paddingBottom: "$100" }} as="h2">
-      {children}
-    </Header>
-  ),
-  h3: ({ children }) => (
-    <Header id={children} as="h3">
-      {children}
-    </Header>
-  ),
-  h4: ({ children }) => (
-    <Header id={children} as="h4">
-      {children}
-    </Header>
-  ),
-  hr: HR,
-  BR: BR,
-  TableOfContents: dynamic(() => import("./Components/tableofcontents")),
-  Container: dynamic(() => import("./Components/container")),
-  Box: Box
+	a: ({ children, href }) => (
+		<CustomLink href={href} useSignal>
+			{children}
+		</CustomLink>
+	),
+	ul: List,
+	li: ListItem,
+	p: P,
+	h1: ({ children }) => <Header as="h1">{children}</Header>,
+	h2: ({ children }) => (
+		<Header id={children} css={{ paddingBottom: "$100" }} as="h2">
+			{children}
+		</Header>
+	),
+	h3: ({ children }) => (
+		<Header id={children} as="h3">
+			{children}
+		</Header>
+	),
+	h4: ({ children }) => (
+		<Header id={children} as="h4">
+			{children}
+		</Header>
+	),
+	hr: HR,
+	BR: BR,
+	TableOfContents: dynamic(() => import("./Components/tableofcontents")),
+	Container: dynamic(() => import("./Components/container")),
+	Box: Box,
 };
 
 export default components;
