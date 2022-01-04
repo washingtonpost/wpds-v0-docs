@@ -82,6 +82,7 @@ export default function tableofcontents({ current }) {
 					<Link
 						as={`/components/${current}#Implementation`}
 						href={`/components/[slug]#implementation`}
+						passHref
 					>
 						<LinkText>Implementation</LinkText>
 					</Link>

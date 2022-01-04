@@ -65,7 +65,7 @@ const Anchor = styled("a", {
 });
 
 export const NavigationBar = ({ children, showLogo, disableAnim }) => {
-	const activePosition = disableAnim ? 0 : useScrollPosition(); //Hook to track current scroll position
+	const activePosition = useScrollPosition(disableAnim); //Hook to track current scroll position
 	const [ScrollingDown, setDirection] = useState(false); //if the user is scrolling down
 	const [lastPosition, setLastPosition] = useState(null); // store the last postion to calculat the delta
 
@@ -79,7 +79,7 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 		} else {
 			setDirection(true);
 		}
-	}, [activePosition]);
+	}, [activePosition, lastPosition]);
 
 	return (
 		<>

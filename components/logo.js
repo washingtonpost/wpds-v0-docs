@@ -20,6 +20,7 @@ export default function Logo({ css }) {
 	});
 	return (
 		<Link
+			passHref
 			href="/"
 			aria-label="The Washington Post Design System's Homepage"
 		>

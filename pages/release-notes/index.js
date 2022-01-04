@@ -75,7 +75,7 @@ export default function Page({ docs, latestDocs }) {
 				{docsList.map((doc) => (
 					<Card key={doc.slug}>
 						<Kicker>{doc.data.kicker}</Kicker>
-						<Link href={doc.slug} forceHref>
+						<Link href={doc.slug} forceHref passHref>
 							<Anchor href={doc.slug}>
 								<Heading as="h2">{doc.data.title}</Heading>
 							</Anchor>

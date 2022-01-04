@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useScrollPosition = () => {
+const useScrollPosition = (disable) => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	useEffect(() => {
@@ -12,7 +12,7 @@ const useScrollPosition = () => {
 		return () => window.removeEventListener("scroll", updatePosition);
 	}, []);
 
-	return scrollPosition;
+	return disable ? 0 : scrollPosition;
 };
 
 export default useScrollPosition;

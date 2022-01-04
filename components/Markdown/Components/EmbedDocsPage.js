@@ -6,7 +6,7 @@ import { styled } from "@washingtonpost/wpds-ui-kit";
  */
 export default function EmbedDocsPage({ componentName, ...rest }) {
 	const Story = styled("iframe", {
-		aspectRatio: "1 / 1.125",
+		aspectRatio: "1 / 1.25",
 		width: "100%",
 		borderRadius: "$025",
 		border: "$100 solid $subtle",
