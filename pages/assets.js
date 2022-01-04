@@ -100,6 +100,9 @@ export default function Page() {
 				<h2>How to install</h2>
 				<p>
 					<code>
+						<CopyToClipboard
+							codeToCopy={`npm install @washingtonpost/wpds-assets`}
+						/>
 						<CodeExample>
 							npm install @washingtonpost/wpds-assets
 						</CodeExample>
