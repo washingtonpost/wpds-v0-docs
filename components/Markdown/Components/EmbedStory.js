@@ -15,7 +15,7 @@ export default function EmbedStory({
 		width: "100%",
 		borderRadius: "$025",
 		border: "$100 solid $subtle",
-		background: "$primary",
+		background: "$onPrimary",
 	});
 
 	const hostname = "https://main--6197ecb0496d77003a9e85fd.chromatic.com";
