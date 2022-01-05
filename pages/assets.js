@@ -5,6 +5,9 @@ import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
 import { styled, theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
+import { Sandpack } from "@codesandbox/sandpack-react";
+import "@codesandbox/sandpack-react/dist/index.css";
+import { useTheme } from "next-themes";
 
 const AssetContainer = styled("article", {
 	border: "1px solid $onPrimary",
@@ -34,6 +37,15 @@ const CodeExample = styled("pre", {
 	color: "$gray80",
 	fontSize: "$087",
 	lineHeight: "$125",
+});
+
+const Story = styled("iframe", {
+	aspectRatio: "1 / 1",
+	maxHeight: "300px",
+	width: "100%",
+	borderRadius: "$025",
+	border: "$100 solid $subtle",
+	background: "transparent",
 });
 
 /** create a component that lets the user copy a code example to their clipboard */
@@ -82,7 +94,20 @@ const CopyToClipboard = ({ codeToCopy }) => {
 	);
 };
 
+const codeSample = `import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+export default function App() {
+	return (
+		<Icon label="Add to List" size="32">
+			<Add fill={theme.colors.primary} />
+		</Icon>
+	)
+}`;
+
 export default function Page() {
+	const { resolvedTheme } = useTheme();
+
 	return (
 		<Layout noSidebar={true}>
 			<Head>
@@ -98,30 +123,31 @@ export default function Page() {
 				<p>CTRL + F to search.</p>
 
 				<h2>How to install</h2>
-				<p>
-					<code>
-						<CopyToClipboard
-							codeToCopy={`npm install @washingtonpost/wpds-assets`}
-						/>
-						<CodeExample>
-							npm install @washingtonpost/wpds-assets
-						</CodeExample>
-					</code>
-				</p>
+				<CopyToClipboard
+					codeToCopy={`npm install @washingtonpost/wpds-assets`}
+				/>
+				<CodeExample>
+					npm install @washingtonpost/wpds-assets
+				</CodeExample>
 
 				<h2>Filling the Asset with a Color</h2>
-				<code>
-					<CodeExample>{`
-import { theme } from "@washingtonpost/wpds-ui-kit";
-import Add from "@washingtonpost/wpds-assets/asset/add";
-
-export const MyComponent = () => (
-  <Icon label="Add to List" size="16">
-    <Add fill={theme.colors.green100} />
-  </Icon>
-);
-          `}</CodeExample>
-				</code>
+				<Sandpack
+					template="react"
+					theme={resolvedTheme}
+					files={{
+						"/App.js": codeSample,
+					}}
+					customSetup={{
+						dependencies: {
+							"@washingtonpost/wpds-assets": "1.1.8",
+							"@washingtonpost/wpds-ui-kit":
+								"0.1.0-experimental.20",
+						},
+					}}
+					options={{
+						showNavigator: false,
+					}}
+				/>
 				<Grid>
 					{Object.keys(AllAssets).map((Asset) => {
 						const Component = AllAssets[Asset];

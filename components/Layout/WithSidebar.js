@@ -1,5 +1,7 @@
 import { styled } from "@washingtonpost/wpds-ui-kit";
 
+// create edit this page in github react component
+
 export default function Layout({ children, noSidebar }) {
 	const Layout = styled("div", {
 		display: "grid",
