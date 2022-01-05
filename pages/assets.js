@@ -122,6 +122,34 @@ export default function Page() {
 				<h1>Assets Manager</h1>
 				<p>CTRL + F to search.</p>
 
+				<p>
+					`@washingtonpost/wpds-assets` are SVG React components. They
+					are used to create icons, logos, and other visual assets.
+					They are imported from the `@washingtonpost/wpds-assets`
+					package.
+				</p>
+
+				<p>
+					New assets can be submitted for review by submitting a pull
+					request here
+					https://github.com/WPMedia/wpds-assets-manager/pulls. Please
+					follow the contribution guidelines here:
+					https://github.com/WPMedia/wpds-assets-manager#contributing
+				</p>
+
+				<h2>Component API</h2>
+				<ul>
+					<li>
+						fill: <code>string</code> - the fill color of the SVG
+					</li>
+					<li>
+						width: <code>string</code> - the width of the SVG
+					</li>
+					<li>
+						height: <code>string</code> - the height of the SVG
+					</li>
+				</ul>
+
 				<h2>How to install</h2>
 				<CopyToClipboard
 					codeToCopy={`npm install @washingtonpost/wpds-assets`}
