@@ -3,7 +3,7 @@ import Layout from "~/components/Layout/WithSidebar";
 import Head from "next/head";
 import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
-import { styled, theme, Icon } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme, Icon, Box } from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
 import { Sandpack } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
@@ -94,13 +94,14 @@ const CopyToClipboard = ({ codeToCopy }) => {
 	);
 };
 
-const codeSample = `import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
+const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
 export default function App() {
+	globalStyles();
 	return (
 		<Icon label="Add to List" size="32">
-			<Add fill={theme.colors.primary} />
+			<Add fill={theme.colors.accessible} />
 		</Icon>
 	)
 }`;
@@ -126,7 +127,9 @@ export default function Page() {
 					`@washingtonpost/wpds-assets` are SVG React components. They
 					are used to create icons, logos, and other visual assets.
 					They are imported from the `@washingtonpost/wpds-assets`
-					package.
+					package. They should be paired with the Icon component as
+					shown in the code sample below especially if they are for
+					presentation only.
 				</p>
 
 				<p>
@@ -173,7 +176,13 @@ export default function Page() {
 						},
 					}}
 					options={{
-						showNavigator: false,
+						wrapContent: true,
+					}}
+				/>
+				{/* create a spacer to push the code example down */}
+				<Box
+					css={{
+						marginBottom: "$200",
 					}}
 				/>
 				<Grid>
