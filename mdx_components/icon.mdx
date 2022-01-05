@@ -45,14 +45,16 @@ export const MyComponent = () => (
 The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Add to List".
 
 ```jsx
-import { theme } from "@washingtonpost/wpds-ui-kit";
+import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
-export const MyComponent = () => (
-	<Icon label="Add to List" size="16">
-		<Add />
-	</Icon>
-);
+export default function App() {
+	return (
+		<Icon label="Add to List" size="16">
+			<Add />
+		</Icon>
+	);
+}
 ```
 
 ---

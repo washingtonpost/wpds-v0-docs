@@ -18,12 +18,14 @@ import {
 import { default as EmbedDocsPage } from "~/components/Markdown/Components/EmbedDocsPage";
 import { default as EmbedControls } from "~/components/Markdown/Components/EmbedControls";
 import { default as EmbedStory } from "~/components/Markdown/Components/EmbedStory";
+import { default as CustomSandpack } from "~/components/Markdown/Components/Sandbox";
 
 const components = {
 	...MDXStyling,
 	EmbedStory,
 	EmbedControls,
 	EmbedDocsPage,
+	CustomSandpack,
 	Head,
 };
 

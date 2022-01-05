@@ -12,6 +12,7 @@ import {
 } from "~/components/Markdown/Components/list";
 // import TableOfContents from "./Components/tableofcontents";
 import dynamic from "next/dynamic";
+import Sandbox from "./Components/Sandbox";
 const HR = styled("hr", {
 	borderStyle: "none",
 	backgroundColor: "$subtle",
@@ -64,6 +65,15 @@ const components = {
 	TableOfContents: dynamic(() => import("./Components/tableofcontents")),
 	Container: dynamic(() => import("./Components/container")),
 	Box: Box,
+	code: ({ children }) => (
+		<Box
+			css={{
+				marginBottom: "$100",
+			}}
+		>
+			<Sandbox>{children}</Sandbox>
+		</Box>
+	),
 };
 
 export default components;
