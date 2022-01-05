@@ -6,8 +6,10 @@ import {
 	SandpackCodeViewer,
 } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
+import { useTheme } from "next-themes";
 
 const CustomSandpack = ({ children }) => {
+	const { resolvedTheme } = useTheme();
 	return (
 		<SandpackProvider
 			template="react"
@@ -21,7 +23,7 @@ const CustomSandpack = ({ children }) => {
 				},
 			}}
 		>
-			<SandpackLayout>
+			<SandpackLayout theme={resolvedTheme}>
 				<SandpackCodeEditor showLineNumbers />
 				{/* <SandpackCodeViewer /> */}
 				{/* <SandpackPreview /> */}
