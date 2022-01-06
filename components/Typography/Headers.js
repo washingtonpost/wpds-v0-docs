@@ -6,20 +6,19 @@ const Header = styled("h1", {
 	variants: {
 		as: {
 			h2: {
-				fontSize: "$150",
-				marginBottom: "$050",
+				fontSize: "$175",
 			},
 			h3: {
-				fontSize: "$100",
+				fontSize: "$125",
 				fontFamily: "$subhead",
 				fontWeight: "$bold",
 				marginBottom: "$025",
+				marginTop: "$100",
 			},
 			h4: {
 				fontSize: "$100",
 				fontWeight: "$bold",
 				fontFamily: "$meta",
-				color: "$accessible",
 			},
 		},
 	},
