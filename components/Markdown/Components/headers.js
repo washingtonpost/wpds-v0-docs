@@ -23,6 +23,11 @@ export default function headers({ css, children, as }) {
 					fontWeight: "$bold",
 					fontFamily: "$meta",
 				},
+				h6: {
+					fontSize: "$050",
+					fontWeight: "$light",
+					fontFamily: "$body",
+				},
 			},
 		},
 	});

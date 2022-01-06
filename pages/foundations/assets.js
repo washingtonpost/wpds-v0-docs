@@ -44,10 +44,6 @@ const logos = [
 	"google",
 ];
 
-const Heading = styled("h3", {
-	marginBottom: "$100",
-});
-
 const AssetContainer = styled("article", {
 	border: "1px solid $onPrimary",
 	padding: "$100 $050",
@@ -56,7 +52,12 @@ const AssetContainer = styled("article", {
 	flexDirection: "column",
 	justifyContent: "center",
 	alignItems: "center",
-	background: theme.colors.alpha50,
+	background: theme.colors.subtle,
+
+	// highlight AssetContainer when CTRL + F is used
+	"&:focus": {
+		outline: "2px solid $onPrimary",
+	},
 });
 
 /** create a masonary grid layout */
@@ -110,7 +111,7 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
 		[`& ${AssetContainer}`]: {
 			backgroundColor: copied
 				? theme.colors.success
-				: theme.colors.alpha50,
+				: theme.colors.subtle,
 		},
 	});
 
@@ -255,11 +256,6 @@ export default function Page({ current, docs }) {
 								codeToCopy={importExample}
 							>
 								<AssetContainer>
-									<VisuallyHidden>
-										<Header as="h3">
-											{Asset.replace("Svg", "")}
-										</Header>
-									</VisuallyHidden>
 									<Box
 										css={{
 											lineHeight: 0,
@@ -278,6 +274,15 @@ export default function Page({ current, docs }) {
 										</Icon>
 									</Box>
 								</AssetContainer>
+								<Header
+									as="h6"
+									css={{
+										width: "100%",
+										marginTop: "$025",
+									}}
+								>
+									{Asset.replace("Svg", "")}
+								</Header>
 							</CopyToClipboard>
 						);
 					})}
@@ -294,8 +299,14 @@ export default function Page({ current, docs }) {
 					css={{
 						display: "grid",
 						gridTemplateColumns:
-							"repeat(auto-fill, minmax(20%, 1fr))",
+							"repeat(auto-fit, minmax(200px, 1fr))",
 						gridGap: "$200",
+						// auto equal height cells
+						[`${AssetContainer}`]: {
+							height: "$500",
+							px: "$100",
+							background: theme.colors.subtle,
+						},
 					}}
 				>
 					{Object.keys(AllAssets).map((Asset) => {
@@ -329,6 +340,14 @@ export default function Page({ current, docs }) {
 											/>
 										</Icon>
 									</AssetContainer>
+									<Header
+										as="h6"
+										css={{
+											marginTop: "$025",
+										}}
+									>
+										{Asset.replace("Svg", "")}
+									</Header>
 								</CopyToClipboard>
 							);
 						}
