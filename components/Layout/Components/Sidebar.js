@@ -258,6 +258,24 @@ export default function Sidebar({ current, docs }) {
 							</ListItem>
 						</Link>
 					))}
+					{docs.label === "foundations" && (
+						<Link href="/foundations/assets" passHref>
+							<ListItem
+								tabIndex={0}
+								isCurrent={location.pathname.includes(
+									"/foundations/assets"
+								)}
+							>
+								<CustomLink
+									isCurrent={location.pathname.includes(
+										"/foundations/assets"
+									)}
+								>
+									Assets
+								</CustomLink>
+							</ListItem>
+						</Link>
+					)}
 				</SideBarList>
 			</Container>
 		</Panel>
