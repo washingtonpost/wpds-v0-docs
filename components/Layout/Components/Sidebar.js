@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
  */
 export default function Sidebar({ current, docs }) {
 	const [showMenu, setShowMenu] = useState(false);
-	const { pathname } = useRouter();
+	const router = useRouter();
 
 	//Sidebar Container
 	const Panel = styled("div", {
@@ -260,18 +260,21 @@ export default function Sidebar({ current, docs }) {
 							</ListItem>
 						</Link>
 					))}
+
 					{docs.label === "foundations" && (
 						<Link href="/foundations/assets" passHref>
 							<ListItem
 								tabIndex={0}
-								isCurrent={pathname.includes(
-									"/foundations/assets"
-								)}
+								isCurrent={
+									router.pathname.includes("assets") &&
+									"active"
+								}
 							>
 								<CustomLink
-									isCurrent={pathname.includes(
-										"/foundations/assets"
-									)}
+									isCurrent={
+										router.pathname.includes("assets") &&
+										"active"
+									}
 								>
 									Assets
 								</CustomLink>

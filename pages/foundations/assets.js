@@ -14,6 +14,9 @@ import { paramCase } from "param-case";
 import { Sandpack } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { useTheme } from "next-themes";
+import Header from "~/components/Markdown/Components/headers";
+import Sidebar from "~/components/Layout/Components/Sidebar";
+import { getDocsListBySection } from "~/services";
 
 // if the componentName is in this array then don't map over it
 const logos = [
@@ -129,28 +132,37 @@ export default function App() {
 	)
 }`;
 
-export default function Page() {
+const thisSection = "foundations";
+
+export default function Page({ current, docs }) {
 	const { resolvedTheme } = useTheme();
 
 	return (
-		<Layout noSidebar={true}>
+		<Layout>
 			<Head>
 				<title>WPDS - Assets Manager</title>
 			</Head>
+			<Sidebar
+				docs={{
+					root: "foundations",
+					label: "foundations",
+					files: docs,
+				}}
+				current={current}
+				id="sidebar"
+			/>
 			<Content
 				id="content"
 				css={{
 					color: "$primary",
 				}}
 			>
-				<h1>WPDS Assets Manager</h1>
-				<h2>Icons</h2>
-				<Box
-					css={{
-						marginBottom: "$100",
-					}}
-				/>
-
+				<Header css={{ paddingBottom: "$100" }} as="h1">
+					WPDS Assets Manager
+				</Header>
+				<Header id="Icons" css={{ paddingBottom: "$100" }} as="h2">
+					Icons
+				</Header>
 				<Grid>
 					{Object.keys(AllAssets).map((Asset) => {
 						const Component = AllAssets[Asset];
@@ -175,7 +187,9 @@ export default function Page() {
 							>
 								<AssetContainer>
 									<VisuallyHidden>
-										{Asset.replace("Svg", "")}
+										<Header as="h3">
+											{Asset.replace("Svg", "")}
+										</Header>
 									</VisuallyHidden>
 									<Box
 										css={{
@@ -199,25 +213,17 @@ export default function Page() {
 						);
 					})}
 				</Grid>
-
 				<Box
 					css={{
 						marginBottom: "$200",
 					}}
 				/>
-
-				<h2>Logos</h2>
-
-				<Box
-					css={{
-						marginBottom: "$075",
-					}}
-				/>
-
+				<Header id="Logos" css={{ paddingBottom: "$100" }} as="h2">
+					Logos
+				</Header>
 				<Box
 					css={{
 						display: "grid",
-						// grid cells should be 400 by 400
 						gridTemplateColumns:
 							"repeat(auto-fill, minmax(20%, 1fr))",
 						gridGap: "$200",
@@ -237,109 +243,116 @@ export default function Page() {
 
 						if (logos.includes(componentName)) {
 							return (
-								<Box
-									css={{
-										lineHeight: 0,
-										border: "1px solid $onPrimary",
-										background: theme.colors.alpha50,
-										padding: "$100 $050",
-										borderRadius: "$025",
-										// center the content
-										display: "flex",
-										flexDirection: "column",
-										justifyContent: "center",
-										alignItems: "center",
-										padding: "$200",
-									}}
+								<CopyToClipboard
+									key={Asset}
+									codeToCopy={importExample}
 								>
-									<Icon
-										label={`Asset for ${Asset.replace(
-											"Svg",
-											""
-										)}`}
-										size=""
-									>
-										<Component
-											fill={theme.colors.primary}
-										/>
-									</Icon>
-								</Box>
+									<AssetContainer>
+										<Icon
+											label={`Asset for ${Asset.replace(
+												"Svg",
+												""
+											)}`}
+											size=""
+										>
+											<Component
+												fill={theme.colors.primary}
+											/>
+										</Icon>
+									</AssetContainer>
+								</CopyToClipboard>
 							);
 						}
 					})}
 				</Box>
-
 				<Box
 					css={{
 						marginBottom: "$200",
 					}}
 				/>
-
-				<p>
-					`@washingtonpost/wpds-assets` are SVG React components. They
-					are used to create icons, logos, and other visual assets.
-					They are imported from the `@washingtonpost/wpds-assets`
-					package. They should be paired with the Icon component as
-					shown in the code sample below especially if they are for
-					presentation only.
-				</p>
-
-				<p>
-					New assets can be submitted for review by submitting a pull
-					request here
-					https://github.com/WPMedia/wpds-assets-manager/pulls. Please
-					follow the contribution guidelines here:
-					https://github.com/WPMedia/wpds-assets-manager#contributing
-				</p>
-
-				<h2>Component API</h2>
-				<ul>
-					<li>
-						fill: <code>string</code> - the fill color of the SVG
-					</li>
-					<li>
-						width: <code>string</code> - the width of the SVG
-					</li>
-					<li>
-						height: <code>string</code> - the height of the SVG
-					</li>
-				</ul>
-
-				<h2>How to install</h2>
-				<CopyToClipboard
-					codeToCopy={`npm install @washingtonpost/wpds-assets`}
-				/>
-				<CodeExample>
-					npm install @washingtonpost/wpds-assets
-				</CodeExample>
-
-				<h2>Filling the Asset with a Color</h2>
-				<Sandpack
-					template="react"
-					theme={resolvedTheme}
-					files={{
-						"/App.js": codeSample,
-					}}
-					customSetup={{
-						dependencies: {
-							"@washingtonpost/wpds-assets": "1.1.8",
-							"@washingtonpost/wpds-ui-kit":
-								"0.1.0-experimental.20",
-						},
-					}}
-					options={{
-						wrapContent: true,
+				<Box
+					as="hr"
+					css={{
+						display: "block",
+						height: "1px",
+						color: theme.colors.subtle,
+						border: "1px solid currentColor",
+						marginBottom: "$100",
 					}}
 				/>
+				<Header
+					id="React components"
+					css={{ paddingBottom: "$100" }}
+					as="h2"
+				>
+					React components
+				</Header>
+				<Box
+					css={{
+						border: "1px solid $onPrimary",
+						borderRadius: "$025",
+					}}
+				>
+					<Header
+						id="how-to-install"
+						css={{ paddingBottom: "$100" }}
+						as="h3"
+					>
+						How to install
+					</Header>
+					<CopyToClipboard
+						codeToCopy={`npm install @washingtonpost/wpds-assets`}
+					>
+						<CodeExample>
+							npm install @washingtonpost/wpds-assets
+						</CodeExample>
+					</CopyToClipboard>
+
+					<Box
+						css={{
+							marginBottom: "$200",
+						}}
+					/>
+
+					<Header
+						id="code-example"
+						css={{ paddingBottom: "$100" }}
+						as="h3"
+					>
+						Import the icons into your React project
+					</Header>
+					<Sandpack
+						template="react"
+						theme={resolvedTheme}
+						files={{
+							"/App.js": codeSample,
+						}}
+						customSetup={{
+							dependencies: {
+								"@washingtonpost/wpds-assets": "1.1.8",
+								"@washingtonpost/wpds-ui-kit":
+									"0.1.0-experimental.20",
+							},
+						}}
+						options={{
+							wrapContent: true,
+						}}
+					/>
+				</Box>
 			</Content>
 		</Layout>
 	);
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async () => {
+	const [docs] = [thisSection].map((section) =>
+		getDocsListBySection(section)
+	);
+
 	return {
 		props: {
-			links: [],
+			current: "/foundations/assets",
+			docs,
 		},
 	};
 };
