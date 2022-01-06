@@ -3,13 +3,7 @@ import Layout from "~/components/Layout/WithSidebar";
 import Head from "next/head";
 import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
-import {
-	styled,
-	theme,
-	Icon,
-	Box,
-	VisuallyHidden,
-} from "@washingtonpost/wpds-ui-kit";
+import { styled, theme, Icon, Box } from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
 import { Sandpack } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
@@ -17,6 +11,7 @@ import { useTheme } from "next-themes";
 import Header from "~/components/Markdown/Components/headers";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 import { getDocsListBySection } from "~/services";
+import CustomLink from "~/components/Markdown/Components/link";
 
 // if the componentName is in this array then don't map over it
 const logos = [
@@ -118,6 +113,12 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
 	return <CopyButton onClick={copyToClipboard}>{children}</CopyButton>;
 };
 
+const P = styled("p", {
+	fontSize: "$100",
+	paddingBottom: "$050",
+	color: "$accessible",
+});
+
 const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
@@ -158,6 +159,31 @@ export default function Page({ current, docs }) {
 				<Header css={{ paddingBottom: "$100" }} as="h1">
 					WPDS Assets Manager
 				</Header>
+
+				<Header css={{ paddingBottom: "$100" }} as="h2">
+					Figma design
+				</Header>
+
+				<P>
+					All of our icons are design to share a similar visual
+					language. The icons utilize a single path to create the
+					glyph of the icon. To use our icons in your designs enable
+					WPDS-Asset-Manager library in Figma to have access to the
+					components. Icons color fill should follow our guidance on
+					color.{" "}
+					<CustomLink
+						href="https://www.figma.com/file/LA6qKUukk8v3YkkuKq6IC6/%F0%9F%96%BC--WPDS-Asset-Manager"
+						useSignal
+					>
+						Open in Figma
+					</CustomLink>
+				</P>
+
+				<Box
+					css={{
+						marginBottom: "$200",
+					}}
+				/>
 
 				<Header
 					id="React components"
