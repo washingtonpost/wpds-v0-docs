@@ -56,7 +56,7 @@ export default function Index({ posts, docs, foundations, release_notes }) {
 						<h3>Quick Links</h3>
 					</a>
 				</Link>
-				<Link href="/assets" forceHref>
+				<Link href="/foundations/assets" forceHref>
 					<a>
 						<h3>Assets</h3>
 					</a>

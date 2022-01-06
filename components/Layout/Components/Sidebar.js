@@ -5,12 +5,14 @@ import Header from "../../Typography/Headers";
 import Logo from "../../logo";
 import VersionButton from "../../versionButton";
 import { ThemeToggle } from "~/components/ThemeToggle";
+import { useRouter } from "next/router";
 
 /**Sidebar takes in @param foundations, @param docs and @param current and displays alls in the side
  * bar as links. The current will match the
  */
 export default function Sidebar({ current, docs }) {
 	const [showMenu, setShowMenu] = useState(false);
+	const { pathname } = useRouter();
 
 	//Sidebar Container
 	const Panel = styled("div", {
@@ -262,12 +264,12 @@ export default function Sidebar({ current, docs }) {
 						<Link href="/foundations/assets" passHref>
 							<ListItem
 								tabIndex={0}
-								isCurrent={location.pathname.includes(
+								isCurrent={pathname.includes(
 									"/foundations/assets"
 								)}
 							>
 								<CustomLink
-									isCurrent={location.pathname.includes(
+									isCurrent={pathname.includes(
 										"/foundations/assets"
 									)}
 								>

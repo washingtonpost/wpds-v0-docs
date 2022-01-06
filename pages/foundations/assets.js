@@ -9,19 +9,55 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { useTheme } from "next-themes";
 
+// if the componentName is in this array then don't map over it
+const logos = [
+	"voraciously",
+	"amazon",
+	"amazon-music",
+	"apple-podcast",
+	"apple",
+	"by-the-way",
+	"comments",
+	"elections",
+	"facebook-logo",
+	"google-podcast",
+	"olympics-dark",
+	"olympics",
+	"stitcher",
+	"tooled-washington-post",
+	"washington-post-magazine",
+	"washington-post-white",
+	"washington-post",
+	"wp-mark-white",
+	"wp-mark",
+	"rss",
+	"spotify",
+	"google",
+];
+
+const Heading = styled("h3", {
+	marginBottom: "$100",
+});
+
 const AssetContainer = styled("article", {
 	border: "1px solid $onPrimary",
 	background: theme.colors.alpha25,
-	padding: "$100",
+	padding: "$100 $050",
 	borderRadius: "$025",
-	position: "relative",
-	overflow: "hidden",
+	// center the content
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "center",
+
+	// position: "relative",
+	// overflow: "hidden",
 });
 
 /** create a masonary grid layout */
 const Grid = styled("section", {
 	display: "grid",
-	gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+	gridTemplateColumns: "repeat(auto-fill, minmax($400, 1fr))",
 	gridGap: "$200",
 	margin: "0 auto",
 	maxWidth: "100%",
@@ -37,15 +73,6 @@ const CodeExample = styled("pre", {
 	color: "$gray80",
 	fontSize: "$087",
 	lineHeight: "$125",
-});
-
-const Story = styled("iframe", {
-	aspectRatio: "1 / 1",
-	maxHeight: "300px",
-	width: "100%",
-	borderRadius: "$025",
-	border: "$100 solid $subtle",
-	background: "transparent",
 });
 
 /** create a component that lets the user copy a code example to their clipboard */
@@ -80,7 +107,6 @@ const CopyToClipboard = ({ codeToCopy }) => {
 		padding: "$075",
 		borderRadius: "$050",
 		cursor: "pointer",
-		position: "absolute",
 		top: "$075",
 		right: "$075",
 	});
@@ -120,8 +146,129 @@ export default function Page() {
 					color: "$primary",
 				}}
 			>
-				<h1>Assets Manager</h1>
-				<p>CTRL + F to search.</p>
+				<h1>WPDS Assets Manager</h1>
+				<h2>Icons</h2>
+				<Box
+					css={{
+						marginBottom: "$100",
+					}}
+				/>
+
+				<Grid>
+					{Object.keys(AllAssets).map((Asset) => {
+						const Component = AllAssets[Asset];
+						const componentName = paramCase(Asset);
+
+						if (logos.includes(componentName)) {
+							return null;
+						}
+
+						const importExample = `import ${Asset.replace(
+							"Svg",
+							""
+						)} from "@washingtonpost/wpds-assets/asset/${componentName.replace(
+							"svg",
+							""
+						)}";`;
+
+						return (
+							<AssetContainer key={Asset}>
+								{/* <Heading>{Asset.replace("Svg", "")}</Heading> */}
+								<Box
+									css={{
+										lineHeight: 0,
+									}}
+								>
+									<Icon
+										label={`Asset for ${Asset.replace(
+											"Svg",
+											""
+										)}`}
+										size="32"
+									>
+										<Component
+											fill={theme.colors.primary}
+										/>
+									</Icon>
+								</Box>
+								{/* <CopyToClipboard codeToCopy={importExample} /> */}
+							</AssetContainer>
+						);
+					})}
+				</Grid>
+
+				<Box
+					css={{
+						marginBottom: "$200",
+					}}
+				/>
+
+				<h2>Logos</h2>
+
+				<Box
+					css={{
+						marginBottom: "$075",
+					}}
+				/>
+
+				<Box
+					css={{
+						display: "grid",
+						// grid cells should be 400 by 400
+						gridTemplateColumns:
+							"repeat(auto-fill, minmax(20%, 1fr))",
+					}}
+				>
+					{Object.keys(AllAssets).map((Asset) => {
+						const Component = AllAssets[Asset];
+						const componentName = paramCase(Asset);
+
+						const importExample = `import ${Asset.replace(
+							"Svg",
+							""
+						)} from "@washingtonpost/wpds-assets/asset/${componentName.replace(
+							"svg",
+							""
+						)}";`;
+
+						if (logos.includes(componentName)) {
+							return (
+								<Box
+									css={{
+										lineHeight: 0,
+										border: "1px solid $onPrimary",
+										background: theme.colors.alpha25,
+										padding: "$100 $050",
+										borderRadius: "$025",
+										// center the content
+										display: "flex",
+										flexDirection: "column",
+										justifyContent: "center",
+										alignItems: "center",
+									}}
+								>
+									<Icon
+										label={`Asset for ${Asset.replace(
+											"Svg",
+											""
+										)}`}
+										size=""
+									>
+										<Component
+											fill={theme.colors.primary}
+										/>
+									</Icon>
+								</Box>
+							);
+						}
+					})}
+				</Box>
+
+				<Box
+					css={{
+						marginBottom: "$200",
+					}}
+				/>
 
 				<p>
 					`@washingtonpost/wpds-assets` are SVG React components. They
@@ -179,41 +326,6 @@ export default function Page() {
 						wrapContent: true,
 					}}
 				/>
-				{/* create a spacer to push the code example down */}
-				<Box
-					css={{
-						marginBottom: "$200",
-					}}
-				/>
-				<Grid>
-					{Object.keys(AllAssets).map((Asset) => {
-						const Component = AllAssets[Asset];
-						const componentName = paramCase(Asset);
-						const importExample = `import ${Asset.replace(
-							"Svg",
-							""
-						)} from "@washingtonpost/wpds-assets/asset/${componentName.replace(
-							"svg",
-							""
-						)}";`;
-
-						return (
-							<AssetContainer key={Asset}>
-								<h3>{Asset.replace("Svg", "")}</h3>
-								<CopyToClipboard codeToCopy={importExample} />
-								<Icon
-									label={`Asset for ${Asset.replace(
-										"Svg",
-										""
-									)}`}
-									size=""
-								>
-									<Component fill={theme.colors.primary} />
-								</Icon>
-							</AssetContainer>
-						);
-					})}
-				</Grid>
 			</Content>
 		</Layout>
 	);
