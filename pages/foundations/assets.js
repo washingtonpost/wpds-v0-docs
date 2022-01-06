@@ -3,7 +3,13 @@ import Layout from "~/components/Layout/WithSidebar";
 import Head from "next/head";
 import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
-import { styled, theme, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import {
+	styled,
+	theme,
+	Icon,
+	Box,
+	VisuallyHidden,
+} from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
 import { Sandpack } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
@@ -41,17 +47,13 @@ const Heading = styled("h3", {
 
 const AssetContainer = styled("article", {
 	border: "1px solid $onPrimary",
-	background: theme.colors.alpha25,
 	padding: "$100 $050",
 	borderRadius: "$025",
-	// center the content
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "center",
 	alignItems: "center",
-
-	// position: "relative",
-	// overflow: "hidden",
+	background: theme.colors.alpha50,
 });
 
 /** create a masonary grid layout */
@@ -76,7 +78,7 @@ const CodeExample = styled("pre", {
 });
 
 /** create a component that lets the user copy a code example to their clipboard */
-const CopyToClipboard = ({ codeToCopy }) => {
+const CopyToClipboard = ({ codeToCopy, children }) => {
 	const [copied, setCopied] = React.useState(false);
 	const copyToClipboard = () => {
 		const textArea = document.createElement("textarea");
@@ -93,31 +95,26 @@ const CopyToClipboard = ({ codeToCopy }) => {
 	React.useEffect(() => {
 		const timeout = setTimeout(() => {
 			setCopied(false);
-		}, 3000);
+		}, 1000);
 		return () => clearTimeout(timeout);
 	}, [copied]);
 
 	const CopyButton = styled("button", {
-		backgroundColor: copied
-			? theme.colors.onSecondary
-			: theme.colors.onPrimary,
-		color: copied ? theme.colors.success : theme.colors.primary,
-		fontWeight: "bold",
-		border: "none",
-		padding: "$075",
-		borderRadius: "$050",
 		cursor: "pointer",
-		top: "$075",
-		right: "$075",
+		// remove default button styles
+		border: "none",
+		padding: "0",
+		margin: "0",
+		background: "none",
+
+		[`& ${AssetContainer}`]: {
+			backgroundColor: copied
+				? theme.colors.success
+				: theme.colors.alpha50,
+		},
 	});
 
-	return (
-		<div>
-			<CopyButton onClick={copyToClipboard}>
-				{copied ? "Copied!" : "Copy Code"}
-			</CopyButton>
-		</div>
-	);
+	return <CopyButton onClick={copyToClipboard}>{children}</CopyButton>;
 };
 
 const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";
@@ -172,27 +169,33 @@ export default function Page() {
 						)}";`;
 
 						return (
-							<AssetContainer key={Asset}>
-								{/* <Heading>{Asset.replace("Svg", "")}</Heading> */}
-								<Box
-									css={{
-										lineHeight: 0,
-									}}
-								>
-									<Icon
-										label={`Asset for ${Asset.replace(
-											"Svg",
-											""
-										)}`}
-										size="32"
+							<CopyToClipboard
+								key={Asset}
+								codeToCopy={importExample}
+							>
+								<AssetContainer>
+									<VisuallyHidden>
+										{Asset.replace("Svg", "")}
+									</VisuallyHidden>
+									<Box
+										css={{
+											lineHeight: 0,
+										}}
 									>
-										<Component
-											fill={theme.colors.primary}
-										/>
-									</Icon>
-								</Box>
-								{/* <CopyToClipboard codeToCopy={importExample} /> */}
-							</AssetContainer>
+										<Icon
+											label={`Asset for ${Asset.replace(
+												"Svg",
+												""
+											)}`}
+											size="32"
+										>
+											<Component
+												fill={theme.colors.primary}
+											/>
+										</Icon>
+									</Box>
+								</AssetContainer>
+							</CopyToClipboard>
 						);
 					})}
 				</Grid>
@@ -217,6 +220,7 @@ export default function Page() {
 						// grid cells should be 400 by 400
 						gridTemplateColumns:
 							"repeat(auto-fill, minmax(20%, 1fr))",
+						gridGap: "$200",
 					}}
 				>
 					{Object.keys(AllAssets).map((Asset) => {
@@ -237,7 +241,7 @@ export default function Page() {
 									css={{
 										lineHeight: 0,
 										border: "1px solid $onPrimary",
-										background: theme.colors.alpha25,
+										background: theme.colors.alpha50,
 										padding: "$100 $050",
 										borderRadius: "$025",
 										// center the content
@@ -245,6 +249,7 @@ export default function Page() {
 										flexDirection: "column",
 										justifyContent: "center",
 										alignItems: "center",
+										padding: "$200",
 									}}
 								>
 									<Icon
