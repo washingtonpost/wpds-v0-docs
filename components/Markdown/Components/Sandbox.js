@@ -15,7 +15,7 @@ const CustomSandpack = ({ children }) => {
 			template="react"
 			customSetup={{
 				dependencies: {
-					"@washingtonpost/wpds-assets": "1.1.8",
+					"@washingtonpost/wpds-assets": "1.1.13",
 					"@washingtonpost/wpds-ui-kit": "0.1.0-experimental.20",
 				},
 				files: {

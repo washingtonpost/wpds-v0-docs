@@ -72,9 +72,6 @@ const Grid = styled("section", {
 /** create a code example with a scrollbar */
 const CodeExample = styled("pre", {
 	overflow: "auto",
-	padding: "$075 $100",
-	backgroundColor: "$gray600",
-	borderRadius: "$050",
 	color: "$gray80",
 	fontSize: "$087",
 	lineHeight: "$125",
@@ -160,6 +157,78 @@ export default function Page({ current, docs }) {
 				<Header css={{ paddingBottom: "$100" }} as="h1">
 					WPDS Assets Manager
 				</Header>
+
+				<Header
+					id="React components"
+					css={{ paddingBottom: "$100" }}
+					as="h2"
+				>
+					React components
+				</Header>
+				<Box
+					css={{
+						border: "1px solid $onPrimary",
+						borderRadius: "$025",
+					}}
+				>
+					<Header
+						id="how-to-install"
+						css={{ paddingBottom: "$100" }}
+						as="h3"
+					>
+						How to install
+					</Header>
+					<CopyToClipboard
+						codeToCopy={`npm install @washingtonpost/wpds-assets`}
+					>
+						<CodeExample>
+							npm install @washingtonpost/wpds-assets
+						</CodeExample>
+					</CopyToClipboard>
+
+					<Box
+						css={{
+							marginBottom: "$100",
+						}}
+					/>
+
+					<Header
+						id="code-example"
+						css={{ paddingBottom: "$100" }}
+						as="h3"
+					>
+						Import the icons into your React project
+					</Header>
+					<Sandpack
+						template="react"
+						theme={resolvedTheme}
+						files={{
+							"/App.js": codeSample,
+						}}
+						customSetup={{
+							dependencies: {
+								"@washingtonpost/wpds-assets": "1.1.13",
+								"@washingtonpost/wpds-ui-kit":
+									"0.1.0-experimental.20",
+							},
+						}}
+						options={{
+							wrapContent: true,
+						}}
+					/>
+				</Box>
+				<Box
+					as="hr"
+					css={{
+						display: "block",
+						height: "0",
+						color: theme.colors.subtle,
+						border: "none",
+						borderBottom: "1px solid currentColor",
+						marginTop: "$200",
+						marginBottom: "$200",
+					}}
+				/>
 				<Header id="Icons" css={{ paddingBottom: "$100" }} as="h2">
 					Icons
 				</Header>
@@ -264,80 +333,6 @@ export default function Page({ current, docs }) {
 							);
 						}
 					})}
-				</Box>
-				<Box
-					css={{
-						marginBottom: "$200",
-					}}
-				/>
-				<Box
-					as="hr"
-					css={{
-						display: "block",
-						height: "1px",
-						color: theme.colors.subtle,
-						border: "1px solid currentColor",
-						marginBottom: "$100",
-					}}
-				/>
-				<Header
-					id="React components"
-					css={{ paddingBottom: "$100" }}
-					as="h2"
-				>
-					React components
-				</Header>
-				<Box
-					css={{
-						border: "1px solid $onPrimary",
-						borderRadius: "$025",
-					}}
-				>
-					<Header
-						id="how-to-install"
-						css={{ paddingBottom: "$100" }}
-						as="h3"
-					>
-						How to install
-					</Header>
-					<CopyToClipboard
-						codeToCopy={`npm install @washingtonpost/wpds-assets`}
-					>
-						<CodeExample>
-							npm install @washingtonpost/wpds-assets
-						</CodeExample>
-					</CopyToClipboard>
-
-					<Box
-						css={{
-							marginBottom: "$200",
-						}}
-					/>
-
-					<Header
-						id="code-example"
-						css={{ paddingBottom: "$100" }}
-						as="h3"
-					>
-						Import the icons into your React project
-					</Header>
-					<Sandpack
-						template="react"
-						theme={resolvedTheme}
-						files={{
-							"/App.js": codeSample,
-						}}
-						customSetup={{
-							dependencies: {
-								"@washingtonpost/wpds-assets": "1.1.8",
-								"@washingtonpost/wpds-ui-kit":
-									"0.1.0-experimental.20",
-							},
-						}}
-						options={{
-							wrapContent: true,
-						}}
-					/>
 				</Box>
 			</Content>
 		</Layout>
