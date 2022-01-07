@@ -11,7 +11,7 @@ module.exports = {
   onBrokenMarkdownLinks: "warn",
   favicon: "img/wp-mark.svg",
   organizationName: "WP-Media", // Usually your GitHub org/user name.
-  projectName: "WPDS-Docs", // Usually your repo name.
+  projectName: "wpds-docs", // Usually your repo name.
   plugins: ["@docusaurus/plugin-ideal-image"],
   themeConfig: {
     colorMode: {
@@ -126,15 +126,19 @@ module.exports = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: "https://github.com/WPMedia/WPDS-Docs/tree/main/"
+          editUrl: "https://github.com/WPMedia/wpds-docs/tree/main/"
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: "https://github.com/WPMedia/WPDS-Docs/tree/main/"
+          editUrl: "https://github.com/WPMedia/wpds-docs/tree/main/"
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")
+        },
+        gtag: {
+          trackingID: "G-DD0F8SKR32",
+          anonymizeIP: true
         }
       }
     ]
