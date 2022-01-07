@@ -31,7 +31,7 @@ export default function Home() {
               v0 Design system
             </h1>
 
-            <p className="gray-dark w-66-ns">
+            <p style={{ width: "80%" }} className="ma-auto gray-dark w-66-ns">
               What does <span className="italic">"old design system"</span>{" "}
               mean? The old design system is when WPDS and Site components lived
               together. As a lot of you know our design system has grown so much
@@ -41,19 +41,26 @@ export default function Home() {
               both light and dark mode. Our components scale far better for our
               needs at the post.
             </p>
-            <p className="gray-dark mt-sm w-66-ns">
+            <p
+              style={{ width: "80%" }}
+              className="ma-auto gray-dark mt-sm w-66-ns"
+            >
               So who is this site for? Well before creating our new design
               system we knew that there will be phase where for those still on
               our legacy system. We wanted to archive our component and token
               logic for others who still need to review and are still working on
               with these components.
             </p>
-            <CTA
-              className="ma-auto"
-              url="https://v1.wpds.docs.preview.now.washingtonpost.com/"
-            >
-              v1 Design system
-            </CTA>
+            <hr style={{ opacity: 0.25 }} />
+            <h3 className="font-sm mb-xs-ns mb-xs font-bold font--meta">
+              v1 design system coming soon...
+            </h3>
+            <img
+              className="shadow-4 ma-auto mt-lg"
+              src="img/comingsoon.png"
+              height="auto"
+              width="100%"
+            />
           </div>
         </section>
       </main>
