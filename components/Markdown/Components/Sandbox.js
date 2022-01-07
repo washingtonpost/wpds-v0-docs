@@ -8,7 +8,7 @@ import {
 import "@codesandbox/sandpack-react/dist/index.css";
 import { useTheme } from "next-themes";
 
-const CustomSandpack = ({ children }) => {
+const CustomSandpack = ({ withPreview, children }) => {
 	const { resolvedTheme } = useTheme();
 	return (
 		<SandpackProvider
@@ -24,9 +24,19 @@ const CustomSandpack = ({ children }) => {
 			}}
 		>
 			<SandpackLayout theme={resolvedTheme}>
-				<SandpackCodeEditor showLineNumbers />
-				{/* <SandpackCodeViewer /> */}
-				{/* <SandpackPreview /> */}
+				<SandpackCodeEditor
+					customStyle={{
+						height: "auto",
+					}}
+					wrapContent
+				/>
+				{withPreview && (
+					<SandpackPreview
+						customStyle={{
+							height: "auto",
+						}}
+					/>
+				)}
 			</SandpackLayout>
 		</SandpackProvider>
 	);

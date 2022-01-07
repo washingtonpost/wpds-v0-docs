@@ -65,15 +65,26 @@ const components = {
 	TableOfContents: dynamic(() => import("./Components/tableofcontents")),
 	Container: dynamic(() => import("./Components/container")),
 	Box: Box,
-	code: ({ children }) => (
-		<Box
-			css={{
-				marginBottom: "$100",
-			}}
-		>
-			<Sandbox>{children}</Sandbox>
-		</Box>
-	),
+	code: ({ children }) => {
+		return (
+			<Box
+				css={{
+					marginBottom: "$100",
+				}}
+			>
+				<Sandbox withPreview={children.includes("// preview")}>
+					{
+						// remove the preview comment from the code and the line break
+						children.includes("// preview")
+							? children
+									.replace("// preview", "")
+									.replace("\n", "")
+							: children
+					}
+				</Sandbox>
+			</Box>
+		);
+	},
 };
 
 export default components;

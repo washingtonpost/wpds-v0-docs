@@ -1,0 +1,149 @@
+---
+title: How to use WPDS's React UI Kit
+description: We're going to walk through how to build a feature for the website with our React UI Kit.
+kicker: guides
+---
+
+We're going to build a simple "save to reading list" feature for the website.
+
+### Pre-requisites
+
+We will need a few things to get started. First, we need to install the React UI Kit. This guide assumes you have a Next.js project set up.
+
+```bash
+npm install @washingtonpost/wpds--ui-kit
+```
+
+Let's configure the project to support Server Side Rendering. This is a requirement for the React UI Kit. We are following Stitches guide on how to do this. [Seen here.](https://stitches.dev/docs/server-side-rendering).
+
+```jsx
+import React from "react";
+import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+import { getCssText } from "@washingtonpost/wpds-ui-kit";
+
+export default class Document extends NextDocument {
+	static async getInitialProps(ctx) {
+		const initialProps = await NextDocument.getInitialProps(ctx);
+		return { ...initialProps };
+	}
+
+	render() {
+		return (
+			<Html lang="en">
+				<Head>
+					<style
+						id="stitches"
+						dangerouslySetInnerHTML={{ __html: getCssText() }}
+					/>
+				</Head>
+				<body>
+					<Main />
+					<NextScript />
+				</body>
+			</Html>
+		);
+	}
+}
+```
+
+Create a new component file in your "components" directory with the following code:
+
+```jsx
+import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+export const SaveToList = () => {
+	return (
+		<Icon size="32" label="Save to reading list">
+			<Add fill={theme.colors.primary} />
+		</Icon>
+	);
+};
+```
+
+Let's walk through each line of code. We will be using the `styled` function to create a styled component. We will also be using the `theme` object to get the current theme. We will also be using the `Icon` component to create an accessible icon.
+
+```jsx
+import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+```
+
+The `styled` function takes a component and returns a styled component. It uses [Stitches](https://stitches.dev/docs/introduction) under the hood.
+
+The `theme` object lets us use our Theme tokens with type safety. We can also use the cool "interpolation" syntax to get the current theme. Like so `$primary` will return the current primary color.
+
+The `Icon` component clones the SVG React element and adds accessibility attributes. We can use the `label` prop to set the `aria-label` attribute. We can also use the `size` prop to set the `width` and `height` attributes.
+
+We will use a new asset from our [Assets Manager](/foundations/assets). We will use the `Add` asset and apply the `fill` prop to set the color.
+
+```jsx
+<Add fill={theme.colors.onPrimary} />
+```
+
+Let's create a new button component with the following code:
+
+```jsx
+import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+const Button = styled("button", {
+	color: theme.colors.primary,
+	backgroundColor: theme.colors.onPrimary,
+});
+
+export const SaveToList = () => {
+	return (
+		<Button>
+			Save to reading list
+			<Icon size="32">
+				<Add fill={theme.colors.primary} />
+			</Icon>
+		</Button>
+	);
+};
+```
+
+```jsx
+// preview
+import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+const Button = styled("button", {
+	// remove all browser styles
+	appearance: "none",
+	border: "none",
+	// add press effect
+	"&:active": {
+		transform: "scale(0.95)",
+	},
+	// give it some color
+	color: theme.colors.primary,
+	backgroundColor: theme.colors.onPrimary,
+	// remove default spacing
+	margin: 0,
+	// add some padding
+	padding: theme.space["050"],
+	// add rounded corners
+	borderRadius: theme.radii.round,
+	// add a uniform box shadow to create a 'border' effect
+	boxShadow: "0 0 0 1px currentColor",
+	// remove extra space drawn when line height and font size are set
+	lineHeight: 0,
+	fontSize: 0,
+	// add a pointer
+	cursor: "pointer",
+});
+
+const SaveToList = () => {
+	return (
+		<Button>
+			<Icon size="32">
+				<Add fill={theme.colors.primary} />
+			</Icon>
+		</Button>
+	);
+};
+
+export default function App() {
+	return <SaveToList />;
+}
+```
