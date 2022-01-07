@@ -6,6 +6,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.css";
 import CTA from "../components/cta";
 import Card from "../components/card";
+
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (

@@ -106,6 +106,11 @@ module.exports = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme
+    },
+    algolia: {
+      appId: "O19N5YY9R3",
+      apiKey: "d6e309a4051d820cae616d3419f4a5d9",
+      indexName: "crawler_WPDS Documentation Website"
     }
   },
   presets: [
