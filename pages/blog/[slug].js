@@ -60,8 +60,8 @@ export default function Page({ source }) {
 	);
 }
 
-export const getStaticProps = async ({ params }) => {
-	const source = await getDocByPathName(`${SECTION}/${params.slug}`);
+export const getStaticProps = async (response) => {
+	const source = await getDocByPathName(`${SECTION}/${response.params.slug}`);
 
 	return {
 		props: {

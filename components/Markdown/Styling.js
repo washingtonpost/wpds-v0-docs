@@ -20,7 +20,7 @@ const HR = styled("hr", {
 	width: "100%",
 	margin: "$100 0",
 });
-const P = styled("p", {
+export const P = styled("p", {
 	fontSize: "$100",
 	paddingBottom: "$050",
 	color: "$accessible",

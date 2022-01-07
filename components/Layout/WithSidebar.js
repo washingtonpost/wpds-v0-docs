@@ -1,37 +1,34 @@
 import { styled } from "@washingtonpost/wpds-ui-kit";
 
-// create edit this page in github react component
+const Layout = styled("div", {
+	display: "grid",
+	margin: "0 auto",
 
-export default function Layout({ children, noSidebar }) {
-	const Layout = styled("div", {
-		display: "grid",
-		margin: "0 auto",
+	"@md": {
+		gridTemplateColumns: "1fr",
+	},
+	"@sm": {
+		gridTemplateColumns: "1fr",
+	},
 
-		"@notSm": {
-			gridTemplateColumns: "300px 1fr",
-		},
-		"@md": {
-			gridTemplateColumns: "1fr",
-		},
-		"@sm": {
-			gridTemplateColumns: "1fr",
-		},
-
-		variants: {
-			noSidebar: {
-				true: {
-					"@notSm": {
-						gridTemplateColumns: "1fr",
-					},
+	variants: {
+		sidebar: {
+			true: {
+				"@notSm": {
+					gridTemplateColumns: "300px 1fr",
+				},
+			},
+			false: {
+				"@notSm": {
+					gridTemplateColumns: "1fr",
 				},
 			},
 		},
-	});
-	return (
-		<>
-			<Layout className="wrapper" noSidebar={noSidebar}>
-				{children}
-			</Layout>
-		</>
-	);
-}
+	},
+
+	defaultVariants: {
+		sidebar: true,
+	},
+});
+
+export default Layout;

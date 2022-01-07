@@ -6,6 +6,7 @@ import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Bar = styled("nav", {
+	backgroundColor: "$onPrimary",
 	zIndex: "$shell",
 	position: "fixed",
 	display: "grid",
@@ -39,7 +40,6 @@ const Container = styled("div", {
 const List = styled("ul", {
 	display: "flex",
 	gridColumn: "2",
-	backgroundColor: "$gray600",
 	flexDirection: "row",
 	listStyle: "none",
 	width: "100%",
