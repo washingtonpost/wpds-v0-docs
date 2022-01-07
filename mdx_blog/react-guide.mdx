@@ -86,8 +86,8 @@ import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
 const Button = styled("button", {
-	color: theme.colors.primary,
-	backgroundColor: theme.colors.onPrimary,
+	color: theme.colors.onPrimary,
+	backgroundColor: theme.colors.primary,
 });
 
 export const SaveToList = () => {
@@ -95,7 +95,7 @@ export const SaveToList = () => {
 		<Button>
 			Save to reading list
 			<Icon size="32">
-				<Add fill={theme.colors.primary} />
+				<Add fill={theme.colors.onPrimary} />
 			</Icon>
 		</Button>
 	);
@@ -116,8 +116,8 @@ const Button = styled("button", {
 		transform: "scale(0.95)",
 	},
 	// give it some color
-	color: theme.colors.primary,
-	backgroundColor: theme.colors.onPrimary,
+	color: theme.colors.onPrimary,
+	backgroundColor: theme.colors.primary,
 	// remove default spacing
 	margin: 0,
 	// add some padding
@@ -137,7 +137,7 @@ const SaveToList = () => {
 	return (
 		<Button>
 			<Icon size="32">
-				<Add fill={theme.colors.primary} />
+				<Add fill={theme.colors.onPrimary} />
 			</Icon>
 		</Button>
 	);

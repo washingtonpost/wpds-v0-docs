@@ -6,7 +6,7 @@ import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Bar = styled("nav", {
-	backgroundColor: "$onPrimary",
+	backgroundColor: "$secondary",
 	zIndex: "$shell",
 	position: "fixed",
 	display: "grid",
@@ -56,7 +56,7 @@ const ListItem = styled("li", {
 });
 
 const Anchor = styled("a", {
-	color: "$primary",
+	color: "$onSecondary",
 	fontWeight: "bold",
 	textDecoration: "none",
 	"&:hover": {
@@ -96,24 +96,8 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 							marginRight: "$050",
 						}}
 					/>
-					<ThemeToggle />
 				</Container>
 				<List>
-					<ListItem>
-						<Link href="/" passHref>
-							<Anchor>Home</Anchor>
-						</Link>
-					</ListItem>
-					<ListItem>
-						<Link href="/foundations" passHref>
-							<Anchor>Foundations</Anchor>
-						</Link>
-					</ListItem>
-					<ListItem>
-						<Link href="/components" passHref>
-							<Anchor>Components</Anchor>
-						</Link>
-					</ListItem>
 					<ListItem>
 						<Link href="/blog" passHref>
 							<Anchor>Blog</Anchor>
@@ -123,6 +107,9 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 						<Link href="/release-notes" passHref>
 							<Anchor>Release Notes</Anchor>
 						</Link>
+					</ListItem>
+					<ListItem>
+						<ThemeToggle />
 					</ListItem>
 				</List>
 				{children}

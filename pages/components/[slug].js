@@ -33,7 +33,13 @@ const P = styled("p", {
 	color: "$accessible",
 });
 
-export default function Page({ current, docs, source, docgen, propTable }) {
+export default function Page({
+	current,
+	navigation,
+	source,
+	docgen,
+	propTable,
+}) {
 	const [toggleSideBar, setToggleSideBar] = useState(false);
 	return (
 		<Layout>
@@ -42,7 +48,7 @@ export default function Page({ current, docs, source, docgen, propTable }) {
 			</Head>
 			<Sidebar
 				showSidebar={toggleSideBar}
-				docs={{ root: thisSection, label: thisSection, files: docs }}
+				navigation={navigation}
 				current={current}
 				id="sidebar"
 			/>
@@ -68,25 +74,29 @@ const thisSection = "components";
 export const getStaticProps = async ({ params }) => {
 	const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
-	const [docs] = [thisSection].map((section) =>
+	const [foundationDocs] = ["foundations"].map((section) =>
 		getDocsListBySection(section)
 	);
 
-	// const docgen = getDocFromComponent(source.scope.component);
-
-	// const propTable = Object.entries(docgen[0].props).map(([key, value]) => {
-	//   return value;
-	// });
-
-	// console.log(propTable);
+	const [componentDocs] = ["components"].map((section) =>
+		getDocsListBySection(section)
+	);
 
 	return {
 		props: {
 			current: params.slug,
-			thisSection,
-			docs,
+			navigation: [
+				{
+					category: "Foundations",
+					isCurrent: true,
+					docs: foundationDocs,
+				},
+				{
+					category: "Components",
+					docs: componentDocs,
+				},
+			],
 			source,
-			// propTable
 		},
 	};
 };

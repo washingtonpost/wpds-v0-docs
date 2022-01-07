@@ -24,14 +24,6 @@ const components = {
 	CategoryHeader,
 };
 
-const Description = styled("h2", {
-	fontSize: "$150",
-	lineHeight: "$150",
-	color: "$accessible",
-	fontWeight: "normal",
-	marginBottom: "$100",
-});
-
 export default function Page({ source }) {
 	return (
 		<Layout>
@@ -42,15 +34,21 @@ export default function Page({ source }) {
 			<Content id="content">
 				<div>
 					<Header
+						as="h1"
 						css={{
 							marginBottom: "$100",
 						}}
 					>
 						{source.scope.title}
 					</Header>
-					<Description as="h2">
-						{source.scope.description}
-					</Description>
+					<Header
+						as="h2"
+						css={{
+							marginBottom: "$100",
+						}}
+					>
+						{source.scope.Head}
+					</Header>
 				</div>
 				<div>
 					<MDXRemote {...source} components={components} />

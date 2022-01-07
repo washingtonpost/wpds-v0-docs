@@ -31,13 +31,13 @@ const P = styled("p", {
 	color: "$accessible",
 });
 
-export default function Page({ current, docs, source }) {
+export default function Page({ current, navigation, source }) {
 	const [toggleSideBar, setToggleSideBar] = useState(false);
 	return (
 		<Layout>
 			<Sidebar
 				showSidebar={toggleSideBar}
-				docs={{ root: thisSection, label: thisSection, files: docs }}
+				navigation={navigation}
 				current={current}
 				id="sidebar"
 			/>
@@ -61,14 +61,28 @@ const thisSection = "foundations";
 export const getStaticProps = async ({ params }) => {
 	const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
-	const [docs] = [thisSection].map((section) =>
+	const [foundationDocs] = ["foundations"].map((section) =>
+		getDocsListBySection(section)
+	);
+
+	const [componentDocs] = ["components"].map((section) =>
 		getDocsListBySection(section)
 	);
 
 	return {
 		props: {
 			current: params.slug,
-			docs,
+			navigation: [
+				{
+					category: "Foundations",
+					isCurrent: true,
+					docs: foundationDocs,
+				},
+				{
+					category: "Components",
+					docs: componentDocs,
+				},
+			],
 			source,
 		},
 	};

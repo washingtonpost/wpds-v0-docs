@@ -4,13 +4,12 @@ import { styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "../../Typography/Headers";
 import Logo from "../../logo";
 import VersionButton from "../../versionButton";
-import { ThemeToggle } from "~/components/ThemeToggle";
 import { useRouter } from "next/router";
 
 /**Sidebar takes in @param foundations, @param docs and @param current and displays alls in the side
  * bar as links. The current will match the
  */
-export default function Sidebar({ current, docs }) {
+export default function Sidebar({ current, navigation }) {
 	const [showMenu, setShowMenu] = useState(false);
 	const router = useRouter();
 
@@ -108,6 +107,8 @@ export default function Sidebar({ current, docs }) {
 		color: "$primary",
 		padding: "$050 $050 $050 $200",
 		cursor: "pointer",
+		borderLeft: "4px solid",
+		borderColor: "transparent",
 		"&:focus": {
 			outlineColor: "$signal",
 			outlineStyle: "solid",
@@ -116,6 +117,7 @@ export default function Sidebar({ current, docs }) {
 		variants: {
 			isCurrent: {
 				active: {
+					boxSizing: "content-box",
 					color: "$primary",
 					borderLeft: "4px solid",
 					borderColor: "$primary",
@@ -134,6 +136,7 @@ export default function Sidebar({ current, docs }) {
 		textDecoration: "none",
 		width: "100%",
 		borderLeft: "0 solid",
+		marginLeft: "-4px",
 		"&:focus": {
 			outlineColor: "$signal",
 			outlineStyle: "solid",
@@ -144,7 +147,6 @@ export default function Sidebar({ current, docs }) {
 			isCurrent: {
 				active: {
 					color: "$primary",
-					margin: "-$025",
 				},
 			},
 		},
@@ -212,7 +214,6 @@ export default function Sidebar({ current, docs }) {
 					<LogoWrapper css={{ marginBottom: "$150" }}>
 						<Logo />
 						<VersionButton css={{ marginRight: "$050" }} />
-						<ThemeToggle />
 					</LogoWrapper>
 				</NavBarWrapper>
 			</Container>
@@ -223,65 +224,55 @@ export default function Sidebar({ current, docs }) {
 				}}
 				toggle={showMenu ? "show" : "hide"}
 			>
-				<Header
-					css={{ textTransform: "capitalize", paddingLeft: "$200" }}
-					as="h3"
-				>
-					{docs.label}
-				</Header>
-				<SideBarList>
-					{docs.files.map((file, i) => (
-						<Link
-							key={file.filePath}
-							as={`/${docs.root}/${file.filePath.replace(
-								/\.mdx?$/,
-								""
-							)}`}
-							href={`/${docs.root}/[slug]`}
-							passHref
-						>
-							<ListItem
-								tabIndex={0}
-								isCurrent={`${
-									file.filePath.includes(current)
-										? "active"
-										: ""
-								}`}
-							>
-								<CustomLink
-									isCurrent={`${
-										file.filePath.includes(current)
-											? "active"
-											: ""
-									}`}
+				{/** map over navigation array for each category */}
+				{navigation &&
+					navigation.map((nav, index) => {
+						return (
+							<div key={index}>
+								<Header
+									css={{
+										textTransform: "capitalize",
+										paddingLeft: "$200",
+									}}
+									as="h3"
 								>
-									{file.data.title}
-								</CustomLink>
-							</ListItem>
-						</Link>
-					))}
-
-					{docs.label === "foundations" && (
-						<Link href="/foundations/assets" passHref>
-							<ListItem
-								tabIndex={0}
-								isCurrent={
-									router.pathname.includes("assets") &&
-									"active"
-								}
-							>
-								<CustomLink
-									isCurrent={
-										router.pathname.includes("assets") &&
-										"active"
-									}
-								>
-									Assets
-								</CustomLink>
-							</ListItem>
-						</Link>
-					)}
-				</SideBarList>
+									{nav.category}
+								</Header>
+								<SideBarList>
+									{nav.docs.map((item, index) => {
+										return (
+											<Link
+												href={item.slug}
+												key={index}
+												passHref
+											>
+												<ListItem
+													tabIndex={0}
+													isCurrent={
+														router.asPath ===
+														item.slug
+															? "active"
+															: ""
+													}
+												>
+													<CustomLink
+														isCurrent={
+															router.asPath ===
+															item.slug
+																? "active"
+																: ""
+														}
+													>
+														{item.data.title}
+													</CustomLink>
+												</ListItem>
+											</Link>
+										);
+									})}
+								</SideBarList>
+							</div>
+						);
+					})}
 			</Container>
 		</Panel>
 	);

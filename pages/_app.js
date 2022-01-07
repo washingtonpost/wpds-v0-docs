@@ -9,6 +9,8 @@ import {
 	theme,
 } from "@washingtonpost/wpds-ui-kit";
 import { NavigationBar } from "~/components/NavigationBar";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const darkModeStyles = globalCss({
 	"@dark": {
@@ -26,7 +28,7 @@ const darkModeStyles = globalCss({
 		}, {}),
 	},
 	body: {
-		background: theme.colors.onPrimary,
+		background: theme.colors.secondary,
 	},
 });
 

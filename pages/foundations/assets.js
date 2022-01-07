@@ -40,7 +40,7 @@ const logos = [
 ];
 
 const AssetContainer = styled("article", {
-	border: "1px solid $onPrimary",
+	border: "1px solid $subtle",
 	padding: "$100 $050",
 	borderRadius: "$025",
 	display: "flex",
@@ -51,7 +51,7 @@ const AssetContainer = styled("article", {
 
 	// highlight AssetContainer when CTRL + F is used
 	"&:focus": {
-		outline: "2px solid $onPrimary",
+		outline: "2px solid $signal",
 	},
 });
 

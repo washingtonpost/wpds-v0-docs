@@ -1,55 +1,20 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 import Layout from "~/components/Layout/WithSidebar";
 import Content from "~/components/Layout/Components/Content";
 import { getDocsListBySection } from "~/services";
 import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
-const Heading = styled("h1", {
-	fontFamily: "$headline",
-	color: "$primary",
-	variants: {
-		as: {
-			h1: {
-				fontSize: "$300",
-				lineHeight: "$300",
-				marginBottom: "$100",
-			},
-			h2: {
-				fontFamily: "$subhead",
-				fontSize: "$150",
-				lineHeight: "$100",
-			},
-		},
-	},
-});
-
-const Anchor = styled("a", {
-	color: theme.colors.gray0,
-	textDecoration: "none",
-	borderBottom: "1px solid $gray0",
-	display: "inline-block",
-	marginBottom: "$050",
-});
-
-const Kicker = styled("div", {
-	color: theme.colors.accessible,
-	marginBottom: "$050",
-});
+import { P } from "~/components/Markdown/Styling";
+import Header from "~/components/Typography/Headers";
+import Link from "~/components/Markdown/Components/link";
 
 const Card = styled("article", {
 	border: "1px solid $subtle",
 	borderRadius: "$050",
 	px: "$150",
-	py: "$100",
+	paddingTop: "$100",
+	paddingBottom: "$100",
 	marginBottom: "$150",
-});
-
-const Description = styled("p", {
-	fontSize: "$125",
-	lineHeight: "$150",
-	color: "$accessible",
 });
 
 export default function Page({ docs, latestDocs }) {
@@ -70,17 +35,21 @@ export default function Page({ docs, latestDocs }) {
 			</Head>
 			<div id="sidebar"></div>
 			<Content id="content">
-				<Heading as="h1">Release Notes</Heading>
+				<Header as="h1">Release Notes</Header>
 
 				{docsList.map((doc) => (
 					<Card key={doc.slug}>
-						<Kicker>{doc.data.kicker}</Kicker>
 						<Link href={doc.slug} forceHref passHref>
-							<Anchor href={doc.slug}>
-								<Heading as="h2">{doc.data.title}</Heading>
-							</Anchor>
+							<Header
+								as="h2"
+								css={{
+									marginBottom: "$050",
+								}}
+							>
+								{doc.data.title}
+							</Header>
 						</Link>
-						<Description>{doc.data.description}</Description>
+						<P>{doc.data.description}</P>
 					</Card>
 				))}
 
