@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next-remote-watch ./mdx*",
-		"build": "next build",
+		"build": "node scripts/sitemap.js;next build",
 		"start": "next start",
 		"lint": "next lint"
 	},
@@ -29,6 +29,7 @@
 		"eslint": "8.6.0",
 		"eslint-config-next": "12.0.7",
 		"glob": "^7.2.0",
+		"prettier": "^2.5.1",
 		"react-docgen-typescript": "^2.2.2"
 	}
 }

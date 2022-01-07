@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://build.washingtonpost.com</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/component-api</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/component-design</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/contribute-a-component</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/figma-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/react-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/zeplin-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/components/design</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/components/icon</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/components/visually-hidden</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/accessiblity</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/assets</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/color</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/content</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/design</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/principles</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/tokens</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/typography</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/quick-links</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/release-notes</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/release-notes/v1.0.0</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/release-notes/v1.0.0-alpha</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/release-notes/v2.0.0</loc>
+  </url>
+</urlset>
