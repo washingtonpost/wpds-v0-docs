@@ -16,7 +16,6 @@ export default function Sidebar({ current, navigation }) {
 	//Sidebar Container
 	const Panel = styled("div", {
 		position: "relative",
-		zIndex: "$offer",
 		width: "300px",
 		height: "100%",
 		overflow: "hidden",
@@ -211,7 +210,17 @@ export default function Sidebar({ current, navigation }) {
 							></rect>
 						</svg>
 					</MenuButton>
-					<LogoWrapper css={{ marginBottom: "$150" }}>
+					<LogoWrapper
+						css={{
+							marginBottom: "$150",
+							"@notSm": {
+								display: "none",
+							},
+							"@md": {
+								display: "unset",
+							},
+						}}
+					>
 						<Logo />
 						<VersionButton css={{ marginRight: "$050" }} />
 					</LogoWrapper>
@@ -219,7 +228,7 @@ export default function Sidebar({ current, navigation }) {
 			</Container>
 			<Container
 				css={{
-					"@notSm": { marginTop: "$400" },
+					"@notSm": { marginTop: "$300" },
 					"@md": { marginTop: "0" },
 				}}
 				toggle={showMenu ? "show" : "hide"}

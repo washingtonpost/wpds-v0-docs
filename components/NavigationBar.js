@@ -4,39 +4,8 @@ import Link from "next/link";
 import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
+import SearchForm from "./SearchForm";
 
-const Bar = styled("nav", {
-	backgroundColor: "$secondary",
-	zIndex: "$shell",
-	position: "fixed",
-	display: "grid",
-	gridTemplateColumns: "300px 1fr",
-	right: 0,
-	left: 0,
-	alignItems: "center",
-	transition: "transform .5s",
-	"@md": {
-		display: "none",
-	},
-	"@sm": {
-		display: "none",
-	},
-	variants: {
-		NavState: {
-			show: {
-				transform: "translateY(0)",
-			},
-			hide: {
-				transform: "translateY(-100%)",
-			},
-		},
-	},
-});
-
-const Container = styled("div", {
-	alignItems: "center",
-	display: "flex",
-});
 const List = styled("ul", {
 	display: "flex",
 	gridColumn: "2",
@@ -47,6 +16,48 @@ const List = styled("ul", {
 	margin: 0,
 	padding: "$100 0",
 	alignItems: "center",
+	transition: "transform .5s",
+	transform: "translateY(0)",
+});
+
+const Bar = styled("nav", {
+	position: "fixed",
+	zIndex: "$shell",
+	display: "grid",
+	gridTemplateColumns: "300px 1fr",
+	right: 0,
+	left: 0,
+	alignItems: "center",
+	"@md": {
+		display: "none",
+	},
+	"@sm": {
+		display: "none",
+	},
+	variants: {
+		NavState: {
+			show: {
+				[`& ${List}`]: {
+					transform: "translateY(0)",
+					backgroundColor: "$secondary",
+				},
+			},
+			hide: {
+				[`& ${List}`]: {
+					transform: "translateY(-100%)",
+				},
+			},
+		},
+	},
+
+	defaultVariants: {
+		NavState: "show",
+	},
+});
+
+const Container = styled("div", {
+	alignItems: "center",
+	display: "flex",
 });
 
 const ListItem = styled("li", {
@@ -64,26 +75,31 @@ const Anchor = styled("a", {
 	},
 });
 
-export const NavigationBar = ({ children, showLogo, disableAnim }) => {
-	const activePosition = useScrollPosition(disableAnim); //Hook to track current scroll position
-	const [ScrollingDown, setDirection] = useState(false); //if the user is scrolling down
-	const [lastPosition, setLastPosition] = useState(null); // store the last postion to calculat the delta
+export const NavigationBar = ({ children, showLogo, disableAnim = false }) => {
+	const activePosition = useScrollPosition(disableAnim);
 
-	//Calculates delta for direction when scoll position changes
+	// track the direction of the scroll so we can show/hide the navbar
+	// if the last known scroll position is greater than the current position
+	// we are scrolling down, otherwise we are scrolling up
+	const [navState, setNavState] = useState("show");
+	const [lastKnownPosition, setLastKnownPosition] = useState(0);
+
 	useEffect(() => {
-		setTimeout(() => {
-			setLastPosition(activePosition), 1000;
-		});
-		if (activePosition - lastPosition <= 0) {
-			setDirection(false);
+		if (activePosition >= lastKnownPosition) {
+			setNavState("show");
 		} else {
-			setDirection(true);
+			setNavState("hide");
 		}
-	}, [activePosition, lastPosition]);
+		setTimeout(() => setLastKnownPosition(activePosition), 300);
+
+		return () => {
+			setNavState("show");
+		};
+	}, [activePosition, lastKnownPosition]);
 
 	return (
 		<>
-			<Bar NavState={ScrollingDown ? "hide" : "show"} id="bar">
+			<Bar NavState={navState} id="bar">
 				<Container
 					css={{
 						display: `${showLogo ? "flex" : "none"}`,
@@ -98,6 +114,9 @@ export const NavigationBar = ({ children, showLogo, disableAnim }) => {
 					/>
 				</Container>
 				<List>
+					<ListItem>
+						<SearchForm />
+					</ListItem>
 					<ListItem>
 						<Link href="/blog" passHref>
 							<Anchor>Blog</Anchor>
