@@ -7,6 +7,10 @@
 		{
 			"source": "/assets/:match*",
 			"destination": "https://build.washingtonpost.com/assets/:match*"
+		},
+        {
+			"source": "/img/:match*",
+			"destination": "https://build.washingtonpost.com/img/:match*"
 		}
 	]
 }
