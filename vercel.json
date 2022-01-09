@@ -3,6 +3,10 @@
 		{
 			"source": "/v0/:match*",
 			"destination": "https://build.washingtonpost.com/:match*"
+		},
+		{
+			"source": "/assets/:match*",
+			"destination": "https://build.washingtonpost.com/assets/:match*"
 		}
 	]
 }
