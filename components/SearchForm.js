@@ -6,6 +6,9 @@ const searchGlobalCss = globalCss({
 	".DocSearch-Container": {
 		zIndex: "9999 !important",
 	},
+	"#wpds .DocSearch-Logo": {
+		visibility: "hidden",
+	},
 	"#wpds": {
 		"--docsearch-primary-color": theme.colors.secondary,
 		"--docsearch-text-color": theme.colors.onSecondary,
