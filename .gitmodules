@@ -1,0 +1,3 @@
+[submodule "v0"]
+	path = v0
+	url = https://github.com/WPMedia/wpds-docs

@@ -103,3 +103,5 @@ yarn-error.log*
 docs/assets
 docs/*.html
 .vercel
+
+public/v0
