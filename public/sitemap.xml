@@ -9,6 +9,10 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/blog/coding-a-page</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/blog/component-api</loc>
   </url>
 
@@ -46,6 +50,10 @@
 
   <url>
     <loc>https://build.washingtonpost.com/foundations/accessiblity</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/assets</loc>
   </url>
 
   <url>

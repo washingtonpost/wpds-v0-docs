@@ -91,8 +91,12 @@ export const getStaticProps = async ({ params }) => {
 export const getStaticPaths = async () => {
 	const paths = await getAllPathsBySection(thisSection);
 
+	const removeAssetsPage = paths.filter(
+		(path) => path.params.slug !== "assets"
+	);
+
 	return {
-		paths,
+		paths: removeAssetsPage,
 		fallback: false,
 	};
 };
