@@ -6,7 +6,6 @@ export const List = styled("ul", {
 	paddingLeft: "0",
 });
 export const ListItem = styled("li", {
-	cursor: "pointer",
 	padding: "$025 0",
 	"a:nth-child(n)": {
 		color: theme.colors.gray80,
