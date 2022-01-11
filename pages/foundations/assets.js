@@ -131,10 +131,9 @@ export default function App() {
 	)
 }`;
 
-const thisSection = "foundations";
-
-export default function Page({ current, docs }) {
+export default function Page({ current, navigation }) {
 	const { resolvedTheme } = useTheme();
+	const [toggleSideBar, setToggleSideBar] = React.useState(false);
 
 	return (
 		<Layout>
@@ -142,11 +141,8 @@ export default function Page({ current, docs }) {
 				<title>WPDS - Assets Manager</title>
 			</Head>
 			<Sidebar
-				docs={{
-					root: "foundations",
-					label: "foundations",
-					files: docs,
-				}}
+				showSidebar={toggleSideBar}
+				navigation={navigation}
 				current={current}
 				id="sidebar"
 			/>
@@ -385,14 +381,28 @@ export default function Page({ current, docs }) {
 }
 
 export const getStaticProps = async () => {
-	const [docs] = [thisSection].map((section) =>
+	const [foundationDocs] = ["foundations"].map((section) =>
+		getDocsListBySection(section)
+	);
+
+	const [componentDocs] = ["components"].map((section) =>
 		getDocsListBySection(section)
 	);
 
 	return {
 		props: {
 			current: "/foundations/assets",
-			docs,
+			navigation: [
+				{
+					category: "Foundations",
+					isCurrent: true,
+					docs: foundationDocs,
+				},
+				{
+					category: "Components",
+					docs: componentDocs,
+				},
+			],
 		},
 	};
 };
