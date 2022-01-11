@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next-remote-watch ./mdx*",
-		"build": "cd v0;yarn;yarn build;cd ..;node scripts/sitemap.js;next build",
+		"build": "node scripts/sitemap.js;next build",
 		"start": "next start",
 		"lint": "next lint"
 	},
