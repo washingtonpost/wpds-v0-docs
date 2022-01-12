@@ -1,6 +1,6 @@
 ---
 title: Icon
-description: Hides an asset from the UI but still renders it for screen readers. A label is required for screen readers.
+description: Size an icon using our system. Also add a label that will be announced by screen readers.
 component: icon
 ---
 
@@ -9,6 +9,14 @@ component: icon
 <Container caption="Icon component shown with an Add icon asset. Inspect the HTML to see the props. Or use a screen reader to read the label.">
 	<EmbedStory componentName="icon" />
 </Container>
+
+### Import the component
+
+```jsx
+import { Icon } from "@washingtonpost/wpds-ui-kit";
+
+export default () => <Icon />;
+```
 
 ---
 
@@ -28,23 +36,25 @@ component: icon
 The `size` can be 16px, 24px, or 32px. The size sets the width and height of the SVG.
 
 ```jsx
-import { theme } from "@washingtonpost/wpds-ui-kit";
+// preview
+import { Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
-export const MyComponent = () => (
-	<Icon label="Add to List" size="16">
-		<Add />
-	</Icon>
-);
+export default function App() {
+	return (
+		<Icon label="Add to List" size="16">
+			<Add />
+		</Icon>
+	);
+}
 ```
-
-<Container>Example</Container>
 
 ### Label
 
 The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Add to List".
 
 ```jsx
+// preview
 import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
@@ -73,16 +83,6 @@ export default function App() {
 
 ---
 
-## Accessbility
-
-<Container>Example </Container>
+## Accessibility
 
 ---
-
-## Implementation
-
-<Container>Example </Container>
-
-```jsx
-hi;
-```

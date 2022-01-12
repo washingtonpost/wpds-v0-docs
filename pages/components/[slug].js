@@ -1,8 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
-import dynamic from "next/dynamic";
 import { useState } from "react";
 import Head from "next/head";
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Layout from "~/components/Layout/WithSidebar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
@@ -13,6 +12,7 @@ import {
 	getAllPathsBySection,
 	getDocByPathName,
 	getDocsListBySection,
+	getHeadings,
 } from "~/services";
 
 import { default as EmbedDocsPage } from "~/components/Markdown/Components/EmbedDocsPage";
@@ -33,13 +33,7 @@ const P = styled("p", {
 	color: "$accessible",
 });
 
-export default function Page({
-	current,
-	navigation,
-	source,
-	docgen,
-	propTable,
-}) {
+export default function Page({ current, navigation, source, headings }) {
 	const [toggleSideBar, setToggleSideBar] = useState(false);
 	return (
 		<Layout>
@@ -60,7 +54,7 @@ export default function Page({
 							{source.scope.description}
 						</P>
 					)}
-					<TableofContents current={current} />
+					<TableofContents current={current} headings={headings} />
 				</div>
 
 				<MDXRemote {...source} components={components} />
@@ -74,6 +68,8 @@ const thisSection = "components";
 export const getStaticProps = async ({ params }) => {
 	const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
+	const headings = await getHeadings(`${thisSection}/${params.slug}`);
+
 	const [foundationDocs] = ["foundations"].map((section) =>
 		getDocsListBySection(section)
 	);
@@ -85,6 +81,7 @@ export const getStaticProps = async ({ params }) => {
 	return {
 		props: {
 			current: params.slug,
+			headings,
 			navigation: [
 				{
 					category: "Foundations",

@@ -27,6 +27,7 @@ const CustomSandpack = ({ withPreview, children }) => {
 				<SandpackCodeEditor
 					customStyle={{
 						height: "auto",
+						minHeight: "auto",
 					}}
 					wrapContent
 				/>
@@ -34,6 +35,7 @@ const CustomSandpack = ({ withPreview, children }) => {
 					<SandpackPreview
 						customStyle={{
 							height: "auto",
+							minHeight: "auto",
 						}}
 					/>
 				)}

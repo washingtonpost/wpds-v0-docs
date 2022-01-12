@@ -12,33 +12,36 @@ component: visually-hidden
 	<EmbedStory componentName="visuallyhidden" />
 </Container>
 
-```jsx
-<VisuallyHidden
-	as="a"
-	href="#skip-to-main"
+<Box
 	css={{
-		color: "$cta",
+		marginBottom: "$100",
 	}}
->
-	Skip To Main Content
-</VisuallyHidden>
+/>
+
+### Import the component
+
+```jsx
+// preview
+import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
+
+export default function App() {
+	return (
+		<VisuallyHidden
+			as="a"
+			href="#skip-to-main"
+			css={{
+				color: "$cta",
+			}}
+		>
+			Skip To Main Content
+		</VisuallyHidden>
+	);
+}
 ```
 
 ---
 
 ## Options
-
-<Container>Example </Container>
-
----
-
-## Behavior
-
-<Container>Example </Container>
-
----
-
-## Specs
 
 <Container>
 	<EmbedDocsPage componentName="visuallyhidden" />
@@ -46,15 +49,13 @@ component: visually-hidden
 
 ---
 
-## Accessbility
+## Accessibility
 
-<Container>Example </Container>
+Visually hides an element from sighted users but still maintains it for screen readers and other assistive technologies. This is a common pattern used in web applications.
 
 ---
 
 ## Implementation
-
-<Container>Example </Container>
 
 ```jsx
 import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
