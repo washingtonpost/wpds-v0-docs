@@ -11,8 +11,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Landing page of WDPS Doc site"
+      title="The Washington Post's Design System"
+      description="WPDS's Documentation Website"
     >
       <main className="flex ma-auto">
         <section
