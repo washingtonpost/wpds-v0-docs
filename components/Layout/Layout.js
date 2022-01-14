@@ -9,7 +9,7 @@ const Grid = styled("div", {
 
 	"@notSm": {
 		gridTemplateColumns: "300px 1fr",
-		gridTemplateRows: "auto 1fr",
+		gridTemplateRows: "60px 1fr",
 		gridTemplateAreas: `
 		"logo nav"
         "sidebar content"
@@ -50,10 +50,7 @@ export const PageLayout = ({ children, ...pageProps }) => {
 	return (
 		<Grid>
 			<NavigationBar />
-			<Sidebar
-				navigation={pageProps.navigation}
-				current={pageProps.current}
-			/>
+			<Sidebar navigation={pageProps.navigation} />
 			<Container>{children}</Container>
 		</Grid>
 	);
