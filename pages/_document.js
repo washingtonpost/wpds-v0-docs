@@ -1,6 +1,6 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, reset } from "@washingtonpost/wpds-ui-kit";
+import { getCssText, reset, Box } from "@washingtonpost/wpds-ui-kit";
 import { Favicon } from "@washingtonpost/site-components/core/favicon";
 
 /**

@@ -1,11 +1,10 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
 import MDXStyling from "~/components/Markdown/Styling";
-import Layout from "~/components/Layout/WithSidebar";
-import Content from "~/components/Layout/Components/Content";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import { getDocByPathName, getAllPathsBySection } from "~/services";
+import { getNavigation } from "~/services/getNavigation";
 
 const CategoryHeader = styled("h4", {
 	borderRadius: "$025",
@@ -32,38 +31,36 @@ const Description = styled("h2", {
 
 export default function Page({ source }) {
 	return (
-		<Layout>
+		<>
 			<Head>
 				<title>WPDS - {source.scope.title} | Release Notes</title>
 			</Head>
-			<div id="sidebar"></div>
-			<Content id="content">
-				<div>
-					<Header
-						css={{
-							marginBottom: "$100",
-						}}
-					>
-						{source.scope.title}
-					</Header>
-					<Description as="h2">
-						{source.scope.description}
-					</Description>
-				</div>
-				<div>
-					<MDXRemote {...source} components={components} />
-				</div>
-			</Content>
-		</Layout>
+			<>
+				<Header
+					css={{
+						marginBottom: "$100",
+					}}
+				>
+					{source.scope.title}
+				</Header>
+				<Description as="h2">{source.scope.description}</Description>
+			</>
+			<>
+				<MDXRemote {...source} components={components} />
+			</>
+		</>
 	);
 }
 
 export const getStaticProps = async ({ params }) => {
 	const source = await getDocByPathName(`release-notes/${params.slug}`);
 
+	const navigation = await getNavigation();
+
 	return {
 		props: {
 			source,
+			navigation,
 		},
 	};
 };

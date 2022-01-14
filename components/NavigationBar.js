@@ -1,69 +1,61 @@
-import { useState, useEffect } from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
-import useScrollPosition from "~/hooks/useScrollPosition";
 import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
 import SearchForm from "./SearchForm";
 
 const List = styled("ul", {
+	gridArea: "nav",
 	display: "flex",
-	gridColumn: "2",
 	flexDirection: "row",
 	listStyle: "none",
-	width: "100%",
 	justifyContent: "flex-end",
-	margin: 0,
-	padding: "$100 0",
 	alignItems: "center",
-	transition: "transform .5s",
-	transform: "translateY(0)",
-});
 
-const Bar = styled("nav", {
-	position: "fixed",
-	zIndex: "$shell",
-	display: "grid",
-	gridTemplateColumns: "300px 1fr",
-	right: 0,
-	left: 0,
-	alignItems: "center",
-	"@md": {
-		display: "none",
+	"@notSm": {
+		top: 0,
+		position: "sticky",
+		zIndex: "$shell",
+		background: theme.colors.secondary,
+		height: 60,
 	},
+
 	"@sm": {
 		display: "none",
-	},
-	variants: {
-		NavState: {
-			show: {
-				[`& ${List}`]: {
-					transform: "translateY(0)",
-					backgroundColor: "$secondary",
-				},
-			},
-			hide: {
-				[`& ${List}`]: {
-					transform: "translateY(-100%)",
-				},
-			},
-		},
-	},
-
-	defaultVariants: {
-		NavState: "show",
 	},
 });
 
 const Container = styled("div", {
 	alignItems: "center",
 	display: "flex",
+	gridArea: "logo",
+
+	"@notSm": {
+		backgroundColor: "$gray500",
+		overflow: "hidden",
+		position: "fixed",
+		zIndex: "$shell",
+		top: 0,
+		right: 0,
+		left: 0,
+		width: "300px",
+		height: 60,
+	},
+
+	"@sm": {
+		width: "100%",
+	},
 });
 
 const ListItem = styled("li", {
 	display: "flex",
 	flexDirection: "column",
 	margin: "0 $200 0 0",
+
+	"@sm": {
+		margin: "0",
+		display: "none",
+	},
 });
 
 const Anchor = styled("a", {
@@ -75,64 +67,68 @@ const Anchor = styled("a", {
 	},
 });
 
-export const NavigationBar = ({ children, showLogo, disableAnim = false }) => {
-	const activePosition = useScrollPosition(disableAnim);
-
-	// track the direction of the scroll so we can show/hide the navbar
-	// if the last known scroll position is greater than the current position
-	// we are scrolling down, otherwise we are scrolling up
-	const [navState, setNavState] = useState("show");
-	const [lastKnownPosition, setLastKnownPosition] = useState(0);
-
-	useEffect(() => {
-		if (activePosition >= lastKnownPosition) {
-			setNavState("show");
-		} else {
-			setNavState("hide");
-		}
-		setTimeout(() => setLastKnownPosition(activePosition), 300);
-
-		return () => {
-			setNavState("show");
-		};
-	}, [activePosition, lastKnownPosition]);
-
+const ToggleSidebar = () => {
 	return (
 		<>
-			<Bar NavState={navState} id="bar">
-				<Container
+			<a
+				href="#open-nav"
+				id="sidenav-button"
+				title="Open Menu"
+				aria-label="Open Menu"
+			>
+				☰
+			</a>
+
+			<a
+				href="#"
+				id="sidebar-close"
+				title="Close Menu"
+				aria-label="Close Menu"
+				onClick={() => {
+					document.location.hash = "";
+				}}
+			>
+				close
+			</a>
+		</>
+	);
+};
+
+export const NavigationBar = ({ children }) => {
+	return (
+		<>
+			<Container>
+				<Logo />
+				<Box
 					css={{
-						display: `${showLogo ? "flex" : "none"}`,
+						"@notSm": {
+							display: "none",
+						},
 					}}
 				>
-					<Logo
-						css={{
-							padding: "$100 0",
-							paddingLeft: "$200",
-							marginRight: "$050",
-						}}
-					/>
-				</Container>
-				<List>
-					<ListItem>
-						<SearchForm />
-					</ListItem>
-					<ListItem>
-						<Link href="/blog" passHref>
-							<Anchor>Blog</Anchor>
-						</Link>
-					</ListItem>
-					<ListItem>
-						<Link href="/release-notes" passHref>
-							<Anchor>Release Notes</Anchor>
-						</Link>
-					</ListItem>
-					<ListItem>
-						<ThemeToggle />
-					</ListItem>
-				</List>
-				{children}
-			</Bar>
+					<ThemeToggle />
+					<ToggleSidebar />
+				</Box>
+			</Container>
+			<List>
+				<ListItem>
+					<SearchForm />
+				</ListItem>
+				<ListItem>
+					<Link href="/blog" passHref>
+						<Anchor>Blog</Anchor>
+					</Link>
+				</ListItem>
+				<ListItem>
+					<Link href="/release-notes" passHref>
+						<Anchor>Release Notes</Anchor>
+					</Link>
+				</ListItem>
+				<ListItem>
+					<ThemeToggle />
+				</ListItem>
+			</List>
+			{children}
 		</>
 	);
 };

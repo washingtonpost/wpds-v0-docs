@@ -1,9 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import Layout from "~/components/Layout/WithSidebar";
-import Content from "~/components/Layout/Components/Content";
-import { getDocsListBySection } from "~/services";
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { getDocsListBySection, getNavigation } from "~/services";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import { P } from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import Link from "~/components/Markdown/Components/link";
@@ -29,40 +27,37 @@ export default function Page({ docs, latestDocs }) {
 	};
 
 	return (
-		<Layout>
+		<>
 			<Head>
 				<title>WPDS - Release Notes</title>
 			</Head>
-			<div id="sidebar"></div>
-			<Content id="content">
-				<Header as="h1">Release Notes</Header>
+			<Header as="h1">Release Notes</Header>
 
-				{docsList.map((doc) => (
-					<Card key={doc.slug}>
-						<Link href={doc.slug} forceHref passHref>
-							<Header
-								as="h2"
-								css={{
-									marginBottom: "$050",
-								}}
-							>
-								{doc.data.title}
-							</Header>
-						</Link>
-						<P>{doc.data.description}</P>
-					</Card>
-				))}
+			{docsList.map((doc) => (
+				<Card key={doc.slug}>
+					<Link href={doc.slug} forceHref passHref>
+						<Header
+							as="h2"
+							css={{
+								marginBottom: "$050",
+							}}
+						>
+							{doc.data.title}
+						</Header>
+					</Link>
+					<P>{doc.data.description}</P>
+				</Card>
+			))}
 
-				{
-					// show all button when docs is greater than latestDocs}
-					docs.length > latestDocs.length && (
-						<button onClick={toggleShowAll}>
-							{showAll ? "See less" : "See all"} releases
-						</button>
-					)
-				}
-			</Content>
-		</Layout>
+			{
+				// show all button when docs is greater than latestDocs}
+				docs.length > latestDocs.length && (
+					<button onClick={toggleShowAll}>
+						{showAll ? "See less" : "See all"} releases
+					</button>
+				)
+			}
+		</>
 	);
 }
 
@@ -78,10 +73,13 @@ export const getStaticProps = async ({ params }) => {
 
 	const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
+	const navigation = await getNavigation();
+
 	return {
 		props: {
 			latestDocs,
 			docs,
+			navigation,
 		},
 	};
 };

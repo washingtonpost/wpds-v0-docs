@@ -1,7 +1,5 @@
 import React from "react";
-import Layout from "~/components/Layout/WithSidebar";
 import Head from "next/head";
-import Content from "~/components/Layout/Components/Content";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
 import { styled, theme, Icon, Box } from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
@@ -9,9 +7,8 @@ import { Sandpack } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { useTheme } from "next-themes";
 import Header from "~/components/Markdown/Components/headers";
-import Sidebar from "~/components/Layout/Components/Sidebar";
-import { getDocsListBySection } from "~/services";
 import CustomLink from "~/components/Markdown/Components/link";
+import { getNavigation } from "~/services/getNavigation";
 
 // if the componentName is in this array then don't map over it
 const logos = [
@@ -133,25 +130,13 @@ export default function App() {
 
 export default function Page({ current, navigation }) {
 	const { resolvedTheme } = useTheme();
-	const [toggleSideBar, setToggleSideBar] = React.useState(false);
 
 	return (
-		<Layout>
+		<>
 			<Head>
 				<title>WPDS - Assets Manager</title>
 			</Head>
-			<Sidebar
-				showSidebar={toggleSideBar}
-				navigation={navigation}
-				current={current}
-				id="sidebar"
-			/>
-			<Content
-				id="content"
-				css={{
-					color: "$primary",
-				}}
-			>
+			<>
 				<Header css={{ paddingBottom: "$100" }} as="h1">
 					WPDS Assets Manager
 				</Header>
@@ -222,7 +207,7 @@ export default function Page({ current, navigation }) {
 					>
 						Import the icons into your React project
 					</Header>
-					<Sandpack
+					{/* <Sandpack
 						template="react"
 						theme={resolvedTheme}
 						files={{
@@ -238,7 +223,7 @@ export default function Page({ current, navigation }) {
 						options={{
 							wrapContent: true,
 						}}
-					/>
+					/> */}
 				</Box>
 				<Box
 					as="hr"
@@ -375,34 +360,18 @@ export default function Page({ current, navigation }) {
 						}
 					})}
 				</Box>
-			</Content>
-		</Layout>
+			</>
+		</>
 	);
 }
 
 export const getStaticProps = async () => {
-	const [foundationDocs] = ["foundations"].map((section) =>
-		getDocsListBySection(section)
-	);
-
-	const [componentDocs] = ["components"].map((section) =>
-		getDocsListBySection(section)
-	);
+	const navigation = await getNavigation();
 
 	return {
 		props: {
 			current: "/foundations/assets",
-			navigation: [
-				{
-					category: "Foundations",
-					isCurrent: true,
-					docs: foundationDocs,
-				},
-				{
-					category: "Components",
-					docs: componentDocs,
-				},
-			],
+			navigation,
 		},
 	};
 };

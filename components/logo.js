@@ -3,29 +3,31 @@ import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import WPMark from "@washingtonpost/wpds-assets/asset/wp-mark";
 import Link from "next/link";
 
-export default function Logo({ css }) {
-	const Container = styled("div", {
-		display: "flex",
-		alignItems: "center",
-		color: "$accessible",
-		fontFamily: "$meta",
-		fontWeight: "$light",
-		cursor: "pointer",
-	});
-	const Span = styled("span", {
-		marginLeft: "$050",
-		fontSize: "$125",
-		textDecoration: "none",
-		width: "100%",
-	});
+const Container = styled("div", {
+	display: "flex",
+	alignItems: "center",
+	color: "$accessible",
+	fontFamily: "$meta",
+	fontWeight: "$light",
+	cursor: "pointer",
+	paddingLeft: "$125",
+});
+const Span = styled("span", {
+	marginLeft: "$050",
+	fontSize: "$150",
+	textDecoration: "none",
+	width: "100%",
+});
+
+export default function Logo() {
 	return (
 		<Link
 			passHref
 			href="/"
 			aria-label="The Washington Post Design System's Homepage"
 		>
-			<Container css={css}>
-				<Icon size={32}>
+			<Container>
+				<Icon size={40}>
 					<WPMark fill={theme.colors.primary} />
 				</Icon>
 				<Span>Design system</Span>

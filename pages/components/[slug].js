@@ -1,18 +1,14 @@
 import { MDXRemote } from "next-mdx-remote";
-import { useState } from "react";
 import Head from "next/head";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
-import Layout from "~/components/Layout/WithSidebar";
-import Sidebar from "~/components/Layout/Components/Sidebar";
-import Content from "~/components/Layout/Components/Content";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
 	getAllPathsBySection,
 	getDocByPathName,
-	getDocsListBySection,
 	getHeadings,
+	getNavigation,
 } from "~/services";
 
 import { default as EmbedDocsPage } from "~/components/Markdown/Components/EmbedDocsPage";
@@ -33,33 +29,22 @@ const P = styled("p", {
 	color: "$accessible",
 });
 
-export default function Page({ current, navigation, source, headings }) {
-	const [toggleSideBar, setToggleSideBar] = useState(false);
+export default function Page({ current, source, headings }) {
 	return (
-		<Layout>
+		<>
 			<Head>
 				<title>WPDS - {source.scope.title} | Components</title>
 			</Head>
-			<Sidebar
-				showSidebar={toggleSideBar}
-				navigation={navigation}
-				current={current}
-				id="sidebar"
-			/>
-			<Content id="content" useShortVersion>
-				<div className="post-header">
-					<Header>{source.scope.title}</Header>
-					{source.scope.description && (
-						<P className="description">
-							{source.scope.description}
-						</P>
-					)}
-					<TableofContents current={current} headings={headings} />
-				</div>
+			<div className="post-header">
+				<Header>{source.scope.title}</Header>
+				{source.scope.description && (
+					<P className="description">{source.scope.description}</P>
+				)}
+				<TableofContents current={current} headings={headings} />
+			</div>
 
-				<MDXRemote {...source} components={components} />
-			</Content>
-		</Layout>
+			<MDXRemote {...source} components={components} />
+		</>
 	);
 }
 
@@ -67,32 +52,14 @@ const thisSection = "components";
 
 export const getStaticProps = async ({ params }) => {
 	const source = await getDocByPathName(`${thisSection}/${params.slug}`);
-
 	const headings = await getHeadings(`${thisSection}/${params.slug}`);
-
-	const [foundationDocs] = ["foundations"].map((section) =>
-		getDocsListBySection(section)
-	);
-
-	const [componentDocs] = ["components"].map((section) =>
-		getDocsListBySection(section)
-	);
+	const navigation = await getNavigation();
 
 	return {
 		props: {
 			current: params.slug,
 			headings,
-			navigation: [
-				{
-					category: "Foundations",
-					isCurrent: true,
-					docs: foundationDocs,
-				},
-				{
-					category: "Components",
-					docs: componentDocs,
-				},
-			],
+			navigation,
 			source,
 		},
 	};

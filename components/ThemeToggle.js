@@ -29,7 +29,7 @@ export const ThemeToggle = () => {
 		padding: 0,
 		margin: 0,
 		border: 0,
-		fontSize: "$200",
+		fontSize: "$150",
 	});
 
 	const showOnDarkTheme = css({
