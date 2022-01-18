@@ -18,19 +18,10 @@ const Slash = styled("span", {
 const Masonry = styled("section", {
 	width: "100%",
 	display: "grid",
-	gridTemplateColumns: "repeat(4, 1fr)",
-	gridTemplateRows: "masonry",
-	gridAutoFlow: "dense",
+	gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
 	gridGap: "$100",
-
-	"& > *": {
-		gridColumnEnd: "span 2",
-	},
-
 	"@sm": {
-		display: "grid",
-		gridTemplateColumns: "repeat(auto-fill, minmax(100%, 1fr))",
-		gridGap: "$100",
+		gridTemplateColumns: "1fr",
 	},
 });
 

@@ -10,19 +10,10 @@ import { P } from "~/components/Markdown/Styling";
 const Masonry = styled("section", {
 	width: "100%",
 	display: "grid",
-	gridTemplateColumns: "repeat(4, 1fr)",
-	gridTemplateRows: "masonry",
-	gridAutoFlow: "dense",
+	gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
 	gridGap: "$100",
-
-	"& > *": {
-		gridColumnEnd: "span 2",
-	},
-
 	"@sm": {
-		display: "grid",
-		gridTemplateColumns: "repeat(auto-fill, minmax(100%, 1fr))",
-		gridGap: "$100",
+		gridTemplateColumns: "1fr",
 	},
 });
 
@@ -118,9 +109,10 @@ export default function Page({ docs, latestDocs, collections }) {
 						</Masonry>
 						<Link href={`/blog/${collection.kicker.toLowerCase()}`}>
 							<Header
-								as="h3"
+								as="h4"
 								css={{
 									display: "flex",
+									marginTop: "$100",
 									alignItems: "center",
 									lineHeight: "$100",
 								}}
