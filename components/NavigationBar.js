@@ -1,5 +1,6 @@
 import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import { ThemeToggle } from "./ThemeToggle";
@@ -59,10 +60,17 @@ const ListItem = styled("li", {
 
 const Anchor = styled("a", {
 	color: "$onSecondary",
-	fontWeight: "bold",
 	textDecoration: "none",
 	"&:hover": {
 		opacity: "0.75",
+	},
+
+	variants: {
+		isCurrent: {
+			true: {
+				fontWeight: "$bold",
+			},
+		},
 	},
 });
 
@@ -88,7 +96,9 @@ const HamburgerMenu = styled(Menu, {
 	},
 });
 
-export const NavigationBar = ({ setMobileMenu, isOpen }) => {
+export const NavigationBar = ({ setMobileMenu, isOpen, children }) => {
+	const router = useRouter();
+
 	return (
 		<>
 			<Container>
@@ -117,12 +127,18 @@ export const NavigationBar = ({ setMobileMenu, isOpen }) => {
 				</ListItem>
 				<ListItem>
 					<Link href="/blog" passHref>
-						<Anchor>Blog</Anchor>
+						<Anchor isCurrent={router.asPath.includes("/blog")}>
+							Blog
+						</Anchor>
 					</Link>
 				</ListItem>
 				<ListItem>
 					<Link href="/release-notes" passHref>
-						<Anchor>Release Notes</Anchor>
+						<Anchor
+							isCurrent={router.asPath.includes("/release-notes")}
+						>
+							Release Notes
+						</Anchor>
 					</Link>
 				</ListItem>
 				<ListItem>

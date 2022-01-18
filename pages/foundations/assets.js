@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 import Header from "~/components/Markdown/Components/headers";
 import CustomLink from "~/components/Markdown/Components/link";
 import { getNavigation } from "~/services/getNavigation";
+import CustomSandpack from "~/components/Markdown/Components/Sandbox";
 
 // if the componentName is in this array then don't map over it
 const logos = [
@@ -107,7 +108,11 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
 		},
 	});
 
-	return <CopyButton onClick={copyToClipboard}>{children}</CopyButton>;
+	return (
+		<CopyButton onClick={copyToClipboard} title="Click to copy code">
+			{children}
+		</CopyButton>
+	);
 };
 
 const P = styled("p", {
@@ -207,23 +212,9 @@ export default function Page({ current, navigation }) {
 					>
 						Import the icons into your React project
 					</Header>
-					{/* <Sandpack
-						template="react"
-						theme={resolvedTheme}
-						files={{
-							"/App.js": codeSample,
-						}}
-						customSetup={{
-							dependencies: {
-								"@washingtonpost/wpds-assets": "1.1.13",
-								"@washingtonpost/wpds-ui-kit":
-									"0.1.0-experimental.20",
-							},
-						}}
-						options={{
-							wrapContent: true,
-						}}
-					/> */}
+					<CustomSandpack withPreview={true}>
+						{codeSample}
+					</CustomSandpack>
 				</Box>
 				<Box
 					as="hr"
