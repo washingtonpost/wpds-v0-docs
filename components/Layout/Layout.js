@@ -1,5 +1,6 @@
-import React from "react";
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+import React, { useState } from "react";
+import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
+import * as Accordion from "@radix-ui/react-accordion";
 import { NavigationBar } from "~/components/NavigationBar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 
@@ -31,6 +32,17 @@ const Grid = styled("div", {
 	},
 });
 
+const MobileMenu = styled("div", {
+	gridArea: "sidebar",
+
+	variants: {
+		state: {
+			open: { display: "block" },
+			closed: { "@sm": { display: "none" } },
+		},
+	},
+});
+
 const Container = styled("div", {
 	gridArea: "content",
 	width: "100%",
@@ -47,10 +59,18 @@ const Container = styled("div", {
 });
 
 export const PageLayout = ({ children, ...pageProps }) => {
+	const [mobileMenuState, setMobileMenuState] = useState(false);
+
 	return (
 		<Grid>
-			<NavigationBar />
-			<Sidebar navigation={pageProps.navigation} />
+			<NavigationBar
+				isOpen={mobileMenuState}
+				setMobileMenu={() => setMobileMenuState(!mobileMenuState)}
+				isOpen={mobileMenuState}
+			/>
+			<MobileMenu state={mobileMenuState ? "closed" : "open"}>
+				<Sidebar navigation={pageProps.navigation} />
+			</MobileMenu>
 			<Container>{children}</Container>
 		</Grid>
 	);

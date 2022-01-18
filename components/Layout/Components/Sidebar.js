@@ -7,7 +7,6 @@ import ChevronDown from "@washingtonpost/wpds-assets/asset/chevron-down";
 import { useRouter } from "next/router";
 
 const Panel = styled("div", {
-	gridArea: "sidebar",
 	backgroundColor: "$gray500",
 	"@notSm": {
 		position: "relative",
@@ -60,19 +59,6 @@ const SideBarList = styled("ul", {
 	listStyle: "none",
 	paddingLeft: "0",
 	marginLeft: "0",
-	height: "auto",
-	variants: {
-		accordion: {
-			closed: {
-				height: "0px",
-				overflow: "hidden",
-			},
-			open: {
-				height: "auto",
-				overflow: "hidden",
-			},
-		},
-	},
 });
 
 const ListItem = styled("li", {

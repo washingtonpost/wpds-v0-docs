@@ -11,6 +11,9 @@ const Container = styled("div", {
 	fontWeight: "$light",
 	cursor: "pointer",
 	paddingLeft: "$125",
+	"@sm": {
+		width: "100%",
+	},
 });
 const Span = styled("span", {
 	marginLeft: "$050",
