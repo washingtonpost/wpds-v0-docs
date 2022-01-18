@@ -96,7 +96,7 @@ const HamburgerMenu = styled(Menu, {
 	},
 });
 
-export const NavigationBar = ({ setMobileMenu, isOpen, children }) => {
+export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
 	const router = useRouter();
 
 	return (
@@ -117,7 +117,7 @@ export const NavigationBar = ({ setMobileMenu, isOpen, children }) => {
 				>
 					<ThemeToggle />
 					<MenuToggle onClick={setMobileMenu}>
-						<HamburgerMenu state={isOpen ? "open" : "closed"} />
+						<HamburgerMenu state={isClosed ? "closed" : "open"} />
 					</MenuToggle>
 				</Box>
 			</Container>

@@ -64,10 +64,10 @@ export const PageLayout = ({ children, ...pageProps }) => {
 	return (
 		<Grid>
 			<NavigationBar
-				isOpen={mobileMenuState}
+				isClosed={mobileMenuState}
 				setMobileMenu={() => setMobileMenuState(!mobileMenuState)}
 			/>
-			<MobileMenu state={mobileMenuState ? "closed" : "open"}>
+			<MobileMenu state={mobileMenuState ? "open" : "closed"}>
 				<Sidebar navigation={pageProps.navigation} />
 			</MobileMenu>
 			<Container>{children}</Container>
