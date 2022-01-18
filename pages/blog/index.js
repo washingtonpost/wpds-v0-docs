@@ -1,7 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import { getDocsListBySection, getNavigation } from "~/services";
-import { Box, styled } from "@washingtonpost/wpds-ui-kit";
+import { Box, Icon, styled } from "@washingtonpost/wpds-ui-kit";
+import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
 import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import { P } from "~/components/Markdown/Styling";
@@ -9,8 +10,8 @@ import { P } from "~/components/Markdown/Styling";
 const Masonry = styled("section", {
 	width: "100%",
 	display: "grid",
-	gridTemplateColumns: "repeat(auto-fit, minmax($500, 1fr))",
-	gridTemplateRows: "repeat(auto-fill, minmax($500, 1fr))",
+	gridTemplateColumns: "repeat(4, 1fr)",
+	gridTemplateRows: "masonry",
 	gridAutoFlow: "dense",
 	gridGap: "$100",
 
@@ -23,6 +24,16 @@ const Masonry = styled("section", {
 		gridTemplateColumns: "repeat(auto-fill, minmax(100%, 1fr))",
 		gridGap: "$100",
 	},
+});
+
+// create a divider
+const Divider = styled("hr", {
+	gridColumnEnd: "span 2",
+	margin: "$100 0 $050",
+	padding: 0,
+	border: 0,
+	height: "1px",
+	backgroundColor: "$subtle",
 });
 
 export default function Page({ docs, latestDocs, collections }) {
@@ -42,12 +53,8 @@ export default function Page({ docs, latestDocs, collections }) {
 				<title>WPDS - Blog</title>
 			</Head>
 			<Header as="h1">Blog</Header>
-			<Box
-				css={{
-					marginBottom: "$200",
-				}}
-				aria-hidden={false}
-			/>
+
+			<Divider aria-hidden={false} />
 
 			{collections.map((collection, index) => {
 				return (
@@ -58,14 +65,16 @@ export default function Page({ docs, latestDocs, collections }) {
 							flexDirection: "column",
 						}}
 					>
-						<Header
-							as="h2"
-							css={{
-								marginBottom: "$100",
-							}}
-						>
-							{collection.kicker}
-						</Header>
+						<Link href={`/blog/${collection.kicker.toLowerCase()}`}>
+							<Header
+								as="h2"
+								css={{
+									marginBottom: "$050",
+								}}
+							>
+								{collection.kicker}
+							</Header>
+						</Link>
 						<Masonry key={index}>
 							{collection.docs.map((doc) => {
 								return (
@@ -74,22 +83,54 @@ export default function Page({ docs, latestDocs, collections }) {
 										key={doc.slug}
 										css={{
 											border: "1px solid $subtle",
-											borderRadius: "$050",
-											px: "$150",
-											paddingBottom: "$100",
+											borderRadius: "$025",
+											padding: "$100",
 										}}
 									>
 										<article>
+											{doc.data.publishDate}
 											<Header as="h3">
 												{doc.data.title}
 											</Header>
 
-											<P>{doc.data.description}</P>
+											<P
+												css={{
+													marginBottom: "$100",
+												}}
+											>
+												{doc.data.description}
+											</P>
+											<Box
+												as="footer"
+												css={{
+													fontFamily: "$meta",
+													fontSize: "$100",
+													fontWeight: "$light",
+													lineHeight: "$125",
+												}}
+											>
+												{doc.data.byline}
+											</Box>
 										</article>
 									</Link>
 								);
 							})}
 						</Masonry>
+						<Link href={`/blog/${collection.kicker.toLowerCase()}`}>
+							<Header
+								as="h3"
+								css={{
+									display: "flex",
+									alignItems: "center",
+									lineHeight: "$100",
+								}}
+							>
+								<span>See all entries</span>
+								<Icon size="16">
+									<ChevronRight />
+								</Icon>
+							</Header>
+						</Link>
 						<Box
 							css={{
 								marginBottom: "$200",
@@ -113,13 +154,7 @@ export default function Page({ docs, latestDocs, collections }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-	// const currentDate = new Date();
-	const docs = getDocsListBySection("blog").sort((a, b) => {
-		return new Date(a.data.publishDate) - new Date(b.data.publishDate);
-	});
-	// .filter((doc) => {
-	// 	return new Date(doc.data.publishDate) <= currentDate;
-	// });
+	const docs = await getDocsListBySection("blog");
 
 	const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
@@ -141,11 +176,10 @@ export const getStaticProps = async ({ params }) => {
 			}
 			return acc;
 		}, []),
-		{
-			kicker: "Latest",
-			docs: latestDocs,
-		},
-	];
+	].sort((a, b) => {
+		// alpha sort
+		return a.kicker.localeCompare(b.kicker);
+	});
 
 	const navigation = await getNavigation();
 

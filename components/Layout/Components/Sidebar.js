@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import Link from "next/link";
+import Link from "next/link";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "../../Typography/Headers";
 // import Logo from "../../logo";
@@ -215,19 +215,19 @@ export default function Sidebar({ current, navigation }) {
 														: ""
 												}
 											>
-												<CustomLink
-													href={item.slug}
-													passHref
-													isCurrent={
-														router.asPath.includes(
-															item.slug
-														)
-															? "active"
-															: ""
-													}
-												>
-													{item.data.title}
-												</CustomLink>
+												<Link href={item.slug} passHref>
+													<CustomLink
+														isCurrent={
+															router.asPath.includes(
+																item.slug
+															)
+																? "active"
+																: ""
+														}
+													>
+														{item.data.title}
+													</CustomLink>
+												</Link>
 											</ListItem>
 										);
 									})}

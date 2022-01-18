@@ -1,10 +1,10 @@
 import * as React from "react";
 import Link from "next/link";
 import { NavigationBar } from "~/components/NavigationBar";
-import { getDocsListBySection } from "~/services";
+import { getAllDocs } from "~/services";
 import { Box } from "@washingtonpost/wpds-ui-kit";
 
-export default function Index({ posts, docs, foundations, release_notes }) {
+export default function Index({ posts }) {
 	return (
 		<Box
 			css={{
@@ -36,7 +36,7 @@ export default function Index({ posts, docs, foundations, release_notes }) {
 
 			<h2>Table of contents</h2>
 
-			<h3>Blog Posts</h3>
+			<h3>Posts</h3>
 			<ul>
 				{posts.map((post) => (
 					<li key={post.slug}>
@@ -46,54 +46,16 @@ export default function Index({ posts, docs, foundations, release_notes }) {
 					</li>
 				))}
 			</ul>
-			<h3>Component Docs</h3>
-			<ul>
-				{docs.map((post) => (
-					<li key={post.slug}>
-						<Link href={post.slug} forceHref>
-							<a>{post.data.title}</a>
-						</Link>
-					</li>
-				))}
-			</ul>
-			<h3>Foundations</h3>
-			<ul>
-				{foundations.map((post) => (
-					<li key={post.slug}>
-						<Link href={post.slug} forceHref>
-							<a>{post.data.title}</a>
-						</Link>
-					</li>
-				))}
-			</ul>
-			<h3>Release Notes</h3>
-			<ul>
-				{release_notes.map((post) => (
-					<li key={post.slug}>
-						<Link href={post.slug} forceHref>
-							<a>{post.data.title}</a>
-						</Link>
-					</li>
-				))}
-			</ul>
-			<Link href="/foundations/assets" forceHref>
-				<a>
-					<h3>Assets</h3>
-				</a>
-			</Link>
 		</Box>
 	);
 }
 
-export function getStaticProps() {
-	const [posts, docs, foundations, release_notes] = [
-		"blog",
-		"components",
-		"foundations",
-		"release-notes",
-	].map((section) => getDocsListBySection(section));
+export async function getStaticProps() {
+	const posts = await getAllDocs();
 
-	return { props: { posts, docs, foundations, release_notes } };
+	return {
+		props: { posts },
+	};
 }
 
 Index.getLayout = function getLayout(page, pageProps) {
