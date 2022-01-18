@@ -27,6 +27,10 @@ const Divider = styled("hr", {
 	backgroundColor: "$subtle",
 });
 
+const CheveronForLink = styled(ChevronRight, {
+	fill: "$accessible",
+});
+
 export default function Page({ docs, latestDocs, collections }) {
 	// create a "see all releases" toggle
 	const [showAll, setShowAll] = React.useState(false);
@@ -119,7 +123,7 @@ export default function Page({ docs, latestDocs, collections }) {
 							>
 								<span>See all entries</span>
 								<Icon size="16">
-									<ChevronRight />
+									<CheveronForLink />
 								</Icon>
 							</Header>
 						</Link>
