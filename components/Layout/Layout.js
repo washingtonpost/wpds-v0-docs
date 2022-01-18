@@ -7,7 +7,6 @@ import Sidebar from "~/components/Layout/Components/Sidebar";
 const Grid = styled("div", {
 	display: "grid",
 	margin: "0 auto",
-
 	"@notSm": {
 		gridTemplateColumns: "300px 1fr",
 		gridTemplateRows: "60px 1fr",
@@ -19,7 +18,6 @@ const Grid = styled("div", {
 		rowGap: "0",
 		paddingRight: "$100",
 	},
-
 	"@sm": {
 		gridTemplateColumns: "1fr",
 		gridTemplateRows: "1fr",
@@ -34,7 +32,6 @@ const Grid = styled("div", {
 
 const MobileMenu = styled("div", {
 	gridArea: "sidebar",
-
 	variants: {
 		state: {
 			open: { display: "block" },
@@ -48,11 +45,9 @@ const Container = styled("div", {
 	width: "100%",
 	margin: "0 auto",
 	marginTop: "$125",
-
 	"@sm": {
 		padding: "0 $100",
 	},
-
 	"@notSm": {
 		maxWidth: "1028px",
 	},
@@ -60,7 +55,6 @@ const Container = styled("div", {
 
 export const PageLayout = ({ children, ...pageProps }) => {
 	const [mobileMenuState, setMobileMenuState] = useState(false);
-
 	return (
 		<Grid>
 			<NavigationBar

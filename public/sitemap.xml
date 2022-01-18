@@ -33,25 +33,7 @@
 	</url>
 
 	<url>
-		<null
-			<null
-				<null
-					<null
-						<null
-							<null
-								<HEAD
-									<loc>https://build.washingtonpost.com/blog/releases</loc>
-	</url>
-
-	<url>
-		<loc>https://build.washingtonpost.com/blog/support</loc>
-	</url>
-
-	<url>
-		<loc>https://build.washingtonpost.com/blog/zeplin-guide</loc>
-		=======
 		<loc>https://build.washingtonpost.com/blog/guides/figma-guide</loc>
-		>>>>>>> v1-docs
 	</url>
 
 	<url>
