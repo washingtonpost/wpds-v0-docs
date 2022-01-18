@@ -120,6 +120,7 @@ export default function Sidebar({ navigation }) {
 					navigation.map((nav, index) => {
 						return (
 							<Accordion.Root
+								key={index}
 								defaultValue={nav.category}
 								type="single"
 								collapsible

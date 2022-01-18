@@ -66,7 +66,6 @@ export const PageLayout = ({ children, ...pageProps }) => {
 			<NavigationBar
 				isOpen={mobileMenuState}
 				setMobileMenu={() => setMobileMenuState(!mobileMenuState)}
-				isOpen={mobileMenuState}
 			/>
 			<MobileMenu state={mobileMenuState ? "closed" : "open"}>
 				<Sidebar navigation={pageProps.navigation} />

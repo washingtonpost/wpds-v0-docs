@@ -21,6 +21,10 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/blog/component-documentation</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/blog/contribute-a-component</loc>
   </url>
 
@@ -30,6 +34,14 @@
 
   <url>
     <loc>https://build.washingtonpost.com/blog/react-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/releases</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/support</loc>
   </url>
 
   <url>
@@ -82,10 +94,6 @@
 
   <url>
     <loc>https://build.washingtonpost.com/foundations/typography</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/quick-links</loc>
   </url>
 
   <url>
