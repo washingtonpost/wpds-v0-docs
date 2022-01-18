@@ -9,35 +9,55 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/coding-a-page</loc>
+    <loc>https://build.washingtonpost.com/blog/[category]</loc>
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/component-api</loc>
+    <loc>https://build.washingtonpost.com/blog/architecture/component-api</loc>
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/component-design</loc>
+    <loc
+      >https://build.washingtonpost.com/blog/architecture/component-design</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/contribute-a-component</loc>
+    <loc
+      >https://build.washingtonpost.com/blog/contributing/contribute-a-component</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/figma-guide</loc>
+    <loc
+      >https://build.washingtonpost.com/blog/guides/component-documentation</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/react-guide</loc>
+    <loc
+      >https://build.washingtonpost.com/blog/guides/develop-a-page-using-the-kit</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/zeplin-guide</loc>
+    <loc>https://build.washingtonpost.com/blog/guides/figma-guide</loc>
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/design</loc>
+    <loc>https://build.washingtonpost.com/blog/guides/react-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/guides/zeplin-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/process/releases</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/blog/process/support</loc>
   </url>
 
   <url>
@@ -46,10 +66,6 @@
 
   <url>
     <loc>https://build.washingtonpost.com/components/visually-hidden</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/foundations/accessiblity</loc>
   </url>
 
   <url>
@@ -65,14 +81,6 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/content</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/foundations/design</loc>
-  </url>
-
-  <url>
     <loc>https://build.washingtonpost.com/foundations/principles</loc>
   </url>
 
@@ -82,10 +90,6 @@
 
   <url>
     <loc>https://build.washingtonpost.com/foundations/typography</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/quick-links</loc>
   </url>
 
   <url>

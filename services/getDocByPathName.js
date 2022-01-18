@@ -49,3 +49,18 @@ export const getDocByPathName = async (input) => {
 
 	return source;
 };
+
+export const getBlogPost = async (input) => {
+	const [directory, category, fileName] = input.split("/");
+
+	const slug = path.join(`mdx_${directory}/${category}`, `${fileName}.mdx`);
+	const fileData = fs.readFileSync(slug);
+
+	const { content, data } = matter(fileData);
+
+	const source = await serialize(content, {
+		scope: data,
+	});
+
+	return source;
+};

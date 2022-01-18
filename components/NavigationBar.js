@@ -1,5 +1,6 @@
 import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Logo from "./logo";
 import { ThemeToggle } from "./ThemeToggle";
 import SearchForm from "./SearchForm";
@@ -60,10 +61,17 @@ const ListItem = styled("li", {
 
 const Anchor = styled("a", {
 	color: "$onSecondary",
-	fontWeight: "bold",
 	textDecoration: "none",
 	"&:hover": {
 		opacity: "0.75",
+	},
+
+	variants: {
+		isCurrent: {
+			true: {
+				fontWeight: "$bold",
+			},
+		},
 	},
 });
 
@@ -95,6 +103,8 @@ const ToggleSidebar = () => {
 };
 
 export const NavigationBar = ({ children }) => {
+	const router = useRouter();
+
 	return (
 		<>
 			<Container>
@@ -116,12 +126,18 @@ export const NavigationBar = ({ children }) => {
 				</ListItem>
 				<ListItem>
 					<Link href="/blog" passHref>
-						<Anchor>Blog</Anchor>
+						<Anchor isCurrent={router.asPath.includes("/blog")}>
+							Blog
+						</Anchor>
 					</Link>
 				</ListItem>
 				<ListItem>
 					<Link href="/release-notes" passHref>
-						<Anchor>Release Notes</Anchor>
+						<Anchor
+							isCurrent={router.asPath.includes("/release-notes")}
+						>
+							Release Notes
+						</Anchor>
 					</Link>
 				</ListItem>
 				<ListItem>

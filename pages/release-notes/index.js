@@ -35,7 +35,7 @@ export default function Page({ docs, latestDocs }) {
 
 			{docsList.map((doc) => (
 				<Card key={doc.slug}>
-					<Link href={doc.slug} forceHref passHref>
+					<Link href={doc.slug}>
 						<Header
 							as="h2"
 							css={{
@@ -63,13 +63,7 @@ export default function Page({ docs, latestDocs }) {
 
 export const getStaticProps = async ({ params }) => {
 	const currentDate = new Date();
-	const docs = getDocsListBySection("release-notes")
-		.sort((a, b) => {
-			return new Date(a.data.publishDate) - new Date(b.data.publishDate);
-		})
-		.filter((doc) => {
-			return new Date(doc.data.publishDate) <= currentDate;
-		});
+	const docs = await getDocsListBySection("release-notes");
 
 	const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
