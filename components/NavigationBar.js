@@ -2,6 +2,7 @@ import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./logo";
+import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import { ThemeToggle } from "./ThemeToggle";
 import SearchForm from "./SearchForm";
 
@@ -12,7 +13,6 @@ const List = styled("ul", {
 	listStyle: "none",
 	justifyContent: "flex-end",
 	alignItems: "center",
-
 	"@notSm": {
 		top: 0,
 		position: "sticky",
@@ -30,7 +30,7 @@ const Container = styled("div", {
 	alignItems: "center",
 	display: "flex",
 	gridArea: "logo",
-
+	height: 60,
 	"@notSm": {
 		backgroundColor: "$gray500",
 		overflow: "hidden",
@@ -40,7 +40,6 @@ const Container = styled("div", {
 		right: 0,
 		left: 0,
 		width: "300px",
-		height: 60,
 	},
 
 	"@sm": {
@@ -75,49 +74,51 @@ const Anchor = styled("a", {
 	},
 });
 
-const ToggleSidebar = () => {
-	return (
-		<>
-			<a
-				href="#open-nav"
-				id="sidenav-button"
-				title="Open Menu"
-				aria-label="Open Menu"
-			>
-				☰
-			</a>
+const MenuToggle = styled("button", {
+	height: 32,
+	width: 32,
+	marginLeft: "$075",
+	backgroundColor: "transparent",
+	borderStyle: "none",
+	display: "flex",
+});
+const HamburgerMenu = styled(Menu, {
+	fill: "$primary",
+	variants: {
+		state: {
+			open: {
+				transform: "rotate(180deg)",
+			},
+			closed: {
+				transform: "rotate(270deg)",
+			},
+		},
+	},
+});
 
-			<a
-				href="#"
-				id="sidebar-close"
-				title="Close Menu"
-				aria-label="Close Menu"
-				onClick={() => {
-					document.location.hash = "";
-				}}
-			>
-				close
-			</a>
-		</>
-	);
-};
-
-export const NavigationBar = ({ children }) => {
+export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
 	const router = useRouter();
 
 	return (
 		<>
 			<Container>
-				<Logo />
+				<Logo css={{ width: "100%" }} />
 				<Box
 					css={{
 						"@notSm": {
 							display: "none",
 						},
+						"@sm": {
+							display: "flex",
+							paddingRight: "$100",
+							justifyItems: "flex-end",
+						},
 					}}
 				>
 					<ThemeToggle />
-					<ToggleSidebar />
+					<MenuToggle onClick={setMobileMenu}>
+						<HamburgerMenu state={isClosed ? "closed" : "open"} />
+					</MenuToggle>
 				</Box>
 			</Container>
 			<List>
@@ -144,7 +145,6 @@ export const NavigationBar = ({ children }) => {
 					<ThemeToggle />
 				</ListItem>
 			</List>
-			{children}
 		</>
 	);
 };

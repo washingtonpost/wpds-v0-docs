@@ -61,7 +61,7 @@ export async function getStaticProps() {
 Index.getLayout = function getLayout(page, pageProps) {
 	return (
 		<div>
-			<NavigationBar />
+			<NavigationBar isOpen={true} />
 			{page}
 		</div>
 	);
