@@ -6,6 +6,7 @@ import {
 	styled,
 	VisuallyHidden,
 } from "@washingtonpost/wpds-ui-kit";
+import { useId } from "@react-aria/utils";
 
 const StyledCheckbox = styled(Checkbox.Root, {
 	all: "unset",
@@ -48,8 +49,10 @@ const StyledCheck = styled(Check, {
 });
 
 export const InputCheckbox = (props) => {
+	const elementId = useId();
+
 	return (
-		<StyledCheckbox {...props} id="c1">
+		<StyledCheckbox {...props} id={props.id || elementId}>
 			{!props.checked && (
 				<StyledCheck
 					fill={theme.colors.onPrimary}
@@ -70,7 +73,7 @@ export const InputCheckbox = (props) => {
 					/>
 				</Icon>
 			</StyledIndicator>
-			<VisuallyHidden htmlFor="c1">
+			<VisuallyHidden htmlFor={props.id || elementId}>
 				{props.checked ? "checked" : "not checked"}
 			</VisuallyHidden>
 		</StyledCheckbox>
