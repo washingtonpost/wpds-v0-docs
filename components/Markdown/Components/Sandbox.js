@@ -1,13 +1,13 @@
+import React from "react";
 import {
 	SandpackProvider,
 	SandpackLayout,
 	SandpackCodeEditor,
 	SandpackPreview,
-	SandpackCodeViewer,
 } from "@codesandbox/sandpack-react";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { useTheme } from "next-themes";
-
+import { styled } from "@washingtonpost/wpds-ui-kit";
 const CustomSandpack = ({ withPreview, children }) => {
 	const { resolvedTheme } = useTheme();
 	return (
@@ -25,18 +25,17 @@ const CustomSandpack = ({ withPreview, children }) => {
 		>
 			<SandpackLayout theme={resolvedTheme}>
 				<SandpackCodeEditor
-					customStyle={{
-						height: "auto",
-						minHeight: "auto",
-					}}
-					wrapContent
+				// customStyle={{
+				// 	width: "100%",
+				// }}
+				// wrapContent
 				/>
 				{withPreview && (
 					<SandpackPreview
-						customStyle={{
-							height: "auto",
-							minHeight: "auto",
-						}}
+					// customStyle={{
+					// 	height: "auto",
+					// 	minHeight: "auto",
+					// }}
 					/>
 				)}
 			</SandpackLayout>
@@ -44,4 +43,4 @@ const CustomSandpack = ({ withPreview, children }) => {
 	);
 };
 
-export default CustomSandpack;
+export default React.memo(CustomSandpack);

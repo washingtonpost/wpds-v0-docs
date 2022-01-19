@@ -14,6 +14,7 @@ export default function EmbedStory({
 	const Story = styled("iframe", {
 		aspectRatio: "1 / 0.25",
 		width: "100%",
+		maxWidth: "100%",
 		borderRadius: "$025",
 		border: "$100 solid $subtle",
 		background: theme.colors["gray600-static"],

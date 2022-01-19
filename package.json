@@ -10,6 +10,7 @@
 		"@codesandbox/sandpack-react": "^0.10.11",
 		"@docsearch/react": "^3.0.0-alpha.42",
 		"@radix-ui/react-accordion": "^0.1.5",
+		"@radix-ui/react-checkbox": "^0.1.4",
 		"@uiw/react-codesandbox": "^1.1.4",
 		"@washingtonpost/site-components": "^6.4.2",
 		"@washingtonpost/wpds-assets": "1.1.13",

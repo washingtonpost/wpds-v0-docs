@@ -11,6 +11,16 @@ export const ListItem = styled("li", {
 		color: theme.colors.gray80,
 		textDecoration: "underline",
 	},
+	"&.task-list-item p": {
+		display: "flex",
+		alignItems: "flex-start",
+
+		"[role='checkbox']": {
+			marginBottom: "$025",
+			alignSelf: "flex-start",
+			marginRight: "$050",
+		},
+	},
 });
 export const LinkText = styled("span", {
 	color: "$accessible",
