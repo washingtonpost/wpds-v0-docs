@@ -13,6 +13,7 @@ const StyledCheckbox = styled(Checkbox.Root, {
 	backgroundColor: "$secondary",
 	width: "$100",
 	height: "$100",
+	flex: "0 0 var(--base)",
 	borderRadius: "$012",
 	border: "1px solid $subtle",
 	verticalAlign: "middle",
@@ -26,12 +27,14 @@ const StyledCheckbox = styled(Checkbox.Root, {
 
 const StyledIndicator = styled(Checkbox.Indicator, {
 	color: theme.colors.onPrimary,
+	flex: "0 0 16px",
 	lineHeight: "0",
 	width: "$100",
 	height: "$100",
 });
 
 const StyledCheck = styled(Check, {
+	flex: "0 0 16px",
 	variants: {
 		checked: {
 			true: {
@@ -53,18 +56,6 @@ export const InputCheckbox = (props) => {
 
 	return (
 		<StyledCheckbox {...props} id={props.id || elementId}>
-			{!props.checked && (
-				<StyledCheck
-					fill={theme.colors.onPrimary}
-					checked={props.checked}
-					css={{
-						// i have no idea why this is necessary
-						// in chrome latest version, the checkbox
-						// renders smaller in width than it should
-						width: "24px",
-					}}
-				/>
-			)}
 			<StyledIndicator>
 				<Icon size="16">
 					<StyledCheck

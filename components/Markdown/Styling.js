@@ -21,6 +21,9 @@ export const P = styled("p", {
 	fontSize: "$100",
 	paddingBottom: "$050",
 	color: "$accessible",
+	fontFamily: "$meta",
+	fontWeight: "$light",
+	lineHeight: "auto",
 });
 
 export const BR = styled("div", {
@@ -61,6 +64,7 @@ const components = {
 	BR: BR,
 	TableOfContents: dynamic(() => import("./Components/tableofcontents")),
 	Container: dynamic(() => import("./Components/container")),
+	GuideContainer: dynamic(() => import("./Components/GuideContainer")),
 	Box: Box,
 	pre: ({ children }) => (
 		<Box
