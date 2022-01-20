@@ -6,15 +6,20 @@ export const Header = styled("h1", {
 	fontSize: "$300",
 	fontFamily: "$headline",
 	color: "$primary",
+	fontWeight: "$bold",
 	variants: {
 		as: {
 			h2: {
+				fontFamily: "$headline",
 				fontSize: "$175",
+				fontWeight: "$bold",
+				lineHeight: "auto",
 			},
 			h3: {
 				fontSize: "$125",
 				fontFamily: "$subhead",
 				fontWeight: "$bold",
+				lineHeight: "auto",
 				marginBottom: "$025",
 				marginTop: "$100",
 			},
@@ -22,6 +27,7 @@ export const Header = styled("h1", {
 				fontSize: "$100",
 				fontWeight: "$bold",
 				fontFamily: "$meta",
+				lineHeight: "auto",
 			},
 			h6: {
 				fontSize: "$050",

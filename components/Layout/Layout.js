@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
-import * as Accordion from "@radix-ui/react-accordion";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import { NavigationBar } from "~/components/NavigationBar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 

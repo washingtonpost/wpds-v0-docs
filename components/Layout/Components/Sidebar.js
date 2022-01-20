@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "../../Typography/Headers";
@@ -160,7 +160,6 @@ export default function Sidebar({ navigation }) {
 													>
 														<CustomLink
 															href={item.slug}
-															passHref
 															isCurrent={
 																router.asPath.includes(
 																	item.slug

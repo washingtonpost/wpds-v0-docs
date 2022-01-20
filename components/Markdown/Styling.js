@@ -5,14 +5,11 @@
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled, Box } from "@washingtonpost/wpds-ui-kit";
-import {
-	List,
-	ListItem,
-	ListText,
-} from "~/components/Markdown/Components/list";
-// import TableOfContents from "./Components/tableofcontents";
+import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
 import Sandbox from "./Components/Sandbox";
+import { InputCheckbox } from "./Components/Checkbox";
+
 const HR = styled("hr", {
 	borderStyle: "none",
 	backgroundColor: "$subtle",
@@ -24,6 +21,9 @@ export const P = styled("p", {
 	fontSize: "$100",
 	paddingBottom: "$050",
 	color: "$accessible",
+	fontFamily: "$meta",
+	fontWeight: "$light",
+	lineHeight: "auto",
 });
 
 export const BR = styled("div", {
@@ -64,12 +64,30 @@ const components = {
 	BR: BR,
 	TableOfContents: dynamic(() => import("./Components/tableofcontents")),
 	Container: dynamic(() => import("./Components/container")),
+	GuideContainer: dynamic(() => import("./Components/GuideContainer")),
 	Box: Box,
+	pre: ({ children }) => (
+		<Box
+			as="pre"
+			css={{
+				marginBottom: "$100",
+				overflowX: "auto",
+				"@sm": {
+					width: "calc(100vw - $100 - $100)",
+				},
+			}}
+		>
+			{children}
+		</Box>
+	),
 	code: ({ children }) => {
 		return (
 			<Box
+				as="code"
 				css={{
 					marginBottom: "$100",
+					maxWidth: "100%",
+					width: "100%",
 				}}
 			>
 				<Sandbox withPreview={children.includes("// preview")}>
@@ -84,6 +102,13 @@ const components = {
 				</Sandbox>
 			</Box>
 		);
+	},
+	input: ({ children, type, ...props }) => {
+		if (type === "checkbox") {
+			return <InputCheckbox {...props} />;
+		}
+
+		return <input {...props} />;
 	},
 };
 
