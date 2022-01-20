@@ -18,9 +18,4 @@ export const darkModeStyles = globalCss({
 	body: {
 		background: theme.colors.secondary,
 	},
-	html: {
-		"-webkit-font-smoothing": "antialiased",
-		textRendering: "optimizeLegibility",
-		textSizeAdjust: "100%",
-	},
 });

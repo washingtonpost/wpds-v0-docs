@@ -23,7 +23,6 @@ export const P = styled("p", {
 	color: "$accessible",
 	fontFamily: "$meta",
 	fontWeight: "$light",
-	lineHeight: "auto",
 });
 
 export const BR = styled("div", {

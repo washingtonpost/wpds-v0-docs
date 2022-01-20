@@ -42,7 +42,7 @@ export default function Page({ docs, category }) {
 						fontFamily: "$meta",
 						fontSize: "$100",
 						fontWeight: "$light",
-						lineHeight: "auto",
+
 						borderBottom: "1px solid currentColor",
 						color: "$accessible",
 						marginRight: "$050",
