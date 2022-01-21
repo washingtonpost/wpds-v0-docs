@@ -41,6 +41,7 @@ const components = {
 		</CustomLink>
 	),
 	ul: List,
+	ol: ({ children }) => <List as="ol">{children}</List>,
 	li: ListItem,
 	p: P,
 	h1: ({ children }) => <Header as="h1">{children}</Header>,

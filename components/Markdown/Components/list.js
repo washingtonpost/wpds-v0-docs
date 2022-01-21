@@ -3,7 +3,14 @@ const { styled, theme } = require("@washingtonpost/wpds-ui-kit");
 export const List = styled("ul", {
 	listStyle: "none",
 	marginTop: "0",
-	paddingLeft: "0",
+	variants: {
+		as: {
+			ol: {
+				listStyle: "revert",
+				paddingLeft: "$100",
+			},
+		},
+	},
 });
 export const ListItem = styled("li", {
 	padding: "$025 0",
