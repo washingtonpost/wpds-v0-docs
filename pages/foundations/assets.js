@@ -66,7 +66,7 @@ const Grid = styled("section", {
 /** create a code example with a scrollbar */
 const CodeExample = styled("pre", {
 	overflow: "auto",
-	color: "$gray80",
+	color: "$accessbile",
 	fontSize: "$087",
 	lineHeight: "$125",
 });

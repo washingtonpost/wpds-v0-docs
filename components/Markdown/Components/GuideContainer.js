@@ -9,7 +9,7 @@ const Div = styled("div", {
 	width: "100%",
 	padding: "$075 $075 $275",
 	backgroundColor: "$gray500",
-	color: "$gray80",
+	color: "$accessbile",
 	position: "relative",
 	display: "flex",
 	flexDirection: "column",
