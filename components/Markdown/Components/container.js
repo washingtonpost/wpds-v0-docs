@@ -8,7 +8,7 @@ export default function Container({ children, caption }) {
 		justifyContent: "center",
 		padding: "$275",
 		backgroundColor: "$gray500",
-		color: "$gray80",
+		color: "$accessible",
 	});
 	const Caption = styled("p", {
 		color: "$accessible",

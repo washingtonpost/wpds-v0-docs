@@ -14,9 +14,9 @@ export const List = styled("ul", {
 });
 export const ListItem = styled("li", {
 	padding: "$025 0",
-	color: theme.colors.gray80,
+	color: theme.colors.accessible,
 	"a:nth-child(n)": {
-		color: theme.colors.gray80,
+		color: theme.colors.accessible,
 		textDecoration: "underline",
 	},
 	"&.task-list-item p": {
