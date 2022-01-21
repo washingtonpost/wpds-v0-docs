@@ -6,7 +6,7 @@ import Link from "next/link";
 const Container = styled("div", {
 	display: "flex",
 	alignItems: "center",
-	color: "$accessible",
+	color: theme.colors.accessible,
 	fontFamily: "$meta",
 	fontWeight: "$light",
 	cursor: "pointer",

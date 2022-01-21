@@ -1,13 +1,13 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
-import { Box, styled } from "@washingtonpost/wpds-ui-kit";
+import { Box, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import { getNavigation, getAllPathsByCategory, getBlogPost } from "~/services";
 import CustomLink from "~/components/Typography/link";
 
 const Slash = styled("span", {
-	color: "$accessible",
+	color: theme.colors.accessible,
 });
 
 const SECTION = "blog";
@@ -47,7 +47,7 @@ export default function Page({ source }) {
 							fontWeight: "$light",
 
 							borderBottom: "1px solid currentColor",
-							color: "$accessible",
+							color: theme.colors.accessible,
 							marginRight: "$050",
 						}}
 					>
@@ -62,7 +62,7 @@ export default function Page({ source }) {
 							fontWeight: "$light",
 
 							borderBottom: "1px solid currentColor",
-							color: "$accessible",
+							color: theme.colors.accessible,
 							marginRight: "$050",
 							marginLeft: "$050",
 						}}

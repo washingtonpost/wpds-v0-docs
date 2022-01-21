@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 export default function Container({ children, caption }) {
 	const Div = styled("div", {
 		width: "100%",
@@ -8,10 +8,10 @@ export default function Container({ children, caption }) {
 		justifyContent: "center",
 		padding: "$275",
 		backgroundColor: "$gray500",
-		color: "$accessible",
+		color: theme.colors.accessible,
 	});
 	const Caption = styled("p", {
-		color: "$accessible",
+		color: theme.colors.accessible,
 		fontSize: "$087",
 		marginTop: "$050",
 	});

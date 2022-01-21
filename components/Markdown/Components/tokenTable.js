@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 
 export default function tokenTable({ headers, tableData }) {
@@ -21,7 +21,7 @@ export default function tokenTable({ headers, tableData }) {
 		width: "100%",
 	});
 	const TD = styled("td", {
-		color: "$accessible",
+		color: theme.colors.accessible,
 		border: "1px solid $subtle",
 		padding: "$050",
 		variants: {

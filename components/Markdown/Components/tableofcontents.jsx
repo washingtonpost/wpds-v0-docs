@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import Header from "../../Typography/Headers";
 
@@ -18,7 +18,7 @@ const ListItem = styled("li", {
 	listStyle: "none",
 });
 const LinkText = styled("a", {
-	color: "$accessible",
+	color: theme.colors.accessible,
 	textDecoration: "underline",
 	"&:focus": {
 		outlineColor: "$signal",
