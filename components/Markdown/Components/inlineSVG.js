@@ -14,7 +14,6 @@ export default function inlineSVG({ path }) {
 				"rgba(" +
 				[(c >> 16) & 255, (c >> 8) & 255, c & 255].join(",") +
 				",1)";
-			console.log(rgba);
 			return lookUpValue(rgba);
 		}
 		if (hex == "white") {
