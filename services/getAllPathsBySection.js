@@ -3,7 +3,7 @@ import globby from "globby";
 import path from "path";
 
 export const getAllPathsBySection = async (input) => {
-  const folder = path.join(process.cwd(), `mdx_${input}`);
+  const folder = path.join(process.cwd(), `docs/${input}`);
 
   const paths = fs
     .readdirSync(folder)
@@ -18,12 +18,12 @@ export const getAllPathsBySection = async (input) => {
 };
 
 export const getAllPathsByCategory = async (input) => {
-  const folder = path.join(process.cwd(), `mdx_${input}`);
+  const folder = path.join(process.cwd(), `docs/${input}`);
 
   const files = await globby(`${folder}/**/*.mdx`);
 
   const paths = files.map((file) => {
-    const path = file.split("mdx_blog")[1].replace(/\.mdx?$/, "");
+    const path = file.split("docs/blog")[1].replace(/\.mdx?$/, "");
     let category = "";
     let slug = path;
 

@@ -48,11 +48,11 @@ const AccordionHeader = styled(Header, {
 });
 
 const AccordionChevron = styled(ChevronDown, {
-	height: 16,
-	fill: theme.colors.accessible,
-	justifySelf: "flex-end",
-	transition: "transform 300ms",
-	"[data-state=open] &": { transform: "rotate(180deg)" },
+  height: 16,
+  fill: theme.colors.accessible,
+  justifySelf: "flex-end",
+  transition: "transform 300ms",
+  "[data-state=open] &": { transform: "rotate(180deg)" },
 });
 
 //List in sidebars Accordion Content
@@ -174,7 +174,6 @@ export default function Sidebar({ navigation }) {
                               >
                                 <div>{item.data.title}</div>
                                 <P
-                                  small
                                   css={{
                                     paddingBottom: "0",
                                     color: "$accessible",

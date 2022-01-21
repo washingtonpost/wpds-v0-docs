@@ -6,7 +6,7 @@ import { serialize } from "next-mdx-remote/serialize";
 export async function getHeadings(input) {
   const [directory, fileName] = input.split("/");
 
-  const slug = path.join(`mdx_${directory}`, `${fileName}.mdx`);
+  const slug = path.join(`docs/${directory}`, `${fileName}.mdx`);
   const fileData = fs.readFileSync(slug);
 
   const { content } = matter(fileData);
@@ -38,7 +38,7 @@ export async function getHeadings(input) {
 export const getDocByPathName = async (input) => {
   const [directory, fileName] = input.split("/");
 
-  const slug = path.join(`mdx_${directory}`, `${fileName}.mdx`);
+  const slug = path.join(`docs/${directory}`, `${fileName}.mdx`);
   const fileData = fs.readFileSync(slug);
 
   const { content, data } = matter(fileData);
@@ -53,7 +53,7 @@ export const getDocByPathName = async (input) => {
 export const getBlogPost = async (input) => {
   const [directory, category, fileName] = input.split("/");
 
-  const slug = path.join(`mdx_${directory}/${category}`, `${fileName}.mdx`);
+  const slug = path.join(`docs/${directory}/${category}`, `${fileName}.mdx`);
   const fileData = fs.readFileSync(slug);
 
   const { content, data } = matter(fileData);
