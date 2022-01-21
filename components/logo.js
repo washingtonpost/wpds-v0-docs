@@ -4,16 +4,16 @@ import WPMark from "@washingtonpost/wpds-assets/asset/wp-mark";
 import Link from "next/link";
 
 const Container = styled("div", {
-	display: "flex",
-	alignItems: "center",
-	color: theme.colors.accessible,
-	fontFamily: "$meta",
-	fontWeight: "$light",
-	cursor: "pointer",
-	paddingLeft: "$125",
-	"@sm": {
-		width: "100%",
-	},
+  display: "flex",
+  alignItems: "center",
+  color: theme.colors.accessible,
+  fontFamily: "$meta",
+  fontWeight: "$light",
+  cursor: "pointer",
+  paddingLeft: "$125",
+  "@sm": {
+    width: "100%",
+  },
 });
 const Span = styled("span", {
   marginLeft: "$050",

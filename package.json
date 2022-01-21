@@ -4,7 +4,8 @@
     "dev": "next-remote-watch ./mdx*",
     "build": "node scripts/sitemap.js;next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npx prettier --write '**/*.{js,mdx}'"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^0.10.11",

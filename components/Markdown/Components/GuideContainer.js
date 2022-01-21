@@ -6,15 +6,15 @@ import Info from "@washingtonpost/wpds-assets/asset/info";
 import Error from "@washingtonpost/wpds-assets/asset/error";
 
 const Div = styled("div", {
-	width: "100%",
-	padding: "$075 $075 $275",
-	backgroundColor: "$gray500",
-	color: theme.colors.accessible,
-	position: "relative",
-	display: "flex",
-	flexDirection: "column",
-	alignItems: "center",
-	justifyContent: "center",
+  width: "100%",
+  padding: "$075 $075 $275",
+  backgroundColor: "$gray500",
+  color: theme.colors.accessible,
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 const MessageContainer = styled("div", {

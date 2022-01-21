@@ -18,11 +18,11 @@ const HR = styled("hr", {
   margin: "$100 0",
 });
 export const P = styled("p", {
-	fontSize: "$100",
-	paddingBottom: "$050",
-	color: theme.colors.accessible,
-	fontFamily: "$meta",
-	fontWeight: "$light",
+  fontSize: "$100",
+  paddingBottom: "$050",
+  color: theme.colors.accessible,
+  fontFamily: "$meta",
+  fontWeight: "$light",
 });
 
 export const BR = styled("div", {

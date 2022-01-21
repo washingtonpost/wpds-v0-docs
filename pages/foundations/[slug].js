@@ -16,7 +16,7 @@ const components = {
   Head,
 };
 const P = styled("p", {
-	color: theme.colors.accessible,
+  color: theme.colors.accessible,
 });
 
 export default function Page({ source }) {

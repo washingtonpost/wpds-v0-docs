@@ -12,7 +12,7 @@ const titleCase = (input) => {
 };
 
 const Slash = styled("span", {
-	color: theme.colors.accessible,
+  color: theme.colors.accessible,
 });
 
 const Masonry = styled("section", {
@@ -43,32 +43,32 @@ export default function Page({ docs, category }) {
             fontSize: "$100",
             fontWeight: "$light",
 
-						borderBottom: "1px solid currentColor",
-						color: theme.colors.accessible,
-						marginRight: "$050",
-						marginBottom: "$050",
-					}}
-				>
-					Blog
-				</CustomLink>
-				<Slash aria-hidden="true">/</Slash>
-			</Box>
-			<Header>{category}</Header>
-			<Masonry>
-				{docs.map((doc) => {
-					return (
-						<CustomLink
-							href={doc.slug}
-							key={doc.slug}
-							css={{
-								border: "1px solid $subtle",
-								borderRadius: "$025",
-								padding: "$100",
-							}}
-						>
-							<article>
-								{doc.data.publishDate}
-								<Header as="h3">{doc.data.title}</Header>
+            borderBottom: "1px solid currentColor",
+            color: theme.colors.accessible,
+            marginRight: "$050",
+            marginBottom: "$050",
+          }}
+        >
+          Blog
+        </CustomLink>
+        <Slash aria-hidden="true">/</Slash>
+      </Box>
+      <Header>{category}</Header>
+      <Masonry>
+        {docs.map((doc) => {
+          return (
+            <CustomLink
+              href={doc.slug}
+              key={doc.slug}
+              css={{
+                border: "1px solid $subtle",
+                borderRadius: "$025",
+                padding: "$100",
+              }}
+            >
+              <article>
+                {doc.data.publishDate}
+                <Header as="h3">{doc.data.title}</Header>
 
                 <P
                   css={{

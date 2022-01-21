@@ -28,7 +28,7 @@ const Divider = styled("hr", {
 });
 
 const CheveronForLink = styled(ChevronRight, {
-	fill: theme.colors.accessible,
+  fill: theme.colors.accessible,
 });
 
 export default function Page({ docs, latestDocs, collections }) {

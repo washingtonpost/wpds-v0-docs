@@ -33,7 +33,7 @@ const logos = [
   "wp-mark",
   "rss",
   "spotify",
-  "google"
+  "google",
 ];
 
 const AssetContainer = styled("article", {
@@ -48,8 +48,8 @@ const AssetContainer = styled("article", {
 
   // highlight AssetContainer when CTRL + F is used
   "&:focus": {
-    outline: "2px solid $signal"
-  }
+    outline: "2px solid $signal",
+  },
 });
 
 /** create a masonary grid layout */
@@ -59,15 +59,15 @@ const Grid = styled("section", {
   gridGap: "$200",
   margin: "0 auto",
   maxWidth: "100%",
-  width: "100%"
+  width: "100%",
 });
 
 /** create a code example with a scrollbar */
 const CodeExample = styled("pre", {
-	overflow: "auto",
-	color: theme.colors.accessible,
-	fontSize: "$087",
-	lineHeight: "$125",
+  overflow: "auto",
+  color: theme.colors.accessible,
+  fontSize: "$087",
+  lineHeight: "$125",
 });
 
 /** create a component that lets the user copy a code example to their clipboard */
@@ -101,8 +101,8 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
     background: "none",
 
     [`& ${AssetContainer}`]: {
-      backgroundColor: copied ? theme.colors.success : theme.colors.subtle
-    }
+      backgroundColor: copied ? theme.colors.success : theme.colors.subtle,
+    },
   });
 
   return (
@@ -113,9 +113,9 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
 };
 
 const P = styled("p", {
-	fontSize: "$100",
-	paddingBottom: "$050",
-	color: theme.colors.accessible,
+  fontSize: "$100",
+  paddingBottom: "$050",
+  color: theme.colors.accessible,
 });
 
 const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";
@@ -163,7 +163,7 @@ export default function Page({ current, navigation }) {
 
         <Box
           css={{
-            marginBottom: "$200"
+            marginBottom: "$200",
           }}
         />
 
@@ -173,7 +173,7 @@ export default function Page({ current, navigation }) {
         <Box
           css={{
             border: "1px solid $onPrimary",
-            borderRadius: "$025"
+            borderRadius: "$025",
           }}
         >
           <Header id="how-to-install" css={{ paddingBottom: "$100" }} as="h3">
@@ -187,7 +187,7 @@ export default function Page({ current, navigation }) {
 
           <Box
             css={{
-              marginBottom: "$100"
+              marginBottom: "$100",
             }}
           />
 
@@ -205,14 +205,14 @@ export default function Page({ current, navigation }) {
             border: "none",
             borderBottom: "1px solid currentColor",
             marginTop: "$200",
-            marginBottom: "$200"
+            marginBottom: "$200",
           }}
         />
         <Header id="Icons" css={{ paddingBottom: "$100" }} as="h2">
           Icons
         </Header>
         <Grid>
-          {Object.keys(AllAssets).map(Asset => {
+          {Object.keys(AllAssets).map((Asset) => {
             const Component = AllAssets[Asset];
             const componentName = paramCase(Asset);
 
@@ -233,7 +233,7 @@ export default function Page({ current, navigation }) {
                 <AssetContainer>
                   <Box
                     css={{
-                      lineHeight: 0
+                      lineHeight: 0,
                     }}
                   >
                     <Icon
@@ -248,7 +248,7 @@ export default function Page({ current, navigation }) {
                   as="h6"
                   css={{
                     width: "100%",
-                    marginTop: "$025"
+                    marginTop: "$025",
                   }}
                 >
                   {Asset.replace("Svg", "")}
@@ -259,7 +259,7 @@ export default function Page({ current, navigation }) {
         </Grid>
         <Box
           css={{
-            marginBottom: "$200"
+            marginBottom: "$200",
           }}
         />
         <Header id="Logos" css={{ paddingBottom: "$100" }} as="h2">
@@ -274,11 +274,11 @@ export default function Page({ current, navigation }) {
             [`${AssetContainer}`]: {
               height: "$500",
               px: "$100",
-              background: theme.colors.subtle
-            }
+              background: theme.colors.subtle,
+            },
           }}
         >
-          {Object.keys(AllAssets).map(Asset => {
+          {Object.keys(AllAssets).map((Asset) => {
             const Component = AllAssets[Asset];
             const componentName = paramCase(Asset);
 
@@ -304,7 +304,7 @@ export default function Page({ current, navigation }) {
                   <Header
                     as="h6"
                     css={{
-                      marginTop: "$025"
+                      marginTop: "$025",
                     }}
                   >
                     {Asset.replace("Svg", "")}
@@ -325,7 +325,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       current: "/foundations/assets",
-      navigation
-    }
+      navigation,
+    },
   };
 };
