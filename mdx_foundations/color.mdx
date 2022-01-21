@@ -21,15 +21,14 @@ import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 ### The role of color
 
 When we refer to color we exclude the entire grayscale. The use of color in our
-system is limited and it is intentional. Our product is highly focused on the content
-we want the reader experience to be with the minimal distraction of color variations,
-and when color is used in our system it comes with intention.
+system is limited and it is intentional. Our product focuses on the content
+and the reader experience. Color should always be a minimal distraction and used with intention.
 
 <BR size="xl" />
 
-#### Heirarchy and layout strucure
+#### Hierarchy and layout structure
 
-Utilizing color to separate sections of information and higlight elements of importance.
+Utilize color to separate sections of information and highlight elements of importance.
 
 <Container caption="Example of color to create layout structure">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -45,7 +44,7 @@ Utilizing color to separate sections of information and higlight elements of imp
 
 #### Affordance
 
-Utilizing color to separate sections of information and higlight elements of importance.
+Use color to create an affordance to signal interaction, call to action, or a link.
 
 <Container caption="Example of color to create layout structure">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -62,7 +61,7 @@ Utilizing color to separate sections of information and higlight elements of imp
 
 #### System status
 
-Elements change in color and make use of our `semantic colors` to represent default, success or failed states when completing an action or goal.
+`Semantic colors` represent system status of default, success, or failed states when completing an action or goal.
 
 <Container caption="Example of color to communicate system status">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -79,7 +78,7 @@ Elements change in color and make use of our `semantic colors` to represent defa
 
 #### Editorial tone
 
-Colors within the editorial palette are used to differentiate content with various lines of coverage.
+Color used within the editorial palette to differentiate content with various lines of coverage.
 
 <Container caption="The use of color to show something is live or an opinion">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -96,7 +95,7 @@ Colors within the editorial palette are used to differentiate content with vario
 
 #### Illustration
 
-Color is applied on illustrations and icons to achieve a visual style that varies across editorial tones, product functions and sub-brand art direction.
+Apply color to illustrations and icons to achieve a visual style that varies across editorial tones, product functions, and sub-brand art direction.
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -113,7 +112,7 @@ Color is applied on illustrations and icons to achieve a visual style that varie
 
 #### Brand recognition
 
-An xl sub-brand has its own unique palette, art direction and visual look and feel to separate it from the WP brand.
+Sub-brands have a unique palette, art direction, visual look, and distinction from The Washington Post brand.
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -149,9 +148,8 @@ Continuous and categorical datasets projected in a chart or map often require co
 
 ## Themes
 
-While our system has individual token colors available for use our system created a base
-theme that applies our color tokens to have intention in their usage. The theme is a level of
-abstraction that allows the system to strategically apply color across the product with intention.
+The theme palette is a level of abstraction that allows the system to assign color across the product with intention. It creates an alias and
+assigns a color intention.
 
 <Container>
   <div style={{ maxWidth: 600, margin: "auto" }}>
@@ -183,7 +181,7 @@ abstraction that allows the system to strategically apply color across the produ
         Secondary
       </Box>
       <Box
-        css={{          
+        css={{
           padding:"$050",
           backgroundColor: "$cta",
           color: "$onCta"
@@ -244,7 +242,7 @@ abstraction that allows the system to strategically apply color across the produ
           color: "$onPrimary"
         }}
       >
-        Accessbile
+        Accessible
       </Box>
         <Box
         css={{
@@ -265,8 +263,8 @@ abstraction that allows the system to strategically apply color across the produ
 
 #### How to use theme
 
-Theme tokens are named with on are to be used with the pairing color token. Example onPrimary
-is used when an element or content is on the primary color token.
+Theme tokens with `on`(`onPrimary` or `onMessage`) in the name are paired with the base alias. One example is `onPrimary`
+is used when an element or content is on the `primary` color token.
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -356,18 +354,17 @@ message around system status and actions taken by the user.
 
 ## Static
 
-Static colors are colors that do not change regardless of what theme context
-they are in (dark or light). These colors remain static to ensure they are accessbile
+Static colors tokens that do not change value regardless of what theme context
+they are in (dark or light). These colors remain static to ensure they are accessible
 when applied on a color where minimum contrast is required or branding requirements are applied. To use
-a static color simple add `-static` at the end of a color token name and it will lock the color in the light version of
-that color token.
+a static color add `-static` at the end of a color token name and it will lock the color in the light value of that token.
 
 <BR />
 
 #### Example
 
 Our theme token `onCta` and semantic color token `onMessage` both are tied to `gray-600-static`
-to ensure they remain with the correct minimal color contrast needed for the element to be accessbile.
+to ensure they remain with the correct minimal color contrast needed for the element to be accessible.
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -400,10 +397,9 @@ contrast ratio outlined by WCAG 2.0 level AA.
 
 <BR />
 
-#### Accessbile
+#### Accessible
 
-One of our theme tokens named `accessbile` has been designed to ensure that no matter what
-theme you are using it will be the most accessbile color against the target background white or black. The color of this text you are reading is using our `accessbile` token.
+One of our theme tokens named `accessible` is accessible on the target background (`gray600` or `gray0`).
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -411,10 +407,10 @@ theme you are using it will be the most accessbile color against the target back
       css={{
         padding: "$300",
         backgroundColor: "$gray600",
-        color: "$accessbile",
+        color: "$accessible",
       }}
     >
-      Accessbile color on target background
+      Accessible color on target background
     </Box>
   </Box>
 </Container>
@@ -426,8 +422,7 @@ theme you are using it will be the most accessbile color against the target back
 ## Tokens
 
 All color tokens are calculated based on the base color and contrast of the target background
-theme (i.e. light or dark background). The result is the ability to design and assign color 1
-time and allow the pairing color value in dark to handle what an element should look like in dark.
+theme.
 
 ### Grays
 

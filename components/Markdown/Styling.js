@@ -4,7 +4,7 @@
  */
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
-import { styled, Box } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
 import Sandbox from "./Components/Sandbox";
@@ -18,19 +18,11 @@ const HR = styled("hr", {
   margin: "$100 0",
 });
 export const P = styled("p", {
-  fontSize: "$100",
-  paddingBottom: "$050",
-  color: "$accessible",
-  fontFamily: "$meta",
-  fontWeight: "$light",
-
-  variants: {
-    small: {
-      true: {
-        fontSize: "$075",
-      },
-    },
-  },
+	fontSize: "$100",
+	paddingBottom: "$050",
+	color: theme.colors.accessible,
+	fontFamily: "$meta",
+	fontWeight: "$light",
 });
 
 export const BR = styled("div", {

@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
@@ -26,7 +26,7 @@ const components = {
 };
 
 const P = styled("p", {
-  color: "$accessible",
+	color: theme.colors.accessible,
 });
 
 export default function Page({ current, source, headings }) {

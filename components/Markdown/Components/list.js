@@ -31,12 +31,12 @@ export const ListItem = styled("li", {
   },
 });
 export const LinkText = styled("span", {
-  color: "$accessible",
-  textDecoration: "underline",
-  "&:focus": {
-    outlineColor: "$signal",
-    outlineStyle: "solid",
-    outlineOffset: "2px",
-    outlineWidth: "2px",
-  },
+	color: theme.colors.accessible,
+	textDecoration: "underline",
+	"&:focus": {
+		outlineColor: "$signal",
+		outlineStyle: "solid",
+		outlineOffset: "2px",
+		outlineWidth: "2px",
+	},
 });

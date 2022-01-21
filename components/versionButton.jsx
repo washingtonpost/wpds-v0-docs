@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { styled, keyframes } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme, keyframes } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 
 export default function VersionButton({ setState, css }) {
@@ -11,7 +11,7 @@ export default function VersionButton({ setState, css }) {
   const Button = styled("button", {
     fontFamily: "$meta",
     fontSize: "$087",
-    color: "$accessible",
+    color: theme.colors.accessible,
     backgroundColor: "transparent",
     borderColor: "$gray200",
     borderStyle: "solid",

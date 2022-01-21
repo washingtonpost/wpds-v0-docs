@@ -64,10 +64,10 @@ const Grid = styled("section", {
 
 /** create a code example with a scrollbar */
 const CodeExample = styled("pre", {
-  overflow: "auto",
-  color: "$accessible",
-  fontSize: "$087",
-  lineHeight: "$125"
+	overflow: "auto",
+	color: theme.colors.accessible,
+	fontSize: "$087",
+	lineHeight: "$125",
 });
 
 /** create a component that lets the user copy a code example to their clipboard */
@@ -113,9 +113,9 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
 };
 
 const P = styled("p", {
-  fontSize: "$100",
-  paddingBottom: "$050",
-  color: "$accessible"
+	fontSize: "$100",
+	paddingBottom: "$050",
+	color: theme.colors.accessible,
 });
 
 const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";

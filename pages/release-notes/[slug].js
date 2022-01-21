@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
 import MDXStyling from "~/components/Markdown/Styling";
-import { styled, Box } from "@washingtonpost/wpds-ui-kit";
+import { styled, Box, theme } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import {
   getDocByPathName,
@@ -50,7 +50,7 @@ const components = {
 const Description = styled("h2", {
   fontSize: "$150",
   lineHeight: "$150",
-  color: "$accessible",
+  color: theme.colors.accessible,
   fontWeight: "normal",
   marginBottom: "$100",
 });
