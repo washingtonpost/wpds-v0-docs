@@ -1,0 +1,41 @@
+---
+title: "What are design tokens?"
+sidebar_position: 1
+---
+
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+
+
+#
+
+***
+## Introduction to tokens
+Design tokens are all the values needed to construct and maintain a design system — spacing, color, 
+typography, object styles, animation, etc. — represented as data. These can represent anything defined 
+by design: color as an RGB value, an opacity as a number, animation ease as Bezier coordinates. 
+
+They’re used in place of hard-coded values to ensure flexibility and unity across all product experiences.
+This allows for better-shared control between designers and engineers. Another benefit of using tokens 
+is that platforms that do not support WPDS react components are still aligned with the design system at a 
+super foundational level.
+
+<Container className="mb-xl" Caption="Image illustrates how non-supported platforms can adopt WDPS token values">
+    <img width="80%" src="/img/tokens/simple-tree.png"/>
+</Container>
+
+***
+## Token Types
+Tokens can be anything that can be represented as a value. We currently support seven token types.
+[Colors](../our-tokens/color) [Icons](../our-tokens/icons) [Typography](../our-tokens/typography) 
+[Spacing](../our-tokens/spacing) [Logos](../our-tokens/spacing) [Shadows](../our-tokens/shadows) 
+[Motion](../our-tokens/motion). These tokens make up our entire system foundation.
+
+<Container className="mb-xl" Caption="Example of tokens used in a our button component">
+    <img width="80%" src="/img/tokens/example.png"/>
+</Container>

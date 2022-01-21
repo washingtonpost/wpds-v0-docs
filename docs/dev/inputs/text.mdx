@@ -1,0 +1,137 @@
+--- 
+title: Text 
+---
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+import ApiTable from "../../../documentation-kit/apiTable"
+
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+An accordion is a container that contains a header and a body that is revealed/hidden when toggled. When more than one accordion is used, it stacks vertically with no spacing.
+</p>
+
+<Container className="pa-md">
+<Input
+  handleInput={function noRefCheck(){}}
+  helperMessage="Helper text displays here."
+  labelText="Label text"
+  name="label-text"
+  onBlur={function noRefCheck(){}}
+  onFocus={function noRefCheck(){}}
+  size="default"
+  type="text"
+/>
+</Container>
+
+<Tabs isDesignDoc={false} relatedUrl="design/inputs/text"/>
+
+## Example
+<Container className="pa-sm">
+  <Input
+    handleInput={function s(){}}
+    helperMessage="Helper text displays here."
+    id="boop"
+    labelText="Label text"
+    name="label-text"
+    onBlur={function s(){}}
+    onFocus={function s(){}}
+    size="default"
+    type="text"
+  />
+</Container>
+
+```jsx
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<Input
+  handleInput={function s(){}}
+  helperMessage="Helper text displays here."
+  id="boop"
+  labelText="Label text"
+  name="label-text"
+  onBlur={function s(){}}
+  onFocus={function s(){}}
+  size="default"
+  type="text"
+/>
+```
+
+---
+## Error state
+<Container className="pa-sm">
+<Input
+  errorMessage={<p className="red"><span className="red">Email not verified.{' '}</span></p>}
+  helperMessage={null}
+  isValid={false}
+  id="boop"
+  labelText="Label text"
+  name="label-text"
+  onBlur={function s(){}}
+  onFocus={function s(){}}
+  size="default"
+  type="text"
+  value="This is sample copy."
+/>
+</Container>
+
+```jsx
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<Input
+  errorMessage={<p>Email not verified.</p>}
+  helperMessage={null}
+  id="boop"
+  isValid={false}
+  labelText="Label text"
+  name="label-text"
+  onBlur={function s(){}}
+  onFocus={function s(){}}
+  size="default"
+  type="text"
+  value="This is sample copy."
+/>
+```
+
+---
+## Disabled
+<Container className="pa-sm">
+<Input
+  disabled={true}
+  helperMessage={null}
+  id="boop"
+  labelText="Label text"
+  name="label-text"
+  onBlur={function s(){}}
+  onFocus={function s(){}}
+  size="default"
+  type="text"
+  value="This is sample copy."
+/>
+</Container>
+
+```jsx
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<Input
+  disabled={true}
+  helperMessage={null}
+  id="boop"
+  labelText="Label text"
+  name="label-text"
+  onBlur={function s(){}}
+  onFocus={function s(){}}
+  size="default"
+  type="text"
+  value="This is sample copy."
+/>
+```
+---
+## Component Api
+<ApiTable componentName="input"/>

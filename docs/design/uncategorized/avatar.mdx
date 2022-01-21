@@ -1,0 +1,207 @@
+---
+title: Avatar
+sidebar_position: 2
+---
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner"
+
+import { Avatar, AvatarGroup } from "@washingtonpost/site-components/core/avatar"
+
+# Avatar
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+An avatar is an image that represents a person. At The Washington Post we 
+present avatars as  circular photographs which represent individual contributors 
+such as reporters and columnists.
+</p>
+
+<!-- Live Example of component import live component above-->
+
+<Container Caption="Image of sully">
+   <Avatar imgUrl="/img/design/avatar/profile.png"/>
+</Container>
+
+<!-- Tabs between design & implementation change path if -->
+<Tabs isDesignDoc={true} relatedUrl="dev/uncategorized/avatar"/>
+
+<!-- Anatomy section export image from Figma and import into here -->
+## Anatomy
+<Container>
+  <img width="100%" style={{maxWidth:'60px'}} height="auto" src='/img/design/avatar/anatomy.svg'/>
+</Container>
+
+
+#### Legend
+
+1. Image container
+
+***
+## Options
+
+<div className="mt-lg mb-sm">
+
+### Sizes
+There are three sizes available for the avatar `small` `medium` & `large`.
+
+</div>
+<Container className="flex-wrap pa-sm">
+    <Avatar size="small" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="medium" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    <Avatar size="large" className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+</Container>
+
+
+<div className="mt-lg mb-sm">
+
+### Group sizing
+`medium` & `small` avatars may be grouped. When the number of avatars exceeds three, the remaining ones may be truncated and hidden from view. 
+The truncated avatars are represented by a plus sign followed by the quantity. 
+
+</div>
+<Container className="flex-column pa-sm">
+    <AvatarGroup size="medium">
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+    <AvatarGroup size="small">
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xxs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+
+
+<div className="mt-lg mb-sm">
+
+### Show All
+When avatars are in a group, the option to show all can be toggled to reveal all avatars in a group. 
+
+</div>
+<Container className="flex-column pa-sm">
+    <AvatarGroup showAll={false} size="medium">
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+    <AvatarGroup showAll={true} className="flex-wrap" size="medium">
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+        <Avatar className="mr-xs" imgUrl="/img/design/avatar/profile.png"/>
+    </AvatarGroup>
+</Container>
+
+
+<!-- ***
+## Behavior
+
+<Grid>
+  <Container className="flex-column pa-sm">
+      <AlertBanner type="warning">Skeleton Behavior in the works</AlertBanner>
+
+  </Container>
+<div>
+
+##### Title
+Markdown paragraph
+
+</div>
+</Grid> -->
+
+***
+## Usage guidelines
+
+<!-- Start of a guide -->
+<div className="mt-lg mb-sm">
+
+### Improper aspect ratio
+The image in the avatar needs a 1:1 aspect ratio to round out properly. When using the wrong 
+aspect ratio, the avatar shape comes out wrong.
+
+</div>
+<Guide guidance="don't">
+  <Avatar size="large" imgUrl="/img/design/avatar/badprofile.png"/>
+</Guide>
+
+
+
+<div className="mt-lg mb-sm">
+
+### Must be a single profile
+The avatar should not be used to display a photo that has more than one subject. 
+
+</div>
+<Guide guidance="don't">
+  <Avatar size="large" imgUrl="/img/design/avatar/squarebad.png"/>
+</Guide>
+
+
+
+
+***
+## Specs
+
+<div className="mt-lg mb-sm">
+
+### Size
+1. Extra Large - 180px
+2. Large - 92px
+3. Medium - 56px
+4. Small - 32px
+
+</div>
+<Container Caption="measured in pixel" className="flex-column pa-sm">
+     <img src="/img/design/avatar/specs.svg"/>
+</Container>
+
+
+<div className="mt-lg mb-sm">
+
+### Size
+Spacing between group avatars depends on the size of the group. 
+`Medium avatars: 8px` & `Small avatars: 4px`
+
+</div>
+<Container Caption="measured in pixel" className="flex-column pa-sm">
+     <img src="/img/design/avatar/spacing.svg"/>
+</Container>
+
+
+
+***
+## Component Checklist
+
+<Checklist
+accessiblity={true} 
+states={true}
+specs={true} 
+themes={true}
+options={true}
+behavior={true}
+uiComponent={true}
+screenSize={true}
+homePage={true}
+apps={true}
+keyboard={true}
+tokens={true}
+webVitals={true}
+/>
+

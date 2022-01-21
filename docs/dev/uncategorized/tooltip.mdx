@@ -1,0 +1,148 @@
+---
+title: Tooltip
+---
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+import ApiTable from "../../../documentation-kit/apiTable";
+
+import {Tooltip} from "@washingtonpost/site-components/core/tooltip"
+import {GridSet} from "../../../example-components/tooltipGrid";
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+import { BookmarkOutline16 } from "@washingtonpost/site-components/core/icon/bookmark-outline/16";
+
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+Non-actionable UI element that only contains text and does 
+not require the user to take action but serves only to 
+inform the user before taking action, contextualizing an action or label/icon, but when 
+used as a Popover, the element takes on a more persistent appearance and allows the user to take
+action on the content inside of the popover.
+</p>
+
+
+<!-- Live Example of component import live component above-->
+
+<Container className="pa-sm">
+    <Tooltip id="tooltip" content={<div className='pa-sm'>A simple tooltip</div>}>
+      <div>
+        Hover over me
+      </div>
+    </Tooltip>
+</Container>
+
+<Tabs isDesignDoc={false} relatedUrl="design/uncategorized/tooltip"/>
+
+## Tooltip
+<Container className="pa-sm">
+    <Tooltip id="tooltip" content={<div className='pa-sm'>A simple tooltip</div>}>
+      <div>
+        Hover over me
+      </div>
+    </Tooltip>
+</Container>
+
+```jsx
+import {Tooltip} from "@washingtonpost/site-components/core/tooltip"
+
+<Tooltip id="tooltip" content={<div className='pa-sm'>A simple tooltip</div>}>
+    <div>
+        Hover over me
+    </div>
+</Tooltip>
+```
+
+---
+## As Popover
+<Container className="pa-sm">
+    <Tooltip asPopOver={true} id="tooltip" content={<div className='pa-sm'>A simple Popover</div>}>
+      <div>
+        Click me
+      </div>
+    </Tooltip>
+</Container>
+
+```jsx
+import {Tooltip} from "@washingtonpost/site-components/core/tooltip"
+
+<Tooltip asPopOver={true} id="tooltip" content={<div className='pa-sm'>A simple Popover</div>}>
+    <div>
+        Click me
+    </div>
+</Tooltip>
+```
+
+## Placement
+<Container className="pa-sm flex-wrap">
+        <div className="mt-sm ml-sm mr-sm">
+            <Tooltip id="tooltip" placement="top" content={<div className='pa-sm'>Top</div>}>
+                <div>
+                    Top
+                </div>
+            </Tooltip>
+        </div>
+        <div className="ma-sm">
+            <Tooltip id="tooltip" placement="bottom" content={<div className='pa-sm'>Bottom</div>}>
+                <div>
+                    Bottom
+                </div>
+            </Tooltip>
+        </div>
+        <div className="ma-sm">
+            <Tooltip id="tooltip" placement="left" content={<div className='pa-sm'>Left</div>}>
+                <div>
+                    Left
+                </div>
+            </Tooltip>
+        </div>
+        <div className="ma-sm">
+            <Tooltip id="tooltip" placement="right" content={<div className='pa-sm'>Right</div>}>
+                <div>
+                    Right
+                </div>
+            </Tooltip>
+        </div>
+</Container>
+
+```jsx
+import {Tooltip} from "@washingtonpost/site-components/core/tooltip"
+
+<div className="mt-sm ml-sm mr-sm">
+    <Tooltip id="tooltip" placement="top" content={<div className='pa-sm'>Top</div>}>
+        <div>
+            Top
+        </div>
+    </Tooltip>
+</div>
+<div className="ma-sm">
+    <Tooltip id="tooltip" placement="bottom" content={<div className='pa-sm'>Bottom</div>}>
+        <div>
+            Bottom
+        </div>
+    </Tooltip>
+</div>
+<div className="ma-sm">
+    <Tooltip id="tooltip" placement="left" content={<div className='pa-sm'>Left</div>}>
+        <div>
+            Left
+        </div>
+    </Tooltip>
+</div>
+<div className="ma-sm">
+    <Tooltip id="tooltip" placement="right" content={<div className='pa-sm'>Right</div>}>
+        <div>
+            Right
+        </div>
+    </Tooltip>
+</div>
+```
+
+---
+## Component Api
+<ApiTable componentName="tooltip"/>
+

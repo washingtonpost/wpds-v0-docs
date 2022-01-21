@@ -1,0 +1,348 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+@import "@washingtonpost/site-components/css/index.css";
+@font-face {
+  font-family: Postoni;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/PostoniWide-Bold.woff2);
+}
+@font-face {
+  font-family: Postoni;
+  font-weight: 300;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/PostoniWide-Regular.woff2);
+}
+
+@font-face {
+  font-family: Franklin;
+  font-weight: 700;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/ITC_Franklin-Bold.woff2);
+}
+@font-face {
+  font-family: Franklin;
+  font-weight: 300;
+  font-display: fallback;
+  src: url(https://www.washingtonpost.com/wp-stat/assets/fonts/ITC_Franklin-Light.woff2);
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #666666;
+  --ifm-color-primary-dark: #666666;
+  --ifm-color-primary-darker: #333333;
+  --ifm-color-primary-darkest: #2a2a2a;
+  --ifm-color-primary-light: #f7f7f7;
+  --ifm-color-primary-lighter: #eff5ff;
+  --ifm-color-primary-lightest: #e9e9e9;
+  --ifm-color-secondary-dark: #d4d5d8;
+  --ifm-color-secondary-darker: #c8c9cc;
+  --ifm-color-secondary-darkest: #a4a6a8;
+  --ifm-color-secondary-light: #eef0f2;
+  --ifm-color-secondary-lighter: #f1f2f5;
+  --ifm-color-secondary-lightest: #f5f6f8;
+  --ifm-code-font-size: 80%;
+  --ifm-padding-top: 24px;
+  --ifm-navbar-background-color: var(--offwhite);
+  --ifm-navbar-link-color: var(--offblack);
+  --ifm-navbar-link-active-color: var(--gray);
+  --ifm-link-color: var(--offblack);
+  --ifm-footer-background-color: var(--offwhite);
+  --font-headline: Postoni, garamond, serif;
+  --font-sans-serif: Franklin, arial, sans-serif;
+  --ifm-list-item-margin: 0px;
+}
+
+[class*="docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"]
+  article
+  *:first-child,
+[class*="docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module"]
+  header
+  + * {
+  margin-top: 0px !important;
+}
+
+h2 {
+  font-size: var(--md);
+}
+
+.minimize svg {
+  height: 150px;
+}
+.square svg {
+  width: 100%;
+}
+/* NAV BAR CLASSES */
+.navbar__link {
+  font-weight: var(--font-weight-light);
+  color: var(--gray-dark);
+  font-size: var(--font-size-xsmall);
+}
+.navbar__link:hover {
+  color: var(--offblack);
+  font-size: var(--font-size-xsmall);
+}
+/* navbar active */
+.navbar__link--active {
+  font-weight: var(--font-weight-medium);
+  color: var(--offblack);
+  font-size: var(--font-size-xsmall);
+}
+.navbar__item.navbar__link.navbar__link--active.navbar__link--active,
+.navbar__link--active {
+  color: var(--offblack);
+}
+.navbar__link--active:hover {
+  color: var(--offblack);
+}
+.navbar__title {
+  font-weight: var(--font-weight-light);
+}
+
+.navbar__toggle {
+  color: var(--offblack);
+}
+.navbar__brand:hover {
+  color: var(--gray-dark);
+}
+.dropdown__menu .dropdown__link a.dropdown__link--active {
+  color: black;
+}
+.dropdown__link--active,
+.dropdown__link--active:hover {
+  --ifm-dropdown-link-color: black;
+}
+
+/* SIDE BAR CONTAINER */
+aside.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage-styles-module {
+  background-color: var(--offwhite);
+  border-right: none;
+}
+.navbar-sidebar__items {
+  background-color: var(--offwhite);
+  border-right: none;
+}
+.navbar-sidebar__item.navbar-sidebar__item--secondary.menu {
+  background-color: var(--offwhite);
+  border-right: none;
+}
+.navbar__link--active {
+  font-weight: var(--font-weight-heavy);
+  color: var(--offblack);
+}
+.navbar__link--active:hover {
+  font-weight: var(--font-weight-heavy);
+  color: var(--offblack);
+}
+
+/* side bar menu */
+nav.menu {
+  padding-top: var(--md);
+  font-weight: var(--font-weight-light);
+  color: var(--gray-darkest);
+}
+/* sidebar active link */
+nav.menu .active {
+  font-weight: var(--font-weight-heavy);
+  color: var(--offblack);
+  padding-left: var(--xs);
+}
+.menu__link--active:not(.menu__link--sublist) {
+  font-weight: var(--font-weight-heavy);
+  color: var(--offblack);
+  padding-left: var(--xs);
+}
+
+/* Side bar category label */
+a:not([href]).menu__link {
+  font-weight: var(--font-weight-heavy);
+  color: var(--offblack);
+}
+.menu__link:hover {
+  text-decoration: none;
+}
+a:not([href]).menu__link:hover {
+  user-select: none;
+  background: none;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+li ul.menu__list li a {
+  padding-left: 0px;
+  font-size: 16px;
+}
+
+.navbar-sidebar {
+  background-color: var(--offwhite);
+}
+.navbar-sidebar__brand {
+  background-color: var(--offwhite);
+}
+.navbar-sidebar__brand button svg {
+  fill: var(--gray-light);
+}
+
+/* CODE */
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme="dark"] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* FOOTER */
+.footer {
+  padding: 8px 0px;
+}
+
+/* MARKDOWN */
+.docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module
+  article
+  *:first-child,
+.docItemContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocItem-styles-module
+  header
+  + * {
+  margin-top: 64px;
+}
+/* Headers */
+div.markdown header h1 {
+  font-family: var(--font-headline);
+  margin-bottom: var(--xs);
+}
+div.markdown header h1 span {
+  margin-top: var(--xs);
+}
+div.markdown h2 {
+  font-family: var(--font-headline);
+  margin-bottom: var(--sm);
+  margin-top: var(--xs);
+  font-size: var(--lg);
+}
+div.markdown h3 {
+  font-family: var(--font-meta);
+  margin-bottom: var(--xs);
+  margin-top: var(--xs);
+  font-size: var(--sm);
+}
+
+div.markdown h4,
+div.markdown h5,
+div.markdown h6 {
+  font-weight: var(--font-weight-heavy);
+  margin-bottom: var(--xs);
+  margin-top: var(--xs);
+}
+
+/* Dividers */
+div.markdown hr {
+  margin-bottom: 4px;
+  border-color: var(--offblack);
+}
+
+/* Paragraph */
+div.markdown p {
+  color: var(--gray-dark);
+  line-height: var(--line-height-medium);
+}
+div.markdown p a {
+  color: var(--subs-blue-dark);
+  text-decoration: underline;
+}
+
+/* Lists */
+div.markdown ol {
+  padding-left: var(--md);
+}
+div.markdown ol li {
+  line-height: var(--md);
+}
+
+/* Anchors */
+.hash-link {
+  display: none;
+}
+
+/* Utility classes */
+.grid-split {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 16px;
+  align-items: center;
+}
+.grid-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 16px;
+  row-gap: 32px;
+}
+
+.row-gap {
+  row-gap: var(--sm);
+}
+
+.annotation-border {
+  border: 1px dashed #94538c;
+}
+.dn-sm {
+  display: inherit;
+}
+
+.api-table {
+  width: 100%;
+}
+.api-table tr {
+  font-size: var(--sm);
+  font-weight: var(--font-weight-medium);
+}
+.token-grid {
+  display: grid;
+  margin: 0, auto;
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 32px;
+}
+@media screen and (max-width: 600px) {
+  .token-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .color-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 16px;
+  }
+}
+@media screen and (max-width: 966px) {
+  .flex_center_sm {
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 32px;
+  }
+  .dn-sm {
+    display: none;
+  }
+  .grid-split {
+    display: grid;
+    grid-template-columns: 100%;
+    column-gap: 0px;
+    row-gap: 16px;
+    align-items: center;
+  }
+}

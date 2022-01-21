@@ -1,0 +1,164 @@
+---
+title: Button
+sidebar_position: 4
+---
+
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import ApiTable from "../../../documentation-kit/apiTable";
+
+import { ArrowLeft16 } from "@washingtonpost/site-components/core/icon/arrow-left/16";
+import { ArrowRight16 } from "@washingtonpost/site-components/core/icon/arrow-right/16";
+
+# Buttons
+
+<!-- Description of component -->
+
+Buttons allow users to perform an action with a single tap. 
+Buttons also serve as way for a call to action. 
+
+<!-- Live Example of component import live component above-->
+
+import { Button } from "@washingtonpost/site-components/core/button";
+import { Input } from "@washingtonpost/site-components/core/input";
+
+<Container className="flex-wrap pa-xxs">
+  <Button className="mr-sm"  color="white" >
+    Button White
+  </Button>
+  <Button  color="offblack" >
+    Button Offblack
+  </Button>
+  <Button className="ml-sm"  color="subs-blue" >
+    Button Subs blue
+  </Button>
+</Container>
+
+<!-- Tabs between design & implementation -->
+<Tabs isDesignDoc={false} relatedUrl="design/uncategorized/button"/>
+
+## Color
+The available colors are listed in the Component Api table below.
+
+<Container className="flex-wrap pa-xxs">
+  <Button className="mr-sm"  color="white" >
+    Button White
+  </Button>
+  <Button  color="offblack" >
+    Button Offblack
+  </Button>
+  <Button className="ml-sm"  color="subs-blue" >
+    Button Subs blue
+  </Button>
+</Container>
+
+```jsx
+import { Button } from "@washingtonpost/site-components/core/button";
+
+export default function MyLandingPage() {
+  return (
+    <Button className="mr-sm"  color="white" >
+      Button White
+    </Button>
+    <Button  color="offblack" >
+      Button Offblack
+    </Button>
+    <Button className="ml-sm"  color="subs-blue" >
+      Button Subs blue
+    </Button>
+  );
+}
+```
+
+## Height (Size)
+
+<Container className="flex-column">
+  <Button size="small" color="subs-blue" >
+    Small
+  </Button>
+  <Button  color="subs-blue" >
+    Default
+  </Button>
+  <Button size="large" secondLine="Second line"   color="subs-blue" >
+    Large
+  </Button>
+</Container>
+
+```jsx
+import { Button } from "@washingtonpost/site-components/core/button";
+
+export default function MyLandingPage() {
+  return (
+    <Button size="small" color="subs-blue" >
+      Small
+    </Button>
+    <Button  color="subs-blue" >
+      Default
+    </Button>
+
+    //Large buttons only to be used on subscriptions see design tab
+    <Button size="large" secondLine="Second line"  color="subs-blue" >
+      Large
+    </Button>
+  );
+}
+```
+
+## Width
+
+<Container className="flex-column pa-sm">
+  <Button color="subs-blue">
+    Default width
+  </Button>
+  <Button  color="subs-blue" fullWidth={true} >
+    Full width
+  </Button>
+</Container>
+
+```jsx
+import { Button } from "@washingtonpost/site-components/core/button";
+
+export default function MyLandingPage() {
+  return (
+    <Button w color="subs-blue">
+      Small
+    </Button>
+    <Button  color="subs-blue" fullWidth={true} >
+      Default
+    </Button>
+  );
+}
+```
+
+## Icon placement
+<Container>
+  <Button renderIcon={ArrowLeft16} color="white" iconPlacement="left">
+    To the left. To the left.
+  </Button>
+  <Button renderIcon={ArrowRight16} color="white" iconPlacement="right">
+    I’m all right
+  </Button>
+</Container>
+
+```jsx
+import { Button } from "@washingtonpost/site-components/core/button";
+
+export default function MyLandingPage() {
+  return (
+    <Button renderIcon={ArrowLeft16} color="white" iconPlacement="left">
+      To the left. To the left.
+    </Button>
+    <Button renderIcon={ArrowRight16} color="white" iconPlacement="right">
+      I’m all right
+    </Button>
+  );
+}
+```
+---
+## Component Api
+
+<ApiTable componentName="button"/>

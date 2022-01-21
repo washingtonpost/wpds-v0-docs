@@ -1,0 +1,114 @@
+--- 
+title: Select 
+---
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+import ApiTable from "../../../documentation-kit/apiTable"
+
+import {PinkThings,MonthExample,SelectExample,ErrorExample,DisabledExample} from  '../../../example-components/select_example'
+import {
+    Select,
+    SelectOption
+} from "@washingtonpost/site-components/core/select";
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+An accordion is a container that contains a header and a body that is revealed/hidden when toggled. When more than one accordion is used, it stacks vertically with no spacing.
+</p>
+
+<Container className="pa-sm">
+    <SelectExample/>
+</Container>
+
+<Tabs isDesignDoc={false} relatedUrl="design/inputs/select"/>
+
+## Requirements
+We built Select using react-aria library https://react-spectrum.adobe.com/react-aria/useSelect.html
+
+React Aria requires applications to be wrapped in their SSRProvider. This ensures that auto generated ids are consistent between client and server. https://react-spectrum.adobe.com/react-aria/SSRProvider.html. Here's an example of it. You can read more about their server side rendering implementation here. https://react-spectrum.adobe.com/react-aria/ssr.html
+
+```
+import {SSRProvider} from '@react-aria/ssr';
+
+<SSRProvider>
+ <YourApp />
+</SSRProvider>
+```
+
+The following peer deps should be installed:
+
+- [@react-stately/select](https://react-spectrum.adobe.com/react-stately/useSelectState.html)
+- [@react-aria/select](https://react-spectrum.adobe.com/react-aria/useSelect.html)
+- [@react-aria/listbox](https://react-spectrum.adobe.com/react-aria/useListBox.html)
+- [@react-aria/utils](https://react-spectrum.adobe.com/react-aria/mergeProps.html)
+- [@react-aria/button](https://react-spectrum.adobe.com/react-aria/useButton.html)
+- [@react-aria/interactions](https://react-spectrum.adobe.com/react-aria/useFocus.html)
+- [@react-aria/focus](https://react-spectrum.adobe.com/react-aria/FocusRing.html)
+- [@react-aria/overlays](https://react-spectrum.adobe.com/react-aria/DismissButton.html)
+- [@react-stately/collections](https://react-spectrum.adobe.com/react-aria/useListBox.html)
+
+```sh
+npm i @react-stately/select @react-aria/select @react-aria/listbox @react-aria/utils @react-aria/button @react-aria/interactions @react-aria/focus @react-aria/overlays @react-stately/collections
+```
+
+## Coded Example
+
+<Container className="flex-column pa-sm">
+    <SelectExample/>
+</Container>
+
+``` jsx
+
+<Select label="Label text">
+    <SelectOption>Sample Option #1</SelectOption>
+    <SelectOption>Sample Option #2</SelectOption>
+    <SelectOption>Sample Option #3</SelectOption>
+    <SelectOption>Sample Option #4</SelectOption>
+    <SelectOption>Sample Option #5</SelectOption>
+    <SelectOption>Sample Option #6</SelectOption>
+</Select>
+```
+---
+## Error State
+
+<Container className="flex-column pa-sm">
+    <ErrorExample/>
+</Container>
+
+``` jsx
+
+<Select errorMessage="Please select a country" isValid={false} label="Label text">
+    <SelectOption>Sample Option #1</SelectOption>
+    <SelectOption>Sample Option #2</SelectOption>
+    <SelectOption>Sample Option #3</SelectOption>
+    <SelectOption>Sample Option #4</SelectOption>
+    <SelectOption>Sample Option #5</SelectOption>
+    <SelectOption>Sample Option #6</SelectOption>
+</Select>
+```
+---
+## Disabled State
+
+<Container className="flex-column pa-sm">
+    <DisabledExample/>
+</Container>
+
+``` jsx
+<Select isDisabled={true} label="Label text">
+    <SelectOption>Sample Option #1</SelectOption>
+    <SelectOption>Sample Option #2</SelectOption>
+    <SelectOption>Sample Option #3</SelectOption>
+    <SelectOption>Sample Option #4</SelectOption>
+    <SelectOption>Sample Option #5</SelectOption>
+    <SelectOption>Sample Option #6</SelectOption>
+</Select>
+```
+
+---
+## Component Api
+<ApiTable componentName="select"/>

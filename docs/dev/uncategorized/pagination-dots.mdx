@@ -1,0 +1,58 @@
+--- 
+title: Pagination Dots 
+---
+
+ 
+import Tabs from "../../../documentation-kit/tabs";
+import Grid from "../../../documentation-kit/splitGrid";
+import Container from "../../../documentation-kit/sampleContainer";
+import Guide from "../../../documentation-kit/guide";
+import Checklist from "../../../documentation-kit/checklist";
+import AlertBanner from "../../../documentation-kit/alertBanner";
+import ApiTable from "../../../documentation-kit/apiTable";
+
+import {PaginationDots} from "@washingtonpost/site-components/core/pagination-dots/"
+import { ButtonIcon } from "@washingtonpost/site-components/core/button-icon";
+import { ChevronLeft16 } from "@washingtonpost/site-components/core/icon/chevron-left/16"
+import { ChevronRight16 } from "@washingtonpost/site-components/core/icon/chevron-right/16"
+import {DefaultExample, CardExample,LessThan4Example,LessThan5Example} from "../../../example-components/pagination_example"
+import { Card } from "@washingtonpost/site-components/core/card";
+
+
+
+<!-- Description of component -->
+<p className="font-xs font-light font--subhead">
+Pagination reflects the user's progress through a set of steps, e.g. 
+pages in a carousel or steps in a multi-step form. The "active" dot is darker and larger than the others, with steps further away decreasing in size.
+</p>
+
+<!-- Live Example of component import live component above-->
+
+<Container className="pa-sm">
+    <PaginationDots
+    className="mt-sm"
+    current={1}
+    label="Dots progress example"
+    total={10}
+    unitName="step"
+    />
+</Container>
+
+<Tabs relatedUrl="design/uncategorized/pagination-dots"/>
+
+## Example 
+```jsx
+export const Dots = () => {
+const [current, setCurrent] = React.useState(1);
+const total = 10;
+
+// ... code for updating `current` state
+return <PaginationDots current={0} total={10} />
+}
+```
+
+
+---
+## Component Api
+
+<ApiTable componentName="paginationdots"/>
