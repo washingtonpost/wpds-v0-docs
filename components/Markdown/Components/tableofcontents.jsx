@@ -14,12 +14,44 @@ const List = styled("ul", {
 const ListItem = styled("li", {
   cursor: "pointer",
   padding: "$025 0",
-
   listStyle: "none",
+  color: "$accessible",
+
+  variants: {
+    label: {
+      Added: { color: "$green80", background: "$green300" },
+      Updates: { color: "$blue80", background: "$blue300" },
+      Fixes: { color: "$red80", background: "$red300" },
+    },
+    level: {
+      2: {
+        border: "1px solid currentColor",
+        display: "inline-block",
+        px: "$050",
+        borderRadius: "$025",
+        fontFamily: "$meta",
+        fontSize: "$100",
+        fontWeight: "$light",
+        lineHeight: "auto",
+        marginTop: "$100",
+        marginBottom: "$050",
+
+        a: {
+          border: "none",
+        },
+      },
+      3: {
+        fontFamily: "$meta",
+        fontSize: "$110",
+      },
+    },
+  },
 });
 const LinkText = styled("a", {
-  color: "$accessible",
-  textDecoration: "underline",
+  color: "currentColor",
+  textDecoration: "none",
+  borderBottom: "1px solid currentColor",
+
   "&:focus": {
     outlineColor: "$signal",
     outlineStyle: "solid",
@@ -28,15 +60,15 @@ const LinkText = styled("a", {
   },
 });
 
-const Item = ({ children, as, href }) => (
-  <ListItem>
+const Item = ({ children, level, label, as, href }) => (
+  <ListItem level={level} label={label}>
     <Link passHref as={as} href={href}>
       <LinkText>{children}</LinkText>
     </Link>
   </ListItem>
 );
 
-export default function tableofcontents({ current, headings }) {
+export default function TableOfContents({ headings }) {
   return (
     <Container>
       <Header css={{ margin: "0 $025" }} as="h2">
@@ -46,11 +78,7 @@ export default function tableofcontents({ current, headings }) {
         {headings.map(
           (heading, i) =>
             heading.level === 2 && (
-              <Item
-                key={i}
-                as={`/components/${current}#${heading.label}`}
-                href={`/components/[slug]#${heading.label}`}
-              >
+              <Item key={i} as={`#${heading.label}`} href={`#${heading.label}`}>
                 {heading.label}
               </Item>
             )

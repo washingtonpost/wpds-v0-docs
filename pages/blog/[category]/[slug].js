@@ -12,19 +12,8 @@ const Slash = styled("span", {
 
 const SECTION = "blog";
 
-const CategoryHeader = styled("h4", {
-  borderRadius: "$025",
-  display: "inline-flex",
-  backgroundColor: "$green300",
-  border: "1px solid currentColor",
-  padding: "$025 $050",
-  color: "$green50",
-  fontWeight: "normal",
-});
-
 const components = {
   ...MDXStyling,
-  CategoryHeader,
 };
 
 export default function Page({ source }) {
@@ -55,7 +44,7 @@ export default function Page({ source }) {
           </CustomLink>
           <Slash aria-hidden="true">/</Slash>
           <CustomLink
-            href="/blog"
+            href={"/blog/" + source.scope.kicker.toLowerCase()}
             css={{
               fontFamily: "$meta",
               fontSize: "$100",

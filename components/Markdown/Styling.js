@@ -15,7 +15,7 @@ const HR = styled("hr", {
   backgroundColor: "$subtle",
   height: "1px",
   width: "100%",
-  margin: "$100 0"
+  margin: "$100 0",
 });
 export const P = styled("p", {
   fontSize: "$100",
@@ -27,19 +27,19 @@ export const P = styled("p", {
   variants: {
     small: {
       true: {
-        fontSize: "$075"
-      }
-    }
-  }
+        fontSize: "$075",
+      },
+    },
+  },
 });
 
 export const BR = styled("div", {
   paddingBottom: "$125",
   variants: {
     size: {
-      xl: { paddingBottom: "$225" }
-    }
-  }
+      xl: { paddingBottom: "$225" },
+    },
+  },
 });
 
 const components = {
@@ -82,8 +82,8 @@ const components = {
         marginBottom: "$100",
         overflowX: "auto",
         "@sm": {
-          width: "calc(100vw - $100 - $100)"
-        }
+          width: "calc(100vw - $100 - $100)",
+        },
       }}
     >
       {children}
@@ -96,7 +96,7 @@ const components = {
         css={{
           marginBottom: "$100",
           maxWidth: "100%",
-          width: "100%"
+          width: "100%",
         }}
       >
         <Sandbox withPreview={children.includes("// preview")}>
@@ -116,7 +116,7 @@ const components = {
     }
 
     return <input {...props} />;
-  }
+  },
 };
 
 export default components;
