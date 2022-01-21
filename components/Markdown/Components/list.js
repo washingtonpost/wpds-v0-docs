@@ -14,6 +14,7 @@ export const List = styled("ul", {
 });
 export const ListItem = styled("li", {
 	padding: "$025 0",
+	color: theme.colors.gray80,
 	"a:nth-child(n)": {
 		color: theme.colors.gray80,
 		textDecoration: "underline",
