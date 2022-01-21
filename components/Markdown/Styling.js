@@ -64,6 +64,7 @@ const components = {
 	TableOfContents: dynamic(() => import("./Components/tableofcontents")),
 	Container: dynamic(() => import("./Components/container")),
 	GuideContainer: dynamic(() => import("./Components/GuideContainer")),
+	InlineSVG: dynamic(() => import("./Components/inlineSVG")),
 	Box: Box,
 	pre: ({ children }) => (
 		<Box
