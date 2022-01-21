@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Header from "../../Typography/Headers";
 import * as Accordion from "@radix-ui/react-accordion";
 import ChevronDown from "@washingtonpost/wpds-assets/asset/chevron-down";
@@ -48,7 +48,7 @@ const AccordionHeader = styled(Header, {
 
 const AccordionChevron = styled(ChevronDown, {
 	height: 16,
-	fill: "$accessible",
+	fill: theme.colors.accessible,
 	justifySelf: "flex-end",
 	transition: "transform 300ms",
 	"[data-state=open] &": { transform: "rotate(180deg)" },
@@ -90,7 +90,7 @@ const CustomLink = styled("a", {
 	fontFamily: "$meta",
 	display: "block",
 	fontSize: "$100",
-	color: "$accessible",
+	color: theme.colors.accessible,
 	textDecoration: "none",
 	width: "100%",
 	borderLeft: "0 solid",

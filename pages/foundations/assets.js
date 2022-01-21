@@ -66,7 +66,7 @@ const Grid = styled("section", {
 /** create a code example with a scrollbar */
 const CodeExample = styled("pre", {
 	overflow: "auto",
-	color: "$accessbile",
+	color: theme.colors.accessible,
 	fontSize: "$087",
 	lineHeight: "$125",
 });
@@ -118,7 +118,7 @@ const CopyToClipboard = ({ codeToCopy, children }) => {
 const P = styled("p", {
 	fontSize: "$100",
 	paddingBottom: "$050",
-	color: "$accessible",
+	color: theme.colors.accessible,
 });
 
 const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";

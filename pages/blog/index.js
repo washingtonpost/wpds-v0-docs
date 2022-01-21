@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { getDocsListBySection, getNavigation } from "~/services";
-import { Box, Icon, styled } from "@washingtonpost/wpds-ui-kit";
+import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
 import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
@@ -28,7 +28,7 @@ const Divider = styled("hr", {
 });
 
 const CheveronForLink = styled(ChevronRight, {
-	fill: "$accessible",
+	fill: theme.colors.accessible,
 });
 
 export default function Page({ docs, latestDocs, collections }) {

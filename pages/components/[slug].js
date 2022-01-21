@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
@@ -16,7 +16,6 @@ import { default as EmbedControls } from "~/components/Markdown/Components/Embed
 import { default as EmbedStory } from "~/components/Markdown/Components/EmbedStory";
 import { default as CustomSandpack } from "~/components/Markdown/Components/Sandbox";
 
-
 const components = {
 	...MDXStyling,
 	EmbedStory,
@@ -27,7 +26,7 @@ const components = {
 };
 
 const P = styled("p", {
-	color: "$accessible",
+	color: theme.colors.accessible,
 });
 
 export default function Page({ current, source, headings }) {

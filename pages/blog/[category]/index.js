@@ -1,4 +1,4 @@
-import { styled, Box } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
 import Head from "next/head";
 import Header from "~/components/Typography/Headers";
 import CustomLink from "~/components/Typography/link";
@@ -12,7 +12,7 @@ const titleCase = (input) => {
 };
 
 const Slash = styled("span", {
-	color: "$accessible",
+	color: theme.colors.accessible,
 });
 
 const Masonry = styled("section", {
@@ -44,7 +44,7 @@ export default function Page({ docs, category }) {
 						fontWeight: "$light",
 
 						borderBottom: "1px solid currentColor",
-						color: "$accessible",
+						color: theme.colors.accessible,
 						marginRight: "$050",
 						marginBottom: "$050",
 					}}

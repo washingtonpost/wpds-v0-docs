@@ -31,7 +31,7 @@ export const ListItem = styled("li", {
 	},
 });
 export const LinkText = styled("span", {
-	color: "$accessible",
+	color: theme.colors.accessible,
 	textDecoration: "underline",
 	"&:focus": {
 		outlineColor: "$signal",
