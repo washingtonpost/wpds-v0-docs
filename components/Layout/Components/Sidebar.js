@@ -63,8 +63,7 @@ const SideBarList = styled("ul", {
 });
 
 const ListItem = styled("li", {
-  color: "$primary",
-  padding: "$050 $050 $050 $125",
+  color: "$accessible",
   cursor: "pointer",
   borderLeft: "4px solid",
   borderColor: "transparent",
@@ -77,7 +76,7 @@ const ListItem = styled("li", {
     isCurrent: {
       active: {
         boxSizing: "content-box",
-        color: "$primary",
+        color: "$onSecondary",
         borderLeft: "4px solid",
         borderColor: "$primary",
         backgroundColor: "$gray400",
@@ -96,11 +95,12 @@ const CustomLink = styled("a", {
   fontFamily: "$meta",
   display: "block",
   fontSize: "$100",
-  color: "$accessible",
+  color: "inherit",
   textDecoration: "none",
   width: "100%",
   borderLeft: "0 solid",
   marginLeft: "-4px",
+  padding: "$050 $050 $050 $125",
   "&:focus": {
     outlineColor: "$signal",
     outlineStyle: "solid",
@@ -108,11 +108,6 @@ const CustomLink = styled("a", {
     outlineWidth: "2px",
   },
   variants: {
-    isCurrent: {
-      active: {
-        color: "$onPrimary",
-      },
-    },
     disabled: {
       true: {
         color: "$onDisabled",
@@ -193,15 +188,7 @@ export default function Sidebar({ navigation }) {
                               </CustomLink>
                             ) : (
                               <Link href={item.slug} passHref>
-                                <CustomLink
-                                  isCurrent={
-                                    router.asPath.includes(item.slug)
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  {item.data.title}
-                                </CustomLink>
+                                <CustomLink>{item.data.title}</CustomLink>
                               </Link>
                             )}
                           </ListItem>
