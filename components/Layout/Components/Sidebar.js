@@ -110,7 +110,12 @@ const CustomLink = styled("a", {
   variants: {
     isCurrent: {
       active: {
-        color: "$primary",
+        color: "$onPrimary",
+      },
+    },
+    disabled: {
+      true: {
+        color: "$onDisabled",
       },
     },
   },
@@ -170,6 +175,7 @@ export default function Sidebar({ navigation }) {
                                   alignContent: "center",
                                   alignItems: "center",
                                 }}
+                                disabled
                               >
                                 <div>{item.data.title}</div>
                                 <P
