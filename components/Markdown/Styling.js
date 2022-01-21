@@ -25,11 +25,62 @@ export const P = styled("p", {
   fontWeight: "$light",
 });
 
+export const Small = styled("small", {
+  fontSize: "$075",
+  paddingBottom: "$050",
+  color: theme.colors.accessible,
+  fontFamily: "$meta",
+  fontWeight: "$light",
+});
+
 export const BR = styled("div", {
   paddingBottom: "$125",
   variants: {
     size: {
       xl: { paddingBottom: "$225" },
+    },
+  },
+});
+
+export const Change = styled("div", {
+  border: "1px solid currentColor",
+  borderRadius: "$025",
+  borderRadius: "$025",
+  color: "$accessible",
+  cursor: "pointer",
+  display: "inline-block",
+  fontFamily: "$meta",
+  fontSize: "$100",
+  fontWeight: "$light",
+  lineHeight: "auto",
+  px: "$050",
+
+  variants: {
+    type: {
+      New: {
+        color: "$green80",
+        background: "$green300",
+        marginTop: "$100",
+        marginBottom: "$050",
+      },
+      Updates: {
+        color: "$blue80",
+        background: "$blue300",
+        marginTop: "$100",
+        marginBottom: "$050",
+      },
+      Fixes: {
+        color: "$red80",
+        background: "$red300",
+        marginTop: "$100",
+        marginBottom: "$050",
+      },
+      ComingSoon: {
+        fontSize: "$075",
+        color: "$accessible",
+        backgroundColor: "$gray400",
+        borderColor: "$gray400",
+      },
     },
   },
 });
@@ -44,6 +95,7 @@ const components = {
   ol: ({ children }) => <List as="ol">{children}</List>,
   li: ListItem,
   p: P,
+  Change: Change,
   h1: ({ children }) => <Header as="h1">{children}</Header>,
   h2: ({ children }) => (
     <Header id={children} css={{ paddingBottom: "$100" }} as="h2">

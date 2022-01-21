@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
 import MDXStyling from "~/components/Markdown/Styling";
-import { styled, Box, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled, Box } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import {
   getDocByPathName,
@@ -10,49 +10,9 @@ import {
 } from "~/services";
 import { getNavigation } from "~/services/getNavigation";
 import CustomLink from "~/components/Typography/link";
-// import TOC from "~/components/Markdown/Components/tableofcontents";
 
 const Slash = styled("span", {
   color: "$accessible",
-});
-
-const Change = styled("div", {
-  cursor: "pointer",
-  color: "$accessible",
-  marginBottom: "$025",
-  borderRadius: "$025",
-  display: "inline-block",
-  border: "1px solid currentColor",
-  display: "inline-block",
-  px: "$050",
-  borderRadius: "$025",
-  fontFamily: "$meta",
-  fontSize: "$100",
-  fontWeight: "$light",
-  lineHeight: "auto",
-  marginTop: "$100",
-  marginBottom: "$050",
-
-  variants: {
-    type: {
-      New: { color: "$green80", background: "$green300" },
-      Updates: { color: "$blue80", background: "$blue300" },
-      Fixes: { color: "$red80", background: "$red300" },
-    },
-  },
-});
-
-const components = {
-  ...MDXStyling,
-  Change,
-};
-
-const Description = styled("h2", {
-  fontSize: "$150",
-  lineHeight: "$150",
-  color: theme.colors.accessible,
-  fontWeight: "normal",
-  marginBottom: "$100",
 });
 
 export default function Page({ source, headings }) {
@@ -98,11 +58,10 @@ export default function Page({ source, headings }) {
         >
           {source.scope.Head}
         </Header>
-        <Description as="h2">{source.scope.description}</Description>
-        {/* <TOC headings={headings} /> */}
+        <Header as="h3">{source.scope.description}</Header>
       </>
       <>
-        <MDXRemote {...source} components={components} />
+        <MDXRemote {...source} components={MDXStyling} />
       </>
     </>
   );

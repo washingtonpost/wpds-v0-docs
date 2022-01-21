@@ -5,7 +5,7 @@ import Header from "../../Typography/Headers";
 import * as Accordion from "@radix-ui/react-accordion";
 import ChevronDown from "@washingtonpost/wpds-assets/asset/chevron-down";
 import { useRouter } from "next/router";
-import { P } from "~/components/Markdown/Styling";
+import { Change } from "~/components/Markdown/Styling";
 
 const Panel = styled("div", {
   backgroundColor: "$gray500",
@@ -173,17 +173,7 @@ export default function Sidebar({ navigation }) {
                                 disabled
                               >
                                 <div>{item.data.title}</div>
-                                <P
-                                  css={{
-                                    paddingBottom: "0",
-                                    color: "$accessible",
-                                    borderRadius: "$050",
-                                    padding: "$025",
-                                    backgroundColor: "$gray400",
-                                  }}
-                                >
-                                  Coming soon
-                                </P>
+                                <Change type="ComingSoon">Coming soon</Change>
                               </CustomLink>
                             ) : (
                               <Link href={item.slug} passHref>
