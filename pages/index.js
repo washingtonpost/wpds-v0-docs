@@ -18,7 +18,9 @@ export default function Index({ posts }) {
         padding: "0 $100",
       }}
     >
-      <Head>WaPo Design System | WPDS</Head>
+      <Head>
+        <title>WaPo Design System | WPDS</title>
+      </Head>
       <Header>Home Page</Header>
       <P>
         This is a temporary landing page. Product design is working on a really
