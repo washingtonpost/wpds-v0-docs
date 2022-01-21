@@ -58,6 +58,7 @@ export default function inlineSVG({ path }) {
 				rects.forEach((i) => {
 					i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
 				});
+				//TODO need to account for primitives circle, ellipse, polyline, polygon
 			}}
 			src={path}
 		/>
