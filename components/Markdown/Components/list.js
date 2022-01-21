@@ -23,12 +23,12 @@ export const ListItem = styled("li", {
 		display: "flex",
 		alignItems: "flex-start",
 
-		"[role='checkbox']": {
-			marginBottom: "$025",
-			alignSelf: "flex-start",
-			marginRight: "$050",
-		},
-	},
+    "[role='checkbox']": {
+      marginBottom: "$025",
+      alignSelf: "flex-start",
+      marginRight: "$050",
+    },
+  },
 });
 export const LinkText = styled("span", {
 	color: theme.colors.accessible,

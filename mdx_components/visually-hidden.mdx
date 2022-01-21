@@ -6,24 +6,24 @@ component: visually-hidden
 
 ---
 
--   [x] Accessbility: Visual information required to identify components and states (except inactive components) has a contrast ratio to meet WCAG 2.0 level AA. This exclude text contrast requirements. Unless disabled text should always be accessible.
+- [x] Accessbility: Visual information required to identify components and states (except inactive components) has a contrast ratio to meet WCAG 2.0 level AA. This exclude text contrast requirements. Unless disabled text should always be accessible.
 
--   [x] States are defined: Includes all interactive states that are applicable (hover, down, focus, keyboard focus, disabled).
+- [x] States are defined: Includes all interactive states that are applicable (hover, down, focus, keyboard focus, disabled).
 
--   [ ] Accessbility: Visual information required to identify components and states (except inactive components) has a contrast ratio to meet WCAG 2.0 level AA. This exclude text contrast requirements. Unless disabled text should always be accessible.
+- [ ] Accessbility: Visual information required to identify components and states (except inactive components) has a contrast ratio to meet WCAG 2.0 level AA. This exclude text contrast requirements. Unless disabled text should always be accessible.
 
--   [ ] States are defined: Includes all interactive states that are applicable (hover, down, focus, keyboard focus, disabled).
+- [ ] States are defined: Includes all interactive states that are applicable (hover, down, focus, keyboard focus, disabled).
 
 ## Anatomy
 
 <Container caption="The label is revealed when the window is in focus. This behavior is for integration/play purposes.">
-	<EmbedStory componentName="visuallyhidden" />
+  <EmbedStory componentName="visuallyhidden" />
 </Container>
 
 <Box
-	css={{
-		marginBottom: "$100",
-	}}
+  css={{
+    marginBottom: "$100",
+  }}
 />
 
 ### Import the component
@@ -33,17 +33,17 @@ component: visually-hidden
 import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 
 export default function App() {
-	return (
-		<VisuallyHidden
-			as="a"
-			href="#skip-to-main"
-			css={{
-				color: "$cta",
-			}}
-		>
-			Skip To Main Content
-		</VisuallyHidden>
-	);
+  return (
+    <VisuallyHidden
+      as="a"
+      href="#skip-to-main"
+      css={{
+        color: "$cta",
+      }}
+    >
+      Skip To Main Content
+    </VisuallyHidden>
+  );
 }
 ```
 
@@ -52,7 +52,7 @@ export default function App() {
 ## Options
 
 <Container>
-	<EmbedDocsPage componentName="visuallyhidden" />
+  <EmbedDocsPage componentName="visuallyhidden" />
 </Container>
 
 ---
@@ -69,8 +69,6 @@ Visually hides an element from sighted users but still maintains it for screen r
 import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 
 function Component() {
-	return (
-		<VisuallyHidden>My important label for screen readers</VisuallyHidden>
-	);
+  return <VisuallyHidden>My important label for screen readers</VisuallyHidden>;
 }
 ```

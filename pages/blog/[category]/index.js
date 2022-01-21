@@ -6,9 +6,9 @@ import { getAllPathsByCategory, getBlogPosts, getNavigation } from "~/services";
 import { P } from "~/components/Markdown/Styling";
 
 const titleCase = (input) => {
-	return input.replace(/\w\S*/g, (txt) => {
-		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	});
+  return input.replace(/\w\S*/g, (txt) => {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
 };
 
 const Slash = styled("span", {
@@ -16,32 +16,32 @@ const Slash = styled("span", {
 });
 
 const Masonry = styled("section", {
-	width: "100%",
-	display: "grid",
-	gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-	gridGap: "$100",
-	"@sm": {
-		gridTemplateColumns: "1fr",
-	},
+  width: "100%",
+  display: "grid",
+  gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
+  gridGap: "$100",
+  "@sm": {
+    gridTemplateColumns: "1fr",
+  },
 });
 
 export default function Page({ docs, category }) {
-	return (
-		<div>
-			<Head>
-				<title>WPDS - {category} Blog</title>
-			</Head>
-			<Box
-				css={{
-					marginBottom: "$050",
-				}}
-			>
-				<CustomLink
-					href="/blog"
-					css={{
-						fontFamily: "$meta",
-						fontSize: "$100",
-						fontWeight: "$light",
+  return (
+    <div>
+      <Head>
+        <title>WPDS - {category} Blog</title>
+      </Head>
+      <Box
+        css={{
+          marginBottom: "$050",
+        }}
+      >
+        <CustomLink
+          href="/blog"
+          css={{
+            fontFamily: "$meta",
+            fontSize: "$100",
+            fontWeight: "$light",
 
 						borderBottom: "1px solid currentColor",
 						color: theme.colors.accessible,
@@ -70,54 +70,54 @@ export default function Page({ docs, category }) {
 								{doc.data.publishDate}
 								<Header as="h3">{doc.data.title}</Header>
 
-								<P
-									css={{
-										marginBottom: "$100",
-									}}
-								>
-									{doc.data.description}
-								</P>
-								<Box
-									as="footer"
-									css={{
-										fontFamily: "$meta",
-										fontSize: "$100",
-										fontWeight: "$light",
-										lineHeight: "$125",
-									}}
-								>
-									{doc.data.byline}
-								</Box>
-							</article>
-						</CustomLink>
-					);
-				})}
-			</Masonry>
-		</div>
-	);
+                <P
+                  css={{
+                    marginBottom: "$100",
+                  }}
+                >
+                  {doc.data.description}
+                </P>
+                <Box
+                  as="footer"
+                  css={{
+                    fontFamily: "$meta",
+                    fontSize: "$100",
+                    fontWeight: "$light",
+                    lineHeight: "$125",
+                  }}
+                >
+                  {doc.data.byline}
+                </Box>
+              </article>
+            </CustomLink>
+          );
+        })}
+      </Masonry>
+    </div>
+  );
 }
 
 export const getStaticProps = async ({ params }) => {
-	const docs = await getBlogPosts(`blog/${params.category}`);
+  const docs = await getBlogPosts(`blog/${params.category}`);
 
-	const navigation = await getNavigation();
+  const navigation = await getNavigation();
 
-	return {
-		props: {
-			category: titleCase(params.category),
-			docs,
-			navigation,
-		},
-	};
+  return {
+    props: {
+      category: titleCase(params.category),
+      docs,
+      navigation,
+    },
+  };
 };
 
 const SECTION = "blog";
 
 export const getStaticPaths = async (response) => {
-	const paths = await getAllPathsByCategory(`${SECTION}`);
+  const paths = await getAllPathsByCategory(`${SECTION}`);
 
-	return {
-		paths,
-		fallback: false,
-	};
+  return {
+    paths,
+    fallback: false,
+  };
 };

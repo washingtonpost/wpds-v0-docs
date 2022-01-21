@@ -1,68 +1,48 @@
 import * as React from "react";
 import Link from "next/link";
-import { NavigationBar } from "~/components/NavigationBar";
-import { getAllDocs } from "~/services";
+import { getAllDocs, getNavigation } from "~/services";
 import { Box } from "@washingtonpost/wpds-ui-kit";
+import {
+  List,
+  ListItem,
+  LinkText,
+} from "~/components/Markdown/Components/list";
+import Header from "~/components/Typography/Headers";
+import { P } from "~/components/Markdown/Styling";
 
 export default function Index({ posts }) {
-	return (
-		<Box
-			css={{
-				display: "grid",
-				gridTemplateColumns: "repeat(auto-fill, minmax(100%, 1fr))",
-				gridGap: "$100",
-				gridAutoFlow: "dense",
-				px: "$100",
-				maxWidth: "1028px",
-				margin: "0 auto",
-				color: "$primary",
-
-				a: {
-					color: "$signal",
-					lineHeight: "$150",
-				},
-			}}
-		>
-			<Box
-				css={{
-					paddingTop: "$400",
-				}}
-			></Box>
-			<h1>Home Page</h1>
-			<p>
-				This is a temporary landing page. Product design is working on a
-				really cool landing page for us.
-			</p>
-
-			<h2>Table of contents</h2>
-
-			<h3>Posts</h3>
-			<ul>
-				{posts.map((post) => (
-					<li key={post.slug}>
-						<Link href={post.slug} forceHref>
-							<a>{post.data.title}</a>
-						</Link>
-					</li>
-				))}
-			</ul>
-		</Box>
-	);
+  return (
+    <Box
+      css={{
+        padding: "0 $100",
+      }}
+    >
+      <Header>Home Page</Header>
+      <P>
+        This is a temporary landing page. Product design is working on a really
+        cool landing page for us.
+      </P>
+      <Header as="h2">All markdown posts</Header>
+      <List>
+        {posts.map((post) => (
+          <ListItem key={post.slug}>
+            <Link href={post.slug} forceHref>
+              <a>
+                <LinkText>{post.data.title}</LinkText>
+              </a>
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 }
 
 export async function getStaticProps() {
-	const posts = await getAllDocs();
+  const posts = await getAllDocs();
+  const navigation = await getNavigation();
 
-	return {
-		props: { posts },
-	};
+  return {
+    props: { posts, navigation },
+  };
 }
-
-Index.getLayout = function getLayout(page, pageProps) {
-	return (
-		<div>
-			<NavigationBar isOpen={true} />
-			{page}
-		</div>
-	);
-};

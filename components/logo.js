@@ -16,25 +16,25 @@ const Container = styled("div", {
 	},
 });
 const Span = styled("span", {
-	marginLeft: "$050",
-	fontSize: "$150",
-	textDecoration: "none",
-	width: "100%",
+  marginLeft: "$050",
+  fontSize: "$150",
+  textDecoration: "none",
+  width: "100%",
 });
 
 export default function Logo() {
-	return (
-		<Link
-			passHref
-			href="/"
-			aria-label="The Washington Post Design System's Homepage"
-		>
-			<Container>
-				<Icon size={40}>
-					<WPMark fill={theme.colors.primary} />
-				</Icon>
-				<Span>Design system</Span>
-			</Container>
-		</Link>
-	);
+  return (
+    <Link
+      passHref
+      href="/"
+      aria-label="The Washington Post Design System's Homepage"
+    >
+      <Container>
+        <Icon size={40}>
+          <WPMark fill={theme.colors.primary} />
+        </Icon>
+        <Span>Design system</Span>
+      </Container>
+    </Link>
+  );
 }

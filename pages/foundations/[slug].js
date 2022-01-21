@@ -10,57 +10,57 @@ import { getAllPathsBySection, getDocByPathName } from "~/services";
 import { getNavigation } from "~/services/getNavigation";
 
 const components = {
-	...MDXStyling,
-	TokenTable: TokenTable,
-	CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
-	Head,
+  ...MDXStyling,
+  TokenTable: TokenTable,
+  CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
+  Head,
 };
 const P = styled("p", {
 	color: theme.colors.accessible,
 });
 
 export default function Page({ source }) {
-	return (
-		<>
-			<Head>
-				<title>WPDS - {source.scope.title} | Foundations</title>
-			</Head>
-			<div className="post-header">
-				<Header>{source.scope.title}</Header>
-				{source.scope.description && (
-					<P className="description">{source.scope.description}</P>
-				)}
-			</div>
-			<MDXRemote {...source} components={components} />
-		</>
-	);
+  return (
+    <>
+      <Head>
+        <title>WPDS - {source.scope.title} | Foundations</title>
+      </Head>
+      <div className="post-header">
+        <Header>{source.scope.title}</Header>
+        {source.scope.description && (
+          <P className="description">{source.scope.description}</P>
+        )}
+      </div>
+      <MDXRemote {...source} components={components} />
+    </>
+  );
 }
 
 const thisSection = "foundations";
 
 export const getStaticProps = async ({ params }) => {
-	const source = await getDocByPathName(`${thisSection}/${params.slug}`);
+  const source = await getDocByPathName(`${thisSection}/${params.slug}`);
 
-	const navigation = await getNavigation();
+  const navigation = await getNavigation();
 
-	return {
-		props: {
-			current: params.slug,
-			navigation,
-			source,
-		},
-	};
+  return {
+    props: {
+      current: params.slug,
+      navigation,
+      source,
+    },
+  };
 };
 
 export const getStaticPaths = async () => {
-	const paths = await getAllPathsBySection(thisSection);
+  const paths = await getAllPathsBySection(thisSection);
 
-	const removeAssetsPage = paths.filter(
-		(path) => path.params.slug !== "assets"
-	);
+  const removeAssetsPage = paths.filter(
+    (path) => path.params.slug !== "assets"
+  );
 
-	return {
-		paths: removeAssetsPage,
-		fallback: false,
-	};
+  return {
+    paths: removeAssetsPage,
+    fallback: false,
+  };
 };

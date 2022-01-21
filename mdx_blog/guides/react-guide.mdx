@@ -23,27 +23,27 @@ import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import { getCssText } from "@washingtonpost/wpds-ui-kit";
 
 export default class Document extends NextDocument {
-	static async getInitialProps(ctx) {
-		const initialProps = await NextDocument.getInitialProps(ctx);
-		return { ...initialProps };
-	}
+  static async getInitialProps(ctx) {
+    const initialProps = await NextDocument.getInitialProps(ctx);
+    return { ...initialProps };
+  }
 
-	render() {
-		return (
-			<Html lang="en">
-				<Head>
-					<style
-						id="stitches"
-						dangerouslySetInnerHTML={{ __html: getCssText() }}
-					/>
-				</Head>
-				<body>
-					<Main />
-					<NextScript />
-				</body>
-			</Html>
-		);
-	}
+  render() {
+    return (
+      <Html lang="en">
+        <Head>
+          <style
+            id="stitches"
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
 ```
 
@@ -54,11 +54,11 @@ import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
 export const SaveToList = () => {
-	return (
-		<Icon size="32" label="Save to reading list">
-			<Add fill={theme.colors.primary} />
-		</Icon>
-	);
+  return (
+    <Icon size="32" label="Save to reading list">
+      <Add fill={theme.colors.primary} />
+    </Icon>
+  );
 };
 ```
 
@@ -87,19 +87,19 @@ import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
 const Button = styled("button", {
-	color: theme.colors.onPrimary,
-	backgroundColor: theme.colors.primary,
+  color: theme.colors.onPrimary,
+  backgroundColor: theme.colors.primary,
 });
 
 export const SaveToList = () => {
-	return (
-		<Button>
-			Save to reading list
-			<Icon size="32">
-				<Add fill={theme.colors.onPrimary} />
-			</Icon>
-		</Button>
-	);
+  return (
+    <Button>
+      Save to reading list
+      <Icon size="32">
+        <Add fill={theme.colors.onPrimary} />
+      </Icon>
+    </Button>
+  );
 };
 ```
 
@@ -109,43 +109,43 @@ import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
 const Button = styled("button", {
-	// remove all browser styles
-	appearance: "none",
-	border: "none",
-	// add press effect
-	"&:active": {
-		transform: "scale(0.95)",
-	},
-	// give it some color
-	color: theme.colors.onPrimary,
-	backgroundColor: theme.colors.primary,
-	// remove default spacing
-	margin: 0,
-	// add some padding
-	padding: theme.space["050"],
-	// add rounded corners
-	borderRadius: theme.radii.round,
-	// add a uniform box shadow to create a 'border' effect
-	boxShadow: "0 0 0 1px currentColor",
-	// remove extra space drawn when line height and font size are set
-	lineHeight: 0,
-	fontSize: 0,
-	// add a pointer
-	cursor: "pointer",
+  // remove all browser styles
+  appearance: "none",
+  border: "none",
+  // add press effect
+  "&:active": {
+    transform: "scale(0.95)",
+  },
+  // give it some color
+  color: theme.colors.onPrimary,
+  backgroundColor: theme.colors.primary,
+  // remove default spacing
+  margin: 0,
+  // add some padding
+  padding: theme.space["050"],
+  // add rounded corners
+  borderRadius: theme.radii.round,
+  // add a uniform box shadow to create a 'border' effect
+  boxShadow: "0 0 0 1px currentColor",
+  // remove extra space drawn when line height and font size are set
+  lineHeight: 0,
+  fontSize: 0,
+  // add a pointer
+  cursor: "pointer",
 });
 
 const SaveToList = () => {
-	return (
-		<Button>
-			<Icon size="32">
-				<Add fill={theme.colors.onPrimary} />
-			</Icon>
-		</Button>
-	);
+  return (
+    <Button>
+      <Icon size="32">
+        <Add fill={theme.colors.onPrimary} />
+      </Icon>
+    </Button>
+  );
 };
 
 export default function App() {
-	return <SaveToList />;
+  return <SaveToList />;
 }
 ```
 
@@ -153,11 +153,11 @@ export default function App() {
 
 Further reading:
 
--   https://ped.ro/blog/variant-driven-components
--   https://ped.ro/blog/why-i-build-design-systems-with-stitches-and-radix
--   https://stitches.dev/docs/tutorials
--   https://stitches.dev/blog/using-nextjs-with-stitches
+- https://ped.ro/blog/variant-driven-components
+- https://ped.ro/blog/why-i-build-design-systems-with-stitches-and-radix
+- https://stitches.dev/docs/tutorials
+- https://stitches.dev/blog/using-nextjs-with-stitches
 
 Further watching:
 
--   https://www.youtube.com/watch?v=Gw28VgyKGkw
+- https://www.youtube.com/watch?v=Gw28VgyKGkw

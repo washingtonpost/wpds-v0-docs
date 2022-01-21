@@ -18,65 +18,65 @@ const Div = styled("div", {
 });
 
 const MessageContainer = styled("div", {
-	width: "100%",
+  width: "100%",
 });
 
 const Message = styled("article", {
-	height: "$200",
-	padding: "$075 0",
-	display: "flex",
-	flexDirection: "row",
-	alignItems: "center",
+  height: "$200",
+  padding: "$075 0",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
 });
 
 const Rule = styled("hr", {
-	borderStyle: "solid",
-	borderWidth: "1px",
-	marginLeft: "$075",
-	width: "100%",
-	color: "transparent",
+  borderStyle: "solid",
+  borderWidth: "1px",
+  marginLeft: "$075",
+  width: "100%",
+  color: "transparent",
 
-	variants: {
-		variant: {
-			success: {
-				borderColor: "$success",
-			},
-			warning: {
-				borderColor: "$warning",
-			},
-			error: {
-				borderColor: "$error",
-			},
-			signal: {
-				borderColor: "$signal",
-			},
-		},
-	},
+  variants: {
+    variant: {
+      success: {
+        borderColor: "$success",
+      },
+      warning: {
+        borderColor: "$warning",
+      },
+      error: {
+        borderColor: "$error",
+      },
+      signal: {
+        borderColor: "$signal",
+      },
+    },
+  },
 });
 
 const Assets = {
-	success: Success,
-	warning: Warning,
-	signal: Info,
-	error: Error,
+  success: Success,
+  warning: Warning,
+  signal: Info,
+  error: Error,
 };
 
 export default function GuideContainer({ variant, children }) {
-	const Asset = Assets[variant];
+  const Asset = Assets[variant];
 
-	return (
-		<Div>
-			{variant && (
-				<MessageContainer>
-					<Message>
-						<Icon size="32">
-							<Asset fill={theme.colors[variant]} />
-						</Icon>
-						<Rule variant={variant} />
-					</Message>
-				</MessageContainer>
-			)}
-			{children}
-		</Div>
-	);
+  return (
+    <Div>
+      {variant && (
+        <MessageContainer>
+          <Message>
+            <Icon size="32">
+              <Asset fill={theme.colors[variant]} />
+            </Icon>
+            <Rule variant={variant} />
+          </Message>
+        </MessageContainer>
+      )}
+      {children}
+    </Div>
+  );
 }

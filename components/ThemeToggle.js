@@ -5,64 +5,60 @@ import * as React from "react";
 import { css, styled, VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 
 const hasWindow = () => {
-	return typeof window !== "undefined";
+  return typeof window !== "undefined";
 };
 
 export const ThemeToggle = () => {
-	const { setTheme, resolvedTheme } = useTheme();
-	const [env, setEnv] = useState("");
+  const { setTheme, resolvedTheme } = useTheme();
+  const [env, setEnv] = useState("");
 
-	useEffect(() => {
-		setEnv(hasWindow() ? "browser" : "server");
-	}, []);
+  useEffect(() => {
+    setEnv(hasWindow() ? "browser" : "server");
+  }, []);
 
-	const toggleTheme = () => {
-		const targetTheme = resolvedTheme === "light" ? "dark" : "light";
+  const toggleTheme = () => {
+    const targetTheme = resolvedTheme === "light" ? "dark" : "light";
 
-		setTheme(targetTheme);
-	};
+    setTheme(targetTheme);
+  };
 
-	const Button = styled("button", {
-		appearance: "none",
-		background: "none",
-		cursor: "pointer",
-		padding: 0,
-		margin: 0,
-		border: 0,
-		fontSize: "$150",
-	});
+  const Button = styled("button", {
+    appearance: "none",
+    background: "none",
+    cursor: "pointer",
+    padding: 0,
+    margin: 0,
+    border: 0,
+    fontSize: "$150",
+  });
 
-	const showOnDarkTheme = css({
-		display: "none",
-		"@dark": {
-			display: "block",
-		},
-	});
+  const showOnDarkTheme = css({
+    display: "none",
+    "@dark": {
+      display: "block",
+    },
+  });
 
-	const showOnLightTheme = css({
-		display: "none",
-		"@light": {
-			display: "block",
-		},
-	});
+  const showOnLightTheme = css({
+    display: "none",
+    "@light": {
+      display: "block",
+    },
+  });
 
-	return (
-		<Button onClick={toggleTheme} aria-label="Switch theme">
-			<>
-				<span className={showOnDarkTheme()}>
-					{env === "browser" && resolvedTheme === "light"
-						? "🌞"
-						: "🌕"}
-					{env === "server" && "🌕"}
-				</span>
-				<span className={showOnLightTheme()}>
-					{env === "browser" && resolvedTheme === "light"
-						? "🌞"
-						: "🌕"}
-					{env === "server" && "🌞"}
-				</span>
-			</>
-			<VisuallyHidden>Switch theme</VisuallyHidden>
-		</Button>
-	);
+  return (
+    <Button onClick={toggleTheme} aria-label="Switch theme">
+      <>
+        <span className={showOnDarkTheme()}>
+          {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
+          {env === "server" && "🌕"}
+        </span>
+        <span className={showOnLightTheme()}>
+          {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
+          {env === "server" && "🌞"}
+        </span>
+      </>
+      <VisuallyHidden>Switch theme</VisuallyHidden>
+    </Button>
+  );
 };
