@@ -108,9 +108,9 @@ module.exports = {
       darkTheme: darkCodeTheme
     },
     algolia: {
-      appId: "O19N5YY9R3",
-      apiKey: "d6e309a4051d820cae616d3419f4a5d9",
-      indexName: "crawler_WPDS Documentation Website"
+      appId: "8BNQMF2X1D",
+      apiKey: "d287a51f05def4ddf91374a3a92fa5fa",
+      indexName: "build-washingtonpost"
     }
   },
   presets: [
