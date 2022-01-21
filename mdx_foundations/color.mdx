@@ -183,7 +183,7 @@ abstraction that allows the system to strategically apply color across the produ
         Secondary
       </Box>
       <Box
-        css={{          
+        css={{
           padding:"$050",
           backgroundColor: "$cta",
           color: "$onCta"
@@ -244,7 +244,7 @@ abstraction that allows the system to strategically apply color across the produ
           color: "$onPrimary"
         }}
       >
-        Accessbile
+        Accessible
       </Box>
         <Box
         css={{
@@ -357,7 +357,7 @@ message around system status and actions taken by the user.
 ## Static
 
 Static colors are colors that do not change regardless of what theme context
-they are in (dark or light). These colors remain static to ensure they are accessbile
+they are in (dark or light). These colors remain static to ensure they are accessible
 when applied on a color where minimum contrast is required or branding requirements are applied. To use
 a static color simple add `-static` at the end of a color token name and it will lock the color in the light version of
 that color token.
@@ -367,7 +367,7 @@ that color token.
 #### Example
 
 Our theme token `onCta` and semantic color token `onMessage` both are tied to `gray-600-static`
-to ensure they remain with the correct minimal color contrast needed for the element to be accessbile.
+to ensure they remain with the correct minimal color contrast needed for the element to be accessible.
 
 <Container>
 	<Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -402,10 +402,10 @@ contrast ratio outlined by WCAG 2.0 level AA.
 
 <BR />
 
-#### Accessbile
+#### Accessible
 
-One of our theme tokens named `accessbile` has been designed to ensure that no matter what
-theme you are using it will be the most accessbile color against the target background white or black. The color of this text you are reading is using our `accessbile` token.
+One of our theme tokens named `accessible` has been designed to ensure that no matter what
+theme you are using it will be the most accessible color against the target background white or black. The color of this text you are reading is using our `accessible` token.
 
 <Container>
 	<Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
@@ -413,10 +413,10 @@ theme you are using it will be the most accessbile color against the target back
 			css={{
 				padding: "$300",
 				backgroundColor: "$gray600",
-				color: "$accessbile",
+				color: "$accessible",
 			}}
 		>
-			Accessbile color on target background
+			Accessible color on target background
 		</Box>
 	</Box>
 </Container>
