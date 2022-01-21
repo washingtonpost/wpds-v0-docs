@@ -22,7 +22,7 @@ export default function inlineSVG({ path }) {
 		if (hex == "black") {
 			return "var(--wpds-colors-gray0)";
 		} else {
-			console.log("Bad Hex");
+			// console.log("Bad Hex");
 		}
 	}
 
