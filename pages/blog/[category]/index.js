@@ -4,16 +4,13 @@ import Header from "~/components/Typography/Headers";
 import CustomLink from "~/components/Typography/link";
 import { getAllPathsByCategory, getBlogPosts, getNavigation } from "~/services";
 import { P } from "~/components/Markdown/Styling";
+import Breadcrumbs from "~/components/Breadcrumbs";
 
 const titleCase = (input) => {
   return input.replace(/\w\S*/g, (txt) => {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 };
-
-const Slash = styled("span", {
-  color: theme.colors.accessible,
-});
 
 const Masonry = styled("section", {
   width: "100%",
@@ -31,28 +28,9 @@ export default function Page({ docs, category }) {
       <Head>
         <title>WPDS - {category} Blog</title>
       </Head>
-      <Box
-        css={{
-          marginBottom: "$050",
-        }}
-      >
-        <CustomLink
-          href="/blog"
-          css={{
-            fontFamily: "$meta",
-            fontSize: "$100",
-            fontWeight: "$light",
-
-            borderBottom: "1px solid currentColor",
-            color: theme.colors.accessible,
-            marginRight: "$050",
-            marginBottom: "$050",
-          }}
-        >
-          Blog
-        </CustomLink>
-        <Slash aria-hidden="true">/</Slash>
-      </Box>
+      <Breadcrumbs.Root>
+        <Breadcrumbs.Item href="/blog">Blog</Breadcrumbs.Item>
+      </Breadcrumbs.Root>
       <Header>{category}</Header>
       <Masonry>
         {docs.map((doc) => {

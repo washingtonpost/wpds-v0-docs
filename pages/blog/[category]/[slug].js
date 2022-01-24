@@ -1,14 +1,9 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
-import { Box, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import { getNavigation, getAllPathsByCategory, getBlogPost } from "~/services";
-import CustomLink from "~/components/Typography/link";
-
-const Slash = styled("span", {
-  color: theme.colors.accessible,
-});
+import Breadcrumbs from "~/components/Breadcrumbs";
 
 const SECTION = "blog";
 
@@ -23,42 +18,12 @@ export default function Page({ source }) {
         <title>WPDS - {source.scope.title} | Blog</title>
       </Head>
       <>
-        <Box
-          css={{
-            marginBottom: "$050",
-          }}
-        >
-          <CustomLink
-            href="/blog"
-            css={{
-              fontFamily: "$meta",
-              fontSize: "$100",
-              fontWeight: "$light",
-              borderBottom: "1px solid currentColor",
-              color: theme.colors.accessible,
-              marginRight: "$050",
-            }}
-          >
-            Blog
-          </CustomLink>
-          <Slash aria-hidden="true">/</Slash>
-          <CustomLink
-            href="/blog"
-            css={{
-              fontFamily: "$meta",
-              fontSize: "$100",
-              fontWeight: "$light",
-
-              borderBottom: "1px solid currentColor",
-              color: theme.colors.accessible,
-              marginRight: "$050",
-              marginLeft: "$050",
-            }}
-          >
+        <Breadcrumbs.Root>
+          <Breadcrumbs.Item href="/blog">Blog</Breadcrumbs.Item>
+          <Breadcrumbs.Item href={`/blog/${source.scope.kicker.toLowerCase()}`}>
             {source.scope.kicker}
-          </CustomLink>
-          <Slash aria-hidden="true">/</Slash>
-        </Box>
+          </Breadcrumbs.Item>
+        </Breadcrumbs.Root>
         <Header
           as="h1"
           css={{

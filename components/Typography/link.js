@@ -1,6 +1,6 @@
 import Link from "next/link";
 import * as React from "react";
-import { styled, globalStyles } from "@washingtonpost/wpds-ui-kit";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 
 export default function CustomLink({ useSignal, as, href, ...otherProps }) {
   const A = styled("a", {

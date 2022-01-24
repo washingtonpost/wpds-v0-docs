@@ -1,7 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
 import MDXStyling from "~/components/Markdown/Styling";
-import { styled, Box } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import {
   getDocByPathName,
@@ -9,11 +8,7 @@ import {
   getHeadings,
 } from "~/services";
 import { getNavigation } from "~/services/getNavigation";
-import CustomLink from "~/components/Typography/link";
-
-const Slash = styled("span", {
-  color: "$accessible",
-});
+import Breadcrumbs from "~/components/Breadcrumbs";
 
 export default function Page({ source, headings }) {
   return (
@@ -22,27 +17,11 @@ export default function Page({ source, headings }) {
         <title>WPDS - {source.scope.title} | Release Notes</title>
       </Head>
       <>
-        <Box
-          css={{
-            marginBottom: "$050",
-          }}
-        >
-          <CustomLink
-            href="/release-notes"
-            css={{
-              fontFamily: "$meta",
-              fontSize: "$100",
-              fontWeight: "$light",
-
-              borderBottom: "1px solid currentColor",
-              color: "$accessible",
-              marginRight: "$050",
-            }}
-          >
+        <Breadcrumbs.Root>
+          <Breadcrumbs.Item href="/release-notes">
             Release notes
-          </CustomLink>
-          <Slash aria-hidden="true">/</Slash>
-        </Box>
+          </Breadcrumbs.Item>
+        </Breadcrumbs.Root>
         <Header
           css={{
             marginBottom: "$100",
