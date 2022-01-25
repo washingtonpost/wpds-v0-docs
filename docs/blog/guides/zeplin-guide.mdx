@@ -1,6 +1,95 @@
 ---
 title: Zeplin Guide
-description: A guide to using our UI Kit in Zeplin
+description: Zeplin is our tool of choice when it comes to hand-off. It offers a layer of connection to code and design not yet realized by other tools.
 kicker: Guides
-publishDate: January 1, 2022
+publishDate: January 25, 2022
 ---
+
+### Table of contents
+
+- [Getting started](/blog/guides/zeplin-guide#Getting_started)
+- [Styleguide](/blog/guides/zeplin-guide#Styleguide)
+- [Extension](/blog/guides/zeplin-guide#Extension)
+
+---
+
+## Getting started
+
+### Requesting access
+
+If you are a Washington Post employee, please submit a SAR to access our Zeplin Product & Design workspace. If you are not a post employee and are looking to use Zeplin in your suite, please reference our Figma file to upload and create your style guide.
+
+---
+
+## Styleguide
+
+## Connect the style guide
+
+Upload your project to the Zeplin and connect the WPDS Ui Kit style guide to your project. [See how to connect a styleguide](https://support.zeplin.io/en/articles/2998318-linking-a-project-to-a-styleguide#:~:text=Linking%20a%20styleguide%20from%20within,with%20the%20same%20platform%20type.)
+
+### Connected Components
+
+Selecting a component connected to code in Zeplin will reveal a code snippet and the props chosen for the component variant.
+
+<Container caption="In this example the properties reveal taht 32 was selected for the prop `size`">
+  <img
+    src="/img/guides/zeplin/connected.png"
+    style={{ maxWidth: 250 }}
+    width="100%"
+    height="auto"
+  />
+</Container>
+
+#### Properties
+
+We do our best to ensure that our Figma API that translates to Zeplin properties matches as close to 1:1 of the actual coded component. However, you might find some properties like states that are not in the coded component; this is due to the nature of Figma. In those instances, you can ignore it unless otherwise documented.
+
+---
+
+## Extension
+
+### Getting WPDS Extension
+
+Zeplin supports a good amount of tokens; there are some limitations in how some tokens are managed or not managed at all. Right not the current tokens managed by Zeplin is only color. We chose not to manage typestyles instead, we highlight individual tokens font size, font, line height using our extension. We also manage tokens like border-radius and shadows using our extension.
+
+#### Installing the extension
+
+Select the project in Zeplin you would like to add the extension to and then select extension > explore extensions > add WPDS Tokens.
+
+<Container>
+  <Img
+    alt="Animated image of showing how to add the WPDS extension"
+    maxWidth={720}
+    src="/img/guides/zeplin/adding_extension_.gif"
+  />
+</Container>
+
+#### Typography tokens
+
+To reveal the typography tokens, select a text layer to have the extension show the properties of that text.
+
+<Container>
+  <Img
+    alt="Animated image of showing how to add the WPDS extension"
+    maxWidth={320}
+    src="/img/guides/zeplin/text_tokens.png"
+  />
+</Container>
+
+#### Border radius and shadows
+
+To reveal the border-radius or shadow, select a layer with a border-radius or shadow, and the extension will show the corresponding tokens.
+
+<Container>
+  <Img
+    alt="Animated image of showing how to add the WPDS extension"
+    maxWidth={320}
+    src="/img/guides/zeplin/shadow_border.png"
+  />
+</Container>
+
+#### Token syntax
+
+Note that all tokens will display in stitches token string format by adding a $. Stitches is our default styling framework for our system, but if you need to refer to the token, drop the $.
+
+<BR size="xl" />
