@@ -193,7 +193,7 @@ export default function Page({ current, navigation }) {
           <Header id="code-example" css={{ paddingBottom: "$100" }} as="h3">
             Import the icons into your React project
           </Header>
-          <CustomSandpack withPreview={true}>{codeSample}</CustomSandpack>
+          <CustomSandpack>{codeSample}</CustomSandpack>
         </Box>
         <Box
           as="hr"

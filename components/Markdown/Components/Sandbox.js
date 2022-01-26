@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Sandpack } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
 
-const CustomSandpack = ({ withPreview, children }) => {
+const CustomSandpack = ({ withPreview = false, children }) => {
   const { resolvedTheme } = useTheme();
   const [sandboxTheme, setSandboxTheme] = useState("'light'");
   const [bodyBackground, setBodyBackground] = useState("theme.colors.primary");
   const [sandboxEmbedTheme, setSandboxEmbedTheme] = useState("github-light");
 
   useEffect(() => {
-    console.log(resolvedTheme);
     if (resolvedTheme === "light") {
       setSandboxTheme("darkTheme.className");
       setSandboxEmbedTheme("github-light");
