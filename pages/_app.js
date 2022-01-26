@@ -2,7 +2,7 @@ import { ThemeProvider } from "next-themes";
 import React from "react";
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
-import { globalStyles, darkTheme } from "@washingtonpost/wpds-ui-kit";
+import { globalStyles, darkTheme, Box } from "@washingtonpost/wpds-ui-kit";
 import { darkModeStyles } from "~/components/DarkModeStyles";
 import { PageLayout } from "~/components/Layout";
 import { SSRProvider } from "@react-aria/ssr";
@@ -53,6 +53,32 @@ function App({ Component, pageProps }) {
             </Script>
           </>
         )}
+        <Box
+          as="footer"
+          css={{
+            borderTop: "1px solid $subtle",
+            paddingTop: "$050",
+            marginBottom: "$050",
+            fontFamily: "$meta",
+            fontSize: "$100",
+            fontWeight: "$light",
+            lineHeight: "$150",
+            textAlign: "center",
+            color: "$accessible",
+          }}
+        >
+          <Box
+            as="a"
+            css={{
+              color: "$accessible",
+            }}
+            href="https://www.washingtonpost.com"
+          >
+            washingtonpost.com
+          </Box>{" "}
+          © 1996-
+          {new Date().getFullYear()} The Washington Post
+        </Box>
       </ThemeProvider>
     </SSRProvider>
   );
