@@ -26,25 +26,15 @@ export default () => <Icon />;
 
 ## Options
 
-<Container>
-  <EmbedControls
-    componentName="icon"
-    css={{
-      marginBottom: "$050",
-    }}
-  />
-</Container>
-
 ### Size
 
 The `size` can be 16px, 24px, or 32px. The size sets the width and height of the SVG.
 
 ```jsx
-// preview
 import { Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
-export default function App() {
+export default function Example() {
   return (
     <Icon label="Add to List" size="16">
       <Add />
@@ -58,11 +48,10 @@ export default function App() {
 The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Add to List".
 
 ```jsx
-// preview
 import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
-export default function App() {
+export default function Example() {
   return (
     <Icon label="Add to List" size="16">
       <Add />
@@ -70,23 +59,3 @@ export default function App() {
   );
 }
 ```
-
----
-
-## Behavior
-
-<Container>Example </Container>
-
----
-
-## Specs
-
-<Container>
-  <EmbedDocsPage componentName="icon" />
-</Container>
-
----
-
-## Accessibility
-
----

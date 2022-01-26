@@ -17,6 +17,7 @@ const HR = styled("hr", {
   width: "100%",
   margin: "$100 0",
 });
+
 export const P = styled("p", {
   fontSize: "$100",
   paddingBottom: "$050",
@@ -133,24 +134,41 @@ const components = {
       {children}
     </Box>
   ),
-  code: ({ children }) => {
+  code: ({ children, ...props }) => {
+    if (props.className === "language-jsx") {
+      return (
+        <Box
+          as="code"
+          css={{
+            marginBottom: "$100",
+            maxWidth: "100%",
+            width: "100%",
+          }}
+        >
+          <Sandbox withPreview={children.includes("// preview")}>
+            {
+              // remove the preview comment from the code and the line break
+              children.includes("// preview")
+                ? children.replace("// preview", "").replace("\n", "")
+                : children.trim()
+            }
+          </Sandbox>
+        </Box>
+      );
+    }
+
     return (
       <Box
         as="code"
         css={{
-          marginBottom: "$100",
-          maxWidth: "100%",
-          width: "100%",
+          color: "$onSecondary",
+          fontSize: "$100",
+          marginBottom: "$050",
+          marginTop: "$050",
+          display: "block",
         }}
       >
-        <Sandbox withPreview={children.includes("// preview")}>
-          {
-            // remove the preview comment from the code and the line break
-            children.includes("// preview")
-              ? children.replace("// preview", "").replace("\n", "")
-              : children
-          }
-        </Sandbox>
+        {children}
       </Box>
     );
   },

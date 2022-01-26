@@ -14,7 +14,7 @@ export default function EmbedDocsPage({ componentName, ...rest }) {
   });
 
   const hostname = "https://main--6197ecb0496d77003a9e85fd.chromatic.com";
-  const pathname = `/iframe.html?id=${componentName}--play&viewMode=docs&singleStory=true`;
+  const pathname = `/iframe.html?id=${componentName}--${componentName}&viewMode=docs&singleStory=true`;
   const src = `${hostname}${pathname}`;
 
   return <Story src={src} {...rest} />;

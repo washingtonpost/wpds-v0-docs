@@ -118,11 +118,10 @@ const P = styled("p", {
   color: theme.colors.accessible,
 });
 
-const codeSample = `import { theme, Icon, globalStyles } from "@washingtonpost/wpds-ui-kit";
+const codeSample = `import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
 
-export default function App() {
-	globalStyles();
+export default function Example() {
 	return (
 		<Icon label="Add to List" size="32">
 			<Add fill={theme.colors.accessible} />

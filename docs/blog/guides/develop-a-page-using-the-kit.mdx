@@ -1,11 +1,39 @@
 ---
-title: Develop a page using the UI Kit elsewhere
+title: Develop a page using the UI Kit
 description: how to develop a page using stitches
 kicker: Guides
-publishDate: January 1, 2022
+publishDate: February 1, 2022
 ---
 
-should have a strong opinion the following
+## Intro
 
-- [x] how to organize your components
-- [ ] how to organize UI/styled components
+We are going to develop the UI for a landing page for a new product, called "Recipe Search". It will be a search page for recipes. The user will be able to search for recipes by name, ingredients, or cooking method. The results will be displayed in a list. The user will be able to click on a recipe to see the full recipe. The user will be able to click on the "Add to Favorites" button to add the recipe to their favorites.
+
+We are going to try to follow this Dribbble https://dribbble.com/shots/13671297-Recipes and use the beautiful photography from our photo journalists at the same time.
+
+## Takeaways
+
+You will finish this tutorial with a strong opinion from us on how to best develop a page using the UI Kit. We will discuss the following:
+
+- Page Layout
+- UI Component Organization
+- Component Variants
+
+## Page Layout
+
+We are going to have two layouts one for smaller screens and one for larger screens. Luckily, today we have CSS Grid & Flex Box. We will be using these to create our layouts. On small screens, the recipe when opened will display on top of the search results. On larger screens, the recipe will be displayed to right of the search results, the search results will be displayed to the left of the recipe in 4 columns.
+
+## UI Component Organization
+
+```jsx
+import { Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+
+export default function Example() {
+  return (
+    <Icon label="Add to List" size="16">
+      <Add fill={theme.colors.onPrimary} />
+    </Icon>
+  );
+}
+```

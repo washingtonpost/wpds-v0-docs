@@ -1,10 +1,13 @@
 import { ThemeProvider } from "next-themes";
 import React from "react";
 import Script from "next/script";
+import { DefaultSeo } from "next-seo";
 import { globalStyles, darkTheme } from "@washingtonpost/wpds-ui-kit";
 import { darkModeStyles } from "~/components/DarkModeStyles";
 import { PageLayout } from "~/components/Layout";
 import { SSRProvider } from "@react-aria/ssr";
+import SEO from "../next-seo.config";
+import "@codesandbox/sandpack-react/dist/index.css";
 
 function App({ Component, pageProps }) {
   globalStyles();
@@ -14,6 +17,7 @@ function App({ Component, pageProps }) {
 
   return (
     <SSRProvider>
+      <DefaultSeo {...SEO} />
       <ThemeProvider
         attribute="class"
         defaultTheme="system"

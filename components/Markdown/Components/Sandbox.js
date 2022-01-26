@@ -1,45 +1,75 @@
-import React from "react";
-import {
-  SandpackProvider,
-  SandpackLayout,
-  SandpackCodeEditor,
-  SandpackPreview,
-} from "@codesandbox/sandpack-react";
-import "@codesandbox/sandpack-react/dist/index.css";
+import React, { useEffect, useState } from "react";
+import { Sandpack } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
-import { styled } from "@washingtonpost/wpds-ui-kit";
+
 const CustomSandpack = ({ withPreview, children }) => {
   const { resolvedTheme } = useTheme();
+  const [sandboxTheme, setSandboxTheme] = useState("'light'");
+  const [bodyBackground, setBodyBackground] = useState("theme.colors.primary");
+  const [sandboxEmbedTheme, setSandboxEmbedTheme] = useState("github-light");
+
+  useEffect(() => {
+    console.log(resolvedTheme);
+    if (resolvedTheme === "light") {
+      setSandboxTheme("darkTheme.className");
+      setSandboxEmbedTheme("github-light");
+    } else {
+      setSandboxEmbedTheme("night-owl");
+      setSandboxTheme("'light'");
+    }
+    setBodyBackground("theme.colors.primary");
+  }, [resolvedTheme]);
+
+  const AppCode = `import { globalCss, styled, darkTheme, theme, globalStyles, darkModeGlobalStyles } from "@washingtonpost/wpds-ui-kit";
+import Example from "./Example";
+
+const Canvas = styled("div", {
+  background: ${bodyBackground},
+  padding: "$100",
+  width: "100vw",
+  height: "100vh",
+  margin: "0 auto",
+  overflow: "hidden"
+});
+
+export default function App() {
+  globalStyles();
+  darkModeGlobalStyles();
   return (
-    <SandpackProvider
+    <Canvas className={${sandboxTheme}}>
+      <Example />
+    </Canvas>
+  );
+}`;
+
+  return (
+    <Sandpack
       template="react"
+      theme={sandboxEmbedTheme}
+      options={{
+        showNavigator: false,
+        showTabs: false,
+        // closableTabs: true,
+        // showLineNumbers: false,
+        // showInlineErrors: true,
+        // wrapContent: true,
+        autorun: withPreview,
+        // editorHeight: "100%",
+      }}
       customSetup={{
         dependencies: {
-          "@washingtonpost/wpds-assets": "1.1.13",
-          "@washingtonpost/wpds-ui-kit": "0.1.0-experimental.20",
+          "@washingtonpost/wpds-assets": "latest",
+          "@washingtonpost/wpds-ui-kit": "0.2.0",
         },
         files: {
-          "/App.js": children,
+          "/App.js": AppCode,
+          "/Example.js": {
+            code: children,
+            active: true,
+          },
         },
       }}
-    >
-      <SandpackLayout theme={resolvedTheme}>
-        <SandpackCodeEditor
-        // customStyle={{
-        // 	width: "100%",
-        // }}
-        // wrapContent
-        />
-        {withPreview && (
-          <SandpackPreview
-          // customStyle={{
-          // 	height: "auto",
-          // 	minHeight: "auto",
-          // }}
-          />
-        )}
-      </SandpackLayout>
-    </SandpackProvider>
+    />
   );
 };
 

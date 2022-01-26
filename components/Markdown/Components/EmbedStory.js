@@ -21,7 +21,7 @@ export default function EmbedStory({
   });
 
   const hostname = "https://main--6197ecb0496d77003a9e85fd.chromatic.com";
-  const pathname = `/iframe.html?id=${componentName}--play&viewMode=${viewMode}&shortcuts=false&singleStory=true`;
+  const pathname = `/iframe.html?id=${componentName}--${componentName}&viewMode=${viewMode}&shortcuts=false&singleStory=true`;
   const src = `${hostname}${pathname}`;
 
   return <Story src={src} {...rest} />;
