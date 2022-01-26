@@ -9,6 +9,36 @@ import { SSRProvider } from "@react-aria/ssr";
 import SEO from "../next-seo.config";
 import "@codesandbox/sandpack-react/dist/index.css";
 
+const Footer = () => (
+  <Box
+    as="footer"
+    css={{
+      borderTop: "1px solid $subtle",
+      paddingTop: "$050",
+      marginBottom: "$050",
+      marginTop: "$500",
+      fontFamily: "$meta",
+      fontSize: "$100",
+      fontWeight: "$light",
+      lineHeight: "$150",
+      textAlign: "center",
+      color: "$accessible",
+    }}
+  >
+    <Box
+      as="a"
+      css={{
+        color: "$accessible",
+      }}
+      href="https://www.washingtonpost.com"
+    >
+      washingtonpost.com
+    </Box>{" "}
+    © 1996-
+    {new Date().getFullYear()} The Washington Post
+  </Box>
+);
+
 function App({ Component, pageProps }) {
   globalStyles();
   darkModeStyles();
@@ -29,10 +59,16 @@ function App({ Component, pageProps }) {
         enableColorScheme={false}
       >
         {getLayout ? (
-          getLayout(<Component {...pageProps} />)
+          getLayout(
+            <>
+              <Component {...pageProps} />
+              <Footer />
+            </>
+          )
         ) : (
           <PageLayout {...pageProps}>
             <Component {...pageProps} />
+            <Footer />
           </PageLayout>
         )}
         {/** only render on prod */}
@@ -53,32 +89,6 @@ function App({ Component, pageProps }) {
             </Script>
           </>
         )}
-        <Box
-          as="footer"
-          css={{
-            borderTop: "1px solid $subtle",
-            paddingTop: "$050",
-            marginBottom: "$050",
-            fontFamily: "$meta",
-            fontSize: "$100",
-            fontWeight: "$light",
-            lineHeight: "$150",
-            textAlign: "center",
-            color: "$accessible",
-          }}
-        >
-          <Box
-            as="a"
-            css={{
-              color: "$accessible",
-            }}
-            href="https://www.washingtonpost.com"
-          >
-            washingtonpost.com
-          </Box>{" "}
-          © 1996-
-          {new Date().getFullYear()} The Washington Post
-        </Box>
       </ThemeProvider>
     </SSRProvider>
   );

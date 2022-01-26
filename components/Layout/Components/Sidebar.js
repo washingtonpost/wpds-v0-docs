@@ -14,7 +14,7 @@ const Panel = styled("div", {
     height: "100%",
     overflow: "hidden",
     overflowY: "auto",
-    minHeight: "calc(100vh - 105px)", // this is really hacky, but it works for now with the footer and idk bro
+    minHeight: "calc(100vh - $400)",
   },
   "@sm": {
     width: "100%",
