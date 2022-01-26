@@ -17,5 +17,6 @@ export const darkModeStyles = globalCss({
   },
   body: {
     background: theme.colors.secondary,
+    display: "grid",
   },
 });

@@ -14,7 +14,7 @@ const Panel = styled("div", {
     height: "100%",
     overflow: "hidden",
     overflowY: "auto",
-    minHeight: "100vh",
+    minHeight: "calc(100vh - 105px)",
   },
   "@sm": {
     width: "100%",
