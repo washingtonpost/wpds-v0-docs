@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import { NavigationBar } from "~/components/NavigationBar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
+import { Footer } from "~/components/Footer";
 
 const Grid = styled("div", {
   display: "grid",
@@ -10,20 +11,23 @@ const Grid = styled("div", {
     gridTemplateColumns: "300px 1fr",
     gridTemplateRows: "60px 1fr",
     gridTemplateAreas: `
-		"logo nav"
+		    "logo nav"
         "sidebar content"
+        "sidebar footer"
     	`,
     gridGap: "$125",
     rowGap: "0",
     paddingRight: "$100",
   },
   "@sm": {
+    height: "100vh",
     gridTemplateColumns: "1fr",
-    gridTemplateRows: "1fr",
+    gridTemplateRows: "auto auto 1fr",
     gridTemplateAreas: `
-		"logo"
+		    "logo"
         "sidebar"
         "content"
+        "footer"
 		`,
     gridGap: "0",
   },
@@ -64,6 +68,7 @@ export const PageLayout = ({ children, ...pageProps }) => {
         <Sidebar navigation={pageProps.navigation} />
       </MobileMenu>
       <Container>{children}</Container>
+      <Footer />
     </Grid>
   );
 };
