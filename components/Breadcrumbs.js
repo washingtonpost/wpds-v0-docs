@@ -4,6 +4,7 @@ import CustomLink from "~/components/Typography/link";
 
 const Slash = styled("span", {
   color: theme.colors.accessible,
+  marginRight: "$050",
 });
 
 const Root = ({ children }) => {
@@ -20,22 +21,19 @@ const Root = ({ children }) => {
   );
 };
 
+const Link = styled(CustomLink, {
+  fontFamily: "$meta",
+  fontSize: "$100",
+  fontWeight: "$light",
+  borderBottom: "1px solid currentColor",
+  color: theme.colors.accessible,
+  marginRight: "$050",
+});
+
 const Item = ({ children, href }) => {
   return (
     <>
-      <CustomLink
-        href={href}
-        css={{
-          fontFamily: "$meta",
-          fontSize: "$100",
-          fontWeight: "$light",
-          borderBottom: "1px solid currentColor",
-          color: theme.colors.accessible,
-          marginRight: "$050",
-        }}
-      >
-        {children}
-      </CustomLink>
+      <Link href={href}>{children}</Link>
       <Slash aria-hidden="true">/</Slash>
     </>
   );
