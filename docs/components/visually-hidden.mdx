@@ -14,42 +14,44 @@ component: visually-hidden
 
 - [ ] States are defined: Includes all interactive states that are applicable (hover, down, focus, keyboard focus, disabled).
 
-## Anatomy
-
-<!--
-<Container caption="The label is revealed when the window is in focus. This behavior is for integration/play purposes.">
-  <EmbedStory componentName="visuallyhidden" />
-</Container> -->
-
-<Box
-  css={{
-    marginBottom: "$100",
-  }}
-/>
-
-### Import the component
-
-```jsx
-import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
-
-export default function Example() {
-  return (
-    <VisuallyHidden
-      as="a"
-      href="#skip-to-main"
-      css={{
-        color: "$cta",
-      }}
-    >
-      Skip To Main Content
-    </VisuallyHidden>
-  );
-}
-```
-
 ---
 
 ## Options
+
+###
+
+VisuallyHidden accepts `props.children` to set the label.
+
+```jsx
+// preview
+import { VisuallyHidden, Box } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  return (
+    <>
+      <span>
+        Tab into this element to see VisuallyHidden used for a "Skip link"
+        feature.
+      </span>
+      <VisuallyHidden
+        as="a"
+        href="#hello-world"
+        css={{
+          color: "$cta",
+        }}
+        data-testid="skip-link"
+        onClick={function onClickHandler(event: {
+          preventDefault: () => void,
+        }) {
+          event.preventDefault();
+        }}
+      >
+        This is a visually hidden label
+      </VisuallyHidden>
+    </>
+  );
+}
+```
 
 ---
 
@@ -64,7 +66,7 @@ Visually hides an element from sighted users but still maintains it for screen r
 ```jsx
 import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
 
-function Component() {
+export default function Example() {
   return <VisuallyHidden>My important label for screen readers</VisuallyHidden>;
 }
 ```

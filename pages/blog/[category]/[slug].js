@@ -38,7 +38,7 @@ export default function Page({ source }) {
             marginBottom: "$100",
           }}
         >
-          {source.scope.Head}
+          {source.scope.description}
         </Header>
       </>
       <>

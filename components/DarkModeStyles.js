@@ -17,5 +17,20 @@ export const darkModeStyles = globalCss({
   },
   body: {
     background: theme.colors.secondary,
+    // style the scrollbar
+    "&::-webkit-scrollbar": {
+      width: "calc($087 / 2)",
+      height: "calc($087 / 2)",
+      backgroundColor: theme.colors.subtle,
+    },
+    // style the scrollbar handle
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.colors.alpha50,
+      borderRadius: "0",
+    },
+    // style the scrollbar handle on hover
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: theme.colors.alpha50,
+    },
   },
 });

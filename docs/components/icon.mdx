@@ -14,14 +14,6 @@ component: icon
 2. Icon glyph
 3. Label [Visually Hidden](/components/visually-hidden)
 
-### Import the component
-
-```jsx
-import { Icon } from "@washingtonpost/wpds-ui-kit";
-
-export default () => <Icon />;
-```
-
 ---
 
 ## Options
@@ -31,31 +23,49 @@ export default () => <Icon />;
 The `size` can be 16px, 24px, or 32px. The size sets the width and height of the SVG.
 
 ```jsx
-import { Icon } from "@washingtonpost/wpds-ui-kit";
-import Add from "@washingtonpost/wpds-assets/asset/add";
+// preview
+import { Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import Asset from "@washingtonpost/wpds-assets/asset/chevron-right";
 
 export default function Example() {
   return (
-    <Icon label="Add to List" size="16">
-      <Add />
-    </Icon>
+    <>
+      <Icon label="" size="16">
+        <Asset fill={theme.colors.primary} />
+      </Icon>
+      <Icon label="" size="24">
+        <Asset fill={theme.colors.primary} />
+      </Icon>
+      <Icon label="" size="32">
+        <Asset fill={theme.colors.primary} />
+      </Icon>
+    </>
   );
 }
 ```
 
 ### Label
 
-The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Add to List".
+The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Go to Next Page".
 
 ```jsx
-import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
-import Add from "@washingtonpost/wpds-assets/asset/add";
+// preview
+import { Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import Asset from "@washingtonpost/wpds-assets/asset/chevron-right";
 
 export default function Example() {
   return (
-    <Icon label="Add to List" size="16">
-      <Add />
-    </Icon>
+    <>
+      <Icon label="Go to Next Page" size="16">
+        <Asset fill={theme.colors.primary} />
+      </Icon>
+      <Icon label="Go to Next Page" size="24">
+        <Asset fill={theme.colors.primary} />
+      </Icon>
+      <Icon label="Go to Next Page" size="32">
+        <Asset fill={theme.colors.primary} />
+      </Icon>
+    </>
   );
 }
 ```

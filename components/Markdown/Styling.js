@@ -127,8 +127,11 @@ const components = {
       css={{
         marginBottom: "$100",
         overflowX: "auto",
+        color: theme.colors.accessible,
+        fontSize: "$087",
+        lineHeight: "$125",
         "@sm": {
-          width: "calc(100vw - $100 - $100)",
+          width: "calc(100vw - $300)",
         },
       }}
     >

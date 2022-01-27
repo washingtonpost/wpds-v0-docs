@@ -60,14 +60,39 @@ const Grid = styled("section", {
   margin: "0 auto",
   maxWidth: "100%",
   width: "100%",
+
+  "@sm": {
+    gridTemplateColumns: "auto",
+    gridGap: "$100",
+  },
 });
 
 /** create a code example with a scrollbar */
 const CodeExample = styled("pre", {
-  overflow: "auto",
+  overflowX: "auto",
   color: theme.colors.accessible,
   fontSize: "$087",
   lineHeight: "$125",
+  "@sm": {
+    paddingLeft: "$050",
+    paddingBottom: "$050",
+    width: "calc(100vw - $300)",
+    // style the scrollbar
+    "&::-webkit-scrollbar": {
+      width: "$087",
+      height: "calc($087 / 2)",
+      backgroundColor: theme.colors.subtle,
+    },
+    // style the scrollbar handle
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.colors.accessible,
+      borderRadius: "$125",
+    },
+    // style the scrollbar handle on hover
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: theme.colors.accessible,
+    },
+  },
 });
 
 /** create a component that lets the user copy a code example to their clipboard */
