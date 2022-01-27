@@ -153,7 +153,7 @@ const components = {
             {
               // remove the preview comment from the code and the line break
               children.includes("// preview")
-                ? children.replace("// preview", "").replace("\n", "")
+                ? children.replace("// preview", "").replace("\n", "").trim()
                 : children.trim()
             }
           </Sandbox>

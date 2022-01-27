@@ -38,6 +38,9 @@ export const Header = styled("h1", {
 });
 
 export default function headers({ css, children, as }) {
+  if (!children) {
+    return null;
+  }
   function TrimWhiteSpace() {
     let canonicalUrl = children.toString();
     canonicalUrl = canonicalUrl.replace(/\s/g, "_");
