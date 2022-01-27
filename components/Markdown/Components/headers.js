@@ -18,7 +18,6 @@ export const Header = styled("h1", {
         fontSize: "$125",
         fontFamily: "$subhead",
         fontWeight: "$bold",
-
         marginBottom: "$025",
         marginTop: "$100",
       },
@@ -26,6 +25,8 @@ export const Header = styled("h1", {
         fontSize: "$100",
         fontWeight: "$bold",
         fontFamily: "$meta",
+        paddingBottom: "$025",
+        marginTop: "$100",
       },
       h6: {
         fontSize: "$050",
@@ -37,8 +38,13 @@ export const Header = styled("h1", {
 });
 
 export default function headers({ css, children, as }) {
+  function TrimWhiteSpace() {
+    let canonicalUrl = children.toString();
+    canonicalUrl = canonicalUrl.replace(/\s/g, "_");
+    return canonicalUrl;
+  }
   return (
-    <Link id={`${children}`} href={`#${children}`}>
+    <Link id={`${TrimWhiteSpace()}`} href={`#${TrimWhiteSpace()}`}>
       <Header css={css} as={as}>
         {children}
       </Header>
