@@ -12,7 +12,15 @@ module.exports = {
   favicon: "img/wp-mark.svg",
   organizationName: "WP-Media", // Usually your GitHub org/user name.
   projectName: "wpds-docs", // Usually your repo name.
-  plugins: ["@docusaurus/plugin-ideal-image"],
+  plugins: [
+    "@docusaurus/plugin-ideal-image",
+    [
+      require.resolve("docusaurus-gtm-plugin"),
+      {
+        id: "GTM-WHNNX8B"
+      }
+    ]
+  ],
   themeConfig: {
     colorMode: {
       defaultMode: "light",
@@ -44,63 +52,10 @@ module.exports = {
           position: "right",
           label: "Components"
         }
-        // {
-        //   type: 'doc',
-        //   docId: 'content/voice',
-        //   position: 'right',
-        //   label: 'Content',
-        // },
-        // {
-        //   type: 'doc',
-        //   docId: 'patterns/pattern',
-        //   position: 'right',
-        //   label: 'Pattern',
-        // },
       ]
     },
     footer: {
       style: "light",
-      // links: [
-      //   {
-      //     title: 'Docs',
-      //     items: [
-      //       {
-      //         label: 'Tutorial',
-      //         to: '/docs/intro',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: 'Community',
-      //     items: [
-      //       {
-      //         label: 'Stack Overflow',
-      //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-      //       },
-      //       {
-      //         label: 'Discord',
-      //         href: 'https://discordapp.com/invite/docusaurus',
-      //       },
-      //       {
-      //         label: 'Twitter',
-      //         href: 'https://twitter.com/docusaurus',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: 'More',
-      //     items: [
-      //       {
-      //         label: 'Blog',
-      //         to: '/blog',
-      //       },
-      //       {
-      //         label: 'GitHub',
-      //         href: 'https://github.com/facebook/docusaurus',
-      //       },
-      //     ],
-      //   },
-      // ],
       copyright: `Copyright © ${new Date().getFullYear()} The Washington Post`
     },
     prism: {
@@ -135,10 +90,6 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")
-        },
-        gtag: {
-          trackingID: "G-DD0F8SKR32",
-          anonymizeIP: true
         }
       }
     ]
