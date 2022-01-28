@@ -1,7 +1,12 @@
 import React from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
-export default function inlineSVG({ path }) {
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+export default function inlineSVG({ path, width, height }) {
+  const Size = {
+    height: height ? height : 150,
+    width: width ? width : 300,
+  };
   function hexToRgbA(hex) {
     var c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
@@ -23,6 +28,14 @@ export default function inlineSVG({ path }) {
       // console.log("Bad Hex");
     }
   }
+  const Loader = styled("div", {
+    backgroundColor: theme.colors.gray500,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: Size.height,
+    width: "100%",
+  });
 
   function lookUpValue(rgba) {
     for (var token in Tokens.color.light) {
@@ -36,7 +49,12 @@ export default function inlineSVG({ path }) {
   }
   return (
     <ReactSVG
+      loading={() => <Loader>Loading image...</Loader>}
       beforeInjection={(svg) => {
+        svg.setAttribute("style", `max-width:${Size.width}`);
+        svg.setAttribute("style", `max-width:${Size.height}`);
+        svg.setAttribute("width", Size.width);
+        svg.setAttribute("height", Size.height);
         const paths = svg.querySelectorAll("path");
         paths.forEach((i) => {
           i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
