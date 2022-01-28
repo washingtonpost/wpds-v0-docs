@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-import { Loading } from "@washingtonpost/wpds-assets/asset";
 export default function inlineSVG({ path, title, description, width, height }) {
   const Size = { height: height ? height : 150, width: width ? width : 300 };
 
@@ -27,14 +25,6 @@ export default function inlineSVG({ path, title, description, width, height }) {
       // console.log("Bad Hex");
     }
   }
-  const Placeholder = styled("div", {
-    backgroundColor: theme.colors.gray500,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: Size.height,
-    width: "100%",
-  });
 
   function lookUpValue(rgba) {
     for (var token in Tokens.color.light) {
@@ -48,40 +38,37 @@ export default function inlineSVG({ path, title, description, width, height }) {
   }
   return (
     <>
-      <Placeholder>
-        <ReactSVG
-          loading={() => <span>Image loading</span>}
-          aria-label={description}
-          beforeInjection={(svg) => {
-            const titleTag = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "title"
-            );
-            titleTag.innerHTML = title; //require title to be passed
-            svg.preserveAspectRatio;
-            svg.prepend(title);
-            svg.setAttribute("style", `max-width:${Size.width}`);
-            svg.setAttribute("style", `max-height:${Size.height}`);
-            svg.setAttribute("width", Size.width);
-            svg.setAttribute("height", Size.height);
-            const paths = svg.querySelectorAll("path");
-            paths.forEach((i) => {
-              i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
-            });
-            const lines = svg.querySelectorAll("line");
-            lines.forEach((i) => {
-              i.setAttribute("stroke", hexToRgbA(i.getAttribute("stroke")));
-            });
-            const rects = svg.querySelectorAll("rect");
-            rects.forEach((i) => {
-              i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
-            });
-            //TODO need to account for primitives circle, ellipse, polyline, polygon
-          }}
-          fallback={() => <Loading>Error while loading image</Loading>}
-          src={path}
-        />
-      </Placeholder>
+      <ReactSVG
+        aria-label={description}
+        beforeInjection={(svg) => {
+          const titleTag = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "title"
+          );
+          titleTag.innerHTML = title; //require title to be passed
+          svg.preserveAspectRatio;
+          svg.prepend(title);
+          svg.setAttribute("style", `max-width:${Size.width}`);
+          svg.setAttribute("style", `max-height:${Size.height}`);
+          svg.setAttribute("width", Size.width);
+          svg.setAttribute("height", Size.height);
+          const paths = svg.querySelectorAll("path");
+          paths.forEach((i) => {
+            i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
+          });
+          const lines = svg.querySelectorAll("line");
+          lines.forEach((i) => {
+            i.setAttribute("stroke", hexToRgbA(i.getAttribute("stroke")));
+          });
+          const rects = svg.querySelectorAll("rect");
+          rects.forEach((i) => {
+            i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
+          });
+          //TODO need to account for primitives circle, ellipse, polyline, polygon
+        }}
+        fallback={() => <span>Error while loading image</span>}
+        src={path}
+      />
     </>
   );
 }
