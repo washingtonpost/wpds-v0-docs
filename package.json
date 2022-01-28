@@ -41,6 +41,7 @@
     "@washingtonpost/spacing-tokens": "^0.2.0",
     "@washingtonpost/typography-tokens": "^0.6.0",
     "clsx": "^1.1.1",
+    "docusaurus-gtm-plugin": "^0.0.2",
     "file-loader": "^6.2.0",
     "framer-motion": "^4.1.17",
     "fs-extra": "^10.0.0",
