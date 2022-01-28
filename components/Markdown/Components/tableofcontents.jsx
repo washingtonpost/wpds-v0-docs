@@ -71,9 +71,11 @@ const Item = ({ children, level, label, as, href }) => (
 export default function TableOfContents({ headings }) {
   return (
     <Container>
-      <Header css={{ margin: "0 $025" }} as="h2">
-        Table of Contents
-      </Header>
+      {headings.length !== 0 && (
+        <Header css={{ margin: "0 $025" }} as="h2">
+          Table of Contents
+        </Header>
+      )}
       <List>
         {headings.map(
           (heading, i) =>
