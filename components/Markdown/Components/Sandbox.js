@@ -159,7 +159,7 @@ const wrapper = css({
   },
 });
 
-const Button = styled("button", {
+const buttonStyles = {
   cursor: "pointer",
   fontFamily: "$meta",
   fontSize: "$100",
@@ -170,26 +170,24 @@ const Button = styled("button", {
   border: "none",
   background: "transparent",
   padding: "calc($050/2)",
+  borderRadius: "$012",
   "&:active": {
     background: "$subtle",
   },
+  "@hover": {
+    "&:hover": {
+      background: "$subtle",
+    },
+  },
+};
+
+const Button = styled("button", {
+  ...buttonStyles,
 });
 
 const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, {
   alignSelf: "flex-end",
-  cursor: "pointer",
-  fontFamily: "$meta",
-  fontSize: "$100",
-  fontWeight: "$light",
-  lineHeight: "$150",
-  color: "$accessible",
-  appearance: "none",
-  background: "transparent",
-  border: "none",
-  padding: "calc($050/2)",
-  "&:active": {
-    background: "$subtle",
-  },
+  ...buttonStyles,
 });
 
 const CustomSandpack = ({ withPreview = false, children }) => {

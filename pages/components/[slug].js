@@ -9,12 +9,14 @@ import {
   getDocByPathName,
   getHeadings,
   getNavigation,
+  getPropsTable,
 } from "~/services";
 
 import { default as EmbedDocsPage } from "~/components/Markdown/Components/EmbedDocsPage";
 import { default as EmbedControls } from "~/components/Markdown/Components/EmbedControls";
 import { default as EmbedStory } from "~/components/Markdown/Components/EmbedStory";
 import { default as CustomSandpack } from "~/components/Markdown/Components/Sandbox";
+import { PropsTable } from "~/components/PropsTable";
 
 const components = {
   ...MDXStyling,
@@ -23,13 +25,14 @@ const components = {
   EmbedDocsPage,
   CustomSandpack,
   Head,
+  PropsTable,
 };
 
 const P = styled("p", {
   color: theme.colors.accessible,
 });
 
-export default function Page({ current, source, headings }) {
+export default function Page({ current, source, headings, propsTable }) {
   return (
     <>
       <Head>
@@ -43,7 +46,13 @@ export default function Page({ current, source, headings }) {
         <TableofContents current={current} headings={headings} />
       </div>
 
-      <MDXRemote {...source} components={components} />
+      <MDXRemote
+        {...source}
+        components={components}
+        scope={{
+          propsTable,
+        }}
+      />
     </>
   );
 }
@@ -54,6 +63,7 @@ export const getStaticProps = async ({ params }) => {
   const source = await getDocByPathName(`${thisSection}/${params.slug}`);
   const headings = await getHeadings(`${thisSection}/${params.slug}`);
   const navigation = await getNavigation();
+  const propsTable = await getPropsTable(params.slug);
 
   return {
     props: {
@@ -61,6 +71,7 @@ export const getStaticProps = async ({ params }) => {
       headings,
       navigation,
       source,
+      propsTable,
     },
   };
 };
