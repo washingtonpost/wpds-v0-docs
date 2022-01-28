@@ -26,7 +26,7 @@ function App({ Component, pageProps }) {
   const getLayout = Component.getLayout;
 
   const router = useRouter();
-  useEffect(() => {
+  React.useEffect(() => {
     router.events.on("routeChangeComplete", pageview);
     return () => {
       router.events.off("routeChangeComplete", pageview);
