@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
+import Image from "next/image";
+import { css } from "@washingtonpost/wpds-ui-kit";
+
 export default function inlineSVG({ path, title, description, width, height }) {
   const Size = { height: height ? height : 150, width: width ? width : 300 };
 
@@ -36,10 +39,24 @@ export default function inlineSVG({ path, title, description, width, height }) {
       }
     }
   }
+
+  const inlineSvgCss = css({
+    aspectRatio: `${width}/${height}`,
+  });
+
   return (
     <>
       <ReactSVG
         aria-label={description}
+        loading={() => (
+          <Image
+            width={width}
+            height={height}
+            className={inlineSvgCss()}
+            src={path}
+            alt=""
+          />
+        )}
         beforeInjection={(svg) => {
           const titleTag = document.createElementNS(
             "http://www.w3.org/2000/svg",

@@ -13,6 +13,7 @@ import "@codesandbox/sandpack-react/dist/index.css";
 import { Footer } from "~/components/Footer";
 
 const pageview = (url) => {
+  window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: "pageview",
     page: url,
