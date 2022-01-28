@@ -46,7 +46,6 @@ export default function inlineSVG({ path, title, description, width, height }) {
             "title"
           );
           titleTag.innerHTML = title; //require title to be passed
-          svg.preserveAspectRatio;
           svg.prepend(title);
           svg.setAttribute("style", `max-width:${Size.width}`);
           svg.setAttribute("style", `max-height:${Size.height}`);
