@@ -1,7 +1,10 @@
 import React from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
-export default function inlineSVG({ path }) {
+import { css } from "@washingtonpost/wpds-ui-kit";
+import Image from "next/image";
+
+export default function inlineSVG({ path, width, height }) {
   function hexToRgbA(hex) {
     var c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
@@ -34,8 +37,24 @@ export default function inlineSVG({ path }) {
       }
     }
   }
+
+  const inlineSvgCss = css({
+    aspectRatio: `${width}/${height}`,
+  });
+
   return (
     <ReactSVG
+      wrapper="div"
+      className={inlineSvgCss()}
+      loading={() => (
+        <Image
+          width={width}
+          height={height}
+          className={inlineSvgCss()}
+          src={path}
+          alt=""
+        />
+      )}
       beforeInjection={(svg) => {
         const paths = svg.querySelectorAll("path");
         paths.forEach((i) => {
