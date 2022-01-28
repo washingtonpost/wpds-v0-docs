@@ -2,7 +2,8 @@ import React from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-export default function inlineSVG({ path, width, height }) {
+import { Loading } from "@washingtonpost/wpds-assets/asset";
+export default function inlineSVG({ path, title, description, width, height }) {
   const Size = {
     height: height ? height : 150,
     width: width ? width : 300,
@@ -49,11 +50,19 @@ export default function inlineSVG({ path, width, height }) {
   }
   return (
     <ReactSVG
+      aria-label={description}
       loading={() => <Loader>Loading image...</Loader>}
       beforeInjection={(svg) => {
+        const titleTag = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "title"
+        );
+        titleTag.innerHTML = title; //require title to be passed
+        svg.preserveAspectRatio;
+        svg.prepend(title);
         svg.setAttribute("style", `max-width:${Size.width}`);
         svg.setAttribute("style", `max-width:${Size.height}`);
-        svg.setAttribute("width", Size.width);
+        svg.setAttribute("width", "auto");
         svg.setAttribute("height", Size.height);
         const paths = svg.querySelectorAll("path");
         paths.forEach((i) => {
@@ -69,6 +78,7 @@ export default function inlineSVG({ path, width, height }) {
         });
         //TODO need to account for primitives circle, ellipse, polyline, polygon
       }}
+      fallback={() => <Loading>Error while loading image</Loading>}
       src={path}
     />
   );
