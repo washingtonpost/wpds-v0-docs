@@ -6,15 +6,32 @@ import { globalStyles, darkTheme, Box } from "@washingtonpost/wpds-ui-kit";
 import { darkModeStyles } from "~/components/DarkModeStyles";
 import { PageLayout } from "~/components/Layout";
 import { SSRProvider } from "@react-aria/ssr";
+import { useRouter } from "next/router";
+import { GoogleTagManager } from "@washingtonpost/site-third-party-scripts";
 import SEO from "../next-seo.config";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { Footer } from "~/components/Footer";
+
+const pageview = (url) => {
+  window.dataLayer.push({
+    event: "pageview",
+    page: url,
+  });
+};
 
 function App({ Component, pageProps }) {
   globalStyles();
   darkModeStyles();
 
   const getLayout = Component.getLayout;
+
+  const router = useRouter();
+  React.useEffect(() => {
+    router.events.on("routeChangeComplete", pageview);
+    return () => {
+      router.events.off("routeChangeComplete", pageview);
+    };
+  }, [router.events]);
 
   return (
     <SSRProvider>
@@ -29,6 +46,12 @@ function App({ Component, pageProps }) {
         disableTransitionOnChange={false}
         enableColorScheme={false}
       >
+        {/** only render on prod */}
+        {process.env.NODE_ENV === "production" && (
+          <Script id="gtm-script" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];${GoogleTagManager()}`}
+          </Script>
+        )}
         {getLayout ? (
           getLayout(
             <>
@@ -40,24 +63,6 @@ function App({ Component, pageProps }) {
           <PageLayout {...pageProps}>
             <Component {...pageProps} />
           </PageLayout>
-        )}
-        {/** only render on prod */}
-        {process.env.NODE_ENV === "production" && (
-          <>
-            <Script
-              src="https://www.googletagmanager.com/gtag/js?id=G-DD0F8SKR32"
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-								window.dataLayer = window.dataLayer || [];
-								function gtag(){window.dataLayer.push(arguments);}
-								gtag('js', new Date());
-
-								gtag('config', 'G-DD0F8SKR32');
-							`}
-            </Script>
-          </>
         )}
       </ThemeProvider>
     </SSRProvider>
