@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
-export default function inlineSVG({ path }) {
+export default function inlineSVG({ path, title, description, width, height }) {
+  const Size = { height: height ? height : 150, width: width ? width : 300 };
+
   function hexToRgbA(hex) {
     var c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
@@ -35,23 +37,37 @@ export default function inlineSVG({ path }) {
     }
   }
   return (
-    <ReactSVG
-      beforeInjection={(svg) => {
-        const paths = svg.querySelectorAll("path");
-        paths.forEach((i) => {
-          i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
-        });
-        const lines = svg.querySelectorAll("line");
-        lines.forEach((i) => {
-          i.setAttribute("stroke", hexToRgbA(i.getAttribute("stroke")));
-        });
-        const rects = svg.querySelectorAll("rect");
-        rects.forEach((i) => {
-          i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
-        });
-        //TODO need to account for primitives circle, ellipse, polyline, polygon
-      }}
-      src={path}
-    />
+    <>
+      <ReactSVG
+        aria-label={description}
+        beforeInjection={(svg) => {
+          const titleTag = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "title"
+          );
+          titleTag.innerHTML = title; //require title to be passed
+          svg.prepend(title);
+          svg.setAttribute("style", `max-width:${Size.width}`);
+          svg.setAttribute("style", `max-height:${Size.height}`);
+          svg.setAttribute("width", Size.width);
+          svg.setAttribute("height", Size.height);
+          const paths = svg.querySelectorAll("path");
+          paths.forEach((i) => {
+            i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
+          });
+          const lines = svg.querySelectorAll("line");
+          lines.forEach((i) => {
+            i.setAttribute("stroke", hexToRgbA(i.getAttribute("stroke")));
+          });
+          const rects = svg.querySelectorAll("rect");
+          rects.forEach((i) => {
+            i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
+          });
+          //TODO need to account for primitives circle, ellipse, polyline, polygon
+        }}
+        fallback={() => <span>Error while loading image</span>}
+        src={path}
+      />
+    </>
   );
 }
