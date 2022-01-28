@@ -314,6 +314,9 @@ export default function App() {
               display: "flex",
               justifyContent: "flex-end",
               gap: "$100",
+              "@sm": {
+                display: "none",
+              },
             }}
           >
             <OpenInSandboxButton>Open in CodeSandbox</OpenInSandboxButton>

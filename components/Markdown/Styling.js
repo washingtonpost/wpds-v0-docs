@@ -131,7 +131,7 @@ const components = {
         fontSize: "$087",
         lineHeight: "$125",
         "@sm": {
-          width: "calc(100vw - $300)",
+          // width: "calc(100vw - $300)",
         },
       }}
     >
