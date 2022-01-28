@@ -49,7 +49,7 @@ function App({ Component, pageProps }) {
         {/** only render on prod */}
         {process.env.NODE_ENV === "production" && (
           <Script id="gtm-script" strategy="afterInteractive">
-            {`window.dataLayer = window.dataLayer || [];${GoogleTagManager}`}
+            {`window.dataLayer = window.dataLayer || [];${GoogleTagManager()}`}
           </Script>
         )}
         {getLayout ? (
