@@ -207,6 +207,27 @@ export default function Page({ current, navigation }) {
               Getting started
             </CustomLink>
           </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Design_principles"}>
+              Design principles
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Grid_and_keyline_shapes"}>
+              Grid and keyline shapes
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Contributing"}>
+              Contributing
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Icons"}>Icons</CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Logos"}>Logos</CustomLink>
+          </ListItem>
         </List>
         <HR />
         <Header css={{ paddingBottom: "$100" }} as="h2">
@@ -280,10 +301,10 @@ export default function Page({ current, navigation }) {
             </Icon>
           </Box>
         </Container>
-        <Header as="h3">Logos</Header>
-        Logos do not follow any principle other than approved brand guidelines.
-        Logos need to be clear in what brand they represent and have guidance
-        around their use.
+        <Header as="h3">Other assets</Header>
+        Other assets like logos do not follow any principle other than approved
+        brand guidelines. Assets need to be clear in what they represent and
+        have guidance around their use.
         <Box
           css={{
             marginBottom: "$100",
