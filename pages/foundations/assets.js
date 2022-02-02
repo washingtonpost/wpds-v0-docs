@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
-import { styled, theme, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import {
+  styled,
+  keyframes,
+  theme,
+  Icon,
+  Box,
+} from "@washingtonpost/wpds-ui-kit";
 import { paramCase } from "param-case";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { useTheme } from "next-themes";
 import Header from "~/components/Markdown/Components/headers";
 import CustomLink from "~/components/Markdown/Components/link";
+import { List, ListItem } from "~/components/Markdown/Components/list";
+import CopyToClipboard from "~/components/Markdown/Components/CopyToClipBoard";
 import { getNavigation } from "~/services/getNavigation";
 import CustomSandpack from "~/components/Markdown/Components/Sandbox";
+import Container from "~/components/Markdown/Components/container";
+import Bookmark from "@washingtonpost/wpds-assets/asset/bookmark";
+import Play from "@washingtonpost/wpds-assets/asset/play";
+import Email from "@washingtonpost/wpds-assets/asset/email";
+import Article from "@washingtonpost/wpds-assets/asset/article";
+import Globe from "@washingtonpost/wpds-assets/asset/globe";
+import Image from "@washingtonpost/wpds-assets/asset/image";
+import InlineSVG from "~/components/Markdown/Components/inlineSVG";
 
-// if the componentName is in this array then don't map over it
+// if the componentName is in this array then dont map over it
 const logos = [
   "voraciously",
   "amazon",
@@ -36,7 +52,15 @@ const logos = [
   "google",
 ];
 
-const AssetContainer = styled("article", {
+const HR = styled("hr", {
+  borderStyle: "none",
+  backgroundColor: "$subtle",
+  height: "1px",
+  width: "100%",
+  margin: "$100 0",
+});
+
+const AssetContainer = styled("button", {
   border: "1px solid $subtle",
   padding: "$100 $050",
   borderRadius: "$025",
@@ -44,8 +68,11 @@ const AssetContainer = styled("article", {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  background: theme.colors.subtle,
-
+  cursor: "pointer",
+  background: theme.colors.gray500,
+  "&:hover": {
+    backgroundColor: theme.colors.gray300,
+  },
   // highlight AssetContainer when CTRL + F is used
   "&:focus": {
     outline: "2px solid $signal",
@@ -62,7 +89,7 @@ const Grid = styled("section", {
   width: "100%",
 
   "@sm": {
-    gridTemplateColumns: "auto",
+    gridTemplateColumns: "1fr",
     gridGap: "$100",
   },
 });
@@ -76,7 +103,6 @@ const CodeExample = styled("pre", {
   "@sm": {
     paddingLeft: "$050",
     paddingBottom: "$050",
-    width: "calc(100vw - $300)",
     // style the scrollbar
     "&::-webkit-scrollbar": {
       width: "$087",
@@ -94,48 +120,6 @@ const CodeExample = styled("pre", {
     },
   },
 });
-
-/** create a component that lets the user copy a code example to their clipboard */
-const CopyToClipboard = ({ codeToCopy, children }) => {
-  const [copied, setCopied] = React.useState(false);
-  const copyToClipboard = () => {
-    const textArea = document.createElement("textarea");
-    textArea.value = codeToCopy;
-
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand("copy");
-    textArea.remove();
-    setCopied(true);
-  };
-
-  // reset the copied state after a second
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      setCopied(false);
-    }, 1000);
-    return () => clearTimeout(timeout);
-  }, [copied]);
-
-  const CopyButton = styled("button", {
-    cursor: "pointer",
-    // remove default button styles
-    border: "none",
-    padding: "0",
-    margin: "0",
-    background: "none",
-
-    [`& ${AssetContainer}`]: {
-      backgroundColor: copied ? theme.colors.success : theme.colors.subtle,
-    },
-  });
-
-  return (
-    <CopyButton onClick={copyToClipboard} title="Click to copy code">
-      {children}
-    </CopyButton>
-  );
-};
 
 const P = styled("p", {
   fontSize: "$100",
@@ -156,7 +140,14 @@ export default function Example() {
 
 export default function Page({ current, navigation }) {
   const { resolvedTheme } = useTheme();
-
+  const [ExampleToCopy, setExampleToCopy] = useState(null);
+  useEffect(async () => {
+    if (ExampleToCopy) {
+      await navigator.clipboard.writeText(ExampleToCopy);
+      window.alert(`Copied: ${ExampleToCopy}`);
+      setTimeout(() => setExampleToCopy(null), 100);
+    }
+  }, [ExampleToCopy]);
   return (
     <>
       <Head>
@@ -166,77 +157,236 @@ export default function Page({ current, navigation }) {
         <Header css={{ paddingBottom: "$100" }} as="h1">
           WPDS Assets Manager
         </Header>
-
-        <Header css={{ paddingBottom: "$100" }} as="h2">
-          Figma design
-        </Header>
-
         <P>
-          All of our icons are design to share a similar visual language. The
-          icons utilize a single path to create the glyph of the icon. To use
-          our icons in your designs enable WPDS-Asset-Manager library in Figma
-          to have access to the components. Icons color fill should follow our
-          guidance on color.{" "}
+          The asset manager is an independent package that allows for more
+          streamlined management of our assets. WPDS-Asset-Manager, also known
+          as WAM, manages all assets as raw SVG files.
+        </P>
+        <Header as="h3">Table of contents</Header>
+        <List>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Getting_started"}>
+              Getting started
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Design_principles"}>
+              Design principles
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Grid_and_keyline_shapes"}>
+              Grid and keyline shapes
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Contributing"}>
+              Contributing
+            </CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Icons"}>Icons</CustomLink>
+          </ListItem>
+          <ListItem>
+            <CustomLink href={"/foundations/assets#Logos"}>Logos</CustomLink>
+          </ListItem>
+        </List>
+        <HR />
+        <Header css={{ paddingBottom: "$100" }} as="h2">
+          Getting started
+        </Header>
+        <Header as="h3">How to use in figma</Header>
+        <P>
+          To use WAM, please enable the{" "}
           <CustomLink
             href="https://www.figma.com/file/LA6qKUukk8v3YkkuKq6IC6/%F0%9F%96%BC--WPDS-Asset-Manager"
             useSignal
           >
-            Open in Figma
-          </CustomLink>
+            WPDS-Asset-Manager
+          </CustomLink>{" "}
+          in your libraries to gain access to all the icon glyphs and the logos.
+          Please note if you are looking to use the icon as a component, we
+          recommend using our icon component.
         </P>
-
-        <Box
+        <Header as="h3">How to install</Header>
+        <P>Note: WAM requires React to adopt into your project.</P>
+        <CopyToClipboard
           css={{
-            marginBottom: "$200",
+            padding: "$050",
+            marginBottom: "$100",
+            color: theme.colors.accessible,
+            backgroundColor: theme.colors.gray500,
           }}
-        />
-
-        <Header id="React components" css={{ paddingBottom: "$100" }} as="h2">
-          React components
-        </Header>
-        <Box
-          css={{
-            border: "1px solid $onPrimary",
-            borderRadius: "$025",
-          }}
+          codeToCopy={`npm install @washingtonpost/wpds-assets`}
         >
-          <Header id="how-to-install" css={{ paddingBottom: "$100" }} as="h3">
-            How to install
-          </Header>
-          <CopyToClipboard
-            codeToCopy={`npm install @washingtonpost/wpds-assets`}
-          >
-            <CodeExample>npm install @washingtonpost/wpds-assets</CodeExample>
-          </CopyToClipboard>
-
+          <CodeExample>npm install @washingtonpost/wpds-assets</CodeExample>
+        </CopyToClipboard>
+        <CustomSandpack>{codeSample}</CustomSandpack>
+        <HR css={{ marginTop: "$200" }} />
+        <Header as="h2">Design principles</Header>
+        <Header as="h3">Visual style</Header>
+        <P>
+          The visual style of our icon set uses minimal lines and geometries. As
+          a result, our icons use 1px lines and basic shapes to represent the
+          glyph. The corners of most our icons are sharp and rarely round. Our
+          icons geometry rarely use a fill. Still, when an icon has a fill, it
+          is tied to a toggle state or required visual weight to satisfy
+          hierarchy in the instances that they are.
+        </P>
+        <Container>
           <Box
             css={{
-              marginBottom: "$100",
+              minWidth: 250,
+              minHeight: 100,
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-evenly",
             }}
-          />
-
-          <Header id="code-example" css={{ paddingBottom: "$100" }} as="h3">
-            Import the icons into your React project
-          </Header>
-          <CustomSandpack>{codeSample}</CustomSandpack>
-        </Box>
+          >
+            <Icon size="24" label="bookmark">
+              <Bookmark fill={theme.colors.primary} />
+            </Icon>
+            <Icon size="24" label="bookmark">
+              <Play fill={theme.colors.primary} />
+            </Icon>
+            <Icon size="24" label="bookmark">
+              <Email fill={theme.colors.primary} />
+            </Icon>
+            <Icon size="24" label="bookmark">
+              <Article fill={theme.colors.primary} />
+            </Icon>
+            <Icon size="24" label="bookmark">
+              <Globe fill={theme.colors.primary} />
+            </Icon>
+            <Icon size="24" label="bookmark">
+              <Image fill={theme.colors.primary} />
+            </Icon>
+          </Box>
+        </Container>
+        <Header as="h3">Other assets</Header>
+        Other assets like logos do not follow any principle other than approved
+        brand guidelines. Assets need to be clear in what they represent and
+        have guidance around their use.
         <Box
-          as="hr"
           css={{
-            display: "block",
-            height: "0",
-            color: theme.colors.subtle,
-            border: "none",
-            borderBottom: "1px solid currentColor",
-            marginTop: "$200",
-            marginBottom: "$200",
+            marginBottom: "$100",
           }}
         />
+        <HR />
+        <Header as="h2">Grid and keyline shapes</Header>
+        <Header as="h3">Base size</Header>
+        <P>
+          There are four keyline shapes an icon can have as a base. All of the
+          shapes require a 1 px padding on all sides.
+        </P>
+        <Container>
+          <InlineSVG
+            alt="Image of different sized icons labeled from left to right 16px 24px 32px"
+            path="/img/foundations/WAM/sizes.svg"
+            width={183}
+            height={85}
+          />
+        </Container>
+        <Header as="h3">Keyline shapes</Header>
+        <P>
+          There are four keyline shapes an icon can have as a base. All of the
+          shapes require a 1 px padding on all sides.
+        </P>
+        <Container>
+          <InlineSVG
+            alt="Image of the different types to be used as a base keyline shape"
+            path="/img/foundations/WAM/keyline.svg"
+            width={330}
+            height={360}
+          />
+        </Container>
+        <List as="ol">
+          <ListItem>Square</ListItem>
+          <ListItem>Circle</ListItem>
+          <ListItem>Rectangle - Vertical</ListItem>
+          <ListItem>Rectangle - Horizontal</ListItem>
+        </List>
+        <HR />
+        <Header as="h2">Contributing</Header>
+        <P>
+          For every submission, we require a review of the guideline checklist
+          and follow the approval process. It will save you a lot of time before
+          creating an icon to submit. So please review the following:
+        </P>
+        <List css={{ marginLeft: "$100" }} as="ol">
+          <ListItem>
+            All icons are unique and not a repeat of any existing icons. Please
+            review our current icon set and double-check if there are any
+            conflicts.
+          </ListItem>
+          <ListItem>Icons adhere to our Design principles.</ListItem>
+          <ListItem>Icons work across all devices and platforms.</ListItem>
+          <ListItem>
+            Icons should be understandable by a global audience regardless of
+            nationality, language, or device preference.
+          </ListItem>
+        </List>
+        <Header as="h3">Making an icon</Header>
+        <P>
+          You can create the icon in any tool of your preference. There are a
+          few things to consider & required when creating and designing an icon.
+          They are as follow:
+        </P>
+        <List css={{ marginLeft: "$100" }} as="ol">
+          <ListItem>
+            Avoid using the line tool, and use the rectangle tool to avoid half
+            pixels.
+          </ListItem>
+          <ListItem>
+            Consider turning on pixel snapping if that is capable in your device
+            of choice.{" "}
+          </ListItem>
+          <ListItem>
+            Never use center borders as they create half pixels.{" "}
+          </ListItem>
+          <ListItem>Consider converting lines to outline paths.</ListItem>
+          <ListItem>
+            Ungroup icon layers and have the icon be the topmost layer.
+          </ListItem>
+          <ListItem>
+            Ensure that the SVG file exports with a title that does not conflict
+            with an existing icon name.
+          </ListItem>
+          <ListItem>Must use one of our keyline shapes.</ListItem>
+          <ListItem>Combine all shapes and paths when possible.</ListItem>
+        </List>
+        <Header as="h4">Production ready</Header>
+        <P>
+          To be considered production-ready, all icon proposals must be an SVG
+          file. Any icons that fail to meet the guidelines will be rejected and
+          require a resubmission unless otherwise noted.
+        </P>
+        <Header as="h3">Approval process</Header>
+        <P>
+          Icons submitted to WAM must go through an approval process by WPDS.
+          The process begins when a proposal has been made on our #WPDS slack
+          channel or to our email WPDS@washpost.com. After receiving a proposal,
+          it will undergo a review by our team. The approval of icons can take
+          between 7-14 days. The length depends on how many revisions are needed
+          and the number of icons in the proposal.
+        </P>
+        <P>
+          If your submission is accepted, the team will notify your proposals
+          approval. We will update WAM with the new icon(s) with the next
+          release.
+        </P>
+        <HR css={{ marginTop: "$100" }} />
         <Header id="Icons" css={{ paddingBottom: "$100" }} as="h2">
           Icons
         </Header>
-        <Grid>
-          {Object.keys(AllAssets).map((Asset) => {
+        <Grid
+          css={{
+            "@sm": {
+              gridTemplateColumns: "repeat(auto-fill, minmax($400, 1fr))",
+            },
+          }}
+        >
+          {Object.keys(AllAssets).map((Asset, i) => {
             const Component = AllAssets[Asset];
             const componentName = paramCase(Asset);
 
@@ -253,31 +403,14 @@ export default function Page({ current, navigation }) {
             )}";`;
 
             return (
-              <CopyToClipboard key={Asset} codeToCopy={importExample}>
-                <AssetContainer>
-                  <Box
-                    css={{
-                      lineHeight: 0,
-                    }}
-                  >
-                    <Icon
-                      label={`Asset for ${Asset.replace("Svg", "")}`}
-                      size="32"
-                    >
-                      <Component fill={theme.colors.primary} />
-                    </Icon>
-                  </Box>
-                </AssetContainer>
-                <Header
-                  as="h6"
-                  css={{
-                    width: "100%",
-                    marginTop: "$025",
-                  }}
-                >
-                  {Asset.replace("Svg", "")}
-                </Header>
-              </CopyToClipboard>
+              <AssetContainer
+                key={i}
+                onClick={() => setExampleToCopy(importExample)}
+              >
+                <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="24">
+                  <Component fill={theme.colors.primary} />
+                </Icon>
+              </AssetContainer>
             );
           })}
         </Grid>
@@ -292,17 +425,15 @@ export default function Page({ current, navigation }) {
         <Box
           css={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gridGap: "$200",
             // auto equal height cells
             [`${AssetContainer}`]: {
               height: "$500",
               px: "$100",
-              background: theme.colors.subtle,
             },
           }}
         >
-          {Object.keys(AllAssets).map((Asset) => {
+          {Object.keys(AllAssets).map((Asset, i) => {
             const Component = AllAssets[Asset];
             const componentName = paramCase(Asset);
 
@@ -316,24 +447,23 @@ export default function Page({ current, navigation }) {
 
             if (logos.includes(componentName)) {
               return (
-                <CopyToClipboard key={Asset} codeToCopy={importExample}>
-                  <AssetContainer>
-                    <Icon
-                      label={`Asset for ${Asset.replace("Svg", "")}`}
-                      size=""
-                    >
-                      <Component fill={theme.colors.primary} />
-                    </Icon>
-                  </AssetContainer>
-                  <Header
-                    as="h6"
-                    css={{
-                      marginTop: "$025",
-                    }}
+                <AssetContainer
+                  key={i}
+                  css={{
+                    backgroundColor: theme.colors["gray500"],
+                    "&hover": {
+                      backgroundColor: theme.colors.gray300,
+                    },
+                  }}
+                  onClick={() => setExampleToCopy(importExample)}
+                >
+                  <Icon
+                    label={`Asset for ${Asset.replace("Svg", "")}`}
+                    size={150}
                   >
-                    {Asset.replace("Svg", "")}
-                  </Header>
-                </CopyToClipboard>
+                    <Component />
+                  </Icon>
+                </AssetContainer>
               );
             }
           })}
