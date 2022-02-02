@@ -36,7 +36,6 @@ const CopyCodeButton = ({ css, children, textToCopy }) => {
       setTimeout(() => setCopied(false), 2000);
     }
   }, [copied]);
-
   return (
     <Button
       css={{
@@ -55,6 +54,7 @@ const CopyCodeButton = ({ css, children, textToCopy }) => {
       aria-label="Copy code to clipboard"
     >
       {children}
+      {"|"}
       <Icon size="16">
         <ClipboardIcon />
       </Icon>

@@ -24,7 +24,6 @@ import Email from "@washingtonpost/wpds-assets/asset/email";
 import Article from "@washingtonpost/wpds-assets/asset/article";
 import Globe from "@washingtonpost/wpds-assets/asset/globe";
 import Image from "@washingtonpost/wpds-assets/asset/image";
-import Success from "@washingtonpost/wpds-assets/asset/success";
 import InlineSVG from "~/components/Markdown/Components/inlineSVG";
 
 // if the componentName is in this array then don't map over it
@@ -127,21 +126,6 @@ const P = styled("p", {
   paddingBottom: "$050",
   color: theme.colors.accessible,
 });
-const PopUpBase = styled("div", {
-  position: "fixed",
-  display: "flex",
-  alignItems: "center",
-  top: 100,
-  right: 0,
-  transform: "translateX(-100%)",
-  minWidth: 150,
-  backgroundColor: theme.colors.green300,
-  borderRadius: "$025",
-  padding: "$100",
-  boxShadow: "$300",
-  transition: "transform .5s",
-  border: "$success solid 1px",
-});
 
 const codeSample = `import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
 import Add from "@washingtonpost/wpds-assets/asset/add";
@@ -157,33 +141,14 @@ export default function Example() {
 export default function Page({ current, navigation }) {
   const { resolvedTheme } = useTheme();
   const [ShowCopyOSN, setShowCopyOSN] = useState(false);
-  const [codeToCopy, setCodeToCopy] = useState(null);
   useEffect(() => {
-    setCodeToCopy(null);
     if (ShowCopyOSN) {
-      setTimeout(() => setShowCopyOSN(false), 2000);
+      window.alert("Code copied");
+      setTimeout(() => setShowCopyOSN(false), 100);
     }
   }, [ShowCopyOSN]);
-
-  const PopUp = styled(PopUpBase, {
-    variants: {
-      display: {
-        true: {
-          transform: "translateX(0%)",
-        },
-        false: {
-          transform: "translateX(100%)",
-        },
-      },
-      default: {
-        display: "false",
-      },
-    },
-  });
-
   function handleCopy(importExample) {
     navigator.clipboard.writeText(`${importExample}`);
-    setCodeToCopy(importExample);
     setShowCopyOSN(true);
   }
   return (
@@ -435,11 +400,7 @@ export default function Page({ current, navigation }) {
             )}";`;
 
             return (
-              <AssetContainer
-                onClick={() => {
-                  handleCopy(importExample);
-                }}
-              >
+              <AssetContainer onClick={() => handleCopy(importExample)}>
                 <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="24">
                   <Component fill={theme.colors.primary} />
                 </Icon>
@@ -499,16 +460,6 @@ export default function Page({ current, navigation }) {
           })}
         </Box>
       </>
-      {!codeToCopy && (
-        <PopUp display={ShowCopyOSN ? "true" : "false"}>
-          <Icon label="Success" size="24">
-            <Success fill={theme.colors.success} />
-          </Icon>
-          <Box as="span" css={{ marginLeft: "$050" }}>
-            Code copied!
-          </Box>
-        </PopUp>
-      )}
     </>
   );
 }
