@@ -139,17 +139,14 @@ export default function Example() {
 
 export default function Page({ current, navigation }) {
   const { resolvedTheme } = useTheme();
-  const [ShowCopyOSN, setShowCopyOSN] = useState(false);
-  useEffect(() => {
-    if (ShowCopyOSN) {
-      window.alert("Code copied");
-      setTimeout(() => setShowCopyOSN(false), 100);
+  const [ExampleToCopy, setExampleToCopy] = useState(null);
+  useEffect(async () => {
+    if (ExampleToCopy) {
+      await navigator.clipboard.writeText(ExampleToCopy);
+      window.alert(`Copied: ${ExampleToCopy}`);
+      setTimeout(() => setExampleToCopy(null), 100);
     }
-  }, [ShowCopyOSN]);
-  function handleCopy(importExample) {
-    navigator.clipboard.writeText(`${importExample}`);
-    setShowCopyOSN(true);
-  }
+  }, [ExampleToCopy]);
   return (
     <>
       <Head>
@@ -407,7 +404,10 @@ export default function Page({ current, navigation }) {
             )}";`;
 
             return (
-              <AssetContainer key={i} onClick={() => handleCopy(importExample)}>
+              <AssetContainer
+                key={i}
+                onClick={() => setExampleToCopy(importExample)}
+              >
                 <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="24">
                   <Component fill={theme.colors.primary} />
                 </Icon>
@@ -456,7 +456,7 @@ export default function Page({ current, navigation }) {
                       backgroundColor: theme.colors.gray300,
                     },
                   }}
-                  onClick={() => handleCopy(importExample)}
+                  onClick={() => setExampleToCopy(importExample)}
                 >
                   <Icon
                     label={`Asset for ${Asset.replace("Svg", "")}`}
