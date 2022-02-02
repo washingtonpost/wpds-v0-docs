@@ -26,7 +26,7 @@ import Globe from "@washingtonpost/wpds-assets/asset/globe";
 import Image from "@washingtonpost/wpds-assets/asset/image";
 import InlineSVG from "~/components/Markdown/Components/inlineSVG";
 
-// if the componentName is in this array then don't map over it
+// if the componentName is in this array then dont map over it
 const logos = [
   "voraciously",
   "amazon",
@@ -233,8 +233,8 @@ export default function Page({ current, navigation }) {
           The visual style of our icon set uses minimal lines and geometries. As
           a result, our icons use 1px lines and basic shapes to represent the
           glyph. The corners of our icons are sharp and rarely filled. The
-          majority of our icon's geometry uses no fill. Still, when an icon has
-          a fill, it is tied to a toggle state or required visual weight to
+          majority of our icons geometry uses no fill. Still, when an icon has a
+          fill, it is tied to a toggle state or required visual weight to
           satisfy hierarchy in the instances that they are.
         </P>
         <Container>
@@ -375,7 +375,7 @@ export default function Page({ current, navigation }) {
           and the number of icons in the proposal.
         </P>
         <P>
-          If your submission is accepted, the team will notify your proposal's
+          If your submission is accepted, the team will notify your proposals
           approval. We will update WAM with the new icon(s) with the next
           release.
         </P>
