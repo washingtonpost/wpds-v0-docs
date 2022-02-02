@@ -451,7 +451,7 @@ export default function Page({ current, navigation }) {
                 <AssetContainer
                   key={i}
                   css={{
-                    backgroundColor: theme.colors["gray500-static"],
+                    backgroundColor: theme.colors["gray500"],
                     "&hover": {
                       backgroundColor: theme.colors.gray300,
                     },
@@ -462,7 +462,7 @@ export default function Page({ current, navigation }) {
                     label={`Asset for ${Asset.replace("Svg", "")}`}
                     size={150}
                   >
-                    <Component fill={theme.colors.primary} />
+                    <Component />
                   </Icon>
                 </AssetContainer>
               );
