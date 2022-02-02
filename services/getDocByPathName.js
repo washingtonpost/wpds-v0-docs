@@ -4,10 +4,7 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 
 export async function getHeadings(input) {
-  const [directory, fileName] = input.split("/");
-
-  const slug = path.join(`docs/${directory}`, `${fileName}.mdx`);
-  const fileData = fs.readFileSync(slug);
+  const fileData = fs.readFileSync(`docs/${input}.mdx`);
 
   const { content } = matter(fileData);
 

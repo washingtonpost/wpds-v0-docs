@@ -69,15 +69,17 @@ const Item = ({ children, level, label, as, href }) => (
 );
 
 export default function TableOfContents({ headings }) {
+  if (!headings || !headings.length || headings[0].level !== 2) {
+    return null;
+  }
+
   return (
     <Container>
-      {headings.length !== 0 && (
-        <Header css={{ margin: "0 $025" }} as="h2">
-          Table of Contents
-        </Header>
-      )}
+      <Header css={{ margin: "0 $025" }} as="h2">
+        Table of Contents
+      </Header>
       <List>
-        {headings.map(
+        {headings?.map(
           (heading, i) =>
             heading.level === 2 && (
               <Item key={i} as={`#${heading.label}`} href={`#${heading.label}`}>

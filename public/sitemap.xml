@@ -19,20 +19,22 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/blog/architecture/stitches</loc>
+  </url>
+
+  <url>
     <loc
       >https://build.washingtonpost.com/blog/contributing/contribute-a-component</loc
     >
   </url>
 
   <url>
-    <loc
-      >https://build.washingtonpost.com/blog/guides/component-documentation</loc
-    >
+    <loc>https://build.washingtonpost.com/blog/guides/coding-a-page</loc>
   </url>
 
   <url>
     <loc
-      >https://build.washingtonpost.com/blog/guides/develop-a-page-using-the-kit</loc
+      >https://build.washingtonpost.com/blog/guides/component-documentation</loc
     >
   </url>
 
