@@ -232,10 +232,10 @@ export default function Page({ current, navigation }) {
         <P>
           The visual style of our icon set uses minimal lines and geometries. As
           a result, our icons use 1px lines and basic shapes to represent the
-          glyph. The corners of our icons are sharp and rarely filled. The
-          majority of our icons geometry uses no fill. Still, when an icon has a
-          fill, it is tied to a toggle state or required visual weight to
-          satisfy hierarchy in the instances that they are.
+          glyph. The corners of most our icons are sharp and rarely round. Our
+          icons geometry rarely use a fill. Still, when an icon has a fill, it
+          is tied to a toggle state or required visual weight to satisfy
+          hierarchy in the instances that they are.
         </P>
         <Container>
           <Box
