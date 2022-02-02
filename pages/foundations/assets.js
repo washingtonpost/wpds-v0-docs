@@ -68,6 +68,7 @@ const AssetContainer = styled("button", {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  cursor: "pointer",
   background: theme.colors.gray500,
   "&:hover": {
     backgroundColor: theme.colors.gray300,
