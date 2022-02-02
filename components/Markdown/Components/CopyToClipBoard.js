@@ -8,6 +8,9 @@ const Button = styled("button", {
     opacity: 0.75,
   },
 });
+const Span = styled("span", {
+  margin: "0 $025",
+});
 const ClipboardIcon = (props) => (
   <svg
     viewBox="0 0 16 16"
@@ -51,7 +54,7 @@ const CopyCodeButton = ({ css, children, textToCopy }) => {
       aria-label="Copy code to clipboard"
     >
       {children}
-      {" | "}
+      <Span>|</Span>
       <Icon size="16">
         <ClipboardIcon />
       </Icon>

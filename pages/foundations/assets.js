@@ -219,9 +219,7 @@ export default function Page({ current, navigation }) {
           }}
           codeToCopy={`npm install @washingtonpost/wpds-assets`}
         >
-          <CodeExample css={{ width: "100" }}>
-            npm install @washingtonpost/wpds-assets
-          </CodeExample>
+          <CodeExample>npm install @washingtonpost/wpds-assets</CodeExample>
         </CopyToClipboard>
         <CustomSandpack>{codeSample}</CustomSandpack>
         <HR css={{ marginTop: "$200" }} />
