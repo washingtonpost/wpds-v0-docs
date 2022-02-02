@@ -41,10 +41,7 @@ const CopyCodeButton = ({ css, children, textToCopy }) => {
       css={{
         ...css,
         alignSelf: "flex-start",
-        flexGrow: 0,
         display: "flex",
-        alignItems: "center",
-        columnGap: "calc($050/2)",
       }}
       onClick={() => {
         // copy code to clipboard
@@ -54,7 +51,7 @@ const CopyCodeButton = ({ css, children, textToCopy }) => {
       aria-label="Copy code to clipboard"
     >
       {children}
-      {"|"}
+      {" | "}
       <Icon size="16">
         <ClipboardIcon />
       </Icon>

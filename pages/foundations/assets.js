@@ -88,7 +88,7 @@ const Grid = styled("section", {
   width: "100%",
 
   "@sm": {
-    gridTemplateColumns: "auto",
+    gridTemplateColumns: "1fr",
     gridGap: "$100",
   },
 });
@@ -102,7 +102,6 @@ const CodeExample = styled("pre", {
   "@sm": {
     paddingLeft: "$050",
     paddingBottom: "$050",
-    width: "calc(100vw - $300)",
     // style the scrollbar
     "&::-webkit-scrollbar": {
       width: "$087",
@@ -222,7 +221,9 @@ export default function Page({ current, navigation }) {
           }}
           codeToCopy={`npm install @washingtonpost/wpds-assets`}
         >
-          <CodeExample>npm install @washingtonpost/wpds-assets</CodeExample>
+          <CodeExample css={{ width: "100" }}>
+            npm install @washingtonpost/wpds-assets
+          </CodeExample>
         </CopyToClipboard>
         <CustomSandpack>{codeSample}</CustomSandpack>
         <HR css={{ marginTop: "$200" }} />
@@ -382,8 +383,14 @@ export default function Page({ current, navigation }) {
         <Header id="Icons" css={{ paddingBottom: "$100" }} as="h2">
           Icons
         </Header>
-        <Grid>
-          {Object.keys(AllAssets).map((Asset) => {
+        <Grid
+          css={{
+            "@sm": {
+              gridTemplateColumns: "repeat(auto-fill, minmax($400, 1fr))",
+            },
+          }}
+        >
+          {Object.keys(AllAssets).map((Asset, i) => {
             const Component = AllAssets[Asset];
             const componentName = paramCase(Asset);
 
@@ -400,7 +407,7 @@ export default function Page({ current, navigation }) {
             )}";`;
 
             return (
-              <AssetContainer onClick={() => handleCopy(importExample)}>
+              <AssetContainer key={i} onClick={() => handleCopy(importExample)}>
                 <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="24">
                   <Component fill={theme.colors.primary} />
                 </Icon>
@@ -419,7 +426,6 @@ export default function Page({ current, navigation }) {
         <Box
           css={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gridGap: "$200",
             // auto equal height cells
             [`${AssetContainer}`]: {
@@ -428,7 +434,7 @@ export default function Page({ current, navigation }) {
             },
           }}
         >
-          {Object.keys(AllAssets).map((Asset) => {
+          {Object.keys(AllAssets).map((Asset, i) => {
             const Component = AllAssets[Asset];
             const componentName = paramCase(Asset);
 
@@ -443,6 +449,7 @@ export default function Page({ current, navigation }) {
             if (logos.includes(componentName)) {
               return (
                 <AssetContainer
+                  key={i}
                   css={{
                     backgroundColor: theme.colors["gray500-static"],
                     "&hover": {
@@ -451,7 +458,10 @@ export default function Page({ current, navigation }) {
                   }}
                   onClick={() => handleCopy(importExample)}
                 >
-                  <Icon label={`Asset for ${Asset.replace("Svg", "")}`} size="">
+                  <Icon
+                    label={`Asset for ${Asset.replace("Svg", "")}`}
+                    size={150}
+                  >
                     <Component fill={theme.colors.primary} />
                   </Icon>
                 </AssetContainer>
