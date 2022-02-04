@@ -2,8 +2,14 @@ import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
-import { getNavigation, getAllPathsByCategory, getBlogPost } from "~/services";
+import {
+  getNavigation,
+  getAllPathsByCategory,
+  getBlogPost,
+  getHeadings,
+} from "~/services";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import TableofContents from "~/components/Markdown/Components/tableofcontents";
 
 const SECTION = "blog";
 
@@ -11,7 +17,7 @@ const components = {
   ...MDXStyling,
 };
 
-export default function Page({ source }) {
+export default function Page({ current, source, headings }) {
   return (
     <>
       <Head>
@@ -40,6 +46,7 @@ export default function Page({ source }) {
         >
           {source.scope.description}
         </Header>
+        <TableofContents current={current} headings={headings} />
       </>
       <>
         <MDXRemote {...source} components={components} />
@@ -53,11 +60,16 @@ export const getStaticProps = async (response) => {
     `${SECTION}/${response.params.category}/${response.params.slug}`
   );
   const navigation = await getNavigation();
+  const headings = await getHeadings(
+    `${SECTION}/${response.params.category}/${response.params.slug}`
+  );
 
   return {
     props: {
+      current: response.params.slug,
       source,
       navigation,
+      headings,
     },
   };
 };

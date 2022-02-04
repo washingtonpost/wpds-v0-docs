@@ -5,7 +5,8 @@
     "build": "node scripts/sitemap.js;next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npx prettier --write '**/*.{js,mdx}'"
+    "postinstall": "npx prettier --write '**/*.{js,mdx}'",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "latest",
@@ -41,10 +42,15 @@
     "extract-react-types": "^0.30.2",
     "glob": "^7.2.0",
     "prettier": "^2.5.1",
-    "react-docgen-typescript": "^2.2.2"
+    "react-docgen-typescript": "^2.2.2",
+    "husky": "^7.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/WPMedia/wpds-docs.git"
+  },
+  "engines": {
+    "node": ">=14.18.2",
+    "npm": ">=8.3.0"
   }
 }
