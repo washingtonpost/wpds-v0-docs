@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
-import TokenTable from "~/components/Markdown/Components/tokenTable";
+
 import Header from "~/components/Typography/Headers";
 
 import { getAllPathsBySection, getDocByPathName } from "~/services";
@@ -11,7 +11,6 @@ import { getNavigation } from "~/services/getNavigation";
 
 const components = {
   ...MDXStyling,
-  TokenTable: TokenTable,
   CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
   Head,
 };

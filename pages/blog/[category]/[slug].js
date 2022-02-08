@@ -24,18 +24,13 @@ export default function Page({ source }) {
             {source.scope.kicker}
           </Breadcrumbs.Item>
         </Breadcrumbs.Root>
-        <Header
-          as="h1"
-          css={{
-            marginBottom: "$100",
-          }}
-        >
-          {source.scope.title}
-        </Header>
+        <Header as="h1">{source.scope.title}</Header>
         <Header
           as="h2"
           css={{
-            marginBottom: "$100",
+            font: "$subhead",
+            marginBottom: "$200",
+            color: "$accessible",
           }}
         >
           {source.scope.description}
