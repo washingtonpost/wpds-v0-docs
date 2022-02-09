@@ -1,6 +1,6 @@
 ---
 title: Tokens
-description: Design tokens are all the values needed to construct and maintain a design system —spacing, color, typography, object styles, animation, etc. — represented as data.These can represent anything defined by design color as an RGB value, an opacity as a number, animation ease as Bezier coordinates. They're used in place of hard-coded values to ensure flexibility and unity across all product experiences. In addition, this allows for better-shared control between designers and engineers.
+description: Design tokens are all the values needed to construct and maintain a design system —spacing, color, typography, object styles, animation, etc. — represented as data. These can represent anything defined by design color as an RGB value, an opacity as a number, animation ease as Bezier coordinates. They're used in place of hard-coded values to ensure flexibility and unity across all product experiences. In addition, this allows for better-shared control between designers and engineers.
 ---
 
 ### Table of contents
@@ -21,7 +21,8 @@ description: Design tokens are all the values needed to construct and maintain a
 
 ## Size
 
-Size tokens are relative to the [baseSize](/foundations/tokens#Base) and are used when a specific fixed width or height is desired when designing a component or layout.
+Size tokens are relative to the [baseSize](/foundations/tokens#Base).
+Use a size tokens to specific fixed width or height when designing a component or layout.
 
 ```jsx
 // preview
@@ -49,7 +50,8 @@ export default function Example() {
 
 ## Space
 
-Space tokens are relative to the [baseSize](/foundations/tokens#Base) and are used to define padding or margin when designing a component or layout.
+Space tokens are relative to the [baseSize](/foundations/tokens#Base).
+Use space tokens to define padding or margin when designing a component or layout.
 
 ```jsx
 // preview
@@ -83,7 +85,8 @@ export default function Example() {
 
 ## Radii
 
-Radii tokens are relative to the [baseSize](/foundations/tokens#Base) and are to be used to define the border radius of an element.
+Radii tokens are relative to the [baseSize](/foundations/tokens#Base).
+Use radii tokens to define the border-radius of an element.
 
 ```jsx
 // preview
@@ -116,7 +119,7 @@ export default function Example() {
 
 ## Fonts
 
-Font tokens define an intention and pairing to a font-family.
+Font tokens tie an intention to a font family.
 
 ```jsx
 // preview
@@ -170,7 +173,7 @@ export default function Example() {
 
 ## Font sizes
 
-Font size tokens are relative to [baseSize](/foundations/tokens#Base) and are used to define the size of the font.
+Font size tokens are relative to baseSize. Use font size tokens to define the size of the font.
 
 ```jsx
 // preview
@@ -266,7 +269,7 @@ export default function Example() {
 
 ## Shadows
 
-Line height tokens are unitless values that define the height of a text element based on its current font size.
+Shadow tokens are predefined box-shadow values.
 
 ```jsx
 // preview
@@ -296,7 +299,7 @@ export default function Example() {
 
 ## Base
 
-The base token is a token reference to tokens that have a relative scale. This token defines those relative scales.
+The base token controls all tokens relative to this value.
 
 <Table
   headers={["Name", "Value", "Description"]}
@@ -316,8 +319,8 @@ The base token is a token reference to tokens that have a relative scale. This t
 
 ## Color
 
-All color tokens define the color in the current context. There are 2 contexts `light` and `dark` context.
-Toggle the sites context to see the color values for each context in the example.
+All color tokens define the color in the current context. There are two contexts `light` and `dark` context.
+Toggle the site's context to see each token color value.
 
 ```jsx
 // preview
@@ -349,7 +352,7 @@ export default function Example() {
 
 ### Static color tokens
 
-Static color tokens remain static regardless of the current context. To use a static token simple apply a `-static` to the color token. All static colors are based in the `light` context.
+Static color tokens remain static regardless of the current context. To use a static token apply a `-static` prefix to the color token.
 
 ```jsx
 // preview
@@ -378,9 +381,9 @@ export default function Example() {
 
 ### Theme and Semantic tokens
 
-Theme tokens are alias tokens that are mapped to a color token. They help define intention around
-how we use color. Majority of our designs should use our theme tokens as much as possible. Read more
-about how to use theme and semantic tokens on our [color documentation](/foundations/color#Themes).
+Theme tokens are alias tokens that map a color token to intention.
+When possible, always use a theme token. Read more about using theme and
+semantic tokens on our [color documentation](/foundations/color#Themes).
 
 ```jsx
 // preview
@@ -410,7 +413,7 @@ export default function Example() {
 
 ## Z-Indices
 
-Z-indinces tokens define the layer spaces on the z-index for our applications.
+Z-indices tokens define the layer spaces on the z-index for our applications.
 
 <Table
   headers={["Name", "Value", "Description"]}
