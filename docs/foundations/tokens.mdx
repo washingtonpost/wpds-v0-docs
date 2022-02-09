@@ -1,4 +1,422 @@
 ---
 title: Tokens
-description: Tokens
+description: Design tokens are all the values needed to construct and maintain a design system —spacing, color, typography, object styles, animation, etc. — represented as data. These can represent anything defined by design color as an RGB value, an opacity as a number, animation ease as Bezier coordinates. They're used in place of hard-coded values to ensure flexibility and unity across all product experiences. In addition, this allows for better-shared control between designers and engineers.
 ---
+
+### Table of contents
+
+- [Size](/foundations/tokens#Size)
+- [Space](/foundations/tokens#Space)
+- [Radii](/foundations/tokens#Radii)
+- [Fonts](/foundations/tokens#Fonts)
+- [Font sizes](/foundations/tokens#Font_sizes)
+- [Font weights](/foundations/tokens#Font_weights)
+- [Line heights](/foundations/tokens#Line_heights)
+- [Shadows](/foundations/tokens#Shadows)
+- [Base token](/foundations/tokens#Base_token)
+- [Color](/foundations/tokens#Color)
+- [Z-Indices](/foundations/tokens#Z-Indices)
+
+---
+
+## Size
+
+Size tokens are relative to the [baseSize](/foundations/tokens#Base).
+Use a size tokens to specific fixed width or height when designing a component or layout.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const SizeExample = styled("div", {
+    width: theme.sizes["300"], // Size example
+    height: theme.sizes["300"], // Size example
+    backgroundColor: theme.colors.primary,
+  });
+  return <SizeExample />;
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"size"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Space
+
+Space tokens are relative to the [baseSize](/foundations/tokens#Base).
+Use space tokens to define padding or margin when designing a component or layout.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const SpaceExample = styled("div", {
+    padding: theme.space["300"], // Space example
+    marginRight: theme.space["200"], // Space example
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.onPrimary,
+  });
+  return (
+    <>
+      <SpaceExample>Item 1</SpaceExample>
+      <SpaceExample>Item 2</SpaceExample>
+    </>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"space"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Radii
+
+Radii tokens are relative to the [baseSize](/foundations/tokens#Base).
+Use radii tokens to define the border-radius of an element.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const SpaceExample = styled("div", {
+    padding: theme.space["300"],
+    borderRadius: theme.radii["075"], // Radius example
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.onPrimary,
+  });
+  return (
+    <>
+      <SpaceExample>Example</SpaceExample>
+    </>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"radii"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Fonts
+
+Font tokens tie an intention to a font family.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const Headline = styled("h1", {
+    fontFamily: theme.fonts.headline, // font family example
+    fontSize: theme.fontSizes.["200"],
+    color:theme.colors.primary,
+  });
+  const Subhead = styled("h2", {
+    fontFamily: theme.fonts.subhead, // font family example
+    fontWeight:theme.fontWeights.light,
+    fontSize: theme.fontSizes.["150"],
+    color:theme.colors.accessible,
+  });
+  const Body = styled("p", {
+    fontFamily: theme.fonts.body, // font family example
+    fontSize: theme.fontSizes.["100"],
+  });
+  const Meta = styled("p", {
+    fontFamily: theme.fonts.meta, // font family example
+    fontSize: theme.fontSizes.["075"],
+    color:theme.colors.accessible,
+  });
+  return (
+    <div>
+      <Headline>Headline</Headline>
+      <Subhead>Subheadline</Subhead>
+      <Body>
+        Body text
+      </Body>
+      <Meta>
+        Meta text
+      </Meta>
+    </div>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"fonts"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Font sizes
+
+Font size tokens are relative to baseSize. Use font size tokens to define the size of the font.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const FontSizeExample = styled("p", {
+    fontFamily: theme.fonts.headline,
+    fontSize: theme.fontSizes.["200"], // font size example
+    color:theme.colors.primary,
+  });
+
+  return (
+      <FontSizeExample>Headline</FontSizeExample>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"fontSize"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Font weights
+
+Font weight tokens define the weight of the font face.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const FontWeightExample = styled("p", {
+    fontFamily: theme.fonts.subhead,
+    fontWeight:theme.fontWeights.light,// font weight example
+    fontSize: theme.fontSizes.["200"],
+    color:theme.colors.primary,
+  });
+
+  return (
+      <FontWeightExample>Headline</FontWeightExample>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"fontWeights"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Line heights
+
+Line height tokens are unitless values that define the height of a text element based on its current font size.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const LineHeightExample = styled("p", {
+    fontFamily: theme.fonts.body,
+    lineHeight:theme.lineHeights["125"],//Line height example
+    fontSize: theme.fontSizes.["125"],
+    color:theme.colors.primary,
+    width:250
+  });
+
+  return (
+      <LineHeightExample>Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit.
+      </LineHeightExample>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"lineHeight"}
+/>
+
+---
+
+## Shadows
+
+Shadow tokens are predefined box-shadow values.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const ShadowExample = styled("p", {
+    padding: theme.space["100"],
+    boxShadow: theme.shadows["300"], //Shadow example
+    backgroundColor: theme.colors.secondary,
+    color: theme.colors.onSecondary,
+  });
+
+  return <ShadowExample>Shadow Example</ShadowExample>;
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"shadow"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Base
+
+The base token controls all tokens relative to this value.
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  data={[
+    {
+      name: "baseSize",
+      value: "16px",
+      description:
+        "Root value that defines tokens such as spaces, size, radii, and font size",
+    },
+  ]}
+/>
+
+<BR size="xl" />
+
+---
+
+## Color
+
+All color tokens define the color in the current context. There are two contexts `light` and `dark` context.
+Toggle the site's context to see each token color value.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const ColorExample = styled("p", {
+    backgroundColor: theme.colors.gray20, //Example of color token
+    color: theme.colors.gray600, //Example of color token
+    padding: theme.space["100"],
+  });
+
+  return (
+    <ColorExample>
+      Toggle to see different color values for each context
+    </ColorExample>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  nestedGroup={"color"}
+  data={"light"}
+/>
+
+<BR />
+
+### Static color tokens
+
+Static color tokens remain static regardless of the current context. To use a static token apply a `-static` prefix to the color token.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const ColorExample = styled("p", {
+    backgroundColor: theme.colors["gray20-static"], //Example of static color token
+    color: theme.colors["gray600-static"], //Example of static color token
+    padding: theme.space["100"],
+  });
+
+  return <ColorExample>Toggle to see how static colors work</ColorExample>;
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  suffix={"-static"}
+  nestedGroup={"color"}
+  data={"static"}
+/>
+
+<BR />
+
+### Theme and Semantic tokens
+
+Theme tokens are alias tokens that map a color token to intention.
+When possible, always use a theme token. Read more about using theme and
+semantic tokens on our [color documentation](/foundations/color#Themes).
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const ColorExample = styled("p", {
+    backgroundColor: theme.colors.primary, //Example of static color token
+    color: theme.colors.onPrimary, //Example of static color token
+    padding: theme.space["100"],
+  });
+
+  return <ColorExample>Theme token</ColorExample>;
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  nestedGroup={"color"}
+  data={"theme"}
+/>
+
+<BR size="xl" />
+
+---
+
+## Z-Indices
+
+Z-indices tokens define the layer spaces on the z-index for our applications.
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"z-index"}
+/>

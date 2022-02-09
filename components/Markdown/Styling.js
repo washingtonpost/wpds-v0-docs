@@ -115,6 +115,7 @@ const components = {
   ),
   hr: HR,
   BR: BR,
+  Table: dynamic(() => import("./Components/table")),
   Img: dynamic(() => import("./Components/InlineImage")),
   TableOfContents: dynamic(() => import("./Components/tableofcontents")),
   Container: dynamic(() => import("./Components/container")),
