@@ -32,6 +32,7 @@ export default function Table({
         });
       }
     }
+    _tokenArray.sort(compare);
 
     return (
       <>
@@ -50,6 +51,16 @@ export default function Table({
       </>
     );
   };
+
+  function compare(a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a > b) {
+      return 1;
+    }
+    return 0;
+  }
 
   const Container = styled("div", {
     overflowX: "auto",
