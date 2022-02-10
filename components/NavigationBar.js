@@ -1,4 +1,4 @@
-import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { Box, Icon, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./logo";
@@ -77,6 +77,7 @@ const Anchor = styled("a", {
 const MenuToggle = styled("button", {
   height: 32,
   width: 32,
+  alignItems: "center",
   marginLeft: "$075",
   backgroundColor: "transparent",
   borderStyle: "none",
@@ -117,7 +118,9 @@ export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
         >
           <ThemeToggle />
           <MenuToggle onClick={setMobileMenu}>
-            <HamburgerMenu state={isClosed ? "closed" : "open"} />
+            <Icon size="24" label="Menu Icon">
+              <HamburgerMenu state={isClosed ? "closed" : "open"} />
+            </Icon>
           </MenuToggle>
         </Box>
       </Container>

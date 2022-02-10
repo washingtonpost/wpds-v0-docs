@@ -56,7 +56,7 @@ export default function Table({
     if (a.name < b.name) {
       return -1;
     }
-    if (a > b) {
+    if (a.name > b.name) {
       return 1;
     }
     return 0;

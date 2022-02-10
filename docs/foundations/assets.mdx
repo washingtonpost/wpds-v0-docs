@@ -1,4 +1,208 @@
 ---
 title: Assets
-description:
+description: The asset manager is an independent package that allows for more streamlined management of our assets. WPDS-Asset-Manager, also known as WAM, manages all assets as raw SVG files.
 ---
+
+### Table of contents
+
+- [Getting started](foundations/assets#Getting_started)
+- [Design principles](/foundations/assets#Design_principles)
+- [Grid and keyline shapes](/foundations/assets#Grid_and_keyline_shapes)
+- [Contributing](/foundations/assets#Contributing)
+
+---
+
+## Getting started
+
+### How to use in figma
+
+To use WAM, please enable the
+[WPDS-Asset-Manager](https://www.figma.com/file/LA6qKUukk8v3YkkuKq6IC6/%F0%9F%96%BC--WPDS-Asset-Manager)
+in your libraries to gain access to all the icon glyphs and the logos. Please note if you are looking to use the icon as a component, we
+recommend using our icon component.
+
+### How to install
+
+Note: WAM requires React to adopt into your project.
+
+npm install @washingtonpost/wpds-assets
+
+<BR />
+
+---
+
+## Design principles
+
+### Visual style
+
+The visual style of our icon set uses minimal lines and geometries. As
+a result, our icons use 1px lines and basic shapes to represent the
+glyph. The corners of most our icons are sharp and rarely round. Our
+icons geometry rarely use a fill. Still, when an icon has a fill, it
+is tied to a toggle state or required visual weight to satisfy
+hierarchy in the instances that they are.
+
+```jsx
+// preview
+import { theme, Icon } from "@washingtonpost/wpds-ui-kit";
+import Bookmark from "@washingtonpost/wpds-assets/asset/bookmark";
+import Play from "@washingtonpost/wpds-assets/asset/play";
+import Email from "@washingtonpost/wpds-assets/asset/email";
+import Article from "@washingtonpost/wpds-assets/asset/article";
+import Globe from "@washingtonpost/wpds-assets/asset/globe";
+import Image from "@washingtonpost/wpds-assets/asset/image";
+
+export default function Example() {
+  return (
+    <>
+      <Icon size="24" label="bookmark">
+        <Bookmark fill={theme.colors.primary} />
+      </Icon>
+      <Icon size="24" label="bookmark">
+        <Play fill={theme.colors.primary} />
+      </Icon>
+      <Icon size="24" label="bookmark">
+        <Email fill={theme.colors.primary} />
+      </Icon>
+      <Icon size="24" label="bookmark">
+        <Article fill={theme.colors.primary} />
+      </Icon>
+      <Icon size="24" label="bookmark">
+        <Globe fill={theme.colors.primary} />
+      </Icon>
+      <Icon size="24" label="bookmark">
+        <Image fill={theme.colors.primary} />
+      </Icon>
+    </>
+  );
+}
+```
+
+### Other assets
+
+Other assets like logos do not follow any principle other than approved
+brand guidelines. Assets need to be clear in what they represent and
+have guidance around their use.
+
+```jsx
+// preview
+
+import WashingtonPost from "@washingtonpost/wpds-assets/asset/washington-post";
+
+export default function Example() {
+  return <WashingtonPost width="250" label="The Washington Post logo" />;
+}
+```
+
+<BR />
+
+---
+
+## Grid and keyline shapes
+
+### Base size
+
+There are four keyline shapes an icon can have as a base. All of the
+shapes require a 1 px padding on all sides.
+
+<Container>
+  <InlineSVG
+    alt="Image of different sized icons labeled from left to right 16px 24px 32px"
+    path="/img/foundations/WAM/sizes.svg"
+    width={183}
+    height={85}
+  />
+</Container>
+
+### Keyline shapes
+
+There are four keyline shapes an icon can have as a base. All of the
+shapes require a 1 px padding on all sides.
+
+<Container>
+  <InlineSVG
+    alt="Image of the different types to be used as a base keyline shape"
+    path="/img/foundations/WAM/keyline.svg"
+    width={250}
+    height={250}
+  />
+</Container>
+
+1. Square
+2. Circle
+3. Rectangle - vertical
+4. Rectangle - horizontal
+
+<BR />
+
+---
+
+## Contributing
+
+For every submission, we require a review of the guideline checklist
+and follow the approval process. It will save you a lot of time before
+creating an icon to submit. So please review the following:
+
+1. All icons are unique and not a repeat of any existing icons.
+   Please review our current icon set and double-check if there are any conflicts.
+2. Icons adhere to our Design principles.
+3. Icons work across all devices and platforms.
+4. Icons should be understandable by a global audience regardless of nationality,
+   language, or device preference.
+
+### Making an icon
+
+You can create the icon in any tool of your preference. There are a
+few things to consider & required when creating and designing an icon.
+They are as follow:
+
+1. Avoid using the line tool, and use the rectangle tool to avoid half
+   pixels.
+2. Consider turning on pixel snapping if that is capable in your device
+   of choice.
+3. Never use center borders as they create half pixels.
+4. Consider converting lines to outline paths.
+5. Ungroup icon layers and have the icon be the topmost layer.
+6. Ensure that the SVG file exports with a title that does not conflict
+   with an existing icon name.
+7. Must use one of our keyline shapes.
+8. Combine all shapes and paths when possible.
+
+#### Production ready
+
+To be considered production-ready, all icon proposals must be an SVG
+file. Any icons that fail to meet the guidelines will be rejected and
+require a resubmission unless otherwise noted.
+
+### Approval process
+
+Icons submitted to WAM must go through an approval process by WPDS.
+The process begins when a proposal has been made on our #WPDS slack
+channel or to our email WPDS@washpost.com. After receiving a proposal,
+it will undergo a review by our team. The approval of icons can take
+between 7-14 days. The length depends on how many revisions are needed
+and the number of icons in the proposal.
+
+If your submission is accepted, the team will notify the proposal's
+approval. We will update WAM with the new icon(s) with the next
+release.
+
+<BR />
+
+---
+
+## Icons
+
+<Grid>
+  <IconSamples />
+</Grid>
+
+<BR />
+
+---
+
+## Logos
+
+<Grid maxSize={250}>
+  <LogoSamples />
+</Grid>

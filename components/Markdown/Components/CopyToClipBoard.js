@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled, Icon, Box, theme } from "@washingtonpost/wpds-ui-kit";
 const Button = styled("button", {
+  position: "relative",
   backgroundColor: "transparent",
   borderStyle: "none",
+  color: theme.colors.primary,
   cursor: "pointer",
   "&hover": {
     opacity: 0.75,
   },
+});
+
+const CopyFeeback = styled("div", {
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 const Span = styled("span", {
   margin: "0 $025",
@@ -30,12 +39,20 @@ const ClipboardIcon = (props) => (
     />
   </svg>
 );
-const CopyCodeButton = ({ css, children, textToCopy }) => {
+const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
   const [copied, setCopied] = useState(false);
 
+  function handleCopy() {
+    navigator.clipboard.writeText(`${textToCopy ? textToCopy : children}`);
+    setCopied(true);
+  }
   // set the copied state to false after a second
-  useEffect(() => {
+  useEffect(async () => {
     if (copied) {
+      if (hideIcon) {
+        await navigator.clipboard.writeText(textToCopy);
+        window.alert(`Copied: ${textToCopy}`);
+      }
       setTimeout(() => setCopied(false), 2000);
     }
   }, [copied]);
@@ -43,22 +60,29 @@ const CopyCodeButton = ({ css, children, textToCopy }) => {
     <Button
       css={{
         ...css,
+        width: "auto",
+        overflow: "auto",
         alignSelf: "flex-start",
         display: "flex",
+        fontFamily: "monospace",
+        color: theme.colors.accessible,
       }}
-      onClick={() => {
-        // copy code to clipboard
-        navigator.clipboard.writeText(`${textToCopy ? textToCopy : children}`);
-        setCopied(true);
-      }}
+      onClick={handleCopy}
       aria-label="Copy code to clipboard"
     >
       {children}
-      <Span>|</Span>
-      <Icon size="16">
-        <ClipboardIcon />
-      </Icon>
-      {copied ? "Copied!" : "Copy"}
+
+      {hideIcon ? (
+        <></>
+      ) : (
+        <CopyFeeback>
+          <Span>|</Span>
+          <Icon css={{ marginLeft: theme.space[25] }} size="16">
+            <ClipboardIcon />
+          </Icon>
+          {copied ? "Copied!" : "Copy"}
+        </CopyFeeback>
+      )}
     </Button>
   );
 };
