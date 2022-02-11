@@ -10,14 +10,14 @@ const Container = styled("div", {
   fontFamily: "$meta",
   fontWeight: "$light",
   cursor: "pointer",
+  gap: "$050",
   paddingLeft: "$125",
   "@sm": {
     width: "100%",
   },
 });
 const Span = styled("span", {
-  marginLeft: "$050",
-  fontSize: "$150",
+  fontSize: "$125",
   textDecoration: "none",
   width: "100%",
 });
@@ -30,7 +30,7 @@ export default function Logo() {
       aria-label="The Washington Post Design System's Homepage"
     >
       <Container>
-        <Icon size={40}>
+        <Icon size={32}>
           <WPMark fill={theme.colors.primary} />
         </Icon>
         <Span>Design system</Span>

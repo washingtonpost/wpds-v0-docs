@@ -116,7 +116,11 @@ const components = {
   ),
   hr: HR,
   BR: BR,
-  Grid: ({ maxSize, children }) => <Grid maxSize={maxSize}>{children}</Grid>,
+  Grid: ({ maxSize, css, children }) => (
+    <Grid css={css} maxSize={maxSize}>
+      {children}
+    </Grid>
+  ),
   Cell: ({ children }) => <Cell>{children}</Cell>,
   CopyClipboard: dynamic(() => import("./Components/CopyToClipBoard")),
   IconSamples: dynamic(() => import("../Markdown/Examples/IconSamples")),
@@ -127,16 +131,14 @@ const components = {
   Container: dynamic(() => import("./Components/container")),
   GuideContainer: dynamic(() => import("./Components/GuideContainer")),
   InlineSVG: dynamic(() => import("./Components/inlineSVG")),
+  InlineImage: dynamic(() => import("./Components/InlineImage")),
   Box: Box,
   pre: ({ children }) => (
     <Box
       as="pre"
       css={{
-        marginTop: "$150",
-        marginBottom: "$100",
         overflowX: "auto",
         backgroundColor: theme.colors.gray500,
-        padding: "$100",
       }}
     >
       {children}

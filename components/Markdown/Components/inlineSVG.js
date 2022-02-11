@@ -2,11 +2,13 @@ import React from "react";
 import { ReactSVG } from "react-svg";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 import Image from "next/image";
-import { css } from "@washingtonpost/wpds-ui-kit";
+import { css, styled } from "@washingtonpost/wpds-ui-kit";
 
 export default function inlineSVG({ path, title, description, width, height }) {
   const Size = { height: height ? height : 150, width: width ? width : 300 };
-
+  const SVGContainer = styled("div", {
+    padding: "$100 0",
+  });
   function hexToRgbA(hex) {
     var c;
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
@@ -45,7 +47,7 @@ export default function inlineSVG({ path, title, description, width, height }) {
   });
 
   return (
-    <>
+    <SVGContainer>
       <ReactSVG
         aria-label={description}
         loading={() => (
@@ -64,10 +66,9 @@ export default function inlineSVG({ path, title, description, width, height }) {
           );
           titleTag.innerHTML = title; //require title to be passed
           svg.prepend(title);
-          svg.setAttribute("style", `max-width:${Size.width}`);
-          svg.setAttribute("style", `max-height:${Size.height}`);
-          svg.setAttribute("width", Size.width);
-          svg.setAttribute("height", Size.height);
+
+          svg.setAttribute("width", Size.width * 0.75);
+          svg.setAttribute("height", Size.height * 0.75);
           const paths = svg.querySelectorAll("path");
           paths.forEach((i) => {
             i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
@@ -85,6 +86,6 @@ export default function inlineSVG({ path, title, description, width, height }) {
         fallback={() => <span>Error while loading image</span>}
         src={path}
       />
-    </>
+    </SVGContainer>
   );
 }

@@ -12,10 +12,28 @@ const Button = styled("button", {
 });
 
 const CopyFeeback = styled("div", {
-  position: "relative",
+  position: "absolute",
+  top: "50%",
+  right: 0,
+  paddingRight: "$050",
+  backgroundColor: theme.colors.gray500,
+  transform: "translateY(0%)",
+  opacity: "0",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  variants: {
+    hover: {
+      true: {
+        transform: "translateY(-50%)",
+        opacity: 1,
+      },
+      false: {
+        transform: "translateY(0%)",
+        opacity: 0,
+      },
+    },
+  },
 });
 const Span = styled("span", {
   margin: "0 $025",
@@ -41,7 +59,7 @@ const ClipboardIcon = (props) => (
 );
 const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
   const [copied, setCopied] = useState(false);
-
+  const [ReadyToCopy, setReadyToCopy] = useState(false);
   function handleCopy() {
     navigator.clipboard.writeText(`${textToCopy ? textToCopy : children}`);
     setCopied(true);
@@ -58,14 +76,18 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
   }, [copied]);
   return (
     <Button
+      onMouseEnter={() => setReadyToCopy(true)}
+      onMouseLeave={() => setReadyToCopy(false)}
       css={{
         ...css,
-        width: "auto",
-        overflow: "auto",
+        backgroundColor: theme.colors.gray500,
+        padding: "$050",
+        maxWidth: "90%",
+        overflow: "hidden",
         alignSelf: "flex-start",
         display: "flex",
-        fontFamily: "monospace",
         color: theme.colors.accessible,
+        fontFamily: "monospace",
       }}
       onClick={handleCopy}
       aria-label="Copy code to clipboard"
@@ -75,7 +97,7 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
       {hideIcon ? (
         <></>
       ) : (
-        <CopyFeeback>
+        <CopyFeeback hover={ReadyToCopy}>
           <Span>|</Span>
           <Icon css={{ marginLeft: theme.space[25] }} size="16">
             <ClipboardIcon />

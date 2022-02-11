@@ -21,6 +21,7 @@ const Grid = styled("div", {
   },
   "@sm": {
     height: "100vh",
+    overflowX: "hidden",
     gridTemplateColumns: "1fr",
     gridTemplateRows: "auto auto 1fr",
     gridTemplateAreas: `

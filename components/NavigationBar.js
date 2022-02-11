@@ -78,7 +78,6 @@ const MenuToggle = styled("button", {
   height: 32,
   width: 32,
   alignItems: "center",
-  marginLeft: "$075",
   backgroundColor: "transparent",
   borderStyle: "none",
   display: "flex",
@@ -111,6 +110,7 @@ export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
             },
             "@sm": {
               display: "flex",
+              gap: "$075",
               paddingRight: "$100",
               justifyItems: "flex-end",
             },
