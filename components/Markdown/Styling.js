@@ -132,9 +132,11 @@ const components = {
     <Box
       as="pre"
       css={{
-        color: theme.colors.accessible,
-        fontSize: "$087",
-        lineHeight: "$125",
+        marginTop: "$150",
+        marginBottom: "$100",
+        overflowX: "auto",
+        backgroundColor: theme.colors.gray500,
+        padding: "$100",
       }}
     >
       {children}
