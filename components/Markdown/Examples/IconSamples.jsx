@@ -33,9 +33,9 @@ export default function Icons() {
         if (logoList.includes(componentName)) return;
 
         return (
-          <MDXStyling.Cell css={{ "&:hover": { opacity: .50 } }} key={i}>
+          <MDXStyling.Cell key={i}>
             <MDXStyling.CopyClipboard
-              css={{ backgroundColor: theme.colors.gray500, padding: theme.space[100] }}
+              css={{ "&:hover": { opacity: .5 }, backgroundColor: theme.colors.gray500, padding: theme.space[100] }}
               hideIcon textToCopy={importExample}>
               <Icon size="24">
                 <Sample fill={theme.colors.primary} />

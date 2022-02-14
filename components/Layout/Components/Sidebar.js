@@ -126,10 +126,10 @@ function Compare(a, b) {
   return 0;
 }
 
-export default function Sidebar({ navigation }) {
+export default function Sidebar({ navigation, setMobileMenu }) {
   const router = useRouter();
 
-  const SortedList = ({ docs }) => {
+  const SortedList = ({ docs, setMobileMenu }) => {
     let sortedDocs = [];
     docs.map((item) => {
       sortedDocs.push({ order: item.data.order, frontMatter: item });
@@ -140,6 +140,7 @@ export default function Sidebar({ navigation }) {
         {sortedDocs.map((item, index) => {
           return (
             <ListItem
+              onClick={() => setMobileMenu(false)}
               key={index}
               isCurrent={
                 router.asPath.includes(item.frontMatter.slug) ? "active" : ""
@@ -205,12 +206,16 @@ export default function Sidebar({ navigation }) {
                   <Accordion.Content>
                     <SideBarList>
                       {nav.sortItems ? (
-                        <SortedList docs={nav.docs} />
+                        <SortedList
+                          setMobileMenu={setMobileMenu}
+                          docs={nav.docs}
+                        />
                       ) : (
                         <>
                           {nav.docs.map((item, index) => {
                             return (
                               <ListItem
+                                onClick={() => setMobileMenu(false)}
                                 key={index}
                                 isCurrent={
                                   router.asPath.includes(item.slug)
@@ -252,7 +257,10 @@ export default function Sidebar({ navigation }) {
             );
           })}
         <SideBarList css={{ "@notSm": { display: "none" } }}>
-          <ListItem isCurrent={router.asPath.includes("blog") ? "active" : ""}>
+          <ListItem
+            onClick={() => setMobileMenu(false)}
+            isCurrent={router.asPath.includes("blog") ? "active" : ""}
+          >
             <Link href="/blog" passHref>
               <Header>
                 <CustomLink css={{ color: "$primary" }}>Blog</CustomLink>
@@ -260,6 +268,7 @@ export default function Sidebar({ navigation }) {
             </Link>
           </ListItem>
           <ListItem
+            onClick={() => setMobileMenu(false)}
             isCurrent={router.asPath.includes("release-notes") ? "active" : ""}
           >
             <Link href="/release-notes" passHref>

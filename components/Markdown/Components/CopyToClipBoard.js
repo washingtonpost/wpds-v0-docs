@@ -80,9 +80,8 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
       onMouseLeave={() => setReadyToCopy(false)}
       css={{
         ...css,
-        backgroundColor: theme.colors.gray500,
         padding: "$050",
-        maxWidth: "90%",
+        maxWidth: "100%",
         overflow: "hidden",
         alignSelf: "flex-start",
         display: "flex",

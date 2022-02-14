@@ -28,6 +28,14 @@ export const logoList = [
   "google",
 ];
 
+export const darkLogos = [
+  "washington-post-white",
+  "wp-mark-white",
+  "washington-post-magazine",
+  "olympics-dark",
+]
+
+
 export default function Icons() {
 
 
@@ -46,13 +54,12 @@ export default function Icons() {
         )}";`;
 
         if (!logoList.includes(componentName)) return;
-
         return (
-          <MDXStyling.Cell css={{ "&:hover": { opacity: .50 } }} key={i}>
+          <MDXStyling.Cell key={i}>
             <MDXStyling.CopyClipboard
-              css={{ display: "flex", justifyContent: "center", backgroundColor: theme.colors.gray500, padding: theme.space[100], width: "100%" }}
+              css={{ "&:hover": { opacity: .50 }, display: "flex", justifyContent: "center", backgroundColor: darkLogos.includes(componentName) ? theme.colors.primary : theme.colors.gray500, padding: theme.space[100], width: "100%" }}
               hideIcon textToCopy={importExample}>
-              <Icon label={componentName} size="150">
+              <Icon label={componentName} size={componentName.includes("washington") ? 250 : 150}>
                 <Sample fill={theme.colors.primary} />
               </Icon>
             </MDXStyling.CopyClipboard>

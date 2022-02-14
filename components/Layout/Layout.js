@@ -34,7 +34,7 @@ const Grid = styled("div", {
   },
 });
 
-const MobileMenu = styled("div", {
+const DesktopMenu = styled("div", {
   gridArea: "sidebar",
   variants: {
     state: {
@@ -63,11 +63,14 @@ export const PageLayout = ({ children, ...pageProps }) => {
     <Grid>
       <NavigationBar
         isClosed={mobileMenuState}
-        setMobileMenu={() => setMobileMenuState(!mobileMenuState)}
+        setMobileMenu={setMobileMenuState}
       />
-      <MobileMenu state={mobileMenuState ? "open" : "closed"}>
-        <Sidebar navigation={pageProps.navigation} />
-      </MobileMenu>
+      <DesktopMenu state={mobileMenuState ? "open" : "closed"}>
+        <Sidebar
+          setMobileMenu={setMobileMenuState}
+          navigation={pageProps.navigation}
+        />
+      </DesktopMenu>
       <Container>{children}</Container>
       <Footer />
     </Grid>

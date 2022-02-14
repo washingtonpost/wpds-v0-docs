@@ -5,6 +5,7 @@ import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import { ThemeToggle } from "./ThemeToggle";
 import SearchForm from "./SearchForm";
+import { useEffect } from "react";
 
 const List = styled("ul", {
   gridArea: "nav",
@@ -96,7 +97,12 @@ const HamburgerMenu = styled(Menu, {
   },
 });
 
-export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
+export const NavigationBar = ({
+  setMobileMenu,
+  mobileMenuState,
+  isClosed,
+  children,
+}) => {
   const router = useRouter();
 
   return (
@@ -117,7 +123,7 @@ export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
           }}
         >
           <ThemeToggle />
-          <MenuToggle onClick={setMobileMenu}>
+          <MenuToggle onClick={() => setMobileMenu(!isClosed)}>
             <Icon size="24" label="Menu Icon">
               <HamburgerMenu state={isClosed ? "closed" : "open"} />
             </Icon>
@@ -134,7 +140,11 @@ export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
           </Link>
         </ListItem>
         <ListItem>
-          <Link href="/release-notes" passHref>
+          <Link
+            onClick={() => setMobileMenu(!mobileMenuState)}
+            href="/release-notes"
+            passHref
+          >
             <Anchor isCurrent={router.asPath.includes("/release-notes")}>
               Release Notes
             </Anchor>
