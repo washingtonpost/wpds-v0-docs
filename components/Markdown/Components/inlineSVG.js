@@ -7,7 +7,9 @@ import { css, styled } from "@washingtonpost/wpds-ui-kit";
 export default function inlineSVG({ path, title, description, width, height }) {
   const Size = { height: height ? height : 150, width: width ? width : 300 };
   const SVGContainer = styled("div", {
-    padding: "$100 0",
+    padding: "$100 $100",
+    overflow: "hidden",
+    width: "100%",
   });
   function hexToRgbA(hex) {
     var c;
@@ -66,9 +68,10 @@ export default function inlineSVG({ path, title, description, width, height }) {
           );
           titleTag.innerHTML = title; //require title to be passed
           svg.prepend(title);
-
-          svg.setAttribute("width", Size.width * 0.75);
-          svg.setAttribute("height", Size.height * 0.75);
+          svg.setAttribute("style", `max-width:${Size.width}`);
+          svg.setAttribute("style", `max-height:${Size.height}`);
+          svg.setAttribute("width", "100%");
+          svg.setAttribute("height", "auto");
           const paths = svg.querySelectorAll("path");
           paths.forEach((i) => {
             i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
