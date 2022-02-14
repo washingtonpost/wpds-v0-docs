@@ -57,7 +57,7 @@ export default function Icons() {
         return (
           <MDXStyling.Cell key={i}>
             <MDXStyling.CopyClipboard
-              css={{ "&:hover": { opacity: .50 }, display: "flex", justifyContent: "center", backgroundColor: darkLogos.includes(componentName) ? theme.colors.primary : theme.colors.gray500, padding: theme.space[100], width: "100%" }}
+              css={{ "&:hover": { opacity: .50 }, display: "flex", justifyContent: "center", backgroundColor: darkLogos.includes(componentName) ? theme.colors["gray20-static"] : theme.colors.gray500, padding: theme.space[100], width: "100%" }}
               hideIcon textToCopy={importExample}>
               <Icon label={componentName} size={componentName.includes("washington") ? 250 : 150}>
                 <Sample fill={theme.colors.primary} />
