@@ -3,10 +3,11 @@ import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 export default function Container({ children, caption }) {
   const Div = styled("div", {
     width: "100%",
+    maxWidth: "100vw",
+    overflow: "hidden",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "$275",
     backgroundColor: "$gray500",
     color: theme.colors.accessible,
   });

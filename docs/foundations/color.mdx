@@ -1,4 +1,5 @@
 ---
+order: 1
 title: Color
 description: Our color tokens are designed to be used throughout the Washington Post products. Although we include colors other than what is found in grayscale, the purpose and intention of color are limited to ensure the messaging around color has the correct amount of affordance.
 ---
@@ -31,13 +32,12 @@ and the reader experience. Color should always be a minimal distraction and used
 Utilize color to separate sections of information and highlight elements of importance.
 
 <Container caption="Example of color to create layout structure">
-  <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      height="auto"
-      src="/images/color-tokens/layout_and_structure.png"
-    />
-  </Box>
+  <InlineImage
+    width={836}
+    height={839}
+    maxWidth={"100%"}
+    src="/images/color-tokens/layout_and_structure.png"
+  />
 </Container>
 
 <BR size="xl" />
@@ -48,10 +48,9 @@ Use color to create an affordance to signal interaction, call to action, or a li
 
 <Container caption="Example of color to create layout structure">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 214 }}
-      height="auto"
+    <InlineImage
+      width={214}
+      height={56}
       src="/images/color-tokens/affordance.png"
     />
   </Box>
@@ -65,10 +64,10 @@ Use color to create an affordance to signal interaction, call to action, or a li
 
 <Container caption="Example of color to communicate system status">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 500 }}
-      height="auto"
+    <InlineImage
+      width={500}
+      height={167}
+      maxWidth="100%"
       src="/images/color-tokens/system_status.svg"
     />
   </Box>
@@ -82,10 +81,10 @@ Color used within the editorial palette to differentiate content with various li
 
 <Container caption="The use of color to show something is live or an opinion">
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 800 }}
-      height="auto"
+    <InlineImage
+      width={1190}
+      height={205}
+      maxWidth="100%"
       src="/images/color-tokens/editorial_tone.png"
     />
   </Box>
@@ -99,10 +98,9 @@ Apply color to illustrations and icons to achieve a visual style that varies acr
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 260 }}
-      height="auto"
+    <InlineImage
+      width={261}
+      height={176}
       src="/images/color-tokens/illustration.png"
     />
   </Box>
@@ -116,10 +114,10 @@ Sub-brands have a unique palette, art direction, visual look, and distinction fr
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 500 }}
-      height="auto"
+    <InlineImage
+      width={1016}
+      height={289}
+      maxWidth="100%"
       src="/images/color-tokens/brand_recognition.png"
     />
   </Box>
@@ -133,10 +131,9 @@ Continuous and categorical datasets projected in a chart or map often require co
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 300 }}
-      height="auto"
+    <InlineImage
+      width={296}
+      height={180}
       src="/images/color-tokens/visual.png"
     />
   </Box>
@@ -155,16 +152,21 @@ assigns a color intention.
   <div style={{ maxWidth: 600, margin: "auto" }}>
     <Box
       css={{
+        padding:"$100 0",
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr 1fr",
         gridTemplateRows: "150px 75px 75px",
         justifyContent: "center",
-        margin: "auto"
+        margin: "auto",
+        "@sm":{
+          gridTemplateColumns: "1fr 1fr",
+          gridTemplateRows: "repeat(6,$400)",
+        }
       }}
     >
       <Box
         css={{
-          padding:"$050",
+          padding:"$025",
           backgroundColor: "$primary",
           color: "$onPrimary"
         }}
@@ -173,7 +175,7 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding:"$050",
+          padding:"$025",
           backgroundColor: "$secondary",
           color: "$onSecondary"
         }}
@@ -182,7 +184,10 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding:"$050",
+          "@sm":{
+            order:5,
+          },
+          padding:"$025",
           backgroundColor: "$cta",
           color: "$onCta"
         }}
@@ -191,7 +196,10 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding:"$050",
+          "@sm":{
+            order:6,
+          },
+          padding:"$025",
           backgroundColor: "$disabled",
           color: "$onDisabled"
         }}
@@ -200,7 +208,10 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding:"$050",
+          "@sm":{
+            order:3,
+          },
+          padding:"$025",
           backgroundColor: "$onPrimary",
           color: "$primary"
         }}
@@ -209,7 +220,10 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding:"$050",
+          "@sm":{
+            order:4,
+          },
+          padding:"$025",
           backgroundColor: "$onSecondary",
           color: "$secondary"
         }}
@@ -218,7 +232,10 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding:"$050",
+          "@sm":{
+            order:7,
+          },
+          padding:"$025",
           backgroundColor: "$onCta",
           color: "$gray0-static"
         }}
@@ -227,7 +244,10 @@ assigns a color intention.
       </Box>
       <Box
         css={{
-          padding: "$050",
+          "@sm":{
+            order:8,
+          },
+          padding:"$025",
           backgroundColor: "$onDisabled",
           color: "$Disabled"
         }}
@@ -236,7 +256,10 @@ assigns a color intention.
       </Box>
             <Box
         css={{
-          padding: "$050",
+          "@sm":{
+            order:9,
+          },
+          padding:"$025",
           gridColumn:"span 2",
           backgroundColor: "$accessible",
           color: "$onPrimary"
@@ -246,7 +269,10 @@ assigns a color intention.
       </Box>
         <Box
         css={{
-          padding: "$050",
+         "@sm":{
+          order:10,
+         },
+          padding:"$025",
           gridColumn:"span 2",
           backgroundColor: "$subtle",
           color: "$onSecondary"
@@ -268,11 +294,10 @@ is used when an element or content is on the `primary` color token.
 
 <Container>
   <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
-    <img
-      width="80%"
-      style={{ maxWidth: 600 }}
-      height="auto"
-      src="/images/color-tokens/theme_how_to_use.svg"
+    <InlineSVG
+      width={458}
+      height={212}
+      path="/images/color-tokens/theme_how_to_use.svg"
     />
   </Box>
 </Container>
@@ -288,64 +313,72 @@ product to convey a system status. These colors help signal to our users a consi
 message around system status and actions taken by the user.
 
 <Container>
-  <div style={{ maxWidth: 600, margin: "auto" }}>
-    <Box
-      css={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr",
-        gridTemplateRows: "150px 75px",
-        justifyContent: "center",
-        margin: "auto",
-      }}
-    >
+  <Grid
+    css={{ gridGap: 0, padding: "$100 0", maxWidth: "50%" }}
+    maxSize={"1fr"}
+  >
+    <Cell>
       <Box
         css={{
-          padding: "$050",
+          width: "100%",
+          padding: "$050 0",
           backgroundColor: "$error",
           color: "$onMessage",
         }}
       >
         Error
       </Box>
+    </Cell>
+    <Cell>
       <Box
         css={{
-          padding: "$050",
+          width: "100%",
+          padding: "$050 0",
           backgroundColor: "$warning",
           color: "$onMessage",
         }}
       >
         Warning
       </Box>
+    </Cell>
+    <Cell>
       <Box
         css={{
-          padding: "$050",
+          width: "100%",
+          padding: "$050 0",
           backgroundColor: "$success",
           color: "$onMessage",
         }}
       >
         Success
       </Box>
+    </Cell>
+    <Cell>
       <Box
         css={{
-          padding: "$050",
+          width: "100%",
+          padding: "$050 0",
           backgroundColor: "$signal",
           color: "$onMessage",
         }}
       >
         Signal
       </Box>
+    </Cell>
+    <Cell>
       <Box
         css={{
-          padding: "$050",
-          gridColumn: "span 4",
+          width: "100%",
+          padding: "$050 0",
+          gridColumn: "span 1/-1",
           backgroundColor: "$onMessage",
           color: "$gray0-static",
         }}
       >
         onMessage
       </Box>
-    </Box>
-  </div>
+    </Cell>
+  </Grid>
 </Container>
 
 <BR size="xl" />
@@ -367,7 +400,17 @@ Our theme token `onCta` and semantic color token `onMessage` both are tied to `g
 to ensure they remain with the correct minimal color contrast needed for the element to be accessible.
 
 <Container>
-  <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
+  <Box
+    css={{
+      padding: "$100 0",
+      display: "flex",
+      justifyContent: "center",
+      margin: "auto",
+      "@sm": {
+        flexDirection: "column",
+      },
+    }}
+  >
     <Box
       css={{
         padding: "$300",
@@ -402,12 +445,20 @@ contrast ratio outlined by WCAG 2.0 level AA.
 One of our theme tokens named `accessible` is accessible on the target background (`gray600` or `gray0`).
 
 <Container>
-  <Box css={{ display: "flex", justifyContent: "center", margin: "auto" }}>
+  <Box
+    css={{
+      padding: "$100 0",
+      display: "flex",
+      justifyContent: "center",
+      margin: "auto",
+    }}
+  >
     <Box
       css={{
         padding: "$300",
         backgroundColor: "$gray600",
         color: "$accessible",
+        textAlign: "center",
       }}
     >
       Accessible color on target background

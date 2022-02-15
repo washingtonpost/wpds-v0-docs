@@ -1,10 +1,11 @@
-import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { Box, Icon, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import { ThemeToggle } from "./ThemeToggle";
 import SearchForm from "./SearchForm";
+import { useEffect } from "react";
 
 const List = styled("ul", {
   gridArea: "nav",
@@ -77,7 +78,7 @@ const Anchor = styled("a", {
 const MenuToggle = styled("button", {
   height: 32,
   width: 32,
-  marginLeft: "$075",
+  alignItems: "center",
   backgroundColor: "transparent",
   borderStyle: "none",
   display: "flex",
@@ -96,7 +97,12 @@ const HamburgerMenu = styled(Menu, {
   },
 });
 
-export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
+export const NavigationBar = ({
+  setMobileMenu,
+  mobileMenuState,
+  isClosed,
+  children,
+}) => {
   const router = useRouter();
 
   return (
@@ -110,14 +116,17 @@ export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
             },
             "@sm": {
               display: "flex",
+              gap: "$075",
               paddingRight: "$100",
               justifyItems: "flex-end",
             },
           }}
         >
           <ThemeToggle />
-          <MenuToggle onClick={setMobileMenu}>
-            <HamburgerMenu state={isClosed ? "closed" : "open"} />
+          <MenuToggle onClick={() => setMobileMenu(!isClosed)}>
+            <Icon size="32" label="Menu Icon">
+              <HamburgerMenu state={isClosed ? "closed" : "open"} />
+            </Icon>
           </MenuToggle>
         </Box>
       </Container>
@@ -131,7 +140,11 @@ export const NavigationBar = ({ setMobileMenu, isClosed, children }) => {
           </Link>
         </ListItem>
         <ListItem>
-          <Link href="/release-notes" passHref>
+          <Link
+            onClick={() => setMobileMenu(!mobileMenuState)}
+            href="/release-notes"
+            passHref
+          >
             <Anchor isCurrent={router.asPath.includes("/release-notes")}>
               Release Notes
             </Anchor>

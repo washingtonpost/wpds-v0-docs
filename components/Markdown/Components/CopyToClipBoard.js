@@ -1,11 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled, Icon, Box, theme } from "@washingtonpost/wpds-ui-kit";
 const Button = styled("button", {
+  position: "relative",
   backgroundColor: "transparent",
   borderStyle: "none",
+  color: theme.colors.primary,
   cursor: "pointer",
   "&hover": {
     opacity: 0.75,
+  },
+});
+
+const CopyFeeback = styled("div", {
+  position: "absolute",
+  top: "50%",
+  right: 0,
+  paddingRight: "$050",
+  backgroundColor: theme.colors.gray500,
+  transform: "translateY(0%)",
+  opacity: "0",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  variants: {
+    hover: {
+      true: {
+        transform: "translateY(-50%)",
+        opacity: 1,
+      },
+      false: {
+        transform: "translateY(0%)",
+        opacity: 0,
+      },
+    },
   },
 });
 const Span = styled("span", {
@@ -30,35 +57,53 @@ const ClipboardIcon = (props) => (
     />
   </svg>
 );
-const CopyCodeButton = ({ css, children, textToCopy }) => {
+const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
   const [copied, setCopied] = useState(false);
-
+  const [ReadyToCopy, setReadyToCopy] = useState(false);
+  function handleCopy() {
+    navigator.clipboard.writeText(`${textToCopy ? textToCopy : children}`);
+    setCopied(true);
+  }
   // set the copied state to false after a second
-  useEffect(() => {
+  useEffect(async () => {
     if (copied) {
+      if (hideIcon) {
+        await navigator.clipboard.writeText(textToCopy);
+        window.alert(`Copied: ${textToCopy}`);
+      }
       setTimeout(() => setCopied(false), 2000);
     }
   }, [copied]);
   return (
     <Button
+      onMouseEnter={() => setReadyToCopy(true)}
+      onMouseLeave={() => setReadyToCopy(false)}
       css={{
         ...css,
+        padding: "$050",
+        maxWidth: "100%",
+        overflow: "hidden",
         alignSelf: "flex-start",
         display: "flex",
+        color: theme.colors.accessible,
+        fontFamily: "monospace",
       }}
-      onClick={() => {
-        // copy code to clipboard
-        navigator.clipboard.writeText(`${textToCopy ? textToCopy : children}`);
-        setCopied(true);
-      }}
+      onClick={handleCopy}
       aria-label="Copy code to clipboard"
     >
       {children}
-      <Span>|</Span>
-      <Icon size="16">
-        <ClipboardIcon />
-      </Icon>
-      {copied ? "Copied!" : "Copy"}
+
+      {hideIcon ? (
+        <></>
+      ) : (
+        <CopyFeeback hover={ReadyToCopy}>
+          <Span>|</Span>
+          <Icon css={{ marginLeft: theme.space[25] }} size="16">
+            <ClipboardIcon />
+          </Icon>
+          {copied ? "Copied!" : "Copy"}
+        </CopyFeeback>
+      )}
     </Button>
   );
 };

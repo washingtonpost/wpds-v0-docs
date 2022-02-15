@@ -9,6 +9,7 @@ import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
 import Sandbox from "./Components/Sandbox";
 import { InputCheckbox } from "./Components/Checkbox";
+import { Grid, Cell } from "./Components/Grid";
 
 const HR = styled("hr", {
   borderStyle: "none",
@@ -115,25 +116,29 @@ const components = {
   ),
   hr: HR,
   BR: BR,
+  Grid: ({ maxSize, css, children }) => (
+    <Grid css={css} maxSize={maxSize}>
+      {children}
+    </Grid>
+  ),
+  Cell: ({ children }) => <Cell>{children}</Cell>,
+  CopyClipboard: dynamic(() => import("./Components/CopyToClipBoard")),
+  IconSamples: dynamic(() => import("../Markdown/Examples/IconSamples")),
+  LogoSamples: dynamic(() => import("../Markdown/Examples/LogoSamples")),
   Table: dynamic(() => import("./Components/table")),
   Img: dynamic(() => import("./Components/InlineImage")),
   TableOfContents: dynamic(() => import("./Components/tableofcontents")),
   Container: dynamic(() => import("./Components/container")),
   GuideContainer: dynamic(() => import("./Components/GuideContainer")),
   InlineSVG: dynamic(() => import("./Components/inlineSVG")),
+  InlineImage: dynamic(() => import("./Components/InlineImage")),
   Box: Box,
   pre: ({ children }) => (
     <Box
       as="pre"
       css={{
-        marginBottom: "$100",
         overflowX: "auto",
-        color: theme.colors.accessible,
-        fontSize: "$087",
-        lineHeight: "$125",
-        "@sm": {
-          // width: "calc(100vw - $300)",
-        },
+        backgroundColor: theme.colors.gray500,
       }}
     >
       {children}

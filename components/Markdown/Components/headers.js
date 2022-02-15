@@ -7,12 +7,18 @@ export const Header = styled("h1", {
   fontFamily: "$headline",
   color: "$primary",
   fontWeight: "$bold",
+  "@sm": {
+    fontSize: "$250",
+  },
   variants: {
     as: {
       h2: {
         fontFamily: "$headline",
         fontSize: "$175",
         fontWeight: "$bold",
+        "@sm": {
+          fontSize: "$175",
+        },
       },
       h3: {
         fontSize: "$125",

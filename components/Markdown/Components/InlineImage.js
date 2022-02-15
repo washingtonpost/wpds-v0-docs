@@ -1,9 +1,26 @@
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, css } from "@washingtonpost/wpds-ui-kit";
 import React from "react";
+import Image from "next/image";
 
-export default function InlineImage({ maxWidth, src, ...rest }) {
-  const Img = styled("img", {
+export default function InlineImage({ maxWidth, width, height, src, ...rest }) {
+  const ImageContainer = styled("div", {
     maxWidth: `${maxWidth}px`,
+
+    padding: "$100",
   });
-  return <Img {...rest} src={src} width="100%" height="auto" />;
+
+  const inlineImageCSS = css({
+    aspectRatio: `${width}/${height}`,
+  });
+  return (
+    <ImageContainer>
+      <Image
+        className={inlineImageCSS()}
+        {...rest}
+        src={src}
+        width={width}
+        height={height}
+      />
+    </ImageContainer>
+  );
 }

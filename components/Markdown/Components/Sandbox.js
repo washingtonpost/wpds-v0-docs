@@ -235,6 +235,12 @@ export default function App() {
   );
 }`;
 
+  const customStyle = {
+    display: "-moz-box",
+    display: "flex",
+    width: "calc(100vw-5%)",
+  };
+
   return (
     <>
       <SandpackProvider

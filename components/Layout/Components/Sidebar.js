@@ -116,9 +116,62 @@ const CustomLink = styled("a", {
   },
 });
 
-export default function Sidebar({ navigation }) {
+function Compare(a, b) {
+  if (a.order < b.order || b.order == undefined) {
+    return -1;
+  }
+  if (a.order > b.order || a.order == undefined) {
+    return 1;
+  }
+  return 0;
+}
+
+export default function Sidebar({ navigation, setMobileMenu }) {
   const router = useRouter();
 
+  const SortedList = ({ docs, setMobileMenu }) => {
+    let sortedDocs = [];
+    docs.map((item) => {
+      sortedDocs.push({ order: item.data.order, frontMatter: item });
+    });
+    sortedDocs.sort(Compare);
+    return (
+      <>
+        {sortedDocs.map((item, index) => {
+          return (
+            <ListItem
+              onClick={() => setMobileMenu(false)}
+              key={index}
+              isCurrent={
+                router.asPath.includes(item.frontMatter.slug) ? "active" : ""
+              }
+              disabled={item.frontMatter.data.status === "Coming soon"}
+            >
+              {item.frontMatter.data.status === "Coming soon" ? (
+                <CustomLink
+                  as="div"
+                  css={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignContent: "center",
+                    alignItems: "center",
+                  }}
+                  disabled
+                >
+                  <div>{item.frontMatter.data.title}</div>
+                  <Change type="ComingSoon">Coming soon</Change>
+                </CustomLink>
+              ) : (
+                <Link href={item.frontMatter.slug} passHref>
+                  <CustomLink>{item.frontMatter.data.title}</CustomLink>
+                </Link>
+              )}
+            </ListItem>
+          );
+        })}
+      </>
+    );
+  };
   return (
     <Panel id="open-nav">
       <Container>
@@ -152,37 +205,51 @@ export default function Sidebar({ navigation }) {
                   </Accordion.Header>
                   <Accordion.Content>
                     <SideBarList>
-                      {nav.docs.map((item, index) => {
-                        return (
-                          <ListItem
-                            key={index}
-                            isCurrent={
-                              router.asPath.includes(item.slug) ? "active" : ""
-                            }
-                            disabled={item.data.status === "Coming soon"}
-                          >
-                            {item.data.status === "Coming soon" ? (
-                              <CustomLink
-                                as="div"
-                                css={{
-                                  display: "flex",
-                                  justifyContent: "space-between",
-                                  alignContent: "center",
-                                  alignItems: "center",
-                                }}
-                                disabled
+                      {nav.sortItems ? (
+                        <SortedList
+                          setMobileMenu={setMobileMenu}
+                          docs={nav.docs}
+                        />
+                      ) : (
+                        <>
+                          {nav.docs.map((item, index) => {
+                            return (
+                              <ListItem
+                                onClick={() => setMobileMenu(false)}
+                                key={index}
+                                isCurrent={
+                                  router.asPath.includes(item.slug)
+                                    ? "active"
+                                    : ""
+                                }
+                                disabled={item.data.status === "Coming soon"}
                               >
-                                <div>{item.data.title}</div>
-                                <Change type="ComingSoon">Coming soon</Change>
-                              </CustomLink>
-                            ) : (
-                              <Link href={item.slug} passHref>
-                                <CustomLink>{item.data.title}</CustomLink>
-                              </Link>
-                            )}
-                          </ListItem>
-                        );
-                      })}
+                                {item.data.status === "Coming soon" ? (
+                                  <CustomLink
+                                    as="div"
+                                    css={{
+                                      display: "flex",
+                                      justifyContent: "space-between",
+                                      alignContent: "center",
+                                      alignItems: "center",
+                                    }}
+                                    disabled
+                                  >
+                                    <div>{item.data.title}</div>
+                                    <Change type="ComingSoon">
+                                      Coming soon
+                                    </Change>
+                                  </CustomLink>
+                                ) : (
+                                  <Link href={item.slug} passHref>
+                                    <CustomLink>{item.data.title}</CustomLink>
+                                  </Link>
+                                )}
+                              </ListItem>
+                            );
+                          })}
+                        </>
+                      )}
                     </SideBarList>
                   </Accordion.Content>
                 </Accordion.Item>
@@ -190,7 +257,10 @@ export default function Sidebar({ navigation }) {
             );
           })}
         <SideBarList css={{ "@notSm": { display: "none" } }}>
-          <ListItem isCurrent={router.asPath.includes("blog") ? "active" : ""}>
+          <ListItem
+            onClick={() => setMobileMenu(false)}
+            isCurrent={router.asPath.includes("blog") ? "active" : ""}
+          >
             <Link href="/blog" passHref>
               <Header>
                 <CustomLink css={{ color: "$primary" }}>Blog</CustomLink>
@@ -198,6 +268,7 @@ export default function Sidebar({ navigation }) {
             </Link>
           </ListItem>
           <ListItem
+            onClick={() => setMobileMenu(false)}
             isCurrent={router.asPath.includes("release-notes") ? "active" : ""}
           >
             <Link href="/release-notes" passHref>
