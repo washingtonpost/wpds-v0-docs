@@ -23,9 +23,10 @@ export const Footer = () => (
 
       "@sm": {
         display: "grid",
+        textAlign: "center",
         gridTemplateAreas: `
           "footer-top footer-top"
-          "footer-left footer-right"
+          "footer-left footer-left"
         `,
         gridTemplateColumns: "1fr 1fr",
         gridTemplateRows: "auto auto",
@@ -41,7 +42,7 @@ export const Footer = () => (
         "@sm": {
           order: 2,
           gridArea: "footer-left",
-          textAlign: "right",
+          textAlign: "center",
         },
       }}
       href="https://www.washingtonpost.com"
@@ -51,23 +52,13 @@ export const Footer = () => (
     <Box
       css={{
         "@sm": {
-          order: 3,
-          gridArea: "footer-right",
-          textAlign: "left",
-        },
-      }}
-    >
-      © 1996-
-      {new Date().getFullYear()}
-    </Box>{" "}
-    <Box
-      css={{
-        "@sm": {
           order: 1,
           gridArea: "footer-top",
         },
       }}
     >
+      © 1996-
+      {new Date().getFullYear()}
       The Washington Post
     </Box>
   </Box>

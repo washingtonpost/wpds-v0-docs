@@ -9,23 +9,7 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/architecture/component-api</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://build.washingtonpost.com/blog/architecture/component-design</loc
-    >
-  </url>
-
-  <url>
     <loc>https://build.washingtonpost.com/blog/architecture/stitches</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://build.washingtonpost.com/blog/contributing/contribute-a-component</loc
-    >
   </url>
 
   <url>
@@ -35,6 +19,12 @@
   <url>
     <loc
       >https://build.washingtonpost.com/blog/guides/component-documentation</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://build.washingtonpost.com/blog/guides/contribute-a-component</loc
     >
   </url>
 

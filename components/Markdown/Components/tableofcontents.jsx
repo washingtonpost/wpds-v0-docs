@@ -75,7 +75,7 @@ export default function TableOfContents({ headings }) {
 
   return (
     <Container>
-      <Header css={{ margin: "0 $025" }} as="h2">
+      <Header css={{ margin: "0 $025" }} as="h3">
         Table of Contents
       </Header>
       <List>
