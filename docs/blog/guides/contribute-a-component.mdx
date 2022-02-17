@@ -1,0 +1,101 @@
+---
+title: Contribute a component
+description: This document describes the process of contributing a component to our system. We are always excited when our community looks to expand our design system. Thank you for taking the time to contribute.
+kicker: Guides
+publishDate: January 1, 2022
+---
+
+<Alert dismissable={false} variant="information">
+  <b>Note: </b>When contributing a component the process takes time, and a quick
+  turnaround is in contrast to the amount of testing and approval that each
+  component requires. WPDS components follow a strict contribution process to
+  minimize breaking changes or bugs.
+</Alert>
+
+---
+
+## Getting started
+
+### Read our principles
+
+Before designing and developing the components of your dreams, please read over our principles. Reading our principles will help frame the entire process before any design or development occurs.
+
+After reading our principles please submit your component idea to using our [support channels.](/blog/process/support)
+
+---
+
+## Design
+
+All components follow a design process and approval process before any development starts. We have generated a Figma template file that you can reference as a designer to ensure all areas are covered when designing a new component or making refinements. It has a required checklist for each phase. The high-level process is as follows:
+
+### Phase 1: Audit
+
+1. **Audit our current website:** Look at our site for similar patterns related to your present component. If you find a pattern on the site that matches this component document with screenshots, annotate behaviors and variants. It may be the case we do not have this component, and if that is the case, note it in your designs.
+
+2. **Audit the web:** Visit popular sites and document patterns, behaviors, and variants. The chances are that these popular sites will help inform expected visual and interaction patterns users come to expect from a component.
+
+3. **Audit other design systems:** It is always best practice to audit other design systems as patterns at a component level is shared between systems. It is best to understand why that pattern, style, or behavior fits that specific product.
+
+4. **Audit our design system:** Last but not least, audit our own system. Often, we tend to think about visual patterns in isolation, but a design system is a series of interconnected patterns shared across many components. Document the similar patterns, behaviors, or variants of our existing components.
+
+### Phase 2: Concept
+
+1. **Distill the audit findings:** Distill the audit findings into actionable insights. These insights should result in a clear direction on conceptual exploration.
+
+2. **Think in WPDS:** When designing the component, please think holistically and not for one specific use case. It may require getting in touch base with other designers, product managers, and engineers to understand what this component is trying to resolve.
+
+3. **Design in context and out of context:** One of the pitfalls when designing a component is that we tend to design in isolation, resulting in a poorly tested component. However, designing for a single context also results in a hyper-specialized component, resulting in a very unflexible component.
+
+4. **Use our system:** When starting your concepts start with our system. All of our components must utilize our tokens. That means to avoid creating new tokens to fit the concept. Exhaust our system before making new tokens within a new component.
+
+### Phase 3 Decide
+
+1. **Options:** When thinking about component options, consider future use cases and current ones. Don’t feel a need to have multiple options. Some components have only one option, and that is okay.
+
+2. **Behaviors:** Documenting behaviors include defining states, overflow behavior, responsive behavior, and conditional behavior. You want to make sure your component is flexible and ready to be tested.
+
+3. **Guidance:** Create clear guidance on the component for others to reference when using it. The direction will help avoid component misuse.
+
+4. **Accessibility:** All of our components must meet the minimum accessibility requirements for the site laid out by WCAG for AA standards. Please review your component based on those standards. They differ from component to component.
+
+5. **Specs:** Define the specs using our tokens. Be clear in a fixed size, positioning of elements when scaled, and any other requirements.
+
+### Phase 4: Deliver
+
+1. **Submit:** At the end of the design process comes the submission. At this stage, you have already completed what has outlined above, completed the required checklist in the Figma template, and have received approval from all the parties necessary (Design leadership, WPDS, and other Stakeholders). Next, submissions move to our backlog awaiting development for an engineer to contribute or to be contributed by WPDS team.
+
+<BR size="lg" />
+
+---
+
+## Code
+
+All components must follow a predefined design spec. Without a design spec, development can not occur. If you are interested in a component not in our backlog, please reach out.
+
+### Core tenets
+
+When developing a component, use these core tenets for component design:
+
+1. They should be controlled by their API or left uncontrolled.
+2. If a component has multiple DOM nodes such as an Accordion's trigger and it's
+   display, it should be split into multiple components. Such as AccordionTrigger and AccordionDisplay and use a provider component to manage the state across the two (AccordionRoot).
+3. We should avoid using any DOM APIs that are not supported by evergreen browsers.
+4. We should should allow modification of styles via the css prop using our tokens (component (locally scoped and global) and theme).
+5. We should use our theme tokens to style our components.
+
+### Ready to code
+
+1. Review the components of our roadmap. The components are listed in the order of priority. Find a component that is not already assigned to a contributor(s). The components already have design & code specs along with a JIRA ticket. Please review them with your team before you start.If you are not sure, please ask a question on our community Slack channel.
+
+2. Now that you have reviewed the specs and the JIRA ticket, please reach out to the Core team on our Slack channel. We're review the specs and the JIRA ticket and will assign the ticket to you.
+
+3. You are now ready to start contributing. Review the component design blog post for how we design components. Now that you have reviewed our component design architecture, open the codebase up and review the contributing guidelines. We have a simple way to stub out a new component using some boilerplate code (`npm run new-component <component-name>`).
+
+4. Once you're in a good spot for rubber duck session, reach out to a fellow team mate. We want you to get the most out of the UI kit. This is a great opportunity to learn and grow from others who might not be familiar with the UI kit. This is not a place for a formal code review. This is a safe space for you to receive feedback and ask questions.
+
+5. Once you're happy with your work, please submit a pull request to the UI kit repo. Please include a link to your JIRA ticket. The core team and contributors will be notified and will review your pull request.
+6. Once your pull request is approved, we will begin the documentation process with you. As a contributor you will be responsible for the documentation process. Please review the component documentation blog post for how we document components.
+
+7. Now the component has been documented. The component is ready to be shipped. Please review the releases blog post for how we release components. We will be releasing new components on a monthly basis.
+
+8. Our new component is live to the world! You are expected to commit to two weeks of support and triage. Please review the support process here.

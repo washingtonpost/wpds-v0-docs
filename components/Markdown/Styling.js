@@ -4,7 +4,8 @@
  */
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
-import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme, Box, Button } from "@washingtonpost/wpds-ui-kit";
+import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
 import Sandbox from "./Components/Sandbox";
@@ -116,6 +117,14 @@ const components = {
   ),
   hr: HR,
   BR: BR,
+  Button: Button,
+  Alert: ({ variant, dismissable, css, children }) => (
+    <AlertBanner.Root dismissable={dismissable} variant={variant}>
+      <AlertBanner.Trigger />
+      <AlertBanner.Content css={css}>{children}</AlertBanner.Content>
+    </AlertBanner.Root>
+  ),
+  AlertBanner: AlertBanner,
   Grid: ({ maxSize, css, children }) => (
     <Grid css={css} maxSize={maxSize}>
       {children}
