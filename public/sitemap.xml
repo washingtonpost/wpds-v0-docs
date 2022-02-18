@@ -77,7 +77,7 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/assets</loc>
+    <loc>https://build.washingtonpost.com/foundations/base</loc>
   </url>
 
   <url>
@@ -85,11 +85,43 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/foundations/icons</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/logos</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/foundations/principles</loc>
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/tokens</loc>
+    <loc>https://build.washingtonpost.com/foundations/radii</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/shadow</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/size</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/space</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/typography</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/wam</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/foundations/z-indices</loc>
   </url>
 
   <url>

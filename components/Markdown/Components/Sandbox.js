@@ -90,7 +90,7 @@ const lightTheme = {
     defaultBackground: "#ffffff",
     inputBackground: "#ffffff",
     accent: "#166dfc",
-    errorBackground: "#f27b81",
+    errorBackground: "#ffffff",
     errorForeground: "#f27b81",
   },
   syntax: {
@@ -126,7 +126,7 @@ const darkTheme = {
     defaultBackground: "#020202",
     inputBackground: "#020202",
     accent: "#1761f1",
-    errorBackground: "#f27b81",
+    errorBackground: "#020202",
     errorForeground: "#f27b81",
   },
   syntax: {
@@ -248,7 +248,7 @@ export default function App() {
         customSetup={{
           dependencies: {
             "@washingtonpost/wpds-assets": "latest",
-            "@washingtonpost/wpds-ui-kit": "0.2.0",
+            "@washingtonpost/wpds-ui-kit": "^0.3.0-experimental.3",
           },
           files: {
             "/App.js": AppCode,
