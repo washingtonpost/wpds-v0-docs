@@ -180,6 +180,9 @@ export default function Sidebar({ navigation, setMobileMenu }) {
             return (
               <Accordion.Root
                 key={index}
+                css={{
+                  marginBottom: "$150",
+                }}
                 defaultValue={nav.category}
                 type="single"
                 collapsible
@@ -191,6 +194,7 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                         css={{
                           textTransform: "capitalize",
                           width: "100%",
+                          marginTop: 0,
                           padding: "$050 0 $050 $125",
                           "@sm": {
                             cursor: "pointer",

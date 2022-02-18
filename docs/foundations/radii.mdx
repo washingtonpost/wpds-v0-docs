@@ -1,0 +1,33 @@
+---
+order: 5
+title: Radii
+description:
+---
+
+Radii tokens are relative to the [baseSize](/foundations/base).
+Use radii tokens to define the border-radius of an element.
+
+```jsx
+// preview
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  const SpaceExample = styled("div", {
+    padding: theme.space["300"],
+    borderRadius: theme.radii["075"], // Radius example
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.onPrimary,
+  });
+  return (
+    <>
+      <SpaceExample>Example</SpaceExample>
+    </>
+  );
+}
+```
+
+<Table
+  headers={["Name", "Value", "Description"]}
+  useTokenData={true}
+  data={"radii"}
+/>
