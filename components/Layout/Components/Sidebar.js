@@ -161,6 +161,20 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                   <div>{item.frontMatter.data.title}</div>
                   <Change type="ComingSoon">Coming soon</Change>
                 </CustomLink>
+              ) : item.frontMatter.data.status == "Draft" ? (
+                <Link href={item.frontMatter.slug} passHref>
+                  <CustomLink
+                    css={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>{item.frontMatter.data.title}</div>
+                    <Change type="Draft">Draft</Change>
+                  </CustomLink>
+                </Link>
               ) : (
                 <Link href={item.frontMatter.slug} passHref>
                   <CustomLink>{item.frontMatter.data.title}</CustomLink>
@@ -244,6 +258,20 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                                       Coming soon
                                     </Change>
                                   </CustomLink>
+                                ) : item.data.status == "Draft" ? (
+                                  <Link href={item.slug} passHref>
+                                    <CustomLink
+                                      css={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        alignContent: "center",
+                                        alignItems: "center",
+                                      }}
+                                    >
+                                      <div>{item.data.title}</div>
+                                      <Change type="Draft">Draft</Change>
+                                    </CustomLink>
+                                  </Link>
                                 ) : (
                                   <Link href={item.slug} passHref>
                                     <CustomLink>{item.data.title}</CustomLink>

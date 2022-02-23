@@ -3,7 +3,7 @@ import { styled } from "@washingtonpost/wpds-ui-kit";
 import { NavigationBar } from "~/components/NavigationBar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 import { Footer } from "~/components/Footer";
-
+import { ToastContainer } from "react-toastify";
 const Grid = styled("div", {
   display: "grid",
   margin: "0 auto",
@@ -70,7 +70,15 @@ export const PageLayout = ({ children, ...pageProps }) => {
           navigation={pageProps.navigation}
         />
       </DesktopMenu>
-      <Container>{children}</Container>
+      <Container>
+        {children}
+        <ToastContainer
+          role="alert"
+          autoClose={1000}
+          closeButton={false}
+          limit={3}
+        />
+      </Container>
       <Footer />
     </Grid>
   );
