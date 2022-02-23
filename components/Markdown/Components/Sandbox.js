@@ -248,7 +248,8 @@ export default function App() {
         template="react"
         customSetup={{
           dependencies: {
-            "@washingtonpost/wpds-assets": "latest",
+            "@washingtonpost/wpds-assets":
+              packageJson.dependencies["@washingtonpost/wpds-assets"],
             "@washingtonpost/wpds-ui-kit":
               packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
             "@radix-ui/react-checkbox":
