@@ -1,6 +1,45 @@
 ---
 title: Alert banner
-description:
+description: Alert banners are notify the user of important messages, such as system alerts. They're meant to encourage the user to take an action.
 component: alert-banner
 status: "Coming soon"
 ---
+
+---
+
+## Anatomy
+
+<Container caption="Note: Image is not  to scale" css={{ padding: "$150" }}>
+  <InlineSVG
+    path="/img/components/alertbanner/anatomy.svg"
+    width={392}
+    height={120}
+  />
+</Container>
+
+1. Icon - Semantic only
+2. Text
+3. App bar
+4. Button icon
+
+---
+
+## Options
+
+### Variants
+
+4 predefined alert banners each tied to our symantic messaging on our site. They are Warning, Information, Success, and Error.
+
+```jsx
+// preview
+
+import { AlertBanner } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  return (
+    <AlertBanner.Root variant="error">
+      <AlertBanner.Content>Hey There</AlertBanner.Content>
+    </AlertBanner.Root>
+  );
+}
+```
