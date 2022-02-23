@@ -54,7 +54,9 @@ export default function Logos() {
   const [ExampleToCopy, setExampleToCopy] = useState(null);
   const [Name, setName] = useState("")
   useEffect(() => {
+
     if (ExampleToCopy) {
+      window.navigator.clipboard.writeText(ExampleToCopy);
       toast(<SuccessToast />, {
         position: "top-center",
         closeButton: false,

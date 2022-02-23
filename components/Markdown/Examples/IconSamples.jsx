@@ -2,10 +2,49 @@ import React, { useEffect, useState } from 'react';
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
 import { toast } from 'react-toastify';
 import MDXStyling from "~/components/Markdown/Styling";
-import { Icon, theme, AlertBanner, Box } from '@washingtonpost/wpds-ui-kit';
+import { Grid } from '../Components/Grid';
+import Search from "@washingtonpost/wpds-assets/asset/search";
+import { Icon, theme, Button, AlertBanner, Box, styled } from '@washingtonpost/wpds-ui-kit';
 import { paramCase } from "param-case";
 import { logoList } from "./LogoSamples";
 
+const Input = styled("input", {
+  height: "$300",
+  border: "none",
+  width: "100%",
+  color: theme.colors.onSecondary,
+  background: theme.colors.secondary,
+  transition: "all .3s ease",
+  padding: "$150 $050 $050 $050",
+  borderRadius: "$012",
+  "&:focus": {
+    outline: "none",
+    "&:valid": {
+      "& + label": {
+        fontSize: "$075",
+        transform: "translateY(-100%)",
+      }
+    }
+  },
+  "&:placeholder-shown": {
+    "& + label": {
+      transform: "translateY(-100%)",
+      fontSize: "$075",
+    },
+  }
+})
+
+const Label = styled("label", {
+  position: "absolute",
+  cursor: "text",
+  left: "$050",
+  top: "50%",
+  pointerEvents: "none",
+  transform: "translateY(-50%)",
+  fontWeight: "$light",
+  color: theme.colors.accessible,
+  transition: "all .3s ease"
+})
 export default function Icons() {
   const SuccessToast = () => {
     return (
@@ -22,8 +61,10 @@ export default function Icons() {
   }
   const [ExampleToCopy, setExampleToCopy] = useState(null);
   const [Name, setName] = useState("")
+  const [Filter, setFilter] = useState("");
   useEffect(() => {
     if (ExampleToCopy) {
+      window.navigator.clipboard.writeText(ExampleToCopy);
       toast(<SuccessToast />, {
         position: "top-center",
         closeButton: false,
@@ -31,7 +72,7 @@ export default function Icons() {
         hideProgressBar: true,
         draggable: false,
         onClose: () => {
-          setExampleToCopy(null);
+
           setName(null)
         }
       })
@@ -39,8 +80,14 @@ export default function Icons() {
   }, [ExampleToCopy]);
 
   function setVariables(example, Name) {
+    console.log(example);
     setName(Name)
     setExampleToCopy(example)
+  }
+
+  function handleChange(e) {
+    const value = e.target.value;
+    setFilter(value);
   }
   const GetIcons = () => {
 
@@ -58,7 +105,7 @@ export default function Icons() {
         )}";`;
 
         if (logoList.includes(componentName)) return;
-
+        if (Filter != "" && !componentName.includes(Filter)) return
         return (
           <MDXStyling.Cell key={i}>
             <Box
@@ -73,5 +120,21 @@ export default function Icons() {
       }))
   }
 
-  return <GetIcons />;
+  return (<>
+    <Box as="div" css={{
+      display: "flex",
+      marginBottom: "$050",
+      width: "auto",
+      border: `1px solid ${theme.colors.subtle}`,
+      position: "relative"
+    }}>
+      <Input onChange={handleChange} />
+      <Label>Search</Label>
+      <Button as="div" css={{ border: "none", borderRadius: "0" }} variant={"primary"} style="outline">
+        <Icon size="16">
+          <Search />
+        </Icon>
+      </Button>
+    </Box>
+    <Grid><GetIcons /></Grid></>)
 }
