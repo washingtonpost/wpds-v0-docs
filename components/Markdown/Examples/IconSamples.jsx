@@ -8,6 +8,23 @@ import { Icon, theme, Button, AlertBanner, Box, styled } from '@washingtonpost/w
 import { paramCase } from "param-case";
 import { logoList } from "./LogoSamples";
 
+const InputHolder = styled("div", {
+  display: "flex",
+  marginBottom: "$050",
+  width: "auto",
+  border: `1px solid ${theme.colors.subtle}`,
+  position: "relative",
+  variants: {
+    showFocus: {
+      true: {
+        border: `1px solid ${theme.colors.signal}`,
+      },
+      false: {
+        border: `1px solid ${theme.colors.subtle}`,
+      }
+    }
+  }
+})
 const Input = styled("input", {
   height: "$300",
   border: "none",
@@ -19,6 +36,7 @@ const Input = styled("input", {
   borderRadius: "$012",
   "&:focus": {
     outline: "none",
+
     "&:valid": {
       "& + label": {
         fontSize: "$075",
@@ -61,6 +79,7 @@ export default function Icons() {
   }
   const [ExampleToCopy, setExampleToCopy] = useState(null);
   const [Name, setName] = useState("")
+  const [inFocus, setInFocus] = useState(false)
   const [Filter, setFilter] = useState("");
   useEffect(() => {
     if (ExampleToCopy) {
@@ -121,20 +140,14 @@ export default function Icons() {
   }
 
   return (<>
-    <Box as="div" css={{
-      display: "flex",
-      marginBottom: "$050",
-      width: "auto",
-      border: `1px solid ${theme.colors.subtle}`,
-      position: "relative"
-    }}>
-      <Input onChange={handleChange} />
+    <InputHolder showFocus={inFocus ? "true" : "false"}>
+      <Input onFocus={() => setInFocus(true)} onBlur={() => setInFocus(false)} onChange={handleChange} />
       <Label>Search</Label>
       <Button as="div" css={{ border: "none", borderRadius: "0" }} variant={"primary"} style="outline">
         <Icon size="16">
           <Search />
         </Icon>
       </Button>
-    </Box>
+    </InputHolder>
     <Grid><GetIcons /></Grid></>)
 }
