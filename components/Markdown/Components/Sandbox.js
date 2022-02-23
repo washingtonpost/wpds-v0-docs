@@ -247,8 +247,8 @@ export default function App() {
         template="react"
         customSetup={{
           dependencies: {
-            "@washingtonpost/wpds-assets": "latest",
-            "@washingtonpost/wpds-ui-kit": "^0.3.0-experimental.3",
+            "@washingtonpost/wpds-assets": "1.2",
+            "@washingtonpost/wpds-ui-kit": "^0.3.0-experimental.7",
           },
           files: {
             "/App.js": AppCode,

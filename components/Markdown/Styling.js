@@ -60,23 +60,11 @@ export const Change = styled("div", {
 
   variants: {
     type: {
-      New: {
-        color: "$green80",
-        background: "$green300",
-        marginTop: "$100",
-        marginBottom: "$050",
-      },
-      Updates: {
-        color: "$blue80",
-        background: "$blue300",
-        marginTop: "$100",
-        marginBottom: "$050",
-      },
-      Fixes: {
-        color: "$red80",
-        background: "$red300",
-        marginTop: "$100",
-        marginBottom: "$050",
+      Draft: {
+        fontSize: "$075",
+        color: "$accessible",
+        backgroundColor: "$orange300",
+        borderColor: "$warning",
       },
       ComingSoon: {
         fontSize: "$075",

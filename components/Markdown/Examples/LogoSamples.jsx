@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as AllAssets from "@washingtonpost/wpds-assets/asset";
 import MDXStyling from "~/components/Markdown/Styling";
-import { Icon, theme } from '@washingtonpost/wpds-ui-kit';
+import { toast } from 'react-toastify';
+import { Box, Icon, theme, AlertBanner } from '@washingtonpost/wpds-ui-kit';
 import { paramCase } from "param-case";
 export const logoList = [
   "voraciously",
@@ -36,8 +37,41 @@ export const darkLogos = [
 ]
 
 
-export default function Icons() {
-
+export default function Logos() {
+  const SuccessToast = () => {
+    return (
+      <AlertBanner.Root variant="success">
+        <AlertBanner.Content css={{ minWidth: 250, paddingRight: "$050" }}>
+          <b>Copied: {" "}</b>
+          <Box as="span" css={{ fontSize: 16 }}>
+            Import statement for {" "}
+            <Box as="i"
+              css={{ textTransform: "capitalize" }}>{Name}</Box></Box>
+        </AlertBanner.Content>
+      </AlertBanner.Root>
+    )
+  }
+  const [ExampleToCopy, setExampleToCopy] = useState(null);
+  const [Name, setName] = useState("")
+  useEffect(() => {
+    if (ExampleToCopy) {
+      toast(<SuccessToast />, {
+        position: "top-center",
+        closeButton: false,
+        autoClose: 2000,
+        hideProgressBar: true,
+        draggable: false,
+        onClose: () => {
+          setExampleToCopy(null);
+          setName(null)
+        }
+      })
+    }
+  }, [ExampleToCopy]);
+  function setVariables(example, Name) {
+    setName(Name)
+    setExampleToCopy(example)
+  }
 
   const GetLogos = () => {
     return (
@@ -56,13 +90,13 @@ export default function Icons() {
         if (!logoList.includes(componentName)) return;
         return (
           <MDXStyling.Cell key={i}>
-            <MDXStyling.CopyClipboard
-              css={{ "&:hover": { opacity: .50 }, display: "flex", justifyContent: "center", backgroundColor: darkLogos.includes(componentName) ? theme.colors["gray20-static"] : theme.colors.gray500, padding: theme.space[100], width: "100%" }}
-              hideIcon textToCopy={importExample}>
+            <Box
+              onClick={() => setVariables(importExample, componentName)}
+              css={{ "&:hover": { opacity: .50 }, display: "flex", justifyContent: "center", backgroundColor: darkLogos.includes(componentName) ? theme.colors["gray20-static"] : theme.colors.gray500, padding: theme.space[100], width: "100%" }}>
               <Icon label={componentName} size={componentName.includes("washington") ? 250 : 150}>
                 <Sample fill={theme.colors.primary} />
               </Icon>
-            </MDXStyling.CopyClipboard>
+            </Box>
           </MDXStyling.Cell >
         );
       }))
