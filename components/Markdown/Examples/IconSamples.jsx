@@ -148,7 +148,7 @@ export default function Icons() {
             <Box
               as="button"
               onClick={() => setVariables(importExample, componentName)}
-              css={{ border: "none", "&:hover": { opacity: .5 }, backgroundColor: theme.colors.gray500, padding: theme.space[100] }}>
+              css={{ cursor: "pointer", border: "none", "&:hover": { opacity: .5 }, backgroundColor: theme.colors.gray500, padding: theme.space[100] }}>
               <Icon size="24">
                 <Sample fill={theme.colors.primary} />
               </Icon>
