@@ -34,6 +34,7 @@ const Input = styled("input", {
   transition: "all .3s ease",
   padding: "$150 $050 $050 $050",
   borderRadius: "$012",
+
   "&:focus": {
     outline: "none",
     "&:valid": {
@@ -43,22 +44,20 @@ const Input = styled("input", {
       }
     }
   },
+
   "&:placeholder-shown": {
+    "& + label": {
+      transform: "translateY(-50%)",
+      fontSize: "$100",
+    },
+
+  },
+  "&:not(placeholder-shown)": {
     "& + label": {
       transform: "translateY(-100%)",
       fontSize: "$075",
     },
   },
-  variants: {
-    validInput: {
-      true: {
-        "& + label": {
-          transform: "translateY(-100%)",
-          fontSize: "$075",
-        },
-      }
-    }
-  }
 })
 
 const Label = styled("label", {
@@ -89,7 +88,6 @@ export default function Icons() {
   const [ExampleToCopy, setExampleToCopy] = useState(null);
   const [Name, setName] = useState("")
   const [inFocus, setInFocus] = useState(false)
-  const [hasValue, sethasValue] = useState(null)
   const [Filter, setFilter] = useState("");
   useEffect(() => {
     if (ExampleToCopy) {
@@ -113,14 +111,6 @@ export default function Icons() {
     setName(Name)
     setExampleToCopy(example)
   }
-  useEffect(() => {
-    if (Filter.length > 0) {
-      sethasValue(true);
-    } else {
-      sethasValue(false)
-    }
-  }, [Filter])
-
 
   function handleChange(e) {
     const value = e.target.value;
@@ -160,7 +150,7 @@ export default function Icons() {
 
   return (<>
     <InputHolder showFocus={inFocus ? "true" : "false"}>
-      <Input validInput={hasValue} onFocus={() => setInFocus(true)} onBlur={() => setInFocus(false)} onChange={handleChange} />
+      <Input placeholder=" " onFocus={() => setInFocus(true)} onBlur={() => setInFocus(false)} onChange={handleChange} />
       <Label>Search</Label>
       <Button as="div" css={{ border: "none", borderRadius: "0" }} variant={"primary"} style="outline">
         <Icon size="16">
