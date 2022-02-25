@@ -151,7 +151,6 @@ export default function Page({ docs, latestDocs, collections }) {
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
-
   const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
   // sort docs into collections by doc.data.kicker property
