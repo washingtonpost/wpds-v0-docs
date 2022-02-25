@@ -7,20 +7,6 @@ description:
 Size tokens are relative to the [baseSize](/foundations/base).
 Use a size tokens to specific fixed width or height when designing a component or layout.
 
-```jsx
-// preview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
-export default function Example() {
-  const SizeExample = styled("div", {
-    width: theme.sizes["300"], // Size example
-    height: theme.sizes["300"], // Size example
-    backgroundColor: theme.colors.primary,
-  });
-  return <SizeExample />;
-}
-```
-
 <Table
   headers={["Name", "Value", "Description"]}
   useTokenData={true}
