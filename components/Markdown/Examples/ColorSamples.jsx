@@ -80,7 +80,7 @@ export default function ColorExamles({ group }) {
       <Grid maxSize={"120px"}>
         {Group.map((key, i) => {
           return (
-            <Swatch key={i} onClick={() => setCopyText(`$${key}${group == "static" ? '-static' : ''}`)}>
+            <Swatch key={i} onClick={() => setCopyText(`$${key.toLowerCase()}${group == "static" ? '-static' : ''}`)}>
               <ColorExample css={{ backgroundColor: `$${key}${group == "static" ? '-static' : ''}` }} />
               <ColorID>
                 {key}
