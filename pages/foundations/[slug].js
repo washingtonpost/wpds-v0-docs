@@ -24,13 +24,15 @@ export default function Page({ source }) {
       <Head>
         <title>WPDS - {source.scope.title} | Foundations</title>
       </Head>
-      <div className="post-header">
+      <header className="post-header">
         <Header>{source.scope.title}</Header>
         {source.scope.description && (
           <P className="description">{source.scope.description}</P>
         )}
-      </div>
-      <MDXRemote {...source} components={components} />
+      </header>
+      <article>
+        <MDXRemote {...source} components={components} />
+      </article>
     </>
   );
 }

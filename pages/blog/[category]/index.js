@@ -31,7 +31,9 @@ export default function Page({ docs, category }) {
       <Breadcrumbs.Root>
         <Breadcrumbs.Item href="/blog">Blog</Breadcrumbs.Item>
       </Breadcrumbs.Root>
-      <Header>{category}</Header>
+      <header>
+        <Header>{category}</Header>
+      </header>
       <Masonry>
         {docs.map((doc) => {
           return (

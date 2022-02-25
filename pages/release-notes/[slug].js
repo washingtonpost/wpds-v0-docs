@@ -22,25 +22,29 @@ export default function Page({ source, headings }) {
             Release notes
           </Breadcrumbs.Item>
         </Breadcrumbs.Root>
-        <Header
-          css={{
-            marginBottom: "$100",
-          }}
-        >
-          {source.scope.title}
-        </Header>
-        <Header
-          as="h2"
-          css={{
-            marginBottom: "$100",
-          }}
-        >
-          {source.scope.Head}
-        </Header>
-        <Header as="h3">{source.scope.description}</Header>
+        <header>
+          <Header
+            css={{
+              marginBottom: "$100",
+            }}
+          >
+            {source.scope.title}
+          </Header>
+          <Header
+            as="h2"
+            css={{
+              marginBottom: "$100",
+            }}
+          >
+            {source.scope.Head}
+          </Header>
+          <Header as="h3">{source.scope.description}</Header>
+        </header>
       </>
       <>
-        <MDXRemote {...source} components={MDXStyling} />
+        <article>
+          <MDXRemote {...source} components={MDXStyling} />
+        </article>
       </>
     </>
   );

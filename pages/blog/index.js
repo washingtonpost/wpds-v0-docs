@@ -47,7 +47,9 @@ export default function Page({ docs, latestDocs, collections }) {
       <Head>
         <title>WPDS - Blog</title>
       </Head>
-      <Header as="h1">Blog</Header>
+      <header>
+        <Header as="h1">Blog</Header>
+      </header>
 
       <Divider aria-hidden={false} />
 

@@ -30,22 +30,24 @@ export default function Page({ current, source, headings }) {
             {source.scope.kicker}
           </Breadcrumbs.Item>
         </Breadcrumbs.Root>
-        <Header as="h1">{source.scope.title}</Header>
-        <Header
-          as="h2"
-          css={{
-            font: "$subhead",
-            marginBottom: "$200",
-            color: "$accessible",
-          }}
-        >
-          {source.scope.description}
-        </Header>
+        <header>
+          <Header as="h1">{source.scope.title}</Header>
+          <Header
+            as="h2"
+            css={{
+              font: "$subhead",
+              marginBottom: "$200",
+              color: "$accessible",
+            }}
+          >
+            {source.scope.description}
+          </Header>
+        </header>
         <TableofContents current={current} headings={headings} />
       </>
-      <>
+      <article>
         <MDXRemote {...source} components={components} />
-      </>
+      </article>
     </>
   );
 }

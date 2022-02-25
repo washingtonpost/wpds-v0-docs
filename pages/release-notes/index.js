@@ -31,32 +31,36 @@ export default function Page({ docs, latestDocs }) {
       <Head>
         <title>WPDS - Release Notes</title>
       </Head>
-      <Header as="h1">Release Notes</Header>
+      <header>
+        <Header as="h1">Release Notes</Header>
+      </header>
 
-      {docsList.map((doc) => (
-        <Card key={doc.slug}>
-          <Link href={doc.slug}>
-            <Header
-              as="h2"
-              css={{
-                marginBottom: "$050",
-              }}
-            >
-              {doc.data.title}
-            </Header>
-          </Link>
-          <P>{doc.data.description}</P>
-        </Card>
-      ))}
+      <article>
+        {docsList.map((doc) => (
+          <Card key={doc.slug}>
+            <Link href={doc.slug}>
+              <Header
+                as="h2"
+                css={{
+                  marginBottom: "$050",
+                }}
+              >
+                {doc.data.title}
+              </Header>
+            </Link>
+            <P>{doc.data.description}</P>
+          </Card>
+        ))}
 
-      {
-        // show all button when docs is greater than latestDocs}
-        docs.length > latestDocs.length && (
-          <button onClick={toggleShowAll}>
-            {showAll ? "See less" : "See all"} releases
-          </button>
-        )
-      }
+        {
+          // show all button when docs is greater than latestDocs}
+          docs.length > latestDocs.length && (
+            <button onClick={toggleShowAll}>
+              {showAll ? "See less" : "See all"} releases
+            </button>
+          )
+        }
+      </article>
     </>
   );
 }

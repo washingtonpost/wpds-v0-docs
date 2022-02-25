@@ -4,6 +4,7 @@ import { NavigationBar } from "~/components/NavigationBar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 import { Footer } from "~/components/Footer";
 import { ToastContainer } from "react-toastify";
+
 const Grid = styled("div", {
   display: "grid",
   margin: "0 auto",
@@ -43,7 +44,7 @@ const DesktopMenu = styled("div", {
   },
 });
 
-const Container = styled("div", {
+const Container = styled("main", {
   gridArea: "content",
   width: "100%",
   margin: "0 auto",

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "latest",
-    "@docsearch/react": "^3.0.0-alpha.42",
+    "@docsearch/react": "^3.0.0",
     "@radix-ui/react-accordion": "^0.1.5",
     "@radix-ui/react-checkbox": "^0.1.4",
     "@react-aria/ssr": "^3.1.0",
