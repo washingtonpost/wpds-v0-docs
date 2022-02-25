@@ -1,134 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://build.washingtonpost.com</loc>
+    <loc>https://v1.wpds.docs.preview.now.washingtonpost.com</loc>
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/blog/architecture/stitches</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/blog/guides/coding-a-page</loc>
+    <loc>https://v1.wpds.docs.preview.now.washingtonpost.com/blog</loc>
   </url>
 
   <url>
     <loc
-      >https://build.washingtonpost.com/blog/guides/component-documentation</loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/architecture/stitches</loc
     >
   </url>
 
   <url>
     <loc
-      >https://build.washingtonpost.com/blog/guides/contribute-a-component</loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/coding-a-page</loc
     >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/guides/figma-guide</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/contribute-a-component</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/guides/react-guide</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/figma-guide</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/guides/zeplin-guide</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/react-guide</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/process/releases</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/zeplin-guide</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/blog/process/support</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/process/releases</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/accordion</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/process/support</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/alert-banner</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/accordion</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/app-bar</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/alert-banner</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/checkbox</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/app-bar</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/container</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/checkbox</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/icon</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/container</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/components/visually-hidden</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/icon</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/base</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/visually-hidden</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/color</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/base</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/icons</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/color</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/logos</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/icons</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/principles</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/logos</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/radii</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/principles</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/shadow</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/radii</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/size</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/shadow</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/space</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/size</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/typography</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/space</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/wam</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/typography</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/foundations/z-indices</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/wam</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/release-notes</loc>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/foundations/z-indices</loc
+    >
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/release-notes/v1.0.0</loc>
+    <loc>https://v1.wpds.docs.preview.now.washingtonpost.com/release-notes</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/release-notes/v1.0.0</loc
+    >
   </url>
 </urlset>

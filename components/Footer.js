@@ -58,7 +58,7 @@ export const Footer = () => (
       }}
     >
       © 1996-
-      {new Date().getFullYear()}
+      {new Date().getFullYear()} {""}
       The Washington Post
     </Box>
   </Box>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { getAllDocs, getNavigation } from "~/services";
 
 export default function Index({ posts }) {
-  return <div>TBD</div>;
+  return <div>Hi, this landing page is not ready.</div>;
 }
 
 export async function getStaticProps() {
