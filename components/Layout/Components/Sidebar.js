@@ -103,7 +103,6 @@ const ListItem = styled("li", {
         cursor: "unset",
         fontStyle: "italic",
         marginBottom: "$025",
-        backgroundColor: theme.colors.disabled,
       },
     },
   },
