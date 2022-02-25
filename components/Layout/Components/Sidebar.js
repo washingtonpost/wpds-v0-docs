@@ -7,13 +7,32 @@ import ChevronDown from "@washingtonpost/wpds-assets/asset/chevron-down";
 import { useRouter } from "next/router";
 import { Change } from "~/components/Markdown/Styling";
 
+const StyledAccordionRoot = styled(Accordion.Root, {
+  marginBottom: "$150",
+});
+
 const Panel = styled("div", {
   backgroundColor: "$gray500",
   "@notSm": {
-    position: "relative",
-    height: "100%",
-    overflow: "hidden",
-    minHeight: "calc(100vh - $400)",
+    position: "fixed",
+    overflowX: "auto",
+    height: "calc(100vh - $400)",
+
+    // style the scrollbar
+    "&::-webkit-scrollbar": {
+      width: "calc($087 / 2)",
+      height: "calc($087 / 2)",
+      backgroundColor: theme.colors.subtle,
+    },
+    // style the scrollbar handle
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.colors.alpha50,
+      borderRadius: "0",
+    },
+    // style the scrollbar handle on hover
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: theme.colors.alpha50,
+    },
   },
   "@sm": {
     width: "100%",
@@ -42,8 +61,7 @@ const Container = styled("div", {
   "@md": { marginTop: "0" },
   "@notSm": {
     width: "300px",
-    position: "fixed",
-    height: "90%",
+    // position: "fixed",
   },
 });
 
@@ -210,8 +228,7 @@ export default function Sidebar({ navigation, setMobileMenu }) {
         {navigation &&
           navigation.map((nav, index) => {
             return (
-              <Accordion.Root
-                id={nav.category}
+              <StyledAccordionRoot
                 key={index}
                 defaultValue={nav.category}
                 type="single"
@@ -301,7 +318,7 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                     </SideBarList>
                   </Accordion.Content>
                 </Accordion.Item>
-              </Accordion.Root>
+              </StyledAccordionRoot>
             );
           })}
         <SideBarList css={{ "@notSm": { display: "none" } }}>
