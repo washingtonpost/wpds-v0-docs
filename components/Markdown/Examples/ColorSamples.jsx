@@ -19,8 +19,7 @@ export default function ColorExamles({ group }) {
         <AlertBanner.Content css={{ minWidth: 250, paddingRight: "$050" }}>
           <b>Copied: {" "}</b>
           <Box as="span" css={{ fontSize: 16 }}>
-            <Box as="i"
-              css={{ textTransform: "capitalize" }}>{CopyText}</Box></Box>
+            <Box as="i">{CopyText}</Box></Box>
         </AlertBanner.Content>
       </AlertBanner.Root>
     )
