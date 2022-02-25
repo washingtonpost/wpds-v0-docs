@@ -36,6 +36,7 @@ const Grid = styled("div", {
 
 const DesktopMenu = styled("div", {
   gridArea: "sidebar",
+  backgroundColor: "$gray500",
   variants: {
     state: {
       open: { display: "block" },
