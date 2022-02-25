@@ -114,7 +114,7 @@ export default function Icons() {
 
   function handleChange(e) {
     const value = e.target.value;
-    setFilter(value);
+    setFilter(value.toLowerCase());
   }
   const GetIcons = () => {
 

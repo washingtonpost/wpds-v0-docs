@@ -14,13 +14,6 @@ const List = styled("ul", {
   listStyle: "none",
   justifyContent: "flex-end",
   alignItems: "center",
-  "@notSm": {
-    top: 0,
-    position: "sticky",
-    zIndex: "$shell",
-    background: theme.colors.secondary,
-    height: 60,
-  },
 
   "@sm": {
     display: "none",

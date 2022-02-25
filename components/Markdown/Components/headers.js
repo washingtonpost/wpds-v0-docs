@@ -4,6 +4,7 @@ import Link from "./link";
 
 export const Header = styled("h1", {
   fontSize: "$300",
+  scrollMarginTop: "$400",
   fontFamily: "$headline",
   color: "$primary",
   fontWeight: "$bold",

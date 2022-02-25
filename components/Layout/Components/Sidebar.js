@@ -13,7 +13,6 @@ const Panel = styled("div", {
     position: "relative",
     height: "100%",
     overflow: "hidden",
-    overflowY: "auto",
     minHeight: "calc(100vh - $400)",
   },
   "@sm": {
@@ -21,13 +20,30 @@ const Panel = styled("div", {
   },
 });
 
+const ScrollContainer = styled("div", {});
 //Container
 const Container = styled("div", {
   padding: "$100 0",
+  overflowY: "auto",
+  scrollbarColor: theme.colors.gray200,
+  scrollbarWidth: "thin",
+  transition: "background-color 0.5s ease",
+  "&::-webkit-scrollbar": {
+    width: "$050",
+    backgroundColor: "transparent",
+  },
+  "&::-webkit-scrollbar-track": {
+    backgroundColor: "transparent",
+  },
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: theme.colors.gray200,
+    borderRadius: "$round",
+  },
   "@md": { marginTop: "0" },
   "@notSm": {
     width: "300px",
     position: "fixed",
+    height: "90%",
   },
 });
 
@@ -85,6 +101,9 @@ const ListItem = styled("li", {
     disabled: {
       true: {
         cursor: "unset",
+        fontStyle: "italic",
+        marginBottom: "$025",
+        backgroundColor: theme.colors.disabled,
       },
     },
   },
@@ -188,15 +207,13 @@ export default function Sidebar({ navigation, setMobileMenu }) {
   };
   return (
     <Panel id="open-nav">
-      <Container>
+      <Container id="sidebar-container">
         {navigation &&
           navigation.map((nav, index) => {
             return (
               <Accordion.Root
+                id={nav.category}
                 key={index}
-                css={{
-                  marginBottom: "$150",
-                }}
                 defaultValue={nav.category}
                 type="single"
                 collapsible
