@@ -54,6 +54,9 @@ export const getPropsTable = async (component = "icon") => {
       })
       .filter((prop) => {
         return prop.name !== "css";
+      })
+      .filter((prop) => {
+        return prop.name !== "as";
       });
 
     return propsArray;
