@@ -5,13 +5,13 @@ import Header from "~/components/Typography/Headers";
 import {
   getNavigation,
   getAllPathsByCategory,
-  getBlogPost,
+  getResource,
   getHeadings,
 } from "~/services";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 
-const SECTION = "blog";
+const SECTION = "resources";
 
 const components = {
   ...MDXStyling,
@@ -21,12 +21,14 @@ export default function Page({ current, source, headings }) {
   return (
     <>
       <Head>
-        <title>WPDS - {source.scope.title} | Blog</title>
+        <title>WPDS - {source.scope.title} | Resources</title>
       </Head>
       <>
         <Breadcrumbs.Root>
-          <Breadcrumbs.Item href="/blog">Blog</Breadcrumbs.Item>
-          <Breadcrumbs.Item href={`/blog/${source.scope.kicker.toLowerCase()}`}>
+          <Breadcrumbs.Item href="/resources">Resources</Breadcrumbs.Item>
+          <Breadcrumbs.Item
+            href={`/resources/${source.scope.kicker.toLowerCase()}`}
+          >
             {source.scope.kicker}
           </Breadcrumbs.Item>
         </Breadcrumbs.Root>
@@ -53,7 +55,7 @@ export default function Page({ current, source, headings }) {
 }
 
 export const getStaticProps = async (response) => {
-  const source = await getBlogPost(
+  const source = await getResource(
     `${SECTION}/${response.params.category}/${response.params.slug}`
   );
   const navigation = await getNavigation();

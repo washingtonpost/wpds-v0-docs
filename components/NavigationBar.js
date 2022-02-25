@@ -128,8 +128,10 @@ export const NavigationBar = ({
           <SearchForm />
         </ListItem>
         <ListItem>
-          <Link href="/blog" passHref>
-            <Anchor isCurrent={router.asPath.includes("/blog")}>Blog</Anchor>
+          <Link href="/resources" passHref>
+            <Anchor isCurrent={router.asPath.includes("/resources")}>
+              Resources
+            </Anchor>
           </Link>
         </ListItem>
         <ListItem>

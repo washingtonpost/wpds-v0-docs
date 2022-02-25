@@ -65,10 +65,10 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
     setCopied(true);
   }
   // set the copied state to false after a second
-  useEffect(async () => {
+  useEffect(() => {
     if (copied) {
       if (hideIcon) {
-        await navigator.clipboard.writeText(textToCopy);
+        navigator.clipboard.writeText(textToCopy);
         window.alert(`Copied: ${textToCopy}`);
       }
       setTimeout(() => setCopied(false), 2000);

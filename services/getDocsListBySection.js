@@ -38,7 +38,7 @@ export const getDocsListBySection = async (input) => {
   return docs;
 };
 
-export const getBlogPosts = async (input) => {
+export const getResources = async (input) => {
   const posts = await globby(`docs/${input}/**/*.mdx`);
 
   const docs = posts.map((filePath) => {

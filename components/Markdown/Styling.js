@@ -62,7 +62,7 @@ export const Change = styled("div", {
     type: {
       Draft: {
         fontSize: "$075",
-        color: "$accessible",
+        color: "$primary",
         backgroundColor: "$orange300",
         borderColor: "$warning",
       },

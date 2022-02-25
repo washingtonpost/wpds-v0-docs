@@ -15,48 +15,35 @@ const Panel = styled("div", {
   backgroundColor: "$gray500",
   "@notSm": {
     position: "fixed",
-    overflowX: "auto",
-    height: "calc(100vh - $400)",
-
-    // style the scrollbar
-    "&::-webkit-scrollbar": {
-      width: "calc($087 / 2)",
-      height: "calc($087 / 2)",
-      backgroundColor: theme.colors.subtle,
-    },
-    // style the scrollbar handle
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: theme.colors.alpha50,
-      borderRadius: "0",
-    },
-    // style the scrollbar handle on hover
-    "&::-webkit-scrollbar-thumb:hover": {
-      backgroundColor: theme.colors.alpha50,
-    },
+    height: "100%",
   },
   "@sm": {
     width: "100%",
   },
 });
 
-const ScrollContainer = styled("div", {});
 //Container
 const Container = styled("div", {
   padding: "$100 0",
   overflowY: "auto",
-  scrollbarColor: theme.colors.gray200,
-  scrollbarWidth: "thin",
-  transition: "background-color 0.5s ease",
+  height: "90%",
+  // style the scrollbar
   "&::-webkit-scrollbar": {
-    width: "$050",
+    width: "calc($087 / 2)",
+    height: "calc($087 / 2)",
     backgroundColor: "transparent",
   },
-  "&::-webkit-scrollbar-track": {
-    backgroundColor: "transparent",
-  },
+  // style the scrollbar handle
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: theme.colors.gray200,
+    backgroundColor: "transparent",
     borderRadius: "$round",
+  },
+  // style the scrollbar handle
+  "&:hover": {
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.colors.gray200,
+      borderRadius: "$round",
+    },
   },
   "@md": { marginTop: "0" },
   "@notSm": {
@@ -101,6 +88,9 @@ const ListItem = styled("li", {
   cursor: "pointer",
   borderLeft: "4px solid",
   borderColor: "transparent",
+  "&:hover": {
+    backgroundColor: theme.colors.gray400,
+  },
   "&:focus": {
     outlineColor: "$signal",
     outlineStyle: "solid",
@@ -118,9 +108,11 @@ const ListItem = styled("li", {
     },
     disabled: {
       true: {
-        cursor: "unset",
+        cursor: "default",
+        pointerEvents: "none",
         fontStyle: "italic",
         marginBottom: "$025",
+        backgroundColor: "transparent",
       },
     },
   },
@@ -324,11 +316,11 @@ export default function Sidebar({ navigation, setMobileMenu }) {
         <SideBarList css={{ "@notSm": { display: "none" } }}>
           <ListItem
             onClick={() => setMobileMenu(false)}
-            isCurrent={router.asPath.includes("blog") ? "active" : ""}
+            isCurrent={router.asPath.includes("resources") ? "active" : ""}
           >
-            <Link href="/blog" passHref>
+            <Link href="/resources" passHref>
               <Header>
-                <CustomLink css={{ color: "$primary" }}>Blog</CustomLink>
+                <CustomLink css={{ color: "$primary" }}>Resources</CustomLink>
               </Header>
             </Link>
           </ListItem>
