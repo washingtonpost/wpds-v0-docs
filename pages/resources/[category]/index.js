@@ -2,7 +2,7 @@ import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
 import Head from "next/head";
 import Header from "~/components/Typography/Headers";
 import CustomLink from "~/components/Typography/link";
-import { getAllPathsByCategory, getBlogPosts, getNavigation } from "~/services";
+import { getAllPathsByCategory, getNavigation, getResources } from "~/services";
 import { P } from "~/components/Markdown/Styling";
 import Breadcrumbs from "~/components/Breadcrumbs";
 
@@ -26,10 +26,10 @@ export default function Page({ docs, category }) {
   return (
     <div>
       <Head>
-        <title>WPDS - {category} Blog</title>
+        <title>WPDS - {category} Resources</title>
       </Head>
       <Breadcrumbs.Root>
-        <Breadcrumbs.Item href="/blog">Blog</Breadcrumbs.Item>
+        <Breadcrumbs.Item href="/resources">Resources</Breadcrumbs.Item>
       </Breadcrumbs.Root>
       <header>
         <Header>{category}</Header>
@@ -78,7 +78,7 @@ export default function Page({ docs, category }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const docs = await getBlogPosts(`blog/${params.category}`);
+  const docs = await getResources(`resources/${params.category}`);
 
   const navigation = await getNavigation();
 
@@ -91,7 +91,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-const SECTION = "blog";
+const SECTION = "resources";
 
 export const getStaticPaths = async (response) => {
   const paths = await getAllPathsByCategory(`${SECTION}`);

@@ -22,7 +22,6 @@ export const getAllDocs = async () => {
 
 export const getDocsListBySection = async (input) => {
   const posts = await globby(`docs/${input}/**/*.mdx`);
-
   const docs = posts.map((filePath) => {
     const source = fs.readFileSync(filePath);
     const slug = `/${filePath.replace(/\.mdx?$/, "").replace("docs/", "")}`;
@@ -38,12 +37,13 @@ export const getDocsListBySection = async (input) => {
   return docs;
 };
 
-export const getBlogPosts = async (input) => {
+export const getResources = async (input) => {
   const posts = await globby(`docs/${input}/**/*.mdx`);
 
   const docs = posts.map((filePath) => {
     const source = fs.readFileSync(filePath);
     const slug = `/${filePath.replace(/\.mdx?$/, "").replace("docs/", "")}`;
+    console.log(slug);
     const { content, data } = matter(source);
     return {
       content,

@@ -47,7 +47,7 @@ export const getDocByPathName = async (input) => {
   return source;
 };
 
-export const getBlogPost = async (input) => {
+export const getResource = async (input) => {
   const [directory, category, fileName] = input.split("/");
 
   const slug = path.join(`docs/${directory}/${category}`, `${fileName}.mdx`);

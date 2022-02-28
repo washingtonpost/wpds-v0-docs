@@ -62,7 +62,7 @@ export const Change = styled("div", {
     type: {
       Draft: {
         fontSize: "$075",
-        color: "$accessible",
+        color: "$primary",
         backgroundColor: "$orange300",
         borderColor: "$warning",
       },
@@ -122,6 +122,7 @@ const components = {
   CopyClipboard: dynamic(() => import("./Components/CopyToClipBoard")),
   IconSamples: dynamic(() => import("../Markdown/Examples/IconSamples")),
   LogoSamples: dynamic(() => import("../Markdown/Examples/LogoSamples")),
+  ColorSamples: dynamic(() => import("../Markdown/Examples/ColorSamples")),
   Table: dynamic(() => import("./Components/table")),
   Img: dynamic(() => import("./Components/InlineImage")),
   TableOfContents: dynamic(() => import("./Components/tableofcontents")),

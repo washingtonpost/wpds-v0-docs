@@ -5,64 +5,6 @@
   </url>
 
   <url>
-    <loc>https://v1.wpds.docs.preview.now.washingtonpost.com/blog</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/architecture/stitches</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/coding-a-page</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/contribute-a-component</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/figma-guide</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/react-guide</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/guides/zeplin-guide</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/process/releases</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/blog/process/support</loc
-    >
-  </url>
-
-  <url>
-    <loc
-      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/accordion</loc
-    >
-  </url>
-
-  <url>
     <loc
       >https://v1.wpds.docs.preview.now.washingtonpost.com/components/alert-banner</loc
     >
@@ -177,6 +119,58 @@
   <url>
     <loc
       >https://v1.wpds.docs.preview.now.washingtonpost.com/release-notes/v1.0.0</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://v1.wpds.docs.preview.now.washingtonpost.com/resources</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/architecture/stitches</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/guides/coding-a-page</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/guides/contribute-a-component</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/guides/figma-guide</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/guides/react-guide</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/guides/zeplin-guide</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/process/releases</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/resources/process/support</loc
     >
   </url>
 </urlset>

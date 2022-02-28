@@ -14,13 +14,6 @@ const List = styled("ul", {
   listStyle: "none",
   justifyContent: "flex-end",
   alignItems: "center",
-  "@notSm": {
-    top: 0,
-    position: "sticky",
-    zIndex: "$shell",
-    background: theme.colors.secondary,
-    height: 60,
-  },
 
   "@sm": {
     display: "none",
@@ -135,8 +128,10 @@ export const NavigationBar = ({
           <SearchForm />
         </ListItem>
         <ListItem>
-          <Link href="/blog" passHref>
-            <Anchor isCurrent={router.asPath.includes("/blog")}>Blog</Anchor>
+          <Link href="/resources" passHref>
+            <Anchor isCurrent={router.asPath.includes("/resources")}>
+              Resources
+            </Anchor>
           </Link>
         </ListItem>
         <ListItem>
