@@ -8,10 +8,16 @@ export const Footer = () => (
       paddingTop: "$050",
       marginBottom: "$050",
       marginTop: "$500",
+
+      ".site-footer": {
+        "--primary-border-color": "$colors$subtle",
+
+        ".gray-darkest": {
+          color: "$colors$onSecondary",
+        },
+      },
     }}
   >
-    <div>
-      <SiteFooter className="site-footer" />
-    </div>
+    <SiteFooter className="site-footer" />
   </Box>
 );
