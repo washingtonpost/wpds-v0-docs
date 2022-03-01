@@ -48,13 +48,9 @@ export default function headers({ css, children, as }) {
   if (!children) {
     return null;
   }
-  function TrimWhiteSpace() {
-    let canonicalUrl = children.toString();
-    canonicalUrl = canonicalUrl.replace(/\s/g, "_");
-    return canonicalUrl;
-  }
+
   return (
-    <Link id={`${TrimWhiteSpace()}`} href={`#${TrimWhiteSpace()}`}>
+    <Link id={`${encodeURI(children)}`} href={`#${decodeURI(children)}`}>
       <Header css={css} as={as}>
         {children}
       </Header>
