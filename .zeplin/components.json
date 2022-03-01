@@ -1,0 +1,117 @@
+{
+  "plugins": [
+    {
+      "name": "@zeplin/cli-connect-react-plugin"
+    }
+  ],
+  "projects": [],
+  "styleguides": ["619bad1e0be4e8ad4be3aa3c"],
+  "github": {
+    "repository": "WPMedia/wpds-ui-kit",
+    "branch": "main"
+  },
+  "components": [
+    {
+      "name": "Icon",
+      "path": "snippets/icon/size100.jsx",
+      "zeplinIds": [
+        "61e9d9997aeea49ea3eef027",
+        "61e9d99aad963b8b3e14fd22",
+        "61e9d9994b0c41b7a99b197f"
+      ],
+      "documentation": {
+        "urlPath": "/components/icon"
+      }
+    },
+    {
+      "name": "AppBar",
+      "path": "snippets/appbar/example.jsx",
+      "zeplinIds": [
+        "621e298d3c3f7bac1d0656a8",
+        "621e298c9b7e8aab07eb8920",
+        "621e298cd1b184a0f2953371",
+        "621e298cd83036a0c10ebe13",
+        "621e298bac3c25a05c7b614a",
+        "621e298bf7e8bfa94627a87f",
+        "621e298d0057e7abc285a2c2",
+        "621e298c64a7d2acc2b00d82"
+      ],
+      "documentation": {
+        "urlPath": "/components/app-bar"
+      }
+    },
+    {
+      "name": "Container",
+      "path": "snippets/container/example.jsx",
+      "zeplinIds": [
+        "621e2aa15d7d46aaac88a546",
+        "621e2aa0357f8aa0b460941a",
+        "621e2aa09e72cb9f375b273c",
+        "621e2aa0d98044a37b0cf392",
+        "621e2aa1db146d9f6e293185"
+      ],
+      "documentation": {
+        "urlPath": "/components/container"
+      }
+    },
+    {
+      "name": "Example of an error AlertBanner",
+      "path": "snippets/alertbanner/errorExample.jsx",
+      "zeplinIds": [
+        "621d41910c0428624e60f716",
+        "621d4190512d7e6148d97acb",
+        "621d419037d53855cb7ce37d",
+        "621d41902fd9c56073d39d12"
+      ],
+      "documentation": {
+        "urlPath": "/components/alert-banner"
+      }
+    },
+    {
+      "name": "Example of a warning AlertBanner",
+      "path": "snippets/alertbanner/warning.jsx",
+      "zeplinIds": [
+        "621d41913afc93577d42cc7c",
+        "621d41909df00658e425cc27",
+        "621d41913aa8296052f58ac2",
+        "621d4190af83686225012838"
+      ],
+      "documentation": {
+        "urlPath": "/components/alert-banner"
+      }
+    },
+    {
+      "name": "Example of an information AlertBanner",
+      "path": "snippets/alertbanner/info.jsx",
+      "zeplinIds": [
+        "621d41929b171962820af64c",
+        "621d4192d609246473cb3345",
+        "621d4192d62d126278e74cd7",
+        "621d4193fc4d9a5504d6590c"
+      ],
+      "documentation": {
+        "urlPath": "/components/alert-banner"
+      }
+    },
+    {
+      "name": "Example of a success AlerBanner",
+      "path": "snippets/alertbanner/success.jsx",
+      "zeplinIds": [
+        "621d41923fc6256001fe5686",
+        "621d4191dccf0d54f6ef54a6",
+        "621d41929f8d225f74fe3693",
+        "621d419177101a641939a427"
+      ],
+      "documentation": {
+        "urlPath": "/components/alert-banner"
+      }
+    }
+  ],
+  "links": [
+    {
+      "name": "📄 WPDS Doc site",
+      "type": "documentation",
+      "url": "https://v1.wpds.docs.preview.now.washingtonpost.com"
+    }
+  ]
+}

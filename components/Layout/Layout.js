@@ -3,6 +3,7 @@ import { styled } from "@washingtonpost/wpds-ui-kit";
 import { NavigationBar } from "~/components/NavigationBar";
 import Sidebar from "~/components/Layout/Components/Sidebar";
 import { Footer } from "~/components/Footer";
+import { ToastContainer } from "react-toastify";
 
 const Grid = styled("div", {
   display: "grid",
@@ -35,6 +36,7 @@ const Grid = styled("div", {
 
 const DesktopMenu = styled("div", {
   gridArea: "sidebar",
+  backgroundColor: "$gray500",
   variants: {
     state: {
       open: { display: "block" },
@@ -43,7 +45,7 @@ const DesktopMenu = styled("div", {
   },
 });
 
-const Container = styled("div", {
+const Container = styled("main", {
   gridArea: "content",
   width: "100%",
   margin: "0 auto",
@@ -70,7 +72,15 @@ export const PageLayout = ({ children, ...pageProps }) => {
           navigation={pageProps.navigation}
         />
       </DesktopMenu>
-      <Container>{children}</Container>
+      <Container>
+        {children}
+        <ToastContainer
+          role="alert"
+          autoClose={1000}
+          closeButton={false}
+          limit={3}
+        />
+      </Container>
       <Footer />
     </Grid>
   );

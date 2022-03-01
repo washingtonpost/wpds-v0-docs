@@ -7,14 +7,15 @@ import ChevronDown from "@washingtonpost/wpds-assets/asset/chevron-down";
 import { useRouter } from "next/router";
 import { Change } from "~/components/Markdown/Styling";
 
+const StyledAccordionRoot = styled(Accordion.Root, {
+  marginBottom: "$150",
+});
+
 const Panel = styled("div", {
   backgroundColor: "$gray500",
   "@notSm": {
-    position: "relative",
+    position: "fixed",
     height: "100%",
-    overflow: "hidden",
-    overflowY: "auto",
-    minHeight: "calc(100vh - $400)",
   },
   "@sm": {
     width: "100%",
@@ -24,10 +25,30 @@ const Panel = styled("div", {
 //Container
 const Container = styled("div", {
   padding: "$100 0",
+  overflowY: "auto",
+  height: "90%",
+  // style the scrollbar
+  "&::-webkit-scrollbar": {
+    width: "calc($087 / 2)",
+    height: "calc($087 / 2)",
+    backgroundColor: "transparent",
+  },
+  // style the scrollbar handle
+  "&::-webkit-scrollbar-thumb": {
+    backgroundColor: "transparent",
+    borderRadius: "$round",
+  },
+  // style the scrollbar handle
+  "&:hover": {
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: theme.colors.gray200,
+      borderRadius: "$round",
+    },
+  },
   "@md": { marginTop: "0" },
   "@notSm": {
     width: "300px",
-    position: "fixed",
+    // position: "fixed",
   },
 });
 
@@ -67,6 +88,9 @@ const ListItem = styled("li", {
   cursor: "pointer",
   borderLeft: "4px solid",
   borderColor: "transparent",
+  "&:hover": {
+    backgroundColor: theme.colors.gray400,
+  },
   "&:focus": {
     outlineColor: "$signal",
     outlineStyle: "solid",
@@ -84,7 +108,11 @@ const ListItem = styled("li", {
     },
     disabled: {
       true: {
-        cursor: "unset",
+        cursor: "default",
+        pointerEvents: "none",
+        fontStyle: "italic",
+        marginBottom: "$025",
+        backgroundColor: "transparent",
       },
     },
   },
@@ -161,6 +189,20 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                   <div>{item.frontMatter.data.title}</div>
                   <Change type="ComingSoon">Coming soon</Change>
                 </CustomLink>
+              ) : item.frontMatter.data.status == "Draft" ? (
+                <Link href={item.frontMatter.slug} passHref>
+                  <CustomLink
+                    css={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>{item.frontMatter.data.title}</div>
+                    <Change type="Draft">Draft</Change>
+                  </CustomLink>
+                </Link>
               ) : (
                 <Link href={item.frontMatter.slug} passHref>
                   <CustomLink>{item.frontMatter.data.title}</CustomLink>
@@ -174,15 +216,12 @@ export default function Sidebar({ navigation, setMobileMenu }) {
   };
   return (
     <Panel id="open-nav">
-      <Container>
+      <Container id="sidebar-container">
         {navigation &&
           navigation.map((nav, index) => {
             return (
-              <Accordion.Root
+              <StyledAccordionRoot
                 key={index}
-                css={{
-                  marginBottom: "$150",
-                }}
                 defaultValue={nav.category}
                 type="single"
                 collapsible
@@ -244,6 +283,20 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                                       Coming soon
                                     </Change>
                                   </CustomLink>
+                                ) : item.data.status == "Draft" ? (
+                                  <Link href={item.slug} passHref>
+                                    <CustomLink
+                                      css={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        alignContent: "center",
+                                        alignItems: "center",
+                                      }}
+                                    >
+                                      <div>{item.data.title}</div>
+                                      <Change type="Draft">Draft</Change>
+                                    </CustomLink>
+                                  </Link>
                                 ) : (
                                   <Link href={item.slug} passHref>
                                     <CustomLink>{item.data.title}</CustomLink>
@@ -257,17 +310,17 @@ export default function Sidebar({ navigation, setMobileMenu }) {
                     </SideBarList>
                   </Accordion.Content>
                 </Accordion.Item>
-              </Accordion.Root>
+              </StyledAccordionRoot>
             );
           })}
         <SideBarList css={{ "@notSm": { display: "none" } }}>
           <ListItem
             onClick={() => setMobileMenu(false)}
-            isCurrent={router.asPath.includes("blog") ? "active" : ""}
+            isCurrent={router.asPath.includes("resources") ? "active" : ""}
           >
-            <Link href="/blog" passHref>
+            <Link href="/resources" passHref>
               <Header>
-                <CustomLink css={{ color: "$primary" }}>Blog</CustomLink>
+                <CustomLink css={{ color: "$primary" }}>Resources</CustomLink>
               </Header>
             </Link>
           </ListItem>

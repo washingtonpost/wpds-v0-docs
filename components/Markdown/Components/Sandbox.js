@@ -9,6 +9,7 @@ import {
 } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
 import { css, Box, styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import packageJson from "../../../package.json";
 
 const ClipboardIcon = (props) => (
   <svg
@@ -247,8 +248,12 @@ export default function App() {
         template="react"
         customSetup={{
           dependencies: {
-            "@washingtonpost/wpds-assets": "latest",
-            "@washingtonpost/wpds-ui-kit": "^0.3.0-experimental.3",
+            "@washingtonpost/wpds-assets":
+              packageJson.dependencies["@washingtonpost/wpds-assets"],
+            "@washingtonpost/wpds-ui-kit":
+              packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
+            "@radix-ui/react-checkbox":
+              packageJson.dependencies["@radix-ui/react-checkbox"],
           },
           files: {
             "/App.js": AppCode,

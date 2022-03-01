@@ -38,21 +38,23 @@ export default function Page({ current, source, headings, propsTable }) {
       <Head>
         <title>WPDS - {source.scope.title} | Components</title>
       </Head>
-      <div className="post-header">
+      <header className="post-header">
         <Header>{source.scope.title}</Header>
         {source.scope.description && (
           <P className="description">{source.scope.description}</P>
         )}
         <TableofContents current={current} headings={headings} />
-      </div>
+      </header>
 
-      <MDXRemote
-        {...source}
-        components={components}
-        scope={{
-          propsTable,
-        }}
-      />
+      <article>
+        <MDXRemote
+          {...source}
+          components={components}
+          scope={{
+            propsTable,
+          }}
+        />
+      </article>
     </>
   );
 }

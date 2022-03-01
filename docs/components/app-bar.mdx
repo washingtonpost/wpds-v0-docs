@@ -1,6 +1,103 @@
 ---
 title: App bar
-description:
+description: The App Bar displays information and actions relating to the current screen.
 component: app-bar
-status: "Coming soon"
 ---
+
+## Anatomy
+
+The anatomy of an app bar has no visual elements but rather is an empty container that has a built-in utility to make positioning on a layout easier.
+
+---
+
+## Options
+
+### Position
+
+The following position are available `sticky` `relative` `absolute` `fixed`. The behavior of the different options are described in the [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/CSS/position).
+
+1.
+
+```jsx
+// preview
+import {
+  Container,
+  Box,
+  Icon,
+  AppBar,
+  styled,
+} from "@washingtonpost/wpds-ui-kit";
+import Menu from "@washingtonpost/wpds-assets/asset/menu";
+import Profile from "@washingtonpost/wpds-assets/asset/profile";
+import WashingtonPost from "@washingtonpost/wpds-assets/asset/washington-post";
+
+const PrimaryNavigationExample = () => {
+  return (
+    <Container
+      maxWidth="fluid"
+      css={{
+        height: 60,
+        background: "$secondary",
+        color: "$onSecondary",
+        flexDirection: "row",
+        textAlign: "center",
+        justifyContent: "space-between",
+        px: "$100",
+      }}
+    >
+      <Icon size="32" label="Open Section Navigation Menu">
+        <Menu fill="currentColor" />
+      </Icon>
+      <Box
+        css={{
+          fill: "$onSecondary",
+        }}
+      >
+        <WashingtonPost width={188} fill="currentColor" />
+        <Box
+          css={{
+            fontFamily: "$body",
+            fontSize: "$075",
+            fontStyle: "italic",
+          }}
+        >
+          Democracy Dies in Darkness (This is an example using the new system)
+        </Box>
+      </Box>
+      <Icon size="32" label="Open Account Menu">
+        <Profile fill="currentColor" />
+      </Icon>
+    </Container>
+  );
+};
+
+const Decorator = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  height: "calc(100vh * 3);",
+});
+
+export default function Example() {
+  return (
+    <Decorator>
+      <AppBar
+        shadow
+        position="sticky"
+        css={{
+          top: 0,
+          left: 0,
+        }}
+      >
+        <PrimaryNavigationExample />
+      </AppBar>
+    </Decorator>
+  );
+}
+```
+
+---
+
+## API Reference
+
+<PropsTable props={propsTable} />

@@ -45,9 +45,11 @@ export default function Page({ docs, latestDocs, collections }) {
   return (
     <>
       <Head>
-        <title>WPDS - Blog</title>
+        <title>WPDS - Resources</title>
       </Head>
-      <Header as="h1">Blog</Header>
+      <header>
+        <Header as="h1">Resources</Header>
+      </header>
 
       <Divider aria-hidden={false} />
 
@@ -60,7 +62,7 @@ export default function Page({ docs, latestDocs, collections }) {
               flexDirection: "column",
             }}
           >
-            <Link href={`/blog/${collection.kicker.toLowerCase()}`}>
+            <Link href={`/resources/${collection.kicker.toLowerCase()}`}>
               <Header
                 as="h2"
                 css={{
@@ -109,7 +111,7 @@ export default function Page({ docs, latestDocs, collections }) {
                 );
               })}
             </Masonry>
-            <Link href={`/blog/${collection.kicker.toLowerCase()}`}>
+            <Link href={`/resources/${collection.kicker.toLowerCase()}`}>
               <Header
                 as="h4"
                 css={{
@@ -139,7 +141,7 @@ export default function Page({ docs, latestDocs, collections }) {
 					// show all button when docs is greater than latestDocs}
 					docs.length > latestDocs.length && (
 						<button onClick={toggleShowAll}>
-							{showAll ? "See less" : "See all"} blog posts
+							{showAll ? "See less" : "See all"} resources posts
 						</button>
 					)
 				} */}
@@ -148,8 +150,7 @@ export default function Page({ docs, latestDocs, collections }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const docs = await getDocsListBySection("blog");
-
+  const docs = await getDocsListBySection("resources");
   const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
   // sort docs into collections by doc.data.kicker property

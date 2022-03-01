@@ -43,9 +43,9 @@ const SearchForm = () => {
   searchGlobalCss();
   return (
     <DocSearch
-      appId="8BNQMF2X1D"
-      indexName="build-washingtonpost"
-      apiKey="d287a51f05def4ddf91374a3a92fa5fa"
+      appId="O19N5YY9R3"
+      indexName="crawler_v1 WPDS Docs Site"
+      apiKey="bc1fb06842e0b48e4c13e10bbb321b53"
     />
   );
 };

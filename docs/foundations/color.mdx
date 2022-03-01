@@ -6,74 +6,9 @@ description: All color tokens define the color in the current context. There are
 
 ### Table of contents
 
-- [Base color tokens](/foundations/color#Base_color_tokens)
-- [Static color tokens](/foundations/color#Static_color_tokens)
 - [Theme and semantic tokens](/foundations/color#Theme_and_Semantic_tokens)
-
----
-
-## Base color tokens
-
-<BR />
-
-```jsx
-// preview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
-export default function Example() {
-  const ColorExample = styled("p", {
-    backgroundColor: theme.colors.gray20, //Example of color token
-    color: theme.colors.gray600, //Example of color token
-    padding: theme.space["100"],
-  });
-
-  return (
-    <ColorExample>
-      Toggle to see different color values for each context
-    </ColorExample>
-  );
-}
-```
-
-<Table
-  headers={["Name", "Value", "Description"]}
-  useTokenData={true}
-  nestedGroup={"color"}
-  data={"light"}
-/>
-
-<BR />
-
----
-
-## Static color tokens
-
-Static color tokens remain static regardless of the current context. To use a static token apply a `-static` prefix to the color token.
-
-```jsx
-// preview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
-export default function Example() {
-  const ColorExample = styled("p", {
-    backgroundColor: theme.colors["gray20-static"], //Example of static color token
-    color: theme.colors["gray600-static"], //Example of static color token
-    padding: theme.space["100"],
-  });
-
-  return <ColorExample>Toggle to see how static colors work</ColorExample>;
-}
-```
-
-<Table
-  headers={["Name", "Value", "Description"]}
-  useTokenData={true}
-  suffix={"-static"}
-  nestedGroup={"color"}
-  data={"static"}
-/>
-
-<BR />
+- [Color tokens](/foundations/color#Color_tokens)
+- [Static color tokens](/foundations/color#Static_color_tokens)
 
 ---
 
@@ -81,28 +16,28 @@ export default function Example() {
 
 Theme tokens are alias tokens that map a color token to intention.
 When possible, always use a theme token. Read more about using theme and
-semantic tokens on our [color documentation](/foundations/color#Themes).
+semantic tokens on our [color documentation](/foundations/principles#Themes).
 
-```jsx
-// preview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+<ColorSamples group="theme" />
 
-export default function Example() {
-  const ColorExample = styled("p", {
-    backgroundColor: theme.colors.primary, //Example of static color token
-    color: theme.colors.onPrimary, //Example of static color token
-    padding: theme.space["100"],
-  });
+---
 
-  return <ColorExample>Theme token</ColorExample>;
-}
-```
+## Color tokens
 
-<Table
-  headers={["Name", "Value", "Description"]}
-  useTokenData={true}
-  nestedGroup={"color"}
-  data={"theme"}
-/>
+<BR />
+
+<ColorSamples group="light" />
+
+<BR />
+
+---
+
+## Static color tokens
+
+Static color tokens remain static regardless of the current context. To use a static token apply a -static prefix to the color token.
+
+<ColorSamples group="static" />
+
+<BR />
 
 <BR size="xl" />

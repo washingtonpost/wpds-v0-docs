@@ -7,19 +7,11 @@ module.exports = {
       },
       {
         source: "/foundations",
-        destination: "/foundations/design",
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/foundations",
-        destination: "/foundations/design",
+        destination: "/foundations/principles",
       },
       {
-        source: "/components",
-        destination: "/components/design",
+        source: "/",
+        destination: "/foundations",
       },
     ];
   },

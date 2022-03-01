@@ -60,23 +60,11 @@ export const Change = styled("div", {
 
   variants: {
     type: {
-      New: {
-        color: "$green80",
-        background: "$green300",
-        marginTop: "$100",
-        marginBottom: "$050",
-      },
-      Updates: {
-        color: "$blue80",
-        background: "$blue300",
-        marginTop: "$100",
-        marginBottom: "$050",
-      },
-      Fixes: {
-        color: "$red80",
-        background: "$red300",
-        marginTop: "$100",
-        marginBottom: "$050",
+      Draft: {
+        fontSize: "$075",
+        color: "$primary",
+        backgroundColor: "$orange300",
+        borderColor: "$warning",
       },
       ComingSoon: {
         fontSize: "$075",
@@ -134,6 +122,7 @@ const components = {
   CopyClipboard: dynamic(() => import("./Components/CopyToClipBoard")),
   IconSamples: dynamic(() => import("../Markdown/Examples/IconSamples")),
   LogoSamples: dynamic(() => import("../Markdown/Examples/LogoSamples")),
+  ColorSamples: dynamic(() => import("../Markdown/Examples/ColorSamples")),
   Table: dynamic(() => import("./Components/table")),
   Img: dynamic(() => import("./Components/InlineImage")),
   TableOfContents: dynamic(() => import("./Components/tableofcontents")),

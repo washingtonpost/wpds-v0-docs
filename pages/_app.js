@@ -2,6 +2,7 @@ import { ThemeProvider } from "next-themes";
 import React from "react";
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
+import "react-toastify/dist/ReactToastify.css";
 import { globalStyles, darkTheme, Box } from "@washingtonpost/wpds-ui-kit";
 import { darkModeStyles } from "~/components/DarkModeStyles";
 import { PageLayout } from "~/components/Layout";
@@ -11,6 +12,8 @@ import { GoogleTagManager } from "@washingtonpost/site-third-party-scripts";
 import SEO from "../next-seo.config";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { Footer } from "~/components/Footer";
+import "../public/global.css";
+import "@washingtonpost/tachyons-css/dist/index.css";
 
 const pageview = (url) => {
   window.dataLayer = window.dataLayer || [];

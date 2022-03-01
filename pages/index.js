@@ -1,10 +1,8 @@
 import * as React from "react";
-import Head from "next/head";
-import Link from "next/link";
 import { getAllDocs, getNavigation } from "~/services";
 
 export default function Index({ posts }) {
-  return <div>TBD</div>;
+  return <div>This landing page is not ready</div>;
 }
 
 export async function getStaticProps() {

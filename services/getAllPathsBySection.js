@@ -23,7 +23,7 @@ export const getAllPathsByCategory = async (input) => {
   const files = await globby(`${folder}/**/*.mdx`);
 
   const paths = files.map((file) => {
-    const path = file.split("docs/blog")[1].replace(/\.mdx?$/, "");
+    const path = file.split("docs/resources")[1].replace(/\.mdx?$/, "");
     let category = "";
     let slug = path;
 
