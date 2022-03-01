@@ -1,5 +1,5 @@
 ---
-title: Alert banner
+title: Alert Banner
 description: Alert banners are notify the user of important messages, such as system alerts. They're meant to encourage the user to take an action.
 component: alert-banner
 status: "Draft"
@@ -33,12 +33,65 @@ status: "Draft"
 ```jsx
 // preview
 
-import { AlertBanner } from "@washingtonpost/wpds-ui-kit";
+import { AlertBanner, Box } from "@washingtonpost/wpds-ui-kit";
 
 export default function Example() {
   return (
-    <AlertBanner.Root variant="error">
-      <AlertBanner.Content>Hey There</AlertBanner.Content>
+    <Box
+      css={{
+        display: "flex",
+        width: "100%",
+        rowGap: "$100",
+        flexDirection: "column",
+      }}
+    >
+      <AlertBanner.Root variant="error">
+        <AlertBanner.Content>Error</AlertBanner.Content>
+      </AlertBanner.Root>
+      <AlertBanner.Root variant="information">
+        <AlertBanner.Content>Information</AlertBanner.Content>
+      </AlertBanner.Root>
+      <AlertBanner.Root variant="success">
+        <AlertBanner.Content>Success</AlertBanner.Content>
+      </AlertBanner.Root>
+      <AlertBanner.Root variant="warning">
+        <AlertBanner.Content>Warning</AlertBanner.Content>
+      </AlertBanner.Root>
+    </Box>
+  );
+}
+```
+
+<BR />
+
+### Shadows
+
+```jsx
+// preview
+
+import { AlertBanner, Box } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  return (
+    <AlertBanner.Root shadow variant="information">
+      <AlertBanner.Content>Information</AlertBanner.Content>
+    </AlertBanner.Root>
+  );
+}
+```
+
+### Dismissable
+
+```jsx
+// preview
+
+import { AlertBanner, Box } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  return (
+    <AlertBanner.Root dismissable variant="information">
+      <AlertBanner.Trigger />
+      <AlertBanner.Content>Information</AlertBanner.Content>
     </AlertBanner.Root>
   );
 }
