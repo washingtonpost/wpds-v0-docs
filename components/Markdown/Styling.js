@@ -106,8 +106,13 @@ const components = {
   hr: HR,
   BR: BR,
   Button: Button,
-  Alert: ({ variant, dismissable, css, children }) => (
-    <AlertBanner.Root dismissable={dismissable} variant={variant}>
+  Alert: ({ position, variant, shadow, dismissable, css, children }) => (
+    <AlertBanner.Root
+      shadow={shadow}
+      position={position}
+      dismissable={dismissable}
+      variant={variant}
+    >
       <AlertBanner.Trigger />
       <AlertBanner.Content css={css}>{children}</AlertBanner.Content>
     </AlertBanner.Root>

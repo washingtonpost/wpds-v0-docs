@@ -61,7 +61,7 @@ const Assets = {
   error: Error,
 };
 
-export default function GuideContainer({ variant, children }) {
+export default function GuideContainer({ css, variant, children }) {
   const Asset = Assets[variant];
 
   return (
