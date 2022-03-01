@@ -137,7 +137,7 @@ export default function Index({ posts }) {
             fontWeight: "bold",
             textDecoration: "underline",
           }}
-          href={"/foundations/principles"}
+          href={"/foundations/alert-banner"}
         >
           Get started with Foundations
         </CustomLink>
@@ -155,7 +155,7 @@ export default function Index({ posts }) {
             fontWeight: "bold",
             textDecoration: "underline",
           }}
-          href={"/foundations/principles"}
+          href={"/resources/guides"}
         >
           Get started with Foundations
         </CustomLink>
