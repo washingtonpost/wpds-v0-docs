@@ -26,6 +26,14 @@ export const P = styled("p", {
   color: theme.colors.accessible,
   fontFamily: "$meta",
   fontWeight: "$light",
+  "& > code": {
+    fontFamily: "monospace",
+    backgroundColor: theme.colors.subtle,
+    fontSize: "$087",
+    borderRadius: "$012",
+    padding: "0 $025",
+    color: theme.colors.primary,
+  },
 });
 
 export const Small = styled("small", {
@@ -174,7 +182,8 @@ const components = {
       <Box
         as="code"
         css={{
-          color: "$onSecondary",
+          color: theme.colors.accessible,
+          background: "$subtle",
           fontSize: "$100",
           marginBottom: "$050",
           marginTop: "$050",
