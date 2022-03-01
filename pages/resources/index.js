@@ -122,7 +122,7 @@ export default function Page({ docs, latestDocs, collections }) {
                 }}
               >
                 <span>See all entries</span>
-                <Icon size="16">
+                <Icon>
                   <CheveronForLink />
                 </Icon>
               </Header>

@@ -74,7 +74,7 @@ const CopyCodeButton = () => {
       }}
       aria-label="Copy code to clipboard"
     >
-      <Icon size="16">
+      <Icon>
         <ClipboardIcon />
       </Icon>
       {copied ? "Copied!" : "Copy"}
@@ -311,7 +311,7 @@ export default function App() {
                   setShowCode(!showCode);
                 }}
               >
-                <Icon size="16">
+                <Icon>
                   <CodeIcon />
                 </Icon>
                 {showCode ? "Hide" : "Show"} code
