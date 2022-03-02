@@ -35,20 +35,14 @@ const Container = styled("div", {
   "&::-webkit-scrollbar": {
     width: "calc($087 / 2)",
     height: "calc($087 / 2)",
-    backgroundColor: "transparent",
+    backgroundColor: theme.colors.gray400,
   },
   // style the scrollbar handle
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "transparent",
+    backgroundColor: theme.colors.gray200,
     borderRadius: "$round",
   },
-  // style the scrollbar handle
-  "&:hover": {
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: theme.colors.gray200,
-      borderRadius: "$round",
-    },
-  },
+
   "@md": { marginTop: "0" },
   "@notSm": {
     width: "300px",
@@ -115,6 +109,7 @@ const ListItem = styled("li", {
     },
     disabled: {
       true: {
+        color: "$disabled",
         cursor: "default",
         pointerEvents: "none",
         fontStyle: "italic",

@@ -1,0 +1,280 @@
+---
+title: Button
+description:
+component: button
+status: "Draft"
+---
+
+## Anatomy
+
+<Container caption="Note: Image is not  to scale" css={{ padding: "$200" }}>
+  <InlineSVG
+    path="/img/components/button/anatomy.svg"
+    width={238}
+    height={79}
+  />
+</Container>
+
+1. Icon
+2. Background Fill
+3. Text
+
+---
+
+## Types
+
+### Text buttons
+
+Text buttons are buttons that use text paired with or without an icon.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import BookmarkSolid from "@washingtonpost/wpds-assets/asset/bookmark-solid";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <BookmarkSolid />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="primary" style="fill" size="$200" icon="right">
+        <Icon size="$100">
+          <BookmarkSolid />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="primary" style="fill" size="$225">
+        Text button
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Icon buttons
+
+An icon button is a button that uses only an icon.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" style="fill" size="$200" icon="center">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+      </Button>
+    </Box>
+  );
+}
+```
+
+---
+
+## Options
+
+### Variant
+
+There are 3 variants available `primary` `secondary` & `cta`.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="secondary" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="cta" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Variant
+
+There are 3 variants available `primary` `secondary` & `cta`.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="secondary" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="cta" style="fill" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+    </Box>
+  );
+}
+```
+
+### isOutline
+
+There are 2 styles available `fill` & `outline`.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" style="outline" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+      <Box css={{ backgroundColor: "$gray20", padding: "$100" }}>
+        <Button variant="secondary" style="outline" size="$200" icon="left">
+          <Icon size="$100">
+            <Add />
+          </Icon>
+          Text button
+        </Button>
+      </Box>
+      <Button variant="cta" style="outline" size="$200" icon="left">
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+    </Box>
+  );
+}
+```
+
+---
+
+## Behavior
+
+### Disabled
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button
+        disabled
+        variant="primary"
+        style="outline"
+        size="$200"
+        icon="left"
+      >
+        <Icon size="$100">
+          <Add />
+        </Icon>
+        Text button
+      </Button>
+      <Button
+        disabled
+        variant="primary"
+        style="outline"
+        size="$200"
+        icon="center"
+      >
+        <Icon size="$100">
+          <Add />
+        </Icon>
+      </Button>
+    </Box>
+  );
+}
+```
+
+---
+
+## API Reference
+
+<PropsTable props={propsTable} />

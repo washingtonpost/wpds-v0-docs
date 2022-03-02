@@ -11,6 +11,7 @@ const Container = styled("div", {
   cursor: "pointer",
   gap: "$050",
   paddingLeft: "$125",
+  color: "$primary",
   "@sm": {
     width: "100%",
   },
@@ -31,7 +32,7 @@ export default function Logo() {
     >
       <Container>
         <Icon size={"$200"}>
-          <WPMark fill="$primary" />
+          <WPMark />
         </Icon>
         <Span>Design system</Span>
       </Container>

@@ -148,13 +148,113 @@ export default function Example() {
 }
 ```
 
+### Check states
+
+A checkbox state can be `true`, `false` or `indeterminate`.
+
+```jsx
+// preview
+
+import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Checkbox checked variant="primary" style="fill" size="125" />
+      <Checkbox variant="primary" style="fill" size="125" />
+      <Checkbox
+        checked={"indeterminate"}
+        variant="primary"
+        style="fill"
+        size="125"
+      />
+    </Box>
+  );
+}
+```
+
 ---
 
 ## Behavior
 
-### Indeterminate
+### Disabled
+
+```jsx
+// preview
+
+import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
+
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Checkbox disabled checked variant="primary" style="fill" size="125" />
+      <Checkbox disabled variant="primary" style="fill" size="125" />
+      <Checkbox
+        disabled
+        checked={"indeterminate"}
+        variant="primary"
+        style="fill"
+        size="125"
+      />
+    </Box>
+  );
+}
+```
+
+### Focus
+
+```jsx
+// preview
+
+import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Checkbox checked variant="primary" style="fill" size="125" />
+      <p>Click checkbox to see focus</p>
+    </Box>
+  );
+}
+```
+
+---
+
+## Guidance
+
+### When to use indeterminate state
 
 When checkbox are in a group the _parent_ checkbox will reflect the group status of the checkbox.
+
+<GuideContainer variant="success" css={{ padding: "$150" }}>
+  <InlineSVG
+    path="/img/components/checkbox/indeterminate.svg"
+    width={110}
+    height={81}
+  />
+</GuideContainer>
+
+#### Code example
 
 ```jsx
 // preview
@@ -192,7 +292,6 @@ export default function Example() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        width: "250px",
         gap: "$100",
       }}
     >
@@ -244,60 +343,6 @@ export default function Example() {
           <label>Option 2</label>
         </Box>
       </Box>
-    </Box>
-  );
-}
-```
-
-### Disabled
-
-```jsx
-// preview
-
-import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
-
-export default function Example() {
-  return (
-    <Box
-      css={{
-        display: "flex",
-        justifyContent: "center",
-        width: "100%",
-        gap: "$100",
-      }}
-    >
-      <Checkbox disabled checked variant="primary" style="fill" size="125" />
-      <Checkbox disabled variant="primary" style="fill" size="125" />
-      <Checkbox
-        disabled
-        checked={"indeterminate"}
-        variant="primary"
-        style="fill"
-        size="125"
-      />
-    </Box>
-  );
-}
-```
-
-### Focus
-
-```jsx
-// preview
-
-import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
-export default function Example() {
-  return (
-    <Box
-      css={{
-        display: "flex",
-        justifyContent: "center",
-        width: "100%",
-        gap: "$100",
-      }}
-    >
-      <Checkbox checked variant="primary" style="fill" size="125" />
-      <p>Click checkbox to see focus</p>
     </Box>
   );
 }
