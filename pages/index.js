@@ -17,6 +17,13 @@ export default function Index({ recentPosts }) {
   });
   const HeroBlock = styled("div", {
     gridColumn: "span 2",
+    minHeight: "50vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    "@md": {
+      gridColumn: "span 3",
+    },
     "@sm": {
       gridColumn: "span 1",
     },
@@ -32,18 +39,27 @@ export default function Index({ recentPosts }) {
     <Grid>
       <HeroBlock>
         <Header as="h1">Welcome</Header>
-        <P>
+        <P css={{ fontSize: "$125" }}>
           The Washington Post Design System (WPDS) is a growing library of
           design tokens and interactive components purpose-built for
           washingtonpost.com.
         </P>
-        <P>
+        <P css={{ fontSize: "$125" }}>
           WPDS enables designers and developers at the Post to ship
           reader-facing digital products that are modular, elegant and
           accessible while maintaining visual consistency at scale.
         </P>
       </HeroBlock>
-      <Box css={{ paddingTop: "$225", "@sm": { display: "none" } }}>
+      <Box
+        css={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          paddingTop: "$225",
+          "@md": { display: "none" },
+          "@sm": { display: "none" },
+        }}
+      >
         <Header as="h4">WPDS Resources</Header>
         <List>
           {recentPosts &&

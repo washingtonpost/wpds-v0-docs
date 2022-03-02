@@ -11,6 +11,7 @@ import { useTheme } from "next-themes";
 import { Box, styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import packageJson from "../../../package.json";
 import packageJsonLock from "../../../package-lock.json";
+import InlineSVG from "./inlineSVG";
 
 const ClipboardIcon = (props) => (
   <svg
@@ -75,7 +76,12 @@ const CopyCodeButton = () => {
       aria-label="Copy code to clipboard"
     >
       <Icon>
-        <ClipboardIcon />
+        <InlineSVG
+          cushion="none"
+          path="/img/doc-icons/clipboard.svg"
+          height="16"
+          width="16"
+        />
       </Icon>
       {copied ? "Copied!" : "Copy"}
     </Button>
