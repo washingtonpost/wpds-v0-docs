@@ -8,8 +8,9 @@ import {
   useSandpack,
 } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
-import { css, Box, styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import { Box, styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 import packageJson from "../../../package.json";
+import packageJsonLock from "../../../package-lock.json";
 
 const ClipboardIcon = (props) => (
   <svg
@@ -154,12 +155,6 @@ const darkTheme = {
   },
 };
 
-const wrapper = css({
-  "@sm": {
-    width: "calc(100vw - $300) !important",
-  },
-});
-
 const buttonStyles = {
   cursor: "pointer",
   fontFamily: "$meta",
@@ -236,12 +231,6 @@ export default function App() {
   );
 }`;
 
-  const customStyle = {
-    display: "-moz-box",
-    display: "flex",
-    width: "calc(100vw-5%)",
-  };
-
   return (
     <>
       <SandpackProvider
@@ -252,6 +241,9 @@ export default function App() {
               packageJson.dependencies["@washingtonpost/wpds-assets"],
             "@washingtonpost/wpds-ui-kit":
               packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
+            ...packageJsonLock.packages[
+              "node_modules/@washingtonpost/wpds-ui-kit"
+            ].dependencies,
             "@radix-ui/react-checkbox":
               packageJson.dependencies["@radix-ui/react-checkbox"],
           },
