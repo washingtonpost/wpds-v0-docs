@@ -18,6 +18,12 @@
 
   <url>
     <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/button</loc
+    >
+  </url>
+
+  <url>
+    <loc
       >https://v1.wpds.docs.preview.now.washingtonpost.com/components/checkbox</loc
     >
   </url>
