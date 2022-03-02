@@ -139,7 +139,7 @@ export default function Icons() {
               as="button"
               onClick={() => setVariables(importExample, componentName)}
               css={{ cursor: "pointer", border: "none", "&:hover": { opacity: .5 }, backgroundColor: theme.colors.gray500, padding: theme.space[100] }}>
-              <Icon size="24">
+              <Icon size="$150">
                 <Sample fill={theme.colors.primary} />
               </Icon>
             </Box>
@@ -153,7 +153,7 @@ export default function Icons() {
       <Input placeholder=" " onFocus={() => setInFocus(true)} onBlur={() => setInFocus(false)} onChange={handleChange} />
       <Label>Search</Label>
       <Button as="div" css={{ border: "none", borderRadius: "0" }} variant={"primary"} style="outline">
-        <Icon size="16">
+        <Icon>
           <Search />
         </Icon>
       </Button>

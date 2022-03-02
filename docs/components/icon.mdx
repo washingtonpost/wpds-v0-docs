@@ -25,7 +25,7 @@ component: icon
 
 ### Size
 
-The `size` can be 16px, 24px, or 32px. The size sets the width and height of the SVG.
+The `size` can be `$100`, `$150`, or `$200`. The size sets the width and height of the SVG.
 
 ```jsx
 // preview
@@ -35,13 +35,13 @@ import Asset from "@washingtonpost/wpds-assets/asset/chevron-right";
 export default function Example() {
   return (
     <>
-      <Icon label="" size="16">
+      <Icon label="" size="$100">
         <Asset fill={theme.colors.primary} />
       </Icon>
-      <Icon label="" size="24">
+      <Icon label="" size="$150">
         <Asset fill={theme.colors.primary} />
       </Icon>
-      <Icon label="" size="32">
+      <Icon label="" size="$200">
         <Asset fill={theme.colors.primary} />
       </Icon>
     </>
@@ -61,13 +61,13 @@ import Asset from "@washingtonpost/wpds-assets/asset/chevron-right";
 export default function Example() {
   return (
     <>
-      <Icon label="Go to Next Page" size="16">
+      <Icon label="Go to Next Page" size="$100">
         <Asset fill={theme.colors.primary} />
       </Icon>
-      <Icon label="Go to Next Page" size="24">
+      <Icon label="Go to Next Page" size="$150">
         <Asset fill={theme.colors.primary} />
       </Icon>
-      <Icon label="Go to Next Page" size="32">
+      <Icon label="Go to Next Page" size="$200">
         <Asset fill={theme.colors.primary} />
       </Icon>
     </>

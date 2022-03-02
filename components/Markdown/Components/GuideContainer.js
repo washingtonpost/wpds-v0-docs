@@ -69,7 +69,7 @@ export default function GuideContainer({ css, variant, children }) {
       {variant && (
         <MessageContainer>
           <Message>
-            <Icon size="32">
+            <Icon size="$200">
               <Asset fill={theme.colors[variant]} />
             </Icon>
             <Rule variant={variant} />

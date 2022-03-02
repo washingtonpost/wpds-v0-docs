@@ -9,7 +9,7 @@ import Bookmark from "@washingtonpost/wpds-assets/asset/bookmark";
 
 export default function ExampleSnippet() {
   return(
-    <Icon size="100">
+    <Icon size="$100">
       <Bookmark label="bookmark">
     </Icon>
 )}

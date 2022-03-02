@@ -101,7 +101,7 @@ export const PropsTable = ({ props }) => {
                       columnGap: "calc($050 / 2)",
                     }}
                   >
-                    <Icon size="16">
+                    <Icon>
                       <Success fill={theme.colors.success} />
                     </Icon>
                     True

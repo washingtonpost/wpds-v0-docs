@@ -117,7 +117,7 @@ export const NavigationBar = ({
         >
           <ThemeToggle />
           <MenuToggle onClick={() => setMobileMenu(!isClosed)}>
-            <Icon size="32" label="Menu Icon">
+            <Icon size="$200" label="Menu Icon">
               <HamburgerMenu state={isClosed ? "closed" : "open"} />
             </Icon>
           </MenuToggle>

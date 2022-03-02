@@ -98,7 +98,7 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
       ) : (
         <CopyFeeback hover={ReadyToCopy}>
           <Span>|</Span>
-          <Icon css={{ marginLeft: theme.space[25] }} size="16">
+          <Icon css={{ marginLeft: theme.space[25] }}>
             <ClipboardIcon />
           </Icon>
           {copied ? "Copied!" : "Copy"}
