@@ -244,6 +244,9 @@ export default function App() {
             ...packageJsonLock.packages[
               "node_modules/@washingtonpost/wpds-ui-kit"
             ].dependencies,
+            ...packageJsonLock.packages[
+              "node_modules/@washingtonpost/wpds-theme"
+            ].peerDependencies,
             "@radix-ui/react-checkbox":
               packageJson.dependencies["@radix-ui/react-checkbox"],
           },
