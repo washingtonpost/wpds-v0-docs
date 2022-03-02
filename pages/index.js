@@ -4,28 +4,7 @@ import { AlertBanner, Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Markdown/Components/headers";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import CustomLink from "~/components/Markdown/Components/link";
-export default function Index({ posts }) {
-  const [RecentPost, setRecentPost] = useState([]);
-  //Cuts off resource entries if greater than threshold. Sorts and reverse order them
-  useEffect(() => {
-    let _recentPosts = [];
-    posts.map((post) => {
-      if (post.slug.includes("resources")) {
-        _recentPosts.push(post);
-      }
-    });
-    _recentPosts.sort((a, b) => {
-      return new Date(a.data.publishDate) - new Date(b.data.publishDate);
-    });
-    _recentPosts.reverse();
-    setRecentPost(_recentPosts);
-    const _threshold = 4;
-    if (_recentPosts.length > _threshold) {
-      const amountOver = _recentPosts.length - _threshold;
-      _recentPosts.splice(_threshold, amountOver);
-    }
-  }, []);
-
+export default function Index({ recentPosts }) {
   const Grid = styled("div", {
     display: "grid",
     gap: "$100",
@@ -67,25 +46,26 @@ export default function Index({ posts }) {
       <Box css={{ paddingTop: "$225", "@sm": { display: "none" } }}>
         <Header as="h4">WPDS Resources</Header>
         <List>
-          {RecentPost.map((post, i) => {
-            return (
-              <ListItem css={{ display: `${i > 5 ? "none" : ""}` }} key={i}>
-                <P
-                  css={{
-                    color: theme.colors.primary,
-                    fontSize: theme.fontSizes["075"],
-                    fontWeight: theme.fontWeights.bold,
-                    marginBottom: "0",
-                  }}
-                >
-                  {post.data.publishDate}
-                </P>
-                <CustomLink css={{ fontSize: "075" }} href={post.slug}>
-                  {post.data.title}
-                </CustomLink>
-              </ListItem>
-            );
-          })}
+          {recentPosts &&
+            recentPosts.map((post, i) => {
+              return (
+                <ListItem css={{ display: `${i > 5 ? "none" : ""}` }} key={i}>
+                  <P
+                    css={{
+                      color: theme.colors.primary,
+                      fontSize: theme.fontSizes["075"],
+                      fontWeight: theme.fontWeights.bold,
+                      marginBottom: "0",
+                    }}
+                  >
+                    {post.data.publishDate}
+                  </P>
+                  <CustomLink css={{ fontSize: "075" }} href={post.slug}>
+                    {post.data.title}
+                  </CustomLink>
+                </ListItem>
+              );
+            })}
         </List>
       </Box>
       <Box
@@ -137,7 +117,7 @@ export default function Index({ posts }) {
             fontWeight: "bold",
             textDecoration: "underline",
           }}
-          href={"/foundations/alert-banner"}
+          href={"/components/alert-banner"}
         >
           Get started with Foundations
         </CustomLink>
@@ -182,7 +162,22 @@ export async function getStaticProps() {
   const posts = await getAllDocs();
   const navigation = await getNavigation();
 
+  let recentPosts = [];
+  posts.map((post) => {
+    if (post.slug.includes("resources")) {
+      recentPosts.push(post);
+    }
+  });
+  recentPosts.sort((a, b) => {
+    return new Date(a.data.publishDate) - new Date(b.data.publishDate);
+  });
+  recentPosts.reverse();
+  const threshold = 4;
+  if (recentPosts.length > threshold) {
+    const amountOver = recentPosts.length - threshold;
+    recentPosts.splice(threshold, amountOver);
+  }
   return {
-    props: { posts, navigation },
+    props: { recentPosts, navigation },
   };
 }

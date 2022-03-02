@@ -68,9 +68,9 @@ export default function GuideContainer({ css, variant, children }) {
     <Div>
       {variant && (
         <MessageContainer>
-          <Message>
+          <Message css={{ color: theme.colors[variant] }}>
             <Icon size="$200">
-              <Asset fill={theme.colors[variant]} />
+              <Asset fill="$success" />
             </Icon>
             <Rule variant={variant} />
           </Message>

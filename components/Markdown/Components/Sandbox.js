@@ -62,10 +62,9 @@ const CopyCodeButton = () => {
   return (
     <Button
       css={{
-        alignSelf: "flex-start",
-        flexGrow: 0,
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         columnGap: "calc($050/2)",
       }}
       onClick={() => {

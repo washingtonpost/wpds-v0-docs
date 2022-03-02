@@ -4,12 +4,29 @@ import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 import Image from "next/image";
 import { css, styled } from "@washingtonpost/wpds-ui-kit";
 
-export default function inlineSVG({ path, title, description, width, height }) {
+export default function inlineSVG({
+  cushion,
+  path,
+  title,
+  description,
+  width,
+  height,
+}) {
   const Size = { height: height ? height : 150, width: width ? width : 300 };
   const SVGContainer = styled("div", {
     padding: "$100 $100",
     overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     width: "100%",
+    variants: {
+      cushion: {
+        none: {
+          padding: 0,
+        },
+      },
+    },
   });
   function hexToRgbA(hex) {
     var c;
@@ -49,7 +66,7 @@ export default function inlineSVG({ path, title, description, width, height }) {
   });
 
   return (
-    <SVGContainer>
+    <SVGContainer cushion={cushion}>
       <ReactSVG
         aria-label={description}
         loading={() => (

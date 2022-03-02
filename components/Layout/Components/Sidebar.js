@@ -9,6 +9,9 @@ import { Change } from "~/components/Markdown/Styling";
 
 const StyledAccordionRoot = styled(Accordion.Root, {
   marginBottom: "$150",
+  "@sm": {
+    marginBottom: "0",
+  },
 });
 
 const Panel = styled("div", {
@@ -19,6 +22,7 @@ const Panel = styled("div", {
   },
   "@sm": {
     width: "100%",
+    paddingBottom: "$100",
   },
 });
 
@@ -49,6 +53,9 @@ const Container = styled("div", {
   "@notSm": {
     width: "300px",
     // position: "fixed",
+  },
+  "@sm": {
+    paddingBottom: 0,
   },
 });
 
