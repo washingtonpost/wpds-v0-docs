@@ -36,7 +36,31 @@
 
   <url>
     <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/divider</loc
+    >
+  </url>
+
+  <url>
+    <loc
       >https://v1.wpds.docs.preview.now.washingtonpost.com/components/icon</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/image</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/input-password</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://v1.wpds.docs.preview.now.washingtonpost.com/components/text</loc
     >
   </url>
 
