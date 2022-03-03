@@ -73,18 +73,21 @@ export default function Example() {
     >
       <Checkbox
         onClick={() => setCheck1(!Check1)}
+        defaultChecked
         checked={Check1}
         variant="primary"
         size="125"
       />
       <Checkbox
         onClick={() => setCheck2(!Check2)}
+        defaultChecked
         checked={Check2}
         variant="secondary"
         size="125"
       />
       <Checkbox
         onClick={() => setCheck3(!Check3)}
+        defaultChecked
         checked={Check3}
         variant="cta"
         size="125"
@@ -119,6 +122,7 @@ export default function Example() {
     >
       <Checkbox
         onClick={() => setCheck1(!Check1)}
+        defaultChecked
         checked={Check1}
         variant="primary"
         isOutline
@@ -127,6 +131,7 @@ export default function Example() {
       <Box css={{ padding: "$100", backgroundColor: "$gray0" }}>
         <Checkbox
           onClick={() => setCheck2(!Check2)}
+          defaultChecked
           checked={Check2}
           variant="secondary"
           isOutline
@@ -135,6 +140,7 @@ export default function Example() {
       </Box>
       <Checkbox
         onClick={() => setCheck3(!Check3)}
+        defaultChecked
         checked={Check3}
         variant="cta"
         isOutline
