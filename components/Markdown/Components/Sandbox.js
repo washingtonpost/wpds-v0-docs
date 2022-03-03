@@ -254,6 +254,7 @@ export default function App() {
             ].peerDependencies,
             "@radix-ui/react-checkbox":
               packageJson.dependencies["@radix-ui/react-checkbox"],
+            "@stitches/react": packageJson.dependencies["@stitches/react"],
           },
           files: {
             "/App.js": AppCode,
