@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import Head from "next/head";
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { AlertBanner, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
@@ -32,21 +32,69 @@ const P = styled("p", {
   color: theme.colors.accessible,
 });
 
+const Article = styled("article", {
+  margin: "auto",
+});
+
 export default function Page({ current, source, headings, propsTable }) {
   return (
     <>
       <Head>
         <title>WPDS - {source.scope.title} | Components</title>
       </Head>
+      {source.scope.status == "Coming soon" && (
+        <>
+          <P css={{ width: "100%", display: "flex" }}>
+            <P
+              as="img"
+              css={{ margin: "auto" }}
+              src="https://media.giphy.com/media/XIqCQx02E1U9W/giphy.gif"
+              height="auto"
+              width="50%"
+            />
+          </P>
+          <P
+            css={{
+              fontSize: "$150",
+              paddingTop: "$100",
+              width: "90%",
+              margin: "auto",
+              textAlign: "center",
+            }}
+          >
+            This component status is coming soon and indicates a component is in
+            a queue for future work.
+          </P>
+        </>
+      )}
       <header className="post-header">
-        <Header>{source.scope.title}</Header>
+        <Header
+          css={{ opacity: source.scope.status == "Coming soon" ? 0.5 : 1 }}
+        >
+          {source.scope.title}
+        </Header>
         {source.scope.description && (
           <P className="description">{source.scope.description}</P>
         )}
-        <TableofContents current={current} headings={headings} />
+        {source.scope.status == "Draft" && (
+          <AlertBanner.Root variant="warning">
+            <AlertBanner.Content>
+              <b>Note:{` `}</b>This component status is in draft and indicates
+              the component is actively being worked on.
+            </AlertBanner.Content>
+          </AlertBanner.Root>
+        )}
+
+        <TableofContents
+          css={{ opacity: source.scope.status == "Coming soon" ? 0.5 : 1 }}
+          current={current}
+          headings={headings}
+        />
       </header>
 
-      <article>
+      <Article
+        css={{ opacity: source.scope.status == "Coming soon" ? 0.5 : 1 }}
+      >
         <MDXRemote
           {...source}
           components={components}
@@ -54,7 +102,7 @@ export default function Page({ current, source, headings, propsTable }) {
             propsTable,
           }}
         />
-      </article>
+      </Article>
     </>
   );
 }

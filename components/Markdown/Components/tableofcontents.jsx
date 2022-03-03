@@ -68,13 +68,13 @@ const Item = ({ children, level, label, as, href }) => (
   </ListItem>
 );
 
-export default function TableOfContents({ headings }) {
+export default function TableOfContents({ css, headings }) {
   if (!headings || !headings.length || headings[0].level !== 2) {
     return null;
   }
 
   return (
-    <Container>
+    <Container css={css}>
       <Header css={{ margin: "0 $025" }} as="h3">
         Table of Contents
       </Header>
