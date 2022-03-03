@@ -109,7 +109,6 @@ const ListItem = styled("li", {
     },
     disabled: {
       true: {
-        color: "$disabled",
         cursor: "default",
         pointerEvents: "none",
         fontStyle: "italic",
