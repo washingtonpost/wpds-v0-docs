@@ -42,8 +42,8 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Checkbox checked variant="primary" style="fill" size="125" />
-      <Checkbox checked variant="primary" style="fill" size="087" />
+      <Checkbox checked variant="primary" size="125" />
+      <Checkbox checked variant="primary" size="087" />
     </Box>
   );
 }
@@ -75,21 +75,18 @@ export default function Example() {
         onClick={() => setCheck1(!Check1)}
         checked={Check1}
         variant="primary"
-        style="fill"
         size="125"
       />
       <Checkbox
         onClick={() => setCheck2(!Check2)}
         checked={Check2}
         variant="secondary"
-        style="fill"
         size="125"
       />
       <Checkbox
         onClick={() => setCheck3(!Check3)}
         checked={Check3}
         variant="cta"
-        style="fill"
         size="125"
       />
     </Box>
@@ -124,7 +121,7 @@ export default function Example() {
         onClick={() => setCheck1(!Check1)}
         checked={Check1}
         variant="primary"
-        style="outline"
+        isOutline
         size="125"
       />
       <Box css={{ padding: "$100", backgroundColor: "$gray0" }}>
@@ -132,7 +129,7 @@ export default function Example() {
           onClick={() => setCheck2(!Check2)}
           checked={Check2}
           variant="secondary"
-          style="outline"
+          isOutline
           size="125"
         />
       </Box>
@@ -140,7 +137,7 @@ export default function Example() {
         onClick={() => setCheck3(!Check3)}
         checked={Check3}
         variant="cta"
-        style="outline"
+        isOutline
         size="125"
       />
     </Box>
@@ -167,14 +164,9 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Checkbox checked variant="primary" style="fill" size="125" />
-      <Checkbox variant="primary" style="fill" size="125" />
-      <Checkbox
-        checked={"indeterminate"}
-        variant="primary"
-        style="fill"
-        size="125"
-      />
+      <Checkbox checked variant="primary" size="125" />
+      <Checkbox variant="primary" size="125" />
+      <Checkbox checked={"indeterminate"} variant="primary" size="125" />
     </Box>
   );
 }
@@ -201,13 +193,12 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Checkbox disabled checked variant="primary" style="fill" size="125" />
-      <Checkbox disabled variant="primary" style="fill" size="125" />
+      <Checkbox disabled checked variant="primary" size="125" />
+      <Checkbox disabled variant="primary" size="125" />
       <Checkbox
         disabled
         checked={"indeterminate"}
         variant="primary"
-        style="fill"
         size="125"
       />
     </Box>
@@ -231,7 +222,7 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Checkbox checked variant="primary" style="fill" size="125" />
+      <Checkbox checked variant="primary" size="125" />
       <p>Click checkbox to see focus</p>
     </Box>
   );
@@ -304,12 +295,7 @@ export default function Example() {
           fontWeight: "bold",
         }}
       >
-        <Checkbox
-          checked={Check1}
-          variant="primary"
-          style="outline"
-          size="125"
-        />
+        <Checkbox checked={Check1} variant="primary" isOutline size="125" />
         <label>Category</label>
       </Box>
       <Box css={{ paddingLeft: "$100" }}>
@@ -317,12 +303,7 @@ export default function Example() {
           onClick={() => setCheck2(!Check2)}
           css={{ cursor: "pointer", display: "flex", gap: "$025" }}
         >
-          <Checkbox
-            checked={Check2}
-            variant="primary"
-            style="outline"
-            size="125"
-          />
+          <Checkbox checked={Check2} variant="primary" isOutline size="125" />
           <label>Option 1</label>
         </Box>
         <Box
@@ -334,12 +315,7 @@ export default function Example() {
             gap: "$025",
           }}
         >
-          <Checkbox
-            checked={Check3}
-            variant="primary"
-            style="outline"
-            size="125"
-          />
+          <Checkbox checked={Check3} variant="primary" isOutline size="125" />
           <label>Option 2</label>
         </Box>
       </Box>
