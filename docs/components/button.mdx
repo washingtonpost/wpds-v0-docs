@@ -44,19 +44,19 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="primary" size="200" icon="left">
+        <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="$200" icon="right">
-        <Icon size="$100">
+      <Button variant="primary" size="200" icon="right">
+        <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="$225">
+      <Button variant="primary" size="200">
         Text button
       </Button>
     </Box>
@@ -83,8 +83,8 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="$200" icon="center">
-        <Icon size="$100">
+      <Button variant="primary" size="200" icon="center">
+        <Icon size="100">
           <Add />
         </Icon>
       </Button>
@@ -116,20 +116,20 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="primary" size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button variant="secondary" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="secondary" size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button variant="cta" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="cta" size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
@@ -158,20 +158,20 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="primary" size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button variant="secondary" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="secondary" size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button variant="cta" size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="cta" size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
@@ -183,7 +183,7 @@ export default function Example() {
 
 ### isOutline
 
-There are 2 styles available `fill` & `outline`.
+Adding the property `isOutline` will change the appearance of the button to be an outline button.
 
 ```jsx
 // preview
@@ -201,23 +201,72 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button variant="primary" isOutline size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="primary" isOutline size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
       <Box css={{ backgroundColor: "$gray20", padding: "$100" }}>
-        <Button variant="secondary" isOutline size="$200" icon="left">
-          <Icon size="$100">
+        <Button variant="secondary" isOutline size="200" icon="left">
+          <Icon size="100">
             <Add />
           </Icon>
           Text button
         </Button>
       </Box>
-      <Button variant="cta" isOutline size="$200" icon="left">
-        <Icon size="$100">
+      <Button variant="cta" isOutline size="200" icon="left">
+        <Icon size="100">
           <Add />
+        </Icon>
+        Text button
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Size
+
+There are 2 sizes available `200` & `250`.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import BookmarkSolid from "@washingtonpost/wpds-assets/asset/bookmark-solid";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" size="200" icon="left">
+        <Icon size="100">
+          <BookmarkSolid />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="primary" size="200" icon="center">
+        <Icon size="100">
+          <BookmarkSolid />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="primary" size="250" icon="left">
+        <Icon size="100">
+          <BookmarkSolid />
+        </Icon>
+        Text button
+      </Button>
+      <Button variant="primary" size="250" icon="center">
+        <Icon size="100">
+          <BookmarkSolid />
         </Icon>
         Text button
       </Button>
@@ -247,14 +296,14 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button disabled variant="primary" isOutline size="$200" icon="left">
-        <Icon size="$100">
+      <Button disabled variant="primary" isOutline size="200" icon="left">
+        <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button disabled variant="primary" isOutline size="$200" icon="center">
-        <Icon size="$100">
+      <Button disabled variant="primary" isOutline size="200" icon="center">
+        <Icon size="100">
           <Add />
         </Icon>
       </Button>

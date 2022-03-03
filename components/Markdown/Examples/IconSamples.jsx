@@ -149,10 +149,11 @@ export default function Icons() {
               "&:hover": { opacity: 0.5 },
               backgroundColor: theme.colors.gray500,
               padding: theme.space[100],
+              color: "$primary",
             }}
           >
             <Icon size="$150">
-              <Sample fill={theme.colors.primary} />
+              <Sample />
             </Icon>
           </Box>
         </MDXStyling.Cell>
