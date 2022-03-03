@@ -9,6 +9,9 @@ import { Change } from "~/components/Markdown/Styling";
 
 const StyledAccordionRoot = styled(Accordion.Root, {
   marginBottom: "$150",
+  "@sm": {
+    marginBottom: "0",
+  },
 });
 
 const Panel = styled("div", {
@@ -19,6 +22,7 @@ const Panel = styled("div", {
   },
   "@sm": {
     width: "100%",
+    paddingBottom: "$100",
   },
 });
 
@@ -31,24 +35,21 @@ const Container = styled("div", {
   "&::-webkit-scrollbar": {
     width: "calc($087 / 2)",
     height: "calc($087 / 2)",
-    backgroundColor: "transparent",
+    backgroundColor: theme.colors.gray400,
   },
   // style the scrollbar handle
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "transparent",
+    backgroundColor: theme.colors.gray200,
     borderRadius: "$round",
   },
-  // style the scrollbar handle
-  "&:hover": {
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: theme.colors.gray200,
-      borderRadius: "$round",
-    },
-  },
+
   "@md": { marginTop: "0" },
   "@notSm": {
     width: "300px",
     // position: "fixed",
+  },
+  "@sm": {
+    paddingBottom: 0,
   },
 });
 

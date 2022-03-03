@@ -1,8 +1,16 @@
-import { Box, Icon, styled, theme } from "@washingtonpost/wpds-ui-kit";
+import {
+  Box,
+  Icon,
+  styled,
+  Button,
+  theme,
+  keyframes,
+} from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
+import Close from "@washingtonpost/wpds-assets/asset/close";
 import { ThemeToggle } from "./ThemeToggle";
 import SearchForm from "./SearchForm";
 import { useEffect } from "react";
@@ -69,8 +77,6 @@ const Anchor = styled("a", {
 });
 
 const MenuToggle = styled("button", {
-  height: 32,
-  width: 32,
   alignItems: "center",
   backgroundColor: "transparent",
   borderStyle: "none",
@@ -78,6 +84,7 @@ const MenuToggle = styled("button", {
 });
 const HamburgerMenu = styled(Menu, {
   fill: "$primary",
+  transition: "all .2s",
   variants: {
     state: {
       open: {
@@ -85,6 +92,24 @@ const HamburgerMenu = styled(Menu, {
       },
       closed: {
         transform: "rotate(270deg)",
+        opacity: "0",
+      },
+    },
+  },
+});
+
+const CloseMenu = styled(Close, {
+  fill: "$primary",
+  position: "absolute",
+  transition: "all .2s",
+  transitionDelay: 0.5,
+  variants: {
+    state: {
+      open: {
+        opacity: 0,
+      },
+      closed: {
+        opacity: 1,
       },
     },
   },
@@ -116,11 +141,17 @@ export const NavigationBar = ({
           }}
         >
           <ThemeToggle />
-          <MenuToggle onClick={() => setMobileMenu(!isClosed)}>
-            <Icon size="$200" label="Menu Icon">
+          <Button
+            css={{ border: "none" }}
+            onClick={() => setMobileMenu(!isClosed)}
+          >
+            <Icon size="$150" label="Menu Icon">
               <HamburgerMenu state={isClosed ? "closed" : "open"} />
             </Icon>
-          </MenuToggle>
+            <Icon size={"$150"} label="Menu">
+              <CloseMenu state={isClosed ? "closed" : "open"} />
+            </Icon>
+          </Button>
         </Box>
       </Container>
       <List>

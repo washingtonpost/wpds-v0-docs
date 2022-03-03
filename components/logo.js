@@ -6,18 +6,19 @@ import Link from "next/link";
 const Container = styled("div", {
   display: "flex",
   alignItems: "center",
-  color: theme.colors.accessible,
   fontFamily: "$meta",
   fontWeight: "$light",
   cursor: "pointer",
   gap: "$050",
   paddingLeft: "$125",
+  color: "$primary",
   "@sm": {
     width: "100%",
   },
 });
 const Span = styled("span", {
   fontSize: "$125",
+  color: "$accessible",
   textDecoration: "none",
   width: "100%",
 });
@@ -30,8 +31,8 @@ export default function Logo() {
       aria-label="The Washington Post Design System's Homepage"
     >
       <Container>
-        <Icon size={32}>
-          <WPMark fill={theme.colors.primary} />
+        <Icon size={"$200"}>
+          <WPMark />
         </Icon>
         <Span>Design system</Span>
       </Container>
