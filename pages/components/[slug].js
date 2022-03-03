@@ -73,16 +73,17 @@ export default function Page({ current, source, headings, propsTable }) {
         >
           {source.scope.title}
         </Header>
-        {source.scope.description && (
-          <P className="description">{source.scope.description}</P>
-        )}
+
         {source.scope.status == "Draft" && (
-          <AlertBanner.Root variant="warning">
+          <AlertBanner.Root css={{ marginBottom: "$200" }} variant="warning">
             <AlertBanner.Content>
               <b>Note:{` `}</b>This component status is in draft and indicates
               the component is actively being worked on.
             </AlertBanner.Content>
           </AlertBanner.Root>
+        )}
+        {source.scope.description && (
+          <P className="description">{source.scope.description}</P>
         )}
 
         <TableofContents
