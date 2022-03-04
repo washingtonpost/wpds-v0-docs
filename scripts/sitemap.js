@@ -27,7 +27,7 @@ const prettier = require("prettier");
     .map((route) => {
       return `
       <url>
-      <loc>${`https://v1.wpds.docs.preview.now.washingtonpost.com${route}`}</loc>
+      <loc>${`https://build.washingtonpost.com${route}`}</loc>
       </url>
       `;
     })
