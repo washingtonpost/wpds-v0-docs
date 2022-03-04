@@ -22,6 +22,16 @@ module.exports = {
           destination:
             "https://v0.wpds.docs.preview.now.washingtonpost.com/:slug*",
         },
+        {
+          source: "/assets/:slug*",
+          destination:
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/assets/:slug*",
+        },
+        {
+          source: "/img/:slug*",
+          destination:
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/img/:slug*",
+        },
       ],
     };
   },
