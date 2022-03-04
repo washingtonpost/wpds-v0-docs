@@ -6,7 +6,7 @@ module.exports = {
   title: "WPDS",
   tagline: "v0 Washington Post Design System",
   url: "https://v0.wpds.docs.preview.now.washingtonpost.com",
-  baseUrl: "/v0/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/wp-mark.svg",
