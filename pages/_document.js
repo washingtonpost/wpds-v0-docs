@@ -98,50 +98,33 @@ export default class Document extends NextDocument {
             }}
           />
 
-          <title>WaPo Design System</title>
+          <title>WPDS - WaPo design system</title>
+          <meta name="title" content="WPDS - WaPo design system" />
+          <meta
+            name="description"
+            content="The official design system of The Washington Post."
+          />
 
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://build.washingtonpost.com/" />
+          <meta property="og:title" content="WPDS - WaPo design system" />
           <meta
-            property="og:title"
-            name="title"
-            content="WPDS - The Washington Post design system"
-          />
-          <meta
-            property="og:title"
-            name="twitter:title"
-            content="WPDS - The Washington Post design system"
-          />
-          <meta
-            name="description"
-            content="WPDS is The Washington Post design system."
-          />
-          <meta
-            name="description"
             property="og:description"
-            content="WPDS is The Washington Post design system."
+            content="The official design system of The Washington Post."
           />
+          <meta property="og:image" content="/img/card.png" />
+
+          <meta property="twitter:card" content="summary_large_image" />
           <meta
-            name="twitter:description"
-            property="og:description"
-            content="WPDS is The Washington Post design system."
+            property="twitter:url"
+            content="https://build.washingtonpost.com"
           />
+          <meta property="twitter:title" content="WPDS - WaPo design system" />
           <meta
-            property="og:url"
-            name="og:url"
-            content="https://build.washingtonpost.com/"
+            property="twitter:description"
+            content="The official design system of The Washington Post."
           />
-          <meta
-            property="og:url"
-            name="twitter:url"
-            content="https://build.washingtonpost.com/"
-          />
-          <meta property="og:image" name="image" content="/img/card.png" />
-          <meta
-            property="og:image"
-            name="twitter:image"
-            content="/img/card.png"
-          />
-          <meta name="twitter:card" content="/img/card.png" />
-          <meta content="WPDS" property="og:site_name" />
+          <meta property="twitter:image" content="/img/card.png" />
         </Head>
         <body>
           <Main />
