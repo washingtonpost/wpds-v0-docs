@@ -5,7 +5,7 @@ export default function Tabs(props) {
   const { relatedUrl, isDesignDoc } = props;
   const [rootUrl, setrootUrl] = useState(null);
   useEffect(() => {
-    let destinationUrl = window.location.origin + "/" + relatedUrl;
+    let destinationUrl = window.location.origin + "/v0/" + relatedUrl;
     setrootUrl(destinationUrl);
   }, []);
   return (
