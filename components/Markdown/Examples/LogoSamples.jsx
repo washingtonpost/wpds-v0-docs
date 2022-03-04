@@ -95,7 +95,7 @@ export default function Logos() {
             <Box
               onClick={() => setVariables(importExample, componentName)}
               css={{ "&:hover": { opacity: .50 }, display: "flex", justifyContent: "center", backgroundColor: darkLogos.includes(componentName) ? theme.colors["gray20-static"] : theme.colors.gray500, padding: theme.space[100], width: "100%" }}>
-              <Icon label={componentName} size={componentName.includes("washington") ? 250 : 150}>
+              <Icon label={componentName} size={componentName.includes("washington") ? "250px" : "150px"}>
                 <Sample fill={theme.colors.primary} />
               </Icon>
             </Box>
