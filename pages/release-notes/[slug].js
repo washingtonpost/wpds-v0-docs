@@ -9,6 +9,7 @@ import {
 } from "~/services";
 import { getNavigation } from "~/services/getNavigation";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import { theme, Box } from "@washingtonpost/wpds-ui-kit";
 
 export default function Page({ source, headings }) {
   return (
@@ -38,7 +39,9 @@ export default function Page({ source, headings }) {
           >
             {source.scope.Head}
           </Header>
-          <p>{source.scope.description}</p>
+          <Box as="p" css={{ color: "$accessible" }}>
+            {source.scope.description}
+          </Box>
           <br />
         </header>
       </>
