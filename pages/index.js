@@ -37,11 +37,6 @@ export default function Index({ recentPosts }) {
   });
   return (
     <>
-      <Head>
-        {/* TODO write description get an OG image */}
-        {/* <title>WPDS Homepage</title>
-      <meta name="description" content=""/> */}
-      </Head>
       <Grid>
         <Box
           css={{
@@ -220,10 +215,7 @@ export default function Index({ recentPosts }) {
             <AlertBanner.Content>
               <Box as="span">🧐</Box> Looking for documentation for our legacy
               design system? Visit the{" "}
-              <CustomLink
-                css={{ textDecoration: "underline" }}
-                href="build.washingtonpost.com"
-              >
+              <CustomLink css={{ textDecoration: "underline" }} href="/v0">
                 WPDS v0 docs site.
               </CustomLink>
             </AlertBanner.Content>
