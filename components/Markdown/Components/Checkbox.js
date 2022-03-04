@@ -4,5 +4,5 @@ import { useId } from "@react-aria/utils";
 export const InputCheckbox = (props) => {
   const elementId = useId();
 
-  return <Checkbox {...props} id={elementId} />;
+  return <Checkbox {...props} defaultChecked={props.checked} id={elementId} />;
 };
