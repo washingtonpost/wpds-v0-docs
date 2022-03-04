@@ -13,7 +13,6 @@ import SEO from "../next-seo.config";
 import "@codesandbox/sandpack-react/dist/index.css";
 import { Footer } from "~/components/Footer";
 import "../public/global.css";
-import "@washingtonpost/tachyons-css/dist/index.css";
 
 const pageview = (url) => {
   window.dataLayer = window.dataLayer || [];
