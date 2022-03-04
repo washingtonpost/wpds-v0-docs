@@ -99,13 +99,49 @@ export default class Document extends NextDocument {
           />
 
           <title>WaPo Design System</title>
+
+          <meta
+            property="og:title"
+            name="title"
+            content="WPDS - The Washington Post design system"
+          />
+          <meta
+            property="og:title"
+            name="twitter:title"
+            content="WPDS - The Washington Post design system"
+          />
           <meta
             name="description"
             content="WPDS is The Washington Post design system."
           />
-          <meta property="og:title" content="WPDS" />
-          <meta property="og:url" content="https://build.washingtonpost.com/" />
-          <meta property="og:image" content="/img/card.png" />
+          <meta
+            name="description"
+            property="og:description"
+            content="WPDS is The Washington Post design system."
+          />
+          <meta
+            name="twitter:description"
+            property="og:description"
+            content="WPDS is The Washington Post design system."
+          />
+          <meta
+            property="og:url"
+            name="og:url"
+            content="https://build.washingtonpost.com/"
+          />
+          <meta
+            property="og:url"
+            name="twitter:url"
+            content="https://build.washingtonpost.com/"
+          />
+          <meta property="og:image" name="image" content="/img/card.png" />
+          <meta
+            property="og:image"
+            name="twitter:image"
+            content="/img/card.png"
+          />
+          <meta name="twitter:card" content="/img/card.png" />
+          <meta content="WPDS" property="og:site_name" />
         </Head>
         <body>
           <Main />
