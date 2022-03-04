@@ -5,8 +5,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 module.exports = {
   title: "WPDS",
   tagline: "v0 Washington Post Design System",
-  url: "https://build.washingtonpost.com",
-  baseUrl: "/",
+  url: "https://v0.wpds.docs.preview.now.washingtonpost.com",
+  baseUrl: "/v0/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/wp-mark.svg",
