@@ -20,7 +20,17 @@ module.exports = {
         {
           source: "/v0/:slug*",
           destination:
-            "https://v0.wpds.docs.preview.now.washingtonpost.com/:slug*",
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/v0/:slug*",
+        },
+        {
+          source: "/assets/:slug*",
+          destination:
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/v0/assets/:slug*",
+        },
+        {
+          source: "/img/:slug*",
+          destination:
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/v0/img/:slug*",
         },
       ],
     };
