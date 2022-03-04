@@ -80,6 +80,24 @@ export const Change = styled("div", {
         backgroundColor: "$gray400",
         borderColor: "$gray400",
       },
+      New: {
+        fontSize: "$075",
+        color: "$primary",
+        backgroundColor: "$green300",
+        borderColor: "$success",
+      },
+      Updates: {
+        fontSize: "$075",
+        color: "$primary",
+        backgroundColor: "$blue300",
+        borderColor: "$signal",
+      },
+      Fixes: {
+        fontSize: "$075",
+        color: "$primary",
+        backgroundColor: "$red300",
+        borderColor: "$error",
+      },
     },
   },
 });

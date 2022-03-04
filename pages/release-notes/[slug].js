@@ -38,7 +38,8 @@ export default function Page({ source, headings }) {
           >
             {source.scope.Head}
           </Header>
-          <Header as="h3">{source.scope.description}</Header>
+          <p>{source.scope.description}</p>
+          <br />
         </header>
       </>
       <>

@@ -97,24 +97,16 @@ export default class Document extends NextDocument {
 							  }`,
             }}
           />
-
-          <title>WPDS - WaPo design system</title>
-          <meta name="title" content="WPDS - WaPo design system" />
-          <meta
-            name="description"
-            content="The official design system of The Washington Post."
-          />
-
+          <meta property="title" content="WPDS Documentation & Resources" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://build.washingtonpost.com/" />
-          <meta property="og:title" content="WPDS - WaPo design system" />
+          <meta property="og:title" content="WPDS Documentation & Resources" />
           <meta
-            property="og:description"
-            content="The official design system of The Washington Post."
+            property="og:image"
+            content="https://build.washingtonpost.com/img/card.png"
           />
-          <meta property="og:image" content="/img/card.png" />
-
           <meta property="twitter:card" content="summary_large_image" />
+
           <meta
             property="twitter:url"
             content="https://build.washingtonpost.com"
@@ -122,9 +114,13 @@ export default class Document extends NextDocument {
           <meta property="twitter:title" content="WPDS - WaPo design system" />
           <meta
             property="twitter:description"
-            content="The official design system of The Washington Post."
+            content="The Washington Post Design System (WPDS) is a growing library of design tokens and interactive components purpose-built for washingtonpost.com"
           />
-          <meta property="twitter:image" content="/img/card.png" />
+          <meta
+            property="twitter:image"
+            content="https://build.washingtonpost.com/img/card.png"
+          />
+          <meta name="twitter:image:alt" content="WP Design System logo" />
         </Head>
         <body>
           <Main />
