@@ -18,19 +18,23 @@ module.exports = {
       ],
       fallback: [
         {
+          source: "/v0",
+          destination: "https://v0.wpds.docs.preview.now.washingtonpost.com/v0",
+        },
+        {
           source: "/v0/:slug*",
           destination:
             "https://v0.wpds.docs.preview.now.washingtonpost.com/v0/:slug*",
         },
         {
-          source: "/assets/:slug*",
+          source: "/v0/assets/:slug*",
           destination:
-            "https://v0.wpds.docs.preview.now.washingtonpost.com/v0/assets/:slug*",
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/assets/:slug*",
         },
         {
-          source: "/img/:slug*",
+          source: "/v0/img/:slug*",
           destination:
-            "https://v0.wpds.docs.preview.now.washingtonpost.com/v0/img/:slug*",
+            "https://v0.wpds.docs.preview.now.washingtonpost.com/img/:slug*",
         },
       ],
     };
