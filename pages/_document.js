@@ -113,7 +113,12 @@ export default class Document extends NextDocument {
           />
           <meta property="twitter:title" content="WPDS - WaPo design system" />
           <meta
-            property="twitter:description"
+            name="twitter:description"
+            property="description"
+            content="The Washington Post Design System (WPDS) is a growing library of design tokens and interactive components purpose-built for washingtonpost.com"
+          />
+          <meta
+            property="description"
             content="The Washington Post Design System (WPDS) is a growing library of design tokens and interactive components purpose-built for washingtonpost.com"
           />
           <meta
