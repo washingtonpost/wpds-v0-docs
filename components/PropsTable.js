@@ -105,7 +105,7 @@ export const PropsTable = ({ props }) => {
                       },
                     }}
                   >
-                    <Icon >
+                    <Icon>
                       <Success />
                     </Icon>
                     True
