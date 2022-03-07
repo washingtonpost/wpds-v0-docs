@@ -53,7 +53,7 @@ export default function Example() {
       }}
     >
       <Icon size="$150" label="bookmark">
-        <Info fill="currentColor" />
+        <Info />
       </Icon>
       <p> Example of using current color</p>
     </Box>
@@ -89,23 +89,23 @@ import Image from "@washingtonpost/wpds-assets/asset/image";
 export default function Example() {
   return (
     <>
-      <Icon size="$150" label="bookmark">
-        <Bookmark fill={theme.colors.primary} />
+      <Icon size="$150" label="bookmark" fill={theme.colors.primary}>
+        <Bookmark />
       </Icon>
-      <Icon size="$150" label="bookmark">
-        <Play fill={theme.colors.primary} />
+      <Icon size="$150" label="bookmark" fill={theme.colors.primary}>
+        <Play />
       </Icon>
-      <Icon size="$150" label="bookmark">
-        <Email fill={theme.colors.primary} />
+      <Icon size="$150" label="bookmark" fill={theme.colors.primary}>
+        <Email />
       </Icon>
-      <Icon size="$150" label="bookmark">
-        <Article fill={theme.colors.primary} />
+      <Icon size="$150" label="bookmark" fill={theme.colors.primary}>
+        <Article />
       </Icon>
-      <Icon size="$150" label="bookmark">
-        <Globe fill={theme.colors.primary} />
+      <Icon size="$150" label="bookmark" fill={theme.colors.primary}>
+        <Globe />
       </Icon>
-      <Icon size="$150" label="bookmark">
-        <Image fill={theme.colors.primary} />
+      <Icon size="$150" label="bookmark" fill={theme.colors.primary}>
+        <Image />
       </Icon>
     </>
   );
