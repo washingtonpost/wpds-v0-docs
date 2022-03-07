@@ -99,13 +99,9 @@ export const PropsTable = ({ props }) => {
                       alignItems: "center",
                       justifyContent: "flex-start",
                       columnGap: "calc($050 / 2)",
-
-                      "& svg": {
-                        color: theme.colors.success,
-                      },
                     }}
                   >
-                    <Icon>
+                    <Icon fill={theme.colors.success}>
                       <Success />
                     </Icon>
                     True
