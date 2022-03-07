@@ -57,8 +57,8 @@ import Add from "@washingtonpost/wpds-assets/asset/add";
 
 export const SaveToList = () => {
   return (
-    <Icon size="$200" label="Save to reading list">
-      <Add fill={theme.colors.primary} />
+    <Icon size="$200" label="Save to reading list" fill={theme.colors.primary}>
+      <Add />
     </Icon>
   );
 };
@@ -76,13 +76,13 @@ The `theme` object lets us use our Theme tokens with type safety. We can also us
 
 The `Icon` component clones the SVG React element and adds accessibility attributes. We can use the `label` prop to set the `aria-label` attribute. We can also use the `size` prop to set the `width` and `height` attributes.
 
-We will use a new asset from our [Assets Manager](/foundations/assets). We will use the `Add` asset and apply the `fill` prop to set the color.
+We will use a new asset from our [Assets Manager](/foundations/assets).
 
 ```jsx
-<Add fill={theme.colors.onPrimary} />
+<Add />
 ```
 
-Let's create a new button component with the following code:
+Let's create a new button component with the following code. We will use the `Icon` asset and apply the `fill` prop to set the color.
 
 ```jsx
 import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
@@ -97,8 +97,8 @@ export const SaveToList = () => {
   return (
     <Button>
       Save to reading list
-      <Icon size="$200">
-        <Add fill={theme.colors.onPrimary} />
+      <Icon size="$200" fill={theme.colors.onPrimary}>
+        <Add />
       </Icon>
     </Button>
   );
@@ -138,8 +138,8 @@ const Button = styled("button", {
 const SaveToList = () => {
   return (
     <Button>
-      <Icon size="$200">
-        <Add fill={theme.colors.onPrimary} />
+      <Icon size="$200" fill={theme.colors.onPrimary}>
+        <Add />
       </Icon>
     </Button>
   );
