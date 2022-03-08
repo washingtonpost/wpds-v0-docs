@@ -6,7 +6,8 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "npx prettier --write '**/*.{js,mdx}'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "alex": "npx alex docs/**/*.mdx --mdx"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "latest",
