@@ -1,4 +1,5 @@
 import React from "react";
+import { NextSeo } from "next-seo";
 import { getDocsListBySection, getNavigation } from "~/services";
 import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
