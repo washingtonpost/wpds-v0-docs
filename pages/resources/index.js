@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import { getDocsListBySection, getNavigation } from "~/services";
 import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
@@ -44,9 +43,7 @@ export default function Page({ docs, latestDocs, collections }) {
 
   return (
     <>
-      <Head>
-        <title>WPDS - Resources</title>
-      </Head>
+      <NextSeo title={`WPDS - Resources`} />
       <header>
         <Header as="h1">Resources</Header>
       </header>
