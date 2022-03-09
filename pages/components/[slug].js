@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { AlertBanner, styled, theme } from "@washingtonpost/wpds-ui-kit";
+
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
@@ -39,9 +40,10 @@ const Article = styled("article", {
 export default function Page({ current, source, headings, propsTable }) {
   return (
     <>
-      <Head>
-        <title>WPDS - {source.scope.title} | Components</title>
-      </Head>
+      <NextSeo
+        title={`WPDS - ${source.scope.title} | Components`}
+        description={source.scope.description}
+      />
       {source.scope.status == "Coming soon" && (
         <>
           <P css={{ width: "100%", display: "flex" }}>

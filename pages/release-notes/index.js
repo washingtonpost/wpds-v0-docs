@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { getDocsListBySection, getNavigation } from "~/services";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import { P } from "~/components/Markdown/Styling";
@@ -28,9 +28,10 @@ export default function Page({ docs, latestDocs }) {
 
   return (
     <>
-      <Head>
-        <title>WPDS - Release Notes</title>
-      </Head>
+      <NextSeo
+        title={`WPDS - Release Notes`}
+        description="Release notes for WPDS, the Washington Post Design System."
+      />
       <header>
         <Header as="h1">Release Notes</Header>
       </header>
