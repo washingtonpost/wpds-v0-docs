@@ -191,7 +191,7 @@ const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, {
   ...buttonStyles,
 });
 
-const CustomSandpack = ({ withPreview = false, children }) => {
+const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
   const [showCode, setShowCode] = useState(!withPreview);
   const { resolvedTheme } = useTheme();
   const [sandboxTheme, setSandboxTheme] = useState("");
@@ -209,32 +209,113 @@ const CustomSandpack = ({ withPreview = false, children }) => {
     setBodyBackground("$gray500");
   }, [resolvedTheme]);
 
-  const AppCode = `import { globalCss, styled, darkTheme, theme, globalStyles, darkModeGlobalStyles } from "@washingtonpost/wpds-ui-kit";
-import Example from "./Example";
+  const AppCode = `import {
+    globalCss,
+    styled,
+    darkTheme,
+    theme,
+    globalStyles,
+    darkModeGlobalStyles,
+    Icon
+  } from "@washingtonpost/wpds-ui-kit";
+  import Example from "./Example";
+  import Success from "@washingtonpost/wpds-assets/asset/success";
+  import Warning from "@washingtonpost/wpds-assets/asset/warning";
+  import Info from "@washingtonpost/wpds-assets/asset/info";
+  import Error from "@washingtonpost/wpds-assets/asset/error";
+  import warning from "@washingtonpost/wpds-assets/asset/warning";
 
-const Canvas = styled("div", {
-  background: "${bodyBackground}",
-  color: "$accessible",
-  padding: "$100",
-  width: "100vw",
-  height: "100vh",
-  margin: "0 auto",
-  overflow: "hidden",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center"
-});
+  const Canvas = styled("div", {
+    background: "$gray500",
+    color: "$accessible",
+    padding: "$100",
+    width: "100vw",
+    height: "100vh",
+    margin: "0 auto",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative"
+  });
 
-export default function App() {
-  globalStyles();
-  darkModeGlobalStyles();
-  return (
-    <Canvas className={${sandboxTheme}}>
-      <Example />
-    </Canvas>
-  );
-}`;
+  const Guide = styled("div", {
+    position: "absolute",
+    padding:"$100",
+    display: "flex",
+    alignItems: "center",
+    gap:"$025",
+    width: "100%",
+    top: "0",
+    left: "0",
+    variants: {
+      variant: {
+        success: {
+          color: theme.colors.success
+        },
+        error: {
+          color: theme.colors.error
+        },
+        warning: {
+          color: theme.colors.warning
+        },
+        information: {
+          color: theme.colors.information
+        }
+      }
+    }
+  });
+
+  const Rule = styled("div", {
+    height: "2px",
+    width: "100%",
+    variants: {
+      variant: {
+        success: {
+          backgroundColor: theme.colors.success
+        },
+        error: {
+          backgroundColor: theme.colors.error
+        },
+        warning: {
+          backgroundColor: theme.colors.warning
+        },
+        information: {
+          backgroundColor: theme.colors.information
+        }
+      }
+    }
+  });
+
+  const GetIcon=({variant})=>{
+    switch(variant){
+      case 'success':
+        return <Icon size="200"><Success/></Icon>
+      case 'warning':
+        return <Icon size="200"><Warning/></Icon>
+      case 'information':
+        return <Icon size="200"><Info/></Icon>
+      case 'error':
+        return <Icon size="200"><Error/></Icon>
+      default:
+        return null;
+    }
+  }
+
+  export default function App() {
+    globalStyles();
+    darkModeGlobalStyles();
+    return (
+      <Canvas className={"light"}>
+          <Guide variant="${isGuide}">
+            <GetIcon variant="${isGuide}" />
+            <Rule variant="${isGuide}"></Rule>
+          </Guide>
+        <Example />
+      </Canvas>
+    );
+  }`;
 
   return (
     <>

@@ -41,24 +41,23 @@ export default function Example() {
         display: "flex",
         justifyContent: "center",
         width: "100%",
+        flexWrap: "wrap",
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="200" icon="left">
+      <Button variant="primary" icon="left">
         <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="200" icon="right">
+      <Button variant="primary" icon="right">
         <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="200">
-        Text button
-      </Button>
+      <Button variant="primary">Text button</Button>
     </Box>
   );
 }
@@ -80,10 +79,11 @@ export default function Example() {
         display: "flex",
         justifyContent: "center",
         width: "100%",
+        flexWrap: "wrap",
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="200" icon="center">
+      <Button variant="primary" icon="center">
         <Icon size="100">
           <Add />
         </Icon>
@@ -112,65 +112,24 @@ export default function Example() {
       css={{
         display: "flex",
         justifyContent: "center",
+        flexWrap: "wrap",
         width: "100%",
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="200" icon="left">
+      <Button variant="primary" icon="left">
         <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button variant="secondary" size="200" icon="left">
+      <Button variant="secondary" icon="left">
         <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button variant="cta" size="200" icon="left">
-        <Icon size="100">
-          <Add />
-        </Icon>
-        Text button
-      </Button>
-    </Box>
-  );
-}
-```
-
-### Variant
-
-There are 3 variants available `primary` `secondary` & `cta`.
-
-```jsx
-// preview
-
-import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
-import Add from "@washingtonpost/wpds-assets/asset/add";
-export default function Example() {
-  return (
-    <Box
-      css={{
-        display: "flex",
-        justifyContent: "center",
-        width: "100%",
-        gap: "$100",
-      }}
-    >
-      <Button variant="primary" size="200" icon="left">
-        <Icon size="100">
-          <Add />
-        </Icon>
-        Text button
-      </Button>
-      <Button variant="secondary" size="200" icon="left">
-        <Icon size="100">
-          <Add />
-        </Icon>
-        Text button
-      </Button>
-      <Button variant="cta" size="200" icon="left">
+      <Button variant="cta" icon="left">
         <Icon size="100">
           <Add />
         </Icon>
@@ -183,7 +142,7 @@ export default function Example() {
 
 ### isOutline
 
-Adding the property `isOutline` will change the appearance of the button to be an outline button.
+Adding the property `isOutline` will set the button appearance as an outline.
 
 ```jsx
 // preview
@@ -195,27 +154,28 @@ export default function Example() {
     <Box
       css={{
         display: "flex",
+        flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
         gap: "$100",
       }}
     >
-      <Button variant="primary" isOutline size="200" icon="left">
+      <Button variant="primary" isOutline icon="left">
         <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
       <Box css={{ backgroundColor: "$gray20", padding: "$100" }}>
-        <Button variant="secondary" isOutline size="200" icon="left">
+        <Button variant="secondary" isOutline icon="left">
           <Icon size="100">
             <Add />
           </Icon>
           Text button
         </Button>
       </Box>
-      <Button variant="cta" isOutline size="200" icon="left">
+      <Button variant="cta" isOutline icon="left">
         <Icon size="100">
           <Add />
         </Icon>
@@ -226,9 +186,9 @@ export default function Example() {
 }
 ```
 
-### Size
+### Density
 
-There are 2 sizes available `200` & `250`.
+There are two options for the property density `compact` and `default`.
 
 ```jsx
 // preview
@@ -246,25 +206,25 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button variant="primary" size="200" icon="left">
+      <Button variant="primary" density="compact" icon="left">
         <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="200" icon="center">
+      <Button variant="primary" density="compact" icon="center">
         <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="250" icon="left">
+      <Button variant="primary" density="default" icon="left">
         <Icon size="100">
           <BookmarkSolid />
         </Icon>
         Text button
       </Button>
-      <Button variant="primary" size="250" icon="center">
+      <Button variant="primary" density="default" icon="center">
         <Icon size="100">
           <BookmarkSolid />
         </Icon>
@@ -296,16 +256,152 @@ export default function Example() {
         gap: "$100",
       }}
     >
-      <Button disabled variant="primary" isOutline size="200" icon="left">
+      <Button disabled variant="primary" isOutline icon="left">
         <Icon size="100">
           <Add />
         </Icon>
         Text button
       </Button>
-      <Button disabled variant="primary" isOutline size="200" icon="center">
+      <Button disabled variant="primary" isOutline icon="center">
         <Icon size="100">
           <Add />
         </Icon>
+      </Button>
+    </Box>
+  );
+}
+```
+
+---
+
+## Guidance
+
+### Avoid small width buttons
+
+Buttons do not have a minimum width but should still avoid being smaller than `120px`
+
+```jsx
+// preview
+
+// guide-warning
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary">Small</Button>
+    </Box>
+  );
+}
+```
+
+### Mixing button densities
+
+Buttons within the same layout should have the same `density`.
+
+```jsx
+// preview
+
+// guide-error
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" density="compact">
+        Compact
+      </Button>
+      <Button variant="primary" density="default">
+        Default
+      </Button>
+    </Box>
+  );
+}
+```
+
+### Button without borders
+
+Buttons can have no borders, but will need to be manually applied.
+
+```jsx
+// preview
+
+// guide-information
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Add from "@washingtonpost/wpds-assets/asset/add";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button
+        variant="primary"
+        isOutline
+        css={{ border: "none" }}
+        icon="center"
+      >
+        <Icon size="100">
+          <Add />
+        </Icon>
+      </Button>
+      <Button variant="primary" isOutline css={{ border: "none" }}>
+        Text button
+      </Button>
+    </Box>
+  );
+}
+```
+
+---
+
+## Accessiblity
+
+### Pair icons with text
+
+When possible use text button with an icon. The pairing of text acts as a label to help contextualize the action being taken when clicked/tapped.
+
+```jsx
+// preview
+
+import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Share from "@washingtonpost/wpds-assets/asset/share";
+export default function Example() {
+  return (
+    <Box
+      css={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+        gap: "$100",
+      }}
+    >
+      <Button variant="primary" icon="left">
+        <Icon size="100">
+          <Share />
+        </Icon>
+        Share
       </Button>
     </Box>
   );
