@@ -184,7 +184,10 @@ const components = {
             width: "100%",
           }}
         >
-          <Sandbox withPreview={children.includes("// preview")}>
+          <Sandbox
+            isGuide={() => handleGuideType(children)}
+            withPreview={children.includes("// preview")}
+          >
             {
               // remove the preview comment from the code and the line break
               children.includes("// preview")
@@ -221,4 +224,17 @@ const components = {
   },
 };
 
+function handleGuideType(children) {
+  if (children.includes("// guide-success")) {
+    return "success";
+  } else if (children.includes("// guide-warning")) {
+    return "warning";
+  } else if (children.includes("// guide-information")) {
+    return "information";
+  } else if (children.includes("//guide-error")) {
+    return "error";
+  } else {
+    return "default";
+  }
+}
 export default components;

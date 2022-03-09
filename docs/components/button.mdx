@@ -41,6 +41,7 @@ export default function Example() {
         display: "flex",
         justifyContent: "center",
         width: "100%",
+        flexWrap: "wrap",
         gap: "$100",
       }}
     >
@@ -80,6 +81,7 @@ export default function Example() {
         display: "flex",
         justifyContent: "center",
         width: "100%",
+        flexWrap: "wrap",
         gap: "$100",
       }}
     >
@@ -112,48 +114,7 @@ export default function Example() {
       css={{
         display: "flex",
         justifyContent: "center",
-        width: "100%",
-        gap: "$100",
-      }}
-    >
-      <Button variant="primary" size="200" icon="left">
-        <Icon size="100">
-          <Add />
-        </Icon>
-        Text button
-      </Button>
-      <Button variant="secondary" size="200" icon="left">
-        <Icon size="100">
-          <Add />
-        </Icon>
-        Text button
-      </Button>
-      <Button variant="cta" size="200" icon="left">
-        <Icon size="100">
-          <Add />
-        </Icon>
-        Text button
-      </Button>
-    </Box>
-  );
-}
-```
-
-### Variant
-
-There are 3 variants available `primary` `secondary` & `cta`.
-
-```jsx
-// preview
-
-import { Button, Icon, Box } from "@washingtonpost/wpds-ui-kit";
-import Add from "@washingtonpost/wpds-assets/asset/add";
-export default function Example() {
-  return (
-    <Box
-      css={{
-        display: "flex",
-        justifyContent: "center",
+        flexWrap: "wrap",
         width: "100%",
         gap: "$100",
       }}
@@ -183,7 +144,7 @@ export default function Example() {
 
 ### isOutline
 
-Adding the property `isOutline` will change the appearance of the button to be an outline button.
+Adding the property `isOutline` will set the button appearance as an outline.
 
 ```jsx
 // preview
@@ -195,6 +156,7 @@ export default function Example() {
     <Box
       css={{
         display: "flex",
+        flexWrap: "wrap",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",

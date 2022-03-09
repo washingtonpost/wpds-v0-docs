@@ -24,6 +24,14 @@
       }
     },
     {
+      "name": "Icon using any token size",
+      "path": "snippets/icon/custom.jsx",
+      "zeplinIds": ["622682051da362147be7a07c"],
+      "documentation": {
+        "urlPath": "/components/icon"
+      }
+    },
+    {
       "name": "AppBar",
       "path": "snippets/appbar/example.jsx",
       "zeplinIds": [
