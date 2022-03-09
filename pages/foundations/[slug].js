@@ -12,7 +12,6 @@ import { getNavigation } from "~/services/getNavigation";
 const components = {
   ...MDXStyling,
   CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
-  Head,
 };
 const P = styled("p", {
   color: theme.colors.accessible,

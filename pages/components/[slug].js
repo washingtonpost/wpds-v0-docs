@@ -25,7 +25,6 @@ const components = {
   EmbedControls,
   EmbedDocsPage,
   CustomSandpack,
-  Head,
   PropsTable,
 };
 
