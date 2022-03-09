@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import dynamic from "next/dynamic";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 import MDXStyling from "~/components/Markdown/Styling";
 
@@ -12,7 +12,6 @@ import { getNavigation } from "~/services/getNavigation";
 const components = {
   ...MDXStyling,
   CustomComponent: dynamic(() => import("~/components/Typography/Headers")),
-  Head,
 };
 const P = styled("p", {
   color: theme.colors.accessible,
@@ -21,9 +20,10 @@ const P = styled("p", {
 export default function Page({ source }) {
   return (
     <>
-      <Head>
-        <title>WPDS - {source.scope.title} | Foundations</title>
-      </Head>
+      <NextSeo
+        title={`WPDS - ${source.scope.title} | Foundations`}
+        description={source.scope.description}
+      />
       <header className="post-header">
         <Header>{source.scope.title}</Header>
         {source.scope.description && (

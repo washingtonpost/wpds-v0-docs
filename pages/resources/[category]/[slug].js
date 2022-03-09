@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import {
@@ -20,9 +20,10 @@ const components = {
 export default function Page({ current, source, headings }) {
   return (
     <>
-      <Head>
-        <title>WPDS - {source.scope.title} | Resources</title>
-      </Head>
+      <NextSeo
+        title={`WPDS - ${source.scope.title} | Resources`}
+        description={source.scope.description}
+      />
       <>
         <Breadcrumbs.Root>
           <Breadcrumbs.Item href="/resources">Resources</Breadcrumbs.Item>

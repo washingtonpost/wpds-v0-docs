@@ -1,5 +1,5 @@
-import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
-import Head from "next/head";
+import { styled, Box } from "@washingtonpost/wpds-ui-kit";
+import { NextSeo } from "next-seo";
 import Header from "~/components/Typography/Headers";
 import CustomLink from "~/components/Typography/link";
 import { getAllPathsByCategory, getNavigation, getResources } from "~/services";
@@ -25,9 +25,10 @@ const Masonry = styled("section", {
 export default function Page({ docs, category }) {
   return (
     <div>
-      <Head>
-        <title>WPDS - {category} Resources</title>
-      </Head>
+      <NextSeo
+        title={`WPDS - ${category} | Resources`}
+        description={`${category} resources, including links to documentation, guides, and more.`}
+      />
       <Breadcrumbs.Root>
         <Breadcrumbs.Item href="/resources">Resources</Breadcrumbs.Item>
       </Breadcrumbs.Root>

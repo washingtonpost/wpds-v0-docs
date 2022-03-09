@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import {
@@ -14,9 +14,10 @@ import { theme, Box } from "@washingtonpost/wpds-ui-kit";
 export default function Page({ source, headings }) {
   return (
     <>
-      <Head>
-        <title>WPDS - {source.scope.title} | Release Notes</title>
-      </Head>
+      <NextSeo
+        title={`WPDS - ${source.scope.title} | Release Notes`}
+        description={source.scope.description}
+      />
       <>
         <Breadcrumbs.Root>
           <Breadcrumbs.Item href="/release-notes">
