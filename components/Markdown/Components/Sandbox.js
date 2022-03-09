@@ -191,7 +191,7 @@ const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, {
   ...buttonStyles,
 });
 
-const CustomSandpack = ({ withPreview = false, children }) => {
+const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
   const [showCode, setShowCode] = useState(!withPreview);
   const { resolvedTheme } = useTheme();
   const [sandboxTheme, setSandboxTheme] = useState("");
@@ -209,9 +209,21 @@ const CustomSandpack = ({ withPreview = false, children }) => {
     setBodyBackground("$gray500");
   }, [resolvedTheme]);
 
-  const AppCode = `import { globalCss, styled, darkTheme, theme, globalStyles, darkModeGlobalStyles } from "@washingtonpost/wpds-ui-kit";
-import Example from "./Example";
-
+  const AppCode = `import {
+    globalCss,
+    styled,
+    darkTheme,
+    theme,
+    globalStyles,
+    darkModeGlobalStyles,
+    Icon
+  } from "@washingtonpost/wpds-ui-kit";
+  import Example from "./Example";
+  import Success from "@washingtonpost/wpds-assets/asset/success";
+  import Warning from "@washingtonpost/wpds-assets/asset/warning";
+  import Info from "@washingtonpost/wpds-assets/asset/info";
+  import Error from "@washingtonpost/wpds-assets/asset/error";
+  import warning from "@washingtonpost/wpds-assets/asset/warning";
   const Canvas = styled("div", {
     background: "$gray500",
     color: "$accessible",
@@ -226,7 +238,6 @@ import Example from "./Example";
     alignItems: "center",
     position: "relative"
   });
-
   const Guide = styled("div", {
     position: "absolute",
     padding:"$100",
@@ -253,7 +264,6 @@ import Example from "./Example";
       }
     }
   });
-
   const Rule = styled("div", {
     height: "2px",
     width: "100%",
@@ -274,7 +284,6 @@ import Example from "./Example";
       }
     }
   });
-
   const GetIcon=({variant})=>{
     switch(variant){
       case 'success':
@@ -289,16 +298,19 @@ import Example from "./Example";
         return null;
     }
   }
-
-export default function App() {
-  globalStyles();
-  darkModeGlobalStyles();
-  return (
-    <Canvas className={${sandboxTheme}}>
-      <Example />
-    </Canvas>
-  );
-}`;
+  export default function App() {
+    globalStyles();
+    darkModeGlobalStyles();
+    return (
+      <Canvas className={${sandboxTheme}}>
+          <Guide variant="${isGuide}">
+            <GetIcon variant="${isGuide}" />
+            <Rule variant="${isGuide}"></Rule>
+          </Guide>
+        <Example />
+      </Canvas>
+    );
+  }`;
 
   return (
     <>
