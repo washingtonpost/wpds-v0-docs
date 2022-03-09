@@ -237,18 +237,10 @@ export default function Example() {
 
 When checkbox are in a group the _parent_ checkbox will reflect the group status of the checkbox.
 
-<GuideContainer variant="success" css={{ padding: "$150" }}>
-  <InlineSVG
-    path="/img/components/checkbox/indeterminate.svg"
-    width={110}
-    height={81}
-  />
-</GuideContainer>
-
-#### Code example
-
 ```jsx
 // preview
+
+// guide-success
 
 import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
 import { useState, useEffect } from "react";
@@ -318,6 +310,46 @@ export default function Example() {
           <Checkbox checked={Check3} variant="primary" isOutline size="125" />
           <label>Option 2</label>
         </Box>
+      </Box>
+    </Box>
+  );
+}
+```
+
+### Click/Tap targets
+
+The click/tap target should include the label and control the checkbox.
+
+```jsx
+// preview
+
+// guide-success
+
+import { Checkbox, Box } from "@washingtonpost/wpds-ui-kit";
+import { useState, useEffect } from "react";
+export default function Example() {
+  const [Check1, setCheck1] = useState(false);
+
+  return (
+    <Box
+      css={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        gap: "$100",
+      }}
+    >
+      <Box
+        onClick={() => setCheck1(!Check1)}
+        css={{
+          cursor: "pointer",
+          display: "flex",
+          marginTop: "$100",
+          gap: "$025",
+        }}
+      >
+        <Checkbox checked={Check1} variant="primary" isOutline size="125" />
+        <label>Checkbox label</label>
       </Box>
     </Box>
   );

@@ -175,6 +175,7 @@ const components = {
   ),
   code: ({ children, ...props }) => {
     if (props.className === "language-jsx") {
+      const guideType = handleGuideType(children);
       return (
         <Box
           as="code"
@@ -185,7 +186,7 @@ const components = {
           }}
         >
           <Sandbox
-            isGuide={() => handleGuideType(children)}
+            isGuide={guideType}
             withPreview={children.includes("// preview")}
           >
             {
@@ -231,10 +232,10 @@ function handleGuideType(children) {
     return "warning";
   } else if (children.includes("// guide-information")) {
     return "information";
-  } else if (children.includes("//guide-error")) {
+  } else if (children.includes("// guide-error")) {
     return "error";
   } else {
-    return "default";
+    return "none";
   }
 }
 export default components;
