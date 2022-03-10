@@ -8,30 +8,36 @@ import {
   useSandpack,
 } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
-import { Box, styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import {
+  Box,
+  styled,
+  Icon,
+  theme,
+  css,
+  globalCss,
+} from "@washingtonpost/wpds-ui-kit";
 import packageJson from "../../../package.json";
 import packageJsonLock from "../../../package-lock.json";
 import InlineSVG from "./inlineSVG";
 
-const ClipboardIcon = (props) => (
-  <svg
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path d="M5 2.5H2.5V13.5H13.5V2.5H11" stroke={theme.colors.accessible} />
-    <rect x="6" y="2" width="4" height="2" fill={theme.colors.accessible} />
-    <rect x="5" y="6" width="3" height="1" fill={theme.colors.accessible} />
-    <rect x="5" y="8" width="6" height="1" fill={theme.colors.accessible} />
-    <rect x="5" y="10" width="5" height="1" fill={theme.colors.accessible} />
-    <circle
-      r="1"
-      transform="matrix(1 0 0 -1 8 2)"
-      fill={theme.colors.accessible}
-    />
-  </svg>
-);
+const sandboxGlobalcss = globalCss({
+  ".sp-wrapper": {
+    background: "$secondary !important",
+  },
+});
+
+const layout = css({
+  "&.sp-layout": {
+    borderColor: "transparent",
+    borderBottomLeftRadius: "0 !important",
+    borderBottomRightRadius: "0 !important",
+    background: "$gray500 !important",
+  },
+
+  ".sp-preview-container": {
+    background: theme.colors.secondary,
+  },
+});
 
 const CodeIcon = (props) => (
   <svg
@@ -341,7 +347,10 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
           },
         }}
       >
-        <SandpackLayout theme={sandboxEmbedTheme}>
+        <SandpackLayout
+          theme={sandboxEmbedTheme}
+          className={`sp-layout ${layout()} ${sandboxGlobalcss()}`}
+        >
           {withPreview && (
             <SandpackPreview
               showRefreshButton={false}
@@ -350,7 +359,10 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
           )}
         </SandpackLayout>
         {showCode && (
-          <SandpackLayout theme={sandboxEmbedTheme}>
+          <SandpackLayout
+            theme={sandboxEmbedTheme}
+            className={`sp-layout ${layout()}`}
+          >
             <SandpackCodeEditor
               wrapContent={true}
               showTabs={false}
