@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 /**
  * See documentation for full component api
@@ -18,7 +18,5 @@ export default function Example() {
 }
  */
 export default function Alertbanner() {
-  return (
-    <div>See documentation for full example</div>
-  )
+  return <div>See documentation for full example</div>;
 }

@@ -227,25 +227,25 @@ export default function Index({ recentPosts }) {
   );
 }
 
+const todaysDate = new Date();
+
 export async function getStaticProps() {
   const posts = await getAllDocs();
   const navigation = await getNavigation();
-  const todaysDate = new Date();
 
-  const filteredPosts = posts.filter((post, i) => {
-    return new Date(post.data.publishDate) <= todaysDate;
-  });
+  const recentPosts = posts
+    .filter((post, i) => {
+      return (
+        post.data.publishDate &&
+        new Date(post.data.publishDate) <= todaysDate &&
+        post.slug.includes("resources")
+      );
+    })
+    .sort((a, b) => {
+      return new Date(a.data.publishDate) - new Date(b.data.publishDate);
+    })
+    .reverse();
 
-  let recentPosts = [];
-  filteredPosts.map((post) => {
-    if (post.slug.includes("resources")) {
-      recentPosts.push(post);
-    }
-  });
-  recentPosts.sort((a, b) => {
-    return new Date(a.data.publishDate) - new Date(b.data.publishDate);
-  });
-  recentPosts.reverse();
   const threshold = 4;
   if (recentPosts.length > threshold) {
     const amountOver = recentPosts.length - threshold;

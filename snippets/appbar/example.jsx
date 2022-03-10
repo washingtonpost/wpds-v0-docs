@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 /**
  * See documentation for full component api
 ```jsx
@@ -16,7 +16,5 @@ export default function ExampleSnippet({children}) {
  */
 
 export default function AppBar() {
-  return (
-    <div>See documentation for full example</div>
-  )
+  return <div>See documentation for full example</div>;
 }

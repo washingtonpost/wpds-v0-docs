@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next-remote-watch ./mdx*",
+    "dev": "next-remote-watch ./docs/**/*",
     "build": "node scripts/sitemap.js;next build",
     "start": "next start",
     "lint": "next lint",
@@ -48,6 +48,10 @@
     "husky": "^7.0.0",
     "prettier": "^2.5.1",
     "react-docgen-typescript": "^2.2.2"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false
   },
   "repository": {
     "type": "git",

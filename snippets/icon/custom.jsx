@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 /**
  * See documentation for full component api
@@ -16,7 +16,5 @@ export default function ExampleSnippet() {
 ```
  */
 export default function Icon() {
-  return (
-    <div>See documentation for full example</div>
-  )
+  return <div>See documentation for full example</div>;
 }
