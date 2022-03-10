@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 /**
  * See documentation for full component api
 ```jsx
@@ -15,7 +15,5 @@ export default function Example({children}) {
 ```
  */
 export default function Container() {
-  return (
-    <div>See documentation for full example</div>
-  )
+  return <div>See documentation for full example</div>;
 }

@@ -43,7 +43,6 @@ export const getResources = async (input) => {
   const docs = posts.map((filePath) => {
     const source = fs.readFileSync(filePath);
     const slug = `/${filePath.replace(/\.mdx?$/, "").replace("docs/", "")}`;
-    console.log(slug);
     const { content, data } = matter(source);
     return {
       content,

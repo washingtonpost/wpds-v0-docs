@@ -1,8 +1,7 @@
 import React from "react";
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
-import { getCssText, reset, Box } from "@washingtonpost/wpds-ui-kit";
+import { getCssText, reset } from "@washingtonpost/wpds-ui-kit";
 import { Favicon } from "@washingtonpost/site-components/core/favicon";
-import { ToastContainer } from "react-toastify";
 
 /**
  * Get the css and reset the internal css representation.
