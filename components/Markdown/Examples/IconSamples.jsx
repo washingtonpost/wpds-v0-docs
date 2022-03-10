@@ -114,7 +114,6 @@ export default function Icons() {
   }, [ExampleToCopy]);
 
   function setVariables(example, Name) {
-    console.log(example);
     setName(Name);
     setExampleToCopy(example);
   }

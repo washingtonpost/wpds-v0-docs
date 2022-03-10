@@ -80,13 +80,18 @@ export default function Page({ docs, category }) {
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getResources(`resources/${params.category}`);
+  const todaysDate = new Date();
+  // exclude future posts using collection.publishDate
+  const publishedDocs = docs.filter(
+    (doc) => new Date(doc.data.publishDate) <= todaysDate
+  );
 
   const navigation = await getNavigation();
 
   return {
     props: {
       category: titleCase(params.category),
-      docs,
+      docs: publishedDocs,
       navigation,
     },
   };

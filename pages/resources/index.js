@@ -31,17 +31,7 @@ const CheveronForLink = styled(ChevronRight, {
   fill: theme.colors.accessible,
 });
 
-export default function Page({ docs, latestDocs, collections }) {
-  // create a "see all releases" toggle
-  const [showAll, setShowAll] = React.useState(false);
-  const [docsList, setDocsList] = React.useState(latestDocs);
-
-  const toggleShowAll = (event) => {
-    event.preventDefault();
-    setShowAll((prev) => !prev);
-    setDocsList(showAll ? latestDocs : docs);
-  };
-
+export default function Page({ collections }) {
   return (
     <>
       <NextSeo title={`WPDS - Resources`} />
@@ -134,22 +124,12 @@ export default function Page({ docs, latestDocs, collections }) {
           </Box>
         );
       })}
-
-      {/* {
-					// show all button when docs is greater than latestDocs}
-					docs.length > latestDocs.length && (
-						<button onClick={toggleShowAll}>
-							{showAll ? "See less" : "See all"} resources posts
-						</button>
-					)
-				} */}
     </>
   );
 }
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
-  const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
 
   // sort docs into collections by doc.data.kicker property
   const collections = [
@@ -157,13 +137,17 @@ export const getStaticProps = async ({ params }) => {
     ...docs.reduce((acc, doc) => {
       const kicker = doc.data.kicker;
       const collection = acc.find((collection) => collection.kicker === kicker);
-      if (collection) {
-        collection.docs.push(doc);
-      } else {
-        acc.push({
-          kicker,
-          docs: [doc],
-        });
+      const todaysDate = new Date();
+      // exclude future posts using collection.publishDate
+      if (new Date(doc.data.publishDate) <= todaysDate) {
+        if (collection) {
+          collection.docs.push(doc);
+        } else {
+          acc.push({
+            kicker,
+            docs: [doc],
+          });
+        }
       }
       return acc;
     }, []),
@@ -176,8 +160,6 @@ export const getStaticProps = async ({ params }) => {
 
   return {
     props: {
-      docs,
-      latestDocs,
       collections,
       navigation,
     },

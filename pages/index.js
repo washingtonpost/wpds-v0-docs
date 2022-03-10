@@ -1,10 +1,11 @@
 import React from "react";
-import Head from "next/head";
-import { getAllDocs, getNavigation } from "~/services";
 import { AlertBanner, Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
+
+import { getAllDocs, getNavigation } from "~/services";
 import Header from "~/components/Markdown/Components/headers";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import CustomLink from "~/components/Markdown/Components/link";
+
 export default function Index({ recentPosts }) {
   const Grid = styled("div", {
     display: "grid",
@@ -229,9 +230,14 @@ export default function Index({ recentPosts }) {
 export async function getStaticProps() {
   const posts = await getAllDocs();
   const navigation = await getNavigation();
+  const todaysDate = new Date();
+
+  const filteredPosts = posts.filter((post, i) => {
+    return new Date(post.data.publishDate) <= todaysDate;
+  });
 
   let recentPosts = [];
-  posts.map((post) => {
+  filteredPosts.map((post) => {
     if (post.slug.includes("resources")) {
       recentPosts.push(post);
     }
