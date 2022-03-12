@@ -41,6 +41,7 @@ const searchGlobalCss = globalCss({
 
 const SearchForm = () => {
   searchGlobalCss();
+
   return (
     <DocSearch
       appId="O19N5YY9R3"

@@ -6,6 +6,7 @@ import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import Close from "@washingtonpost/wpds-assets/asset/close";
 import { ThemeToggle } from "./ThemeToggle";
 import dynamic from "next/dynamic";
+import React from "react";
 
 const SearchForm = dynamic(() => import("./SearchForm"), { ssr: false });
 
@@ -117,6 +118,19 @@ export const NavigationBar = ({
 }) => {
   const router = useRouter();
 
+  const [hideFromSmallScreen, setHideFromSmallScreen] = React.useState(false);
+
+  // load on screen sizes greater than sm
+  React.useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+
+    if (media.matches) {
+      setHideFromSmallScreen(false);
+    } else {
+      setHideFromSmallScreen(true);
+    }
+  }, []);
+
   return (
     <>
       <Container>
@@ -149,9 +163,7 @@ export const NavigationBar = ({
         </Box>
       </Container>
       <List>
-        <ListItem>
-          <SearchForm />
-        </ListItem>
+        <ListItem>{hideFromSmallScreen && <SearchForm />}</ListItem>
         <ListItem>
           <Link href="/resources" passHref>
             <Anchor isCurrent={router.asPath.includes("/resources")}>
