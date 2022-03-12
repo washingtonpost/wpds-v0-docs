@@ -1,19 +1,13 @@
-import {
-  Box,
-  Icon,
-  styled,
-  Button,
-  theme,
-  keyframes,
-} from "@washingtonpost/wpds-ui-kit";
+import { Box, Icon, styled, Button } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import Close from "@washingtonpost/wpds-assets/asset/close";
 import { ThemeToggle } from "./ThemeToggle";
-import SearchForm from "./SearchForm";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const SearchForm = dynamic(() => import("./SearchForm"), { ssr: false });
 
 const List = styled("ul", {
   gridArea: "nav",

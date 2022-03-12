@@ -19,6 +19,7 @@ import {
 import packageJson from "../../../package.json";
 import packageJsonLock from "../../../package-lock.json";
 import InlineSVG from "./inlineSVG";
+import "@codesandbox/sandpack-react/dist/index.css";
 
 const sandboxGlobalcss = globalCss({
   ".sp-wrapper": {

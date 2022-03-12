@@ -10,7 +10,6 @@ import { SSRProvider } from "@react-aria/ssr";
 import { useRouter } from "next/router";
 import { GoogleTagManager } from "@washingtonpost/site-third-party-scripts";
 import SEO from "../next-seo.config";
-import "@codesandbox/sandpack-react/dist/index.css";
 import { Footer } from "~/components/Footer";
 import "../public/global.css";
 
