@@ -15,6 +15,7 @@ import {
   theme,
   css,
   globalCss,
+  Button,
 } from "@washingtonpost/wpds-ui-kit";
 import packageJson from "../../../package.json";
 import packageJsonLock from "../../../package-lock.json";
@@ -36,6 +37,10 @@ const layout = css({
   },
 
   ".sp-preview-container": {
+    background: theme.colors.secondary,
+  },
+
+  ".sp-preview-iframe": {
     background: theme.colors.secondary,
   },
 });
@@ -69,12 +74,14 @@ const CopyCodeButton = () => {
 
   return (
     <Button
+      icon="left"
+      isOutline
+      variant="primary"
       css={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        columnGap: "calc($050/2)",
+        border: 0,
+        fontWeight: "$light",
       }}
+      density="compact"
       onClick={() => {
         // copy code to clipboard
         navigator.clipboard.writeText(code);
@@ -189,14 +196,11 @@ const buttonStyles = {
   },
 };
 
-const Button = styled("button", {
-  ...buttonStyles,
-});
+// const Button = styled("button", {
+//   ...buttonStyles,
+// });
 
-const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, {
-  alignSelf: "flex-end",
-  ...buttonStyles,
-});
+const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, Button, {});
 
 const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
   const [showCode, setShowCode] = useState(!withPreview);
@@ -390,16 +394,17 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
           <Box>
             {withPreview && (
               <Button
-                css={{
-                  alignSelf: "flex-start",
-                  flexGrow: 1,
-                  display: "flex",
-                  alignItems: "center",
-                  columnGap: "calc($050/2)",
-                }}
+                icon="left"
+                isOutline
+                variant="primary"
                 onClick={() => {
                   setShowCode(!showCode);
                 }}
+                css={{
+                  border: 0,
+                  fontWeight: "$light",
+                }}
+                density="compact"
               >
                 <Icon>
                   <CodeIcon />
@@ -420,7 +425,19 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
               },
             }}
           >
-            <OpenInSandboxButton>Open in CodeSandbox</OpenInSandboxButton>
+            <OpenInSandboxButton
+              icon="none"
+              isOutline
+              variant="primary"
+              css={{
+                border: 0,
+                gap: 0, // there is a form descendent in the open in sandbox button
+                fontWeight: "$light",
+              }}
+              density="compact"
+            >
+              Open in CodeSandbox
+            </OpenInSandboxButton>
             <CopyCodeButton />
           </Box>
         </Box>

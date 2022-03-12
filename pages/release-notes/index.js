@@ -33,7 +33,7 @@ export default function Page({ docs, latestDocs }) {
         description="Release notes for WPDS, the Washington Post Design System."
       />
       <header>
-        <Header as="h1">Release Notes</Header>
+        <Header as="h1">Release notes</Header>
       </header>
 
       <article>

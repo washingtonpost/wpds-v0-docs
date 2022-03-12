@@ -170,7 +170,6 @@ const components = {
       as="pre"
       css={{
         overflowX: "auto",
-        backgroundColor: theme.colors.gray500,
       }}
     >
       {children}
@@ -183,8 +182,11 @@ const components = {
           as="code"
           css={{
             marginBottom: "$100",
+            minHeight: "$500",
             maxWidth: "100%",
             width: "100%",
+            display: "grid",
+            backgroundColor: theme.colors.gray500,
           }}
         >
           <Sandbox isGuide={isGuide} withPreview={withPreview}>
