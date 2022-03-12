@@ -10,7 +10,7 @@
     "alex": "npx alex docs/**/*.mdx --mdx"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "latest",
+    "@codesandbox/sandpack-react": "^0.14.8",
     "@docsearch/react": "^3.0.0",
     "@next/bundle-analyzer": "^12.1.0",
     "@radix-ui/react-accordion": "^0.1.5",
