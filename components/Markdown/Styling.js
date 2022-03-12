@@ -5,12 +5,15 @@
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled, theme, Box, Button } from "@washingtonpost/wpds-ui-kit";
-import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
-import Sandbox from "./Components/Sandbox";
-import { InputCheckbox } from "./Components/Checkbox";
 import { Grid, Cell } from "./Components/Grid";
+import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
+
+const Sandbox = dynamic(() => import("./Components/Sandbox"));
+const InputCheckbox = dynamic(() =>
+  import("./Components/Checkbox").then((mod) => mod.InputCheckbox)
+);
 
 const HR = styled("hr", {
   borderStyle: "none",
@@ -173,9 +176,8 @@ const components = {
       {children}
     </Box>
   ),
-  code: ({ children, ...props }) => {
+  code: ({ children, withPreview, isGuide = "none", ...props }) => {
     if (props.className === "language-jsx") {
-      const guideType = handleGuideType(children);
       return (
         <Box
           as="code"
@@ -185,16 +187,8 @@ const components = {
             width: "100%",
           }}
         >
-          <Sandbox
-            isGuide={guideType}
-            withPreview={children.includes("// preview")}
-          >
-            {
-              // remove the preview comment from the code and the line break
-              children.includes("// preview")
-                ? children.replace("// preview", "").replace("\n", "").trim()
-                : children.trim()
-            }
+          <Sandbox isGuide={isGuide} withPreview={withPreview}>
+            {children}
           </Sandbox>
         </Box>
       );
@@ -225,17 +219,4 @@ const components = {
   },
 };
 
-function handleGuideType(children) {
-  if (children.includes("// guide-success")) {
-    return "success";
-  } else if (children.includes("// guide-warning")) {
-    return "warning";
-  } else if (children.includes("// guide-information")) {
-    return "information";
-  } else if (children.includes("// guide-error")) {
-    return "error";
-  } else {
-    return "none";
-  }
-}
 export default components;
