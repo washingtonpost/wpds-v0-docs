@@ -132,8 +132,10 @@ const components = {
       {children}
     </Header>
   ),
+  small: Small,
   hr: HR,
   BR: BR,
+  br: BR,
   Button: Button,
   Alert: ({ position, variant, shadow, dismissable, css, children }) => (
     <AlertBanner.Root
