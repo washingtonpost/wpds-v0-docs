@@ -67,7 +67,7 @@ const sandboxGlobalcss = globalCss({
     borderColor: "transparent",
     borderBottomLeftRadius: "0 !important",
     borderBottomRightRadius: "0 !important",
-    background: "$gray500 !important",
+    background: "$secondary !important",
   },
 
   ".sp-code-editor": {
