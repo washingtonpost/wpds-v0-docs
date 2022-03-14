@@ -192,7 +192,7 @@ const components = {
           }}
         >
           <Sandbox isGuide={isGuide} withPreview={withPreview}>
-            {children}
+            {children.trim()}
           </Sandbox>
         </Box>
       );

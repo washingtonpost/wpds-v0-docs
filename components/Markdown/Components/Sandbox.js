@@ -70,6 +70,11 @@ const sandboxGlobalcss = globalCss({
     background: "$gray500 !important",
   },
 
+  ".sp-code-editor": {
+    py: "var(--sp-space-2)",
+    background: "$secondary",
+  },
+
   ".sp-wrapper": {
     "--sp-colors-fg-active": "#1f2933",
     "--sp-colors-fg-default": "#757678",
@@ -419,6 +424,9 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
         )}
         {showCode && (
           <SandpackCodeEditor
+            customStyle={{
+              border: "1px solid var(--wpds-colors-subtle)",
+            }}
             showTabs={false}
             showNavigator={false}
             showRunButton={false}
