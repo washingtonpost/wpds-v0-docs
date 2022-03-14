@@ -9,6 +9,7 @@ const Container = styled("div", {
 const List = styled("ul", {
   marginTop: "0",
   paddingLeft: "$050",
+  marginLeft: "$100",
 });
 const ListItem = styled("li", {
   cursor: "pointer",
