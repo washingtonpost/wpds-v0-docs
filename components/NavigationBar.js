@@ -1,19 +1,14 @@
-import {
-  Box,
-  Icon,
-  styled,
-  Button,
-  theme,
-  keyframes,
-} from "@washingtonpost/wpds-ui-kit";
+import { Box, Icon, styled, Button } from "@washingtonpost/wpds-ui-kit";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import Close from "@washingtonpost/wpds-assets/asset/close";
 import { ThemeToggle } from "./ThemeToggle";
-import SearchForm from "./SearchForm";
-import { useEffect } from "react";
+import dynamic from "next/dynamic";
+import React from "react";
+
+const SearchForm = dynamic(() => import("./SearchForm"), { ssr: false });
 
 const List = styled("ul", {
   gridArea: "nav",
@@ -123,6 +118,19 @@ export const NavigationBar = ({
 }) => {
   const router = useRouter();
 
+  const [hideFromSmallScreen, setHideFromSmallScreen] = React.useState(false);
+
+  // load on screen sizes greater than sm
+  React.useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+
+    if (media.matches) {
+      setHideFromSmallScreen(false);
+    } else {
+      setHideFromSmallScreen(true);
+    }
+  }, []);
+
   return (
     <>
       <Container>
@@ -155,9 +163,7 @@ export const NavigationBar = ({
         </Box>
       </Container>
       <List>
-        <ListItem>
-          <SearchForm />
-        </ListItem>
+        <ListItem>{hideFromSmallScreen && <SearchForm />}</ListItem>
         <ListItem>
           <Link href="/resources" passHref>
             <Anchor isCurrent={router.asPath.includes("/resources")}>

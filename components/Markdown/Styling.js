@@ -5,12 +5,15 @@
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled, theme, Box, Button } from "@washingtonpost/wpds-ui-kit";
-import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
-import Sandbox from "./Components/Sandbox";
-import { InputCheckbox } from "./Components/Checkbox";
 import { Grid, Cell } from "./Components/Grid";
+import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
+
+const Sandbox = dynamic(() => import("./Components/Sandbox"));
+const InputCheckbox = dynamic(() =>
+  import("./Components/Checkbox").then((mod) => mod.InputCheckbox)
+);
 
 const HR = styled("hr", {
   borderStyle: "none",
@@ -129,8 +132,10 @@ const components = {
       {children}
     </Header>
   ),
+  small: Small,
   hr: HR,
   BR: BR,
+  br: BR,
   Button: Button,
   Alert: ({ position, variant, shadow, dismissable, css, children }) => (
     <AlertBanner.Root
@@ -167,34 +172,27 @@ const components = {
       as="pre"
       css={{
         overflowX: "auto",
-        backgroundColor: theme.colors.gray500,
       }}
     >
       {children}
     </Box>
   ),
-  code: ({ children, ...props }) => {
+  code: ({ children, withPreview, isGuide = "none", ...props }) => {
     if (props.className === "language-jsx") {
-      const guideType = handleGuideType(children);
       return (
         <Box
           as="code"
           css={{
             marginBottom: "$100",
+            minHeight: "$500",
             maxWidth: "100%",
             width: "100%",
+            display: "grid",
+            backgroundColor: theme.colors.gray500,
           }}
         >
-          <Sandbox
-            isGuide={guideType}
-            withPreview={children.includes("// preview")}
-          >
-            {
-              // remove the preview comment from the code and the line break
-              children.includes("// preview")
-                ? children.replace("// preview", "").replace("\n", "").trim()
-                : children.trim()
-            }
+          <Sandbox isGuide={isGuide} withPreview={withPreview}>
+            {children.trim()}
           </Sandbox>
         </Box>
       );
@@ -223,19 +221,21 @@ const components = {
 
     return <input {...props} />;
   },
+  blockquote: ({ children }) => (
+    <Box
+      as="blockquote"
+      css={{
+        borderLeft: "$space$025 solid $alpha50",
+        padding: "$100",
+        paddingBottom: "$050",
+        marginBottom: "$100",
+        fontStyle: "italic",
+        background: "$alpha25",
+      }}
+    >
+      {children}
+    </Box>
+  ),
 };
 
-function handleGuideType(children) {
-  if (children.includes("// guide-success")) {
-    return "success";
-  } else if (children.includes("// guide-warning")) {
-    return "warning";
-  } else if (children.includes("// guide-information")) {
-    return "information";
-  } else if (children.includes("// guide-error")) {
-    return "error";
-  } else {
-    return "none";
-  }
-}
 export default components;

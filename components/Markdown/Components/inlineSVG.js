@@ -20,6 +20,8 @@ export default function inlineSVG({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+    fontSize: 0, // this is to prevent the font size from increasing the box size of the container
+    lineHeight: 0, // this is to prevent the font size from increasing the box size of the container
     variants: {
       cushion: {
         none: {

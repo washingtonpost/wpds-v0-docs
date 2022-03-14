@@ -15,7 +15,7 @@ export default function Page({ source, headings }) {
   return (
     <>
       <NextSeo
-        title={`WPDS - ${source.scope.title} | Release Notes`}
+        title={`WPDS - ${source.scope.title} | Release notes`}
         description={source.scope.description}
       />
       <>

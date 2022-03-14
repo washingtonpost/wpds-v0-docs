@@ -7,14 +7,13 @@ const Container = styled("div", {
   margin: "$200 0",
 });
 const List = styled("ul", {
-  listStyle: "",
   marginTop: "0",
   paddingLeft: "$050",
+  marginLeft: "$100",
 });
 const ListItem = styled("li", {
   cursor: "pointer",
   padding: "$025 0",
-  listStyle: "none",
   color: "$accessible",
 
   variants: {

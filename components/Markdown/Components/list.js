@@ -1,8 +1,13 @@
 const { styled, theme } = require("@washingtonpost/wpds-ui-kit");
 
 export const List = styled("ul", {
-  listStyle: "none",
   marginTop: "0",
+  marginLeft: "$100",
+
+  "&.contains-task-list": {
+    listStyle: "none",
+  },
+
   variants: {
     as: {
       ol: {
