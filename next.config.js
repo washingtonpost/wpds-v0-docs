@@ -43,5 +43,5 @@ module.exports = withBundleAnalyzer({
       ],
     };
   },
-  swcMinify: true,
+  swcMinify: false,
 });
