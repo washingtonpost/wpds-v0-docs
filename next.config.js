@@ -9,15 +9,15 @@ module.exports = withBundleAnalyzer({
       afterFiles: [
         {
           source: "/components",
-          destination: "/components/design",
+          destination: "/components/alert-banner",
         },
         {
           source: "/foundations",
           destination: "/foundations/principles",
         },
         {
-          source: "/",
-          destination: "/foundations",
+          source: "/support",
+          destination: "/resources/process/support",
         },
       ],
       fallback: [

@@ -15,6 +15,10 @@
     {
       "source": "/img/:slug*",
       "destination": "https://v0.wpds.docs.preview.now.washingtonpost.com/img/:slug*"
+    },
+    {
+      "source": "/support",
+      "destination": "/resources/process/support"
     }
   ]
 }
