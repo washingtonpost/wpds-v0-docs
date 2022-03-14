@@ -221,6 +221,21 @@ const components = {
 
     return <input {...props} />;
   },
+  blockquote: ({ children }) => (
+    <Box
+      as="blockquote"
+      css={{
+        borderLeft: "$space$025 solid $alpha50",
+        padding: "$100",
+        paddingBottom: "$050",
+        marginBottom: "$100",
+        fontStyle: "italic",
+        background: "$alpha25",
+      }}
+    >
+      {children}
+    </Box>
+  ),
 };
 
 export default components;
