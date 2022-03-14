@@ -12,7 +12,6 @@ import { GoogleTagManager } from "@washingtonpost/site-third-party-scripts";
 import SEO from "../next-seo.config";
 import { Footer } from "~/components/Footer";
 import "../public/global.css";
-import "@codesandbox/sandpack-react/dist/index.css";
 
 const pageview = (url) => {
   window.dataLayer = window.dataLayer || [];

@@ -13,7 +13,6 @@ import {
   styled,
   Icon,
   theme,
-  css,
   globalCss,
   Button,
 } from "@washingtonpost/wpds-ui-kit";
@@ -22,25 +21,111 @@ import packageJsonLock from "../../../package-lock.json";
 import InlineSVG from "./inlineSVG";
 
 const sandboxGlobalcss = globalCss({
-  ".sp-wrapper": {
-    background: "$secondary !important",
-  },
-});
+  ".sp-preview-iframe": {
+    background: theme.colors.gray500,
+    border: 0,
+    width: "100%",
+    minHeight: 300,
+    overflow: "hidden",
 
-const layout = css({
-  "&.sp-layout": {
+    // style the scrollbar
+    "&::-webkit-scrollbar": {
+      width: "0",
+      height: "0",
+      backgroundColor: "transparent",
+    },
+    // style the scrollbar handle
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
+      borderRadius: "0",
+    },
+    // style the scrollbar handle on hover
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  ".sp-preview-container": {
+    background: "theme.colors.secondary",
+    height: 300,
+    overflow: "hidden",
+    "&::-webkit-scrollbar": {
+      width: "0",
+      height: "0",
+      backgroundColor: "transparent",
+    },
+    // style the scrollbar handle
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
+      borderRadius: "0",
+    },
+    // style the scrollbar handle on hover
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  ".sp-layout": {
     borderColor: "transparent",
     borderBottomLeftRadius: "0 !important",
     borderBottomRightRadius: "0 !important",
     background: "$gray500 !important",
   },
 
-  ".sp-preview-container": {
-    background: theme.colors.secondary,
-  },
+  ".sp-wrapper": {
+    "--sp-colors-fg-active": "#1f2933",
+    "--sp-colors-fg-default": "#757678",
+    "--sp-colors-fg-inactive": "#e4e7eb",
+    "--sp-colors-bg-active": "#e4e7eb",
+    "--sp-colors-bg-default": "#f8f9fb",
+    "--sp-colors-bg-default-overlay": "rgba(248,249,251,0.8117647058823529)",
+    "--sp-colors-bg-input": "#fff",
+    "--sp-colors-accent": "#64d2ff",
+    "--sp-colors-bg-error": "#ffcdca",
+    "--sp-colors-fg-error": "#811e18",
+    "--sp-layout-height": "300px",
+    "--sp-font-size": "14px",
+    "--sp-font-body":
+      '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+    "--sp-font-mono":
+      '"Fira Mono","DejaVu Sans Mono",Menlo,Consolas,"Liberation Mono",Monaco,"Lucida Console",monospace',
+    "--sp-space-1": "4px",
+    "--sp-space-2": "8px",
+    "--sp-space-3": "12px",
+    "--sp-space-4": "16px",
+    "--sp-space-5": "20px",
+    "--sp-space-6": "24px",
+    "--sp-space-7": "28px",
+    "--sp-space-8": "32px",
+    "--sp-border-radius": "4px",
+    background: "$secondary",
+    overflow: "hidden",
+    fontSize: "var(--sp-font-size)",
+    fontFamily: "var(--sp-font-body)",
+    display: "block",
+    boxSizing: "border-box",
+    textRendering: "optimizeLegibility",
+    WebkitTapHighlightColor: "transparent",
+    WebkitFontSmoothing: "subpixel-antialiased",
 
-  ".sp-preview-iframe": {
-    background: theme.colors.secondary,
+    "&::-webkit-scrollbar": {
+      width: "0",
+      height: "0",
+      backgroundColor: "transparent",
+    },
+    // style the scrollbar handle
+    "&::-webkit-scrollbar-thumb": {
+      backgroundColor: "transparent",
+      borderRadius: "0",
+    },
+    // style the scrollbar handle on hover
+    "&::-webkit-scrollbar-thumb:hover": {
+      backgroundColor: "transparent",
+    },
+  },
+  ".sp-preview-actions": {
+    display: "none",
+  },
+  ".sp-overlay": {
+    display: "none",
   },
 });
 
@@ -173,35 +258,11 @@ const darkTheme = {
   },
 };
 
-const buttonStyles = {
-  cursor: "pointer",
-  fontFamily: "$meta",
-  fontSize: "$100",
-  fontWeight: "$light",
-  lineHeight: "$150",
-  color: "$accessible",
-  appearance: "none",
-  border: "none",
-  background: "transparent",
-  padding: "calc($050/2)",
-  borderRadius: "$012",
-  "&:active": {
-    background: "$subtle",
-  },
-  "@hover": {
-    "&:hover": {
-      background: "$subtle",
-    },
-  },
-};
-
-// const Button = styled("button", {
-//   ...buttonStyles,
-// });
-
 const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, Button, {});
 
 const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
+  sandboxGlobalcss();
+
   const [showCode, setShowCode] = useState(!withPreview);
   const { resolvedTheme } = useTheme();
   const [sandboxTheme, setSandboxTheme] = useState("");
@@ -323,125 +384,115 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
   }`;
 
   return (
-    <>
-      <SandpackProvider
-        template="react"
-        customSetup={{
-          dependencies: {
-            "@washingtonpost/wpds-assets":
-              packageJson.dependencies["@washingtonpost/wpds-assets"],
-            "@washingtonpost/wpds-ui-kit":
-              packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
-            ...packageJsonLock.packages[
-              "node_modules/@washingtonpost/wpds-ui-kit"
-            ].dependencies,
-            ...packageJsonLock.packages[
-              "node_modules/@washingtonpost/wpds-theme"
-            ].peerDependencies,
-            "@radix-ui/react-checkbox":
-              packageJson.dependencies["@radix-ui/react-checkbox"],
-            "@stitches/react": packageJson.dependencies["@stitches/react"],
+    <SandpackProvider
+      template="react"
+      customSetup={{
+        dependencies: {
+          "@washingtonpost/wpds-assets":
+            packageJson.dependencies["@washingtonpost/wpds-assets"],
+          "@washingtonpost/wpds-ui-kit":
+            packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
+          ...packageJsonLock.packages[
+            "node_modules/@washingtonpost/wpds-ui-kit"
+          ].dependencies,
+          ...packageJsonLock.packages["node_modules/@washingtonpost/wpds-theme"]
+            .peerDependencies,
+          "@radix-ui/react-checkbox":
+            packageJson.dependencies["@radix-ui/react-checkbox"],
+          "@stitches/react": packageJson.dependencies["@stitches/react"],
+        },
+        files: {
+          "/App.js": AppCode,
+          "/Example.js": {
+            code: children,
+            active: true,
           },
-          files: {
-            "/App.js": AppCode,
-            "/Example.js": {
-              code: children,
-              active: true,
-            },
+        },
+      }}
+    >
+      <SandpackLayout theme={sandboxEmbedTheme}>
+        {withPreview && (
+          <SandpackPreview
+            showRefreshButton={false}
+            showOpenInCodeSandbox={false}
+          />
+        )}
+        {showCode && (
+          <SandpackCodeEditor
+            showTabs={false}
+            showNavigator={false}
+            showRunButton={false}
+            initMode="user-visible"
+          />
+        )}
+      </SandpackLayout>
+      <Box
+        as="nav"
+        css={{
+          border: "1px solid $subtle",
+          flexGrow: 0,
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          gap: "$075",
+          padding: "$050 $075 $050 $100",
+          background: "$gray500",
+          "@sm": {
+            display: withPreview ? "flex" : "none",
           },
         }}
       >
-        <SandpackLayout
-          theme={sandboxEmbedTheme}
-          className={`sp-layout ${layout()} ${sandboxGlobalcss()}`}
-        >
+        <Box>
           {withPreview && (
-            <SandpackPreview
-              showRefreshButton={false}
-              showOpenInCodeSandbox={false}
-            />
-          )}
-        </SandpackLayout>
-        {showCode && (
-          <SandpackLayout
-            theme={sandboxEmbedTheme}
-            className={`sp-layout ${layout()}`}
-          >
-            <SandpackCodeEditor
-              wrapContent={true}
-              showTabs={false}
-              showNavigator={false}
-              showRunButton={false}
-              initMode="user-visible"
-              showLineNumbers
-            />
-          </SandpackLayout>
-        )}
-        <Box
-          as="nav"
-          css={{
-            border: "1px solid $subtle",
-            flexGrow: 0,
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            gap: "$075",
-            padding: "$050 $075 $050 $100",
-            background: "$gray500",
-          }}
-        >
-          <Box>
-            {withPreview && (
-              <Button
-                icon="left"
-                isOutline
-                variant="primary"
-                onClick={() => {
-                  setShowCode(!showCode);
-                }}
-                css={{
-                  border: 0,
-                  fontWeight: "$light",
-                }}
-                density="compact"
-              >
-                <Icon>
-                  <CodeIcon />
-                </Icon>
-                {showCode ? "Hide" : "Show"} code
-              </Button>
-            )}
-          </Box>
-          <Box
-            css={{
-              alignSelf: "flex-end",
-              flex: "1 1 auto",
-              display: "flex",
-              justifyContent: "flex-end",
-              gap: "$100",
-              "@sm": {
-                display: "none",
-              },
-            }}
-          >
-            <OpenInSandboxButton
-              icon="none"
+            <Button
+              icon="left"
               isOutline
               variant="primary"
+              onClick={() => {
+                setShowCode(!showCode);
+              }}
               css={{
                 border: 0,
-                gap: 0, // there is a form descendent in the open in sandbox button
                 fontWeight: "$light",
               }}
               density="compact"
             >
-              Open in CodeSandbox
-            </OpenInSandboxButton>
-            <CopyCodeButton />
-          </Box>
+              <Icon>
+                <CodeIcon />
+              </Icon>
+              {showCode ? "Hide" : "Show"} code
+            </Button>
+          )}
         </Box>
-      </SandpackProvider>
-    </>
+        <Box
+          css={{
+            alignSelf: "flex-end",
+            flex: "1 1 auto",
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: "$100",
+            "@sm": {
+              display: "none",
+            },
+          }}
+        >
+          <OpenInSandboxButton
+            icon="none"
+            isOutline
+            variant="primary"
+            css={{
+              border: 0,
+              gap: 0, // there is a form descendent in the open in sandbox button
+              fontWeight: "$light",
+            }}
+            density="compact"
+          >
+            Open in CodeSandbox
+          </OpenInSandboxButton>
+          <CopyCodeButton />
+        </Box>
+      </Box>
+    </SandpackProvider>
   );
 };
 

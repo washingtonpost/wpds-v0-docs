@@ -147,4 +147,10 @@
   <url>
     <loc>https://build.washingtonpost.com/resources/process/support</loc>
   </url>
+
+  <url>
+    <loc
+      >https://build.washingtonpost.com/resources/process/supported-platforms</loc
+    >
+  </url>
 </urlset>
