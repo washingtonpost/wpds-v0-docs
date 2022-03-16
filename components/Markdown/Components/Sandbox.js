@@ -265,7 +265,7 @@ const darkTheme = {
 
 const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, Button, {});
 
-const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
+const CustomSandpack = ({ isGuide, withPreview = false, hideNavBar = false, children }) => {
   sandboxGlobalcss();
 
   const [showCode, setShowCode] = useState(!withPreview);
@@ -440,11 +440,11 @@ const CustomSandpack = ({ isGuide, withPreview = false, children }) => {
           border: "1px solid $subtle",
           flexGrow: 0,
           width: "100%",
-          display: "flex",
           flexDirection: "row",
           gap: "$075",
           padding: "$050 $075 $050 $100",
           background: "$gray500",
+          display: Boolean(hideNavBar) ? "none" : "flex",
           "@sm": {
             display: withPreview ? "flex" : "none",
           },
