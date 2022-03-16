@@ -177,7 +177,7 @@ const components = {
       {children}
     </Box>
   ),
-  code: ({ children, withPreview, isGuide = "none", ...props }) => {
+  code: ({ children, withPreview, isGuide = "none", hideNavBar, ...props }) => {
     if (props.className === "language-jsx") {
       return (
         <Box
@@ -191,7 +191,7 @@ const components = {
             backgroundColor: theme.colors.gray500,
           }}
         >
-          <Sandbox isGuide={isGuide} withPreview={withPreview}>
+          <Sandbox isGuide={isGuide} withPreview={withPreview} hideNavBar={hideNavBar}>
             {children.trim()}
           </Sandbox>
         </Box>

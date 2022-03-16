@@ -16,15 +16,6 @@ const Card = styled("article", {
 });
 
 export default function Page({ docs, latestDocs }) {
-  // create a "see all releases" toggle
-  const [showAll, setShowAll] = React.useState(false);
-  const [docsList, setDocsList] = React.useState(latestDocs);
-
-  const toggleShowAll = (event) => {
-    event.preventDefault();
-    setShowAll((prev) => !prev);
-    setDocsList(showAll ? latestDocs : docs);
-  };
 
   return (
     <>
@@ -37,7 +28,7 @@ export default function Page({ docs, latestDocs }) {
       </header>
 
       <article>
-        {docsList.map((doc) => (
+        {docs.map((doc) => (
           <Card key={doc.slug}>
             <Link href={doc.slug}>
               <Header
@@ -53,31 +44,23 @@ export default function Page({ docs, latestDocs }) {
           </Card>
         ))}
 
-        {
-          // show all button when docs is greater than latestDocs}
-          docs.length > latestDocs.length && (
-            <button onClick={toggleShowAll}>
-              {showAll ? "See less" : "See all"} releases
-            </button>
-          )
-        }
+
       </article>
     </>
   );
 }
 
 export const getStaticProps = async ({ params }) => {
-  const currentDate = new Date();
   const docs = await getDocsListBySection("release-notes");
-
-  const latestDocs = docs.length > 8 ? docs.slice(0, 8) : docs;
+  const sortedByLatestRelease = docs.sort((a, b) => {
+    return new Date(b.data.publishDate) - new Date(a.data.publishDate);
+  });
 
   const navigation = await getNavigation();
 
   return {
     props: {
-      latestDocs,
-      docs,
+      docs: sortedByLatestRelease,
       navigation,
     },
   };
