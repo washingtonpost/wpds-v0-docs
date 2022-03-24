@@ -191,7 +191,11 @@ const components = {
             backgroundColor: theme.colors.gray500,
           }}
         >
-          <Sandbox isGuide={isGuide} withPreview={withPreview} hideNavBar={hideNavBar}>
+          <Sandbox
+            isGuide={isGuide}
+            withPreview={withPreview}
+            hideNavBar={hideNavBar}
+          >
             {children.trim()}
           </Sandbox>
         </Box>

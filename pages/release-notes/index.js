@@ -16,7 +16,6 @@ const Card = styled("article", {
 });
 
 export default function Page({ docs, latestDocs }) {
-
   return (
     <>
       <NextSeo
@@ -43,8 +42,6 @@ export default function Page({ docs, latestDocs }) {
             <P>{doc.data.description}</P>
           </Card>
         ))}
-
-
       </article>
     </>
   );
