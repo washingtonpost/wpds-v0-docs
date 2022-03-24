@@ -179,7 +179,7 @@ export default function Icons() {
         <Label>Search</Label>
         <Button
           as="div"
-          css={{ border: "none", borderRadius: "0" }}
+          css={{ border: "none", borderRadius: "0", alignSelf: "center" }}
           variant={"primary"}
           isOutline
         >
