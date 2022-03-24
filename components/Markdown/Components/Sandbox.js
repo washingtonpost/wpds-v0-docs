@@ -265,7 +265,12 @@ const darkTheme = {
 
 const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, Button, {});
 
-const CustomSandpack = ({ isGuide, withPreview = false, hideNavBar = false, children }) => {
+const CustomSandpack = ({
+  isGuide,
+  withPreview = false,
+  hideNavBar = false,
+  children,
+}) => {
   sandboxGlobalcss();
 
   const [showCode, setShowCode] = useState(!withPreview);

@@ -143,7 +143,13 @@ export default function Icons() {
             as="button"
             onClick={() => setVariables(importExample, componentName)}
             css={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
               cursor: "pointer",
+              gap: "$075",
               border: "none",
               "&:hover": { opacity: 0.5 },
               backgroundColor: theme.colors.gray500,
@@ -154,6 +160,7 @@ export default function Icons() {
             <Icon size="$150">
               <Sample />
             </Icon>
+            <Box as="span">{componentName}</Box>
           </Box>
         </MDXStyling.Cell>
       );
@@ -181,7 +188,7 @@ export default function Icons() {
           </Icon>
         </Button>
       </InputHolder>
-      <Grid>
+      <Grid maxSize={"150px"}>
         <GetIcons />
       </Grid>
     </>
