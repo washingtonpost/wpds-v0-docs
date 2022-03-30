@@ -240,6 +240,25 @@ const components = {
       {children}
     </Box>
   ),
+  YoutubeEmbed: ({ src }) => {
+    return (
+      <Box
+        as="iframe"
+        css={{
+          aspectRatio: "16 / 9",
+          width: "100%",
+          borderRadius: "$025",
+          border: "$100 solid $subtle",
+          background: "transparent",
+        }}
+        src={src}
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      />
+    );
+  },
 };
 
 export default components;
