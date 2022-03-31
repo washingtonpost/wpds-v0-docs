@@ -109,6 +109,10 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/release-notes/v1.0.2</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/resources</loc>
   </url>
 
@@ -155,6 +159,18 @@
   <url>
     <loc
       >https://build.washingtonpost.com/resources/process/supported-platforms</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://build.washingtonpost.com/resources/workshops/design_3-16-22</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://build.washingtonpost.com/resources/workshops/developer_3-17-22</loc
     >
   </url>
 </urlset>
