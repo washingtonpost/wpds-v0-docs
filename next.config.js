@@ -22,6 +22,16 @@ module.exports = withBundleAnalyzer({
       ],
       fallback: [
         {
+          source: "/tachyons",
+          destination:
+            "https://tachyons.preview.now.washingtonpost.com/tachyons",
+        },
+        {
+          source: "/tachyons/:slug*",
+          destination:
+            "https://tachyons.preview.now.washingtonpost.com/tachyons/:slug*",
+        },
+        {
           source: "/v0",
           destination: "https://v0.wpds.docs.preview.now.washingtonpost.com",
         },
