@@ -49,13 +49,14 @@ export default function Index({ recentPosts }) {
         >
           <Header as="h1">Welcome</Header>
         </Box>
-        <Box 
+        <Box
           css={{
             display: "flex",
-            alignItems: "flex-end" ,
+            alignItems: "flex-end",
             "@md": { display: "none" },
             "@sm": { display: "none" },
-          }}>
+          }}
+        >
           <Header as="h3">Latest resources</Header>
         </Box>
         <HeroBlock>
