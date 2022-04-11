@@ -170,7 +170,19 @@
 
   <url>
     <loc
+      >https://build.washingtonpost.com/resources/workshops/design_4-6-22</loc
+    >
+  </url>
+
+  <url>
+    <loc
       >https://build.washingtonpost.com/resources/workshops/developer_3-17-22</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://build.washingtonpost.com/resources/workshops/developer_4-7-22</loc
     >
   </url>
 </urlset>
