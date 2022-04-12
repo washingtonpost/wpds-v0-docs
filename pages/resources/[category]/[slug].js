@@ -10,6 +10,7 @@ import {
 } from "~/services";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
+import { Box } from "@washingtonpost/wpds-ui-kit";
 
 const SECTION = "resources";
 
@@ -34,6 +35,18 @@ export default function Page({ current, source, headings }) {
           </Breadcrumbs.Item>
         </Breadcrumbs.Root>
         <header>
+          <Box
+            as="time"
+            css={{
+              marginTop: "$200",
+              display: "flex",
+              fontSize: "$075",
+              color: "$accessible",
+            }}
+            dateTime={source.scope.publishDate}
+          >
+            {source.scope.publishDate}
+          </Box>
           <Header as="h1">{source.scope.title}</Header>
           <Header
             as="h2"

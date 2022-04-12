@@ -3,7 +3,12 @@ import React from "react";
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
 import "react-toastify/dist/ReactToastify.css";
-import { globalStyles, darkTheme, Box } from "@washingtonpost/wpds-ui-kit";
+import {
+  globalStyles,
+  darkTheme,
+  Box,
+  globalCss,
+} from "@washingtonpost/wpds-ui-kit";
 import { darkModeStyles } from "~/components/DarkModeStyles";
 import { PageLayout } from "~/components/Layout";
 import { SSRProvider } from "@react-aria/ssr";
@@ -21,8 +26,15 @@ const pageview = (url) => {
   });
 };
 
+const globalTextStyles = globalCss({
+  body: {
+    color: "$accessible",
+  },
+});
+
 function App({ Component, pageProps }) {
   globalStyles();
+  globalTextStyles();
   darkModeStyles();
 
   const getLayout = Component.getLayout;
