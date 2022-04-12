@@ -28,7 +28,7 @@ const pageview = (url) => {
 
 const globalTextStyles = globalCss({
   body: {
-    color: "$primary",
+    color: "$accessible",
   },
 });
 
