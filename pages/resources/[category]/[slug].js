@@ -35,6 +35,18 @@ export default function Page({ current, source, headings }) {
           </Breadcrumbs.Item>
         </Breadcrumbs.Root>
         <header>
+          <Box
+            as="time"
+            css={{
+              marginTop: "$200",
+              display: "flex",
+              fontSize: "$075",
+              color: "$accessible",
+            }}
+            dateTime={source.scope.publishDate}
+          >
+            {source.scope.publishDate}
+          </Box>
           <Header as="h1">{source.scope.title}</Header>
           <Header
             as="h2"
@@ -45,19 +57,6 @@ export default function Page({ current, source, headings }) {
             }}
           >
             {source.scope.description}
-            <Box
-              as="time"
-              css={{
-                marginTop: '$050',
-                display: "flex",
-                fontSize: "$075",
-                color: "$accessible",
-                fontStyle: "italic"
-              }}
-              dateTime={source.scope.publishDate}
-            >
-              {source.scope.publishDate}
-            </Box>
           </Header>
         </header>
         <TableofContents current={current} headings={headings} />
