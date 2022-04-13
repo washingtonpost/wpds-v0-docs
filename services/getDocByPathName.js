@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
+import { remarkMdxCodeMeta } from "remark-mdx-code-meta";
+import remarkGfm from "remark-gfm";
 
 export async function getHeadings(input) {
   const fileData = fs.readFileSync(`docs/${input}.mdx`);
@@ -42,6 +44,9 @@ export const getDocByPathName = async (input) => {
 
   const source = await serialize(content, {
     scope: data,
+    mdxOptions: {
+      remarkPlugins: [remarkGfm, remarkMdxCodeMeta],
+    },
   });
 
   return source;
@@ -57,6 +62,9 @@ export const getResource = async (input) => {
 
   const source = await serialize(content, {
     scope: data,
+    mdxOptions: {
+      remarkPlugins: [remarkGfm, remarkMdxCodeMeta],
+    },
   });
 
   return source;
