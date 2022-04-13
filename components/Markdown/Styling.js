@@ -2,6 +2,7 @@
  * FOR STYLING. AS WELL COMMONLY USED COMPONENTS. FOR UNIQUE COMPONENTS
  * NEEDED IMPORT THEM VIA THE COMPONENTS PASSED ON THE SPECIFIC [SLUG].JS FILE
  */
+import React from "react";
 import Header from "./Components/headers";
 import CustomLink from "./Components/link";
 import { styled, theme, Box, Button } from "@washingtonpost/wpds-ui-kit";
@@ -167,17 +168,7 @@ const components = {
   InlineSVG: dynamic(() => import("./Components/inlineSVG")),
   InlineImage: dynamic(() => import("./Components/InlineImage")),
   Box: Box,
-  pre: ({ children }) => (
-    <Box
-      as="pre"
-      css={{
-        overflowX: "auto",
-      }}
-    >
-      {children}
-    </Box>
-  ),
-  code: ({ children, withPreview, isGuide = "none", hideNavBar, ...props }) => {
+  code: (props) => {
     if (props.className === "language-jsx") {
       return (
         <Box
@@ -192,11 +183,11 @@ const components = {
           }}
         >
           <Sandbox
-            isGuide={isGuide}
-            withPreview={withPreview}
-            hideNavBar={hideNavBar}
+            isGuide={props.isGuide}
+            withPreview={props.withPreview}
+            hideNavBar={props.hideNavBar}
           >
-            {children.trim()}
+            {props.children.trim()}
           </Sandbox>
         </Box>
       );
@@ -206,6 +197,18 @@ const components = {
       <Box
         as="code"
         css={{
+          overflowX: "auto",
+        }}
+      >
+        {props.children}
+      </Box>
+    );
+  },
+  pre: ({ children, withPreview, isGuide = "none", hideNavBar, ...props }) => {
+    return (
+      <Box
+        as="pre"
+        css={{
           color: theme.colors.accessible,
           background: "$subtle",
           fontSize: "$100",
@@ -214,7 +217,11 @@ const components = {
           display: "block",
         }}
       >
-        {children}
+        {React.cloneElement(children, {
+          withPreview,
+          isGuide,
+          hideNavBar,
+        })}
       </Box>
     );
   },
