@@ -44,13 +44,16 @@ export const Header = styled("h1", {
   },
 });
 
-export default function headers({ css, children, as }) {
+export default function headers({ css, children, as, href }) {
   if (!children) {
     return null;
   }
 
   return (
-    <Link id={`${encodeURI(children)}`} href={`#${decodeURI(children)}`}>
+    <Link
+      id={`${encodeURI(children)}`}
+      href={href ? href : `#${decodeURI(children)}`}
+    >
       <Header css={css} as={as}>
         {children}
       </Header>

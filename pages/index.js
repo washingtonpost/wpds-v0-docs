@@ -57,7 +57,9 @@ export default function Index({ recentPosts }) {
             "@sm": { display: "none" },
           }}
         >
-          <Header as="h3">Latest resources</Header>
+          <Header href="/resources" as="h3">
+            Latest resources
+          </Header>
         </Box>
         <HeroBlock>
           <P css={{ fontSize: "$125" }}>
