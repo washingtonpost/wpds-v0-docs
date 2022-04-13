@@ -11,6 +11,7 @@ export default function Table({
   suffix,
   nestedGroup,
   useTokenData,
+  calculateValue,
 }) {
   const TokenData = () => {
     let _tokenArray = [];
@@ -18,8 +19,18 @@ export default function Table({
     for (let _token in _Tokens) {
       let _value;
       let _description;
+      let _calculatedValue;
       if (_Tokens[_token].hasOwnProperty("value")) {
         _value = _Tokens[_token].value;
+        if (calculateValue) {
+          let _rawValue;
+          if (_value[0] == "{") {
+            _value = _value.substring(1, _value.length - 1);
+            _value = lookupValue(_value);
+          }
+          _rawValue = _value.split("rem");
+          _calculatedValue = `${_rawValue[0] * 16}px`;
+        }
       }
       if (_Tokens[_token].hasOwnProperty("description")) {
         _description = _Tokens[_token].description;
@@ -28,6 +39,7 @@ export default function Table({
         _tokenArray.push({
           name: _token,
           value: _value,
+          calculatedValue: _calculatedValue,
           description: _description,
         });
       }
@@ -44,6 +56,7 @@ export default function Table({
                 {suffix && suffix}
               </td>
               <td>{item.value}</td>
+              {item.calculatedValue && <td>{item.calculatedValue}</td>}
               <td>{item.description ? item.description : "--"}</td>
             </tr>
           );
@@ -52,6 +65,25 @@ export default function Table({
     );
   };
 
+  /** Looks up the value of a token alias path depth supported up to 3 token[1][2][3]*/
+  function lookupValue(lookUpToken) {
+    const path = lookUpToken.split(".");
+    let value;
+    switch (path.length) {
+      case 1:
+        value = Tokens[path[0]].value;
+        break;
+      case 2:
+        value = Tokens[path[0]][path[1]].value;
+        break;
+      case 3:
+        value = Tokens[path[0]][path[1]][path[2]].value;
+        break;
+      default:
+        break;
+    }
+    return value;
+  }
   function compare(a, b) {
     if (a.name < b.name) {
       return -1;
