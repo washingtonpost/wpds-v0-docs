@@ -1,4 +1,4 @@
-# WPDS Documentation site
+# v0 WPDS Documentation site
 
 The site is powered by [docusarus](https://docusaurus.io/) and modified to meet our needs. The site is composed of pages, docs, and blogs. Pages are strictly written in HTML these include stand alone pages like our landing pages. Docs adn blogs are written in markdown and include html elements.
 
