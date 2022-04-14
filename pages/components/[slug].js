@@ -6,10 +6,12 @@ import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
+  formatBytes,
   getAllPathsBySection,
   getDocByPathName,
   getHeadings,
   getNavigation,
+  getPackageData,
   getPropsTable,
 } from "~/services";
 
@@ -18,6 +20,7 @@ import { default as EmbedControls } from "~/components/Markdown/Components/Embed
 import { default as EmbedStory } from "~/components/Markdown/Components/EmbedStory";
 import { default as CustomSandpack } from "~/components/Markdown/Components/Sandbox";
 import { PropsTable } from "~/components/PropsTable";
+import Image from "next/image";
 
 const components = {
   ...MDXStyling,
@@ -36,7 +39,13 @@ const Article = styled("article", {
   margin: "auto",
 });
 
-export default function Page({ current, source, headings, propsTable }) {
+export default function Page({
+  current,
+  source,
+  headings,
+  propsTable,
+  bundleSize,
+}) {
   return (
     <>
       <NextSeo
@@ -87,6 +96,17 @@ export default function Page({ current, source, headings, propsTable }) {
           <P className="description">{source.scope.description}</P>
         )}
 
+        <P
+          css={{
+            marginTop: "$075",
+            fontStyle: "italic",
+            color: "$accessible",
+            fontSize: "$087",
+          }}
+        >
+          size: {bundleSize}
+        </P>  
+
         <TableofContents
           css={{ opacity: source.scope.status == "Coming soon" ? 0.5 : 1 }}
           current={current}
@@ -116,6 +136,8 @@ export const getStaticProps = async ({ params }) => {
   const headings = await getHeadings(`${thisSection}/${params.slug}`);
   const navigation = await getNavigation();
   const propsTable = await getPropsTable(params.slug);
+  const bundleSize = await getPackageData(params.slug, "latest");
+  const formattedBytes = formatBytes(bundleSize?.size);
 
   return {
     props: {
@@ -124,6 +146,7 @@ export const getStaticProps = async ({ params }) => {
       navigation,
       source,
       propsTable,
+      bundleSize: formattedBytes,
     },
   };
 };
