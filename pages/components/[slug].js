@@ -102,7 +102,7 @@ export default function Page({
           css={{
             marginBlockStart: "$100",
             display: "flex",
-            rowGap: "$075",
+            rowGap: "$100",
             flexDirection: "column",
             fontFamily: "$meta",
             fontSize: "$075",
