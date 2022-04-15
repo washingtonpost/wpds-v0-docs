@@ -57,7 +57,7 @@ const ClipboardIcon = (props) => (
     />
   </svg>
 );
-const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
+const CopyCodeButton = ({ as, css, children, textToCopy, hideIcon }) => {
   const [copied, setCopied] = useState(false);
   const [ReadyToCopy, setReadyToCopy] = useState(false);
   function handleCopy() {
@@ -76,10 +76,10 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
   }, [copied]);
   return (
     <Button
+      as={as}
       onMouseEnter={() => setReadyToCopy(true)}
       onMouseLeave={() => setReadyToCopy(false)}
       css={{
-        ...css,
         padding: "$050",
         maxWidth: "100%",
         overflow: "hidden",
@@ -87,6 +87,7 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
         display: "flex",
         color: theme.colors.accessible,
         fontFamily: "monospace",
+        ...css,
       }}
       onClick={handleCopy}
       aria-label="Copy code to clipboard"
@@ -108,4 +109,5 @@ const CopyCodeButton = ({ css, children, textToCopy, hideIcon }) => {
   );
 };
 
+export { CopyCodeButton };
 export default CopyCodeButton;
