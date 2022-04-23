@@ -23,7 +23,6 @@ const Scrim = styled("div", {
   left: 0,
   right: 0,
   bottom: 0,
-  background: "$alpha25",
   cursor: "pointer",
 });
 
@@ -53,7 +52,7 @@ const YoutubeEmbed = ({ videoid }) => {
         width="748"
         height="421"
         layout="responsive"
-        loading="lazy"
+        priority
       />
 
       <Scrim
@@ -65,17 +64,16 @@ const YoutubeEmbed = ({ videoid }) => {
         onClick={() => {
           setPlay(true);
         }}
-        icon="center"
-        variant="primary"
-        density="compact"
+        icon="right"
+        variant="secondary"
         css={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          top: "5%",
+          left: "5%",
         }}
       >
-        <Icon size="200" label="Play video">
+        Play video
+        <Icon label="">
           <Play />
         </Icon>
       </Button>
