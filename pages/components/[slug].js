@@ -15,20 +15,11 @@ import {
   getPropsTable,
 } from "~/services";
 
-import { default as EmbedDocsPage } from "~/components/Markdown/Components/EmbedDocsPage";
-import { default as EmbedControls } from "~/components/Markdown/Components/EmbedControls";
-import { default as EmbedStory } from "~/components/Markdown/Components/EmbedStory";
-import { default as CustomSandpack } from "~/components/Markdown/Components/Sandbox";
 import { PropsTable } from "~/components/PropsTable";
-import Image from "next/image";
 import CopyCodeButton from "~/components/Markdown/Components/CopyToClipBoard";
 
 const components = {
   ...MDXStyling,
-  EmbedStory,
-  EmbedControls,
-  EmbedDocsPage,
-  CustomSandpack,
   PropsTable,
 };
 
