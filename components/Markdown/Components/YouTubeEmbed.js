@@ -79,6 +79,11 @@ const YoutubeEmbed = ({ videoid }) => {
           left: "5%",
           background: theme.colors["gray20-static"],
           color: theme.colors["gray600-static"],
+          "@hover": {
+            "&:hover": {
+              background: theme.colors["gray60-static"],
+            },
+          },
         }}
       >
         Play video
