@@ -1,0 +1,157 @@
+---
+title: Input Text
+description: A text field is an input that allows a user to write or edit text.
+component: InputText
+status: "Draft"
+---
+
+# Anatomy
+
+<Container caption="Note: Image is not  to scale" css={{ padding: "$150" }}>
+  <InlineSVG
+    path="/img/components/input-text/anatomy.svg"
+    width={555}
+    height={196}
+  />
+</Container>
+
+1. Input value
+2. Label/Placeholder
+3. Border
+4. Button Icon
+5. Contextual Icon (non-actionable)
+6. Optional Helper text
+
+---
+
+## Options
+
+### Icon
+
+Icon has two placements `left` or `right`.
+
+```jsx withPreview
+import { InputText, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Search from "@washingtonpost/wpds-assets/asset/search";
+import Email from "@washingtonpost/wpds-assets/asset/email";
+
+export default function Example() {
+  return (
+    <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
+      <InputText icon="right" label="Search">
+        <Icon label="">
+          <Search />
+        </Icon>
+      </InputText>
+      <InputText icon="left" label="Email">
+        <Icon label="">
+          <Email />
+        </Icon>
+      </InputText>
+      <InputText icon="right" label="Label"></InputText>
+    </Box>
+  );
+}
+```
+
+### Types
+
+Text input supports the following text inputs: `text` `search` `url` `tel` `email`.
+
+```jsx withPreview
+import { InputText, Icon, Box } from "@washingtonpost/wpds-ui-kit";
+import Search from "@washingtonpost/wpds-assets/asset/search";
+import Email from "@washingtonpost/wpds-assets/asset/email";
+import Globe from "@washingtonpost/wpds-assets/asset/globe";
+import Phone from "@washingtonpost/wpds-assets/asset/phone";
+
+export default function Example() {
+  return (
+    <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
+      <InputText defaultValue="Jane Doe" type="text" label="Name" />
+      <InputText defaultValue="Apples" type="search" label="Search" />
+      <InputText
+        icon="left"
+        type="email"
+        defaultValue="Jane@mail.com"
+        label="Email"
+      >
+        <Icon label="">
+          <Email />
+        </Icon>
+      </InputText>
+      <InputText
+        icon="left"
+        type="url"
+        defaultValue="www.washingtonpost.com"
+        label="Website"
+      >
+        <Icon label="">
+          <Globe />
+        </Icon>
+      </InputText>
+      <InputText
+        icon="left"
+        type="tel"
+        defaultValue="123-456-7890"
+        label="Phone"
+      >
+        <Icon label="">
+          <Phone />
+        </Icon>
+      </InputText>
+    </Box>
+  );
+}
+```
+
+### Helper Text
+
+Input text supports an optional help text.
+
+```jsx withPreview
+import { InputText, Box } from "@washingtonpost/wpds-ui-kit";
+import Search from "@washingtonpost/wpds-assets/asset/search";
+import Email from "@washingtonpost/wpds-assets/asset/email";
+
+export default function Example() {
+  const HelperText = () => {
+    return (
+      <span>
+        Not sure what to type in reach out to <a href="#">WPDS</a>
+      </span>
+    );
+  };
+  return (
+    <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
+      <InputText helperText={HelperText} icon="right" label="Label"></InputText>
+    </Box>
+  );
+}
+```
+
+---
+
+## Behavior
+
+### Focus
+
+Click input text component to demostrate focus.
+
+```jsx withPreview
+import { InputText, Box } from "@washingtonpost/wpds-ui-kit";
+import Search from "@washingtonpost/wpds-assets/asset/search";
+import Email from "@washingtonpost/wpds-assets/asset/email";
+
+export default function Example() {
+  return (
+    <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
+      <InputText helperText={HelperText} icon="right" label="Label"></InputText>
+    </Box>
+  );
+}
+```
+
+## API Reference
+
+{/* <PropsTable props={propsTable} /> */}
