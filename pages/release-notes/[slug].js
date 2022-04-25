@@ -6,6 +6,7 @@ import {
   getDocByPathName,
   getAllPathsBySection,
   getHeadings,
+  getReleaseNotes,
 } from "~/services";
 import { getNavigation } from "~/services/getNavigation";
 import Breadcrumbs from "~/components/Breadcrumbs";
@@ -61,6 +62,10 @@ export const getStaticProps = async ({ params }) => {
   const navigation = await getNavigation();
 
   const headings = await getHeadings(`release-notes/${params.slug}`);
+
+  const releasesNotes = await getReleaseNotes("wpds-ui-kit");
+
+  console.log(releasesNotes);
 
   return {
     props: {

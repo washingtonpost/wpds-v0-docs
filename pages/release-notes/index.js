@@ -1,6 +1,6 @@
 import React from "react";
 import { NextSeo } from "next-seo";
-import { getDocsListBySection, getNavigation } from "~/services";
+import { getNavigation, getReleaseNotes } from "~/services";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import { P } from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
@@ -15,7 +15,7 @@ const Card = styled("article", {
   marginBottom: "$150",
 });
 
-export default function Page({ docs, latestDocs }) {
+export default function Page({ kit }) {
   return (
     <>
       <NextSeo
@@ -27,20 +27,10 @@ export default function Page({ docs, latestDocs }) {
       </header>
 
       <article>
-        {docs.map((doc) => (
-          <Card key={doc.slug}>
-            <Link href={doc.slug}>
-              <Header
-                as="h2"
-                css={{
-                  marginBottom: "$050",
-                }}
-              >
-                {doc.data.title}
-              </Header>
-            </Link>
-            <P>{doc.data.description}</P>
-          </Card>
+        {kit.map((note) => (
+          <P key={note.id}>
+            {note.name} {note.shortDescriptionHTML}
+          </P>
         ))}
       </article>
     </>
@@ -48,17 +38,22 @@ export default function Page({ docs, latestDocs }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const docs = await getDocsListBySection("release-notes");
-  const sortedByLatestRelease = docs.sort((a, b) => {
-    return new Date(b.data.publishDate) - new Date(a.data.publishDate);
-  });
-
   const navigation = await getNavigation();
+
+  const [kit, plugins, docs, wam] = await Promise.all([
+    getReleaseNotes("wpds-ui-kit"),
+    getReleaseNotes("wpds-plugins"),
+    getReleaseNotes("wpds-docs"),
+    getReleaseNotes("wpds-assets-manager"),
+  ]);
 
   return {
     props: {
-      docs: sortedByLatestRelease,
       navigation,
+      kit,
+      plugins,
+      docs,
+      wam,
     },
   };
 };
