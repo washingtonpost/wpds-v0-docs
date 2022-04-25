@@ -1,6 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import { css, Icon, Button, Box, styled } from "@washingtonpost/wpds-ui-kit";
+import {
+  css,
+  Icon,
+  Button,
+  Box,
+  styled,
+  theme,
+} from "@washingtonpost/wpds-ui-kit";
 import Play from "@washingtonpost/wpds-assets/asset/play";
 
 const styles = css({
@@ -68,8 +75,10 @@ const YoutubeEmbed = ({ videoid }) => {
         variant="secondary"
         css={{
           position: "absolute",
-          top: "5%",
+          bottom: "5%",
           left: "5%",
+          background: theme.colors["gray20-static"],
+          color: theme.colors["gray600-static"],
         }}
       >
         Play video
