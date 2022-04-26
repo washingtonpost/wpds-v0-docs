@@ -11,7 +11,6 @@ import dynamic from "next/dynamic";
 import { Grid, Cell } from "./Components/Grid";
 import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
 
-const Sandbox = dynamic(() => import("./Components/Sandbox"));
 const InputCheckbox = dynamic(() =>
   import("./Components/Checkbox").then((mod) => mod.InputCheckbox)
 );
@@ -168,63 +167,8 @@ const components = {
   InlineSVG: dynamic(() => import("./Components/inlineSVG")),
   InlineImage: dynamic(() => import("./Components/InlineImage")),
   Box: Box,
-  code: (props) => {
-    if (props.className === "language-jsx") {
-      return (
-        <Box
-          as="code"
-          css={{
-            marginBottom: "$100",
-            minHeight: "$500",
-            maxWidth: "100%",
-            width: "100%",
-            display: "grid",
-            backgroundColor: theme.colors.gray500,
-          }}
-        >
-          <Sandbox
-            isGuide={props.isGuide}
-            withPreview={props.withPreview}
-            hideNavBar={props.hideNavBar}
-          >
-            {props.children.trim()}
-          </Sandbox>
-        </Box>
-      );
-    }
-
-    return (
-      <Box
-        as="code"
-        css={{
-          overflowX: "auto",
-        }}
-      >
-        {props.children}
-      </Box>
-    );
-  },
-  pre: ({ children, withPreview, isGuide = "none", hideNavBar, ...props }) => {
-    return (
-      <Box
-        as="pre"
-        css={{
-          color: theme.colors.accessible,
-          background: "$subtle",
-          fontSize: "$100",
-          marginBottom: "$050",
-          marginTop: "$050",
-          display: "block",
-        }}
-      >
-        {React.cloneElement(children, {
-          withPreview,
-          isGuide,
-          hideNavBar,
-        })}
-      </Box>
-    );
-  },
+  code: dynamic(() => import("./Components/Code")),
+  pre: dynamic(() => import("./Components/Pre")),
   input: ({ children, type, ...props }) => {
     if (type === "checkbox") {
       return <InputCheckbox {...props} />;
@@ -247,25 +191,7 @@ const components = {
       {children}
     </Box>
   ),
-  YoutubeEmbed: ({ src }) => {
-    return (
-      <Box
-        as="iframe"
-        css={{
-          aspectRatio: "16 / 9",
-          width: "100%",
-          borderRadius: "$025",
-          border: "$100 solid $subtle",
-          background: "transparent",
-        }}
-        src={src}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-    );
-  },
+  YoutubeEmbed: dynamic(() => import("./Components/YouTubeEmbed")),
 };
 
 export default components;
