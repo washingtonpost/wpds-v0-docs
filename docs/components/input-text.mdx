@@ -121,7 +121,11 @@ export default function Example() {
     );
   };
   return (
-    <InputText helperText={HelperText} icon="right" label="Label"></InputText>
+    <InputText
+      helperText={<HelperText />}
+      icon="right"
+      label="Label"
+    ></InputText>
   );
 }
 ```
@@ -172,7 +176,7 @@ export default function Example() {
 import { InputText, Box } from "@washingtonpost/wpds-ui-kit";
 
 export default function Example() {
-  return <InputText disabled success label="Label"></InputText>;
+  return <InputText success label="Label"></InputText>;
 }
 ```
 
@@ -222,9 +226,11 @@ Inputs that require user to take action and include an icon should have the icon
 ```jsx withPreview isGuide="error"
 import { InputText, Icon } from "@washingtonpost/wpds-ui-kit";
 import Search from "@washingtonpost/wpds-assets/asset/search";
+
+// This code demonstrates a configuration against our reccomended guidance
 export default function Example() {
   return (
-    <InputText defaultValue="Apples" label="Label">
+    <InputText defaultValue="Apples" icon="left" label="Search">
       <Icon>
         <Search label="" />
       </Icon>
@@ -235,4 +241,4 @@ export default function Example() {
 
 ## API Reference
 
-{/* <PropsTable props={propsTable} /> */}
+<PropsTable props={propsTable} />
