@@ -6,7 +6,6 @@ import {
   SandpackCodeEditor,
   UnstyledOpenInCodeSandboxButton,
   useSandpack,
-  LoadingOverlay,
 } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
 import {
