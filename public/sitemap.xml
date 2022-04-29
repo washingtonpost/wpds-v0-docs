@@ -41,6 +41,14 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/components/input-text</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/components/input-textarea</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/components/text</loc>
   </url>
 
@@ -98,6 +106,10 @@
 
   <url>
     <loc>https://build.washingtonpost.com/release-notes</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/release-notes/End Of April 2022</loc>
   </url>
 
   <url>

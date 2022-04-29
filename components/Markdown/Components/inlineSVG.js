@@ -48,19 +48,20 @@ export default function inlineSVG({
     if (hex == "black") {
       return "var(--wpds-colors-gray0)";
     } else {
-      // console.log("Bad Hex");
     }
   }
 
   function lookUpValue(rgba) {
+    let value;
     for (var token in Tokens.color.light) {
       if (Tokens.color.light[token].hasOwnProperty("value")) {
         const tokenValue = Tokens.color.light[token].value.replaceAll(" ", "");
         if (rgba == tokenValue) {
-          return `var(--wpds-colors-${token})`;
+          value = `var(--wpds-colors-${token})`;
         }
       }
     }
+    return value ? value : rgba;
   }
 
   const inlineSvgCss = css({
@@ -87,12 +88,9 @@ export default function inlineSVG({
           );
           titleTag.innerHTML = title; //require title to be passed
           svg.prepend(title);
-          svg.setAttribute(
-            "style",
-            `max-width:${Size.width}px;max-height:${Size.height}px;display:flex`
-          );
+          svg.setAttribute("style", `max-height:${Size.height}px;display:flex`);
           svg.setAttribute("width", "100%");
-          svg.setAttribute("height", "auto");
+          svg.setAttribute("height", `${Size.height}`);
           const paths = svg.querySelectorAll("path");
           paths.forEach((i) => {
             i.setAttribute("fill", hexToRgbA(i.getAttribute("fill")));
