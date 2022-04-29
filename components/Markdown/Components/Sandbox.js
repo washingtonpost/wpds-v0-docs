@@ -6,6 +6,7 @@ import {
   SandpackCodeEditor,
   UnstyledOpenInCodeSandboxButton,
   useSandpack,
+  LoadingOverlay,
 } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
 import {
@@ -432,7 +433,9 @@ const CustomSandpack = ({
 
   return (
     <SandpackProvider
-      initMode="immediate"
+      autorun
+      initMode="user-visible"
+      initModeObserverOptions={{ rootMargin: "1400px 0px" }}
       template="react"
       customSetup={{
         dependencies: {
