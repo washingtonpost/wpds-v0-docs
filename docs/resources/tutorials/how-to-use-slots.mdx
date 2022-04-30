@@ -15,7 +15,7 @@ publishDate: April 29, 2022
 
 ### Before starting
 
-Slots are not an actual componet you will find in our coded design system but rather a component that is purpose is to be swapped out for a pattern, or local component you are designing. When you see a slot either by how its labeled or its name in the layer of a component you can be sure it is a signal for you to replace it with your own local component.
+Slots are used to avoid having to detaching a component to access nesting content inside of it. For example a tooltip or accordion can hold a lot of different type of content. Rather than the figma component accounting for ever possible variation it is better to just have slot. This then allows for infinite possiblities without having to detach at all.
 
 ### When to use
 
