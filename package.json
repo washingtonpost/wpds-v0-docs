@@ -10,8 +10,6 @@
     "alex": "npx alex docs/**/*.mdx --mdx"
   },
   "dependencies": {
-    "@babel/standalone": "^7.17.11",
-    "@codemirror/autocomplete": "^0.20.0",
     "@codesandbox/sandpack-react": "^0.19.3",
     "@docsearch/react": "^3.0.0",
     "@next/bundle-analyzer": "^12.1.0",
@@ -36,7 +34,6 @@
     "react": "^17.0.2",
     "react-docgen": "^5.4.0",
     "react-dom": "^17.0.2",
-    "react-error-boundary": "^3.1.4",
     "react-svg": "^14.1.8",
     "react-toastify": "^8.2.0",
     "remark-gfm": "^3.0.1",
