@@ -3,7 +3,10 @@ import dynamic from "next/dynamic";
 const Sandbox = dynamic(() => import("./Sandbox"));
 
 const Code = (props) => {
-  if (props.className === "language-jsx") {
+  if (
+    props.className === "language-jsx" ||
+    props.className === "language-mdx"
+  ) {
     return (
       <Box
         as="code"

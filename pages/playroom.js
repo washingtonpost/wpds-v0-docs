@@ -12,7 +12,6 @@ import {
 import { useTheme } from "next-themes";
 import Head from "next/head";
 import LZString from "lz-string";
-import MDXStyling from "~/components/Markdown/Styling";
 
 const lightTheme = {
   palette: {
@@ -150,21 +149,28 @@ const Canvas = Kit.styled("div", {
   padding: "$100",
   margin: "0 auto",
   overflow: "hidden",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
   position: "relative",
   transition: "all 0.5s ease-in-out",
+
+  "& > div": {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 
   variants: {
     hasEditor: {
       true: {
-        width: "100%",
+        "& > div": {
+          width: "100%",
+        },
       },
       false: {
-        width: "100vw",
-        height: "100vh",
+        "& > div": {
+          width: "100vw",
+          height: "100vh",
+        },
       },
     },
   },
@@ -172,12 +178,9 @@ const Canvas = Kit.styled("div", {
 
 const components = {
   Kit,
-  React,
   Assets,
   ...Kit,
   ...Assets,
-  ...React,
-  ...MDXStyling,
 };
 
 export default function Playroom({ source, code: thisCode, hasEditor }) {
@@ -226,12 +229,14 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
     return (
       <MDXRemote
         {...receivedSource}
-        components={components}
         scope={{
-          ...Assets,
           ...Kit,
-          ...React,
+          ...Assets,
+          useState: React.useState,
+          useEffect: React.useEffect,
         }}
+        components={components}
+        lazy
       />
     );
   };
@@ -256,9 +261,17 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
         return;
       }
       try {
-        const mdxSource = await serialize(event.data);
-
-        console.log(mdxSource);
+        const mdxSource = await serialize(event.data, {
+          scope: {
+            ...Kit,
+            ...Assets,
+            useState: React.useState,
+            useEffect: React.useEffect,
+          },
+          mdxOptions: {
+            format: "mdx",
+          },
+        });
 
         setSource(mdxSource);
         setCode(event.data);
@@ -293,7 +306,6 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
         }}
       >
         <Canvas hasEditor={hasEditor}>
-          {/* // TODO: add guides */}
           <Preview />
         </Canvas>
         <SandpackLayout theme={sandboxEmbedTheme}>
@@ -328,7 +340,17 @@ export async function getServerSideProps(req) {
 
   try {
     parsedCode = LZString.decompressFromEncodedURIComponent(code);
-    source = await serialize(parsedCode);
+    source = await serialize(parsedCode, {
+      scope: {
+        ...Kit,
+        ...Assets,
+        useState: React.useState,
+        useEffect: React.useEffect,
+      },
+      mdxOptions: {
+        format: "mdx",
+      },
+    });
   } catch (error) {
     console.error(error);
   }
