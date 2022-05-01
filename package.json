@@ -10,6 +10,8 @@
     "alex": "npx alex docs/**/*.mdx --mdx"
   },
   "dependencies": {
+    "@babel/standalone": "^7.17.11",
+    "@codemirror/autocomplete": "^0.20.0",
     "@codesandbox/sandpack-react": "^0.19.3",
     "@docsearch/react": "^3.0.0",
     "@next/bundle-analyzer": "^12.1.0",
