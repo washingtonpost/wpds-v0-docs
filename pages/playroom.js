@@ -12,18 +12,8 @@ import {
 import { useTheme } from "next-themes";
 import Head from "next/head";
 import LZString from "lz-string";
-import { ErrorBoundary } from "react-error-boundary";
 import MDXStyling from "~/components/Markdown/Styling";
 
-function ErrorFallback({ error, resetErrorBoundary }) {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  );
-}
 
 const lightTheme = {
   palette: {
@@ -235,24 +225,15 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
     }
 
     return (
-      <ErrorBoundary
-        FallbackComponent={ErrorFallback}
-        onReset={() => {
-          // reset the state of your app so the error doesn't happen again
-          setCode(firstRenderCode);
-          window.location.reload();
+      <MDXRemote
+        {...receivedSource}
+        components={components}
+        scope={{
+          ...Assets,
+          ...Kit,
+          ...React,
         }}
-      >
-        <MDXRemote
-          {...receivedSource}
-          components={components}
-          scope={{
-            ...Assets,
-            ...Kit,
-            ...React,
-          }}
-        />
-      </ErrorBoundary>
+      />
     );
   };
 
