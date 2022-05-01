@@ -70,7 +70,7 @@ function App({ Component, pageProps }) {
           getLayout(
             <>
               <Component {...pageProps} />
-              <Footer />
+              {/* <Footer /> */}
             </>
           )
         ) : (

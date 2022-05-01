@@ -18,39 +18,33 @@ description:
 Font tokens tie an intention to a font family.
 
 ```jsx withPreview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   const Headline = styled("h1", {
     fontFamily: theme.fonts.headline, // font family example
-    fontSize: theme.fontSizes.["200"],
-    color:theme.colors.primary,
+    fontSize: theme.fontSizes["200"],
+    color: theme.colors.primary,
   });
   const Subhead = styled("h2", {
     fontFamily: theme.fonts.subhead, // font family example
-    fontWeight:theme.fontWeights.light,
-    fontSize: theme.fontSizes.["150"],
-    color:theme.colors.accessible,
+    fontWeight: theme.fontWeights.light,
+    fontSize: theme.fontSizes["150"],
+    color: theme.colors.accessible,
   });
   const Body = styled("p", {
     fontFamily: theme.fonts.body, // font family example
-    fontSize: theme.fontSizes.["100"],
+    fontSize: theme.fontSizes["100"],
   });
   const Meta = styled("p", {
     fontFamily: theme.fonts.meta, // font family example
-    fontSize: theme.fontSizes.["075"],
-    color:theme.colors.accessible,
+    fontSize: theme.fontSizes["075"],
+    color: theme.colors.accessible,
   });
   return (
     <div>
       <Headline>Headline</Headline>
       <Subhead>Subheadline</Subhead>
-      <Body>
-        Body text
-      </Body>
-      <Meta>
-        Meta text
-      </Meta>
+      <Body>Body text</Body>
+      <Meta>Meta text</Meta>
     </div>
   );
 }
@@ -71,18 +65,14 @@ export default function Example() {
 Font size tokens are relative to the [baseSize](/foundations/base). Use font size tokens to define the size of the font.
 
 ```jsx withPreview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   const FontSizeExample = styled("p", {
     fontFamily: theme.fonts.headline,
-    fontSize: theme.fontSizes.["200"], // font size example
-    color:theme.colors.primary,
+    fontSize: theme.fontSizes["200"], // font size example
+    color: theme.colors.primary,
   });
 
-  return (
-      <FontSizeExample>Headline</FontSizeExample>
-  );
+  return <FontSizeExample>Headline</FontSizeExample>;
 }
 ```
 
@@ -102,19 +92,15 @@ export default function Example() {
 Font weight tokens define the weight of the font face.
 
 ```jsx withPreview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   const FontWeightExample = styled("p", {
     fontFamily: theme.fonts.subhead,
-    fontWeight:theme.fontWeights.light,// font weight example
-    fontSize: theme.fontSizes.["200"],
-    color:theme.colors.primary,
+    fontWeight: theme.fontWeights.light, // font weight example
+    fontSize: theme.fontSizes["200"],
+    color: theme.colors.primary,
   });
 
-  return (
-      <FontWeightExample>Headline</FontWeightExample>
-  );
+  return <FontWeightExample>Headline</FontWeightExample>;
 }
 ```
 
@@ -133,21 +119,19 @@ export default function Example() {
 Line height tokens are unitless values that define the height of a text element based on its current font size.
 
 ```jsx withPreview
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   const LineHeightExample = styled("p", {
     fontFamily: theme.fonts.body,
-    lineHeight:theme.lineHeights["125"],//Line height example
-    fontSize: theme.fontSizes.["125"],
-    color:theme.colors.primary,
-    width:250
+    lineHeight: theme.lineHeights["125"], //Line height example
+    fontSize: theme.fontSizes["125"],
+    color: theme.colors.primary,
+    width: 250,
   });
 
   return (
-      <LineHeightExample>Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit.
-      </LineHeightExample>
+    <LineHeightExample>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </LineHeightExample>
   );
 }
 ```

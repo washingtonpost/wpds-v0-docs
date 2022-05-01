@@ -28,20 +28,17 @@ component: icon
 The `size` can be `100`, `150`, or `200`. The size sets the width and height of the SVG.
 
 ```jsx withPreview
-import { Icon, theme } from "@washingtonpost/wpds-ui-kit";
-import Asset from "@washingtonpost/wpds-assets/asset/chevron-right";
-
 export default function Example() {
   return (
     <>
       <Icon label="" size="100" fill={theme.colors.primary}>
-        <Asset />
+        <ChevronRight />
       </Icon>
       <Icon label="" size="150" fill={theme.colors.primary}>
-        <Asset />
+        <ChevronRight />
       </Icon>
       <Icon label="" size="200" fill={theme.colors.primary}>
-        <Asset />
+        <ChevronRight />
       </Icon>
     </>
   );
@@ -53,20 +50,17 @@ export default function Example() {
 The `label` is required for screen readers. It is used to describe the icon to screen readers. It is also used as the `aria-label` for the icon. It is recommended to use a short, descriptive label. For example, "Go to Next Page".
 
 ```jsx withPreview
-import { Icon, theme } from "@washingtonpost/wpds-ui-kit";
-import Asset from "@washingtonpost/wpds-assets/asset/chevron-right";
-
 export default function Example() {
   return (
     <>
       <Icon label="Go to Next Page" size="100" fill={theme.colors.primary}>
-        <Asset />
+        <ChevronRight />
       </Icon>
       <Icon label="Go to Next Page" size="150" fill={theme.colors.primary}>
-        <Asset />
+        <ChevronRight />
       </Icon>
       <Icon label="Go to Next Page" size="200" fill={theme.colors.primary}>
-        <Asset />
+        <ChevronRight />
       </Icon>
     </>
   );
