@@ -14,7 +14,6 @@ import Head from "next/head";
 import LZString from "lz-string";
 import MDXStyling from "~/components/Markdown/Styling";
 
-
 const lightTheme = {
   palette: {
     activeText: "#166dfc",
