@@ -13,7 +13,7 @@ query {
             isLatest
             description
             publishedAt
-            shortDescriptionHTML
+            shortDescriptionHTML(limit: 40)
         }
         }
     }
@@ -37,6 +37,7 @@ query {
       name: release.name,
       isLatest: release.isLatest,
       description: release.description,
+      shortDescriptionHTML: release.shortDescriptionHTML,
     };
   });
 

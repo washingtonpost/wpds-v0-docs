@@ -1,10 +1,10 @@
 import React from "react";
 import { NextSeo } from "next-seo";
-import { getNavigation, getReleaseNotes } from "~/services";
-import { styled } from "@washingtonpost/wpds-ui-kit";
-import { P } from "~/components/Markdown/Styling";
+import { getNavigation } from "~/services";
+import { Icon, styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import Link from "~/components/Markdown/Components/link";
+import External from "@washingtonpost/wpds-assets/asset/external";
 
 const Card = styled("article", {
   border: "1px solid $subtle",
@@ -15,7 +15,11 @@ const Card = styled("article", {
   marginBottom: "$150",
 });
 
-export default function Page({ kit }) {
+const StyledIcon = styled(Icon, {
+  verticalAlign: "middle",
+});
+
+export default function Page() {
   return (
     <>
       <NextSeo
@@ -26,13 +30,64 @@ export default function Page({ kit }) {
         <Header as="h1">Release notes</Header>
       </header>
 
-      <article>
-        {kit.map((note) => (
-          <P key={note.id}>
-            {note.name} {note.shortDescriptionHTML}
-          </P>
-        ))}
-      </article>
+      <section>
+        <Link
+          href="https://github.com/washingtonpost/wpds-ui-kit/releases"
+          target="_blank"
+          rel="noopener"
+        >
+          <Card>
+            <Header as="h2">
+              Ui Kit Release notes{" "}
+              <Icon size="100">
+                <External></External>
+              </Icon>
+            </Header>
+          </Card>
+        </Link>
+        <Link
+          href="https://github.com/washingtonpost/wpds-assets-manager/releases"
+          target="_blank"
+          rel="noopener"
+        >
+          <Card>
+            <Header as="h2">
+              WAM Release notes{" "}
+              <Icon size="100">
+                <External></External>
+              </Icon>
+            </Header>
+          </Card>
+        </Link>
+        <Link
+          href="https://github.com/washingtonpost/wpds-plugins/releases"
+          target="_blank"
+          rel="noopener"
+        >
+          <Card>
+            <Header as="h2">
+              Plugins Release notes{" "}
+              <Icon size="100">
+                <External></External>
+              </Icon>
+            </Header>
+          </Card>
+        </Link>
+        <Link
+          href="https://github.com/washingtonpost/wpds-docs/releases"
+          target="_blank"
+          rel="noopener"
+        >
+          <Card>
+            <Header as="h2">
+              Docs Release notes{" "}
+              <Icon size="100">
+                <External></External>
+              </Icon>
+            </Header>
+          </Card>
+        </Link>
+      </section>
     </>
   );
 }
@@ -40,20 +95,9 @@ export default function Page({ kit }) {
 export const getStaticProps = async ({ params }) => {
   const navigation = await getNavigation();
 
-  const [kit, plugins, docs, wam] = await Promise.all([
-    getReleaseNotes("wpds-ui-kit"),
-    getReleaseNotes("wpds-plugins"),
-    getReleaseNotes("wpds-docs"),
-    getReleaseNotes("wpds-assets-manager"),
-  ]);
-
   return {
     props: {
       navigation,
-      kit,
-      plugins,
-      docs,
-      wam,
     },
   };
 };
