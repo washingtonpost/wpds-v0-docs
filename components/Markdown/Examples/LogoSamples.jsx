@@ -27,6 +27,9 @@ export const logoList = [
   "rss",
   "spotify",
   "google",
+  "election-default",
+  "election-redbackground",
+  "election-bluebackground"
 ];
 
 export const darkLogos = [
