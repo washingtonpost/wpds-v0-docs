@@ -6,4 +6,3 @@ export * from "./getNavigation";
 export * from "./getPropsTable";
 export * from "./getDependencies";
 export * from "./getPackageData";
-export * from "./getReleaseNotes";

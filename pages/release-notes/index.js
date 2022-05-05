@@ -5,6 +5,7 @@ import { Icon, styled } from "@washingtonpost/wpds-ui-kit";
 import Header from "~/components/Typography/Headers";
 import Link from "~/components/Markdown/Components/link";
 import External from "@washingtonpost/wpds-assets/asset/external";
+import { P } from "~/components/Markdown/Styling";
 
 const Card = styled("article", {
   border: "1px solid $subtle",
@@ -13,10 +14,6 @@ const Card = styled("article", {
   paddingTop: "$100",
   paddingBottom: "$100",
   marginBottom: "$150",
-});
-
-const StyledIcon = styled(Icon, {
-  verticalAlign: "middle",
 });
 
 export default function Page() {
@@ -43,6 +40,10 @@ export default function Page() {
                 <External></External>
               </Icon>
             </Header>
+            <P>
+              WPDS&apos;s UiKit coded in React using Stitches, Radix UI and
+              more!
+            </P>
           </Card>
         </Link>
         <Link
@@ -57,6 +58,11 @@ export default function Page() {
                 <External></External>
               </Icon>
             </Header>
+            <P>
+              WPDS Asset-Manager (also known as WAM) manages all assets as raw
+              SVG files. The asset manager is an independent package that allows
+              for more streamlined management of our assets.
+            </P>
           </Card>
         </Link>
         <Link
@@ -71,6 +77,7 @@ export default function Page() {
                 <External></External>
               </Icon>
             </Header>
+            <P>WPDS Design Tools and Plugins for Figma, Zeplin, and more!</P>
           </Card>
         </Link>
         <Link
@@ -85,6 +92,10 @@ export default function Page() {
                 <External></External>
               </Icon>
             </Header>
+            <P>
+              Static site to host our latest documentation around our design
+              system
+            </P>
           </Card>
         </Link>
       </section>
