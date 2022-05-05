@@ -12,6 +12,7 @@ import {
 import { useTheme } from "next-themes";
 import Head from "next/head";
 import LZString from "lz-string";
+import { ErrorBoundary } from "react-error-boundary";
 
 const lightTheme = {
   palette: {
@@ -151,26 +152,19 @@ const Canvas = Kit.styled("div", {
   overflow: "hidden",
   position: "relative",
   transition: "all 0.5s ease-in-out",
-
-  "& > div": {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
 
   variants: {
     hasEditor: {
       true: {
-        "& > div": {
-          width: "100%",
-        },
+        width: "100%",
       },
       false: {
-        "& > div": {
-          width: "100vw",
-          height: "100vh",
-        },
+        width: "100vw",
+        height: "100vh",
       },
     },
   },
@@ -226,18 +220,31 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
       );
     }
 
+    function ErrorFallback({ error, resetErrorBoundary }) {
+      return (
+        <div role="alert">
+          <p>Something went wrong:</p>
+          <pre>{error.message}</pre>
+          <button onClick={resetErrorBoundary}>Try again</button>
+        </div>
+      );
+    }
+
     return (
-      <MDXRemote
-        {...receivedSource}
-        scope={{
-          ...Kit,
-          ...Assets,
-          useState: React.useState,
-          useEffect: React.useEffect,
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => {
+          // reset the state of your app so the error doesn't happen again
         }}
-        components={components}
-        lazy
-      />
+      >
+        <MDXRemote
+          compiledSource={receivedSource.compiledSource}
+          scope={{
+            ...Kit,
+          }}
+          components={components}
+        />
+      </ErrorBoundary>
     );
   };
 
@@ -254,29 +261,21 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
   // listen for message from parent window
   React.useEffect(() => {
     const handleMessage = async (event) => {
-      if (
-        event.isTrusted === false &&
-        event.origin === window.location.origin
-      ) {
-        return;
-      }
-      try {
-        const mdxSource = await serialize(event.data, {
-          scope: {
-            ...Kit,
-            ...Assets,
-            useState: React.useState,
-            useEffect: React.useEffect,
-          },
-          mdxOptions: {
-            format: "mdx",
-          },
-        });
+      if (event.data.target === "wpds-playroom") {
+        try {
+          const mdxSource = await serialize(event.data.code, {
+            mdxOptions: {
+              format: "mdx",
+            },
+          });
 
-        setSource(mdxSource);
-        setCode(event.data);
-      } catch (error) {
-        console.log(error);
+          console.log(event);
+
+          setSource(mdxSource);
+          setCode(event.data);
+        } catch (error) {
+          console.log(error);
+        }
       }
     };
     window.addEventListener("message", handleMessage);
@@ -341,12 +340,6 @@ export async function getServerSideProps(req) {
   try {
     parsedCode = LZString.decompressFromEncodedURIComponent(code);
     source = await serialize(parsedCode, {
-      scope: {
-        ...Kit,
-        ...Assets,
-        useState: React.useState,
-        useEffect: React.useEffect,
-      },
       mdxOptions: {
         format: "mdx",
       },

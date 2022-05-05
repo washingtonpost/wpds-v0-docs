@@ -292,7 +292,13 @@ const Preview = () => {
 
   useEffect(() => {
     if (iframeRef.current) {
-      iframeRef.current.contentWindow.postMessage(debouncedCode, "*");
+      iframeRef.current.contentWindow.postMessage(
+        {
+          code: debouncedCode,
+          target: "wpds-playroom",
+        },
+        "*"
+      );
     }
   }, [iframeRef, debouncedCode]);
 
