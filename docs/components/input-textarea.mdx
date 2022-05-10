@@ -29,8 +29,6 @@ status: "Draft"
 The text area can prevent reize by setting `canResize` to false.
 
 ```jsx withPreview
-import { InputTextarea, Box } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return (
     <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
@@ -46,8 +44,6 @@ export default function Example() {
 The text area has optional helper text.
 
 ```jsx withPreview
-import { InputTextarea, Box } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return (
     <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
@@ -71,8 +67,6 @@ export default function Example() {
 The text area can resize by default.
 
 ```jsx withPreview
-import { InputTextarea } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return <InputTextarea label="Label" />;
 }
@@ -81,8 +75,6 @@ export default function Example() {
 ### Error
 
 ```jsx withPreview
-import { InputTextarea } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return (
     <InputTextarea
@@ -98,21 +90,16 @@ export default function Example() {
 ### Success
 
 ```jsx withPreview
-import { InputTextarea } from "@washingtonpost/wpds-ui-kit";
-
-const message =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim eros at velit iaculis accumsan. Praesent ullamcorper faucibus lobortis. Fusce accumsan tempus nisi, a pulvinar nunc pharetra ut. Integer mauris dui, sollicitudin a aliquam sed, aliquam sed sapien. Vivamus nibh arcu, laoreet nec aliquam sed, rutrum eget elit. Etiam et hendrerit lorem. Nunc ac nisi vel massa mollis pretium. Sed ac fermentum quam. Vivamus nulla libero, consequat sed efficitur vel, vulputate vel nunc. Proin purus nisl, vestibulum venenatis vulputate ac, tempor eget nunc. Integer tortor justo, viverra accumsan diam sed, laoreet mattis quam. Donec dapibus risus vitae urna suscipit ultrices. Vivamus dapibus tortor ligula, a feugiat eros fringilla a.";
-
 export default function Example() {
-  return <InputTextarea defaultValue={message} success label="Label" />;
+  const message =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dignissim eros at velit iaculis accumsan. Praesent ullamcorper faucibus lobortis. Fusce accumsan tempus nisi, a pulvinar nunc pharetra ut. Integer mauris dui, sollicitudin a aliquam sed, aliquam sed sapien. Vivamus nibh arcu, laoreet nec aliquam sed, rutrum eget elit. Etiam et hendrerit lorem. Nunc ac nisi vel massa mollis pretium. Sed ac fermentum quam. Vivamus nulla libero, consequat sed efficitur vel, vulputate vel nunc. Proin purus nisl, vestibulum venenatis vulputate ac, tempor eget nunc. Integer tortor justo, viverra accumsan diam sed, laoreet mattis quam. Donec dapibus risus vitae urna suscipit ultrices. Vivamus dapibus tortor ligula, a feugiat eros fringilla a.";
+  return <InputTextarea defaultValue={message} success={true} label="Label" />;
 }
 ```
 
 ### Required
 
 ```jsx withPreview
-import { InputTextarea } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return <InputTextarea required label="Label" />;
 }
@@ -129,8 +116,6 @@ export default function Example() {
 Textarea are for multiline text such as a sentence or a paragraph.
 
 ```jsx withPreview
-import { InputTextarea } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return <InputTextarea defaultValue="John Doe" required label="Name" />;
 }

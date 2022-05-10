@@ -11,8 +11,6 @@ component: visually-hidden
 VisuallyHidden accepts `props.children` to set the label.
 
 ```jsx withPreview
-import { VisuallyHidden, Box } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return (
     <>
@@ -27,11 +25,6 @@ export default function Example() {
           color: "$cta",
         }}
         data-testid="skip-link"
-        onClick={function onClickHandler(event: {
-          preventDefault: () => void,
-        }) {
-          event.preventDefault();
-        }}
       >
         This is a visually hidden label
       </VisuallyHidden>
@@ -51,9 +44,5 @@ Visually hides an element from sighted users but still maintains it for screen r
 ## Implementation
 
 ```jsx
-import { VisuallyHidden } from "@washingtonpost/wpds-ui-kit";
-
-export default function Example() {
-  return <VisuallyHidden>My important label for screen readers</VisuallyHidden>;
-}
+<VisuallyHidden>My important label for screen readers</VisuallyHidden>
 ```

@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 import {
-  SandpackPreview,
   SandpackProvider,
   SandpackLayout,
   SandpackCodeEditor,
-  UnstyledOpenInCodeSandboxButton,
   useSandpack,
+  useActiveCode,
 } from "@codesandbox/sandpack-react";
 import { useTheme } from "next-themes";
 import {
   Box,
-  styled,
   Icon,
   theme,
   globalCss,
   Button,
 } from "@washingtonpost/wpds-ui-kit";
+import External from "@washingtonpost/wpds-assets/asset/external";
+import LZString from "lz-string";
 import packageJson from "../../../package.json";
 import packageJsonLock from "../../../package-lock.json";
 import InlineSVG from "./inlineSVG";
@@ -263,7 +263,93 @@ const darkTheme = {
   },
 };
 
-const OpenInSandboxButton = styled(UnstyledOpenInCodeSandboxButton, Button, {});
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
+const Preview = () => {
+  const { code, updateCode } = useActiveCode();
+  const [firstRenderCode, setFirstRenderCode] = useState(null);
+  const iframeRef = React.useRef(null);
+  const debouncedCode = useDebounce(code, 500);
+
+  useEffect(() => {
+    setFirstRenderCode(code);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      iframeRef.current.contentWindow.postMessage(
+        {
+          code: debouncedCode,
+          target: "wpds-playroom",
+        },
+        "*"
+      );
+    }
+  }, [iframeRef, debouncedCode]);
+
+  return (
+    <Box
+      ref={iframeRef}
+      as="iframe"
+      sandbox="allow-scripts allow-same-origin"
+      src={`/playroom?code=${LZString.compressToEncodedURIComponent(
+        firstRenderCode
+      )}`}
+      css={{
+        background: theme.colors.gray500,
+        border: 0,
+        width: "100%",
+        minHeight: 300,
+        overflow: "hidden",
+      }}
+    />
+  );
+};
+
+const OpenInPlayroom = () => {
+  const { code, updateCode } = useActiveCode();
+
+  return (
+    <Button
+      icon="left"
+      isOutline
+      variant="primary"
+      css={{
+        border: 0,
+        textDecoration: "none",
+        fontWeight: "$light",
+      }}
+      density="compact"
+      as="a"
+      href={`/playroom?edit=1&code=${LZString.compressToEncodedURIComponent(
+        code
+      )}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open in Playroom"
+    >
+      <Icon size="100" label="">
+        <External />
+      </Icon>
+      Open in Playroom
+    </Button>
+  );
+};
 
 const CustomSandpack = ({
   isGuide,
@@ -387,9 +473,6 @@ const CustomSandpack = ({
     }
   }
   export default function App() {
-    
-   
-
     return (
       <Canvas className={${sandboxTheme}}>
           <Guide variant="${isGuide}">
@@ -417,7 +500,6 @@ const CustomSandpack = ({
     }
   });
 
-
   globalStyles();
   embedglobalCss();
   darkModeGlobalStyles();
@@ -431,125 +513,108 @@ const CustomSandpack = ({
   );`;
 
   return (
-    <SandpackProvider
-      initMode="immediate"
-      template="react"
-      customSetup={{
-        dependencies: {
-          "@washingtonpost/wpds-assets":
-            packageJson.dependencies["@washingtonpost/wpds-assets"],
-          "@washingtonpost/wpds-ui-kit":
-            packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
-          ...packageJsonLock.packages[
-            "node_modules/@washingtonpost/wpds-ui-kit"
-          ].dependencies,
-          ...packageJsonLock.packages["node_modules/@washingtonpost/wpds-theme"]
-            .peerDependencies,
-          "@radix-ui/react-checkbox":
-            packageJson.dependencies["@radix-ui/react-checkbox"],
-          "@stitches/react": packageJson.dependencies["@stitches/react"],
-        },
-        files: {
-          "/index.js": IndexCode,
-          "/App.js": AppCode,
-          "/Example.js": {
-            code: children,
-            active: true,
+    <>
+      <SandpackProvider
+        autorun
+        initMode="user-visible"
+        initModeObserverOptions={{ rootMargin: "1400px 0px" }}
+        template="react"
+        customSetup={{
+          dependencies: {
+            "@washingtonpost/wpds-assets":
+              packageJson.dependencies["@washingtonpost/wpds-assets"],
+            "@washingtonpost/wpds-ui-kit":
+              packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
+            ...packageJsonLock.packages[
+              "node_modules/@washingtonpost/wpds-ui-kit"
+            ].dependencies,
+            ...packageJsonLock.packages[
+              "node_modules/@washingtonpost/wpds-theme"
+            ].peerDependencies,
+            "@radix-ui/react-checkbox":
+              packageJson.dependencies["@radix-ui/react-checkbox"],
+            "@stitches/react": packageJson.dependencies["@stitches/react"],
           },
-        },
-      }}
-    >
-      <SandpackLayout theme={sandboxEmbedTheme}>
-        {withPreview && (
-          <SandpackPreview
-            showRefreshButton={false}
-            showOpenInCodeSandbox={false}
-            viewportOrientation="landscape"
-            customStyle={{
-              height: 300,
-              width: "100%",
-            }}
-          />
-        )}
-        {showCode && (
-          <SandpackCodeEditor
-            customStyle={{
-              border: "1px solid var(--wpds-colors-subtle)",
-            }}
-            showTabs={false}
-            showNavigator={false}
-            showRunButton={false}
-            initMode="user-visible"
-          />
-        )}
-      </SandpackLayout>
-      <Box
-        as="nav"
-        css={{
-          border: "1px solid $subtle",
-          flexGrow: 0,
-          width: "100%",
-          flexDirection: "row",
-          gap: "$075",
-          padding: "$050 $075 $050 $100",
-          background: "$gray500",
-          display: Boolean(hideNavBar) ? "none" : "flex",
-          "@sm": {
-            display: withPreview ? "flex" : "none",
+          files: {
+            "/index.js": IndexCode,
+            "/App.js": AppCode,
+            "/Example.js": {
+              code: children,
+              active: true,
+            },
           },
         }}
       >
-        <Box>
-          {withPreview && (
-            <Button
-              icon="left"
-              isOutline
-              variant="primary"
-              onClick={() => {
-                setShowCode(!showCode);
+        <SandpackLayout theme={sandboxEmbedTheme}>
+          {withPreview && <Preview />}
+          {showCode && (
+            <SandpackCodeEditor
+              customStyle={{
+                border: "1px solid var(--wpds-colors-subtle)",
               }}
-              css={{
-                border: 0,
-                fontWeight: "$light",
-              }}
-              density="compact"
-            >
-              <Icon>
-                <CodeIcon />
-              </Icon>
-              {showCode ? "Hide" : "Show"} code
-            </Button>
+              showTabs={false}
+              showNavigator={false}
+              showRunButton={false}
+              initMode="user-visible"
+            />
           )}
-        </Box>
+        </SandpackLayout>
         <Box
+          as="nav"
           css={{
-            alignSelf: "flex-end",
-            flex: "1 1 auto",
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: "$100",
+            border: "1px solid $subtle",
+            flexGrow: 0,
+            width: "100%",
+            flexDirection: "row",
+            gap: "$075",
+            padding: "$050 $075 $050 $100",
+            background: "$gray500",
+            display: Boolean(hideNavBar) ? "none" : "flex",
             "@sm": {
-              display: "none",
+              display: withPreview ? "flex" : "none",
             },
           }}
         >
-          <OpenInSandboxButton
-            icon="none"
-            isOutline
-            variant="primary"
+          <Box>
+            {withPreview && (
+              <Button
+                icon="left"
+                isOutline
+                variant="primary"
+                onClick={() => {
+                  setShowCode(!showCode);
+                }}
+                css={{
+                  border: 0,
+                  fontWeight: "$light",
+                }}
+                density="compact"
+              >
+                <Icon>
+                  <CodeIcon />
+                </Icon>
+                {showCode ? "Hide" : "Show"} code
+              </Button>
+            )}
+          </Box>
+          <Box
             css={{
-              border: 0,
-              gap: 0, // there is a form descendent in the open in sandbox button
-              fontWeight: "$light",
+              alignSelf: "flex-end",
+              flex: "1 1 auto",
+              display: "flex",
+              justifyContent: "flex-end",
+              gap: "$100",
+              "@sm": {
+                display: "none",
+              },
             }}
-            density="compact"
           >
-            Open in CodeSandbox
-          </OpenInSandboxButton>
-          <CopyCodeButton />
+            {withPreview && <OpenInPlayroom />}
+            <CopyCodeButton />
+          </Box>
         </Box>
-      </Box>
-    </SandpackProvider>
+      </SandpackProvider>
+    </>
   );
 };
 
