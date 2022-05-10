@@ -64,6 +64,7 @@ const sandboxGlobalcss = globalCss({
     },
   },
   ".sp-layout": {
+    minHeight: 300,
     borderColor: "transparent",
     borderBottomLeftRadius: "0 !important",
     borderBottomRightRadius: "0 !important",

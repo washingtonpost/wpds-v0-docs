@@ -31,10 +31,6 @@ status: "Draft"
 Icon has two placements `left` or `right`.
 
 ```jsx withPreview
-import { InputText, Icon, Box } from "@washingtonpost/wpds-ui-kit";
-import Search from "@washingtonpost/wpds-assets/asset/search";
-import Email from "@washingtonpost/wpds-assets/asset/email";
-
 export default function Example() {
   return (
     <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
@@ -59,12 +55,6 @@ export default function Example() {
 Text input supports the following text inputs: `text` `search` `url` `tel` `email`.
 
 ```jsx withPreview
-import { InputText, Icon, Box } from "@washingtonpost/wpds-ui-kit";
-import Search from "@washingtonpost/wpds-assets/asset/search";
-import Email from "@washingtonpost/wpds-assets/asset/email";
-import Globe from "@washingtonpost/wpds-assets/asset/globe";
-import Phone from "@washingtonpost/wpds-assets/asset/phone";
-
 export default function Example() {
   return (
     <Box css={{ display: "flex", flexDirection: "column", gap: "$050" }}>
@@ -110,8 +100,6 @@ export default function Example() {
 Input text supports an optional help text.
 
 ```jsx withPreview
-import { InputText } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   const HelperText = () => {
     return (
@@ -139,8 +127,6 @@ export default function Example() {
 Click input text component to demostrate focus.
 
 ```jsx withPreview
-import { InputText } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return <InputText label="Label"></InputText>;
 }
@@ -149,9 +135,6 @@ export default function Example() {
 ### Error
 
 ```jsx withPreview
-import { InputText, Icon } from "@washingtonpost/wpds-ui-kit";
-import Email from "@washingtonpost/wpds-assets/asset/email";
-
 export default function Example() {
   return (
     <InputText
@@ -173,8 +156,6 @@ export default function Example() {
 ### Success
 
 ```jsx withPreview
-import { InputText, Box } from "@washingtonpost/wpds-ui-kit";
-
 export default function Example() {
   return <InputText success label="Label"></InputText>;
 }
@@ -183,7 +164,6 @@ export default function Example() {
 ### Required
 
 ```jsx withPreview
-import { InputText, Box } from "@washingtonpost/wpds-ui-kit";
 export default function Example() {
   return <InputText label="Label" required></InputText>;
 }
@@ -192,7 +172,6 @@ export default function Example() {
 ### Disabled
 
 ```jsx withPreview
-import { InputText } from "@washingtonpost/wpds-ui-kit";
 export default function Example() {
   return <InputText disabled label="Label"></InputText>;
 }
@@ -203,7 +182,6 @@ export default function Example() {
 Overflow of the input value is indicated by an ellipse.
 
 ```jsx withPreview
-import { InputText } from "@washingtonpost/wpds-ui-kit";
 export default function Example() {
   return (
     <InputText
@@ -224,11 +202,8 @@ export default function Example() {
 Inputs that require user to take action and include an icon should have the icon be right. A left icon is meant for contextualizing the input.
 
 ```jsx withPreview isGuide="error"
-import { InputText, Icon } from "@washingtonpost/wpds-ui-kit";
-import Search from "@washingtonpost/wpds-assets/asset/search";
-
-// This code demonstrates a configuration against our reccomended guidance
 export default function Example() {
+  // This code demonstrates a configuration against our reccomended guidance
   return (
     <InputText defaultValue="Apples" icon="left" label="Search">
       <Icon>

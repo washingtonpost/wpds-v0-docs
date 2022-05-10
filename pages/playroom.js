@@ -13,6 +13,7 @@ import { useTheme } from "next-themes";
 import Head from "next/head";
 import LZString from "lz-string";
 import { ErrorBoundary } from "react-error-boundary";
+import Link from "~/components/Typography/link";
 
 const lightTheme = {
   palette: {
@@ -93,6 +94,7 @@ const sandboxGlobalcss = Kit.globalCss({
     width: "100%",
   },
   ".sp-layout": {
+    minHeight: 300,
     borderColor: "transparent",
     borderBottomLeftRadius: "0 !important",
     borderBottomRightRadius: "0 !important",
@@ -175,6 +177,7 @@ const components = {
   Assets,
   ...Kit,
   ...Assets,
+  Link,
 };
 
 export default function Playroom({ source, code: thisCode, hasEditor }) {
