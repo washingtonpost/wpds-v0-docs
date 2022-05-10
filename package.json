@@ -65,6 +65,7 @@
     "url": "https://github.com/washingtonpost/wpds-docs.git"
   },
   "engines": {
+    "node": ">=14.18.2",
     "npm": ">=8.3.0"
   },
   "packageManager": "npm@8.3.0"
