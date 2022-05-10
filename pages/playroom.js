@@ -180,7 +180,12 @@ const components = {
   Link,
 };
 
-export default function Playroom({ source, code: thisCode, hasEditor }) {
+export default function Playroom({
+  source,
+  code: thisCode,
+  hasEditor,
+  isGuide,
+}) {
   const [receivedSource, setSource] = React.useState(source);
   const [editorMode, setEditorMode] = React.useState(hasEditor);
   const [code, setCode] = React.useState(thisCode);
@@ -199,7 +204,14 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
 
     React.useEffect(() => {
       if (hasEditor && iframeRef.current) {
-        iframeRef.current.contentWindow.postMessage(thatCode, "*");
+        iframeRef.current.contentWindow.postMessage(
+          {
+            code: thatCode,
+            isGuide,
+            target: "wpds-playroom",
+          },
+          "*"
+        );
       }
     }, [iframeRef, thatCode]);
 
@@ -233,6 +245,84 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
       );
     }
 
+    const Guide = Kit.styled("div", {
+      position: "absolute",
+      padding: "$100",
+      display: "flex",
+      alignItems: "center",
+      gap: "$025",
+      width: "100%",
+      top: "0",
+      left: "0",
+      variants: {
+        variant: {
+          success: {
+            color: Kit.theme.colors.success,
+          },
+          error: {
+            color: Kit.theme.colors.error,
+          },
+          warning: {
+            color: Kit.theme.colors.warning,
+          },
+          information: {
+            color: Kit.theme.colors.signal,
+          },
+        },
+      },
+    });
+    const Rule = Kit.styled("div", {
+      height: "2px",
+      width: "100%",
+      variants: {
+        variant: {
+          success: {
+            backgroundColor: Kit.theme.colors.success,
+          },
+          error: {
+            backgroundColor: Kit.theme.colors.error,
+          },
+          warning: {
+            backgroundColor: Kit.theme.colors.warning,
+          },
+          information: {
+            backgroundColor: Kit.theme.colors.signal,
+          },
+        },
+      },
+    });
+
+    const GetIcon = ({ variant }) => {
+      switch (variant) {
+        case "success":
+          return (
+            <Kit.Icon size="200">
+              <Assets.Success />
+            </Kit.Icon>
+          );
+        case "warning":
+          return (
+            <Kit.Icon size="200">
+              <Assets.Warning />
+            </Kit.Icon>
+          );
+        case "information":
+          return (
+            <Kit.Icon size="200">
+              <Assets.Info />
+            </Kit.Icon>
+          );
+        case "error":
+          return (
+            <Kit.Icon size="200">
+              <Assets.Error />
+            </Kit.Icon>
+          );
+        default:
+          return null;
+      }
+    };
+
     return (
       <ErrorBoundary
         FallbackComponent={ErrorFallback}
@@ -240,6 +330,10 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
           // reset the state of your app so the error doesn't happen again
         }}
       >
+        <Guide variant={isGuide}>
+          <GetIcon variant={isGuide} />
+          <Rule variant={isGuide}></Rule>
+        </Guide>
         <MDXRemote
           compiledSource={receivedSource.compiledSource}
           scope={{
@@ -331,13 +425,8 @@ Playroom.getLayout = (page) => page;
 
 export async function getServerSideProps(req) {
   const {
-    query: { code, edit },
+    query: { code, edit, isGuide = "none" },
   } = req;
-
-  // guide=warning
-  // guide=error
-  // guide=information
-  // guide=success
 
   let source;
   let parsedCode;
@@ -360,6 +449,7 @@ export async function getServerSideProps(req) {
       source,
       code: parsedCode,
       hasEditor,
+      isGuide,
     },
   };
 }

@@ -279,7 +279,7 @@ const useDebounce = (value, delay) => {
   return debouncedValue;
 };
 
-const Preview = () => {
+const Preview = ({ isGuide }) => {
   const { code, updateCode } = useActiveCode();
   const [firstRenderCode, setFirstRenderCode] = useState(null);
   const iframeRef = React.useRef(null);
@@ -295,12 +295,13 @@ const Preview = () => {
       iframeRef.current.contentWindow.postMessage(
         {
           code: debouncedCode,
+          isGuide,
           target: "wpds-playroom",
         },
         "*"
       );
     }
-  }, [iframeRef, debouncedCode]);
+  }, [iframeRef, isGuide, debouncedCode]);
 
   return (
     <Box
@@ -309,7 +310,7 @@ const Preview = () => {
       sandbox="allow-scripts allow-same-origin"
       src={`/playroom?code=${LZString.compressToEncodedURIComponent(
         firstRenderCode
-      )}`}
+      )}&isGuide=${isGuide}`}
       css={{
         background: theme.colors.gray500,
         border: 0,
@@ -321,7 +322,7 @@ const Preview = () => {
   );
 };
 
-const OpenInPlayroom = () => {
+const OpenInPlayroom = ({ isGuide }) => {
   const { code, updateCode } = useActiveCode();
 
   return (
@@ -338,7 +339,7 @@ const OpenInPlayroom = () => {
       as="a"
       href={`/playroom?edit=1&code=${LZString.compressToEncodedURIComponent(
         code
-      )}`}
+      )}&isGuide=${isGuide}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Open in Playroom"
@@ -376,142 +377,6 @@ const CustomSandpack = ({
     setBodyBackground("$gray500");
   }, [resolvedTheme]);
 
-  const AppCode = `import {
-    globalCss,
-    styled,
-    darkTheme,
-    theme,
-    globalStyles,
-    darkModeGlobalStyles,
-    Icon
-  } from "@washingtonpost/wpds-ui-kit";
-  import React from 'react';
-  import Example from "./Example";
-  import Success from "@washingtonpost/wpds-assets/asset/success";
-  import Warning from "@washingtonpost/wpds-assets/asset/warning";
-  import Info from "@washingtonpost/wpds-assets/asset/info";
-  import Error from "@washingtonpost/wpds-assets/asset/error";
-  import warning from "@washingtonpost/wpds-assets/asset/warning";
-  const embedglobalCss = globalCss({
-    "body::-webkit-scrollbar": {
-      width: 0,
-      height: 0
-    }
-  });
-  const Canvas = styled("div", {
-    background: "$gray500",
-    color: "$accessible",
-    padding: "$100",
-    width: "100vw",
-    height: "100vh",
-    margin: "0 auto",
-    overflow: "hidden",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative"
-  });
-  const Guide = styled("div", {
-    position: "absolute",
-    padding:"$100",
-    display: "flex",
-    alignItems: "center",
-    gap:"$025",
-    width: "100%",
-    top: "0",
-    left: "0",
-    variants: {
-      variant: {
-        success: {
-          color: theme.colors.success
-        },
-        error: {
-          color: theme.colors.error
-        },
-        warning: {
-          color: theme.colors.warning
-        },
-        information: {
-          color: theme.colors.signal
-        }
-      }
-    }
-  });
-  const Rule = styled("div", {
-    height: "2px",
-    width: "100%",
-    variants: {
-      variant: {
-        success: {
-          backgroundColor: theme.colors.success
-        },
-        error: {
-          backgroundColor: theme.colors.error
-        },
-        warning: {
-          backgroundColor: theme.colors.warning
-        },
-        information: {
-          backgroundColor: theme.colors.signal
-        }
-      }
-    }
-  });
-  const GetIcon=({variant})=>{
-    switch(variant){
-      case 'success':
-        return <Icon size="200"><Success/></Icon>
-      case 'warning':
-        return <Icon size="200"><Warning/></Icon>
-      case 'information':
-        return <Icon size="200"><Info/></Icon>
-      case 'error':
-        return <Icon size="200"><Error/></Icon>
-      default:
-        return null;
-    }
-  }
-  export default function App() {
-    return (
-      <Canvas className={${sandboxTheme}}>
-          <Guide variant="${isGuide}">
-            <GetIcon variant="${isGuide}" />
-            <Rule variant="${isGuide}"></Rule>
-          </Guide>
-        <Example />
-      </Canvas>
-    );
-  }`;
-
-  const IndexCode = `import React, { StrictMode } from "react";
-  import ReactDOM from "react-dom";
-  import {
-    globalCss,
-    globalStyles,
-    darkModeGlobalStyles,
-  } from "@washingtonpost/wpds-ui-kit";
-  import App from "./App";
-
-  const embedglobalCss = globalCss({
-    "body::-webkit-scrollbar": {
-      width: 0,
-      height: 0
-    }
-  });
-
-  globalStyles();
-  embedglobalCss();
-  darkModeGlobalStyles();
-  
-  const rootElement = document.getElementById("root");
-  ReactDOM.render(
-    <StrictMode>
-      <App />
-    </StrictMode>,
-    rootElement
-  );`;
-
   return (
     <>
       <SandpackProvider
@@ -520,24 +385,7 @@ const CustomSandpack = ({
         initModeObserverOptions={{ rootMargin: "1400px 0px" }}
         template="react"
         customSetup={{
-          dependencies: {
-            "@washingtonpost/wpds-assets":
-              packageJson.dependencies["@washingtonpost/wpds-assets"],
-            "@washingtonpost/wpds-ui-kit":
-              packageJson.dependencies["@washingtonpost/wpds-ui-kit"],
-            ...packageJsonLock.packages[
-              "node_modules/@washingtonpost/wpds-ui-kit"
-            ].dependencies,
-            ...packageJsonLock.packages[
-              "node_modules/@washingtonpost/wpds-theme"
-            ].peerDependencies,
-            "@radix-ui/react-checkbox":
-              packageJson.dependencies["@radix-ui/react-checkbox"],
-            "@stitches/react": packageJson.dependencies["@stitches/react"],
-          },
           files: {
-            "/index.js": IndexCode,
-            "/App.js": AppCode,
             "/Example.js": {
               code: children,
               active: true,
@@ -546,7 +394,7 @@ const CustomSandpack = ({
         }}
       >
         <SandpackLayout theme={sandboxEmbedTheme}>
-          {withPreview && <Preview />}
+          {withPreview && <Preview isGuide={isGuide} />}
           {showCode && (
             <SandpackCodeEditor
               customStyle={{
@@ -609,7 +457,7 @@ const CustomSandpack = ({
               },
             }}
           >
-            {withPreview && <OpenInPlayroom />}
+            {withPreview && <OpenInPlayroom isGuide={isGuide} />}
             <CopyCodeButton />
           </Box>
         </Box>
