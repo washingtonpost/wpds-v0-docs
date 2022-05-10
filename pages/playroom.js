@@ -244,6 +244,8 @@ export default function Playroom({ source, code: thisCode, hasEditor }) {
           compiledSource={receivedSource.compiledSource}
           scope={{
             ...Kit,
+            useState: React.useState,
+            useEffect: React.useEffect,
           }}
           components={components}
         />
