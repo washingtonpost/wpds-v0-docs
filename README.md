@@ -16,7 +16,7 @@ npm run dev
 
 ## Environment variables
 
-Our documentation search uses [algolia](https://www.algolia.com/) to index the content. The API Key is stored in Vercel for safe keeping. If you want to test it locally or in CI please use the Vercel CLI to access them.
+Our documentation search uses [Algolia](https://www.algolia.com/) to index the content. The API Key is stored in Vercel for safe keeping. If you want to test it locally or in CI please use the Vercel CLI to access them.
 
 1. Install the Vercel CLI:
 
