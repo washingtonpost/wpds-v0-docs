@@ -17,6 +17,10 @@ export async function getPackageData(name) {
     );
     const data = await response.json();
 
+    if (data.error) {
+      return false;
+    }
+
     return data?.size && formatBytes(data?.size);
   } catch (e) {
     return false;

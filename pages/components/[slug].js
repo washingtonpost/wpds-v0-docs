@@ -88,98 +88,100 @@ export default function Page({
           <P className="description">{source.scope.description}</P>
         )}
 
-        <Box
-          css={{
-            marginBlockStart: "$100",
-            display: "flex",
-            rowGap: "$100",
-            flexDirection: "column",
-            fontFamily: "$meta",
-            fontSize: "$075",
-
-            pre: {
-              display: "inline",
-            },
-          }}
-        >
+        {source.scope.status !== "Coming soon" && (
           <Box
-            as="a"
-            title="Learn more about the bundle size at Bundlephobia.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
             css={{
+              marginBlockStart: "$100",
               display: "flex",
-              fontWeight: "$bold",
-              textDecoration: "none",
-              color: "inherit",
+              rowGap: "$100",
+              flexDirection: "column",
+              fontFamily: "$meta",
+              fontSize: "$075",
+
+              pre: {
+                display: "inline",
+              },
             }}
           >
-            Bundle size
-            {bundleSize && (
-              <Box
-                css={{
-                  fontWeight: "$light",
-                  color: "inherit",
-                  textDecoration: "none",
-                  borderBottom: "1px solid $subtle",
-                }}
-              >
-                : {bundleSize}
-              </Box>
-            )}
-          </Box>
-          <Box
-            css={{
-              fontWeight: "$bold",
-            }}
-          >
-            Install:{" "}
-            <pre>
-              <CopyCodeButton
-                as="code"
-                css={{
-                  display: "inline",
-                  fontWeight: "$light",
-                  borderRadius: "$012",
-                  backgroundColor: "$gray500",
-                  color: "$accessible",
-                  padding: "$025",
-                }}
-                textToCopy={`npm install @washingtonpost/wpds-${current}`}
-              >
-                npm install @washingtonpost/wpds-{current}
-              </CopyCodeButton>
-            </pre>
-          </Box>
-          <Box
-            css={{
-              fontWeight: "$bold",
-            }}
-          >
-            Usage:{" "}
-            <pre>
-              <CopyCodeButton
-                as="code"
-                css={{
-                  display: "inline",
-                  fontWeight: "$light",
-                  borderRadius: "$012",
-                  backgroundColor: "$gray500",
-                  color: "$accessible",
-                  padding: "$025",
-                }}
-                textToCopy={`import { ${componentName} } from
+            <Box
+              as="a"
+              title="Learn more about the bundle size at Bundlephobia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
+              css={{
+                display: "flex",
+                fontWeight: "$bold",
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              Bundle size
+              {bundleSize && (
+                <Box
+                  css={{
+                    fontWeight: "$light",
+                    color: "inherit",
+                    textDecoration: "none",
+                    borderBottom: "1px solid $subtle",
+                  }}
+                >
+                  : {bundleSize}
+                </Box>
+              )}
+            </Box>
+            <Box
+              css={{
+                fontWeight: "$bold",
+              }}
+            >
+              Install:{" "}
+              <pre>
+                <CopyCodeButton
+                  as="code"
+                  css={{
+                    display: "inline",
+                    fontWeight: "$light",
+                    borderRadius: "$012",
+                    backgroundColor: "$gray500",
+                    color: "$accessible",
+                    padding: "$025",
+                  }}
+                  textToCopy={`npm install @washingtonpost/wpds-${current}`}
+                >
+                  npm install @washingtonpost/wpds-{current}
+                </CopyCodeButton>
+              </pre>
+            </Box>
+            <Box
+              css={{
+                fontWeight: "$bold",
+              }}
+            >
+              Usage:{" "}
+              <pre>
+                <CopyCodeButton
+                  as="code"
+                  css={{
+                    display: "inline",
+                    fontWeight: "$light",
+                    borderRadius: "$012",
+                    backgroundColor: "$gray500",
+                    color: "$accessible",
+                    padding: "$025",
+                  }}
+                  textToCopy={`import { ${componentName} } from
                "@washingtonpost/wpds-
                 ${current}";`}
-              >
-                import {"{"} {componentName} {"}"} from
-                &quot;@washingtonpost/wpds-
-                {current}&quot;
-              </CopyCodeButton>
-            </pre>
+                >
+                  import {"{"} {componentName} {"}"} from
+                  &quot;@washingtonpost/wpds-
+                  {current}&quot;
+                </CopyCodeButton>
+              </pre>
+            </Box>
           </Box>
-        </Box>
+        )}
 
         <TableofContents
           css={{ opacity: source.scope.status == "Coming soon" ? 0.5 : 1 }}
