@@ -10,14 +10,15 @@ export function formatBytes(bytes, decimals = 2) {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
 
-export async function getPackageData(name, version) {
-  const bundlephobiaResponse = await fetch(
-    `https://bundlephobia.com/api/size?package=@washingtonpost/wpds-${name}@${version}`
-  );
-  // sometimes we get an empty response body
+export async function getPackageData(name) {
   try {
-    return await bundlephobiaResponse.json();
+    const response = await fetch(
+      `https://bundlephobia.com/api/size?package=@washingtonpost/wpds-${name}@latest`
+    );
+    const data = await response.json();
+
+    return data?.size && formatBytes(data?.size);
   } catch (e) {
-    return {};
+    return false;
   }
 }

@@ -6,7 +6,6 @@ import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
-  formatBytes,
   getAllPathsBySection,
   getDocByPathName,
   getHeadings,
@@ -104,26 +103,31 @@ export default function Page({
           }}
         >
           <Box
+            as="a"
+            title="Learn more about the bundle size at Bundlephobia.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
             css={{
+              display: "flex",
               fontWeight: "$bold",
+              textDecoration: "none",
+              color: "inherit",
             }}
           >
-            Bundle size:{" "}
-            <Box
-              as="a"
-              title="Learn more about the bundle size at Bundlephobia.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
-              css={{
-                fontWeight: "$light",
-                color: "inherit",
-                textDecoration: "none",
-                borderBottom: "1px solid $subtle",
-              }}
-            >
-              {bundleSize}
-            </Box>
+            Bundle size
+            {bundleSize && (
+              <Box
+                css={{
+                  fontWeight: "$light",
+                  color: "inherit",
+                  textDecoration: "none",
+                  borderBottom: "1px solid $subtle",
+                }}
+              >
+                : {bundleSize}
+              </Box>
+            )}
           </Box>
           <Box
             css={{
@@ -206,8 +210,7 @@ export const getStaticProps = async ({ params }) => {
   const headings = await getHeadings(`${thisSection}/${params.slug}`);
   const navigation = await getNavigation();
   const propsTable = await getPropsTable(params.slug);
-  const bundleSize = await getPackageData(params.slug, "latest");
-  const formattedBytes = formatBytes(bundleSize?.size);
+  const bundleSize = await getPackageData(params.slug);
   const toTitleCase = (str) =>
     str
       .split("-")
@@ -222,7 +225,7 @@ export const getStaticProps = async ({ params }) => {
       navigation,
       source,
       propsTable,
-      bundleSize: formattedBytes,
+      bundleSize,
       componentName,
     },
   };
