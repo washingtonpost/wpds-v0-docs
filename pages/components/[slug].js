@@ -208,17 +208,21 @@ export default function Page({
 const thisSection = "components";
 
 export const getStaticProps = async ({ params }) => {
-  const source = await getDocByPathName(`${thisSection}/${params.slug}`);
-  const headings = await getHeadings(`${thisSection}/${params.slug}`);
-  const navigation = await getNavigation();
-  const propsTable = await getPropsTable(params.slug);
-  const bundleSize = await getPackageData(params.slug);
   const toTitleCase = (str) =>
     str
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join("");
   const componentName = toTitleCase(params.slug);
+
+  const [source, headings, navigation, propsTable, bundleSize] =
+    await Promise.all([
+      getDocByPathName(`${thisSection}/${params.slug}`),
+      getHeadings(`${thisSection}/${params.slug}`),
+      getNavigation(),
+      getPropsTable(params.slug),
+      getPackageData(params.slug),
+    ]);
 
   return {
     props: {
