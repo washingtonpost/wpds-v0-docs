@@ -6,7 +6,6 @@ import MDXStyling from "~/components/Markdown/Styling";
 import Header from "~/components/Typography/Headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
-  formatBytes,
   getAllPathsBySection,
   getDocByPathName,
   getHeadings,
@@ -89,26 +88,21 @@ export default function Page({
           <P className="description">{source.scope.description}</P>
         )}
 
-        <Box
-          css={{
-            marginBlockStart: "$100",
-            display: "flex",
-            rowGap: "$100",
-            flexDirection: "column",
-            fontFamily: "$meta",
-            fontSize: "$075",
-
-            pre: {
-              display: "inline",
-            },
-          }}
-        >
+        {source.scope.status !== "Coming soon" && (
           <Box
             css={{
-              fontWeight: "$bold",
+              marginBlockStart: "$100",
+              display: "flex",
+              rowGap: "$100",
+              flexDirection: "column",
+              fontFamily: "$meta",
+              fontSize: "$075",
+
+              pre: {
+                display: "inline",
+              },
             }}
           >
-            Bundle size:{" "}
             <Box
               as="a"
               title="Learn more about the bundle size at Bundlephobia.com"
@@ -116,66 +110,78 @@ export default function Page({
               rel="noopener noreferrer"
               href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
               css={{
-                fontWeight: "$light",
-                color: "inherit",
+                display: "flex",
+                fontWeight: "$bold",
                 textDecoration: "none",
-                borderBottom: "1px solid $subtle",
+                color: "inherit",
               }}
             >
-              {bundleSize}
+              Bundle size
+              {bundleSize && (
+                <Box
+                  css={{
+                    fontWeight: "$light",
+                    color: "inherit",
+                    textDecoration: "none",
+                    borderBottom: "1px solid $subtle",
+                  }}
+                >
+                  : {bundleSize}
+                </Box>
+              )}
             </Box>
-          </Box>
-          <Box
-            css={{
-              fontWeight: "$bold",
-            }}
-          >
-            Install:{" "}
-            <pre>
-              <CopyCodeButton
-                as="code"
-                css={{
-                  display: "inline",
-                  fontWeight: "$light",
-                  borderRadius: "$012",
-                  backgroundColor: "$gray500",
-                  color: "$accessible",
-                  padding: "$025",
-                }}
-                textToCopy={`npm install @washingtonpost/wpds-${current}`}
-              >
-                npm install @washingtonpost/wpds-{current}
-              </CopyCodeButton>
-            </pre>
-          </Box>
-          <Box
-            css={{
-              fontWeight: "$bold",
-            }}
-          >
-            Usage:{" "}
-            <pre>
-              <CopyCodeButton
-                as="code"
-                css={{
-                  display: "inline",
-                  fontWeight: "$light",
-                  borderRadius: "$012",
-                  backgroundColor: "$gray500",
-                  color: "$accessible",
-                  padding: "$025",
-                }}
-                textToCopy={`import { ${componentName} } from
+            <Box
+              css={{
+                fontWeight: "$bold",
+              }}
+            >
+              Install:{" "}
+              <pre>
+                <CopyCodeButton
+                  as="code"
+                  css={{
+                    display: "inline",
+                    fontWeight: "$light",
+                    borderRadius: "$012",
+                    backgroundColor: "$gray500",
+                    color: "$accessible",
+                    padding: "$025",
+                  }}
+                  textToCopy={`npm install @washingtonpost/wpds-${current}`}
+                >
+                  npm install @washingtonpost/wpds-{current}
+                </CopyCodeButton>
+              </pre>
+            </Box>
+            <Box
+              css={{
+                fontWeight: "$bold",
+              }}
+            >
+              Usage:{" "}
+              <pre>
+                <CopyCodeButton
+                  as="code"
+                  css={{
+                    display: "inline",
+                    fontWeight: "$light",
+                    borderRadius: "$012",
+                    backgroundColor: "$gray500",
+                    color: "$accessible",
+                    padding: "$025",
+                  }}
+                  textToCopy={`import { ${componentName} } from
                "@washingtonpost/wpds-
                 ${current}";`}
-              >
-                import {"{"} {componentName} {"}"} from
-                &quot;@washingtonpost/wpds-
-                {current}&quot;
-              </CopyCodeButton>
-            </pre>
+                >
+                  import {"{"} {componentName} {"}"} from
+                  &quot;@washingtonpost/wpds-
+                  {current}&quot;
+                </CopyCodeButton>
+              </pre>
+            </Box>
           </Box>
-        </Box>
+        )}
 
         <TableofContents
           css={{ opacity: source.scope.status == "Coming soon" ? 0.5 : 1 }}
@@ -202,18 +208,21 @@ export default function Page({
 const thisSection = "components";
 
 export const getStaticProps = async ({ params }) => {
-  const source = await getDocByPathName(`${thisSection}/${params.slug}`);
-  const headings = await getHeadings(`${thisSection}/${params.slug}`);
-  const navigation = await getNavigation();
-  const propsTable = await getPropsTable(params.slug);
-  const bundleSize = await getPackageData(params.slug, "latest");
-  const formattedBytes = formatBytes(bundleSize?.size);
   const toTitleCase = (str) =>
     str
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join("");
   const componentName = toTitleCase(params.slug);
+
+  const [source, headings, navigation, propsTable, bundleSize] =
+    await Promise.all([
+      getDocByPathName(`${thisSection}/${params.slug}`),
+      getHeadings(`${thisSection}/${params.slug}`),
+      getNavigation(),
+      getPropsTable(params.slug),
+      getPackageData(params.slug),
+    ]);
 
   return {
     props: {
@@ -222,7 +231,7 @@ export const getStaticProps = async ({ params }) => {
       navigation,
       source,
       propsTable,
-      bundleSize: formattedBytes,
+      bundleSize,
       componentName,
     },
   };
