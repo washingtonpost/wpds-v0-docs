@@ -51,67 +51,78 @@ export const PropsTable = ({ props }) => {
         <thead>
           <tr>
             <th>Prop</th>
+            <th>Description</th>
             <th>Type</th>
             <th>Default</th>
             <th>Required</th>
           </tr>
         </thead>
         <tbody>
-          {props.map(({ name, type, rawType = "", required, defaultValue }) => (
-            <Box
-              as="tr"
-              key={name}
-              css={{
-                verticalAlign: type === "enum" ? "top" : "middle",
-              }}
-            >
-              <td>{name}</td>
-              <Box as="td">
-                <Box
-                  css={
-                    type === "enum" && {
-                      display: "flex",
-                      flexDirection: "column",
-                      rowGap: "$050",
-                    }
-                  }
-                >
-                  <span>{type}</span>
+          {props.map(
+            ({
+              name,
+              description,
+              type,
+              rawType = "",
+              required,
+              defaultValue,
+            }) => (
+              <Box
+                as="tr"
+                key={name}
+                css={{
+                  verticalAlign: type === "enum" ? "top" : "middle",
+                }}
+              >
+                <td>{name}</td>
+                <td width="25%">{description}</td>
+                <Box as="td">
                   <Box
-                    css={{
-                      fontFamily: "$meta",
-                      fontSize: "$087",
-                      fontWeight: "$light",
-                      lineHeight: "$110",
-                      fontStyle: "italic",
-                    }}
+                    css={
+                      type === "enum" && {
+                        display: "flex",
+                        flexDirection: "column",
+                        rowGap: "$050",
+                      }
+                    }
                   >
-                    {type === "enum" ? rawType : ""}
+                    <span>{type}</span>
+                    <Box
+                      css={{
+                        fontFamily: "$meta",
+                        fontSize: "$087",
+                        fontWeight: "$light",
+                        lineHeight: "$110",
+                        fontStyle: "italic",
+                      }}
+                    >
+                      {type === "enum" ? rawType : ""}
+                    </Box>
                   </Box>
                 </Box>
+                <td>{defaultValue}</td>
+                <td>
+                  {required === "true" ? (
+                    <Box
+                      css={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-start",
+                        columnGap: "calc($050 / 2)",
+                      }}
+                    >
+                      <Icon fill={theme.colors.success}>
+                        <Success />
+                      </Icon>
+                      True
+                    </Box>
+                  ) : (
+                    "False"
+                  )}
+                </td>
               </Box>
-              <td>{defaultValue}</td>
-              <td>
-                {required === "true" ? (
-                  <Box
-                    css={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-start",
-                      columnGap: "calc($050 / 2)",
-                    }}
-                  >
-                    <Icon fill={theme.colors.success}>
-                      <Success />
-                    </Icon>
-                    True
-                  </Box>
-                ) : (
-                  "False"
-                )}
-              </td>
-            </Box>
-          ))}
+            )
+          )}
         </tbody>
       </Box>
     </Box>
