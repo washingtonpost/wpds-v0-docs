@@ -40,16 +40,16 @@ export default function CollapsibleContainer({ children, maxHeight }) {
   });
   const ShowMoreButton = styled(Button, {
     position: "relative",
-    marginTop: "$075",
     left: "50%",
-    transform: "translateX(-50%)",
+    transform: "translate(-50%,-25%)",
+    boxShadow: "$200",
     zIndex: "$page",
   });
   return (
     <CollapsibleRoot>
       <Content expand={Show ? "true" : "false"}>
         {children}
-        {!Show && <Fade />}
+        {/* {!Show && <Fade />} */}
       </Content>
       <ShowMoreButton
         onClick={() => setShow(!Show)}
