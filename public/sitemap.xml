@@ -151,6 +151,12 @@
   </url>
 
   <url>
+    <loc
+      >https://build.washingtonpost.com/resources/guides/migrating-to-our-new-palette</loc
+    >
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/resources/guides/react-guide</loc>
   </url>
 
