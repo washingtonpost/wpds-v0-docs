@@ -15,11 +15,11 @@ publishDate: May 23,2022
 
 <BR />
 
-Before getting started and reviewing all of our new beautiful colors, we need spend some time reflecting on just where we are coming from and by that I mean we need to look at our old colors. Long ago before we were even where we are today, our colors used a naming convention based on their precieved lightness against a white background. While that may have worked at one time, we have long since outgrown this naming convention.
+Before getting started and reviewing all of our new beautiful colors, we need to spend some time reflecting on just where we are coming from and by that I mean we need to look at our old colors. Long ago before we were even where we are today, our colors used a naming convention based on their perceived lightness against a white background. While that may have worked at one time, we have long since outgrown this naming convention.
 
 <BR />
 
-<Container caption="Example of tokens named by precieved lightness">
+<Container caption="Example of tokens named by perceived lightness">
   <InlineSVG
     path="/img/guides/color-migration/light_dark_darker.svg"
     width="695px"
@@ -46,13 +46,13 @@ The old way of naming our color tokens presented issues for us to scale as a sys
 
 ### The resolution
 
-To resolve many of the issues outlined above we have moved our color naming convention to use numbers instead of precieved lightness. This has unlocked our color tokens to flex according to the context, scale to support more colors in a family and avoid inconsitencies across color families.
+To resolve many of the issues outlined above we have changed our naming convention to use numbers instead of perceived lightness. This has unlocked the ability for our color tokens to flex according to the context, scale to support more colors in a family and avoid inconsistencies across color families.
 
 ---
 
 ## Phase 1: Translation
 
-If you are a early adopter of our new design system you have already been using our new color token naming convention. This phase is called a transition because our color tokens did not disrupt or add any new colors to our legacy system. We simply translated the previous tokens to a normalized color scale. This provides the runway to begin to scale our color scales accordingly and avoid minimum impact when we integrate into our unified palette.
+If you are an early adopter of our new design system, you have already been using our new color token naming convention. This phase is referred to as a "translation" because our color tokens did not disrupt or add any new colors to our legacy system. We simply translated the previous tokens to a normalized color scale. This provides the runway to begin to scale our color scales accordingly, while having minimum impact when we integrate into our unified palette.
 
 <Container caption="Example of gray-dark translating to gray-80">
   <InlineSVG
@@ -67,8 +67,8 @@ If you are a early adopter of our new design system you have already been using 
 ### Old convention → New convention
 
 <Alert dismissable={false} variant={"warning"}>
-  <b>Note:</b> all other subs color were deprecated in this transition as there
-  was uncertainty on which colors would remain after the final color
+  <b>Note:</b> all other Subs colors were deprecated in this translation as
+  there was uncertainty on which colors would remain after the final color
   consolidation of our new palette of phase 2.
 </Alert>
 
@@ -118,7 +118,7 @@ If you are a early adopter of our new design system you have already been using 
 
 ## Phase 2: Growth & Adoption (Final Phase)
 
-The introduction of one unfied system of color tokens represents the evolution of our color palette across the organization. This palette was contributed to by a collection of individuals from many different departments. Our main goal with this palette is to bring together our vast spectrum of colors and eliminate arbitrary deviations that we find throughout our product at large.
+The introduction of one unfied system of color tokens represents the evolution of our color palette across the organization. This palette was contributed to by a collection of individuals from many different departments. Our main goal with this palette is to bring together our vast spectrum of colors and eliminate arbitrary deviations that we encountered throughout our product at large.
 
 ### Which colors changed in phase 2?
 
@@ -158,17 +158,17 @@ The grayscale now ranges from `0` to `700`
 
 All colors for blue have changed in value and now support a scale from `40` to `600`:
 
-| Token   | Notes                                                   |
-| ------- | ------------------------------------------------------- |
-| blue40  | new token added                                         |
-| blue60  | new token added                                         |
-| blue80  | change to value                                         |
-| blue100 | change to value: equivalent to vividblue100 in phase 1  |
-| blue200 | change to value                                         |
-| blue300 | change to value                                         |
-| blue400 | new token added                                         |
-| blue500 | new token added                                         |
-| blue600 | new token added : equivalent to vividblue300 in phase 1 |
+| Token   | Notes                                                  |
+| ------- | ------------------------------------------------------ |
+| blue40  | new token added                                        |
+| blue60  | new token added                                        |
+| blue80  | change to value                                        |
+| blue100 | change to value: equivalent to vividblue100 in phase 1 |
+| blue200 | change to value                                        |
+| blue300 | change to value                                        |
+| blue400 | new token added                                        |
+| blue500 | new token added                                        |
+| blue600 | new token added: equivalent to vividblue300 in phase 1 |
 
 <BR />
 
@@ -176,17 +176,17 @@ All colors for blue have changed in value and now support a scale from `40` to `
 
 All colors for red have changed in value and now support a scale from `40` to `600`:
 
-| Token  | Notes                                             |
-| ------ | ------------------------------------------------- |
-| red40  | new token added                                   |
-| red60  | new token added                                   |
-| red80  | change to value                                   |
-| red100 | no change to value                                |
-| red200 | change to value                                   |
-| red300 | change to value                                   |
-| red400 | new token added                                   |
-| red500 | new token added                                   |
-| red600 | new token added : equivalent to red300 in phase 1 |
+| Token  | Notes                                            |
+| ------ | ------------------------------------------------ |
+| red40  | new token added                                  |
+| red60  | new token added                                  |
+| red80  | change to value                                  |
+| red100 | no change to value                               |
+| red200 | change to value                                  |
+| red300 | change to value                                  |
+| red400 | new token added                                  |
+| red500 | new token added                                  |
+| red600 | new token added: equivalent to red300 in phase 1 |
 
 <BR />
 
@@ -194,17 +194,17 @@ All colors for red have changed in value and now support a scale from `40` to `6
 
 All colors for green have changed in value and now support a scale from `40` to `600`:
 
-| Token    | Notes                                               |
-| -------- | --------------------------------------------------- |
-| green40  | new token added                                     |
-| green60  | new token added                                     |
-| green80  | change to value                                     |
-| green100 | no change to value                                  |
-| green200 | change to value                                     |
-| green300 | change to value                                     |
-| green400 | new token added                                     |
-| green500 | new token added                                     |
-| green600 | new token added : equivalent to green300 in phase 1 |
+| Token    | Notes                                              |
+| -------- | -------------------------------------------------- |
+| green40  | new token added                                    |
+| green60  | new token added                                    |
+| green80  | change to value                                    |
+| green100 | no change to value                                 |
+| green200 | change to value                                    |
+| green300 | change to value                                    |
+| green400 | new token added                                    |
+| green500 | new token added                                    |
+| green600 | new token added: equivalent to green300 in phase 1 |
 
 <BR />
 
@@ -212,17 +212,17 @@ All colors for green have changed in value and now support a scale from `40` to 
 
 All colors for gold have changed in value and now support a scale from `40` to `600`:
 
-| Token   | Notes                                                     |
-| ------- | --------------------------------------------------------- |
-| gold40  | new token added : equivalent to gold80 before the change  |
-| gold60  | new token added : equivalent to gold100 before the change |
-| gold80  | change to value : equivalent to gold200 before the change |
-| gold100 | change to value                                           |
-| gold200 | change to value                                           |
-| gold300 | change to value                                           |
-| gold400 | new token added                                           |
-| gold500 | new token added                                           |
-| gold600 | new token added : equivalent to gold300 in phase 1        |
+| Token   | Notes                                                    |
+| ------- | -------------------------------------------------------- |
+| gold40  | new token added: equivalent to gold80 before the change  |
+| gold60  | new token added: equivalent to gold100 before the change |
+| gold80  | change to value: equivalent to gold200 before the change |
+| gold100 | change to value                                          |
+| gold200 | change to value                                          |
+| gold300 | change to value                                          |
+| gold400 | new token added                                          |
+| gold500 | new token added                                          |
+| gold600 | new token added: equivalent to gold300 in phase 1        |
 
 <BR />
 
@@ -230,17 +230,17 @@ All colors for gold have changed in value and now support a scale from `40` to `
 
 All colors for orange have changed in value and now support a scale from `40` to `600`:
 
-| Token     | Notes                                                |
-| --------- | ---------------------------------------------------- |
-| orange40  | new token added                                      |
-| orange60  | new token added                                      |
-| orange80  | change to value                                      |
-| orange100 | no change to value                                   |
-| orange200 | change to value                                      |
-| orange300 | change to value                                      |
-| orange400 | new token added                                      |
-| orange500 | new token added                                      |
-| orange600 | new token added : equivalent to orange300 in phase 1 |
+| Token     | Notes                                               |
+| --------- | --------------------------------------------------- |
+| orange40  | new token added                                     |
+| orange60  | new token added                                     |
+| orange80  | change to value                                     |
+| orange100 | no change to value                                  |
+| orange200 | change to value                                     |
+| orange300 | change to value                                     |
+| orange400 | new token added                                     |
+| orange500 | new token added                                     |
+| orange600 | new token added: equivalent to orange300 in phase 1 |
 
 <BR />
 ### [Please see our Color tokens to see all of our tokens](/foundations/color)
