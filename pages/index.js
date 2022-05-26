@@ -58,7 +58,7 @@ export default function Index({ recentPosts }) {
           }}
         >
           <Header href="/resources" as="h3">
-            Latest resources
+            What&apos;s new
           </Header>
         </Box>
         <HeroBlock>
@@ -219,17 +219,6 @@ export default function Index({ recentPosts }) {
           >
             Start with Guides
           </CustomLink>
-        </Box>
-        <Box css={{ marginTop: "$200", gridColumn: "1/-1" }}>
-          <AlertBanner.Root>
-            <AlertBanner.Content>
-              <Box as="span">🧐</Box> Looking for documentation for our legacy
-              design system? Visit the{" "}
-              <CustomLink css={{ textDecoration: "underline" }} href="/v0">
-                WPDS v0 docs site.
-              </CustomLink>
-            </AlertBanner.Content>
-          </AlertBanner.Root>
         </Box>
       </Grid>
     </>
