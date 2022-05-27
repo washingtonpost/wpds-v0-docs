@@ -1,5 +1,5 @@
 ---
-title: Radio group
+title: Radio Group
 description: The icon component sets the size of an icon and adds a label that will be announced by screen readers.
 component: RadioGroup
 status: Draft
@@ -33,6 +33,8 @@ export default function Example() {
   return (
     <>
       <RadioGroup
+        legend="Primary"
+        name="primary"
         defaultValue={"opt1"}
         css={{ marginRight: "$050" }}
         variant="primary"
@@ -42,6 +44,8 @@ export default function Example() {
         <RadioButton label="Option 3" value="opt3" id="opt3" />
       </RadioGroup>
       <RadioGroup
+        legend="Secondary"
+        name="secondary"
         defaultValue={"opt1"}
         css={{ marginRight: "$050" }}
         variant="secondary"
@@ -50,7 +54,7 @@ export default function Example() {
         <RadioButton label="Option 2" value="opt2" id="opt2" />
         <RadioButton label="Option 3" value="opt3" id="opt3" />
       </RadioGroup>
-      <RadioGroup defaultValue={"opt1"} variant="cta">
+      <RadioGroup legend="CTA" name="cta" defaultValue={"opt1"} variant="cta">
         <RadioButton label="Option 1" value="opt1" id="opt1" />
         <RadioButton label="Option 2" value="opt2" id="opt2" />
         <RadioButton label="Option 3" value="opt3" id="opt3" />
@@ -73,6 +77,8 @@ export default function Example() {
   return (
     <>
       <RadioGroup
+        legend="Primary"
+        name="primary"
         isOutline
         defaultValue={"opt1"}
         css={{ marginRight: "$050" }}
@@ -83,6 +89,8 @@ export default function Example() {
         <RadioButton label="Option 3" value="opt3" id="opt3" />
       </RadioGroup>
       <RadioGroup
+        legend="Secondary"
+        name="secondary"
         isOutline={"true"}
         defaultValue={"opt1"}
         css={{ marginRight: "$050" }}
@@ -92,7 +100,13 @@ export default function Example() {
         <RadioButton label="Option 2" value="opt2" id="opt2" />
         <RadioButton label="Option 3" value="opt3" id="opt3" />
       </RadioGroup>
-      <RadioGroup isOutline={"true"} defaultValue={"opt1"} variant="cta">
+      <RadioGroup
+        legend="CTA"
+        name="cta"
+        isOutline={"true"}
+        defaultValue={"opt1"}
+        variant="cta"
+      >
         <RadioButton label="Option 1" value="opt1" id="opt1" />
         <RadioButton label="Option 2" value="opt2" id="opt2" />
         <RadioButton label="Option 3" value="opt3" id="opt3" />
@@ -110,7 +124,12 @@ Radio buttons can be preselected or not depending on the situation.
 export default function Example() {
   return (
     <>
-      <RadioGroup defaultValue={"opt1"} variant="primary">
+      <RadioGroup
+        legend="Select an option"
+        name="default-value"
+        defaultValue={"opt1"}
+        variant="primary"
+      >
         <RadioButton label="Option 1" value="opt1" id="opt1" />
         <RadioButton label="Option 2" value="opt2" id="opt2" />
       </RadioGroup>
@@ -127,23 +146,22 @@ Radio groups can be either horizontal or vertical. By default, radio groups are 
 export default function Example() {
   return (
     <Box css={{ display: "flex", gap: "$050" }}>
-      <Fieldset>
-        <b> Select an option</b>
-        <RadioGroup variant="primary">
-          <RadioButton label="Option 1" value="opt1" id="opt1" />
-          <RadioButton label="Option 2" value="opt2" id="opt2" />
-          <RadioButton label="Option 3" value="opt3" id="opt3" />
-        </RadioGroup>
-      </Fieldset>
+      <RadioGroup legend="Select an option" name="vertical" variant="primary">
+        <RadioButton label="Option 1" value="opt1" id="opt1" />
+        <RadioButton label="Option 2" value="opt2" id="opt2" />
+        <RadioButton label="Option 3" value="opt3" id="opt3" />
+      </RadioGroup>
 
-      <Fieldset>
-        <b> Select an option</b>
-        <RadioGroup orientation="horizontal" variant="primary">
-          <RadioButton label="Option 1" value="opt1" id="opt1" />
-          <RadioButton label="Option 2" value="opt2" id="opt2" />
-          <RadioButton label="Option 3" value="opt3" id="opt3" />
-        </RadioGroup>
-      </Fieldset>
+      <RadioGroup
+        legend="Select an option"
+        name="horizontal"
+        orientation="horizontal"
+        variant="primary"
+      >
+        <RadioButton label="Option 1" value="opt1" id="opt1" />
+        <RadioButton label="Option 2" value="opt2" id="opt2" />
+        <RadioButton label="Option 3" value="opt3" id="opt3" />
+      </RadioGroup>
     </Box>
   );
 }
@@ -161,7 +179,12 @@ export default function Example() {
 export default function Example() {
   return (
     <>
-      <RadioGroup disabled defaultValue={"opt1"} variant="primary">
+      <RadioGroup
+        legend="Select an option"
+        disabled
+        defaultValue={"opt1"}
+        variant="primary"
+      >
         <RadioButton label="Option 1" value="opt1" id="opt1" />
         <RadioButton label="Option 2" value="opt2" id="opt2" />
       </RadioGroup>
@@ -170,7 +193,7 @@ export default function Example() {
 }
 ```
 
-### Disabled
+### Focus
 
 ```jsx withPreview
 export default function Example() {
@@ -247,19 +270,17 @@ Error should only occur if the options were not pre-selected and user tries to c
 export default function Example() {
   return (
     <>
-      <Fieldset>
-        <b> Select an option</b>
-        <RadioGroup
-          error
-          errorMessage="Please select an option"
-          variant="primary"
-        >
-          <RadioButton label="Option 1" value="opt1" id="opt1" />
-          <RadioButton label="Option 2" value="opt2" id="opt2" />
-          <RadioButton label="Option 3" value="opt3" id="opt3" />
-          <RadioButton label="Option 4" value="opt4" id="opt4" />
-        </RadioGroup>
-      </Fieldset>
+      <RadioGroup
+        legend="Select an option"
+        error
+        errorMessage="Please select an option"
+        variant="primary"
+      >
+        <RadioButton label="Option 1" value="opt1" id="opt1" />
+        <RadioButton label="Option 2" value="opt2" id="opt2" />
+        <RadioButton label="Option 3" value="opt3" id="opt3" />
+        <RadioButton label="Option 4" value="opt4" id="opt4" />
+      </RadioGroup>
     </>
   );
 }
@@ -273,20 +294,18 @@ When radio button selection is required it should be reflected in the fieldset l
 export default function Example() {
   return (
     <>
-      <Fieldset required>
-        <b> Select an option</b>
-        <RadioGroup
-          required
-          error
-          errorMessage="Please select an option"
-          variant="primary"
-        >
-          <RadioButton label="Option 1" value="opt1" id="opt1" />
-          <RadioButton label="Option 2" value="opt2" id="opt2" />
-          <RadioButton label="Option 3" value="opt3" id="opt3" />
-          <RadioButton label="Option 4" value="opt4" id="opt4" />
-        </RadioGroup>
-      </Fieldset>
+      <RadioGroup
+        legend="Select an option"
+        required
+        error
+        errorMessage="Please select an option"
+        variant="primary"
+      >
+        <RadioButton label="Option 1" value="opt1" id="opt1" />
+        <RadioButton label="Option 2" value="opt2" id="opt2" />
+        <RadioButton label="Option 3" value="opt3" id="opt3" />
+        <RadioButton label="Option 4" value="opt4" id="opt4" />
+      </RadioGroup>
     </>
   );
 }
@@ -300,13 +319,10 @@ The toggle or checkbox is most often used for settings and allows the user to ch
 export default function Example() {
   return (
     <>
-      <Fieldset>
-        <b> Select an option</b>
-        <RadioGroup variant="primary">
-          <RadioButton label="Yes" value="opt1" id="opt1" />
-          <RadioButton label="No" value="opt2" id="opt2" />
-        </RadioGroup>
-      </Fieldset>
+      <RadioGroup legend="Select an option" variant="primary">
+        <RadioButton label="Yes" value="opt1" id="opt1" />
+        <RadioButton label="No" value="opt2" id="opt2" />
+      </RadioGroup>
     </>
   );
 }
@@ -318,4 +334,4 @@ export default function Example() {
 
 ## API Reference
 
-{/* <PropsTable props={propsTable} /> */}
+<PropsTable props={propsTable} />
