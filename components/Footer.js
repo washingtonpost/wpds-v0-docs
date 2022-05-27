@@ -1,5 +1,6 @@
 import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import { Footer as SiteFooter } from "@washingtonpost/site-footer";
+import { useRouter } from "next/router";
 
 const StyledFooter = styled(SiteFooter, {
   ".gray-darkest": {
@@ -69,21 +70,52 @@ const StyledFooter = styled(SiteFooter, {
   },
 });
 
-export const Footer = () => (
-  <Box
-    css={{
-      gridArea: "footer",
-      paddingTop: "$050",
-      marginBottom: "$100",
-      marginTop: "$500",
+const EditInGithub = styled("a", {
+  display: "inline-block",
+  textDecoration: "none",
+  color: "$colors$onSecondary",
+  fontSize: "$087",
+  fontWeight: "$light",
+  lineHeight: "$087",
+  textAlign: "left",
+  marginTop: "$050",
+  marginBottom: "$200",
+  "&:hover": {
+    textDecoration: "underline",
+  },
+});
 
-      "@sm": {
-        "footer.site-footer": {
-          display: "none",
+export const Footer = () => {
+  const router = useRouter();
+  return (
+    <Box
+      css={{
+        gridArea: "footer",
+        paddingTop: "$050",
+        marginBottom: "$100",
+        marginTop: "$500",
+
+        "@sm": {
+          "footer.site-footer": {
+            display: "none",
+          },
         },
-      },
-    }}
-  >
-    <StyledFooter className="site-footer" />
-  </Box>
-);
+      }}
+    >
+      {/* // slug aka a mdx file */}
+      {router?.route?.includes("slug") && (
+        <EditInGithub
+          href={`http://github.com/washingtonpost/wpds-docs/edit/v1-docs/docs/${router.asPath.replace(
+            "/",
+            ""
+          )}.mdx`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Edit this page on GitHub.
+        </EditInGithub>
+      )}
+      <StyledFooter className="site-footer" />
+    </Box>
+  );
+};
