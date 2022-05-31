@@ -111,20 +111,25 @@ export default function Page({
                 textDecoration: "none",
                 color: "inherit",
               }}
-            >Bundle size:&nbsp;
-              <CustomLink css={{color: theme.colors.accessible,
-                textDecoration: "underline",
-                fontWeight: theme.fontWeights.regular,
-                "&:focus": {
-                  outlineColor: "$signal",
-                  outlineStyle: "solid",
-                  outlineOffset: "2px",
-                  outlineWidth: "2px",
-                },
-              }}
-              href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
-              title={"Learn more about the bundle size at Bundlephobia.com"}
-              >{bundleSize}</CustomLink>
+            >
+              Bundle size:&nbsp;
+              <CustomLink
+                css={{
+                  color: theme.colors.accessible,
+                  textDecoration: "underline",
+                  fontWeight: theme.fontWeights.regular,
+                  "&:focus": {
+                    outlineColor: "$signal",
+                    outlineStyle: "solid",
+                    outlineOffset: "2px",
+                    outlineWidth: "2px",
+                  },
+                }}
+                href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
+                title={"Learn more about the bundle size at Bundlephobia.com"}
+              >
+                {bundleSize}
+              </CustomLink>
             </Box>
             <Box
               css={{
@@ -183,20 +188,25 @@ export default function Page({
                 textDecoration: "none",
                 color: "inherit",
               }}
-            >Source:&nbsp;
-              <CustomLink css={{color: theme.colors.accessible,
-                textDecoration: "underline",
-                fontWeight: theme.fontWeights.regular,
-                "&:focus": {
-                  outlineColor: "$signal",
-                  outlineStyle: "solid",
-                  outlineOffset: "2px",
-                  outlineWidth: "2px",
-                },
-              }}
-              href={`https://github.com/washingtonpost/wpds-ui-kit/tree/main/ui/${current}`}
-              title={"View on Github"}
-              >View on Github</CustomLink>
+            >
+              Source:&nbsp;
+              <CustomLink
+                css={{
+                  color: theme.colors.accessible,
+                  textDecoration: "underline",
+                  fontWeight: theme.fontWeights.regular,
+                  "&:focus": {
+                    outlineColor: "$signal",
+                    outlineStyle: "solid",
+                    outlineOffset: "2px",
+                    outlineWidth: "2px",
+                  },
+                }}
+                href={`https://github.com/washingtonpost/wpds-ui-kit/tree/main/ui/${current}`}
+                title={"View on Github"}
+              >
+                View on Github
+              </CustomLink>
             </Box>
           </Box>
         )}
