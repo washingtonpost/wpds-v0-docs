@@ -1,6 +1,140 @@
 ---
 title: Divider
-description:
-component:
-status: "Coming soon"
+description: A divider is a thin rule or line that creates visual separation in a layout.
+component: divider
+status: "Draft"
 ---
+
+## Anatomy
+
+---
+
+## Options
+
+### Orientation
+
+```jsx withPreview
+export default function Example() {
+  return (
+    <Box
+      css={{
+        width: "100%",
+      }}
+    >
+      <Box
+        css={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: "$100",
+          marginBlock: "$200",
+        }}
+      >
+        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Horizontal</Box>
+        <Divider variant="strong" />
+      </Box>
+      <Box
+        css={{
+          width: "100%",
+          height: "188px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "$100",
+          marginBlock: "$200",
+        }}
+      >
+        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Vertical</Box>
+        <Divider variant="strong" orientation="vertical" />
+      </Box>
+    </Box>
+  );
+}
+```
+
+### Color
+
+```jsx withPreview
+export default function Example() {
+  return (
+    <Box
+      css={{
+        width: "100%",
+      }}
+    >
+      <Box
+        css={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: "$100",
+          marginBlock: "$200",
+        }}
+      >
+        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Default</Box>
+        <Divider />
+      </Box>
+      <Box
+        css={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: "$100",
+          marginBlock: "$200",
+        }}
+      >
+        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Strong</Box>
+        <Divider variant="strong" />
+      </Box>
+    </Box>
+  );
+}
+```
+
+## Behavior
+
+### Fill Container
+
+```jsx withPreview
+export default function Example() {
+  return (
+    <Box
+      css={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        gap: "$100",
+      }}
+    >
+      <Box
+        css={{
+          backgroundColor: "$secondary",
+          boxShadow: "$100",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Divider />
+      </Box>
+      <Box
+        css={{
+          backgroundColor: "$secondary",
+          boxShadow: "$100",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Divider orientation="vertical" />
+      </Box>
+    </Box>
+  );
+}
+```
+
+## API Reference
+
+<PropsTable props={propsTable} />
