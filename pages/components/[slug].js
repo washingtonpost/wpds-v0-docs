@@ -16,6 +16,7 @@ import {
 
 import { PropsTable } from "~/components/PropsTable";
 import CopyCodeButton from "~/components/Markdown/Components/CopyToClipBoard";
+import CustomLink from "~/components/Typography/link";
 
 const components = {
   ...MDXStyling,
@@ -104,11 +105,6 @@ export default function Page({
             }}
           >
             <Box
-              as="a"
-              title="Learn more about the bundle size at Bundlephobia.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
               css={{
                 display: "flex",
                 fontWeight: "$bold",
@@ -116,19 +112,24 @@ export default function Page({
                 color: "inherit",
               }}
             >
-              Bundle size
-              {bundleSize && (
-                <Box
-                  css={{
-                    fontWeight: "$light",
-                    color: "inherit",
-                    textDecoration: "none",
-                    borderBottom: "1px solid $subtle",
-                  }}
-                >
-                  : {bundleSize}
-                </Box>
-              )}
+              Bundle size:&nbsp;
+              <CustomLink
+                css={{
+                  color: theme.colors.accessible,
+                  textDecoration: "underline",
+                  fontWeight: theme.fontWeights.regular,
+                  "&:focus": {
+                    outlineColor: "$signal",
+                    outlineStyle: "solid",
+                    outlineOffset: "2px",
+                    outlineWidth: "2px",
+                  },
+                }}
+                href={`https://bundlephobia.com/package/@washingtonpost/wpds-${current}`}
+                title={"Learn more about the bundle size at Bundlephobia.com"}
+              >
+                {bundleSize}
+              </CustomLink>
             </Box>
             <Box
               css={{
@@ -179,6 +180,33 @@ export default function Page({
                   {current}&quot;
                 </CopyCodeButton>
               </pre>
+            </Box>
+            <Box
+              css={{
+                display: "flex",
+                fontWeight: "$bold",
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              Source:&nbsp;
+              <CustomLink
+                css={{
+                  color: theme.colors.accessible,
+                  textDecoration: "underline",
+                  fontWeight: theme.fontWeights.regular,
+                  "&:focus": {
+                    outlineColor: "$signal",
+                    outlineStyle: "solid",
+                    outlineOffset: "2px",
+                    outlineWidth: "2px",
+                  },
+                }}
+                href={`https://github.com/washingtonpost/wpds-ui-kit/tree/main/ui/${current}`}
+                title={"View on Github"}
+              >
+                View on Github
+              </CustomLink>
             </Box>
           </Box>
         )}
