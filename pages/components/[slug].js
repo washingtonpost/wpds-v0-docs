@@ -180,6 +180,21 @@ export default function Page({
                 </CopyCodeButton>
               </pre>
             </Box>
+            <Box
+              as="a"
+              title="Check out the source code for this component."
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://github.com/washingtonpost/wpds-ui-kit/tree/main/ui/${current}`}
+              css={{
+                display: "flex",
+                fontWeight: "$bold",
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              Source code
+            </Box>
           </Box>
         )}
 
