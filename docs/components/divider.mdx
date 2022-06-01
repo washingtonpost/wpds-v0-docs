@@ -7,11 +7,23 @@ status: "Draft"
 
 ## Anatomy
 
+<Container caption="Note: Image is not  to scale" css={{ padding: "$200" }}>
+  <InlineSVG
+    path="/img/components/divider/anatomy.svg"
+    width={353}
+    height={130}
+  />
+</Container>
+
+1. Divider
+
 ---
 
 ## Options
 
 ### Orientation
+
+Dividers can be used to separate individual items in a list, or to to provide clearer visual distinction between two or more grouped elements. They can be oriented vertically or horizontally, depending on the layout in which they occur.
 
 ```jsx withPreview
 export default function Example() {
@@ -30,7 +42,9 @@ export default function Example() {
           marginBlock: "$200",
         }}
       >
-        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Horizontal</Box>
+        <Box css={{ color: "$accessible", fontWeight: "$normal" }}>
+          Horizontal
+        </Box>
         <Divider variant="strong" />
       </Box>
       <Box
@@ -44,7 +58,9 @@ export default function Example() {
           marginBlock: "$200",
         }}
       >
-        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Vertical</Box>
+        <Box css={{ color: "$accessible", fontWeight: "$normal" }}>
+          Vertical
+        </Box>
         <Divider variant="strong" orientation="vertical" />
       </Box>
     </Box>
@@ -53,6 +69,8 @@ export default function Example() {
 ```
 
 ### Color
+
+Sometimes it&#39;s helpful to use dividers as a means of delineating sections of a page or key areas of content. In many cases, a “strong” divider placed above the content can be used to mark the start of a new section and helps distinguish the area from the surrounding layout.
 
 ```jsx withPreview
 export default function Example() {
@@ -71,7 +89,7 @@ export default function Example() {
           marginBlock: "$200",
         }}
       >
-        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Default</Box>
+        <Box css={{ color: "$accessible", fontWeight: "$normal" }}>Default</Box>
         <Divider />
       </Box>
       <Box
@@ -83,7 +101,7 @@ export default function Example() {
           marginBlock: "$200",
         }}
       >
-        <Box css={{ color: "$cta", fontWeight: "$bold" }}>Strong</Box>
+        <Box css={{ color: "$accessible", fontWeight: "$normal" }}>Strong</Box>
         <Divider variant="strong" />
       </Box>
     </Box>
@@ -94,6 +112,8 @@ export default function Example() {
 ## Behavior
 
 ### Fill Container
+
+By default, a divider line should span the full horizontal or vertical dimension of its parent element. The actual height or width of the containing element should derive from its content, unless otherwise specified.
 
 ```jsx withPreview
 export default function Example() {
