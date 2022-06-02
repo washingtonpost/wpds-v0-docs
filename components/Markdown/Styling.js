@@ -26,7 +26,6 @@ const HR = styled("hr", {
 export const P = styled("p", {
   fontSize: "$100",
   paddingBottom: "$050",
-  color: theme.colors.accessible,
   fontFamily: "$meta",
   fontWeight: "$light",
   "& > code": {
