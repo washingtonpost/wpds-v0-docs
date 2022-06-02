@@ -17,6 +17,6 @@ export default function Example() {
   );
 }
  */
-export default function Alertbanner() {
+export default function Example() {
   return <div>See documentation for full example</div>;
 }

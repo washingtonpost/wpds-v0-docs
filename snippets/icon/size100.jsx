@@ -7,7 +7,7 @@ import React from "react";
 import { Icon } from "@washingtonpost/wpds-ui-kit"
 import Bookmark from "@washingtonpost/wpds-assets/asset/bookmark";
 
-export default function ExampleSnippet() {
+export default function Example() {
   return(
     <Icon size="100">
       <Bookmark label="bookmark">
@@ -15,6 +15,6 @@ export default function ExampleSnippet() {
 )}
 ```
  */
-export default function Icon() {
+export default function Example() {
   return <div>See documentation for full example</div>;
 }
