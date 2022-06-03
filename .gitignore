@@ -1,4 +1,4 @@
-**/.DS_Store
+.gitignore**/.DS_Store
 **/.env
 **/node_modules
 yarn-error.log
@@ -103,5 +103,6 @@ yarn-error.log*
 docs/assets
 docs/*.html
 .vercel
+.vscode/
 
 public/v0
