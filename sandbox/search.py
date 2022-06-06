@@ -10,7 +10,7 @@ while c:
 
     url = f"https://api.github.com/search/code?q={code}+user:{org}+filename:{file}"
 
-    response = requests.get(url=url, headers={'Authorization': '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'})
+    response = requests.get(url=url, headers={'Authorization': 'Bearer [TOKEN]'})
     print(f"The status code of this request is: {response.status_code}\n")
 
     json_response = response.json()
