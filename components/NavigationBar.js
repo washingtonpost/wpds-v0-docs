@@ -163,14 +163,6 @@ export const NavigationBar = ({
         </Box>
       </Container>
       <List>
-        <ListItem>{hideFromSmallScreen && <SearchForm />}</ListItem>
-        <ListItem>
-          <Link href="/resources" passHref>
-            <Anchor isCurrent={router.asPath.includes("/resources")}>
-              Resources
-            </Anchor>
-          </Link>
-        </ListItem>
         <ListItem>
           <Link
             onClick={() => setMobileMenu(!mobileMenuState)}
@@ -182,6 +174,14 @@ export const NavigationBar = ({
             </Anchor>
           </Link>
         </ListItem>
+        <ListItem>
+          <Link href="/resources" passHref>
+            <Anchor isCurrent={router.asPath.includes("/resources")}>
+              Resources
+            </Anchor>
+          </Link>
+        </ListItem>
+        <ListItem>{hideFromSmallScreen && <SearchForm />}</ListItem>
         <ListItem>
           <ThemeToggle />
         </ListItem>
