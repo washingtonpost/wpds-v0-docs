@@ -494,6 +494,19 @@
       "documentation": {
         "urlPath": "/components/input-password"
       }
+    },
+    {
+      "name": "Divider example",
+      "path": "snippets/divider/example.jsx",
+      "zeplinIds": [
+        "629a5fd24bb4bdacd38c883b",
+        "629a5fd1fd47e614c9062e80",
+        "629a5fd3ec7c839ed8d683b7",
+        "629a5fd209369c163c14b166"
+      ],
+      "documentation": {
+        "urlPath": "/components/divider"
+      }
     }
   ],
   "links": [
