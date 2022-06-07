@@ -55,6 +55,6 @@ module.exports = withBundleAnalyzer({
   },
   swcMinify: false,
   images: {
-    domains: ["img.youtube.com"],
+    domains: ["img.youtube.com", "media.giphy.com"],
   },
 });
