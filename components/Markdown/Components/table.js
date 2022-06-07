@@ -125,6 +125,13 @@ export default function Table({
       color: "$primary",
     },
   });
+
+  function MapData({ item }) {
+    for (let td in item) {
+      return <td>{td}</td>;
+    }
+  }
+
   return (
     <Container>
       <Table>
@@ -143,9 +150,9 @@ export default function Table({
             data.map((item, i) => {
               return (
                 <tr key={i}>
-                  <td>{item.name}</td>
-                  <td>{item.value}</td>
-                  <td>{item.description}</td>
+                  {item.map((td, cell) => {
+                    return <td key={cell}>{td}</td>;
+                  })}
                 </tr>
               );
             })

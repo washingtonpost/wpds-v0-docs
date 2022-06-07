@@ -3,6 +3,7 @@ import * as AllAssets from "@washingtonpost/wpds-assets/asset";
 import { toast } from "react-toastify";
 import MDXStyling from "~/components/Markdown/Styling";
 import { Grid } from "../Components/Grid";
+import { InputText } from "@washingtonpost/wpds-input-text";
 import Search from "@washingtonpost/wpds-assets/asset/search";
 import {
   Icon,
@@ -15,68 +16,6 @@ import {
 import { paramCase } from "param-case";
 import { logoList } from "./LogoSamples";
 
-const InputHolder = styled("div", {
-  display: "flex",
-  marginBottom: "$050",
-  width: "auto",
-  border: `1px solid ${theme.colors.subtle}`,
-  position: "relative",
-  variants: {
-    showFocus: {
-      true: {
-        border: `1px solid ${theme.colors.signal}`,
-      },
-      false: {
-        border: `1px solid ${theme.colors.subtle}`,
-      },
-    },
-  },
-});
-const Input = styled("input", {
-  height: "$300",
-  border: "none",
-  width: "100%",
-  color: theme.colors.onSecondary,
-  background: theme.colors.secondary,
-  transition: "all .3s ease",
-  padding: "$150 $050 $050 $050",
-  borderRadius: "$012",
-
-  "&:focus": {
-    outline: "none",
-    "&:valid": {
-      "& + label": {
-        fontSize: "$075",
-        transform: "translateY(-100%)",
-      },
-    },
-  },
-
-  "&:placeholder-shown": {
-    "& + label": {
-      transform: "translateY(-50%)",
-      fontSize: "$100",
-    },
-  },
-  "&:not(placeholder-shown)": {
-    "& + label": {
-      transform: "translateY(-100%)",
-      fontSize: "$075",
-    },
-  },
-});
-
-const Label = styled("label", {
-  position: "absolute",
-  cursor: "text",
-  left: "$050",
-  top: "50%",
-  pointerEvents: "none",
-  transform: "translateY(-50%)",
-  fontWeight: "$light",
-  color: theme.colors.accessible,
-  transition: "all .3s ease",
-});
 export default function Icons() {
   const SuccessToast = () => {
     return (
@@ -169,25 +108,14 @@ export default function Icons() {
 
   return (
     <>
-      <InputHolder showFocus={inFocus ? "true" : "false"}>
-        <Input
-          placeholder=" "
-          onFocus={() => setInFocus(true)}
-          onBlur={() => setInFocus(false)}
-          onChange={handleChange}
-        />
-        <Label>Search</Label>
-        <Button
-          as="div"
-          css={{ border: "none", borderRadius: "0", alignSelf: "center" }}
-          variant={"primary"}
-          isOutline
-        >
-          <Icon>
+      <Box css={{ marginBottom: "$050" }}>
+        <InputText onChange={handleChange} label="Search" icon="right">
+          <Icon label="">
             <Search />
           </Icon>
-        </Button>
-      </InputHolder>
+        </InputText>
+      </Box>
+
       <Grid maxSize={"150px"}>
         <GetIcons />
       </Grid>

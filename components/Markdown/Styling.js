@@ -10,10 +10,38 @@ import { List, ListItem } from "~/components/Markdown/Components/list";
 import dynamic from "next/dynamic";
 import { Grid, Cell } from "./Components/Grid";
 import * as AlertBanner from "@washingtonpost/wpds-alert-banner";
-
+import CollapsibleContainer from "./Components/collapsible";
 const InputCheckbox = dynamic(() =>
   import("./Components/Checkbox").then((mod) => mod.InputCheckbox)
 );
+
+const Table = styled("table", {
+  borderCollapse: "collapse",
+  borderSpacing: "0",
+  width: "100%",
+  marginBottom: "calc($050 / 2)",
+  "& th": {
+    textAlign: "left",
+    fontWeight: "$light",
+    borderBottom: "1px solid $subtle",
+    fontSize: "$100",
+    color: "$accessible",
+    py: "$100",
+  },
+  "& td": {
+    minWidth: "auto",
+    borderBottom: "1px solid $subtle",
+    fontSize: "$100",
+    paddingRight: "$100",
+    color: "$accessible",
+    py: "$100",
+  },
+  // style the first column of the table
+  "& td:first-child": {
+    fontWeight: "$bold",
+    color: "$primary",
+  },
+});
 
 const HR = styled("hr", {
   borderStyle: "none",
@@ -136,6 +164,12 @@ const components = {
   BR: BR,
   br: BR,
   Button: Button,
+  table: Table,
+  Collapsible: ({ children, maxHeight }) => (
+    <CollapsibleContainer maxHeight={maxHeight}>
+      {children}
+    </CollapsibleContainer>
+  ),
   Alert: ({ position, variant, shadow, dismissable, css, children }) => (
     <AlertBanner.Root
       shadow={shadow}
@@ -144,7 +178,18 @@ const components = {
       variant={variant}
     >
       <AlertBanner.Trigger />
-      <AlertBanner.Content css={css}>{children}</AlertBanner.Content>
+      <AlertBanner.Content
+        css={{
+          "& a": {
+            color: theme.colors.accessible,
+            textDecoration: "underline",
+          },
+          "& p": { paddingBottom: 0 },
+          css,
+        }}
+      >
+        {children}
+      </AlertBanner.Content>
     </AlertBanner.Root>
   ),
   AlertBanner: AlertBanner,

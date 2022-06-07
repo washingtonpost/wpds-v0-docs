@@ -49,6 +49,10 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/components/radio-group</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/components/text</loc>
   </url>
 
@@ -151,6 +155,12 @@
   </url>
 
   <url>
+    <loc
+      >https://build.washingtonpost.com/resources/guides/migrating-to-our-new-palette</loc
+    >
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/resources/guides/react-guide</loc>
   </url>
 
@@ -175,6 +185,12 @@
   <url>
     <loc
       >https://build.washingtonpost.com/resources/process/supported-platforms</loc
+    >
+  </url>
+
+  <url>
+    <loc
+      >https://build.washingtonpost.com/resources/tutorials/how-to-use-our-theme</loc
     >
   </url>
 
