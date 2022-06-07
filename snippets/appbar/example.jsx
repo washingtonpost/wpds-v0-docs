@@ -5,7 +5,7 @@ import React from "react";
 //Example
 import { AppBar } from '@washingtonpost/wpds-ui-kit'
 
-export default function ExampleSnippet({children}) {
+export default function Example({children}) {
   return(
   <AppBar shadow position="relative">
     {children}
@@ -15,6 +15,6 @@ export default function ExampleSnippet({children}) {
 ```
  */
 
-export default function AppBar() {
+export default function Example() {
   return <div>See documentation for full example</div>;
 }

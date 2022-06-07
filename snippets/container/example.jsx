@@ -14,6 +14,6 @@ export default function Example({children}) {
 }
 ```
  */
-export default function Container() {
+export default function Example() {
   return <div>See documentation for full example</div>;
 }
