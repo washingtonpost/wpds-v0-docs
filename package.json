@@ -1,4 +1,5 @@
 {
+  "name": "WPDS-docs",
   "private": true,
   "scripts": {
     "dev": "next-remote-watch ./docs/**/*",
