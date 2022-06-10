@@ -61,7 +61,7 @@ const Anchor = styled("a", {
   "&:hover": {
     opacity: "0.75",
   },
-  
+
   variants: {
     isCurrent: {
       true: {
@@ -148,16 +148,19 @@ export const NavigationBar = ({
             },
           }}
         >
-          <ThemeToggle css={{
-            position: "fixed", 
-            "@notSm": {
-            marginTop: "-$100", 
-            zIndex: "$page"},
-            "@sm": {
-              top: "$100",
-              right: "$400"
+          <ThemeToggle
+            css={{
+              position: "fixed",
+              "@notSm": {
+                marginTop: "-$100",
+                zIndex: "$page",
+              },
+              "@sm": {
+                top: "$100",
+                right: "$400",
+              },
             }}
-          }/>
+          />
           <Button
             css={{ border: "none" }}
             onClick={() => setMobileMenu(!isClosed)}
@@ -191,7 +194,11 @@ export const NavigationBar = ({
           </Link>
         </ListItem>
         <ListItem>{hideFromSmallScreen && <SearchForm />}</ListItem>
-        <ListItem><ThemeToggle css={{position: "fixed", marginTop: "-$100", zIndex: "$page"}}/></ListItem>
+        <ListItem>
+          <ThemeToggle
+            css={{ position: "fixed", marginTop: "-$100", zIndex: "$page" }}
+          />
+        </ListItem>
       </List>
     </>
   );
