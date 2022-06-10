@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import Logo from "./logo";
 import Menu from "@washingtonpost/wpds-assets/asset/menu";
 import Close from "@washingtonpost/wpds-assets/asset/close";
-import { ThemeToggle } from "./ThemeToggle";
 import dynamic from "next/dynamic";
 import React from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const SearchForm = dynamic(() => import("./SearchForm"), { ssr: false });
 
@@ -61,7 +61,7 @@ const Anchor = styled("a", {
   "&:hover": {
     opacity: "0.75",
   },
-
+  
   variants: {
     isCurrent: {
       true: {
@@ -148,7 +148,16 @@ export const NavigationBar = ({
             },
           }}
         >
-          <ThemeToggle />
+          <ThemeToggle css={{
+            position: "fixed", 
+            "@notSm": {
+            marginTop: "-$100", 
+            zIndex: "$page"},
+            "@sm": {
+              top: "$100",
+              right: "$400"
+            }}
+          }/>
           <Button
             css={{ border: "none" }}
             onClick={() => setMobileMenu(!isClosed)}
@@ -174,7 +183,7 @@ export const NavigationBar = ({
             </Anchor>
           </Link>
         </ListItem>
-        <ListItem>
+        <ListItem css={{ margin: "0 $100 0 0" }}>
           <Link href="/resources" passHref>
             <Anchor isCurrent={router.asPath.includes("/resources")}>
               Resources
@@ -182,9 +191,7 @@ export const NavigationBar = ({
           </Link>
         </ListItem>
         <ListItem>{hideFromSmallScreen && <SearchForm />}</ListItem>
-        <ListItem>
-          <ThemeToggle />
-        </ListItem>
+        <ListItem><ThemeToggle css={{position: "fixed", marginTop: "-$100", zIndex: "$page"}}/></ListItem>
       </List>
     </>
   );

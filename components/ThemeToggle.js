@@ -8,7 +8,7 @@ const hasWindow = () => {
   return typeof window !== "undefined";
 };
 
-export const ThemeToggle = () => {
+export const ThemeToggle = (props) => {
   const { setTheme, resolvedTheme } = useTheme();
   const [env, setEnv] = useState("");
 
@@ -47,7 +47,7 @@ export const ThemeToggle = () => {
   });
 
   return (
-    <Button onClick={toggleTheme} aria-label="Switch theme">
+    <Button css={props.css} onClick={toggleTheme} aria-label="Switch theme">
       <>
         <span className={showOnDarkTheme()}>
           {env === "browser" && resolvedTheme === "light" ? "🌞" : "🌕"}
