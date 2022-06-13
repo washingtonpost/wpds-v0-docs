@@ -27,6 +27,7 @@ const Grid = styled("div", {
     gridTemplateAreas: `
 		    "logo"
         "sidebar"
+        "nav"
         "content"
         "footer"
 		`,
