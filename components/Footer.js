@@ -83,6 +83,9 @@ const EditInGithub = styled("a", {
   "&:hover": {
     textDecoration: "underline",
   },
+  "@sm": {
+    marginLeft: "$100",
+  }
 });
 
 export const Footer = () => {
