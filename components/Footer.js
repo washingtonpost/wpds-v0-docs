@@ -85,7 +85,7 @@ const EditInGithub = styled("a", {
   },
   "@sm": {
     marginLeft: "$100",
-  }
+  },
 });
 
 export const Footer = () => {
