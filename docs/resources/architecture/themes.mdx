@@ -6,7 +6,6 @@ publishDate: June 15, 2022
 byline: By Claire Helms
 ---
 
-
 ## Stitches
 
 The Washington Post Design System utilizes the css-in-js library, [Stitches](https://stitches.dev/), to optimize app performance and dev experience. For more context about why we use Stitches, [read here.](https://build.washingtonpost.com/resources/architecture/stitches#Supporting%20Community)
@@ -64,10 +63,10 @@ const newButton = css({
 });
 
 // Use it
-<div className={newButton()}>I'm new!</div>
+<div className={newButton()}>I'm new!</div>;
 ```
 
-**note: style property names use camel case in these functions (example: `z-index` becomes `zIndex`)
+\*\*note: style property names use camel case in these functions (example: `z-index` becomes `zIndex`)
 
 ## Theme object and tokens
 
@@ -159,7 +158,7 @@ Another feature of the UI Kit that provides greater consistency is `globalStyles
 
 ## Dark theme
 
-The WPDS UI Kit currently supports a light and a [dark theme](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts#L94). Using the Stitches function `createTheme`, tokens specified in the `theme` object can be overwritten to create custom themes. In the case of our UI Kit, the dark theme is employed when the breakpoint `dark` is toggled. 
+The WPDS UI Kit currently supports a light and a [dark theme](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts#L94). Using the Stitches function `createTheme`, tokens specified in the `theme` object can be overwritten to create custom themes. In the case of our UI Kit, the dark theme is employed when the breakpoint `dark` is toggled.
 
 ## Keyframes
 
