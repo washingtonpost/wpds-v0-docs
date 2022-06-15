@@ -4,7 +4,7 @@ We built this site to document the WPDS UI Kit. It's built with [Next.js](https:
 
 ## Getting started
 
-We assume a Node.js environment using `14.18.2` version of Node.js and NPM `8.3.0`.
+We assume a Node.js environment using `lts/gallium` version of Node.js.
 
 ```bash
 npm install
