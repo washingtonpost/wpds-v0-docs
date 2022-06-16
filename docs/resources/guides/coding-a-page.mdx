@@ -30,7 +30,7 @@ You will finish this tutorial with a strong opinion from us on how to best devel
 
 ## Page Layout
 
-We are going to have two layouts one for smaller screens and one for larger screens. Luckily, today we have CSS Grid & Flex Box. We will be using these to create our layouts. On small screens, the recipe when opened will display on top of the search results. On larger screens, the recipe will be displayed to right of the search results, the search results will be displayed to the left of the recipe in 4 columns.
+We are going to have two layouts one for smaller screens and one for larger screens. Luckily, today we have CSS Grid & Flex Box. We will be using these to create our layouts. On small screens, the recipe when opened will display on top of the search results. On larger screens, the recipe will be displayed to the right of the search results, the search results will be displayed to the left of the recipe in 4 columns.
 
 ### Container
 
@@ -48,7 +48,7 @@ export default function Home() {
 }
 ```
 
-WPDS ships with a responsive Container component that centers its content and resizes based on window width. It has four sizes based on UI Kit's internal breakpoints. For small and medium breakpoints its width is 100%, large its width is 900px, extra large and extra extra large 1024px, and above extra large 1440px. In the initial stage of developing the layout we'll use the [stitches `styled` function](https://stitches.dev/docs/api#styled) that ships with UI Kit to make the container easier to visualize.
+WPDS ships with a responsive Container component that centers its content and resizes based on window width. It has four sizes based on UI Kit's internal breakpoints. For small and medium breakpoints the container's width is 100%, large is 900px, extra large and extra extra large is 1024px, and above extra large is 1440px. In the initial stage of developing the layout, we'll use the [stitches `styled` function](https://stitches.dev/docs/api#styled) that ships with UI Kit to make the container easier to visualize.
 
 ### Structural Elements
 
@@ -112,13 +112,13 @@ export default function Home() {
 </Container>
 <br />
 
-By default Container is set to display flex with a direction of column, our layout adds two children. A Header to contain the elements that span the width of the page, and a OverviewDetail to contain the grid of recipe photos and the selected recipe's details. StyledContainer un-sets alignItems to allow its child elements to have a 100% width. It also sets a flex property of 1 on OverviewDetail using an nth-child selector to allow it to expand and fill any vertical space not occupied by the Header. Using a child selector keeps OverviewDetail separated from the concern of how it is layed out in its parent.
+By default, Container is set to display flex with a direction of column. Our layout adds two children. A Header component contains elements that span the width of the page and an OverviewDetail component contains the grid of recipe photos and the selected recipe's details. StyledContainer un-sets alignItems to allow its child elements to have a 100% width. It also sets a flex property of 1 on OverviewDetail using an nth-child selector to allow it to expand and fill any vertical space not occupied by the Header. Using a child selector keeps OverviewDetail separated from the concern of how it is layed out in its parent.
 
-The OverviewDetail has its display property set to `flex` to layout its child elements in a row.The Overview element also uses `flex: 1` to expand and fill the main portion of OverviewDetail's flex row. Finally the Detail element starts out in it's large screen layout, using flex's [two value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/flex#syntax) to set its width to 25%.
+The OverviewDetail has its display property set to `flex` to layout its child elements in a row. The Overview element also uses `flex: 1` to expand and fill the main portion of OverviewDetail's flex row. Finally, the Detail element starts in its large screens layout, using flex's [two value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/flex#syntax) to set its width to 25%.
 
 #### Adding Responsiveness
 
-In the proposed layout Details responds to screen size changes and will display as an overlay on smaller screen. We'll use a combination of variants and breakpoints in stitches to achieve this.
+In the proposed layout Details responds to screen size changes and will display as an overlay on smaller screen sizes. We'll use a combination of variants and breakpoints in stitches to achieve this.
 
 ```jsx
 ...
@@ -164,9 +164,9 @@ const Detail = styled("div", {
 
 Stitches supports [responsive styles](https://stitches.dev/docs/responsive-styles) by allowing variants to be applied at different breakpoints. The UI Kit stitches config contains a media object with 5 breakpoints, `sm`, `md`, `lg`, `xl`, `xxl` as well as the inverses `notSm`, `notMd`, `notLg`, `notXl`.
 
-To selectively apply a style a prop with the parent variant name on the element is passed on object that contains keys of breakpoint names and values of child variant names. An initial variant can be set by using the `@initial` key.
+To selectively apply a style a prop with the parent variant name on the element is passed an object that contains keys of breakpoint names and values of child variant names. An initial variant can be set by using the `@initial` key.
 
-With this method the Detail pane initially uses the "column" layout but at the small breakpoint switches to the "overlay" layout.
+With this method, the Detail pane initially uses the "column" layout but at the small breakpoint switches to the "overlay" layout.
 
 ### Responsive Grid
 
@@ -209,7 +209,7 @@ const ResponsiveGridItem = styled("li", {
 </ResponsiveGrid>
 ```
 
-By using the same approach to responsiveness we can create a grid for recipes that switches between a two and four column layout. CSS grid layout takes care of managing the display of the desired number of columns using the [repeat function](https://developer.mozilla.org/en-US/docs/Web/CSS/repeat). Rows aren't templated and [implicitly repeat](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#the_implicit_and_explicit_grid) with auto sizing.
+By using the same approach to responsiveness we can create a grid for recipes that switches between a two and a four column layout. CSS grid layout takes care of managing the display of the desired number of columns using the [repeat function](https://developer.mozilla.org/en-US/docs/Web/CSS/repeat). Rows aren't templated and [implicitly repeat](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#the_implicit_and_explicit_grid) with auto sizing.
 
 ### Show and Hide Details
 
@@ -267,7 +267,7 @@ To complete a basic version of the required interactivity we'll add a selectedRe
 
 ## Adding Data
 
-To keep this guide self contained we will be working with a local data source, but the approach for interacting with an API will be the similar in a production environment.
+To keep this guide self-contained we will be working with a local data source, but the approach for interacting with an API will be similar in a production environment.
 
 ```jsx
 ...
@@ -300,7 +300,7 @@ The endpoint returns a JSON array of recipe objects with the following fields.
 ]
 ```
 
-Which can can then be used to populate the grid and the details pane.
+Which can then be used to populate the grid and the details pane.
 
 ### Searching
 
@@ -332,7 +332,7 @@ function handleSearchChange(event) {
 </Header>
 ```
 
-With the addition of a search input field any user entered text can be stored in state and used to update the api request. By passing a function to SWR it will make use of a dynamic value to re-fetch data on changes. In addition a debounced value from a utility hook is used to ensure that the search text value does not change until the user has paused typing.
+With the addition of a search input field, any user-entered text can be stored in state and used to update the API request. By passing a function to SWR it will make use of a dynamic value to re-fetch data on changes. In addition, a debounced value from a utility hook is used to ensure that the search text value does not change until the user has paused typing.
 
 <Container caption="">
   <InlineImage
@@ -346,11 +346,11 @@ With the addition of a search input field any user entered text can be stored in
 
 ## UI Component Organization
 
-Up until this point all of our development has occurred in the index.js file. As we finalize the development of the page it's useful to abstract out each of these custom elements as stand alone component files. Keeping our index file clear, performant, and focused on it's primary responsibility of handling data and state.
+Up until this point all of our development has occurred in the index.js file. As we finalize the development of the page it's useful to abstract out each of these custom elements as stand-alone component files. Keeping our index file clear, performant, and focused on its primary responsibility of handling data and state.
 
-Next expects components to be located in a top level folder. Let's move our elements to files in that folder and refactor out the temporary styles we used to visualize them. During refactoring we'll favor flow relative [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to handle any possible direction or orientation changes.
+Next expects components to be located in a top-level folder. Let's move our elements to files in that folder and refactor out the temporary styles we used to visualize them. During refactoring, we'll favor flow relative [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) to handle any possible direction or orientation changes.
 
-Then we'll add a couple additional components to properly display the recipes.
+Then we'll add a couple of additional components to properly display the recipes.
 
 ### Styled Element Wrappers
 
@@ -423,7 +423,7 @@ const ResponsiveGridItem = styled("li", {});
 export { ResponsiveGrid, ResponsiveGridItem };
 ```
 
-The Header, PageHeading, and ResponsiveGrid components end up as simple wrappers around their styled elements. All the components favor named exports over default exports. The ResponsiveGrid also exports a ResponsiveGridItem. These components have an explicit parent child relationship so they share the same file.
+The Header, PageHeading, and ResponsiveGrid components end up as simple wrappers around their styled elements. All the components favor named exports over default exports. The ResponsiveGrid also exports a ResponsiveGridItem. These components have an explicit parent-child relationship so they share the same file.
 
 #### OverviewDetail
 
@@ -509,7 +509,7 @@ const Detail = ({ children, onClose, ...props }) => {
 export { OverviewDetail, Overview, Detail };
 ```
 
-OverviewDetail has some additional responsibilities in the Detail component. If no children are passed it won't render, facilitating it's show hide functionality. It also now contains a conditionally rendered divider that is hidden when it displays as an overlay.
+OverviewDetail has some additional responsibilities in the Detail component. If no children are passed it won't render, facilitating its show hide functionality. It also now contains a conditionally rendered divider that is hidden when it displays as an overlay.
 
 ### Recipe Components
 
@@ -615,7 +615,7 @@ const RecipeCard = ({ content, onClick }) => {
 export { RecipeCard };
 ```
 
-The RecipeCard contains an image, title, and favorite toggle button. It uses css grid and the UI Kit spacing constants to arrange these elements. With both the card as well as the favorites toggle being clickable it's necessary to include an invisible button as a sibling for both elements to remain interactive and accessible. Finally a local storage hook is used to store any clicked favorites and persist them between visits.
+The RecipeCard contains an image, title, and favorite toggle button. It uses css grid and the UI Kit spacing constants to arrange these elements. With both the card as well as the favorites toggle being clickable it's necessary to include an invisible button as a sibling for both elements to remain interactive and accessible. Finally, a local storage hook is used to store any clicked favorites and persist them between visits.
 
 #### Recipe
 
@@ -679,7 +679,7 @@ const Recipe = ({ content }) => {
 export { Recipe };
 ```
 
-Recipe is a straightforward display of the image and recipe text content broken out by type. A small bit of logic is used for parsing out in ingredients into a list.
+the Recipe component is a straightforward display of the recipe's image and text content broken out by type. A small bit of logic is used for parsing ingredients into a list.
 
 ## Final Page
 
@@ -893,6 +893,6 @@ const Detail = ({ children, onClose, ...props }) => {
 };
 ```
 
-In order to animate the transition of the Detail pane we'll leverage a [react-transition-group CSSTransition](https://reactcommunity.org/react-transition-group/css-transition) The CSSTransition takes care of the conditional rendering by using the `mountOnEnter` and `unmountOnExit` flags. Since the root application determines of a Recipe is being rendered a copy pf that element is kept and rendered to show while the exit transition is happening.
+To animate the transition of the Detail pane we'll leverage a [react-transition-group CSSTransition](https://reactcommunity.org/react-transition-group/css-transition) The CSSTransition takes care of the conditional rendering by using the `mountOnEnter` and `unmountOnExit` flags. Since the root application determines if a Recipe is being rendered a copy of that element is kept and rendered to show while the exit transition is happening.
 
-The standard class naming pattern is use to apply a fade in and out any time Details is shown and hidden, while a slide in is used on the larger side column layout. The `&` sign is used to chain the react-transition-group class names in stitches and apply the rules for the transitions
+The standard class naming pattern from react-transition-group is used to apply a fade-in and out any time the Details component is shown and hidden, while a slide-in is used on the larger side column layout. The `&` sign is used to chain the react-transition-group class names in stitches and apply the rules for the transitions
