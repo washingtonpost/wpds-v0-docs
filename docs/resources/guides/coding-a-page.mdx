@@ -36,10 +36,10 @@ We are going to have two layouts one for smaller screens and one for larger scre
 
 ```jsx
 import React from "react";
-import { Container, styled } from "@washingtonpost/wpds-ui-kit";
+import { Container, styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 const StyledContainer = styled(Container, {
-  backgroundColor: "$blue600",
+  backgroundColor: theme.colors["blue600"],
   minHeight: "100vh",
 });
 
@@ -54,39 +54,39 @@ WPDS ships with a responsive Container component that centers its content and re
 
 ```jsx
 import React from "react";
-import { Container, styled } from "@washingtonpost/wpds-ui-kit";
+import { Container, styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 const StyledContainer = styled(Container, {
   alignItems: "unset",
-  backgroundColor: "$blue600",
-  gap: "$100",
+  backgroundColor: theme.colors["blue600"],
+  gap: theme.space["100"],
   minHeight: "100vh",
-  padding: "$100",
+  padding: theme.space["100"],
   "& > :nth-child(2)": {
     flex: 1,
   },
 });
 
 const Header = styled("header", {
-  backgroundColor: "$blue400",
-  padding: "$050",
+  backgroundColor: theme.colors["blue400"],
+  padding: theme.space["050"],
 });
 
 const OverviewDetail = styled("div", {
   display: "flex",
-  gap: "$100",
+  gap: theme.space["100"],
 });
 
 const Overview = styled("div", {
-  backgroundColor: "$blue400",
+  backgroundColor: theme.colors["blue400"],
   flex: "1",
-  padding: "$050",
+  padding: theme.space["050"],
 });
 
 const Detail = styled("div", {
-  backgroundColor: "$blue400",
+  backgroundColor: theme.colors["blue400"],
   flex: "0 25%",
-  padding: "$050",
+  padding: theme.space["050"],
 });
 
 export default function Home() {
@@ -124,8 +124,8 @@ In the proposed layout Details responds to screen size changes and will display 
 ...
 
 const Detail = styled("div", {
-  backgroundColor: "$blue400",
-  padding: "$050",
+  backgroundColor: theme.colors["blue400"],
+  padding: theme.space["050"],
   variants: {
     layout: {
       column: {
@@ -136,7 +136,7 @@ const Detail = styled("div", {
         overflow: "auto",
         opacity: 0.75,
         position: "fixed",
-        zIndex: "$offer",
+        zIndex: theme.zIndices.offer,
       },
     },
   },
@@ -175,9 +175,9 @@ With this method the Detail pane initially uses the "column" layout but at the s
 
 const ResponsiveGrid = styled("ul", {
   display: "grid",
-  gap: "$050",
+  gap: theme.space["050"],
   listStyle: "none",
-  marginBlock: "$050",
+  marginBlock: theme.space["050"],
   paddingInlineStart: "0",
   variants: {
     layout: {
@@ -191,8 +191,8 @@ const ResponsiveGrid = styled("ul", {
   },
 });
 const ResponsiveGridItem = styled("li", {
-  backgroundColor: "$blue300",
-  padding: "$050",
+  backgroundColor: theme.colors["blue300"],
+  padding: theme.space["050"],
 });
 
 ...
@@ -357,11 +357,11 @@ Then we'll add a couple additional components to properly display the recipes.
 #### Header
 
 ```jsx
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 const Header = styled("header", {
-  paddingBlockStart: "$500",
-  paddingBlockEnd: "$100",
+  paddingBlockStart: theme.space["500"],
+  paddingBlockEnd: theme.space["100"],
 });
 
 export { Header };
@@ -370,13 +370,13 @@ export { Header };
 #### PageHeading
 
 ```jsx
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 const PageHeading = styled("h1", {
-  color: "$primary",
-  fontFamily: "$headline",
-  fontSize: "$300",
-  marginBlockEnd: "$100",
+  color: theme.colors.primary,
+  fontFamily: theme.fonts.headline,
+  fontSize: theme.fontSizes["300"],
+  marginBlockEnd: theme.space["100"],
 });
 
 export { PageHeading };
@@ -385,11 +385,11 @@ export { PageHeading };
 #### ResponsiveGrid
 
 ```jsx
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 const Grid = styled("ul", {
   display: "grid",
-  gap: "$050",
+  gap: theme.space["050"],
   listStyle: "none",
   paddingInlineStart: "0",
   variants: {
@@ -448,11 +448,11 @@ const DetailContainer = styled("div", {
         flex: "0 0 25%",
       },
       overlay: {
-        backgroundColor: "$secondary",
+        backgroundColor: theme.colors.secondary,
         inset: 0,
         overflow: "auto",
         position: "fixed",
-        zIndex: "$offer",
+        zIndex: theme.zIndices.offer,
       },
     },
   },
@@ -460,12 +460,12 @@ const DetailContainer = styled("div", {
 
 const CloseButton = styled(Button, {
   position: "absolute",
-  insetBlockStart: "$050",
-  insetInlineEnd: "$050",
+  insetBlockStart: theme.space["050"],
+  insetInlineEnd: theme.space["050"],
 });
 
 const StyledDivider = styled(Divider, {
-  marginInline: "$100",
+  marginInline: theme.space["100"],
   paddingInlineStart: "1px",
   variants: {
     layout: {
@@ -516,7 +516,7 @@ OverviewDetail has some additional responsibilities in the Detail component. If 
 #### Recipe Card
 
 ```jsx
-import { Button, Icon, styled } from "@washingtonpost/wpds-ui-kit";
+import { Button, Icon, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import { Like, LikeSolid } from "@washingtonpost/wpds-assets";
 import { useLocalStorage } from "../hooks/use-local-storage";
 
@@ -524,11 +524,11 @@ const Card = styled("div", {
   display: "grid",
   gridTemplateAreas: `"img img"
                       "title fav"`,
-  gridTemplateColumns: "1fr $200",
+  gridTemplateColumns: `1fr ${theme.space["200"]}`,
   gridTemplateRows: "auto",
   alignItems: "center",
   position: "relative",
-  gap: "$025",
+  gap: theme.space["025"],
 });
 
 const Image = styled("img", {
@@ -538,10 +538,10 @@ const Image = styled("img", {
 });
 
 const Title = styled("span", {
-  fontFamily: "$subhead",
-  fontWeight: "$bold",
-  color: "$primary",
-  paddingInlineStart: "$025",
+  fontFamily: theme.fonts.subhead,
+  fontWeight: theme.fontWeights.bold,
+  color: theme.colors.primary,
+  paddingInlineStart: theme.space["025"],
   whiteSpace: "nowrap",
   overflow: "hidden",
   textOverflow: "ellipsis",
@@ -595,7 +595,11 @@ const RecipeCard = ({ content, onClick }) => {
         onClick={handleFavoriteClick}
       >
         {isFavorite ? (
-          <Icon size="100" fill={"$red200"} label="Remove from favorites">
+          <Icon
+            size="100"
+            fill={theme.colors.red200}
+            label="Remove from favorites"
+          >
             <LikeSolid />
           </Icon>
         ) : (
@@ -616,11 +620,11 @@ The RecipeCard contains an image, title, and favorite toggle button. It uses css
 #### Recipe
 
 ```jsx
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 const Container = styled("div", {
-  color: "$primary",
-  padding: "$100",
+  color: theme.colors.primary,
+  padding: theme.space["100"],
 });
 
 const HeaderImage = styled("img", {
@@ -629,25 +633,25 @@ const HeaderImage = styled("img", {
 });
 
 const MainHeading = styled("h2", {
-  marginBlockEnd: "$050",
-  fontFamily: "$subhead",
+  marginBlockEnd: theme.space["050"],
+  fontFamily: theme.fonts.subhead,
 });
 
 const SectionHeading = styled("h3", {
-  marginBlockEnd: "$050",
-  fontFamily: "$subhead",
-  fontSize: "$087",
+  marginBlockEnd: theme.space["050"],
+  fontFamily: theme.fonts.subhead,
+  fontSize: theme.fontSizes["087"],
   textTransform: "uppercase",
 });
 
 const IngredientList = styled("ul", {
-  marginBlockEnd: "$050",
-  paddingInlineStart: "$100",
-  fontFamily: "$body",
+  marginBlockEnd: theme.space["050"],
+  paddingInlineStart: theme.space["100"],
+  fontFamily: theme.fonts.body,
 });
 
 const Directions = styled("p", {
-  fontFamily: "$body",
+  fontFamily: theme.fonts.body,
 });
 
 const Recipe = ({ content }) => {
@@ -807,14 +811,14 @@ const DetailContainer = styled("div", {
   },
   "&.wprs-enter-active": {
     opacity: 1,
-    transition: "$allFast",
+    transition: theme.transitions.allFast,
   },
   "&.wprs-exit": {
     opacity: 1,
   },
   "&.wprs-exit-active": {
     opacity: 0,
-    transition: "$allFast",
+    transition: theme.transitions.allFast,
   },
   variants: {
     layout: {
