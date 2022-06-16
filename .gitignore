@@ -21,7 +21,7 @@ resources/dist/**
 **/dist
 .dist
 .idea/*
-.history
+.history/*
 *.swn
 *.swo
 *.swp
