@@ -21,6 +21,7 @@ export const getNavigation = async () => {
         data: {
           title: data?.title || "",
           order: data?.order || null,
+          status: data?.status || "",
         },
         slug,
         filePath,
