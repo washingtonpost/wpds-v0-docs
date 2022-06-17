@@ -1,3 +1,5 @@
+const { withCustomConfig } = require("react-docgen-typescript");
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });

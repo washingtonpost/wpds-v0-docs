@@ -10,7 +10,7 @@ const config = {
     title: "WPDS Documentation & Resources",
     images: [
       {
-        url: "https://build.washingtonpost.com/img/card.png",
+        url: "",
         alt: "WP Design System logo",
         type: "image/png",
       },
