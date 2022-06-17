@@ -11,15 +11,30 @@ export function formatBytes(bytes, decimals = 2) {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
 
+const cache = new Map();
+
 export async function getPackageData(name) {
+  let size = null;
   try {
-    const data = await getPackageStats(`@washingtonpost/wpds-${name}@latest`);
+    if (cache.has(name)) {
+      console.log("cache hit: getPackageData");
+      size = cache.get(name);
 
-    if (data.error) {
-      return false;
+      return size;
+    } else {
+      const data = await getPackageStats(`@washingtonpost/wpds-${name}@latest`);
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      size = data?.size && formatBytes(data?.size);
+
+      // add to cache
+      cache.set(name, size);
+
+      return size;
     }
-
-    return data?.size && formatBytes(data?.size);
   } catch (e) {
     return false;
   }
