@@ -17,6 +17,7 @@ import {
 import { PropsTable } from "~/components/PropsTable";
 import CopyCodeButton from "~/components/Markdown/Components/CopyToClipBoard";
 import CustomLink from "~/components/Typography/link";
+const puppeteer = require("puppeteer");
 
 const components = {
   ...MDXStyling,
@@ -38,12 +39,20 @@ export default function Page({
   propsTable,
   bundleSize,
   componentName,
+  fp,
 }) {
   return (
     <>
       <NextSeo
         title={`WPDS - ${source.scope.title} | Components`}
         description={source.scope.description}
+        openGraph={{
+          images: [
+            {
+              url: fp,
+            },
+          ],
+        }}
       />
       {source.scope.status == "Coming soon" && (
         <>
@@ -252,6 +261,28 @@ export const getStaticProps = async ({ params }) => {
       getPackageData(params.slug),
     ]);
 
+  async function getScreenShot() {
+    const browser = await puppeteer.launch({
+      defaultViewport: {
+        width: 300,
+        height: 300,
+      },
+    });
+    const page = await browser.newPage();
+    await page.goto(
+      `https://build.washingtonpost.com/components/${params.slug}`
+    );
+    const componentElem = await page.$("#__next > div > main > article > pre");
+    await componentElem.screenshot({ path: "public/img/social.png" });
+
+    await browser.close();
+
+    return {
+      fp: "https://build.washingtonpost.com/img/social.png",
+    };
+  }
+  const fp = await getScreenShot();
+
   return {
     props: {
       current: params.slug,
@@ -261,6 +292,7 @@ export const getStaticProps = async ({ params }) => {
       propsTable,
       bundleSize,
       componentName,
+      fp,
     },
   };
 };
