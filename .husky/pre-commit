@@ -2,7 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 echo "--> Installing libraries..."
-npm install
+npm ci
 
 echo "--> Building the application..."
 npm run build
