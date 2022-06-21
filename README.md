@@ -6,13 +6,31 @@ We built this site to document the WPDS UI Kit. It's built with [Next.js](https:
 
 We assume a Node.js environment using `lts/gallium` version of Node.js.
 
-```bash
-npm install
-```
+1. Install nvm in order to control the node versions you're using
 
 ```bash
-npm run dev
+brew install nvm
 ```
+
+2. Install `node v14.18.2`. Using `v14` or `v14:latest` won't work. You can also check the `.nvmrc` for the exact version.
+
+```bash
+nvm install v14.18.2
+```
+
+3. After installing node v14.18.2, you'll need to override the npm version with version 8.3.0. It's important to do this second, as installing node will override the npm version.
+
+```bash
+npm -g npm@8.3.0
+```
+
+4. Install all the dependencies from package-lock.json (unless you're adding a new dependency)
+
+```bash
+npm ci
+```
+
+5. Open http://localhost:3000/. If you get an error, try reloading the page. It's a feature, not a bug ;)
 
 ## Environment variables
 
