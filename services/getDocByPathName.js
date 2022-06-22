@@ -1,18 +1,31 @@
 import fs from "fs";
+import globby from "globby";
 import path from "path";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { remarkMdxCodeMeta } from "remark-mdx-code-meta";
 import remarkGfm from "remark-gfm";
 
-export async function getHeadings(input) {
-  const fileData = fs.readFileSync(`docs/${input}.mdx`);
+const cache = new Map();
 
-  const { content } = matter(fileData);
+export async function getHeadings(input) {
+  // if in cache already, return it
+  let frontMatter = null;
+
+  if (cache.has(input)) {
+    frontMatter = cache.get(input);
+  } else {
+    // otherwise, read the file and cache it
+    const fileData = fs.readFileSync(`docs/${input}.mdx`);
+    const frontMatter = matter(fileData);
+
+    // add to cache
+    cache.set(input, frontMatter);
+  }
 
   // Get each line individually, and filter out anything that
   // isn't a heading.
-  const headingLines = content.split("\n").filter((line) => {
+  const headingLines = frontMatter.content.split("\n").filter((line) => {
     return line.match(/^###*\s/);
   });
 
@@ -27,23 +40,33 @@ export async function getHeadings(input) {
 
     return { label, level };
   });
-
-  return headingLines;
 }
 
 /**
  * gets markdown content given a path
  */
 export const getDocByPathName = async (input) => {
-  const [directory, fileName] = input.split("/");
+  // if in cache already, return it
+  let frontMatter = null;
 
-  const slug = path.join(`docs/${directory}`, `${fileName}.mdx`);
-  const fileData = fs.readFileSync(slug);
+  if (cache.has(input)) {
+    frontMatter = cache.get(input);
+  } else {
+    // otherwise, read the file and cache it
 
-  const { content, data } = matter(fileData);
+    const [directory, fileName] = input.split("/");
 
-  const source = await serialize(content, {
-    scope: data,
+    const slug = path.join(`docs/${directory}`, `${fileName}.mdx`);
+    const fileData = fs.readFileSync(slug);
+
+    frontMatter = matter(fileData);
+
+    // add to cache
+    cache.set(input, frontMatter);
+  }
+
+  const source = await serialize(frontMatter.content, {
+    scope: frontMatter.data,
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkMdxCodeMeta],
     },
@@ -53,15 +76,23 @@ export const getDocByPathName = async (input) => {
 };
 
 export const getResource = async (input) => {
-  const [directory, category, fileName] = input.split("/");
+  let frontMatter = null;
 
-  const slug = path.join(`docs/${directory}/${category}`, `${fileName}.mdx`);
-  const fileData = fs.readFileSync(slug);
+  if (cache.has(input)) {
+    frontMatter = cache.get(input);
+  } else {
+    // otherwise, read the file and cache it
+    const [directory, category, fileName] = input.split("/");
+    const slug = path.join(`docs/${directory}/${category}`, `${fileName}.mdx`);
+    const fileData = fs.readFileSync(slug);
+    frontMatter = matter(fileData);
 
-  const { content, data } = matter(fileData);
+    // add to cache
+    cache.set(input, frontMatter);
+  }
 
-  const source = await serialize(content, {
-    scope: data,
+  const source = await serialize(frontMatter.content, {
+    scope: frontMatter.data,
     mdxOptions: {
       remarkPlugins: [remarkGfm, remarkMdxCodeMeta],
     },

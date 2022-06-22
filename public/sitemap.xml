@@ -227,4 +227,8 @@
       >https://build.washingtonpost.com/resources/workshops/developer_4-7-22</loc
     >
   </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/legacy-v0</loc>
+  </url>
 </urlset>
