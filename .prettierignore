@@ -110,3 +110,5 @@ dist
 node_modules
 out
 jest-coverage
+
+.history/*
