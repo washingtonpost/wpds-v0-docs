@@ -48,6 +48,7 @@ export default function inlineSVG({
     if (hex == "black") {
       return "var(--wpds-colors-gray0)";
     } else {
+      return hex;
     }
   }
 
