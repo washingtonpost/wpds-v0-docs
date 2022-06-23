@@ -2,13 +2,13 @@
 title: Using Stitches to style your projects
 description: Via the WPDS UI Kit
 kicker: Architecture
-publishDate: June 15, 2022
+publishDate: June 23, 2022
 byline: By Claire Helms
 ---
 
 ## Stitches
 
-The Washington Post Design System utilizes the css-in-js library, [Stitches](https://stitches.dev/), to optimize app performance and dev experience. For more context about why we use Stitches, [read here.](https://build.washingtonpost.com/resources/architecture/stitches#Supporting%20Community)
+The Washington Post Design System utilizes the css-in-js library, [Stitches](https://stitches.dev/), to optimize app performance and dev experience. For more context about why we use Stitches, [check out this post by the WPDS team.](https://build.washingtonpost.com/resources/architecture/stitches#Supporting%20Community)
 
 ---
 
@@ -72,7 +72,7 @@ const newButton = css({
 
 ## Keyframes
 
-Another function available in Stitches is the `keyframes` function. Using the keyframe animation technique, Stitches allows the creation of global CSS keyframe rules, which let transitions be easily reused across code. Below is an example of a simple fading-out animation:
+Another function available in Stitches is the `keyframes` function. Using the keyframe animation technique, Stitches allows the creation of global CSS keyframe rules, which lets transitions be easily reused across code. Below is an example of a simple fading-out animation:
 
 ```jsx
 import { keyframes } from '@washingtonpost/wpds-ui-kit'
@@ -95,7 +95,7 @@ const fadingInButton = styled("button", {
 ## Theme object and tokens
 
 The theme object contains useful token data that can be applied when styling an element. WPDS specifies its own tokens for many attributes, which can be explored throughout the [foundations section](https://build.washingtonpost.com/#Foundations) of our documentation. Tokens can be accessed in code by using the `theme` object, which is is preferred over using the `$` reference symbol because it provides additional checks. For more information about using our theme tokens, check out [this tutorial](https://build.washingtonpost.com/resources/tutorials/how-to-use-our-theme).\
-The `const WPDS` is pre-defined [here](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts).
+The `const WPDS` is pre-defined in the UI Kit's [`stitches.config.ts` file](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts).
 
 ```jsx
 const WPDS = stitches.createStitches({
@@ -125,7 +125,7 @@ const BestButton = styled('button', {
 
 ## Breakpoints
 
-Stitches is also capable of defining breakpoints, which are reusable media queries useful for responsive styling. The WPDS UI Kit supports a variety of size breakpoints and custom themes, which can be explored [here](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts). The button in the example below would be uniquely styled when the viewport is smaller than `768px`, or `sm`.
+Stitches is also capable of defining breakpoints, which are reusable media queries useful for responsive styling. The WPDS UI Kit supports a variety of size breakpoints and custom themes, which can be explored in the kit's [`stitches.config.ts` file](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts). The button in the example below would be uniquely styled when the viewport is smaller than `768px`, or `sm`.
 
 ```jsx
 const WPDS = stitches.createStitches({
@@ -152,7 +152,7 @@ const VariableButton = styled('button', {
 
 ## Utils
 
-Utils allow the creation of custom shortcuts to write certain styling properties. For example, the WPDS ui kit has defined utils `px` and `py`, which affect horizontal and vertical padding, respectively. `px` could then be used in place of `padding-left` and `padding-right` when styling elements. Check out the other utils WPDS supports defined [here](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts).
+Utils allow the creation of custom shortcuts to write certain styling properties. For example, the WPDS ui kit has defined utils `px` and `py`, which affect horizontal and vertical padding, respectively. `px` could then be used in place of `padding-left` and `padding-right` when styling elements. Check out the other utils WPDS supports defined in [the config file](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts).
 
 ```jsx
 const WPDS = stitches.createStitches({
@@ -180,7 +180,7 @@ const WPDS = stitches.createStitches({
 
 ## Global styles
 
-Another feature of the UI Kit that provides greater consistency is `globalStyles`. [Here](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts#L102), default styles for certain properties are specified by using Stitches’ `globalCSS` function. A `darkModeGlobalStyles` modification is also specified, which alters default color styles in dark mode.
+Another feature of the UI Kit that provides greater consistency is `globalStyles`. [In the `globalStyles` definition](https://github.com/washingtonpost/wpds-ui-kit/blob/main/ui/theme/src/stitches.config.ts#L102), default styles for certain properties are specified by using Stitches’ `globalCSS` function. A `darkModeGlobalStyles` modification is also specified, which alters default color styles in dark mode.
 
 ## Dark theme
 
