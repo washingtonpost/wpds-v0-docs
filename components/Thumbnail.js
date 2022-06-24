@@ -19,11 +19,7 @@ export const Thumbnail = (props) => {
         alt={`${props.name} graphic`}
       />
       <Header as="h3">{props.name}</Header>
-      <P
-        css={props.css}
-      >
-        {props.description}.
-      </P>
+      <P css={props.css}>{props.description}.</P>
       <P css={{ color: "$accessible", [".tutorials &"]: { display: "none" } }}>
         {props.publishDate}
       </P>
