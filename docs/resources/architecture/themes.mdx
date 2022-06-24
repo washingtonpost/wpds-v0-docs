@@ -46,7 +46,7 @@ const FancyButton = styled('button', {
 
 // Use it
 <FancyButton>I'm fancy!</FancyButton>
-<FancyButton variant="fancier">I'm fancier!</FancyButton>
+<FancyButton variant="fancier">I am fancier!</FancyButton>
 ```
 
 ## CSS
@@ -143,12 +143,22 @@ const WPDS = stitches.createStitches({
 // Use it
 const VariableButton = styled('button', {
 	// Base styles
-
 	"@sm" {
 		// small-screen styles
 	},
 });
 ```
+
+Note: the `"@dark"` and `"@light"` media queries are responsive only to OS preferences, so styles specified with these will not affect elements based on the theme toggled in the application. To style an element based on local theme, consider stying based on the parent `html` element using the syntax: `[".<className> &"]`. For example:
+
+```jsx
+// Adding opacity to an image when local dark mode is enabled.
+const StyledImage = styled(Image, {
+  paddingRight: "$075",
+  [".wpds-dark &"]: { opacity: "0.9" },
+});
+```
+
 
 ## Utils
 
