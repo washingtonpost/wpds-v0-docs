@@ -5,6 +5,10 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com copy</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/components/alert-banner</loc>
   </url>
 
@@ -137,7 +141,7 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/resources/architecture/stitches</loc>
+    <loc>https://build.washingtonpost.com/resources copy</loc>
   </url>
 
   <url>
@@ -162,6 +166,10 @@
 
   <url>
     <loc>https://build.washingtonpost.com/resources/guides/react-guide</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/resources/guides/stitches</loc>
   </url>
 
   <url>

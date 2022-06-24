@@ -151,9 +151,9 @@ export const NavigationBar = ({
           <ThemeToggle
             css={{
               position: "fixed",
+              zIndex: "$page",
               "@notSm": {
                 marginTop: "-$100",
-                zIndex: "$page",
               },
               "@sm": {
                 top: "$100",
