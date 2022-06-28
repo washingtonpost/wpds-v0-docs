@@ -28,10 +28,10 @@ export const Thumbnail = (props) => {
           <StyledImage
             width="300"
             height="150"
-            src="/../public/img/resources/guides/thumbnails/figma.png"
+            src={props.imageTag}
             alt={`${props.name} graphic`}
           />
-          <Header as="h3" css={{ marginTop: "$025" }}>
+          <Header as="h3" css={{ marginTop: "$075" }}>
             {props.name}
           </Header>
           <P css={{ [".New &"]: { display: "none" } }}>{props.description}.</P>
@@ -52,7 +52,7 @@ export const Thumbnail = (props) => {
             <StyledImage
               width="70"
               height="70"
-              src="/../public/img/resources/guides/thumbnails/figma.png"
+              src={props.imageTag}
               alt={`${props.name} thumbnail image`}
             />
           </div>
