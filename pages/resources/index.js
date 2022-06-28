@@ -7,42 +7,39 @@ import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import { Thumbnail } from "~/components/Thumbnail";
-import { MiniThumbnail } from "~/components/MiniThumbnail";
 
 const Grid = styled("section", {
-  width: "100%",
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
   gridGap: "$100",
+  marginTop: "$050",
   "@sm": {
     gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
     gridGap: "0",
   },
-});
-
-// create a divider
-const Divider = styled("hr", {
-  gridColumnEnd: "span 2",
-  margin: "$200 0 $050 0",
-  padding: 0,
-  border: 0,
-  height: "1px",
-  backgroundColor: "$subtle",
-});
-
-const Description = styled("div", {
-  padding: "0 0 $100 $050",
-  maxWidth: "600px",
-  "@md": {
-    gridColumn: "span 3",
-  },
-  "@sm": {
-    gridColumn: "span 1",
+  variants: {
+    type: {
+      Guides: {
+        gridTemplateColumns: "1fr",
+        gridColumnGap: "$300",
+        gridRowGap: "0",
+        "@notLg": {
+          gridTemplateColumns: "1fr 1fr",
+        },
+      },
+      New: { marginTop: "0" },
+    },
   },
 });
 
-const CheveronForLink = styled(ChevronRight, {
-  fill: theme.colors.accessible,
+const CustomLink = styled(Link, {
+  variants: {
+    type: {
+      New: {
+        pointerEvents: "none",
+      },
+    },
+  },
 });
 
 const StyledHeader = styled("span", {
@@ -54,28 +51,36 @@ const StyledHeader = styled("span", {
   color: "$primary",
 });
 
-const GuideGrid = styled("div", {
-  margin: "$050",
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gridRow: "auto auto",
-  gridColumnGap: "$300",
-  justifyContent: "flex-end",
-  "@sm": {
-    gridTemplateColumns: "1fr",
-    gridGap: "$100",
-  },
+const Description = styled("div", {
+  padding: "0 0 $100 $050",
+  color: "$primary",
+  maxWidth: "600px",
 });
 
 const SeeAll = styled(Header, {
   display: "flex",
-  marginLeft: "$050",
-  marginTop: "$100",
+  margin: "$100 $050 $200",
   alignItems: "center",
-  lineHeight: "$100",
+  variants: {
+    type: { Workshops: { marginBottom: "-$350" }, New: { display: "none" } },
+  },
 });
 
-export default function Page({ recents, guides, tutorials, workshops }) {
+const Divider = styled("hr", {
+  gridColumnEnd: "span 2",
+  margin: "$100 0 $050 0",
+  paddingTop: 0,
+  border: 0,
+  height: "1px",
+  backgroundColor: "$subtle",
+  variants: { type: { Workshops: { display: "none" } } },
+});
+
+const CheveronForLink = styled(ChevronRight, {
+  fill: theme.colors.accessible,
+});
+
+export default function Page({ content, headings }) {
   return (
     <>
       <NextSeo title={`WPDS - Resources`} />
@@ -88,176 +93,59 @@ export default function Page({ recents, guides, tutorials, workshops }) {
         accessibility of WPDS.
       </Description>
       <TableofContents
-        headings={[
-          { label: "What's New", level: 2 },
-          { label: "Guides", level: 2 },
-          { label: "Tutorials", level: 2 },
-          { label: "Workshops", level: 2 },
-        ]}
+        headings={headings}
         css={{ margin: "$075 0 $075 $050" }}
       />
-
-      {/* What's new */}
-      <StyledHeader id="What's%20New" as="h2">
-        What&apos;s New?
-      </StyledHeader>
-      <Grid>
-        {recents.map((doc) => {
+      <>
+        {content.categories.map((cat) => {
           return (
-            <Link
-              href={doc.slug}
-              key={doc.slug}
-              css={{
-                borderRadius: "$025",
-                padding: "$050",
-              }}
-            >
-              <Thumbnail
-                name={doc.data.title}
-                description={doc.data.description.split(".")[0]}
-                publishDate={doc.data.publishDate}
-                kicker={doc.data.kicker}
-                imageTag={doc.data.imageTag}
-                css={{ display: "none" }}
-              />
-            </Link>
+            <>
+              <CustomLink
+                type={cat.type}
+                href={`/resources/${cat.name.toLowerCase()}`}
+              >
+                <StyledHeader as="h2" id={cat.id}>
+                  {cat.name}
+                </StyledHeader>
+                <Description>{cat.description}</Description>
+              </CustomLink>
+              <Grid type={cat.type} className={cat.type}>
+                {cat.posts.map((doc) => {
+                  return (
+                    <Link
+                      href={doc.slug}
+                      key={doc.slug}
+                      css={{
+                        borderRadius: "$025",
+                        padding: "$050",
+                      }}
+                    >
+                      <Thumbnail
+                        name={doc.data.title}
+                        description={doc.data.description.split(".")[0]}
+                        publishDate={doc.data.publishDate}
+                        imageTag={doc.data.imageTag}
+                        thumbnail={doc.data.thumbnail}
+                        size={cat.size}
+                      />
+                    </Link>
+                  );
+                })}
+              </Grid>
+              <Link href={`/resources/${cat.name.toLowerCase()}`}>
+                <SeeAll as="h4" type={cat.type}>
+                  <Box css={{ borderBottom: "1px solid $accessible" }}>
+                    See all {cat.name.toLowerCase()}
+                  </Box>
+                  <Icon>
+                    <CheveronForLink />
+                  </Icon>
+                </SeeAll>
+              </Link>
+              <Divider type={cat.type} />
+            </>
           );
         })}
-      </Grid>
-
-      <Divider css={{ marginTop: "$100" }} />
-
-      {/* guides */}
-      <Link href="/resources/guides">
-        <StyledHeader as="h2" id="Guides">
-          Guides
-        </StyledHeader>
-        <Description>
-          Learn the processes and tools we use through our step-by-step written
-          guides.
-        </Description>
-      </Link>
-      <GuideGrid>
-        {guides.map((doc) => {
-          return (
-            <Link href={doc.slug} key={doc.slug}>
-              <MiniThumbnail
-                name={doc.data.title}
-                description={doc.data.description.split(".")[0]}
-                thumbnail={doc.data.thumbnail}
-              />
-            </Link>
-          );
-        })}
-      </GuideGrid>
-
-      <Link href={`/resources/guides`}>
-        <SeeAll as="h4">
-          <Box css={{ borderBottom: "1px solid $accessible" }}>
-            See all guides
-          </Box>
-          <Icon>
-            <CheveronForLink />
-          </Icon>
-        </SeeAll>
-      </Link>
-
-      <Divider />
-
-      {/* Tutorials */}
-      <>
-        <Link href={`/resources/tutorials`}>
-          <StyledHeader as="h2" id="Tutorials">
-            Tutorials
-          </StyledHeader>
-          <Description>
-            Watch or read through our tutorials to understand key techniques and
-            concepts.
-          </Description>
-        </Link>
-
-        <Grid className="tutorials">
-          {tutorials.map((doc, index) => {
-            return (
-              <Link
-                href={doc.slug}
-                key={doc.slug}
-                css={{
-                  borderRadius: "$025",
-                  padding: "$050",
-                }}
-              >
-                <Thumbnail
-                  name={doc.data.title}
-                  description={doc.data.description.split(".")[0]}
-                  byline={doc.data.byline}
-                  publishDate={doc.data.publishDate}
-                  kicker={doc.data.kicker}
-                  imageTag={doc.data.imageTag}
-                />
-              </Link>
-            );
-          })}
-        </Grid>
-
-        {/* add this part back if/when we have >3 tutorials */}
-        {/* <Link href={`/resources/tutorials`}>
-          <SeeAll as="h4">
-            <Box css={{ borderBottom: "1px solid $accessible" }}>
-              See all tutorials
-            </Box>
-            <Icon>
-              <CheveronForLink />
-            </Icon>
-          </SeeAll>
-        </Link> */}
-        <Divider css={{ marginTop: "$100" }} />
-      </>
-
-      {/* workshops */}
-      <>
-        <Link href={`/resources/workshops`}>
-          <StyledHeader as="h2" id="Workshops">
-            Workshops
-          </StyledHeader>
-          <Description>
-            Sharpen your design and development skills with our in-depth
-            recorded workshops.
-          </Description>
-        </Link>
-        <Grid>
-          {workshops.map((doc, index) => {
-            return (
-              <Link
-                href={doc.slug}
-                key={doc.slug}
-                css={{
-                  borderRadius: "$025",
-                  padding: "$050",
-                }}
-              >
-                <Thumbnail
-                  name={doc.data.title}
-                  description={doc.data.description.split(".")[0]}
-                  publishDate={doc.data.publishDate}
-                  kicker={doc.data.kicker}
-                  imageTag={doc.data.imageTag}
-                />
-              </Link>
-            );
-          })}
-        </Grid>
-
-        <Link href={`/resources/workshops`}>
-          <SeeAll as="h4" css={{ marginBottom: "-$350" }}>
-            <Box css={{ borderBottom: "1px solid $accessible" }}>
-              See all workshops
-            </Box>
-            <Icon>
-              <CheveronForLink />
-            </Icon>
-          </SeeAll>
-        </Link>
       </>
     </>
   );
@@ -265,11 +153,10 @@ export default function Page({ recents, guides, tutorials, workshops }) {
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
-  const recents = await [...docs]
+  const recents = [...docs]
     .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
     .slice(0, 3);
 
-  // sort docs into collections by doc.data.kicker property
   const collections = [
     // create a collection for each doc.data.kicker property and put their docs in it
     ...docs.reduce((acc, doc) => {
@@ -294,44 +181,62 @@ export const getStaticProps = async ({ params }) => {
     return a.kicker.localeCompare(b.kicker);
   });
 
-  // create minor collections for each topic
+  // compile page content based on kicker. Includes a name, the posts to be displayed, a description, and the size of the posts
+  // we have to hard-code What's New because it's too unique
+  let content = { categories: [] };
+  let [name, posts, description, size, type, id] = [
+    "What's New?",
+    recents,
+    null,
+    "full",
+    "New",
+    "What's%20New?",
+  ];
+  let category = { name, posts, description, size, type, id };
+  content.categories.push(category);
 
-  let guidesIdx, tutorialsIdx, workshopsIdx;
+  let [label, level, headings] = [name, 2, []];
+  let heading = { label, level };
+  headings.push(heading);
+
+  // we can cut this down once process dir is removed. also, is there a way to store these descriptions somewhere else?
   for (let i = 0; i < collections.length; i++) {
-    if (collections[i].kicker === "Guides") {
-      guidesIdx = i;
+    name = collections[i].kicker;
+    if (name === "Guides") {
+      posts = [...collections[i].docs]
+        .sort((a, b) => a.data.guideRank - b.data.guideRank)
+        .slice(0, 4);
+      description =
+        "Explore the processes and tools we use in our step-by-step written guides.";
+      size = "mini";
+    } else if (name === "Tutorials") {
+      posts = [...collections[i].docs].slice(0, 3);
+      description =
+        "Watch or read through our tutorials to understand key techniques and concepts.";
+      size = "full";
+    } else if (name === "Workshops") {
+      posts = [...collections[i].docs].slice(0, 3);
+      description =
+        "Sharpen your design and development skills with our in-depth recorded workshops.";
+      size = "full";
+    } else {
+      continue;
     }
-    if (collections[i].kicker === "Tutorials") {
-      tutorialsIdx = i;
-    }
-    if (collections[i].kicker === "Workshops") {
-      workshopsIdx = i;
-    }
+    type = id = label = name;
+    category = { name, posts, description, size, type, id };
+    content.categories.push(category);
+
+    heading = { label, level };
+    headings.push(heading);
   }
-
-  const guides = await [...collections[guidesIdx].docs]
-    .sort((a, b) => a.data.guideRank - b.data.guideRank)
-    .slice(0, 4);
-
-  const tutorials = [...collections[tutorialsIdx].docs].slice(0, 3);
-
-  const workshops = [...collections[workshopsIdx].docs].slice(0, 3);
-
-  // for if we want to exclude guides from what's new
-  // const recents = tutorials
-  //   .concat(workshops)
-  //   .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
-  //   .slice(0, 3);
 
   const navigation = await getNavigation();
 
   return {
     props: {
       navigation,
-      recents,
-      guides,
-      tutorials,
-      workshops,
+      content,
+      headings,
     },
   };
 };
