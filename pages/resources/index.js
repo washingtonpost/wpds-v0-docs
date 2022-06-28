@@ -27,7 +27,7 @@ const Grid = styled("section", {
           gridTemplateColumns: "1fr 1fr",
         },
       },
-      New: { marginTop: "0" },
+      New: { marginTop: "-$075" },
     },
   },
 });

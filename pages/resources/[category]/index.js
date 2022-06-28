@@ -14,7 +14,7 @@ const titleCase = (input) => {
 
 const Masonry = styled("section", {
   width: "100%",
-  margin: "$100 0 -$250",
+  margin: "$100 0 -$350",
   display: "grid",
   gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
   variants: {
@@ -37,8 +37,11 @@ const Masonry = styled("section", {
 });
 
 const HeadDiv = styled("div", {
-  paddingLeft: "$075",
+  paddingLeft: "$050",
   color: "$primary",
+  "@sm": {
+    padding: "$025",
+  }
 });
 
 export default function Page({ docs, category, description, type, size }) {
@@ -65,7 +68,10 @@ export default function Page({ docs, category, description, type, size }) {
               key={doc.slug}
               css={{
                 borderRadius: "$025",
-                padding: "$100 $100 0 $100",
+                padding: "$100 $050 0",
+                "@sm": {
+                  padding: "$100 $025 0",
+                }
               }}
             >
               <Thumbnail
