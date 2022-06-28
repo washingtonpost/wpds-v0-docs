@@ -52,7 +52,7 @@ export const Thumbnail = (props) => {
             <StyledImage
               width="70"
               height="70"
-              src={props.imageTag}
+              src={props.thumbnail}
               alt={`${props.name} thumbnail image`}
             />
           </div>
