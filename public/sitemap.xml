@@ -117,6 +117,18 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/process/releases</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/process/support</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/process/supported-platforms</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/release-notes</loc>
   </url>
 
@@ -176,20 +188,6 @@
 
   <url>
     <loc>https://build.washingtonpost.com/resources/guides/zeplin-guide</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/resources/process/releases</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/resources/process/support</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://build.washingtonpost.com/resources/process/supported-platforms</loc
-    >
   </url>
 
   <url>
