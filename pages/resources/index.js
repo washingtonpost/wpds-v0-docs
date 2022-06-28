@@ -199,29 +199,27 @@ export const getStaticProps = async ({ params }) => {
   let heading = { label, level };
   headings.push(heading);
 
-  // we can cut this down once process dir is removed. also, is there a way to store these descriptions somewhere else?
+  let descriptions = {
+    Guides:
+      "Explore the processes and tools we use in our step-by-step written guides.",
+    Tutorials:
+      "Watch or read through our tutorials to understand key techniques and concepts.",
+    Workshops:
+      "Sharpen your design and development skills with our in-depth recorded workshops.",
+  };
+
   for (let i = 0; i < collections.length; i++) {
     name = collections[i].kicker;
     if (name === "Guides") {
       posts = [...collections[i].docs]
         .sort((a, b) => a.data.guideRank - b.data.guideRank)
         .slice(0, 4);
-      description =
-        "Explore the processes and tools we use in our step-by-step written guides.";
       size = "mini";
-    } else if (name === "Tutorials") {
-      posts = [...collections[i].docs].slice(0, 3);
-      description =
-        "Watch or read through our tutorials to understand key techniques and concepts.";
-      size = "full";
-    } else if (name === "Workshops") {
-      posts = [...collections[i].docs].slice(0, 3);
-      description =
-        "Sharpen your design and development skills with our in-depth recorded workshops.";
-      size = "full";
     } else {
-      continue;
+      posts = [...collections[i].docs].slice(0, 3);
+      size = "full";
     }
+    description = descriptions[`${name}`];
     type = id = label = name;
     category = { name, posts, description, size, type, id };
     content.categories.push(category);

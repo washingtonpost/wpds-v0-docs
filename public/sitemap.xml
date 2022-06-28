@@ -117,18 +117,6 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/process/releases</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/process/support</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/process/supported-platforms</loc>
-  </url>
-
-  <url>
     <loc>https://build.washingtonpost.com/release-notes</loc>
   </url>
 
@@ -227,6 +215,22 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/support</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/get-help</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/support/legacy-v0</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/release-cycles</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/supported-platforms</loc>
   </url>
 </urlset>
