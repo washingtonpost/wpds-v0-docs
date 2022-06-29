@@ -186,7 +186,7 @@ export const NavigationBar = ({
             </Anchor>
           </Link>
         </ListItem>
-        <ListItem >
+        <ListItem>
           <Link href="/resources" passHref>
             <Anchor isCurrent={router.asPath.includes("/resources")}>
               Resources
