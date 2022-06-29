@@ -31,7 +31,7 @@ export const Thumbnail = (props) => {
             src={props.imageTag}
             alt={`${props.name} graphic`}
           />
-          <Header as="h3" css={{ marginTop: "$075" }}>
+          <Header as="h3" css={{ marginTop: "$025" }}>
             {props.name}
           </Header>
           <P css={{ [".New &"]: { display: "none" } }}>{props.description}.</P>

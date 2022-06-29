@@ -113,33 +113,6 @@ export default function Page({ docs }) {
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("support");
-
-  // sort docs into collections by doc.data.kicker property
-  // const collections = [
-  // create a collection for each doc.data.kicker property and put their docs in it
-  //   ...docs.reduce((acc, doc) => {
-  //     const kicker = doc.data.kicker;
-  //     const collection = acc.find((collection) => collection.kicker === kicker);
-  //     const todaysDate = new Date();
-  //     // exclude future posts using collection.publishDate
-  //     if (new Date(doc.data.publishDate) <= todaysDate) {
-  //       if (collection) {
-  //         collection.docs.push(doc);
-  //       } else {
-  //         acc.push({
-  //           kicker,
-  //           docs: [doc],
-  //         });
-  //       }
-  //     }
-  //     return acc;
-  //   }, []),
-  // ].sort((a, b) => {
-  //   // alpha sort
-  //   return a.kicker.localeCompare(b.kicker);
-  // });
-
-  // console.log((collections[0]))
   const navigation = await getNavigation();
 
   return {

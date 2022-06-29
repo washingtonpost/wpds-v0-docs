@@ -153,6 +153,8 @@ export default function Page({ content, headings }) {
 
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
+
+  // array of three most recent posts to the site
   const recents = [...docs]
     .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
     .slice(0, 3);
@@ -219,7 +221,7 @@ export const getStaticProps = async ({ params }) => {
       posts = [...collections[i].docs].slice(0, 3);
       size = "full";
     }
-    description = descriptions[`${name}`];
+    description = descriptions[name];
     type = id = label = name;
     category = { name, posts, description, size, type, id };
     content.categories.push(category);
