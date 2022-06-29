@@ -25,12 +25,13 @@ export const Thumbnail = (props) => {
     case "full":
       return (
         <Box css={{ maxWidth: "280px" }}>
+          {props.imageTag &&
           <StyledImage
             width="300"
             height="150"
             src={props.imageTag}
             alt={`${props.name} graphic`}
-          />
+          />}
           <Header as="h3" css={{ marginTop: "$025" }}>
             {props.name}
           </Header>
@@ -49,12 +50,13 @@ export const Thumbnail = (props) => {
       return (
         <Grid>
           <div>
-            <StyledImage
+        {props.thumbnail && 
+            (<StyledImage
               width="70"
               height="70"
               src={props.thumbnail}
               alt={`${props.name} thumbnail image`}
-            />
+            />)}
           </div>
           <div>
             <Header as="h3" css={{ marginTop: "0" }}>

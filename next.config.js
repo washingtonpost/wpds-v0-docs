@@ -57,4 +57,33 @@ module.exports = withBundleAnalyzer({
   images: {
     domains: ["img.youtube.com", "media.giphy.com"],
   },
+  async redirects() {
+    return [
+      {
+        source: '/resources/architecture/stitches',
+        destination: '/resources/guides/stitches',
+        permanent: false,
+      },
+      {
+        source: '/resources/process/releases',
+        destination: '/supposrt/release-cycles',
+        permanent: false,
+      },
+      {
+        source: '/resources/process/support',
+        destination: '/support/get-help',
+        permanent: false,
+      },
+      {
+        source: '/resources/process/supported-platforms',
+        destination: '/support/supported-platforms',
+        permanent: false,
+      },
+      {
+        source: '/resources/process',
+        destination: '/support',
+        permanent: false,
+      }
+    ]
+  },
 });
