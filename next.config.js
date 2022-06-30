@@ -66,7 +66,7 @@ module.exports = withBundleAnalyzer({
       },
       {
         source: '/resources/process/releases',
-        destination: '/supposrt/release-cycles',
+        destination: '/support/release-cycles',
         permanent: false,
       },
       {
