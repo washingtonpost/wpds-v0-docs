@@ -7,6 +7,7 @@ import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import { Thumbnail } from "~/components/Thumbnail";
+import { constants } from "zlib";
 
 const Grid = styled("section", {
   display: "grid",
@@ -201,7 +202,7 @@ export const getStaticProps = async ({ params }) => {
   let heading = { label, level };
   headings.push(heading);
 
-  let descriptions = {
+  const descriptions = {
     Guides:
       "Explore the processes and tools we use in our step-by-step written guides.",
     Tutorials:
@@ -221,7 +222,7 @@ export const getStaticProps = async ({ params }) => {
       posts = [...collections[i].docs].slice(0, 3);
       size = "full";
     }
-    description = descriptions[name];
+    description = descriptions[`${name}`];
     type = id = label = name;
     category = { name, posts, description, size, type, id };
     content.categories.push(category);
