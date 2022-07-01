@@ -11,7 +11,7 @@ import { Thumbnail } from "~/components/Thumbnail";
 const Grid = styled("section", {
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
-  gridGap: "$100",
+  gridGap: "$125",
   "@sm": {
     gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
     gridRowGap: "0",
