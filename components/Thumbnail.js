@@ -5,18 +5,36 @@ import Image from "next/image";
 
 const StyledImage = styled(Image, {
   flex: "1",
-  paddingRight: "$075",
   [".wpds-dark &"]: { opacity: "0.9" },
 });
 
 const Grid = styled("section", {
   width: "100%",
   display: "grid",
-  gridTemplateColumns: "1fr 5fr",
-  gridGap: "$100",
-  "@sm": {
-    gridTemplateColumns: "1fr 9fr",
+  variants: {
+    type: {
+      full: {
+        width: "100%",
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gridGap: "$050",
+        "@sm": {
+          gridGap: "$075",
+        },
+      },
+      mini: {
+        gridTemplateColumns: "1fr 8fr",
+        gridGap: "$100",
+        "@sm": {
+          gridTemplateColumns: "1fr 9fr",
+        },
+      },
+    },
   },
+});
+
+const Content = styled("div", {
+  display: "flex",
 });
 
 export const Thumbnail = (props) => {
@@ -24,39 +42,47 @@ export const Thumbnail = (props) => {
   switch (props.size) {
     case "full":
       return (
-        <Box css={{ maxWidth: "280px" }}>
-          {props.imageTag &&
-          <StyledImage
-            width="300"
-            height="150"
-            src={props.imageTag}
-            alt={`${props.name} graphic`}
-          />}
-          <Header as="h3" css={{ marginTop: "$025" }}>
-            {props.name}
-          </Header>
-          <P css={{ [".New &"]: { display: "none" } }}>{props.description}.</P>
-          <P
-            css={{
-              color: "$accessible",
-              [".tutorials &"]: { display: "none" },
-            }}
-          >
-            {props.publishDate}
-          </P>
-        </Box>
+        <Grid type="full">
+          <Content>
+            {props.imageTag && (
+              <StyledImage
+                width="500"
+                height="250"
+                src={props.imageTag}
+                alt={`${props.name} graphic`}
+              />
+            )}
+          </Content>
+          <div>
+            <Header as="h3" css={{ marginTop: "0" }}>
+              {props.name}
+            </Header>
+            <P css={{ [".New &"]: { display: "none" } }}>
+              {props.description}.
+            </P>
+            <P
+              css={{
+                color: "$accessible",
+                [".tutorials &"]: { display: "none" },
+              }}
+            >
+              {props.publishDate}
+            </P>
+          </div>
+        </Grid>
       );
     case "mini":
       return (
-        <Grid>
+        <Grid type="mini">
           <div>
-        {props.thumbnail && 
-            (<StyledImage
-              width="70"
-              height="70"
-              src={props.thumbnail}
-              alt={`${props.name} thumbnail image`}
-            />)}
+            {props.thumbnail && (
+              <StyledImage
+                width="70"
+                height="70"
+                src={props.thumbnail}
+                alt={`${props.name} thumbnail image`}
+              />
+            )}
           </div>
           <div>
             <Header as="h3" css={{ marginTop: "0" }}>

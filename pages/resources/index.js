@@ -7,16 +7,14 @@ import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import { Thumbnail } from "~/components/Thumbnail";
-import { constants } from "zlib";
 
 const Grid = styled("section", {
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
   gridGap: "$100",
-  marginTop: "$050",
   "@sm": {
     gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-    gridGap: "0",
+    gridRowGap: "0",
   },
   variants: {
     type: {
@@ -44,7 +42,7 @@ const CustomLink = styled(Link, {
 });
 
 const StyledHeader = styled("span", {
-  padding: "$150 0 $075 $050",
+  padding: "$150 0 $075 0",
   fontFamily: "$headline",
   fontSize: "$225",
   fontWeight: "$bold",
@@ -53,14 +51,14 @@ const StyledHeader = styled("span", {
 });
 
 const Description = styled("div", {
-  padding: "0 0 $100 $050",
+  paddingBottom: "$100",
   color: "$primary",
   maxWidth: "600px",
 });
 
 const SeeAll = styled(Header, {
   display: "flex",
-  margin: "$100 $050 $200",
+  margin: "$100 0 $200",
   alignItems: "center",
   variants: {
     type: { Workshops: { marginBottom: "-$350" }, New: { display: "none" } },
@@ -69,7 +67,7 @@ const SeeAll = styled(Header, {
 
 const Divider = styled("hr", {
   gridColumnEnd: "span 2",
-  margin: "$100 0 $050 0",
+  margin: "$100 0 $050",
   paddingTop: 0,
   border: 0,
   height: "1px",
@@ -85,18 +83,13 @@ export default function Page({ content, headings }) {
   return (
     <>
       <NextSeo title={`WPDS - Resources`} />
-      <Header as="h1" css={{ margin: "$050", marginBottom: "0" }}>
-        Resources
-      </Header>
+      <Header as="h1">Resources</Header>
       <Description>
         Learn more about our workflow and how to use our tools in our guides.
         Watch our tutorials and workshops to discover the elegance and
         accessibility of WPDS.
       </Description>
-      <TableofContents
-        headings={headings}
-        css={{ margin: "$075 0 $075 $050" }}
-      />
+      <TableofContents headings={headings} css={{ margin: "$075 0" }} />
       <>
         {content.categories.map((cat) => {
           return (
@@ -118,7 +111,7 @@ export default function Page({ content, headings }) {
                       key={doc.slug}
                       css={{
                         borderRadius: "$025",
-                        padding: "$050",
+                        padding: "$050 0 $050",
                       }}
                     >
                       <Thumbnail
