@@ -12,6 +12,7 @@ import {
   getNavigation,
   getPackageData,
   getPropsTable,
+  exemptList,
 } from "~/services";
 
 import { PropsTable } from "~/components/PropsTable";
@@ -236,6 +237,8 @@ export default function Page({
 const thisSection = "components";
 
 export const getStaticProps = async ({ params }) => {
+  if (exemptList.includes(params.slug)) return { props: {} };
+
   const toTitleCase = (str) =>
     str
       .split("-")

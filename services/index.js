@@ -6,3 +6,5 @@ export * from "./getNavigation";
 export * from "./getPropsTable";
 export * from "./getDependencies";
 export * from "./getPackageData";
+
+export const exemptList = ["image", "text"];
