@@ -1,5 +1,3 @@
-import { exemptList } from ".";
-
 const docgen = require("react-docgen-typescript");
 const cache = new Map();
 
@@ -27,8 +25,11 @@ export const getPropsTable = async (component = "icon") => {
 
   if (cache.has(component)) {
     console.log("cache hit: getPropsTable");
+
     propsArray = cache.get(component);
-  } else if (!exemptList.includes(component)) {
+
+    return propsArray;
+  } else {
     // Parse a file for docgen info
     try {
       const [{ props }] = docgen.parse(
@@ -70,10 +71,11 @@ export const getPropsTable = async (component = "icon") => {
 
       // add to cache
       cache.set(component, propsArray);
+      return propsArray;
     } catch (error) {
       // no component found
       console.log(`No ${component} found inside getPropsTable`);
+      return [];
     }
   }
-  return propsArray;
 };

@@ -36,7 +36,8 @@ export async function getPackageData(name) {
       return size;
     }
   } catch (e) {
+    // no component found
     console.log(`Error in getPackageData for ${name} component`);
-    return false;
+    return size;
   }
 }
