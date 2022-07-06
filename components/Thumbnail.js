@@ -4,6 +4,9 @@ import { P } from "~/components/Markdown/Styling";
 import Image from "next/image";
 import { ThumbnailGrid } from "./Markdown/Components/ResourcesGrids";
 
+export const THUMBNAIL_WIDE = "wide";
+export const THUMBNAIL_SQUARE = "square";
+
 // image has 90% opacity when the page is on dark mode
 const StyledImage = styled(Image, {
   flex: "1",
@@ -17,56 +20,55 @@ const Content = styled("div", {
 export const Thumbnail = (props) => {
   // switches based on the size of the post displayed – full for workshops and tutorials, mini for guides
   // note the description is hidden for what's new and the publish date is hidden for tutorials on the resources landing page
-  switch (props.size) {
-    case "full":
+  const { name, description, publishDate, imageTag, thumbnail, size } = props;
+  switch (size) {
+    case THUMBNAIL_WIDE:
       return (
-        <ThumbnailGrid type="full">
+        <ThumbnailGrid size={THUMBNAIL_WIDE}>
           <Content>
-            {props.imageTag && (
+            {imageTag && (
               <StyledImage
                 width="500"
                 height="250"
-                src={props.imageTag}
-                alt={`${props.name} graphic`}
+                src={imageTag}
+                alt={`${name} graphic`}
               />
             )}
           </Content>
           <div>
             <Header as="h3" css={{ marginTop: "0" }}>
-              {props.name}
+              {name}
             </Header>
-            <P css={{ [".New &"]: { display: "none" } }}>
-              {props.description}.
-            </P>
+            <P css={{ [".New &"]: { display: "none" } }}>{description}.</P>
             <P
               css={{
                 color: "$accessible",
                 [".tutorials &"]: { display: "none" },
               }}
             >
-              {props.publishDate}
+              {publishDate}
             </P>
           </div>
         </ThumbnailGrid>
       );
-    case "mini":
+    case THUMBNAIL_SQUARE:
       return (
-        <ThumbnailGrid type="mini">
+        <ThumbnailGrid size={THUMBNAIL_SQUARE}>
           <div>
-            {props.thumbnail && (
+            {thumbnail && (
               <StyledImage
                 width="70"
                 height="70"
-                src={props.thumbnail}
-                alt={`${props.name} thumbnail image`}
+                src={thumbnail}
+                alt={`${name} thumbnail image`}
               />
             )}
           </div>
           <div>
             <Header as="h3" css={{ marginTop: "0" }}>
-              {props.name}
+              {name}
             </Header>
-            <P>{props.description}.</P>
+            <P>{description}.</P>
           </div>
         </ThumbnailGrid>
       );

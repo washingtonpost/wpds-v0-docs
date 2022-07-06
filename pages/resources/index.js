@@ -6,8 +6,12 @@ import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
 import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
-import { Thumbnail } from "~/components/Thumbnail";
-import { LandingGrid } from "~/components/Markdown/Components/ResourcesGrids";
+import {
+  Thumbnail,
+  THUMBNAIL_SQUARE,
+  THUMBNAIL_WIDE,
+} from "~/components/Thumbnail";
+import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
 
 const CustomLink = styled(Link, {
   variants: {
@@ -81,7 +85,10 @@ export default function Page({ wrapper }) {
                 </StyledHeader>
                 <Description>{category.description}</Description>
               </CustomLink>
-              <LandingGrid type={category.type} className={category.type}>
+              <LandingContentGrid
+                size={category.size}
+                className={category.type}
+              >
                 {category.posts.map((doc) => {
                   return (
                     <Link
@@ -103,7 +110,7 @@ export default function Page({ wrapper }) {
                     </Link>
                   );
                 })}
-              </LandingGrid>
+              </LandingContentGrid>
               <Link href={`/resources/${category.name.toLowerCase()}`}>
                 <SeeAll as="h4" type={category.type}>
                   <Box css={{ borderBottom: "1px solid $accessible" }}>
@@ -126,7 +133,7 @@ export default function Page({ wrapper }) {
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
 
-  // array of three most recent posts to the site, created before content is sorted by kicker
+  // find the three most recent posts to the site before content is sorted by kicker
   const recents = [...docs]
     .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
     .slice(0, 3);
@@ -168,25 +175,11 @@ export const getStaticProps = async ({ params }) => {
 
 async function getProps(collections, recents) {
   // create a wrapper which contains all necessary data for the page
-  // includes page content based on section (content) and headings to pass to the TOC
-  // we have to hard-code What's New because it's too unique
-  let wrapper = { content: {}, headings: [] };
-  let content = { categories: [] };
-  let [name, posts, description, size, type, id] = [
-    "What's New?",
-    recents,
-    null,
-    "full",
-    "New",
-    "What's%20New?",
-  ];
-  let category = { name, posts, description, size, type, id };
-  content.categories.push(category);
 
-  let [label, level, headings] = [name, 2, []];
-  let heading = { label, level };
-  headings.push(heading);
-
+  // 1. initialize constants
+  const wrapper = { content: {}, headings: [] };
+  const content = { categories: [] };
+  const level = 2;
   const descriptions = {
     Guides:
       "Explore the processes and tools we use in our step-by-step written guides.",
@@ -196,11 +189,15 @@ async function getProps(collections, recents) {
       "Sharpen your design and development skills with our in-depth recorded workshops.",
   };
 
-  for (let i = 0; i < collections.length; i++) {
-    name = collections[i].kicker;
+  // 2. populate the content array with objects for each category (main data for page)
+  content.categories = collections.map((item) => {
+    let name, id, type;
+    name = id = type = item.kicker;
+    let [posts, description, size] = [[], descriptions[name], ""];
+
     if (name === "Guides") {
       // sorting guides by guideRank -> if none, sort by title
-      posts = [...collections[i].docs]
+      posts = [...item.docs]
         .sort(function (a, b) {
           try {
             return a.data.guideRank - b.data.guideRank;
@@ -209,20 +206,33 @@ async function getProps(collections, recents) {
           }
         })
         .slice(0, 4);
-      size = "mini";
+      size = THUMBNAIL_SQUARE;
     } else {
-      posts = [...collections[i].docs].slice(0, 3);
-      size = "full";
+      posts = [...item.docs].slice(0, 3);
+      size = THUMBNAIL_WIDE;
     }
-    description = descriptions[`${name}`];
-    type = id = label = name;
-    category = { name, posts, description, size, type, id };
-    content.categories.push(category);
+    let category = { name, posts, description, size, type, id };
+    return category;
+  });
 
-    heading = { label, level };
-    headings.push(heading);
-  }
+  // 3. populate headings (for TOC)
+  const headings = content.categories.map((item) => {
+    return { label: item.name, level };
+  });
 
+  // 4. adding what's new section to the front of the content array
+  let whatsNew = {
+    name: "What's New?",
+    posts: recents,
+    description: null,
+    size: THUMBNAIL_WIDE,
+    type: "New",
+    id: "What's%20New?",
+  };
+  content.categories.unshift(whatsNew);
+  headings.unshift({ label: whatsNew.name, level });
+
+  // 5. populate the wrapper to return
   wrapper.content = content;
   wrapper.headings = headings;
   return wrapper;

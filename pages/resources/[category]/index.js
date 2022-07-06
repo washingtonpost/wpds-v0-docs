@@ -4,8 +4,12 @@ import Header from "~/components/Typography/Headers";
 import CustomLink from "~/components/Typography/link";
 import { getAllPathsByCategory, getNavigation, getResources } from "~/services";
 import Breadcrumbs from "~/components/Breadcrumbs";
-import { Thumbnail } from "~/components/Thumbnail";
-import { SubPageGrid } from "~/components/Markdown/Components/ResourcesGrids";
+import {
+  Thumbnail,
+  THUMBNAIL_SQUARE,
+  THUMBNAIL_WIDE,
+} from "~/components/Thumbnail";
+import { ContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
 
 const titleCase = (input) => {
   return input.replace(/\w\S*/g, (txt) => {
@@ -21,7 +25,7 @@ const HeadDiv = styled("div", {
   },
 });
 
-export default function Page({ docs, category, description, type, size }) {
+export default function Page({ docs, category, description, size }) {
   return (
     <>
       <NextSeo
@@ -37,7 +41,7 @@ export default function Page({ docs, category, description, type, size }) {
         </header>
         <p>{description}</p>
       </HeadDiv>
-      <SubPageGrid type={type}>
+      <ContentGrid size={size}>
         {docs.map((doc) => {
           return (
             <CustomLink
@@ -63,7 +67,7 @@ export default function Page({ docs, category, description, type, size }) {
             </CustomLink>
           );
         })}
-      </SubPageGrid>
+      </ContentGrid>
     </>
   );
 }
@@ -79,20 +83,20 @@ export const getStaticProps = async ({ params }) => {
   const navigation = await getNavigation();
 
   // populate props
-  let description, type, size;
-  type = params.category;
-  if (type === "tutorials") {
+  let description,
+    size = "";
+  if (params.category === "tutorials") {
     description =
       "Watch or read through our tutorials to understand key techniques and concepts.";
-    size = "full";
-  } else if (type === "workshops") {
+    size = THUMBNAIL_WIDE;
+  } else if (params.category === "workshops") {
     description =
       "Sharpen your design and development skills with our in-depth recorded workshops.";
-    size = "full";
-  } else if (type === "guides") {
+    size = THUMBNAIL_WIDE;
+  } else if (params.category === "guides") {
     description =
       "Explore the processes and tools we use in our step-by-step written guides.";
-    size = "mini";
+    size = THUMBNAIL_SQUARE;
   }
 
   return {
@@ -101,7 +105,6 @@ export const getStaticProps = async ({ params }) => {
       docs: publishedDocs,
       navigation,
       description,
-      type,
       size,
     },
   };
