@@ -7,29 +7,7 @@ import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import { Thumbnail } from "~/components/Thumbnail";
-
-const Grid = styled("section", {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr",
-  gridGap: "$125",
-  "@sm": {
-    gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-    gridRowGap: "0",
-  },
-  variants: {
-    type: {
-      Guides: {
-        gridTemplateColumns: "1fr",
-        gridColumnGap: "$300",
-        gridRowGap: "0",
-        "@notLg": {
-          gridTemplateColumns: "1fr 1fr",
-        },
-      },
-      New: { marginTop: "-$075" },
-    },
-  },
-});
+import { LandingGrid } from "~/components/Markdown/Components/ResourcesGrids";
 
 const CustomLink = styled(Link, {
   variants: {
@@ -75,11 +53,11 @@ const Divider = styled("hr", {
   variants: { type: { Workshops: { display: "none" } } },
 });
 
-const CheveronForLink = styled(ChevronRight, {
+const ChevronForLink = styled(ChevronRight, {
   fill: theme.colors.accessible,
 });
 
-export default function Page({ content, headings }) {
+export default function Page({ wrapper }) {
   return (
     <>
       <NextSeo title={`WPDS - Resources`} />
@@ -89,22 +67,22 @@ export default function Page({ content, headings }) {
         Watch our tutorials and workshops to discover the elegance and
         accessibility of WPDS.
       </Description>
-      <TableofContents headings={headings} css={{ margin: "$075 0" }} />
+      <TableofContents headings={wrapper.headings} css={{ margin: "$075 0" }} />
       <>
-        {content.categories.map((cat) => {
+        {wrapper.content.categories.map((category) => {
           return (
             <>
               <CustomLink
-                type={cat.type}
-                href={`/resources/${cat.name.toLowerCase()}`}
+                type={category.type}
+                href={`/resources/${category.name.toLowerCase()}`}
               >
-                <StyledHeader as="h2" id={cat.id}>
-                  {cat.name}
+                <StyledHeader as="h2" id={category.id}>
+                  {category.name}
                 </StyledHeader>
-                <Description>{cat.description}</Description>
+                <Description>{category.description}</Description>
               </CustomLink>
-              <Grid type={cat.type} className={cat.type}>
-                {cat.posts.map((doc) => {
+              <LandingGrid type={category.type} className={category.type}>
+                {category.posts.map((doc) => {
                   return (
                     <Link
                       href={doc.slug}
@@ -120,23 +98,23 @@ export default function Page({ content, headings }) {
                         publishDate={doc.data.publishDate}
                         imageTag={doc.data.imageTag}
                         thumbnail={doc.data.thumbnail}
-                        size={cat.size}
+                        size={category.size}
                       />
                     </Link>
                   );
                 })}
-              </Grid>
-              <Link href={`/resources/${cat.name.toLowerCase()}`}>
-                <SeeAll as="h4" type={cat.type}>
+              </LandingGrid>
+              <Link href={`/resources/${category.name.toLowerCase()}`}>
+                <SeeAll as="h4" type={category.type}>
                   <Box css={{ borderBottom: "1px solid $accessible" }}>
-                    See all {cat.name.toLowerCase()}
+                    See all {category.name.toLowerCase()}
                   </Box>
                   <Icon>
-                    <CheveronForLink />
+                    <ChevronForLink />
                   </Icon>
                 </SeeAll>
               </Link>
-              <Divider type={cat.type} />
+              <Divider type={category.type} />
             </>
           );
         })}
@@ -148,7 +126,7 @@ export default function Page({ content, headings }) {
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
 
-  // array of three most recent posts to the site
+  // array of three most recent posts to the site, created before content is sorted by kicker
   const recents = [...docs]
     .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
     .slice(0, 3);
@@ -177,8 +155,22 @@ export const getStaticProps = async ({ params }) => {
     return a.kicker.localeCompare(b.kicker);
   });
 
-  // compile page content based on kicker. Includes a name, the posts to be displayed, a description, and the size of the posts
+  const wrapper = await getProps(collections, recents);
+  const navigation = await getNavigation();
+
+  return {
+    props: {
+      navigation,
+      wrapper,
+    },
+  };
+};
+
+async function getProps(collections, recents) {
+  // create a wrapper which contains all necessary data for the page
+  // includes page content based on section (content) and headings to pass to the TOC
   // we have to hard-code What's New because it's too unique
+  let wrapper = { content: {}, headings: [] };
   let content = { categories: [] };
   let [name, posts, description, size, type, id] = [
     "What's New?",
@@ -207,8 +199,15 @@ export const getStaticProps = async ({ params }) => {
   for (let i = 0; i < collections.length; i++) {
     name = collections[i].kicker;
     if (name === "Guides") {
+      // sorting guides by guideRank -> if none, sort by title
       posts = [...collections[i].docs]
-        .sort((a, b) => a.data.guideRank - b.data.guideRank)
+        .sort(function (a, b) {
+          try {
+            return a.data.guideRank - b.data.guideRank;
+          } catch (TypeError) {
+            return a.data.title.localeCompare(b.data.title);
+          }
+        })
         .slice(0, 4);
       size = "mini";
     } else {
@@ -224,13 +223,7 @@ export const getStaticProps = async ({ params }) => {
     headings.push(heading);
   }
 
-  const navigation = await getNavigation();
-
-  return {
-    props: {
-      navigation,
-      content,
-      headings,
-    },
-  };
-};
+  wrapper.content = content;
+  wrapper.headings = headings;
+  return wrapper;
+}

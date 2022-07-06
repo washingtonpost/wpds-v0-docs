@@ -1,36 +1,13 @@
-import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import { Header } from "~/components/Markdown/Components/headers";
 import { P } from "~/components/Markdown/Styling";
 import Image from "next/image";
+import { ThumbnailGrid } from "./Markdown/Components/ResourcesGrids";
 
+// image has 90% opacity when the page is on dark mode
 const StyledImage = styled(Image, {
   flex: "1",
   [".wpds-dark &"]: { opacity: "0.9" },
-});
-
-const Grid = styled("section", {
-  width: "100%",
-  display: "grid",
-  variants: {
-    type: {
-      full: {
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        gridGap: "$050",
-        "@sm": {
-          gridGap: "$075",
-        },
-      },
-      mini: {
-        gridTemplateColumns: "1fr 8fr",
-        gridGap: "$100",
-        "@sm": {
-          gridTemplateColumns: "1fr 9fr",
-        },
-      },
-    },
-  },
 });
 
 const Content = styled("div", {
@@ -39,10 +16,11 @@ const Content = styled("div", {
 
 export const Thumbnail = (props) => {
   // switches based on the size of the post displayed – full for workshops and tutorials, mini for guides
+  // note the description is hidden for what's new and the publish date is hidden for tutorials on the resources landing page
   switch (props.size) {
     case "full":
       return (
-        <Grid type="full">
+        <ThumbnailGrid type="full">
           <Content>
             {props.imageTag && (
               <StyledImage
@@ -69,11 +47,11 @@ export const Thumbnail = (props) => {
               {props.publishDate}
             </P>
           </div>
-        </Grid>
+        </ThumbnailGrid>
       );
     case "mini":
       return (
-        <Grid type="mini">
+        <ThumbnailGrid type="mini">
           <div>
             {props.thumbnail && (
               <StyledImage
@@ -90,7 +68,7 @@ export const Thumbnail = (props) => {
             </Header>
             <P>{props.description}.</P>
           </div>
-        </Grid>
+        </ThumbnailGrid>
       );
   }
 };

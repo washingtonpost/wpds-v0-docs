@@ -1,5 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "--> Installing libraries..."
+npm install
+
 echo "--> Building the application..."
 npm run build

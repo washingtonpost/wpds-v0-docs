@@ -5,36 +5,13 @@ import CustomLink from "~/components/Typography/link";
 import { getAllPathsByCategory, getNavigation, getResources } from "~/services";
 import Breadcrumbs from "~/components/Breadcrumbs";
 import { Thumbnail } from "~/components/Thumbnail";
+import { SubPageGrid } from "~/components/Markdown/Components/ResourcesGrids";
 
 const titleCase = (input) => {
   return input.replace(/\w\S*/g, (txt) => {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 };
-
-const Masonry = styled("section", {
-  width: "100%",
-  margin: "$100 0 -$350",
-  display: "grid",
-  gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-  variants: {
-    type: {
-      tutorials: {
-        "@notSm": {
-          display: "flex",
-          float: "left",
-        },
-      },
-      guides: {
-        gridTemplateColumns: "1fr",
-        gridGap: "$025",
-        "@notMd": {
-          gridTemplateColumns: "1fr 1fr",
-        },
-      },
-    },
-  },
-});
 
 const HeadDiv = styled("div", {
   paddingLeft: "$050",
@@ -60,7 +37,7 @@ export default function Page({ docs, category, description, type, size }) {
         </header>
         <p>{description}</p>
       </HeadDiv>
-      <Masonry type={type}>
+      <SubPageGrid type={type}>
         {docs.map((doc) => {
           return (
             <CustomLink
@@ -86,7 +63,7 @@ export default function Page({ docs, category, description, type, size }) {
             </CustomLink>
           );
         })}
-      </Masonry>
+      </SubPageGrid>
     </>
   );
 }

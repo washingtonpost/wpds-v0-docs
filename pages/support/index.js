@@ -27,7 +27,7 @@ const Divider = styled("hr", {
   backgroundColor: "$subtle",
 });
 
-const CheveronForLink = styled(ChevronRight, {
+const ChevronForLink = styled(ChevronRight, {
   fill: theme.colors.accessible,
 });
 
