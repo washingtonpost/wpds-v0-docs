@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { styled, Icon, Box, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
 const Button = styled("button", {
   position: "relative",
   backgroundColor: "transparent",
@@ -60,20 +60,26 @@ const ClipboardIcon = (props) => (
 const CopyCodeButton = ({ as, css, children, textToCopy, hideIcon }) => {
   const [copied, setCopied] = useState(false);
   const [ReadyToCopy, setReadyToCopy] = useState(false);
-  function handleCopy() {
+
+  const handleCopy = () => {
     navigator.clipboard.writeText(`${textToCopy ? textToCopy : children}`);
     setCopied(true);
-  }
+  };
+
   // set the copied state to false after a second
-  useEffect(() => {
-    if (copied) {
-      if (hideIcon) {
-        navigator.clipboard.writeText(textToCopy);
-        window.alert(`Copied: ${textToCopy}`);
+  useEffect(
+    (copied, hideIcon, textToCopy) => {
+      if (copied) {
+        if (hideIcon) {
+          navigator.clipboard.writeText(textToCopy);
+          window.alert(`Copied: ${textToCopy}`);
+        }
+        setTimeout(() => setCopied(false), 2000);
       }
-      setTimeout(() => setCopied(false), 2000);
-    }
-  }, [copied]);
+    },
+    [copied]
+  );
+
   return (
     <Button
       as={as}
