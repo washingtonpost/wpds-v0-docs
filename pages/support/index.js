@@ -45,7 +45,8 @@ export default function Page({ docs }) {
         <Header as="h1">Support</Header>
       </header>
       <Description>
-        Learn more about our processes and how you can contribute to the Design System.
+        Learn more about our processes and how you can contribute to the Design
+        System.
       </Description>
       <Divider aria-hidden={false} />
 

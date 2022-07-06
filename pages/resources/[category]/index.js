@@ -18,7 +18,7 @@ const HeadDiv = styled("div", {
   color: "$primary",
   "@sm": {
     padding: "$025",
-  }
+  },
 });
 
 export default function Page({ docs, category, description, type, size }) {
@@ -48,7 +48,7 @@ export default function Page({ docs, category, description, type, size }) {
                 padding: "$100 $050 0",
                 "@sm": {
                   padding: "$100 $025 0",
-                }
+                },
               }}
             >
               <Thumbnail

@@ -5,10 +5,6 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com copy</loc>
-  </url>
-
-  <url>
     <loc>https://build.washingtonpost.com/components/alert-banner</loc>
   </url>
 
@@ -172,6 +168,10 @@
     <loc
       >https://build.washingtonpost.com/resources/guides/tachyons-stitches</loc
     >
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/resources/guides/themes</loc>
   </url>
 
   <url>
