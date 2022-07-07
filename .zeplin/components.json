@@ -507,6 +507,23 @@
       "documentation": {
         "urlPath": "/components/divider"
       }
+    },
+    {
+      "name": "Avatar example",
+      "path": "snippets/avatar/avatar.jsx",
+      "zeplinIds": [
+        "62b2457a79deb620a2e94c87",
+        "62b24578fab2381ac774a72b",
+        "62b2457be781581d3f5f6f5a",
+        "62b24579f3c68b1ed98e5377",
+        "62b2457cb6ff66223631d1a8",
+        "62b2457b1810441e7b67db26",
+        "62b245796490b51bd8cc4cc5",
+        "62b24578308f521b04b3420e"
+      ],
+      "documentation": {
+        "urlPath": "/components/avatar"
+      }
     }
   ],
   "links": [

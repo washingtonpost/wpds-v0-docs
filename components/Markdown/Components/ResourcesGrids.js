@@ -48,6 +48,7 @@ export const ContentGrid = styled("div", {
         },
       },
       wide: {
+        gridRowGap: "$100",
         gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
         "@notLg": {
           gridTemplateColumns: "repeat(3,1fr)",

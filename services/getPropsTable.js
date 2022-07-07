@@ -1,5 +1,4 @@
 const docgen = require("react-docgen-typescript");
-
 const cache = new Map();
 
 export const getPropsTable = async (component = "icon") => {
@@ -7,7 +6,7 @@ export const getPropsTable = async (component = "icon") => {
     shouldExtractLiteralValuesFromEnum: true,
     savePropValueAsString: true,
     shouldExtractValuesFromUnion: true,
-    propFilter: (prop, component) => {
+    propFilter: (prop) => {
       if (prop.declarations !== undefined && prop.declarations.length > 0) {
         const hasPropAdditionalDescription = prop.declarations.find(
           (declaration) => {
@@ -26,6 +25,7 @@ export const getPropsTable = async (component = "icon") => {
 
   if (cache.has(component)) {
     console.log("cache hit: getPropsTable");
+
     propsArray = cache.get(component);
 
     return propsArray;
@@ -71,11 +71,11 @@ export const getPropsTable = async (component = "icon") => {
 
       // add to cache
       cache.set(component, propsArray);
-
       return propsArray;
     } catch (error) {
       // no component found
-      return {};
+      console.log(`No ${component} found inside getPropsTable`);
+      return [];
     }
   }
 };

@@ -40,7 +40,7 @@ export const getDocsListBySection = async (input) => {
   let posts = null;
 
   if (cache.has(input)) {
-    console.log("cache hit: getDocsListBySection");
+    console.log(`cache hit: getDocsListBySection for ${input}`);
     posts = cache.get(input);
   } else {
     const files = await globby(`docs/${input}/**/*.mdx`);
@@ -82,7 +82,7 @@ export const getResources = async (input) => {
     };
   });
 
-  console.log("getResources");
+  console.log(`getResources for ${input}`);
 
   return docs;
 };

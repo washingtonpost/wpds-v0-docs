@@ -53,3 +53,5 @@ vercel login
 ```bash
 vercel dev
 ```
+
+Happy developing!

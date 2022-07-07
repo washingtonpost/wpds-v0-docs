@@ -49,9 +49,9 @@ export default function Page({ docs, category, description, size }) {
               key={doc.slug}
               css={{
                 borderRadius: "$025",
-                padding: "$100 $050 0",
+                padding: "$050 $050 0",
                 "@sm": {
-                  padding: "$100 $025 0",
+                  padding: "$050 $025 0",
                 },
               }}
             >
