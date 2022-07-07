@@ -1,39 +1,22 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Box,
-  styled,
-  theme,
-  AlertBanner,
-} from "@washingtonpost/wpds-ui-kit";
+import { Box, styled, AlertBanner, theme } from "@washingtonpost/wpds-ui-kit";
 import { toast } from "react-toastify";
 import Tokens from "@washingtonpost/wpds-theme/src/wpds.tokens.json";
 
 import { Grid } from "../Components/Grid";
-export default function ColorExamles({ group }) {
-  const [Group, setGroup] = useState([]);
-  const [CopyText, setCopyText] = useState("");
 
-  useEffect((group) => {
-    const getGroup = handleColor(group);
-    setGroup(getGroup);
-  }, []);
+const ColorSamples = ({ group }) => {
+  const [colorGroupArray, setColorGroupArray] = useState([]);
+  const [copyText, setCopyText] = useState("");
 
-  const SuccessToast = () => {
-    return (
-      <AlertBanner.Root variant="success">
-        <AlertBanner.Content css={{ minWidth: 250, paddingRight: "$050" }}>
-          <b>Copied: </b>
-          <Box as="span" css={{ fontSize: 16 }}>
-            <Box as="i">{CopyText}</Box>
-          </Box>
-        </AlertBanner.Content>
-      </AlertBanner.Root>
-    );
-  };
   useEffect(() => {
-    if (CopyText) {
-      window.navigator.clipboard.writeText(CopyText);
+    const colorArray = handleColor(group);
+    setColorGroupArray(colorArray);
+  }, [group]);
+
+  useEffect(() => {
+    if (copyText) {
+      window.navigator.clipboard.writeText(copyText);
       toast(<SuccessToast />, {
         position: "top-center",
         closeButton: false,
@@ -45,17 +28,28 @@ export default function ColorExamles({ group }) {
         },
       });
     }
-  }, [CopyText]);
+  }, [copyText]);
 
-  function handleColor(group) {
-    let allColors = [];
-    for (var key in Tokens.color[group]) {
-      if (Tokens.color[group][key].hasOwnProperty("value")) {
-        allColors.push(`${key}`);
-      }
-    }
-    return allColors;
-  }
+  const SuccessToast = () => {
+    return (
+      <AlertBanner.Root variant="success">
+        <AlertBanner.Content css={{ minWidth: 250, paddingRight: "$050" }}>
+          <b>Copied: </b>
+          <Box as="span" css={{ fontSize: theme.fontSizes[100] }}>
+            <Box as="i">{copyText}</Box>
+          </Box>
+        </AlertBanner.Content>
+      </AlertBanner.Root>
+    );
+  };
+
+  const handleColor = (group) => {
+    const colorNamesArray = Object.keys(Tokens.color[group]);
+
+    return colorNamesArray.filter((colorName) =>
+      Tokens.color[group][colorName].hasOwnProperty("value")
+    );
+  };
 
   const Swatch = styled("button", {
     backgroundColor: "transparent",
@@ -64,6 +58,7 @@ export default function ColorExamles({ group }) {
       opacity: 0.5,
     },
   });
+
   const ColorExample = styled("div", {
     minHeight: "$500",
     width: "100%",
@@ -81,28 +76,28 @@ export default function ColorExamles({ group }) {
   return (
     <>
       <Grid maxSize={"120px"}>
-        {Group.map((key, i) => {
-          return (
-            <Swatch
-              key={i}
-              onClick={() =>
-                setCopyText(
-                  `$${key.toLowerCase()}${group == "static" ? "-static" : ""}`
-                )
-              }
-            >
-              <ColorExample
-                css={{
-                  backgroundColor: `$${key}${
-                    group == "static" ? "-static" : ""
-                  }`,
-                }}
-              />
-              <ColorID>{key}</ColorID>
-            </Swatch>
-          );
-        })}
+        {colorGroupArray.map((key, i) => (
+          <Swatch
+            key={i}
+            onClick={() =>
+              setCopyText(
+                `$${key.toLowerCase()}${group == "static" ? "-static" : ""}`
+              )
+            }
+          >
+            <ColorExample
+              css={{
+                backgroundColor: `$${key}${group == "static" ? "-static" : ""}`,
+              }}
+            />
+            <ColorID>{key}</ColorID>
+          </Swatch>
+        ))}
       </Grid>
     </>
   );
-}
+};
+
+ColorSamples.displayName = "Color Samples";
+
+export default ColorSamples;
