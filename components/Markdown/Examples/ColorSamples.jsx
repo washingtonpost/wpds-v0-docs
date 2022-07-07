@@ -73,24 +73,23 @@ const ColorSamples = ({ group }) => {
     color: "$primary",
   });
 
+  const copyOnClick = (color) => {
+    setCopyText(`$${color.toLowerCase()}${group == "static" ? "-static" : ""}`);
+  };
+
   return (
     <>
       <Grid maxSize={"120px"}>
-        {colorGroupArray.map((key, i) => (
-          <Swatch
-            key={i}
-            onClick={() =>
-              setCopyText(
-                `$${key.toLowerCase()}${group == "static" ? "-static" : ""}`
-              )
-            }
-          >
+        {colorGroupArray.map((color) => (
+          <Swatch key={color} onClick={copyOnClick}>
             <ColorExample
               css={{
-                backgroundColor: `$${key}${group == "static" ? "-static" : ""}`,
+                backgroundColor: `$${color}${
+                  group == "static" ? "-static" : ""
+                }`,
               }}
             />
-            <ColorID>{key}</ColorID>
+            <ColorID>{color}</ColorID>
           </Swatch>
         ))}
       </Grid>
