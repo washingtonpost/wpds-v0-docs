@@ -16,8 +16,13 @@ const getCssAndReset = () => {
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx) {
-    const initialProps = await NextDocument.getInitialProps(ctx);
-    return { ...initialProps };
+    let initialProps = { html: "<></>" };
+    try {
+      initialProps = await NextDocument.getInitialProps(ctx);
+      return { ...initialProps };
+    } catch (e) {
+      return initialProps;
+    }
   }
 
   render() {

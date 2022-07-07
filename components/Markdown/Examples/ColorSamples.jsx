@@ -14,7 +14,7 @@ export default function ColorExamles({ group }) {
   const [Group, setGroup] = useState([]);
   const [CopyText, setCopyText] = useState("");
 
-  useEffect(() => {
+  useEffect((group) => {
     const getGroup = handleColor(group);
     setGroup(getGroup);
   }, []);
