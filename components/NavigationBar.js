@@ -151,9 +151,9 @@ export const NavigationBar = ({
           <ThemeToggle
             css={{
               position: "fixed",
+              zIndex: "$page",
               "@notSm": {
                 marginTop: "-$100",
-                zIndex: "$page",
               },
               "@sm": {
                 top: "$100",
@@ -186,10 +186,17 @@ export const NavigationBar = ({
             </Anchor>
           </Link>
         </ListItem>
-        <ListItem css={{ margin: "0 $100 0 0" }}>
+        <ListItem>
           <Link href="/resources" passHref>
             <Anchor isCurrent={router.asPath.includes("/resources")}>
               Resources
+            </Anchor>
+          </Link>
+        </ListItem>
+        <ListItem css={{ margin: "0 $100 0 0" }}>
+          <Link href="/support" passHref>
+            <Anchor isCurrent={router.asPath.includes("/support")}>
+              Support
             </Anchor>
           </Link>
         </ListItem>

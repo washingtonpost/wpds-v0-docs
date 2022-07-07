@@ -64,8 +64,6 @@ export const getDocsListBySection = async (input) => {
     cache.set(input, posts);
   }
 
-  console.log("getDocsListBySection");
-
   return posts;
 };
 
