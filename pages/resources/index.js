@@ -5,125 +5,127 @@ import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
 import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
-import { P } from "~/components/Markdown/Styling";
+import TableofContents from "~/components/Markdown/Components/tableofcontents";
+import {
+  Thumbnail,
+  THUMBNAIL_SQUARE,
+  THUMBNAIL_WIDE,
+} from "~/components/Thumbnail";
+import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
 
-const Masonry = styled("section", {
-  width: "100%",
-  display: "grid",
-  gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-  gridGap: "$100",
-  "@sm": {
-    gridTemplateColumns: "1fr",
+const CustomLink = styled(Link, {
+  variants: {
+    type: {
+      New: {
+        pointerEvents: "none",
+      },
+    },
   },
 });
 
-// create a divider
+const StyledHeader = styled("span", {
+  padding: "$150 0 $075 0",
+  fontFamily: "$headline",
+  fontSize: "$225",
+  fontWeight: "$bold",
+  lineHeight: "$110",
+  color: "$primary",
+});
+
+const Description = styled("div", {
+  paddingBottom: "$100",
+  color: "$primary",
+  maxWidth: "600px",
+});
+
+const SeeAll = styled(Header, {
+  display: "flex",
+  margin: "$100 0 $200",
+  alignItems: "center",
+  variants: {
+    type: { Workshops: { marginBottom: "-$350" }, New: { display: "none" } },
+  },
+});
+
 const Divider = styled("hr", {
   gridColumnEnd: "span 2",
   margin: "$100 0 $050",
-  padding: 0,
+  paddingTop: 0,
   border: 0,
   height: "1px",
   backgroundColor: "$subtle",
+  variants: { type: { Workshops: { display: "none" } } },
 });
 
-const CheveronForLink = styled(ChevronRight, {
+const ChevronForLink = styled(ChevronRight, {
   fill: theme.colors.accessible,
 });
 
-export default function Page({ collections }) {
+export default function Page({ wrapper }) {
   return (
     <>
       <NextSeo title={`WPDS - Resources`} />
-      <header>
-        <Header as="h1">Resources</Header>
-      </header>
-
-      <Divider aria-hidden={false} />
-
-      {collections.map((collection, index) => {
-        return (
-          <Box
-            key={index}
-            css={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Link href={`/resources/${collection.kicker.toLowerCase()}`}>
-              <Header
-                as="h2"
-                css={{
-                  marginBottom: "$050",
-                }}
+      <Header as="h1">Resources</Header>
+      <Description>
+        Learn more about our workflow and how to use our tools in our guides.
+        Watch our tutorials and workshops to discover the elegance and
+        accessibility of WPDS.
+      </Description>
+      <TableofContents headings={wrapper.headings} css={{ margin: "$075 0" }} />
+      <>
+        {wrapper.content.categories.map((category) => {
+          return (
+            <>
+              <CustomLink
+                type={category.type}
+                href={`/resources/${category.name.toLowerCase()}`}
               >
-                {collection.kicker}
-              </Header>
-            </Link>
-            <Masonry key={index}>
-              {collection.docs.map((doc) => {
-                return (
-                  <Link
-                    href={doc.slug}
-                    key={doc.slug}
-                    css={{
-                      border: "1px solid $subtle",
-                      borderRadius: "$025",
-                      padding: "$100",
-                    }}
-                  >
-                    <article>
-                      {doc.data.publishDate}
-                      <Header as="h3">{doc.data.title}</Header>
-
-                      <P
-                        css={{
-                          marginBottom: "$100",
-                        }}
-                      >
-                        {doc.data.description}
-                      </P>
-                      <Box
-                        as="footer"
-                        css={{
-                          fontFamily: "$meta",
-                          fontSize: "$100",
-                          fontWeight: "$light",
-                          lineHeight: "$125",
-                        }}
-                      >
-                        {doc.data.byline}
-                      </Box>
-                    </article>
-                  </Link>
-                );
-              })}
-            </Masonry>
-            <Link href={`/resources/${collection.kicker.toLowerCase()}`}>
-              <Header
-                as="h4"
-                css={{
-                  display: "flex",
-                  marginTop: "$100",
-                  alignItems: "center",
-                  lineHeight: "$100",
-                }}
+                <StyledHeader as="h2" id={category.id}>
+                  {category.name}
+                </StyledHeader>
+                <Description>{category.description}</Description>
+              </CustomLink>
+              <LandingContentGrid
+                size={category.size}
+                className={category.type}
               >
-                <span>See all entries</span>
-                <Icon>
-                  <CheveronForLink />
-                </Icon>
-              </Header>
-            </Link>
-            <Box
-              css={{
-                marginBottom: "$200",
-              }}
-              aria-hidden={false}
-            />
-          </Box>
-        );
-      })}
+                {category.posts.map((doc) => {
+                  return (
+                    <Link
+                      href={doc.slug}
+                      key={doc.slug}
+                      css={{
+                        borderRadius: "$025",
+                        padding: "$050 0 $050",
+                      }}
+                    >
+                      <Thumbnail
+                        name={doc.data.title}
+                        description={doc.data.description.split(".")[0]}
+                        publishDate={doc.data.publishDate}
+                        imageTag={doc.data.imageTag}
+                        thumbnail={doc.data.thumbnail}
+                        size={category.size}
+                      />
+                    </Link>
+                  );
+                })}
+              </LandingContentGrid>
+              <Link href={`/resources/${category.name.toLowerCase()}`}>
+                <SeeAll as="h4" type={category.type}>
+                  <Box css={{ borderBottom: "1px solid $accessible" }}>
+                    See all {category.name.toLowerCase()}
+                  </Box>
+                  <Icon>
+                    <ChevronForLink />
+                  </Icon>
+                </SeeAll>
+              </Link>
+              <Divider type={category.type} />
+            </>
+          );
+        })}
+      </>
     </>
   );
 }
@@ -131,7 +133,11 @@ export default function Page({ collections }) {
 export const getStaticProps = async ({ params }) => {
   const docs = await getDocsListBySection("resources");
 
-  // sort docs into collections by doc.data.kicker property
+  // find the three most recent posts to the site before content is sorted by kicker
+  const recents = [...docs]
+    .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
+    .slice(0, 3);
+
   const collections = [
     // create a collection for each doc.data.kicker property and put their docs in it
     ...docs.reduce((acc, doc) => {
@@ -156,12 +162,78 @@ export const getStaticProps = async ({ params }) => {
     return a.kicker.localeCompare(b.kicker);
   });
 
+  const wrapper = await getProps(collections, recents);
   const navigation = await getNavigation();
 
   return {
     props: {
-      collections,
       navigation,
+      wrapper,
     },
   };
 };
+
+async function getProps(collections, recents) {
+  // create a wrapper which contains all necessary data for the page
+
+  // 1. initialize constants
+  const wrapper = { content: {}, headings: [] };
+  const content = { categories: [] };
+  const level = 2;
+  const descriptions = {
+    Guides:
+      "Explore the processes and tools we use in our step-by-step written guides.",
+    Tutorials:
+      "Watch or read through our tutorials to understand key techniques and concepts.",
+    Workshops:
+      "Sharpen your design and development skills with our in-depth recorded workshops.",
+  };
+
+  // 2. populate the content array with objects for each category (main data for page)
+  content.categories = collections.map((item) => {
+    let name, id, type;
+    name = id = type = item.kicker;
+    let [posts, description, size] = [[], descriptions[name], ""];
+
+    if (name === "Guides") {
+      // sorting guides by guideRank -> if none, sort by title
+      posts = [...item.docs]
+        .sort(function (a, b) {
+          try {
+            return a.data.guideRank - b.data.guideRank;
+          } catch (TypeError) {
+            return a.data.title.localeCompare(b.data.title);
+          }
+        })
+        .slice(0, 4);
+      size = THUMBNAIL_SQUARE;
+    } else {
+      posts = [...item.docs].slice(0, 3);
+      size = THUMBNAIL_WIDE;
+    }
+    let category = { name, posts, description, size, type, id };
+    return category;
+  });
+
+  // 3. populate headings (for TOC)
+  const headings = content.categories.map((item) => {
+    return { label: item.name, level };
+  });
+
+  // 4. adding what's new section to the front of the content array
+  let whatsNew = {
+    name: "What's New?",
+    posts: recents,
+    description: null,
+    size: THUMBNAIL_WIDE,
+    type: "New",
+    id: "What's%20New?",
+  };
+  content.categories.unshift(whatsNew);
+  headings.unshift({ label: whatsNew.name, level });
+
+  // 5. populate the wrapper to return
+  wrapper.content = content;
+  wrapper.headings = headings;
+  return wrapper;
+}

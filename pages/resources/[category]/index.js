@@ -3,8 +3,13 @@ import { NextSeo } from "next-seo";
 import Header from "~/components/Typography/Headers";
 import CustomLink from "~/components/Typography/link";
 import { getAllPathsByCategory, getNavigation, getResources } from "~/services";
-import { P } from "~/components/Markdown/Styling";
 import Breadcrumbs from "~/components/Breadcrumbs";
+import {
+  Thumbnail,
+  THUMBNAIL_SQUARE,
+  THUMBNAIL_WIDE,
+} from "~/components/Thumbnail";
+import { ContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
 
 const titleCase = (input) => {
   return input.replace(/\w\S*/g, (txt) => {
@@ -12,69 +17,58 @@ const titleCase = (input) => {
   });
 };
 
-const Masonry = styled("section", {
-  width: "100%",
-  display: "grid",
-  gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-  gridGap: "$100",
+const HeadDiv = styled("div", {
+  paddingLeft: "$050",
+  color: "$primary",
   "@sm": {
-    gridTemplateColumns: "1fr",
+    padding: "$025",
   },
 });
 
-export default function Page({ docs, category }) {
+export default function Page({ docs, category, description, size }) {
   return (
-    <div>
+    <>
       <NextSeo
         title={`WPDS - ${category} | Resources`}
         description={`${category} resources, including links to documentation, guides, and more.`}
       />
-      <Breadcrumbs.Root>
-        <Breadcrumbs.Item href="/resources">Resources</Breadcrumbs.Item>
-      </Breadcrumbs.Root>
-      <header>
-        <Header>{category}</Header>
-      </header>
-      <Masonry>
+      <HeadDiv>
+        <Breadcrumbs.Root>
+          <Breadcrumbs.Item href="/resources">Resources</Breadcrumbs.Item>
+        </Breadcrumbs.Root>
+        <header>
+          <Header css={{ padding: "$100 0 $050" }}>{category}</Header>
+        </header>
+        <p>{description}</p>
+      </HeadDiv>
+      <ContentGrid size={size}>
         {docs.map((doc) => {
           return (
             <CustomLink
               href={doc.slug}
               key={doc.slug}
               css={{
-                border: "1px solid $subtle",
                 borderRadius: "$025",
-                padding: "$100",
+                padding: "$050 $050 0",
+                "@sm": {
+                  padding: "$050 $025 0",
+                },
               }}
             >
-              <article>
-                {doc.data.publishDate}
-                <Header as="h3">{doc.data.title}</Header>
-
-                <P
-                  css={{
-                    marginBottom: "$100",
-                  }}
-                >
-                  {doc.data.description}
-                </P>
-                <Box
-                  as="footer"
-                  css={{
-                    fontFamily: "$meta",
-                    fontSize: "$100",
-                    fontWeight: "$light",
-                    lineHeight: "$125",
-                  }}
-                >
-                  {doc.data.byline}
-                </Box>
-              </article>
+              <Thumbnail
+                name={doc.data.title}
+                description={doc.data.description.split(".")[0]}
+                publishDate={doc.data.publishDate}
+                kicker={doc.data.kicker}
+                imageTag={doc.data.imageTag}
+                thumbnail={doc.data.thumbnail}
+                size={size}
+              />
             </CustomLink>
           );
         })}
-      </Masonry>
-    </div>
+      </ContentGrid>
+    </>
   );
 }
 
@@ -88,11 +82,30 @@ export const getStaticProps = async ({ params }) => {
 
   const navigation = await getNavigation();
 
+  // populate props
+  let description,
+    size = "";
+  if (params.category === "tutorials") {
+    description =
+      "Watch or read through our tutorials to understand key techniques and concepts.";
+    size = THUMBNAIL_WIDE;
+  } else if (params.category === "workshops") {
+    description =
+      "Sharpen your design and development skills with our in-depth recorded workshops.";
+    size = THUMBNAIL_WIDE;
+  } else if (params.category === "guides") {
+    description =
+      "Explore the processes and tools we use in our step-by-step written guides.";
+    size = THUMBNAIL_SQUARE;
+  }
+
   return {
     props: {
       category: titleCase(params.category),
       docs: publishedDocs,
       navigation,
+      description,
+      size,
     },
   };
 };

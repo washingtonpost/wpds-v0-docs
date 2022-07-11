@@ -55,7 +55,6 @@ export const getDocByPathName = async (input) => {
     // otherwise, read the file and cache it
 
     const [directory, fileName] = input.split("/");
-
     const slug = path.join(`docs/${directory}`, `${fileName}.mdx`);
     const fileData = fs.readFileSync(slug);
 

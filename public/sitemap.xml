@@ -141,14 +141,6 @@
   </url>
 
   <url>
-    <loc>https://build.washingtonpost.com/resources/architecture/stitches</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/resources/architecture/themes</loc>
-  </url>
-
-  <url>
     <loc>https://build.washingtonpost.com/resources/guides/coding-a-page</loc>
   </url>
 
@@ -173,27 +165,21 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/resources/guides/stitches</loc>
+  </url>
+
+  <url>
     <loc
       >https://build.washingtonpost.com/resources/guides/tachyons-stitches</loc
     >
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/resources/guides/themes</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/resources/guides/zeplin-guide</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/resources/process/releases</loc>
-  </url>
-
-  <url>
-    <loc>https://build.washingtonpost.com/resources/process/support</loc>
-  </url>
-
-  <url>
-    <loc
-      >https://build.washingtonpost.com/resources/process/supported-platforms</loc
-    >
   </url>
 
   <url>
@@ -233,6 +219,22 @@
   </url>
 
   <url>
+    <loc>https://build.washingtonpost.com/support</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/get-help</loc>
+  </url>
+
+  <url>
     <loc>https://build.washingtonpost.com/support/legacy-v0</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/release-cycles</loc>
+  </url>
+
+  <url>
+    <loc>https://build.washingtonpost.com/support/supported-platforms</loc>
   </url>
 </urlset>

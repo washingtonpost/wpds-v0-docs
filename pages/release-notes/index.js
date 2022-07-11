@@ -103,7 +103,7 @@ export default function Page() {
   );
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async () => {
   const navigation = await getNavigation();
 
   return {
