@@ -1,70 +1,60 @@
 import React from "react";
-import { Box, styled, theme, Icon } from "@washingtonpost/wpds-ui-kit";
-import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
+import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 import { getAllDocs, getNavigation } from "~/services";
 import Header from "~/components/Markdown/Components/headers";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import CustomLink from "~/components/Markdown/Components/link";
+import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
+import { SeeAllLink } from "./utils";
 
 import Image from "next/image";
 
-const Index = ({ recentPosts }) => {
-  const GridThreeColumns = styled("div", {
-    display: "grid",
+const GridTwoColumns = styled("div", {
+  display: "grid",
+  gap: "$200",
+  "@notSm": {
+    gridTemplateColumns: "repeat(2,1fr)",
+  },
+  "@sm": {
     gap: "$100",
-    "@notSm": {
-      gridTemplateColumns: "repeat(3,1fr)",
-    },
-    "@sm": {
-      gridTemplateColumns: "1fr",
-    },
-  });
+    gridTemplateColumns: "1fr",
+  },
+});
 
-  const GridTwoColumns = styled("div", {
-    display: "grid",
-    gap: "$200",
-    "@notSm": {
-      gridTemplateColumns: "repeat(2,1fr)",
-    },
-    "@sm": {
-      gap: "$100",
-      gridTemplateColumns: "1fr",
-    },
-  });
+const HeroBlock = styled("div", {
+  gridColumn: "span 2",
+  flexDirection: "column",
+  justifyContent: "center",
+  "@md": {
+    gridColumn: "span 3",
+  },
+  "@sm": {
+    gridColumn: "span 1",
+  },
+});
 
-  const HeroBlock = styled("div", {
-    gridColumn: "span 2",
+const P = styled("p", {
+  color: theme.colors.accessible,
+  fontSize: theme.fontSizes[100],
+  fontWeight: theme.fontWeights.light,
+  lineHeight: theme.lineHeights[125],
+});
 
-    flexDirection: "column",
-    justifyContent: "center",
-    "@md": {
-      gridColumn: "span 3",
-    },
-    "@sm": {
-      gridColumn: "span 1",
-    },
-  });
+const BoldTextLooksLikeLink = styled("span", {
+  fontWeight: "bold",
+  textDecoration: "underline",
+  marginTop: theme.sizes[100],
+  "@notSm": {
+    bottom: 0,
+    position: "absolute",
+  },
+});
 
-  const P = styled("p", {
-    color: theme.colors.accessible,
-    fontSize: theme.fontSizes[100],
-    fontWeight: theme.fontWeights.light,
-    lineHeight: theme.lineHeights[125],
-    marginBottom: theme.sizes[150],
-  });
-
-  const LinkText = styled("span", {
-    textDecoration: "underline",
-  });
-
-  const LinkCaret = styled("span", {
-    textDecoration: "none",
-  });
-
+const Index = ({ recentPosts }) => {
   return (
     <>
-      <GridThreeColumns>
+      <LandingContentGrid size={"wide"}>
         <Box
           css={{
             gridColumn: "span 2",
@@ -139,8 +129,9 @@ const Index = ({ recentPosts }) => {
             as="h2"
             css={{
               borderTop: "1px solid $subtle",
-              paddingTop: "$100",
-              "@sm": { paddingBottom: "0", marginBottom: 0 },
+              marginTop: theme.sizes[200],
+              paddingTop: theme.sizes[100],
+              "@sm": { paddingBottom: theme.sizes[100], marginBottom: 0 },
             }}
           >
             Getting started
@@ -152,38 +143,35 @@ const Index = ({ recentPosts }) => {
             "@md": {
               gridColumn: "1/-1",
             },
+            "@sm": {
+              marginBottom: theme.sizes[200],
+            },
           }}
         >
-          <Image
-            height="160"
-            width="320"
-            layout="responsive"
-            src="/img/sections/foundations.png"
-            alt="Image shows the word 'Foundations' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
-          />
-          <Header as="h3">Foundations</Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Learn about design tokens what they are, how they work and the
-            advantages they bring to a design system. Plus: a list of all
-            currently supported tokens.
-          </P>
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "absolute",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/foundations/principles"}
-          >
-            Get started with Foundations
+          <CustomLink href="/foundations">
+            <Image
+              height="160"
+              width="320"
+              layout="responsive"
+              src="/img/sections/foundations.png"
+              alt="Image shows the word 'Foundations' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
+            />
+            <Header as="h3">Foundations</Header>
+            <P
+              css={{
+                marginBottom: theme.sizes[100],
+                "@notSm": {
+                  marginBottom: theme.sizes[200],
+                },
+              }}
+            >
+              Learn about design tokens what they are, how they work and the
+              advantages they bring to a design system. Plus: a list of all
+              currently supported tokens.
+            </P>
+            <BoldTextLooksLikeLink>
+              Get started with Foundations
+            </BoldTextLooksLikeLink>
           </CustomLink>
         </Box>
         <Box
@@ -192,38 +180,35 @@ const Index = ({ recentPosts }) => {
             "@md": {
               gridColumn: "1/-1",
             },
+            "@sm": {
+              marginBottom: theme.sizes[200],
+            },
           }}
         >
-          <Image
-            height="160"
-            width="320"
-            layout="responsive"
-            src="/img/sections/components.png"
-            alt="Image shows the word 'Components' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
-          />
-          <Header as="h3">Components</Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Dive deeper into our component documentation including design
-            examples, usage guidelines and best-practices for technical
-            implementation.
-          </P>
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "absolute",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/components/alert-banner"}
-          >
-            Get started with Components
+          <CustomLink href="/components/alert-banner">
+            <Image
+              height="160"
+              width="320"
+              layout="responsive"
+              src="/img/sections/components.png"
+              alt="Image shows the word 'Components' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
+            />
+            <Header as="h3">Components</Header>
+            <P
+              css={{
+                marginBottom: theme.sizes[100],
+                "@notSm": {
+                  marginBottom: theme.sizes[200],
+                },
+              }}
+            >
+              Dive deeper into our component documentation including design
+              examples, usage guidelines and best-practices for technical
+              implementation.
+            </P>
+            <BoldTextLooksLikeLink>
+              Get started with Components
+            </BoldTextLooksLikeLink>
           </CustomLink>
         </Box>
         <Box
@@ -233,42 +218,39 @@ const Index = ({ recentPosts }) => {
             "@md": {
               gridColumn: "1/-1",
             },
+            "@sm": {
+              marginBottom: theme.sizes[200],
+            },
           }}
         >
-          <Image
-            height="160"
-            width="320"
-            layout="responsive"
-            src="/img/sections/resources.png"
-            alt="Image shows the word 'Resources' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
-          />
-          <Header as="h3">Resources</Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Get familiar with the WPDS ecosystem by using one of our handy
-            how-to guides. Learn more about integrations with Figma, Zeplin, and
-            React.
-          </P>
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "absolute",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/resources"}
-          >
-            Get started with Resources
+          <CustomLink href="/resources">
+            <Image
+              height="160"
+              width="320"
+              layout="responsive"
+              src="/img/sections/resources.png"
+              alt="Image shows the word 'Resources' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
+            />
+            <Header as="h3">Resources</Header>
+            <P
+              css={{
+                marginBottom: theme.sizes[100],
+                "@notSm": {
+                  marginBottom: theme.sizes[200],
+                },
+              }}
+            >
+              Get familiar with the WPDS ecosystem by using one of our handy
+              how-to guides. Learn more about integrations with Figma, Zeplin,
+              and React.
+            </P>
+            <BoldTextLooksLikeLink>
+              Get started with Resources
+            </BoldTextLooksLikeLink>
           </CustomLink>
         </Box>
         <Box />
-      </GridThreeColumns>
+      </LandingContentGrid>
       <GridTwoColumns>
         <Box
           css={{
@@ -279,7 +261,8 @@ const Index = ({ recentPosts }) => {
             as="h2"
             css={{
               borderTop: "1px solid $subtle",
-              paddingTop: "$100",
+              marginTop: theme.sizes[200],
+              paddingTop: theme.sizes[100],
               "@sm": { paddingBottom: "0", marginBottom: 0 },
             }}
           >
@@ -320,16 +303,7 @@ const Index = ({ recentPosts }) => {
           >
             WPDS Design Workshop #2
           </Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Continuing our deep dive into our new design system.
-          </P>
+          <P>Continuing our deep dive into our new design system.</P>
         </Box>
         <Box
           css={{
@@ -365,14 +339,7 @@ const Index = ({ recentPosts }) => {
           >
             WPDS Design Workshop #1
           </Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
+          <P>
             Watch Brian Alfaro lead a design workshop for our rollout of the new
             WPDS.
           </P>
@@ -411,14 +378,7 @@ const Index = ({ recentPosts }) => {
           >
             WPDS Developer Workshop #2
           </Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
+          <P>
             Watch Arturo Silva lead our second developer workshop for our v1
             rollout of the new WPDS. Same topisc as the first one, but with a
             different approach.
@@ -458,14 +418,7 @@ const Index = ({ recentPosts }) => {
           >
             WPDS Developer Workshop #1
           </Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
+          <P>
             Watch Arturo Silva lead a developer workshop for our v1 rollout of
             the new WPDS.
           </P>
@@ -504,14 +457,7 @@ const Index = ({ recentPosts }) => {
           >
             Guide to Figma
           </Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
+          <P>
             Figma is our tool of choice when designing and using our design
             system.
           </P>
@@ -550,42 +496,13 @@ const Index = ({ recentPosts }) => {
           >
             Guide to Zeplin
           </Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
+          <P>
             Zeplin is our tool of choice when it comes to hand-off. It offers a
             layer of connection to code and design not yet realized by other
             tools.
           </P>
         </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "relative",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/resources"}
-          >
-            See all resources{" "}
-            <Icon size={"$100"} css={{ verticalAlign: "middle" }}>
-              <ChevronRight />
-            </Icon>
-          </CustomLink>
-        </Box>
+        <SeeAllLink href="/resources" name="resources" type="Last" />
       </GridTwoColumns>
     </>
   );

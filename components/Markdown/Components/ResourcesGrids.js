@@ -1,4 +1,4 @@
-import { styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 
 export const LandingContentGrid = styled("div", {
   // responsible for grids on landing pages, such as resources
@@ -25,7 +25,7 @@ export const LandingContentGrid = styled("div", {
         },
         "@sm": {
           gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-          gridRowGap: "0",
+          gridRowGap: "$100",
         },
       },
     },
