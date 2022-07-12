@@ -5,22 +5,13 @@ import { getAllDocs, getNavigation } from "~/services";
 import Header from "~/components/Markdown/Components/headers";
 import { List, ListItem } from "~/components/Markdown/Components/list";
 import CustomLink from "~/components/Markdown/Components/link";
-import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
-import { SeeAllLink } from "./utils";
+import {
+  LandingContentGrid,
+  ContentGrid,
+} from "~/components/Markdown/Components/ResourcesGrids";
+import { SeeAllLink, sortByRank } from "./utils";
 
 import Image from "next/image";
-
-const GridTwoColumns = styled("div", {
-  display: "grid",
-  gap: "$200",
-  "@notSm": {
-    gridTemplateColumns: "repeat(2,1fr)",
-  },
-  "@sm": {
-    gap: "$100",
-    gridTemplateColumns: "1fr",
-  },
-});
 
 const HeroBlock = styled("div", {
   gridColumn: "span 2",
@@ -51,7 +42,7 @@ const BoldTextLooksLikeLink = styled("span", {
   },
 });
 
-const Index = ({ recentPosts }) => {
+const Index = ({ recentPosts, rankedArticles }) => {
   return (
     <>
       <LandingContentGrid size={"wide"}>
@@ -251,259 +242,63 @@ const Index = ({ recentPosts }) => {
         </Box>
         <Box />
       </LandingContentGrid>
-      <GridTwoColumns>
-        <Box
-          css={{
-            gridColumn: "1/-1",
-          }}
-        >
-          <Header
-            as="h2"
+      {rankedArticles && (
+        <LandingContentGrid size={"single"}>
+          <Box
             css={{
-              borderTop: "1px solid $subtle",
-              marginTop: theme.sizes[200],
-              paddingTop: theme.sizes[100],
-              "@sm": { paddingBottom: "0", marginBottom: 0 },
-            }}
-          >
-            Dive Deeper
-          </Header>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
               gridColumn: "1/-1",
-            },
-          }}
-        >
-          <Image
-            height="250"
-            width="500"
-            layout="responsive"
-            src="/img/dive-deeper/workshop_design_2.png"
-            alt="To the right of the image, a woman sits at a desk looking down at her computer. Around her head are bubbles depicting a quote, a video, a website, and a message. On the upper left of the image, the word 'WORKSHOP' appears in large bold letters. The words below this say 'Session 2: WPDS for Designers'. 'WP Design System' appears on the lower left."
-          />
-        </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <Header
-            as="h3"
-            css={{
-              "@sm": {
-                marginTop: "0",
-              },
             }}
           >
-            WPDS Design Workshop #2
-          </Header>
-          <P>Continuing our deep dive into our new design system.</P>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
-              gridColumn: "1/-1",
-            },
-          }}
-        >
-          <Image
-            height="250"
-            width="500"
-            layout="responsive"
-            src="/img/dive-deeper/workshop_design_1.png"
-            alt="To the right of the image, a woman sits at a desk looking down at her computer. Around her head are bubbles depicting a quote, a video, a website, and a message. On the upper left of the image, the word 'WORKSHOP' appears in large bold letters. The words below this say 'Session 1: WPDS for Designers'. 'WP Design System' appears on the lower left."
-          />
-        </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <Header
-            as="h3"
-            css={{
-              "@sm": {
-                marginTop: "0",
-              },
-            }}
-          >
-            WPDS Design Workshop #1
-          </Header>
-          <P>
-            Watch Brian Alfaro lead a design workshop for our rollout of the new
-            WPDS.
-          </P>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
-              gridColumn: "1/-1",
-            },
-          }}
-        >
-          <Image
-            height="250"
-            width="500"
-            layout="responsive"
-            src="/img/dive-deeper/workshop_dev_2.png"
-            alt="To the right of the image, a man stands holding a text box with both hands. In front of him a large website floats in front of him. He appears to be inserting the text box into the upper left of the website. On the upper left of the image, the word 'WORKSHOP' appears in large bold letters. The words below this say 'Session 2: WPDS for Developers'. 'WP Design System' appears on the lower left."
-          />
-        </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <Header
-            as="h3"
-            css={{
-              "@sm": {
-                marginTop: "0",
-              },
-            }}
-          >
-            WPDS Developer Workshop #2
-          </Header>
-          <P>
-            Watch Arturo Silva lead our second developer workshop for our v1
-            rollout of the new WPDS. Same topisc as the first one, but with a
-            different approach.
-          </P>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
-              gridColumn: "1/-1",
-            },
-          }}
-        >
-          <Image
-            height="250"
-            width="500"
-            layout="responsive"
-            src="/img/dive-deeper/workshop_dev_1.png"
-            alt="To the right of the image, a man stands holding a text box with both hands. In front of him a large website floats in front of him. He appears to be inserting the text box into the upper left of the website. On the upper left of the image, the word 'WORKSHOP' appears in large bold letters. The words below this say 'Session 2: WPDS for Developers'. 'WP Design System' appears on the lower left."
-          />
-        </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <Header
-            as="h3"
-            css={{
-              "@sm": {
-                marginTop: "0",
-              },
-            }}
-          >
-            WPDS Developer Workshop #1
-          </Header>
-          <P>
-            Watch Arturo Silva lead a developer workshop for our v1 rollout of
-            the new WPDS.
-          </P>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
-              gridColumn: "1/-1",
-            },
-          }}
-        >
-          <Image
-            height="250"
-            width="500"
-            layout="responsive"
-            src="/img/dive-deeper/guide_figma.png"
-            alt="To the right of the image you can see two hands with flowered sleeves typing on a computer. There is a notepad with a pen and a small plant to the right of the computer. To the left, there is a bubble that shows the Figma logo along with the word 'Figma'. On the upper left of the image, the word 'GUIDE' appears in large bold letters. The words below this say 'Using Figma with WPDS'. 'WP Design System' appears on the lower left."
-          />
-        </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <Header
-            as="h3"
-            css={{
-              "@sm": {
-                marginTop: "0",
-              },
-            }}
-          >
-            Guide to Figma
-          </Header>
-          <P>
-            Figma is our tool of choice when designing and using our design
-            system.
-          </P>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
-              gridColumn: "1/-1",
-            },
-          }}
-        >
-          <Image
-            height="250"
-            width="500"
-            layout="responsive"
-            src="/img/dive-deeper/guide_zeplin.png"
-            alt="To the right of the image you can see two hands with flowered sleeves typing on a computer. There is a notepad with a pen and a small plant to the right of the computer. To the left, there is a bubble that shows the Zeplin logo along with the word 'Zeplin'. On the upper left of the image, the word 'GUIDE' appears in large bold letters. The words below this say 'Using Zeplin with WPDS'. 'WP Design System' appears on the lower left."
-          />
-        </Box>
-        <Box
-          css={{
-            margin: "auto 0",
-            "@sm": {
-              margin: "0",
-            },
-          }}
-        >
-          <Header
-            as="h3"
-            css={{
-              "@sm": {
-                marginTop: "0",
-              },
-            }}
-          >
-            Guide to Zeplin
-          </Header>
-          <P>
-            Zeplin is our tool of choice when it comes to hand-off. It offers a
-            layer of connection to code and design not yet realized by other
-            tools.
-          </P>
-        </Box>
-        <SeeAllLink href="/resources" name="resources" type="Last" />
-      </GridTwoColumns>
+            <Header
+              as="h2"
+              css={{
+                borderTop: "1px solid $subtle",
+                marginTop: theme.sizes[200],
+                paddingTop: theme.sizes[100],
+                "@sm": { paddingBottom: "0", marginBottom: 0 },
+              }}
+            >
+              Dive Deeper
+            </Header>
+          </Box>
+          {rankedArticles.map((article) => (
+            <CustomLink href={article.slug} key={article.data.title}>
+              <ContentGrid size="singleWide">
+                <Box>
+                  <Image
+                    height="250"
+                    width="500"
+                    layout="responsive"
+                    src={article.data.imageTag}
+                    alt={article.data.imageAltText}
+                  />
+                </Box>
+                <Box
+                  css={{
+                    margin: "auto 0",
+                    "@sm": {
+                      margin: "0",
+                    },
+                  }}
+                >
+                  <Header
+                    as="h3"
+                    css={{
+                      "@sm": {
+                        marginTop: "0",
+                      },
+                    }}
+                  >
+                    {article.data.title}
+                  </Header>
+                  <P>{article.data.description}</P>
+                </Box>
+              </ContentGrid>
+            </CustomLink>
+          ))}
+          <SeeAllLink href="/resources" name="resources" type="Last" />
+        </LandingContentGrid>
+      )}
     </>
   );
 };
@@ -517,8 +312,17 @@ export async function getStaticProps() {
   const posts = await getAllDocs();
   const navigation = await getNavigation();
 
+  const guides = [];
+  const workshops = [];
+
   const recentPosts = posts
-    .filter((post, i) => {
+    .filter((post) => {
+      if (post.data.kicker === "Guides") {
+        guides.push(post);
+      }
+      if (post.data.kicker === "Workshops") {
+        workshops.push(post);
+      }
       return (
         post.data.publishDate &&
         new Date(post.data.publishDate) <= todaysDate &&
@@ -535,7 +339,13 @@ export async function getStaticProps() {
     const amountOver = recentPosts.length - threshold;
     recentPosts.splice(threshold, amountOver);
   }
+
+  // uses the ranks inside the docs
+  const rankedArticles = [
+    ...sortByRank(workshops, 4),
+    ...sortByRank(guides, 2),
+  ];
   return {
-    props: { recentPosts, navigation },
+    props: { recentPosts, rankedArticles, navigation },
   };
 }

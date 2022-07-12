@@ -1,8 +1,7 @@
 import React from "react";
 import { NextSeo } from "next-seo";
 import { getDocsListBySection, getNavigation } from "~/services";
-import { theme, styled } from "@washingtonpost/wpds-ui-kit";
-import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
+import { styled } from "@washingtonpost/wpds-ui-kit";
 import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
@@ -12,7 +11,7 @@ import {
   THUMBNAIL_WIDE,
 } from "~/components/Thumbnail";
 import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
-import { SeeAllLink, NewCustomLink } from "../utils";
+import { SeeAllLink, NewCustomLink, sortByRank } from "../utils";
 
 const StyledHeader = styled("span", {
   padding: "$150 0 $075 0",
@@ -39,10 +38,6 @@ const Divider = styled("hr", {
   variants: { type: { Workshops: { display: "none" } } },
 });
 
-const ChevronForLink = styled(ChevronRight, {
-  fill: theme.colors.accessible,
-});
-
 const Page = ({ wrapper }) => (
   <>
     <NextSeo title={`WPDS - Resources`} />
@@ -66,14 +61,7 @@ const Page = ({ wrapper }) => (
         </NewCustomLink>
         <LandingContentGrid size={category.size} className={category.type}>
           {category?.posts?.map((doc) => (
-            <Link
-              href={doc.slug}
-              key={doc.slug}
-              css={{
-                borderRadius: "$025",
-                padding: "$050 0 $050",
-              }}
-            >
+            <Link href={doc.slug} key={doc.slug}>
               <Thumbnail
                 name={doc.data.title}
                 description={doc.data.description.split(".")[0]}
@@ -85,7 +73,6 @@ const Page = ({ wrapper }) => (
             </Link>
           ))}
         </LandingContentGrid>
-        {console.log(category.name)}
         <SeeAllLink
           href={`/resources/${category.name.toLowerCase()}`}
           name={category.name}
@@ -132,7 +119,7 @@ export const getStaticProps = async () => {
         return a.kicker.localeCompare(b.kicker);
       });
 
-  const wrapper = await getProps(collections, recents);
+  const wrapper = await getWrapper(collections, recents);
   const navigation = await getNavigation();
 
   return {
@@ -143,7 +130,7 @@ export const getStaticProps = async () => {
   };
 };
 
-async function getProps(collections, recents) {
+async function getWrapper(collections, recents) {
   // create a wrapper which contains all necessary data for the page
 
   // 1. initialize constants
@@ -166,16 +153,8 @@ async function getProps(collections, recents) {
     let [posts, description, size] = [[], descriptions[name], ""];
 
     if (name === "Guides") {
-      // sorting guides by guideRank -> if none, sort by title
-      posts = [...collection.docs]
-        .sort(function (a, b) {
-          try {
-            return a.data.guideRank - b.data.guideRank;
-          } catch (TypeError) {
-            return a.data.title.localeCompare(b.data.title);
-          }
-        })
-        .slice(0, 4);
+      // sorting guides by Rank -> if none, sort by title
+      posts = sortByRank(collection.docs, 4);
       size = THUMBNAIL_SQUARE;
     } else {
       posts = [...collection.docs].slice(0, 3);

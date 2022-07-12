@@ -1,6 +1,5 @@
 import { Header } from "~/components/Markdown/Components/headers";
 import Link from "~/components/Markdown/Components/link";
-import CustomLink from "~/components/Markdown/Components/link";
 
 import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
@@ -57,3 +56,23 @@ export const NewCustomLink = styled(Link, {
     },
   },
 });
+
+/**
+ * sorting guides by Rank -> if none, sort by title
+ * @param {array} docs must have data.rank
+ * @param {number} numToReturn returns slice from 0 to numToReturn
+ * @returns
+ */
+export const sortByRank = (docs, numToReturn) => {
+  return docs
+    .sort(function (a, b) {
+      try {
+        return a.data.rank - b.data.rank;
+      } catch (TypeError) {
+        return a.data.title.localeCompare(b.data.title);
+      }
+    })
+    .slice(0, numToReturn);
+};
+
+export default SeeAllLink;
