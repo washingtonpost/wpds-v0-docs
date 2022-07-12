@@ -152,7 +152,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
               css={{
                 marginBottom: theme.sizes[100],
                 "@notSm": {
-                  marginBottom: theme.sizes[200],
+                  marginBottom: theme.sizes[300],
                 },
               }}
             >
@@ -189,7 +189,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
               css={{
                 marginBottom: theme.sizes[100],
                 "@notSm": {
-                  marginBottom: theme.sizes[200],
+                  marginBottom: theme.sizes[300],
                 },
               }}
             >
@@ -227,7 +227,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
               css={{
                 marginBottom: theme.sizes[100],
                 "@notSm": {
-                  marginBottom: theme.sizes[200],
+                  marginBottom: theme.sizes[300],
                 },
               }}
             >
