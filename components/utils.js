@@ -12,13 +12,13 @@ const SeeAll = styled(Header, {
     type: {
       New: { display: "none" },
       Workshops: {
-        marginBottom: "0",
+        marginBottom: 0,
         "@notSm": {
           marginBottom: "-$300",
         },
       },
       Last: {
-        marginBottom: "0",
+        marginBottom: 0,
         "@notSm": {
           marginBottom: "-$300",
         },

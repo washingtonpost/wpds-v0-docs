@@ -24,7 +24,7 @@ export const LandingContentGrid = styled("div", {
           gridTemplateColumns: "repeat(3,1fr)",
         },
         "@sm": {
-          gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
+          gridTemplateColumns: "1fr",
           gridRowGap: theme.sizes[100],
         },
       },
@@ -77,7 +77,6 @@ export const ContentGrid = styled("div", {
 export const ThumbnailGrid = styled("div", {
   width: "100%",
   display: "grid",
-  paddingRight: "$025",
 
   variants: {
     size: {

@@ -1,4 +1,4 @@
-import { styled } from "@washingtonpost/wpds-ui-kit";
+import { styled, Box, theme } from "@washingtonpost/wpds-ui-kit";
 
 import { Header } from "~/components/Markdown/Components/headers";
 import { P } from "~/components/Markdown/Styling";
@@ -10,10 +10,6 @@ import Image from "next/image";
 export const THUMBNAIL_WIDE = "wide";
 export const THUMBNAIL_SQUARE = "square";
 
-const Content = styled("div", {
-  display: "flex",
-});
-
 export const Thumbnail = (props) => {
   // switches based on the size of the post displayed – full for workshops and tutorials, mini for guides
   // note the description is hidden for what's new and the publish date is hidden for tutorials on the resources landing page
@@ -22,7 +18,17 @@ export const Thumbnail = (props) => {
     case THUMBNAIL_WIDE:
       return (
         <ThumbnailGrid size={THUMBNAIL_WIDE}>
-          <Content>
+          <Box
+            css={{
+              position: "relative",
+              "@md": {
+                gridColumn: "1/-1",
+              },
+              "@sm": {
+                marginBottom: theme.sizes[100],
+              },
+            }}
+          >
             {imageTag && (
               <Image
                 width="500"
@@ -31,9 +37,8 @@ export const Thumbnail = (props) => {
                 alt={`${name} graphic`}
               />
             )}
-          </Content>
-          <div>
-            <Header as="h3" css={{ marginTop: "0" }}>
+
+            <Header as="h3" css={{ marginTop: 0 }}>
               {name}
             </Header>
             <P css={{ [".New &"]: { display: "none" } }}>{description}.</P>
@@ -45,7 +50,7 @@ export const Thumbnail = (props) => {
             >
               {publishDate}
             </P>
-          </div>
+          </Box>
         </ThumbnailGrid>
       );
     case THUMBNAIL_SQUARE:
@@ -62,7 +67,7 @@ export const Thumbnail = (props) => {
             )}
           </div>
           <div>
-            <Header as="h3" css={{ marginTop: "0" }}>
+            <Header as="h3" css={{ marginTop: 0 }}>
               {name}
             </Header>
             <P>{description}.</P>

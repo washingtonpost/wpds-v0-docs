@@ -8,7 +8,7 @@ import {
   LandingContentGrid,
   ContentGrid,
 } from "~/components/Markdown/Components/ResourcesGrids";
-import { SeeAllLink, sortByRank, NewCustomLink } from "./utils";
+import { SeeAllLink, sortByRank, NewCustomLink } from "~/components/utils";
 
 import Image from "next/image";
 
@@ -44,7 +44,7 @@ const BoldTextLooksLikeLink = styled("span", {
 const Index = ({ recentPosts, rankedArticles }) => {
   return (
     <>
-      <LandingContentGrid size={"wide"}>
+      <LandingContentGrid size="wide">
         <Box
           css={{
             gridColumn: "span 2",
@@ -242,7 +242,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
         <Box />
       </LandingContentGrid>
       {rankedArticles && (
-        <LandingContentGrid size={"single"}>
+        <LandingContentGrid size="single">
           <Box
             css={{
               gridColumn: "1/-1",
@@ -254,7 +254,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
                 borderTop: "1px solid $subtle",
                 marginTop: theme.sizes[200],
                 paddingTop: theme.sizes[100],
-                "@sm": { paddingBottom: "0", marginBottom: 0 },
+                "@sm": { paddingBottom: 0, marginBottom: 0 },
               }}
             >
               Dive Deeper
@@ -280,7 +280,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
                   css={{
                     margin: "auto 0",
                     "@sm": {
-                      margin: "0",
+                      margin: 0,
                     },
                   }}
                 >
@@ -288,7 +288,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
                     as="h3"
                     css={{
                       "@sm": {
-                        marginTop: "0",
+                        marginTop: 0,
                       },
                     }}
                   >

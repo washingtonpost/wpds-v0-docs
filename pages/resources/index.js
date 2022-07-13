@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 import { getDocsListBySection, getNavigation } from "~/services";
 import { styled } from "@washingtonpost/wpds-ui-kit";
 import { Header } from "~/components/Markdown/Components/headers";
-import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
   Thumbnail,
@@ -11,7 +10,7 @@ import {
   THUMBNAIL_WIDE,
 } from "~/components/Thumbnail";
 import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
-import { SeeAllLink, NewCustomLink, sortByRank } from "../utils";
+import { SeeAllLink, NewCustomLink, sortByRank } from "~/components/utils";
 
 const StyledHeader = styled("span", {
   padding: "$150 0 $075 0",
