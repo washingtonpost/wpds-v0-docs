@@ -51,7 +51,7 @@ const Page = ({ wrapper }) => (
     {wrapper.content.categories.map((category) => (
       <React.Fragment key={category.name}>
         <NewCustomLink
-          type={category.type}
+          type={category.type === "New" ? category.type : "imageOnly"}
           href={`/resources/${category.name.toLowerCase()}`}
         >
           <StyledHeader as="h2" id={category.id}>
@@ -61,7 +61,7 @@ const Page = ({ wrapper }) => (
         </NewCustomLink>
         <LandingContentGrid size={category.size} className={category.type}>
           {category?.posts?.map((doc) => (
-            <Link href={doc.slug} key={doc.slug}>
+            <NewCustomLink href={doc.slug} key={doc.slug} type="imageOnly">
               <Thumbnail
                 name={doc.data.title}
                 description={doc.data.description.split(".")[0]}
@@ -70,7 +70,7 @@ const Page = ({ wrapper }) => (
                 thumbnail={doc.data.thumbnail}
                 size={category.size}
               />
-            </Link>
+            </NewCustomLink>
           ))}
         </LandingContentGrid>
         <SeeAllLink

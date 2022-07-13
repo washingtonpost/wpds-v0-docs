@@ -1,5 +1,5 @@
 import { Header } from "~/components/Markdown/Components/headers";
-import Link from "~/components/Markdown/Components/link";
+import CustomLink from "~/components/Markdown/Components/link";
 
 import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
 import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
@@ -34,7 +34,7 @@ const ChevronForLink = styled(ChevronRight, {
 export const SeeAllLink = (props) => {
   const name = props?.name?.toLowerCase() || "";
   return (
-    <Link href={props.href}>
+    <CustomLink href={props.href}>
       <SeeAll as="h4" type={props.type}>
         <Box css={{ borderBottom: "1px solid $accessible" }}>
           See all {name}
@@ -43,16 +43,39 @@ export const SeeAllLink = (props) => {
           <ChevronForLink />
         </Icon>
       </SeeAll>
-    </Link>
+    </CustomLink>
   );
 };
 
-export const NewCustomLink = styled(Link, {
+export const NewCustomLink = styled(CustomLink, {
   variants: {
     type: {
       New: {
         pointerEvents: "none",
       },
+      // image has 90% opacity when the page is on dark mode
+      imageOnly: {
+        [".wpds-dark &"]: {
+          ["img"]: {
+            opacity: "0.90",
+          },
+        },
+        [".wpds-dark &:hover"]: {
+          opacity: 1,
+          ["img"]: {
+            opacity: "0.95",
+          },
+        },
+      },
+      // imageOnly: {
+      //   [".wpds-dark"]: { opacity: "0.90" },
+      //   [".wpds-dark &:hover"]: {
+      //     opacity: 1,
+      //     ["img"]: {
+      //       opacity: "0.95",
+      //     },
+      //   },
+      // },
     },
   },
 });

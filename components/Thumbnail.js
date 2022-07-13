@@ -1,17 +1,14 @@
 import { styled } from "@washingtonpost/wpds-ui-kit";
+
 import { Header } from "~/components/Markdown/Components/headers";
 import { P } from "~/components/Markdown/Styling";
-import Image from "next/image";
+
 import { ThumbnailGrid } from "./Markdown/Components/ResourcesGrids";
+
+import Image from "next/image";
 
 export const THUMBNAIL_WIDE = "wide";
 export const THUMBNAIL_SQUARE = "square";
-
-// image has 90% opacity when the page is on dark mode
-const StyledImage = styled(Image, {
-  flex: "1",
-  [".wpds-dark &"]: { opacity: "0.9" },
-});
 
 const Content = styled("div", {
   display: "flex",
@@ -27,7 +24,7 @@ export const Thumbnail = (props) => {
         <ThumbnailGrid size={THUMBNAIL_WIDE}>
           <Content>
             {imageTag && (
-              <StyledImage
+              <Image
                 width="500"
                 height="250"
                 src={imageTag}
@@ -56,7 +53,7 @@ export const Thumbnail = (props) => {
         <ThumbnailGrid size={THUMBNAIL_SQUARE}>
           <div>
             {thumbnail && (
-              <StyledImage
+              <Image
                 width="70"
                 height="70"
                 src={thumbnail}

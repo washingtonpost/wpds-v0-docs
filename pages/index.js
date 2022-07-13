@@ -4,12 +4,11 @@ import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 import { getAllDocs, getNavigation } from "~/services";
 import Header from "~/components/Markdown/Components/headers";
 import { List, ListItem } from "~/components/Markdown/Components/list";
-import CustomLink from "~/components/Markdown/Components/link";
 import {
   LandingContentGrid,
   ContentGrid,
 } from "~/components/Markdown/Components/ResourcesGrids";
-import { SeeAllLink, sortByRank } from "./utils";
+import { SeeAllLink, sortByRank, NewCustomLink } from "./utils";
 
 import Image from "next/image";
 
@@ -103,9 +102,9 @@ const Index = ({ recentPosts, rankedArticles }) => {
                     >
                       {post.data.publishDate}
                     </P>
-                    <CustomLink css={{ fontSize: "075" }} href={post.slug}>
+                    <NewCustomLink css={{ fontSize: "075" }} href={post.slug}>
                       {post.data.title}
-                    </CustomLink>
+                    </NewCustomLink>
                   </ListItem>
                 );
               })}
@@ -139,7 +138,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
             },
           }}
         >
-          <CustomLink href="/foundations">
+          <NewCustomLink href="/foundations" type="imageOnly">
             <Image
               height="160"
               width="320"
@@ -163,7 +162,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
             <BoldTextLooksLikeLink>
               Get started with Foundations
             </BoldTextLooksLikeLink>
-          </CustomLink>
+          </NewCustomLink>
         </Box>
         <Box
           css={{
@@ -176,7 +175,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
             },
           }}
         >
-          <CustomLink href="/components/alert-banner">
+          <NewCustomLink href="/components/alert-banner" type="imageOnly">
             <Image
               height="160"
               width="320"
@@ -200,7 +199,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
             <BoldTextLooksLikeLink>
               Get started with Components
             </BoldTextLooksLikeLink>
-          </CustomLink>
+          </NewCustomLink>
         </Box>
         <Box
           css={{
@@ -214,7 +213,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
             },
           }}
         >
-          <CustomLink href="/resources">
+          <NewCustomLink href="/resources" type="imageOnly">
             <Image
               height="160"
               width="320"
@@ -238,7 +237,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
             <BoldTextLooksLikeLink>
               Get started with Resources
             </BoldTextLooksLikeLink>
-          </CustomLink>
+          </NewCustomLink>
         </Box>
         <Box />
       </LandingContentGrid>
@@ -262,7 +261,11 @@ const Index = ({ recentPosts, rankedArticles }) => {
             </Header>
           </Box>
           {rankedArticles.map((article) => (
-            <CustomLink href={article.slug} key={article.data.title}>
+            <NewCustomLink
+              href={article.slug}
+              key={article.data.title}
+              type="imageOnly"
+            >
               <ContentGrid size="singleWide">
                 <Box>
                   <Image
@@ -294,7 +297,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
                   <P>{article.data.description}</P>
                 </Box>
               </ContentGrid>
-            </CustomLink>
+            </NewCustomLink>
           ))}
           <SeeAllLink href="/resources" name="resources" type="Last" />
         </LandingContentGrid>
