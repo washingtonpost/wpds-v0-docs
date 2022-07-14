@@ -16,9 +16,11 @@ const StyledFooter = styled(SiteFooter, {
   "& > div.flex": {
     display: "grid",
     width: "100%",
+    maxWidth: "1028px",
     py: "$200",
     marginBottom: "$150",
     gridTemplateColumns: "repeat(4, 1fr)",
+    gap: "$100",
     borderTop: "1px solid $colors$subtle",
     borderBottom: "1px solid $colors$subtle",
   },
