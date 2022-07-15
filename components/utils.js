@@ -66,6 +66,9 @@ export const NewCustomLink = styled(CustomLink, {
             opacity: "0.95",
           },
         },
+        "&:hover": {
+          opacity: ".9",
+        },
       },
     },
   },

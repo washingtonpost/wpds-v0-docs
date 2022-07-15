@@ -25,7 +25,7 @@ export const LandingContentGrid = styled("div", {
         },
         "@md": {
           gridTemplateColumns: "1fr",
-          gridRowGap: theme.sizes[100],
+          gridRowGap: theme.sizes[200],
         },
       },
       single: {

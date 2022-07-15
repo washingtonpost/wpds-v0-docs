@@ -68,12 +68,12 @@ const Index = ({ recentPosts, rankedArticles }) => {
           </Header>
         </Box>
         <HeroBlock>
-          <P css={{ fontSize: "$125" }}>
+          <P css={{ fontSize: "$125", marginBottom: theme.sizes[125] }}>
             The Washington Post Design System (WPDS) is a growing library of
             design tokens and interactive components purpose-built for
             washingtonpost.com.
           </P>
-          <P css={{ fontSize: "$125" }}>
+          <P css={{ fontSize: "$125", marginBottom: theme.sizes[225] }}>
             WPDS enables designers and developers at the Post to ship
             reader-facing digital products that are modular, elegant and
             accessible while maintaining visual consistency at scale.
@@ -83,6 +83,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
           css={{
             display: "flex",
             flexDirection: "column",
+            marginBottom: theme.sizes[100],
             "@md": { display: "none" },
             "@sm": { display: "none" },
           }}
@@ -111,24 +112,25 @@ const Index = ({ recentPosts, rankedArticles }) => {
           </List>
         </Box>
       </LandingContentGrid>
-      <LandingContentGrid size="wide">
-        <Box
+
+      <Box
+        css={{
+          gridColumn: "1/-1",
+        }}
+      >
+        <Header
+          as="h2"
           css={{
-            gridColumn: "1/-1",
+            borderTop: "1px solid $subtle",
+            marginBottom: theme.sizes[100],
+            paddingTop: theme.sizes[100],
+            "@sm": { marginTop: 0 },
           }}
         >
-          <Header
-            as="h2"
-            css={{
-              borderTop: "1px solid $subtle",
-              marginTop: theme.sizes[200],
-              paddingTop: theme.sizes[100],
-              "@sm": { marginBottom: 0 },
-            }}
-          >
-            Getting started
-          </Header>
-        </Box>
+          Getting started
+        </Header>
+      </Box>
+      <LandingContentGrid size="wide">
         <Box
           css={{
             position: "relative",
@@ -264,7 +266,6 @@ const Index = ({ recentPosts, rankedArticles }) => {
               as="h2"
               css={{
                 borderTop: "1px solid $subtle",
-                marginTop: theme.sizes[200],
                 marginBottom: theme.sizes[100],
                 paddingTop: theme.sizes[100],
                 "@sm": { marginTop: 0 },
