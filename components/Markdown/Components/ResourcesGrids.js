@@ -23,7 +23,7 @@ export const LandingContentGrid = styled("div", {
         "@notSm": {
           gridTemplateColumns: "repeat(3,1fr)",
         },
-        "@sm": {
+        "@md": {
           gridTemplateColumns: "1fr",
           gridRowGap: theme.sizes[100],
         },

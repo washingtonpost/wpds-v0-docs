@@ -67,15 +67,6 @@ export const NewCustomLink = styled(CustomLink, {
           },
         },
       },
-      // imageOnly: {
-      //   [".wpds-dark"]: { opacity: "0.90" },
-      //   [".wpds-dark &:hover"]: {
-      //     opacity: 1,
-      //     ["img"]: {
-      //       opacity: "0.95",
-      //     },
-      //   },
-      // },
     },
   },
 });

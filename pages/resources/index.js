@@ -1,7 +1,8 @@
 import React from "react";
 import { NextSeo } from "next-seo";
+import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
+
 import { getDocsListBySection, getNavigation } from "~/services";
-import { styled } from "@washingtonpost/wpds-ui-kit";
 import { Header } from "~/components/Markdown/Components/headers";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
@@ -12,29 +13,10 @@ import {
 import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
 import { SeeAllLink, NewCustomLink, sortByRank } from "~/components/utils";
 
-const StyledHeader = styled("span", {
-  padding: "$150 0 $075 0",
-  fontFamily: "$headline",
-  fontSize: "$225",
-  fontWeight: "$bold",
-  lineHeight: "$110",
-  color: "$primary",
-});
-
 const Description = styled("div", {
   paddingBottom: "$100",
   color: "$primary",
   maxWidth: "600px",
-});
-
-const Divider = styled("hr", {
-  gridColumnEnd: "span 2",
-  margin: "$100 0 $050",
-  paddingTop: 0,
-  border: 0,
-  height: "1px",
-  backgroundColor: "$subtle",
-  variants: { type: { Workshops: { display: "none" } } },
 });
 
 const Page = ({ wrapper }) => (
@@ -47,39 +29,72 @@ const Page = ({ wrapper }) => (
       accessibility of WPDS.
     </Description>
     <TableofContents headings={wrapper.headings} css={{ margin: "$075 0" }} />
-    {wrapper.content.categories.map((category) => (
-      <React.Fragment key={category.name}>
-        <NewCustomLink
-          type={category.type === "New" ? category.type : "imageOnly"}
-          href={`/resources/${category.name.toLowerCase()}`}
-        >
-          <StyledHeader as="h2" id={category.id}>
-            {category.name}
-          </StyledHeader>
-          <Description>{category.description}</Description>
-        </NewCustomLink>
-        <LandingContentGrid size={category.size} className={category.type}>
-          {category?.posts?.map((doc) => (
-            <NewCustomLink href={doc.slug} key={doc.slug} type="imageOnly">
-              <Thumbnail
-                name={doc.data.title}
-                description={doc.data.description.split(".")[0]}
-                publishDate={doc.data.publishDate}
-                imageTag={doc.data.imageTag}
-                thumbnail={doc.data.thumbnail}
-                size={category.size}
-              />
+    {wrapper.content.categories.map(
+      ({ name, id, type, posts, size, description }) => (
+        <React.Fragment key={name}>
+          <Box
+            css={{
+              gridColumn: "1/-1",
+              "@sm": {
+                marginBottom: "$100",
+              },
+            }}
+          >
+            <NewCustomLink
+              type={type === "New" ? type : "imageOnly"}
+              href={`/resources/${name.toLowerCase()}`}
+            >
+              <Header
+                as="h2"
+                id={id}
+                css={{
+                  borderTop: "1px solid $subtle",
+                  marginTop: theme.sizes[200],
+                  marginBottom: theme.sizes[100],
+                  paddingTop: theme.sizes[100],
+                  "@sm": { paddingBottom: theme.sizes[100], marginBottom: 0 },
+                }}
+              >
+                {name}
+              </Header>
+              <Description>{description}</Description>
             </NewCustomLink>
-          ))}
-        </LandingContentGrid>
-        <SeeAllLink
-          href={`/resources/${category.name.toLowerCase()}`}
-          name={category.name}
-          type={category.type}
-        />
-        <Divider type={category.type} />
-      </React.Fragment>
-    ))}
+          </Box>
+          <LandingContentGrid size={size} className={type}>
+            {posts?.map((doc) => (
+              <Box
+                key={doc.slug}
+                css={{
+                  position: "relative",
+                  "@md": {
+                    gridColumn: "1/-1",
+                  },
+                  "@sm": {
+                    gridGap: "$150",
+                  },
+                }}
+              >
+                <NewCustomLink href={doc.slug} type="imageOnly">
+                  <Thumbnail
+                    name={doc.data.title}
+                    description={doc.data.description.split(".")[0]}
+                    publishDate={doc.data.publishDate}
+                    imageTag={doc.data.imageTag}
+                    thumbnail={doc.data.thumbnail}
+                    size={size}
+                  />
+                </NewCustomLink>
+              </Box>
+            ))}
+          </LandingContentGrid>
+          <SeeAllLink
+            href={`/resources/${name.toLowerCase()}`}
+            name={name}
+            type={type}
+          />
+        </React.Fragment>
+      )
+    )}
   </>
 );
 

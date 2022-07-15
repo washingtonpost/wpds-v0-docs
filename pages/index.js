@@ -110,6 +110,8 @@ const Index = ({ recentPosts, rankedArticles }) => {
               })}
           </List>
         </Box>
+      </LandingContentGrid>
+      <LandingContentGrid size="wide">
         <Box
           css={{
             gridColumn: "1/-1",
@@ -121,7 +123,7 @@ const Index = ({ recentPosts, rankedArticles }) => {
               borderTop: "1px solid $subtle",
               marginTop: theme.sizes[200],
               paddingTop: theme.sizes[100],
-              "@sm": { paddingBottom: theme.sizes[100], marginBottom: 0 },
+              "@sm": { marginBottom: 0 },
             }}
           >
             Getting started
@@ -149,9 +151,12 @@ const Index = ({ recentPosts, rankedArticles }) => {
             <Header as="h3">Foundations</Header>
             <P
               css={{
-                marginBottom: theme.sizes[100],
-                "@notSm": {
-                  marginBottom: theme.sizes[300],
+                marginBottom: theme.sizes[300],
+                "@md": {
+                  marginBottom: theme.sizes[250],
+                },
+                "@sm": {
+                  marginBottom: theme.sizes[100],
                 },
               }}
             >
@@ -186,9 +191,12 @@ const Index = ({ recentPosts, rankedArticles }) => {
             <Header as="h3">Components</Header>
             <P
               css={{
-                marginBottom: theme.sizes[100],
-                "@notSm": {
-                  marginBottom: theme.sizes[300],
+                marginBottom: theme.sizes[300],
+                "@md": {
+                  marginBottom: theme.sizes[250],
+                },
+                "@sm": {
+                  marginBottom: theme.sizes[100],
                 },
               }}
             >
@@ -224,9 +232,12 @@ const Index = ({ recentPosts, rankedArticles }) => {
             <Header as="h3">Resources</Header>
             <P
               css={{
-                marginBottom: theme.sizes[100],
-                "@notSm": {
-                  marginBottom: theme.sizes[300],
+                marginBottom: theme.sizes[300],
+                "@md": {
+                  marginBottom: theme.sizes[250],
+                },
+                "@sm": {
+                  marginBottom: theme.sizes[100],
                 },
               }}
             >
@@ -241,8 +252,9 @@ const Index = ({ recentPosts, rankedArticles }) => {
         </Box>
         <Box />
       </LandingContentGrid>
+
       {rankedArticles && (
-        <LandingContentGrid size="single">
+        <>
           <Box
             css={{
               gridColumn: "1/-1",
@@ -253,54 +265,57 @@ const Index = ({ recentPosts, rankedArticles }) => {
               css={{
                 borderTop: "1px solid $subtle",
                 marginTop: theme.sizes[200],
+                marginBottom: theme.sizes[100],
                 paddingTop: theme.sizes[100],
-                "@sm": { paddingBottom: 0, marginBottom: 0 },
+                "@sm": { marginTop: 0 },
               }}
             >
               Dive Deeper
             </Header>
           </Box>
-          {rankedArticles.map((article) => (
-            <NewCustomLink
-              href={article.slug}
-              key={article.data.title}
-              type="imageOnly"
-            >
-              <ContentGrid size="singleWide">
-                <Box>
-                  <Image
-                    height="250"
-                    width="500"
-                    layout="responsive"
-                    src={article.data.imageTag}
-                    alt={article.data.imageAltText}
-                  />
-                </Box>
-                <Box
-                  css={{
-                    margin: "auto 0",
-                    "@sm": {
-                      margin: 0,
-                    },
-                  }}
-                >
-                  <Header
-                    as="h3"
+          <LandingContentGrid size="single">
+            {rankedArticles.map((article) => (
+              <NewCustomLink
+                href={article.slug}
+                key={article.data.title}
+                type="imageOnly"
+              >
+                <ContentGrid size="singleWide">
+                  <Box>
+                    <Image
+                      height="250"
+                      width="500"
+                      layout="responsive"
+                      src={article.data.imageTag}
+                      alt={article.data.imageAltText}
+                    />
+                  </Box>
+                  <Box
                     css={{
+                      margin: "auto 0",
                       "@sm": {
-                        marginTop: 0,
+                        margin: 0,
                       },
                     }}
                   >
-                    {article.data.title}
-                  </Header>
-                  <P>{article.data.description}</P>
-                </Box>
-              </ContentGrid>
-            </NewCustomLink>
-          ))}
-          <SeeAllLink href="/resources" name="resources" type="Last" />
-        </LandingContentGrid>
+                    <Header
+                      as="h3"
+                      css={{
+                        "@sm": {
+                          marginTop: 0,
+                        },
+                      }}
+                    >
+                      {article.data.title}
+                    </Header>
+                    <P>{article.data.description}</P>
+                  </Box>
+                </ContentGrid>
+              </NewCustomLink>
+            ))}
+            <SeeAllLink href="/resources" name="resources" type="Last" />
+          </LandingContentGrid>
+        </>
       )}
     </>
   );
