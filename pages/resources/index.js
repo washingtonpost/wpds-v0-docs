@@ -1,10 +1,9 @@
 import React from "react";
 import { NextSeo } from "next-seo";
+import { styled, theme, Box } from "@washingtonpost/wpds-ui-kit";
+
 import { getDocsListBySection, getNavigation } from "~/services";
-import { Box, Icon, theme, styled } from "@washingtonpost/wpds-ui-kit";
-import ChevronRight from "@washingtonpost/wpds-assets/asset/chevron-right";
 import { Header } from "~/components/Markdown/Components/headers";
-import Link from "~/components/Markdown/Components/link";
 import TableofContents from "~/components/Markdown/Components/tableofcontents";
 import {
   Thumbnail,
@@ -12,25 +11,7 @@ import {
   THUMBNAIL_WIDE,
 } from "~/components/Thumbnail";
 import { LandingContentGrid } from "~/components/Markdown/Components/ResourcesGrids";
-
-const CustomLink = styled(Link, {
-  variants: {
-    type: {
-      New: {
-        pointerEvents: "none",
-      },
-    },
-  },
-});
-
-const StyledHeader = styled("span", {
-  padding: "$150 0 $075 0",
-  fontFamily: "$headline",
-  fontSize: "$225",
-  fontWeight: "$bold",
-  lineHeight: "$110",
-  color: "$primary",
-});
+import { SeeAllLink, NewCustomLink, sortByRank } from "~/components/utils";
 
 const Description = styled("div", {
   paddingBottom: "$100",
@@ -38,99 +19,86 @@ const Description = styled("div", {
   maxWidth: "600px",
 });
 
-const SeeAll = styled(Header, {
-  display: "flex",
-  margin: "$100 0 $200",
-  alignItems: "center",
-  variants: {
-    type: { Workshops: { marginBottom: "-$350" }, New: { display: "none" } },
-  },
-});
-
-const Divider = styled("hr", {
-  gridColumnEnd: "span 2",
-  margin: "$100 0 $050",
-  paddingTop: 0,
-  border: 0,
-  height: "1px",
-  backgroundColor: "$subtle",
-  variants: { type: { Workshops: { display: "none" } } },
-});
-
-const ChevronForLink = styled(ChevronRight, {
-  fill: theme.colors.accessible,
-});
-
-export default function Page({ wrapper }) {
-  return (
-    <>
-      <NextSeo title={`WPDS - Resources`} />
-      <Header as="h1">Resources</Header>
-      <Description>
-        Learn more about our workflow and how to use our tools in our guides.
-        Watch our tutorials and workshops to discover the elegance and
-        accessibility of WPDS.
-      </Description>
-      <TableofContents headings={wrapper.headings} css={{ margin: "$075 0" }} />
-      <>
-        {wrapper.content.categories.map((category) => {
-          return (
-            <>
-              <CustomLink
-                type={category.type}
-                href={`/resources/${category.name.toLowerCase()}`}
+const Page = ({ wrapper }) => (
+  <>
+    <NextSeo title={`WPDS - Resources`} />
+    <Header as="h1">Resources</Header>
+    <Description>
+      Learn more about our workflow and how to use our tools in our guides.
+      Watch our tutorials and workshops to discover the elegance and
+      accessibility of WPDS.
+    </Description>
+    <TableofContents headings={wrapper.headings} css={{ margin: "$075 0" }} />
+    {wrapper.content.categories.map(
+      ({ name, id, type, posts, size, description }) => (
+        <React.Fragment key={name}>
+          <Box
+            css={{
+              gridColumn: "1/-1",
+              "@sm": {
+                marginBottom: "$100",
+              },
+            }}
+          >
+            <NewCustomLink
+              type={type === "New" ? type : "imageOnly"}
+              href={`/resources/${name.toLowerCase()}`}
+            >
+              <Header
+                as="h2"
+                id={id}
+                css={{
+                  borderTop: "1px solid $subtle",
+                  marginTop: theme.sizes[200],
+                  marginBottom: theme.sizes[100],
+                  paddingTop: theme.sizes[100],
+                  "@sm": { paddingBottom: theme.sizes[100], marginBottom: 0 },
+                }}
               >
-                <StyledHeader as="h2" id={category.id}>
-                  {category.name}
-                </StyledHeader>
-                <Description>{category.description}</Description>
-              </CustomLink>
-              <LandingContentGrid
-                size={category.size}
-                className={category.type}
+                {name}
+              </Header>
+              <Description>{description}</Description>
+            </NewCustomLink>
+          </Box>
+          <LandingContentGrid size={size} className={type}>
+            {posts?.map((doc) => (
+              <Box
+                key={doc.slug}
+                css={{
+                  position: "relative",
+                  "@md": {
+                    gridColumn: "1/-1",
+                  },
+                  "@sm": {
+                    gridGap: "$150",
+                  },
+                }}
               >
-                {category.posts.map((doc) => {
-                  return (
-                    <Link
-                      href={doc.slug}
-                      key={doc.slug}
-                      css={{
-                        borderRadius: "$025",
-                        padding: "$050 0 $050",
-                      }}
-                    >
-                      <Thumbnail
-                        name={doc.data.title}
-                        description={doc.data.description.split(".")[0]}
-                        publishDate={doc.data.publishDate}
-                        imageTag={doc.data.imageTag}
-                        thumbnail={doc.data.thumbnail}
-                        size={category.size}
-                      />
-                    </Link>
-                  );
-                })}
-              </LandingContentGrid>
-              <Link href={`/resources/${category.name.toLowerCase()}`}>
-                <SeeAll as="h4" type={category.type}>
-                  <Box css={{ borderBottom: "1px solid $accessible" }}>
-                    See all {category.name.toLowerCase()}
-                  </Box>
-                  <Icon>
-                    <ChevronForLink />
-                  </Icon>
-                </SeeAll>
-              </Link>
-              <Divider type={category.type} />
-            </>
-          );
-        })}
-      </>
-    </>
-  );
-}
+                <NewCustomLink href={doc.slug} type="imageOnly">
+                  <Thumbnail
+                    name={doc.data.title}
+                    description={doc.data.description.split(".")[0]}
+                    publishDate={doc.data.publishDate}
+                    imageTag={doc.data.imageTag}
+                    thumbnail={doc.data.thumbnail}
+                    size={size}
+                  />
+                </NewCustomLink>
+              </Box>
+            ))}
+          </LandingContentGrid>
+          <SeeAllLink
+            href={`/resources/${name.toLowerCase()}`}
+            name={name}
+            type={type}
+          />
+        </React.Fragment>
+      )
+    )}
+  </>
+);
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async () => {
   const docs = await getDocsListBySection("resources");
 
   // find the three most recent posts to the site before content is sorted by kicker
@@ -138,31 +106,34 @@ export const getStaticProps = async ({ params }) => {
     .sort((a, b) => new Date(b.data.publishDate) - new Date(a.data.publishDate))
     .slice(0, 3);
 
-  const collections = [
+  const collections =
     // create a collection for each doc.data.kicker property and put their docs in it
-    ...docs.reduce((acc, doc) => {
-      const kicker = doc.data.kicker;
-      const collection = acc.find((collection) => collection.kicker === kicker);
-      const todaysDate = new Date();
-      // exclude future posts using collection.publishDate
-      if (new Date(doc.data.publishDate) <= todaysDate) {
-        if (collection) {
-          collection.docs.push(doc);
-        } else {
-          acc.push({
-            kicker,
-            docs: [doc],
-          });
+    docs
+      .reduce((acc, doc) => {
+        const kicker = doc.data.kicker;
+        const collection = acc.find(
+          (collection) => collection.kicker === kicker
+        );
+        const todaysDate = new Date();
+        // exclude future posts using collection.publishDate
+        if (new Date(doc.data.publishDate) <= todaysDate) {
+          if (collection) {
+            collection.docs.push(doc);
+          } else {
+            acc.push({
+              kicker,
+              docs: [doc],
+            });
+          }
         }
-      }
-      return acc;
-    }, []),
-  ].sort((a, b) => {
-    // alpha sort
-    return a.kicker.localeCompare(b.kicker);
-  });
+        return acc;
+      }, [])
+      .sort((a, b) => {
+        // alpha sort
+        return a.kicker.localeCompare(b.kicker);
+      });
 
-  const wrapper = await getProps(collections, recents);
+  const wrapper = await getWrapper(collections, recents);
   const navigation = await getNavigation();
 
   return {
@@ -173,7 +144,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-async function getProps(collections, recents) {
+async function getWrapper(collections, recents) {
   // create a wrapper which contains all necessary data for the page
 
   // 1. initialize constants
@@ -190,34 +161,26 @@ async function getProps(collections, recents) {
   };
 
   // 2. populate the content array with objects for each category (main data for page)
-  content.categories = collections.map((item) => {
+  content.categories = collections.map((collection) => {
     let name, id, type;
-    name = id = type = item.kicker;
+    name = id = type = collection.kicker;
     let [posts, description, size] = [[], descriptions[name], ""];
 
     if (name === "Guides") {
-      // sorting guides by guideRank -> if none, sort by title
-      posts = [...item.docs]
-        .sort(function (a, b) {
-          try {
-            return a.data.guideRank - b.data.guideRank;
-          } catch (TypeError) {
-            return a.data.title.localeCompare(b.data.title);
-          }
-        })
-        .slice(0, 4);
+      // sorting guides by Rank -> if none, sort by title
+      posts = sortByRank(collection.docs, 4);
       size = THUMBNAIL_SQUARE;
     } else {
-      posts = [...item.docs].slice(0, 3);
+      posts = [...collection.docs].slice(0, 3);
       size = THUMBNAIL_WIDE;
     }
-    let category = { name, posts, description, size, type, id };
-    return category;
+    //return category
+    return { name, posts, description, size, type, id };
   });
 
   // 3. populate headings (for TOC)
-  const headings = content.categories.map((item) => {
-    return { label: item.name, level };
+  const headings = content.categories.map((category) => {
+    return { label: category.name, level };
   });
 
   // 4. adding what's new section to the front of the content array
@@ -237,3 +200,6 @@ async function getProps(collections, recents) {
   wrapper.headings = headings;
   return wrapper;
 }
+
+Page.displayName = "Page";
+export default Page;

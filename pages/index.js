@@ -1,44 +1,50 @@
 import React from "react";
-import { AlertBanner, Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
+import { Box, styled, theme } from "@washingtonpost/wpds-ui-kit";
 
 import { getAllDocs, getNavigation } from "~/services";
 import Header from "~/components/Markdown/Components/headers";
 import { List, ListItem } from "~/components/Markdown/Components/list";
-import CustomLink from "~/components/Markdown/Components/link";
+import {
+  LandingContentGrid,
+  ContentGrid,
+} from "~/components/Markdown/Components/ResourcesGrids";
+import { SeeAllLink, sortByRank, NewCustomLink } from "~/components/utils";
 
-export default function Index({ recentPosts }) {
-  const Grid = styled("div", {
-    display: "grid",
-    gap: "$100",
-    "@notSm": {
-      gridTemplateColumns: "repeat(3,1fr)",
-    },
-    "@sm": {
-      gridTemplateColumns: "1fr",
-    },
-  });
-  const HeroBlock = styled("div", {
-    gridColumn: "span 2",
+import Image from "next/image";
 
-    flexDirection: "column",
-    justifyContent: "center",
-    "@md": {
-      gridColumn: "span 3",
-    },
-    "@sm": {
-      gridColumn: "span 1",
-    },
-  });
-  const P = styled("p", {
-    color: theme.colors.accessible,
-    fontSize: theme.fontSizes[100],
-    fontWeight: theme.fontWeights.light,
-    lineHeight: theme.lineHeights[125],
-    marginBottom: theme.sizes[150],
-  });
+const HeroBlock = styled("div", {
+  gridColumn: "span 2",
+  flexDirection: "column",
+  justifyContent: "center",
+  "@md": {
+    gridColumn: "span 3",
+  },
+  "@sm": {
+    gridColumn: "span 1",
+  },
+});
+
+const P = styled("p", {
+  color: theme.colors.accessible,
+  fontSize: theme.fontSizes[100],
+  fontWeight: theme.fontWeights.light,
+  lineHeight: theme.lineHeights[125],
+});
+
+const BoldTextLooksLikeLink = styled("span", {
+  fontWeight: "bold",
+  textDecoration: "underline",
+  marginTop: theme.sizes[100],
+  "@notSm": {
+    bottom: 0,
+    position: "absolute",
+  },
+});
+
+const Index = ({ recentPosts, rankedArticles }) => {
   return (
     <>
-      <Grid>
+      <LandingContentGrid size="wide">
         <Box
           css={{
             gridColumn: "span 2",
@@ -62,12 +68,12 @@ export default function Index({ recentPosts }) {
           </Header>
         </Box>
         <HeroBlock>
-          <P css={{ fontSize: "$125" }}>
+          <P css={{ fontSize: "$125", marginBottom: theme.sizes[125] }}>
             The Washington Post Design System (WPDS) is a growing library of
             design tokens and interactive components purpose-built for
             washingtonpost.com.
           </P>
-          <P css={{ fontSize: "$125" }}>
+          <P css={{ fontSize: "$125", marginBottom: theme.sizes[225] }}>
             WPDS enables designers and developers at the Post to ship
             reader-facing digital products that are modular, elegant and
             accessible while maintaining visual consistency at scale.
@@ -77,6 +83,7 @@ export default function Index({ recentPosts }) {
           css={{
             display: "flex",
             flexDirection: "column",
+            marginBottom: theme.sizes[100],
             "@md": { display: "none" },
             "@sm": { display: "none" },
           }}
@@ -96,29 +103,73 @@ export default function Index({ recentPosts }) {
                     >
                       {post.data.publishDate}
                     </P>
-                    <CustomLink css={{ fontSize: "075" }} href={post.slug}>
+                    <NewCustomLink css={{ fontSize: "075" }} href={post.slug}>
                       {post.data.title}
-                    </CustomLink>
+                    </NewCustomLink>
                   </ListItem>
                 );
               })}
           </List>
         </Box>
-        <Box
+      </LandingContentGrid>
+
+      <Box
+        css={{
+          gridColumn: "1/-1",
+        }}
+      >
+        <Header
+          as="h2"
           css={{
-            gridColumn: "1/-1",
+            borderTop: "1px solid $subtle",
+            marginBottom: theme.sizes[100],
+            paddingTop: theme.sizes[100],
+            "@sm": { marginTop: 0 },
           }}
         >
-          <Header
-            as="h2"
-            css={{
-              borderTop: "1px solid $subtle",
-              paddingTop: "$100",
-              "@sm": { paddingBottom: "0", marginBottom: 0 },
-            }}
-          >
-            Getting started
-          </Header>
+          Getting started
+        </Header>
+      </Box>
+      <LandingContentGrid size="wide">
+        <Box
+          css={{
+            position: "relative",
+            "@md": {
+              gridColumn: "1/-1",
+            },
+            "@sm": {
+              marginBottom: theme.sizes[200],
+            },
+          }}
+        >
+          <NewCustomLink href="/foundations" type="imageOnly">
+            <Image
+              height="160"
+              width="320"
+              layout="responsive"
+              src="/img/sections/foundations.png"
+              alt="Image shows the word 'Foundations' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
+            />
+            <Header as="h3">Foundations</Header>
+            <P
+              css={{
+                marginBottom: theme.sizes[300],
+                "@md": {
+                  marginBottom: theme.sizes[250],
+                },
+                "@sm": {
+                  marginBottom: theme.sizes[100],
+                },
+              }}
+            >
+              Learn about design tokens what they are, how they work and the
+              advantages they bring to a design system. Plus: a list of all
+              currently supported tokens.
+            </P>
+            <BoldTextLooksLikeLink>
+              Get started with Foundations
+            </BoldTextLooksLikeLink>
+          </NewCustomLink>
         </Box>
         <Box
           css={{
@@ -126,65 +177,39 @@ export default function Index({ recentPosts }) {
             "@md": {
               gridColumn: "1/-1",
             },
-          }}
-        >
-          <Header as="h3">Foundations</Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Learn about design tokens what they are, how they work and the
-            advantages they bring to a design system. Plus: a list of all
-            currently supported tokens.
-          </P>
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "absolute",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/foundations/principles"}
-          >
-            Start with Foundations
-          </CustomLink>
-        </Box>
-        <Box
-          css={{
-            position: "relative",
-            "@md": {
-              gridColumn: "1/-1",
+            "@sm": {
+              marginBottom: theme.sizes[200],
             },
           }}
         >
-          <Header as="h3">Components</Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Dive deeper into our component documentation including design
-            examples, usage guidelines and best-practices for technical
-            implementation.
-          </P>
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "absolute",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/components/alert-banner"}
-          >
-            Start with Components
-          </CustomLink>
+          <NewCustomLink href="/components/alert-banner" type="imageOnly">
+            <Image
+              height="160"
+              width="320"
+              layout="responsive"
+              src="/img/sections/components.png"
+              alt="Image shows the word 'Components' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
+            />
+            <Header as="h3">Components</Header>
+            <P
+              css={{
+                marginBottom: theme.sizes[300],
+                "@md": {
+                  marginBottom: theme.sizes[250],
+                },
+                "@sm": {
+                  marginBottom: theme.sizes[100],
+                },
+              }}
+            >
+              Dive deeper into our component documentation including design
+              examples, usage guidelines and best-practices for technical
+              implementation.
+            </P>
+            <BoldTextLooksLikeLink>
+              Get started with Components
+            </BoldTextLooksLikeLink>
+          </NewCustomLink>
         </Box>
         <Box
           css={{
@@ -193,46 +218,131 @@ export default function Index({ recentPosts }) {
             "@md": {
               gridColumn: "1/-1",
             },
+            "@sm": {
+              marginBottom: theme.sizes[200],
+            },
           }}
         >
-          <Header as="h3">Guides</Header>
-          <P
-            css={{
-              paddingBottom: "$100",
-              "@lg": {
-                paddingBottom: "$200",
-              },
-            }}
-          >
-            Get familiar with the WPDS ecosystem by using one of our handy
-            how-to guides. Learn more about integrations with Figma, Zeplin, and
-            React.
-          </P>
-          <CustomLink
-            css={{
-              bottom: 0,
-              position: "absolute",
-              fontWeight: "bold",
-              textDecoration: "underline",
-            }}
-            href={"/resources/guides"}
-          >
-            Start with Guides
-          </CustomLink>
+          <NewCustomLink href="/resources" type="imageOnly">
+            <Image
+              height="160"
+              width="320"
+              layout="responsive"
+              src="/img/sections/resources.png"
+              alt="Image shows the word 'Resources' in large bold letters in front of two squiggly cirles. The words 'WP Design System' in small letters above the bold letters."
+            />
+            <Header as="h3">Resources</Header>
+            <P
+              css={{
+                marginBottom: theme.sizes[300],
+                "@md": {
+                  marginBottom: theme.sizes[250],
+                },
+                "@sm": {
+                  marginBottom: theme.sizes[100],
+                },
+              }}
+            >
+              Get familiar with the WPDS ecosystem by using one of our handy
+              how-to guides. Learn more about integrations with Figma, Zeplin,
+              and React.
+            </P>
+            <BoldTextLooksLikeLink>
+              Get started with Resources
+            </BoldTextLooksLikeLink>
+          </NewCustomLink>
         </Box>
-      </Grid>
+        <Box />
+      </LandingContentGrid>
+
+      {rankedArticles && (
+        <>
+          <Box
+            css={{
+              gridColumn: "1/-1",
+            }}
+          >
+            <Header
+              as="h2"
+              css={{
+                borderTop: "1px solid $subtle",
+                marginBottom: theme.sizes[100],
+                paddingTop: theme.sizes[100],
+                "@sm": { marginTop: 0 },
+              }}
+            >
+              Dive Deeper
+            </Header>
+          </Box>
+          <LandingContentGrid size="single">
+            {rankedArticles.map((article) => (
+              <NewCustomLink
+                href={article.slug}
+                key={article.data.title}
+                type="imageOnly"
+              >
+                <ContentGrid size="singleWide">
+                  <Box>
+                    <Image
+                      height="250"
+                      width="500"
+                      layout="responsive"
+                      src={article.data.imageTag}
+                      alt={article.data.imageAltText}
+                    />
+                  </Box>
+                  <Box
+                    css={{
+                      margin: "auto 0",
+                      "@sm": {
+                        margin: 0,
+                      },
+                    }}
+                  >
+                    <Header
+                      href={article.slug}
+                      as="h3"
+                      css={{
+                        "@sm": {
+                          marginTop: 0,
+                        },
+                      }}
+                    >
+                      {article.data.title}
+                    </Header>
+                    <P>{article.data.description}</P>
+                  </Box>
+                </ContentGrid>
+              </NewCustomLink>
+            ))}
+            <SeeAllLink href="/resources" name="resources" type="Last" />
+          </LandingContentGrid>
+        </>
+      )}
     </>
   );
-}
+};
 
 const todaysDate = new Date();
 
+Index.displayName = "Index";
+
+export default Index;
 export async function getStaticProps() {
   const posts = await getAllDocs();
   const navigation = await getNavigation();
 
+  const guides = [];
+  const workshops = [];
+
   const recentPosts = posts
-    .filter((post, i) => {
+    .filter((post) => {
+      if (post.data.kicker === "Guides") {
+        guides.push(post);
+      }
+      if (post.data.kicker === "Workshops") {
+        workshops.push(post);
+      }
       return (
         post.data.publishDate &&
         new Date(post.data.publishDate) <= todaysDate &&
@@ -249,7 +359,13 @@ export async function getStaticProps() {
     const amountOver = recentPosts.length - threshold;
     recentPosts.splice(threshold, amountOver);
   }
+
+  // uses the ranks inside the docs
+  const rankedArticles = [
+    ...sortByRank(workshops, 4),
+    ...sortByRank(guides, 2),
+  ];
   return {
-    props: { recentPosts, navigation },
+    props: { recentPosts, rankedArticles, navigation },
   };
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, Icon, theme } from "@washingtonpost/wpds-ui-kit";
+import { styled, Icon } from "@washingtonpost/wpds-ui-kit";
 import WPMark from "@washingtonpost/wpds-assets/asset/wp-mark";
 import Link from "next/link";
 

@@ -36,6 +36,7 @@ export const getAllDocs = async () => {
   return posts;
 };
 
+// returns an array of document objects
 export const getDocsListBySection = async (input) => {
   let posts = null;
 

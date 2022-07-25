@@ -101,6 +101,7 @@ export const Footer = () => {
         marginTop: "$500",
 
         "@sm": {
+          marginTop: "$200",
           "footer.site-footer": {
             display: "none",
           },

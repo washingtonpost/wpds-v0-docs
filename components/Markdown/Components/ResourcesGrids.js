@@ -12,21 +12,25 @@ export const LandingContentGrid = styled("div", {
     size: {
       square: {
         gridTemplateColumns: "1fr",
-        gridColumnGap: "$300",
-        gridRowGap: "0",
+        gridColumnGap: theme.sizes[300],
+        gridRowGap: theme.sizes[100],
         "@notLg": {
           gridTemplateColumns: "1fr 1fr",
         },
       },
       wide: {
-        gap: "$100",
+        gap: theme.sizes[100],
         "@notSm": {
           gridTemplateColumns: "repeat(3,1fr)",
         },
-        "@sm": {
-          gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-          gridRowGap: "0",
+        "@md": {
+          gridTemplateColumns: "1fr",
+          gridRowGap: theme.sizes[200],
         },
+      },
+      single: {
+        gridTemplateColumns: "1fr",
+        gap: theme.sizes[200],
       },
     },
   },
@@ -42,7 +46,7 @@ export const ContentGrid = styled("div", {
     size: {
       square: {
         gridTemplateColumns: "1fr",
-        gridGap: "$025",
+        gridGap: theme.sizes[25],
         "@notMd": {
           gridTemplateColumns: "1fr 1fr",
         },
@@ -54,6 +58,17 @@ export const ContentGrid = styled("div", {
           gridTemplateColumns: "repeat(3,1fr)",
         },
       },
+      singleWide: {
+        margin: 0,
+        gap: "$200",
+        "@notSm": {
+          gridTemplateColumns: "repeat(2,1fr)",
+        },
+        "@sm": {
+          gap: "$100",
+          gridTemplateColumns: "1fr",
+        },
+      },
     },
   },
 });
@@ -62,7 +77,6 @@ export const ContentGrid = styled("div", {
 export const ThumbnailGrid = styled("div", {
   width: "100%",
   display: "grid",
-  paddingRight: "$025",
 
   variants: {
     size: {
