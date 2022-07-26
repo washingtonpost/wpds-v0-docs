@@ -68,7 +68,6 @@ export default function Icons({ data }) {
     setFilter(result);
   }
   const GetIcons = () => {
-    console.log(Filter);
     return Object.keys(AllAssets).map((Asset, i) => {
       const Sample = AllAssets[Asset];
       const componentName = paramCase(Asset);
