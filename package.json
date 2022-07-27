@@ -26,6 +26,7 @@
     "@washingtonpost/site-third-party-scripts": "latest",
     "@washingtonpost/wpds-assets": "v1.8.0",
     "@washingtonpost/wpds-ui-kit": "^0.11.2",
+    "fuse.js": "^6.6.2",
     "gray-matter": "^4.0.2",
     "lz-string": "^1.4.4",
     "next": "^12.1.0",

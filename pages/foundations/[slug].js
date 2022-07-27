@@ -17,7 +17,7 @@ const P = styled("p", {
   color: theme.colors.accessible,
 });
 
-export default function Page({ source }) {
+export default function Page({ source, iconData }) {
   return (
     <>
       <NextSeo
@@ -31,7 +31,7 @@ export default function Page({ source }) {
         )}
       </header>
       <article>
-        <MDXRemote {...source} components={components} />
+        <MDXRemote {...source} components={components} scope={iconData} />
       </article>
     </>
   );
@@ -44,11 +44,28 @@ export const getStaticProps = async ({ params }) => {
 
   const navigation = await getNavigation();
 
+  let iconData = null;
+  if (params.slug === "icons") {
+    const response = await fetch(
+      "https://api.figma.com/v1/files/LA6qKUukk8v3YkkuKq6IC6/components",
+      { headers: { "X-FIGMA-TOKEN": process.env.FIGMA_API_TOKEN } }
+    );
+    const allComponents = await response.json();
+    const iconComponents = allComponents.meta.components
+      .filter((component) => component.containing_frame.pageName === "Icons")
+      .map((component) => ({
+        name: component.name,
+        description: component.description.replace(/(\n)/gm, " "),
+      }));
+    iconData = { components: iconComponents };
+  }
+
   return {
     props: {
       current: params.slug,
       navigation,
       source,
+      iconData,
     },
   };
 };
